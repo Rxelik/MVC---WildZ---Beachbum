@@ -38,16 +38,18 @@ public class _CardView : MonoBehaviour, ICardView
     public Vector3 Position { set { transform.position = value; _inspectPos = value; } }
 
     // Set the Card Color position
-    public Color Color { set { GetComponent<SpriteRenderer>().color = value; } }
+    public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
     public String BelongsTo { set { _ = value; _inspectorBelongsTo = value; } }
 
-    [SerializeField]private Vector3 _inspectPos;
-    [SerializeField]private int _inspectNumber;
-    [SerializeField]private String _inspectorBelongsTo;
+    [SerializeField] private Vector3 _inspectPos;
+    [SerializeField] private int _inspectNumber;
+    [SerializeField] private String _inspectorBelongsTo;
+    public Color _InspectorColor;
 
     private void OnEnable()
     {
         StartCoroutine(ToList());
+
     }
     void Update()
     {

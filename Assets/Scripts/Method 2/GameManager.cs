@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    public List<_CardView>  Deck;
+    public int riseP = 1;
+    public int riseE = 1;
+    public List<_CardView> Deck;
 
     public string CurrentTurn = "Player";
 }

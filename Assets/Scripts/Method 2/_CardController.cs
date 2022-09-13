@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 // Interface for the enemy controller
 public interface ICardController
@@ -25,7 +27,7 @@ public class _CardController : ICardController
         view.OnEnableEvent += StartOfGameDraw;
 
         // Listen to changes in the model
-        model.OnPositionChanged += ChanePosition;
+        model.OnPositionChanged += ChangePosition;
         model.OnColorChanged += ChangeColor;
         model.OnNumberChanged += ChangeNumber;
         // Set the view's initial state by synching with the model
@@ -35,20 +37,28 @@ public class _CardController : ICardController
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
-        if (GameManager.Instance.Deck.Contains((_CardView)view) && GameManager.Instance.Deck[0])
+        if (CanPlay())
         {
-
+            Debug.Log("Print Wappa");
         }
-        model.Position += new Vector3(1, 2, 4);
-        model.Number += 2;
-        model.BelongsTo = "NONEO!#@W!";
+
+    }
+
+    private bool CanPlay()
+    {
+        if (model.Color == GameManager.Instance.Deck[GameManager.Instance.Deck.Count - 1]._InspectorColor)
+            return true;
+        else
+            return false;
     }
 
     // Called when the model's position changes
-    private void ChanePosition(object sender, CardPositionChangedEventArgs e)
+    private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         // Update the view with the new position
         SyncData();
+        Debug.Log("ChangePosition");
+
     }
 
     // Sync the view's position with the model's position
@@ -61,36 +71,49 @@ public class _CardController : ICardController
         view.Number = model.Number;
 
         view.BelongsTo = model.BelongsTo;
+        Debug.Log("Syncing Data");
+
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)
     {
         SyncData();
+        Debug.Log("ChangeColor");
+
     }
 
     private void ChangeNumber(object sender, CardNumberChangedEventArgs e)
     {
         SyncData();
+        Debug.Log("ChangeNumber");
+
     }
     public void StartOfGameDraw(object sender, CardOnEnableEventArgs e)
     {
-        if (Player.Instance.Hand.Count < 8)
-        {
-            Player.Instance.Hand.Add((_CardView)view);
-            model.BelongsTo = "Player";
-            model.Position = Player.Instance.transform.position;
-            SyncData();
-        }
-        else if (Enemy.Instance.Hand.Count < 8)
-        {
-            Enemy.Instance.Hand.Add((_CardView)view);
-            model.BelongsTo = "Enemy";
-            model.Position = Enemy.Instance.transform.position;
-            SyncData();
-        }
-        else
-        {
-            GameManager.Instance.Deck.Add((_CardView)view);
-        }
+        InisializeCards();
+    }
+
+    private void InisializeCards()
+    {
+            if (Player.Instance.Hand.Count < 8)
+            {
+                Player.Instance.Hand.Add((_CardView)view);
+                model.BelongsTo = "Player";
+                model.Position = new Vector3(Player.Instance.transform.position.x + Player.Instance.Hand.Count *3.5f, Player.Instance.transform.position.y);
+                SyncData();
+                
+            }
+            else if (Enemy.Instance.Hand.Count < 8)
+            {
+                Enemy.Instance.Hand.Add((_CardView)view);
+                model.BelongsTo = "Enemy";
+                model.Position = new Vector3(Enemy.Instance.transform.position.x + Enemy.Instance.Hand.Count *3.5f, Enemy.Instance.transform.position.y);
+                SyncData();
+
+            }
+            else
+            {
+                GameManager.Instance.Deck.Add((_CardView)view);
+            }
     }
 }
