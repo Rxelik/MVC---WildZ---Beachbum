@@ -10,6 +10,11 @@ public interface ICardController
 // Implementation of the enemy controller
 public class _CardController : ICardController
 {
+    private Player _player;
+    private Enemy _enemy;
+    private GameManager _manager;
+
+
     // Keep references to the model and view
     private readonly ICardModel model;
     private readonly ICardView view;
@@ -17,36 +22,43 @@ public class _CardController : ICardController
     // Controller depends on interfaces for the model and view
     public _CardController(ICardModel model, ICardView view)
     {
+        //Register
         this.model = model;
         this.view = view;
 
-        // Listen to OnEable
+        // Caching
+        _manager = GameManager.Instance;
+        _player = Player.Instance;
+        _enemy = Enemy.Instance;
 
         // Listen to input from the view
         view.OnClicked += HandleClicked;
         view.OnEnableEvent += StartOfGameDraw;
-
-        // Listen to changes in the model
         model.OnPositionChanged += ChangePosition;
         model.OnColorChanged += ChangeColor;
         model.OnNumberChanged += ChangeNumber;
         // Set the view's initial state by synching with the model
         SyncData();
     }
-
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
-        if (CanPlay())
+        if (model.BelongsTo == _manager.CurrentTurn)
         {
-            Debug.Log("Print Wappa");
+            if (CanPlay())
+            {
+                model.Position = _manager.BoardPos.position;
+                _manager.Board.Add((_CardView)view);
+                _manager.ToggleTurnOrder();
+            }
         }
+
 
     }
 
     private bool CanPlay()
     {
-        if (model.Color == GameManager.Instance.Deck[GameManager.Instance.Deck.Count - 1]._InspectorColor)
+        if (model.Color == _manager.BoardTopCard()._InspectorColor || model.Number == _manager.BoardTopCard()._inspectNumber)
             return true;
         else
             return false;
@@ -57,7 +69,6 @@ public class _CardController : ICardController
     {
         // Update the view with the new position
         SyncData();
-        Debug.Log("ChangePosition");
 
     }
 
@@ -71,21 +82,18 @@ public class _CardController : ICardController
         view.Number = model.Number;
 
         view.BelongsTo = model.BelongsTo;
-        Debug.Log("Syncing Data");
 
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)
     {
         SyncData();
-        Debug.Log("ChangeColor");
 
     }
 
     private void ChangeNumber(object sender, CardNumberChangedEventArgs e)
     {
         SyncData();
-        Debug.Log("ChangeNumber");
 
     }
     public void StartOfGameDraw(object sender, CardOnEnableEventArgs e)
@@ -95,25 +103,50 @@ public class _CardController : ICardController
 
     private void InisializeCards()
     {
-            if (Player.Instance.Hand.Count < 8)
-            {
-                Player.Instance.Hand.Add((_CardView)view);
-                model.BelongsTo = "Player";
-                model.Position = new Vector3(Player.Instance.transform.position.x + Player.Instance.Hand.Count *3.5f, Player.Instance.transform.position.y);
-                SyncData();
-                
-            }
-            else if (Enemy.Instance.Hand.Count < 8)
-            {
-                Enemy.Instance.Hand.Add((_CardView)view);
-                model.BelongsTo = "Enemy";
-                model.Position = new Vector3(Enemy.Instance.transform.position.x + Enemy.Instance.Hand.Count *3.5f, Enemy.Instance.transform.position.y);
-                SyncData();
 
+
+        if (_player.Hand.Count < 8)
+        {
+            _player.Hand.Add((_CardView)view);
+            model.BelongsTo = "Player";
+            model.Position = new Vector3(_player.transform.position.x + _player.Hand.Count * 3.5f, _player.transform.position.y);
+            SyncData();
+
+        }
+        else if (_enemy.Hand.Count < 8)
+        {
+            _enemy.Hand.Add((_CardView)view);
+            model.BelongsTo = "Enemy";
+            model.Position = new Vector3(_enemy.transform.position.x + _enemy.Hand.Count * 3.5f, _enemy.transform.position.y);
+            SyncData();
+
+        }
+        else
+        {
+            if (!_manager.added)
+            {
+                _manager.Board.Add((_CardView)view);
+                model.Position = _manager.BoardPos.position;
+                _manager.added = true;
+                SyncData();
             }
             else
-            {
-                GameManager.Instance.Deck.Add((_CardView)view);
-            }
+                _manager.Deck.Add((_CardView)view);
+        }
+    }
+
+    private void DrawCard()
+    {
+        switch (model.BelongsTo)
+        {
+            case "Player":
+
+                break;
+            case "Enemy":
+
+                break;
+            default:Debug.Log("Error at finding BelongsTo");
+                break;
+        }
     }
 }

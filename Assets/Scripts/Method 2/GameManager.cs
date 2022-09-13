@@ -20,11 +20,39 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
-
-    public int riseP = 1;
-    public int riseE = 1;
+    [HideInInspector] public int riseP = 1;
+    [HideInInspector] public int riseE = 1;
+    [Space]
+    [Header("Variables")]
+    [HideInInspector] public bool added = false;
+    public Transform BoardPos;
+    [Space]
+    [Header("Lists")]
     public List<_CardView> Deck;
-
+    [Space]
+    public List<_CardView> Board;
+    [Space]
+    [Header("Turn Order")]
     public string CurrentTurn = "Player";
+
+    public _CardView TopCard() { return Deck[Deck.Count - 1]; }
+    public _CardView BoardTopCard() { return Board[Board.Count - 1]; }
+
+    public void ToggleTurnOrder()
+    {
+        if (CurrentTurn == "Player")
+        {
+            CurrentTurn = "Enemy";
+        }
+
+        else if (CurrentTurn == "Enemy")
+        {
+            CurrentTurn = "Player";
+        }
+
+        else
+        {
+            CurrentTurn = "Player";
+        }
+    }
 }

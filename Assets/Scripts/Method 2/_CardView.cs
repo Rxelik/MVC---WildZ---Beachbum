@@ -42,7 +42,7 @@ public class _CardView : MonoBehaviour, ICardView
     public String BelongsTo { set { _ = value; _inspectorBelongsTo = value; } }
 
     [SerializeField] private Vector3 _inspectPos;
-    [SerializeField] private int _inspectNumber;
+    public int _inspectNumber;
     [SerializeField] private String _inspectorBelongsTo;
     public Color _InspectorColor;
 
