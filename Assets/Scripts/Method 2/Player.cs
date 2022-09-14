@@ -18,5 +18,5 @@ public class Player : MonoBehaviour
             Instance = this;
         }
     }
-    public List<_CardModel> Hand;
+    public List<CardModel> Hand;
 }

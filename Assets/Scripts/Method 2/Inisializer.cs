@@ -13,7 +13,7 @@ public class Inisializer : MonoBehaviour
         for (int i = 0; i < InsializeDeckSize; i++)
         {
 			colorRND = Random.Range(0, 4);
-			numRND = Random.Range(0, 9);
+			numRND = Random.Range(1, 9);
 			var modelFactory = new CardModelFactory();
 			var model = modelFactory.Model;
 
