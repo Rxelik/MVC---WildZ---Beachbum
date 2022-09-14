@@ -48,7 +48,7 @@ public class _CardController : ICardController
             if (CanPlay())
             {
                 model.Position = _manager.BoardPos.position;
-                _manager.Board.Add((_CardView)view);
+                _manager.Board.Add(ThisCard());
                 _manager.ToggleTurnOrder();
             }
         }
@@ -58,7 +58,7 @@ public class _CardController : ICardController
 
     private bool CanPlay()
     {
-        if (model.Color == _manager.BoardTopCard()._InspectorColor || model.Number == _manager.BoardTopCard()._inspectNumber)
+        if (model.Color == _manager.BoardTopCard().Color || model.Number == _manager.BoardTopCard().Number)
             return true;
         else
             return false;
@@ -107,7 +107,7 @@ public class _CardController : ICardController
 
         if (_player.Hand.Count < 8)
         {
-            _player.Hand.Add((_CardView)view);
+            _player.Hand.Add((_CardModel)model);
             model.BelongsTo = "Player";
             model.Position = new Vector3(_player.transform.position.x + _player.Hand.Count * 3.5f, _player.transform.position.y);
             SyncData();
@@ -115,7 +115,7 @@ public class _CardController : ICardController
         }
         else if (_enemy.Hand.Count < 8)
         {
-            _enemy.Hand.Add((_CardView)view);
+            _enemy.Hand.Add(ThisCard());
             model.BelongsTo = "Enemy";
             model.Position = new Vector3(_enemy.transform.position.x + _enemy.Hand.Count * 3.5f, _enemy.transform.position.y);
             SyncData();
@@ -125,13 +125,13 @@ public class _CardController : ICardController
         {
             if (!_manager.added)
             {
-                _manager.Board.Add((_CardView)view);
+                _manager.Board.Add(ThisCard());
                 model.Position = _manager.BoardPos.position;
                 _manager.added = true;
                 SyncData();
             }
             else
-                _manager.Deck.Add((_CardView)view);
+                _manager.Deck.Add(ThisCard());
         }
     }
 
@@ -139,14 +139,22 @@ public class _CardController : ICardController
     {
         switch (model.BelongsTo)
         {
-            case "Player":
-
+            case "Player": _player.Hand.Add(ThisCard());
+                
                 break;
-            case "Enemy":
+            case "Enemy": _enemy.Hand.Add(ThisCard());
 
                 break;
             default:Debug.Log("Error at finding BelongsTo");
                 break;
         }
+    }
+
+
+
+
+    private _CardModel ThisCard()
+    {
+        return (_CardModel)model;
     }
 }
