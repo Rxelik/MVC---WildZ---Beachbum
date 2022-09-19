@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 847150334145477221}
   - component: {fileID: 847150334145477222}
-  - component: {fileID: 672640547328349526}
   - component: {fileID: 7915642185187091685}
+  - component: {fileID: 7266716411848905878}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -84,24 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &672640547328349526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847150334145477223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 122d709b506984b4c96fc769b0673cd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inspectPos: {x: 0, y: 0, z: 0}
-  _inspectNumber: 0
-  _inspectorBelongsTo: 
-  _InspectorColor: {r: 0, g: 0, b: 0, a: 0}
-  _sprite: {fileID: 0}
-  gs: {fileID: 4846946216615507187}
 --- !u!65 &7915642185187091685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,6 +97,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.17788306, y: 0.19798458, z: 0.010808506}
   m_Center: {x: -0.0012465676, y: -0.001007851, z: -0.00029094418}
+--- !u!114 &7266716411848905878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847150334145477223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f72fd0fca0e3440ab23c3b53bb4be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inspectPos: {x: 0, y: 0, z: 0}
+  _inspectNumber: 0
+  _inspectorBelongsTo: 
+  _InspectorColor: {r: 0, g: 0, b: 0, a: 0}
+  _sprite: {fileID: 847150334145477222}
+  gs: {fileID: 4846946216615507187}
 --- !u!1 &3192255513128239624
 GameObject:
   m_ObjectHideFlags: 0

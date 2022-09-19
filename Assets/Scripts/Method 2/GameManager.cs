@@ -37,13 +37,6 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("Turn Order")]
     public string CurrentTurn = "Player";
-
-    private void Update()
-    {
-        foreach (var item in Board)
-        {
-        }
-    }
     public CardModel TopCard() { return Deck[Deck.Count - 1]; }
     public CardModel BoardTopCard() { return Board[Board.Count - 1]; }
 
@@ -65,5 +58,4 @@ public class GameManager : MonoBehaviour
             CurrentTurn = "Player";
         }
     }
-
 }

@@ -34,9 +34,6 @@ public class CardController : ICardController
         // Listen to input from the view
         view.OnClicked += HandleClicked;
         view.OnEnableEvent += StartOfGameDraw;
-        model.OnPositionChanged += ChangePosition;
-        model.OnColorChanged += ChangeColor;
-        model.OnNumberChanged += ChangeNumber;
         // Set the view's initial state by synching with the model
         SyncData();
     }
@@ -45,24 +42,18 @@ public class CardController : ICardController
     {
         if (model.BelongsTo == _manager.CurrentTurn)
         {
-            if (CanPlay())
-            {
+            //if (CanPlay())
+            //{
+            //}
                 model.Position = _manager.BoardPos.position;
                 _manager.Board.Add(ThisCard());
                 _manager.ToggleTurnOrder();
-            }
         }
 
 
     }
 
-    private bool CanPlay()
-    {
-        if (model.Color == _manager.BoardTopCard().Color || model.Number == _manager.BoardTopCard().Number)
-            return true;
-        else
-            return false;
-    }
+
 
     // Called when the model's position changes
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
@@ -98,7 +89,7 @@ public class CardController : ICardController
     }
     public void StartOfGameDraw(object sender, CardOnEnableEventArgs e)
     {
-        InisializeCards();
+        //InisializeCards();
     }
 
     private void InisializeCards()

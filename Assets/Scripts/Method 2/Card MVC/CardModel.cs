@@ -28,8 +28,8 @@ public interface ICardModel
 [System.Serializable]
 public class CardModel : ICardModel
 {
-    
-    Color _Color;
+
+    [SerializeField] Color _Color;
     [SerializeField]Vector3 _Position;
     [SerializeField] int _Number;
     [SerializeField] string _BelongsTo;

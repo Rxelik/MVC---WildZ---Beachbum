@@ -15,6 +15,7 @@ public class PlayerController : IPlayerController
     private readonly IPlayerModel model;
     private readonly IPlayerView view;
 
+
     // Controller depends on interfaces for the model and view
     public PlayerController(IPlayerModel model, IPlayerView view)
     {
@@ -23,16 +24,29 @@ public class PlayerController : IPlayerController
         this.view = view;
 
         // Listen to input from the view
-        view.OnClicked += HandleClicked;
+        view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
     }
-    // Called when the view is clicked
+
     private void HandleClicked(object sender, PlayerChangedEventArgs e)
     {
-        view.Position = model.Position;
+        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
+        //{
+        //    Debug.Log("You Played " + model.Cards[index]);
+        //}
     }
 
+    // Called when the view is clicked
+
+    private void ClickedOnCard(int Index)
+    {
+        if (model.Cards[Index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[Index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
+        {
+            Debug.Log("You Played " + model.Cards[Index]);
+        }
+
+    }
 
     // Called when the model's position changes
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
@@ -43,9 +57,10 @@ public class PlayerController : IPlayerController
     }
 
     // Sync the view's position with the model's position
-    private void SyncData()
+    public void SyncData()
     {
-        
+        view.Cards = model.Cards;
+        view.Position = model.Position;
     }
 
     //private void InisializeCards()

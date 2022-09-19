@@ -28,6 +28,7 @@ public interface ICardView
 }
 
 // Implementation of the enemy view
+[System.Serializable]
 public class CardView : MonoBehaviour, ICardView
 {
     // Dispatched when the enemy is clicked
@@ -46,14 +47,13 @@ public class CardView : MonoBehaviour, ICardView
     public String BelongsTo { set { _ = value; _inspectorBelongsTo = value; } }
 
     [SerializeField] private Vector3 _inspectPos;
-    public int _inspectNumber;
+    [SerializeField] public int _inspectNumber;
     [SerializeField] private String _inspectorBelongsTo;
-    public Color _InspectorColor;
+    [SerializeField] public Color _InspectorColor;
     public SpriteRenderer _sprite;
     public TMP_Text gs;
-    private void OnEnable()
+    private void Awake()
     {
-        StartCoroutine(ToList());
         _sprite = GetComponent<SpriteRenderer>();
 
     }
@@ -75,12 +75,6 @@ public class CardView : MonoBehaviour, ICardView
                 OnClicked(this, eventArgs);
             }
         }
-    }
-    IEnumerator ToList()
-    {
-        yield return new WaitForSeconds(0.5f);
-        var eventArgs = new CardOnEnableEventArgs();
-        OnEnableEvent(this, eventArgs);
     }
 
     //public void ChangeLayer()

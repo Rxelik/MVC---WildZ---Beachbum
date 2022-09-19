@@ -38,7 +38,7 @@ public class BoardView : MonoBehaviour, IBoardView
             )
             {
                 var eventArgs = new BoardChangedEventArgs();
-                OnClicked(this, eventArgs);
+                OnClicked(this, eventArgs );
             }
         }
     }
