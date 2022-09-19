@@ -10,13 +10,51 @@ public class Inisializer : MonoBehaviour
     int colorRND;
     int numRND;
     public List<ButtonIndex> buttons;
-    
+
     void Awake()
     {
-        Build();
+        StartCoroutine(Build());
     }
-    void Build()
+    IEnumerator Build()
     {
+
+        ///
+        var BoardmodelFactory = new BoardModelFactory();
+        var _boardmodel = BoardmodelFactory.Model;
+
+        // Set some initial state
+        _boardmodel.Position = new Vector3(0, 0, 0);
+        _boardmodel.Cards = new List<CardModel>();
+        // Create the view
+        var BoardviewFactory = new BoardViewFactory();
+        var Boardview = BoardviewFactory.View;
+
+        //_______________________________________________
+        var PlayerModelFactory = new PlayerModelFactory();
+        var _playermodel = PlayerModelFactory.Model;
+
+        // Set some initial state
+        _playermodel.Position = new Vector3(0, 0, 0);
+        _playermodel.Cards = new List<CardModel>();
+        _playermodel.Board = (BoardModel)_boardmodel;
+
+
+        // Create the view
+        var PlayerViewFactory = new PlayerViewFactory();
+        var _view = PlayerViewFactory.View;
+
+        // Create the Controller
+        
+        var _controllerFactory = new PlayerControllerFactory(_playermodel, _view);
+        var controller = _controllerFactory.Controller;
+        //_______________________________________________
+
+        yield return new WaitForSeconds(0.15f);
+        foreach (var item in buttons)
+        {
+            item.playerModel = (PlayerModel)_playermodel;
+        }
+
         List<CardModel> tempList = new List<CardModel>();
 
         for (int i = 0; i < InsializeDeckSize; i++)
@@ -24,39 +62,28 @@ public class Inisializer : MonoBehaviour
             colorRND = Random.Range(0, 4);
             numRND = Random.Range(1, 9);
             var modelFactory = new CardModelFactory();
-            var model = modelFactory.Model;
+            var Cardmodel = modelFactory.Model;
 
             // Set some initial state
-            model.Position = new Vector3(0, 0, 0);
-            model.Color = Colors[colorRND];
-            model.Number = numRND;
-            tempList.Add((CardModel)model);
+            Cardmodel.Position = new Vector3(0, 0, 0);
+            Cardmodel.Color = Colors[colorRND];
+            Cardmodel.Number = numRND;
+            tempList.Add((CardModel)Cardmodel);
             // Create the view
-            var viewFactory = new CardViewFactory();
-            var view = viewFactory.View;
+            var CardviewFactory = new CardViewFactory();
+            var view = CardviewFactory.View;
         }
-        ////////////////////////////////////////
-
-        var PlayerModelFactory = new PlayerModelFactory();
-        var Playermodel = PlayerModelFactory.Model;
-
-        // Set some initial state
-        Playermodel.Position = new Vector3(0, 0, 0);
-        Playermodel.Cards = new List<CardModel>();
+        //Add Cards To Board
+        yield return new WaitForSeconds(0.15f);
         foreach (var item in tempList)
         {
-            Playermodel.Cards.Add(item);
+            _boardmodel.Cards.Add(item);
         }
-        // Create the view
-        var PlayerViewFactory = new PlayerViewFactory();
-        var _view = PlayerViewFactory.View;
-        // Create the Controller
-        var _controllerFactory = new PlayerControllerFactory(Playermodel, _view);
-        var controller = _controllerFactory.Controller;
-
-        foreach (var item in buttons)
+        //Add Cards To Hand
+        yield return new WaitForSeconds(0.15f);
+        for (int i = 0; i < 8; i++)
         {
-            item.playerModel = (PlayerModel)Playermodel;
+            _playermodel.Cards.Add(_boardmodel.Cards[i]);
         }
     }
 }

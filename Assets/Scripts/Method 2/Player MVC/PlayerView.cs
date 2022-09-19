@@ -26,7 +26,6 @@ public interface IPlayerView
 public class PlayerView : MonoBehaviour, IPlayerView
 {
 
-
     // Dispatched when the enemy is clicked
     public event EventHandler<PlayerChangedEventArgs> OnClicked = (sender, e) => { };
     public Vector3 Position { set { transform.position = value; } }
@@ -37,18 +36,5 @@ public class PlayerView : MonoBehaviour, IPlayerView
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (
-                Physics.Raycast(ray, out hit)
-                && hit.transform == transform
-            )
-            {
-                var eventArgs = new PlayerChangedEventArgs();
-                OnClicked(this, eventArgs);
-            }
-        }
     }
 }

@@ -8,12 +8,13 @@ public interface IBoardController
 }
 
 // Implementation of the enemy controller
-public class BoardController : IPlayerController
+public class BoardController : IBoardController
 {
 
     // Keep references to the model and view
     private readonly IBoardModel model;
     private readonly IBoardView view;
+
 
     // Controller depends on interfaces for the model and view
     public BoardController(IBoardModel model, IBoardView view)
@@ -23,19 +24,32 @@ public class BoardController : IPlayerController
         this.view = view;
 
         // Listen to input from the view
-        view.OnClicked += HandleClicked;
+        view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
     }
-    // Called when the view is clicked
+
     private void HandleClicked(object sender, BoardChangedEventArgs e)
     {
-        view.Position = model.Position;
+        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
+        //{
+        //    Debug.Log("You Played " + model.Cards[index]);
+        //}
     }
 
+    // Called when the view is clicked
+
+    private void ClickedOnCard(int Index)
+    {
+        if (model.Cards[Index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[Index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
+        {
+            Debug.Log("You Played " + model.Cards[Index]);
+        }
+
+    }
 
     // Called when the model's position changes
-    private void ChangePosition(object sender, BoardChangedEventArgs e)
+    private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         // Update the view with the new position
         SyncData();
@@ -43,20 +57,21 @@ public class BoardController : IPlayerController
     }
 
     // Sync the view's position with the model's position
-    private void SyncData()
+    public void SyncData()
     {
-
+        view.Cards = model.Cards;
+        view.Position = model.Position;
     }
 
     //private void InisializeCards()
     //{
 
 
-    //    if (_player.Hand.Count < 8)
+    //    if (_Board.Hand.Count < 8)
     //    {
-    //        _player.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Player";
-    //        model.Position = new Vector3(_player.transform.position.x + _player.Hand.Count * 3.5f, _player.transform.position.y);
+    //        _Board.Hand.Add((CardModel)model);
+    //        model.BelongsTo = "Board";
+    //        model.Position = new Vector3(_Board.transform.position.x + _Board.Hand.Count * 3.5f, _Board.transform.position.y);
     //        SyncData();
 
     //    }
