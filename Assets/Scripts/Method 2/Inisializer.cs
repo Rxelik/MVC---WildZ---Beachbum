@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Inisializer : MonoBehaviour
 {
-    public int InsializeDeckSize = 8;
+    public int InsializeDeckSize = 100;
+    public int HandSize = 10;
 
     public List<Color> Colors;
     int colorRND;
@@ -17,7 +18,9 @@ public class Inisializer : MonoBehaviour
     }
     IEnumerator Build()
     {
+        //_______________________________________________\\
 
+        #region Board
         ///
         var BoardmodelFactory = new BoardModelFactory();
         var _boardmodel = BoardmodelFactory.Model;
@@ -29,7 +32,15 @@ public class Inisializer : MonoBehaviour
         var BoardviewFactory = new BoardViewFactory();
         var Boardview = BoardviewFactory.View;
 
-        //_______________________________________________
+
+        var _BcontrollerFactory = new BoardControllerFactory(_boardmodel, Boardview);
+        var Bcontroller = _BcontrollerFactory.Controller;
+        #endregion
+
+        //_______________________________________________\\
+
+        #region Player
+
         var PlayerModelFactory = new PlayerModelFactory();
         var _playermodel = PlayerModelFactory.Model;
 
@@ -47,22 +58,32 @@ public class Inisializer : MonoBehaviour
         
         var _controllerFactory = new PlayerControllerFactory(_playermodel, _view);
         var controller = _controllerFactory.Controller;
-        //_______________________________________________
 
-        yield return new WaitForSeconds(0.15f);
+        #endregion
+
+        //_______________________________________________\\
+        yield return new WaitForSeconds(0.2f);
+
+        #region Button Player Refrence
         foreach (var item in buttons)
         {
             item.playerModel = (PlayerModel)_playermodel;
         }
+        #endregion
 
+        //_______________________________________________\\
+
+        yield return new WaitForSeconds(0.2f);
+
+        #region Card
         List<CardModel> tempList = new List<CardModel>();
 
         for (int i = 0; i < InsializeDeckSize; i++)
         {
             colorRND = Random.Range(0, 4);
             numRND = Random.Range(1, 9);
-            var modelFactory = new CardModelFactory();
-            var Cardmodel = modelFactory.Model;
+            var CardmodelFactory = new CardModelFactory();
+            var Cardmodel = CardmodelFactory.Model;
 
             // Set some initial state
             Cardmodel.Position = new Vector3(0, 0, 0);
@@ -73,17 +94,34 @@ public class Inisializer : MonoBehaviour
             var CardviewFactory = new CardViewFactory();
             var view = CardviewFactory.View;
         }
-        //Add Cards To Board
-        yield return new WaitForSeconds(0.15f);
+
+        #endregion
+
+        //_______________________________________________\\
+
+        yield return new WaitForSeconds(0.2f);
+
+        #region Add Cards To Board
+
         foreach (var item in tempList)
         {
             _boardmodel.Cards.Add(item);
         }
-        //Add Cards To Hand
-        yield return new WaitForSeconds(0.15f);
-        for (int i = 0; i < 8; i++)
+
+        #endregion
+
+        yield return new WaitForSeconds(0.2f);
+
+        #region Add Cards To Hand
+        for (int i = 0; i < HandSize; i++)
         {
             _playermodel.Cards.Add(_boardmodel.Cards[i]);
+            _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
         }
+        #endregion
+
+        //_______________________________________________\\
+
+
     }
 }
