@@ -10,7 +10,8 @@ public class Inisializer : MonoBehaviour
     public List<Color> Colors;
     int colorRND;
     int numRND;
-    public List<ButtonIndex> buttons;
+    public List<ButtonIndex> Playerbuttons;
+    public List<ButtonIndex> Enemybuttons;
 
     void Awake()
     {
@@ -62,12 +63,21 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         //_______________________________________________\\
-        yield return new WaitForSeconds(0.2f);
 
-        #region Button Player Refrence
-        foreach (var item in buttons)
+        #region Button Refrence For Player And Board
+
+        foreach (var item in Playerbuttons)
         {
             item.playerModel = (PlayerModel)_playermodel;
+            item.boardModel = (BoardModel)_boardmodel;
+        }
+        #endregion
+
+        #region Button Refrence For Enemy And Board
+        foreach (var item in Enemybuttons)
+        {
+            item.playerModel = (PlayerModel)_playermodel;
+            item.boardModel = (BoardModel)_boardmodel;
         }
         #endregion
 
