@@ -55,6 +55,7 @@ public class CardView : MonoBehaviour, ICardView
     private void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
+        StartCoroutine(WaitBeforeRegister());
 
     }
     void Update()
@@ -77,6 +78,13 @@ public class CardView : MonoBehaviour, ICardView
         }
     }
 
+    IEnumerator WaitBeforeRegister()
+    {
+        yield return new WaitForSeconds(3);
+        var eventArgs = new CardOnEnableEventArgs();
+        OnEnableEvent(this, eventArgs);
+
+    }
     //public void ChangeLayer()
     //{
     //    GameManager.Instance.Layer++;

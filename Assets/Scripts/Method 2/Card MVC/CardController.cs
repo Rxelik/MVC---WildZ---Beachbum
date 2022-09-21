@@ -26,11 +26,6 @@ public class CardController : ICardController
         this.model = model;
         this.view = view;
 
-        // Caching
-        _manager = GameManager.Instance;
-        _player = Player.Instance;
-        _enemy = Enemy.Instance;
-
         // Listen to input from the view
         view.OnClicked += HandleClicked;
         view.OnEnableEvent += StartOfGameDraw;
@@ -40,16 +35,6 @@ public class CardController : ICardController
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
-        if (model.BelongsTo == _manager.CurrentTurn)
-        {
-            //if (CanPlay())
-            //{
-            //}
-                model.Position = _manager.BoardPos.position;
-                _manager.Board.Add(ThisCard());
-                _manager.ToggleTurnOrder();
-        }
-
 
     }
 
@@ -66,6 +51,7 @@ public class CardController : ICardController
     // Sync the view's position with the model's position
     private void SyncData()
     {
+
         view.Position = model.Position;
 
         view.Color = model.Color;
@@ -74,6 +60,7 @@ public class CardController : ICardController
 
         view.BelongsTo = model.BelongsTo;
 
+        Debug.Log("Synced Data");
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)
@@ -84,12 +71,11 @@ public class CardController : ICardController
 
     private void ChangeNumber(object sender, CardNumberChangedEventArgs e)
     {
-        SyncData();
 
     }
     public void StartOfGameDraw(object sender, CardOnEnableEventArgs e)
     {
-        //InisializeCards();
+        SyncData();
     }
 
     private void InisializeCards()

@@ -12,6 +12,7 @@ public class Inisializer : MonoBehaviour
     int numRND;
     public List<ButtonIndex> Playerbuttons;
     public List<ButtonIndex> Enemybuttons;
+    public List<Transform> transforms;
 
     void Awake()
     {
@@ -83,7 +84,7 @@ public class Inisializer : MonoBehaviour
 
         //_______________________________________________\\
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         #region Card
         List<CardModel> tempList = new List<CardModel>();
@@ -102,14 +103,18 @@ public class Inisializer : MonoBehaviour
             tempList.Add((CardModel)Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
-            var view = CardviewFactory.View;
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
         }
 
         #endregion
 
         //_______________________________________________\\
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         #region Add Cards To Board
 
@@ -120,13 +125,14 @@ public class Inisializer : MonoBehaviour
 
         #endregion
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         #region Add Cards To Hand
         for (int i = 0; i < HandSize; i++)
         {
-            _playermodel.Cards.Add(_boardmodel.Cards[i]);
-            _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
+           _playermodel.Cards.Add(_boardmodel.Cards[i]);
+           _playermodel.Cards[i].Position = transforms[i].position;
+           _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
         }
         #endregion
 

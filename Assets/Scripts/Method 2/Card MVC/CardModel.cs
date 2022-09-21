@@ -30,7 +30,7 @@ public class CardModel : ICardModel
 {
 
     [SerializeField] Color _Color;
-    [SerializeField]Vector3 _Position;
+    [SerializeField] Vector3 _Position;
     [SerializeField] int _Number;
     [SerializeField] string _BelongsTo;
 
@@ -53,7 +53,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardPositionChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
-                Debug.Log("Moved " + this + " Card");
             }
         }
     }
