@@ -24,6 +24,7 @@ public interface ICardViewFactory
 {
     // Get the created view
     ICardView View { get; }
+    ICardModel Model { get; }
 }
 
 // Implementation of the view factory
@@ -31,6 +32,7 @@ public interface ICardViewFactory
 public class CardViewFactory : ICardViewFactory
 {
     public ICardView View { get; private set; }
+    public ICardModel Model { get; private set; }
 
     // Create the view
     public CardViewFactory()

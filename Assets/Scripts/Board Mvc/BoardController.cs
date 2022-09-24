@@ -3,21 +3,23 @@ using System.Collections;
 using UnityEngine;
 
 // Interface for the enemy controller
-public interface IEnemyController
+public interface IBoardController
 {
 }
 
 // Implementation of the enemy controller
-public class EnemyController : IEnemyController
+public class BoardController : IBoardController
 {
 
     // Keep references to the model and view
-    private readonly IEnemyModel model;
-    private readonly IEnemyView view;
+    private readonly IBoardModel model;
+    private readonly IBoardView view;
+
+
 
 
     // Controller depends on interfaces for the model and view
-    public EnemyController(IEnemyModel model, IEnemyView view)
+    public BoardController(IBoardModel model, IBoardView view)
     {
         //Register
         this.model = model;
@@ -25,11 +27,19 @@ public class EnemyController : IEnemyController
 
         // Listen to input from the view
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
+        view.CardInBoardChanged += RizeLayer;
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
-    private void HandleClicked(object sender, EnemyChangedEventArgs e)
+    private void RizeLayer(object sender, CardLayerChangeEventArgs e)
+    {
+        model.Cards[model.Cards.Count - 1].Layer++;
+        SyncData();
+        Debug.Log("Rise Lauer bItch");
+    }
+
+    private void HandleClicked(object sender, BoardChangedEventArgs e)
     {
         //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
         //{
@@ -63,15 +73,17 @@ public class EnemyController : IEnemyController
         view.Position = model.Position;
     }
 
+
+
     //private void InisializeCards()
     //{
 
 
-    //    if (_Enemy.Hand.Count < 8)
+    //    if (_Board.Hand.Count < 8)
     //    {
-    //        _Enemy.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Enemy";
-    //        model.Position = new Vector3(_Enemy.transform.position.x + _Enemy.Hand.Count * 3.5f, _Enemy.transform.position.y);
+    //        _Board.Hand.Add((CardModel)model);
+    //        model.BelongsTo = "Board";
+    //        model.Position = new Vector3(_Board.transform.position.x + _Board.Hand.Count * 3.5f, _Board.transform.position.y);
     //        SyncData();
 
     //    }

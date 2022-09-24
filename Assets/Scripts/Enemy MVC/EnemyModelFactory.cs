@@ -31,6 +31,7 @@ public interface IEnemyViewFactory
 public class EnemyViewFactory : IEnemyViewFactory
 {
     public IEnemyView View { get; private set; }
+    public IEnemyModel Model { get; private set; }
 
     // Create the view
     public EnemyViewFactory()

@@ -4771,7 +4771,7 @@ MonoBehaviour:
   - {fileID: 1785542240}
   - {fileID: 2052249313}
   - {fileID: 1332970312}
-  transforms:
+  PlayerTransforms:
   - {fileID: 1816745240}
   - {fileID: 1795147057}
   - {fileID: 1007838700}
@@ -4782,6 +4782,17 @@ MonoBehaviour:
   - {fileID: 737116439}
   - {fileID: 2036584933}
   - {fileID: 1941650208}
+  EnemyTransforms:
+  - {fileID: 48023124}
+  - {fileID: 1311650869}
+  - {fileID: 1496965088}
+  - {fileID: 955711220}
+  - {fileID: 301978266}
+  - {fileID: 1918391692}
+  - {fileID: 1294779349}
+  - {fileID: 1509227015}
+  - {fileID: 1061793078}
+  - {fileID: 502459359}
 --- !u!4 &1986057253
 Transform:
   m_ObjectHideFlags: 0

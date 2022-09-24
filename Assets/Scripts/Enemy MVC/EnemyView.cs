@@ -11,26 +11,29 @@ using System.Collections.Generic;
 
 
 // Interface for the card view
-public interface IBoardView
+public interface IEnemyView
 {
     // Dispatched when the card is clicked
-    event EventHandler<BoardChangedEventArgs> OnClicked;
+    event EventHandler<EnemyChangedEventArgs> OnClicked;
     Vector3 Position { set; }
     [SerializeField] List<CardModel> Cards { set; }
+
 
 }
 
 
 // Implementation of the enemy view
 [System.Serializable]
-public class BoardView : MonoBehaviour, IBoardView
+public class EnemyView : MonoBehaviour, IEnemyView
 {
 
     // Dispatched when the enemy is clicked
-    public event EventHandler<BoardChangedEventArgs> OnClicked = (sender, e) => { };
+    public event EventHandler<EnemyChangedEventArgs> OnClicked = (sender, e) => { };
     public Vector3 Position { set { transform.position = value; } }
 
     public List<CardModel> Cards { set => _InspectorCards = value; }
+
+
 
     [SerializeField] public List<CardModel> _InspectorCards;
 

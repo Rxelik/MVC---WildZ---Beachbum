@@ -4,16 +4,16 @@ using UnityEngine;
 using System;
 
 
-public class BoardChangedEventArgs { }
-public class OnCardsInBoardChangeEventArgs { }
-public class BoardCardChangeEventArgs { }
+public class EnemyChangedEventArgs { }
+public class OnBoardEnemyChangeEventArgs { }
+public class EnemyCardChangeEventArgs { }
 
-public interface IBoardModel
+public interface IEnemyModel
 {
     // Dispatched when the position changes
-    event EventHandler<BoardChangedEventArgs> OnPositionChanged;
-    event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged;
-    event EventHandler<OnBoardChangeEventArgs> OnBoardChanged;
+    event EventHandler<EnemyChangedEventArgs> OnPositionChanged;
+    event EventHandler<EnemyCardChangeEventArgs> OnCardsChanged;
+    event EventHandler<OnBoardEnemyChangeEventArgs> OnBoardChanged;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
@@ -21,16 +21,16 @@ public interface IBoardModel
     BoardModel Board { get; set; }
 }
 
-public class BoardModel : IBoardModel
+public class EnemyModel : IEnemyModel
 {
     [SerializeField] Vector3 _Position;
     [SerializeField] List<CardModel> _Cards;
     [SerializeField] string _BelongsTo;
     [SerializeField] BoardModel _Board;
 
-    public event EventHandler<BoardChangedEventArgs> OnPositionChanged = (sender, e) => { };
-    public event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged = (sender, e) => { };
-    public event EventHandler<OnBoardChangeEventArgs> OnBoardChanged = (sender, e) => { };
+    public event EventHandler<EnemyChangedEventArgs> OnPositionChanged = (sender, e) => { };
+    public event EventHandler<EnemyCardChangeEventArgs> OnCardsChanged = (sender, e) => { };
+    public event EventHandler<OnBoardEnemyChangeEventArgs> OnBoardChanged = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -44,7 +44,7 @@ public class BoardModel : IBoardModel
                 _Position = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new BoardChangedEventArgs();
+                var eventArgs = new EnemyChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
             }
         }
@@ -62,9 +62,9 @@ public class BoardModel : IBoardModel
                 _Cards = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new OnCardsInBoardChangeEventArgs();
-                CardInBoardChanged(this, eventArgs);
-                Debug.Log("CHANGED Board CARDS");
+                var eventArgs = new EnemyCardChangeEventArgs();
+                OnCardsChanged(this, eventArgs);
+                Debug.Log("CHANGED Enemy CARDS");
 
             }
         }
@@ -82,7 +82,7 @@ public class BoardModel : IBoardModel
                 _Board = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new OnBoardChangeEventArgs();
+                var eventArgs = new OnBoardEnemyChangeEventArgs();
                 OnBoardChanged(this, eventArgs);
             }
         }
@@ -100,7 +100,7 @@ public class BoardModel : IBoardModel
                 _BelongsTo = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new BoardChangedEventArgs();
+                var eventArgs = new EnemyChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
             }
         }

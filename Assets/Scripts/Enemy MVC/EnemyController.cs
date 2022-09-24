@@ -3,33 +3,33 @@ using System.Collections;
 using UnityEngine;
 
 // Interface for the enemy controller
-public interface IBoardController
+public interface IEnemyController
 {
 }
 
 // Implementation of the enemy controller
-public class BoardController : IBoardController
+public class EnemyController : IEnemyController
 {
 
     // Keep references to the model and view
-    private readonly IBoardModel model;
-    private readonly IBoardView view;
+    private readonly IEnemyModel model;
+    private readonly IEnemyView view;
 
 
     // Controller depends on interfaces for the model and view
-    public BoardController(IBoardModel model, IBoardView view)
+    public EnemyController(IEnemyModel model, IEnemyView view)
     {
         //Register
         this.model = model;
         this.view = view;
 
         // Listen to input from the view
-        view.OnClicked += (sender, e) => HandleClicked(sender, e);
+        view.OnClicked += HandleClicked;
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
-    private void HandleClicked(object sender, BoardChangedEventArgs e)
+    private void HandleClicked(object sender, EnemyChangedEventArgs e)
     {
         //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
         //{
@@ -67,11 +67,11 @@ public class BoardController : IBoardController
     //{
 
 
-    //    if (_Board.Hand.Count < 8)
+    //    if (_Enemy.Hand.Count < 8)
     //    {
-    //        _Board.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Board";
-    //        model.Position = new Vector3(_Board.transform.position.x + _Board.Hand.Count * 3.5f, _Board.transform.position.y);
+    //        _Enemy.Hand.Add((CardModel)model);
+    //        model.BelongsTo = "Enemy";
+    //        model.Position = new Vector3(_Enemy.transform.position.x + _Enemy.Hand.Count * 3.5f, _Enemy.transform.position.y);
     //        SyncData();
 
     //    }

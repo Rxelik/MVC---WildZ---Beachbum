@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Drawing;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,8 @@ public class Inisializer : MonoBehaviour
     int numRND;
     public List<ButtonIndex> Playerbuttons;
     public List<ButtonIndex> Enemybuttons;
-    public List<Transform> transforms;
+    public List<Transform> PlayerTransforms;
+    public List<Transform> EnemyTransforms;
 
     void Awake()
     {
@@ -57,9 +59,32 @@ public class Inisializer : MonoBehaviour
         var _view = PlayerViewFactory.View;
 
         // Create the Controller
-        
+
         var _controllerFactory = new PlayerControllerFactory(_playermodel, _view);
         var controller = _controllerFactory.Controller;
+
+        #endregion
+
+        //_______________________________________________\\
+        #region Enemy
+
+        var EnemyModelFactory = new EnemyModelFactory();
+        var _Enemyermodel = EnemyModelFactory.Model;
+
+        // Set some initial state
+        _Enemyermodel.Position = new Vector3(0, 0, 0);
+        _Enemyermodel.Cards = new List<CardModel>();
+        _Enemyermodel.Board = (BoardModel)_boardmodel;
+
+
+        // Create the view
+        var EnemyViewFactory = new EnemyViewFactory();
+        var Enemyview = EnemyViewFactory.View;
+
+        // Create the Controller
+
+        var EnemycontrollerFactory = new EnemyControllerFactory(_Enemyermodel, Enemyview);
+        var Enemycontroller = EnemycontrollerFactory.Controller;
 
         #endregion
 
@@ -70,7 +95,8 @@ public class Inisializer : MonoBehaviour
         foreach (var item in Playerbuttons)
         {
             item.playerModel = (PlayerModel)_playermodel;
-            item.boardModel = (BoardModel)_boardmodel;
+            item.enemyModel  = (EnemyModel)_Enemyermodel;
+            item.boardModel  = (BoardModel)_boardmodel;
         }
         #endregion
 
@@ -78,6 +104,7 @@ public class Inisializer : MonoBehaviour
         foreach (var item in Enemybuttons)
         {
             item.playerModel = (PlayerModel)_playermodel;
+            item.enemyModel = (EnemyModel)_Enemyermodel;
             item.boardModel = (BoardModel)_boardmodel;
         }
         #endregion
@@ -94,19 +121,20 @@ public class Inisializer : MonoBehaviour
             colorRND = Random.Range(0, 4);
             numRND = Random.Range(1, 9);
             var CardmodelFactory = new CardModelFactory();
-            var Cardmodel = CardmodelFactory.Model;
-
+            var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            Cardmodel.Position = new Vector3(0, 0, 0);
-            Cardmodel.Color = Colors[colorRND];
-            Cardmodel.Number = numRND;
-            tempList.Add((CardModel)Cardmodel);
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Colors[colorRND];
+            _Cardmodel.Number = numRND;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name ="Card " + _Cardmodel.Number;
+            tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
             var Cardview = CardviewFactory.View;
 
             // Create the controller
-            var controllerFactory = new CardControllerFactory(Cardmodel, Cardview);
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
 
@@ -127,12 +155,21 @@ public class Inisializer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        #region Add Cards To Hand
+        #region Add Cards To Player Hand
         for (int i = 0; i < HandSize; i++)
         {
            _playermodel.Cards.Add(_boardmodel.Cards[i]);
-           _playermodel.Cards[i].Position = transforms[i].position;
+           _playermodel.Cards[i].Position = PlayerTransforms[i].position;
            _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
+        }
+        #endregion
+
+        #region Add Cards To Enemy Hand
+        for (int i = 0; i < HandSize; i++)
+        {
+            _Enemyermodel.Cards.Add(_boardmodel.Cards[i]);
+            _Enemyermodel.Cards[i].Position = EnemyTransforms[i].position;
+            _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
         }
         #endregion
 

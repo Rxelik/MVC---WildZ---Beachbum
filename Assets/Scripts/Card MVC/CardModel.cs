@@ -6,6 +6,10 @@ public class CardPositionChangedEventArgs : EventArgs { }
 public class CardColorChangedEventArgs : EventArgs { }
 public class CardNumberChangedEventArgs : EventArgs { }
 public class CardChangedBelongsEventArgs : EventArgs { }
+public class CardLayerChangeEventArgs : EventArgs { }
+public class CardNameChangeEventArgs : EventArgs { }
+
+
 
 // Interface for the model
 public interface ICardModel
@@ -15,29 +19,35 @@ public interface ICardModel
     event EventHandler<CardColorChangedEventArgs> OnColorChanged;
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
+    event EventHandler<CardNameChangeEventArgs> NameChanged;
 
     // Position of the enemy
     Vector3 Position { get; set; }
     Color Color { get; set; }
     int Number { get; set; }
     string BelongsTo { get; set; }
+    int Layer { get; set; }
 
+    string Name { get; set; }
 }
 
 // Implementation of the enemy model interface
 [System.Serializable]
 public class CardModel : ICardModel
 {
-
+    [SerializeField] int _Layer;
     [SerializeField] Color _Color;
     [SerializeField] Vector3 _Position;
     [SerializeField] int _Number;
     [SerializeField] string _BelongsTo;
+                     string _Name;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
     public event EventHandler<CardNumberChangedEventArgs> OnNumberChanged = (sender, e) => { };
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
+    public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
+    public event EventHandler<CardNameChangeEventArgs> NameChanged = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -112,4 +122,41 @@ public class CardModel : ICardModel
             }
         }
     }
+
+    public string Name
+    {
+        get { return _Name; }
+        set
+        {
+            // Only if the position changes
+            if (_Name != value)
+            {
+                // Set new position
+                _Name = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardNameChangeEventArgs();
+                NameChanged(this, eventArgs);
+            }
+        }
+    }
+    public int Layer
+    {
+        get { return _Layer; }
+        set
+        {
+            // Only if the position changes
+            if (_Layer != value)
+            {
+                // Set new position
+                _Layer = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardLayerChangeEventArgs();
+                OnLayerChanged(this, eventArgs);
+            }
+        }
+    }
+
+    
 }

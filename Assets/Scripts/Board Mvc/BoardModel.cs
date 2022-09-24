@@ -4,33 +4,38 @@ using UnityEngine;
 using System;
 
 
-public class EnemyChangedEventArgs { }
-public class OnBoardEnemyChangeEventArgs { }
-public class EnemyCardChangeEventArgs { }
+public class BoardChangedEventArgs { }
+public class OnCardsInBoardChangeEventArgs { }
+public class BoardCardChangeEventArgs { }
 
-public interface IEnemyModel
+
+
+public interface IBoardModel
 {
     // Dispatched when the position changes
-    event EventHandler<EnemyChangedEventArgs> OnPositionChanged;
-    event EventHandler<EnemyCardChangeEventArgs> OnCardsChanged;
-    event EventHandler<OnBoardEnemyChangeEventArgs> OnBoardChanged;
+    event EventHandler<BoardChangedEventArgs> OnPositionChanged;
+    event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged;
+    event EventHandler<OnBoardChangeEventArgs> OnBoardChanged;
+    event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
 
     Vector3 Position { get; set; }
-    [SerializeField] List<CardModel> Cards{ get; set; }
-
+    [SerializeField] List<CardModel> Cards { get; set; }
+    [SerializeField] int Layer { get; set; }
     BoardModel Board { get; set; }
 }
 
-public class EnemyModel : IEnemyModel
+public class BoardModel : IBoardModel
 {
     [SerializeField] Vector3 _Position;
     [SerializeField] List<CardModel> _Cards;
     [SerializeField] string _BelongsTo;
     [SerializeField] BoardModel _Board;
+    [SerializeField] int _Layer;
 
-    public event EventHandler<EnemyChangedEventArgs> OnPositionChanged = (sender, e) => { };
-    public event EventHandler<EnemyCardChangeEventArgs> OnCardsChanged = (sender, e) => { };
-    public event EventHandler<OnBoardEnemyChangeEventArgs> OnBoardChanged = (sender, e) => { };
+    public event EventHandler<BoardChangedEventArgs> OnPositionChanged = (sender, e) => { };
+    public event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged = (sender, e) => { };
+    public event EventHandler<OnBoardChangeEventArgs> OnBoardChanged = (sender, e) => { };
+    public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -44,7 +49,7 @@ public class EnemyModel : IEnemyModel
                 _Position = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new EnemyChangedEventArgs();
+                var eventArgs = new BoardChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
             }
         }
@@ -62,9 +67,9 @@ public class EnemyModel : IEnemyModel
                 _Cards = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new EnemyCardChangeEventArgs();
-                OnCardsChanged(this, eventArgs);
-                Debug.Log("CHANGED Enemy CARDS");
+                var eventArgs = new OnCardsInBoardChangeEventArgs();
+                CardInBoardChanged(this, eventArgs);
+                Debug.Log("CHANGED Board CARDS");
 
             }
         }
@@ -82,7 +87,7 @@ public class EnemyModel : IEnemyModel
                 _Board = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new OnBoardEnemyChangeEventArgs();
+                var eventArgs = new OnBoardChangeEventArgs();
                 OnBoardChanged(this, eventArgs);
             }
         }
@@ -100,10 +105,28 @@ public class EnemyModel : IEnemyModel
                 _BelongsTo = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new EnemyChangedEventArgs();
+                var eventArgs = new BoardChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
             }
         }
     }
 
+    public int Layer
+    {
+        get { return _Layer; }
+        set
+        {
+            // Only if the position changes
+            if (_Layer != value)
+            {
+                // Set new position
+                _Layer = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardLayerChangeEventArgs();
+                OnLayerChanged(this, eventArgs);
+            }
+        }
+    }
 }
+

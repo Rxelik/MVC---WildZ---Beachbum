@@ -25,6 +25,8 @@ public interface ICardView
     Vector3 Position { set; }
     Color Color { set; }
     string BelongsTo { set; }
+    int Layer { set; }
+    string Name { set; }
 }
 
 // Implementation of the enemy view
@@ -37,21 +39,22 @@ public class CardView : MonoBehaviour, ICardView
     public event EventHandler<CardColorChangedEventArgs> OnColorChange = (sender, e) => { };
     public event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve = (sender, e) => { };
 
-    // Set the card num
     public int Number { set { _ = value; _inspectNumber = value; } }
 
     public Vector3 Position { set { transform.position = value; _inspectPos = value; } }
 
     // Set the Card Color position
     public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
-    public String BelongsTo { set { _ = value; _inspectorBelongsTo = value; } }
+    public String BelongsTo { set { _ = value; _inspectorBelongsTo = value;  } }
+    public string Name { set => gameObject.name = value; }
+    public int Layer { set { _sprite.sortingOrder = value; } }
 
     [SerializeField] private Vector3 _inspectPos;
     [SerializeField] public int _inspectNumber;
     [SerializeField] private String _inspectorBelongsTo;
     [SerializeField] public Color _InspectorColor;
     public SpriteRenderer _sprite;
-    public TMP_Text gs;
+    public TextMeshPro gs;
     private void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
@@ -61,6 +64,7 @@ public class CardView : MonoBehaviour, ICardView
     void Update()
     {
         gs.text = _inspectNumber.ToString();
+        gs.sortingOrder = _sprite.sortingOrder;
         // If the primary mouse button was pressed this frame
         if (Input.GetMouseButtonDown(0))
         {
@@ -83,7 +87,10 @@ public class CardView : MonoBehaviour, ICardView
         yield return new WaitForSeconds(3);
         var eventArgs = new CardOnEnableEventArgs();
         OnEnableEvent(this, eventArgs);
-
+        yield return new WaitForSeconds(2f);
+        var eventArgss = new OnLayerChangeEventArgs();
+        OnLayerChangeEve(this, eventArgss);
+        print("rized laya");
     }
     //public void ChangeLayer()
     //{
