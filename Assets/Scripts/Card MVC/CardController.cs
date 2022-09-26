@@ -27,8 +27,8 @@ public class CardController : ICardController
         // Listen to input from the view
         view.OnClicked += HandleClicked;
         view.OnEnableEvent += StartOfGameDraw;
-        view.OnLayerChangeEve += LayerRized;
         model.OnPositionChanged += ChangePosition;
+        model.OnLayerChanged += RiseLayer;
         // Set the view's initial state by synching with the model
         SyncData();
     }
@@ -39,15 +39,13 @@ public class CardController : ICardController
     }
 
 
-
     // Called when the model's position changes
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         SyncData();
-        Debug.Log($"Position Synced!");
     }
 
-    private void LayerRized(object sender, OnLayerChangeEventArgs e)
+    private void RiseLayer(object sender, CardLayerChangeEventArgs e)
     {
         SyncData();
     }
@@ -83,61 +81,6 @@ public class CardController : ICardController
     {
         SyncData();
     }
-
-    //private void InisializeCards()
-    //{
-
-
-    //    if (_player.Hand.Count < 8)
-    //    {
-    //        _player.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Player";
-    //        model.Position = new Vector3(_player.transform.position.x + _player.Hand.Count * 3.5f, _player.transform.position.y);
-    //        SyncData();
-
-    //    }
-    //    else if (_enemy.Hand.Count < 8)
-    //    {
-    //        _enemy.Hand.Add(ThisCard());
-    //        model.BelongsTo = "Enemy";
-    //        model.Position = new Vector3(_enemy.transform.position.x + _enemy.Hand.Count * 3.5f, _enemy.transform.position.y);
-    //        SyncData();
-
-    //    }
-    //    else
-    //    {
-    //        if (!_manager.added)
-    //        {
-    //            _manager.Board.Add(ThisCard());
-    //            model.Position = _manager.BoardPos.position;
-    //            _manager.added = true;
-    //            SyncData();
-    //        }
-    //        else
-    //            _manager.Deck.Add(ThisCard());
-    //    }
-    //}
-
-    //private void DrawCard()
-    //{
-    //    switch (model.BelongsTo)
-    //    {
-    //        case "Player":
-    //            _player.Hand.Add(ThisCard());
-
-    //            break;
-    //        case "Enemy":
-    //            _enemy.Hand.Add(ThisCard());
-
-    //            break;
-    //        default:
-    //            Debug.Log("Error at finding BelongsTo");
-    //            break;
-    //    }
-    //}
-
-
-
 
     private CardModel ThisCard()
     {

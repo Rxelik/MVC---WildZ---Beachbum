@@ -11,11 +11,11 @@ public class Inisializer : MonoBehaviour
     public List<Color> Colors;
     int colorRND;
     int numRND;
+    public ButtonIndex DeckButton;
     public List<ButtonIndex> Playerbuttons;
     public List<ButtonIndex> Enemybuttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
-    public ButtonIndex DeckButton;
 
     void Awake()
     {

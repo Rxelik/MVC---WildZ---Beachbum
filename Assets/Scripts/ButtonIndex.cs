@@ -8,25 +8,30 @@ public class ButtonIndex : MonoBehaviour
     public PlayerModel playerModel;
     public EnemyModel enemyModel;
     public BoardModel boardModel;
-
     public event EventHandler<CardPositionChangedEventArgs> PosChanged = (sender, e) => { };
 
-    public void ChooseCard(int index)
+    public void ChoosePlayerCard(int index)
     {
-        if (playerModel.Cards[index].Color  == boardModel.Cards[playerModel.Board.Cards.Count - 1].Color
-         || playerModel.Cards[index].Number == boardModel.Cards[playerModel.Board.Cards.Count - 1].Number)
+        if (playerModel.Cards[index].Color == boardModel.Cards[playerModel.Board.Cards.Count - 1].Color
+           || playerModel.Cards[index].Number == boardModel.Cards[playerModel.Board.Cards.Count - 1].Number)
         {
-            playerModel.Cards[index].Position = new Vector3(3, 3, 3);
+            playerModel.Cards[index].Position = new Vector3(-5, 0, -5);
+            playerModel.Cards[index].Layer++;
             print("Player Card Pos Changed!");
 
             StartCoroutine(SyncData());
         }
+    }
 
-        else  if (enemyModel.Cards[index].Color == boardModel.Cards[enemyModel.Board.Cards.Count - 1].Color
-        || enemyModel.Cards[index].Number == boardModel.Cards[enemyModel.Board.Cards.Count - 1].Number)
+    public void ChooseEnemyCard(int index)
+    {
+        if (enemyModel.Cards[index].Color == boardModel.Cards[enemyModel.Board.Cards.Count - 1].Color
+           || enemyModel.Cards[index].Number == boardModel.Cards[enemyModel.Board.Cards.Count - 1].Number)
         {
-            enemyModel.Cards[index].Position = new Vector3(2, 2, 2);
+            enemyModel.Cards[index].Position = new Vector3(-5, 0, -5);
+            enemyModel.Cards[index].Layer++;
             print("Enemy Card Pos Changed!");
+
             StartCoroutine(SyncData());
         }
     }
@@ -39,12 +44,12 @@ public class ButtonIndex : MonoBehaviour
             boardModel.Cards.Remove(boardModel.Cards[boardModel.Cards.Count - 1]);
             boardModel.CurrentTurn = "Enemy";
         }
-        else if(boardModel.CurrentTurn == "Enemy")
+        else if (boardModel.CurrentTurn == "Enemy")
         {
             enemyModel.Cards.Add(boardModel.Cards[boardModel.Cards.Count - 1]);
             boardModel.Cards.Remove(boardModel.Cards[boardModel.Cards.Count - 1]);
             boardModel.CurrentTurn = "Player";
-        }   
+        }
     }
     IEnumerator SyncData()
     {

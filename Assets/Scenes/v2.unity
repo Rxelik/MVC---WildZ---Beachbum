@@ -121,6 +121,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14892768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14892770}
+  - component: {fileID: 14892769}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &14892769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14892768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c779e1369e617e4091387be3e6ae02b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardsInPlayPos: {fileID: 0}
+--- !u!4 &14892770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14892768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43924704
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +179,7 @@ GameObject:
   - component: {fileID: 43924707}
   - component: {fileID: 43924706}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Enemy Button (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +260,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 43924706}
-        m_MethodName: ChooseCard
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -275,7 +319,7 @@ GameObject:
   - component: {fileID: 48023126}
   - component: {fileID: 48023125}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: EnemyCard Pos 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +400,7 @@ GameObject:
   - component: {fileID: 52124328}
   - component: {fileID: 52124331}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: Player Button (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +469,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 52124331}
-        m_MethodName: ChooseCard
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -498,7 +542,7 @@ GameObject:
   - component: {fileID: 83925043}
   - component: {fileID: 83925046}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Player Button (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,8 +610,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 83925046}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -640,7 +684,7 @@ GameObject:
   - component: {fileID: 282201431}
   - component: {fileID: 282201434}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: Player Button (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -708,8 +752,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 282201434}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -846,7 +890,7 @@ GameObject:
   - component: {fileID: 301978268}
   - component: {fileID: 301978267}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: EnemyCard Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +971,7 @@ GameObject:
   - component: {fileID: 386037626}
   - component: {fileID: 386037629}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Player Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -995,8 +1039,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 386037629}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1067,7 +1111,7 @@ GameObject:
   - component: {fileID: 502459361}
   - component: {fileID: 502459360}
   m_Layer: 0
-  m_Name: Cube (9)
+  m_Name: EnemyCard Pos 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,7 +1282,7 @@ GameObject:
   - component: {fileID: 590828701}
   - component: {fileID: 590828700}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: Player Card Pos 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1319,7 +1363,7 @@ GameObject:
   - component: {fileID: 606411185}
   - component: {fileID: 606411188}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Player Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,8 +1431,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 606411188}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1459,7 +1503,7 @@ GameObject:
   - component: {fileID: 623709993}
   - component: {fileID: 623709992}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Player Card Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,7 +1699,7 @@ GameObject:
   - component: {fileID: 682263427}
   - component: {fileID: 682263426}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Enemy Button (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1735,8 +1779,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682263426}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1795,7 +1839,7 @@ GameObject:
   - component: {fileID: 737116438}
   - component: {fileID: 737116437}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: Player Card Pos 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1876,7 +1920,7 @@ GameObject:
   - component: {fileID: 763093694}
   - component: {fileID: 763093693}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: Enemy Button (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1956,8 +2000,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 763093693}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2018,7 +2062,7 @@ GameObject:
   - component: {fileID: 771824161}
   - component: {fileID: 771824160}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: Player Button (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2098,8 +2142,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 771824160}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2190,7 +2234,7 @@ GameObject:
   - component: {fileID: 955711222}
   - component: {fileID: 955711221}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: EnemyCard Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2269,7 +2313,7 @@ GameObject:
   - component: {fileID: 1007838699}
   - component: {fileID: 1007838698}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Player Card Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2336,6 +2380,99 @@ Transform:
   m_Father: {fileID: 1845574683}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1045686849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045686853}
+  - component: {fileID: 1045686852}
+  - component: {fileID: 1045686851}
+  - component: {fileID: 1045686850}
+  m_Layer: 0
+  m_Name: DeckPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1045686850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045686849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1045686851
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045686849}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1045686852
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045686849}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1045686853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045686849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: -0.05, z: 0}
+  m_LocalScale: {x: 2.6232, y: 2.6232, z: 2.6232}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061793077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,7 +2485,7 @@ GameObject:
   - component: {fileID: 1061793080}
   - component: {fileID: 1061793079}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: EnemyCard Pos 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2427,7 +2564,7 @@ GameObject:
   - component: {fileID: 1066560064}
   - component: {fileID: 1066560063}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Player Card Pos 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2551,7 +2688,7 @@ GameObject:
   - component: {fileID: 1294779351}
   - component: {fileID: 1294779350}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: EnemyCard Pos 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2767,7 @@ GameObject:
   - component: {fileID: 1311650871}
   - component: {fileID: 1311650870}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: EnemyCard Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2711,7 +2848,7 @@ GameObject:
   - component: {fileID: 1332970313}
   - component: {fileID: 1332970312}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: Enemy Button (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2791,8 +2928,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1332970312}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2851,7 +2988,7 @@ GameObject:
   - component: {fileID: 1496965090}
   - component: {fileID: 1496965089}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: EnemyCard Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2930,7 +3067,7 @@ GameObject:
   - component: {fileID: 1509227017}
   - component: {fileID: 1509227016}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: EnemyCard Pos 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3011,7 +3148,7 @@ GameObject:
   - component: {fileID: 1556904152}
   - component: {fileID: 1556904151}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Enemy Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3091,8 +3228,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1556904151}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3153,7 +3290,7 @@ GameObject:
   - component: {fileID: 1640380619}
   - component: {fileID: 1640380618}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Enemy Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3233,8 +3370,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1640380618}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3340,7 +3477,7 @@ GameObject:
   - component: {fileID: 1688543654}
   - component: {fileID: 1688543653}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: Player Button (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3420,8 +3557,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1688543653}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3482,7 +3619,7 @@ GameObject:
   - component: {fileID: 1689455463}
   - component: {fileID: 1689455466}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Player Button (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3550,8 +3687,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1689455466}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3624,7 +3761,7 @@ GameObject:
   - component: {fileID: 1785542241}
   - component: {fileID: 1785542240}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: Enemy Button (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3704,8 +3841,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1785542240}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3764,7 +3901,7 @@ GameObject:
   - component: {fileID: 1795147056}
   - component: {fileID: 1795147055}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Player Card Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3845,7 +3982,7 @@ GameObject:
   - component: {fileID: 1804804253}
   - component: {fileID: 1804804256}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Player Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3914,7 +4051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1804804256}
-        m_MethodName: ChooseCard
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4086,7 +4223,7 @@ GameObject:
   - component: {fileID: 1816745239}
   - component: {fileID: 1816745238}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player Card Pos 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4207,7 +4344,7 @@ GameObject:
   - component: {fileID: 1906192116}
   - component: {fileID: 1906192115}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Enemy Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4287,8 +4424,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1906192115}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4347,7 +4484,7 @@ GameObject:
   - component: {fileID: 1918391694}
   - component: {fileID: 1918391693}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: EnemyCard Pos 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4568,7 +4705,7 @@ GameObject:
   - component: {fileID: 1941650207}
   - component: {fileID: 1941650206}
   m_Layer: 0
-  m_Name: Cube (9)
+  m_Name: Player Card Pos 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4649,7 +4786,7 @@ GameObject:
   - component: {fileID: 1966976372}
   - component: {fileID: 1966976375}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Player Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4717,8 +4854,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966976375}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 52124331}
+        m_MethodName: ChoosePlayerCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4789,7 +4926,7 @@ GameObject:
   - component: {fileID: 1968515884}
   - component: {fileID: 1968515883}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Player Card Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4892,6 +5029,7 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0.123636246, a: 1}
   - {r: 1, g: 0.8461646, b: 0, a: 1}
   - {r: 0, g: 0.038576603, b: 1, a: 1}
+  DeckButton: {fileID: 1927375791}
   Playerbuttons:
   - {fileID: 1804804256}
   - {fileID: 386037629}
@@ -4936,7 +5074,6 @@ MonoBehaviour:
   - {fileID: 1509227015}
   - {fileID: 1061793078}
   - {fileID: 502459359}
-  DeckButton: {fileID: 1927375791}
 --- !u!4 &1986057253
 Transform:
   m_ObjectHideFlags: 0
@@ -4963,7 +5100,7 @@ GameObject:
   - component: {fileID: 2036584932}
   - component: {fileID: 2036584931}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: Player Card Pos 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5044,7 +5181,7 @@ GameObject:
   - component: {fileID: 2052249314}
   - component: {fileID: 2052249313}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: Enemy Button (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5124,8 +5261,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2052249313}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5186,7 +5323,7 @@ GameObject:
   - component: {fileID: 2110488518}
   - component: {fileID: 2110488517}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Enemy Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5266,8 +5403,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2110488517}
-        m_MethodName: ChooseCard
+      - m_Target: {fileID: 43924706}
+        m_MethodName: ChooseEnemyCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

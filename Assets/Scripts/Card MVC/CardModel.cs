@@ -20,6 +20,7 @@ public interface ICardModel
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
     event EventHandler<CardNameChangeEventArgs> NameChanged;
+    event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
 
     // Position of the enemy
     Vector3 Position { get; set; }
