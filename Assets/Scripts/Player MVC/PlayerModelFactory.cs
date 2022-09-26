@@ -37,6 +37,7 @@ public class PlayerViewFactory : IPlayerViewFactory
     {
         var prefab = Resources.Load<GameObject>("Player");
         var instance = UnityEngine.Object.Instantiate(prefab);
+        instance.name = "Player";
         View = instance.GetComponent<IPlayerView>();
     }
 }

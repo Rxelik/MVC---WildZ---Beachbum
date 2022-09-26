@@ -11,39 +11,45 @@ using System.Collections.Generic;
 
 
 // Interface for the card view
-public interface IEnemyView
+public interface IDeckView
 {
     // Dispatched when the card is clicked
-    event EventHandler<EnemyChangedEventArgs> OnClicked;
+    event EventHandler<DeckChangedEventArgs> OnClicked;
+    event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged;
     Vector3 Position { set; }
     [SerializeField] List<CardModel> Cards { set; }
-    [SerializeField] List<Transform> HandPos { set; }
-    [SerializeField] int HandCount { set; }
 
 }
 
 
 // Implementation of the enemy view
 [System.Serializable]
-public class EnemyView : MonoBehaviour, IEnemyView
+public class DeckView : MonoBehaviour, IDeckView
 {
 
     // Dispatched when the enemy is clicked
-    public event EventHandler<EnemyChangedEventArgs> OnClicked = (sender, e) => { };
+    public event EventHandler<DeckChangedEventArgs> OnClicked = (sender, e) => { };
+    public event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged = (sender, e) => { };
+
     public Vector3 Position { set { transform.position = value; } }
 
     public List<CardModel> Cards { set => _InspectorCards = value; }
-    public List<Transform> HandPos { set => _HandPos = value; }
-    public int HandCount { set => _HandCount = value; }
-
 
     [SerializeField] public List<CardModel> _InspectorCards;
 
-    [SerializeField] public List<Transform> _HandPos;
-
-    public int _HandCount;
-
+    private void Awake()
+    {
+        StartCoroutine(RizeTopCardLayer());
+    }
     void Update()
     {
+
+    }
+
+    private IEnumerator RizeTopCardLayer()
+    {
+        yield return new WaitForSeconds(5);
+        var eventArgs = new CardLayerChangeEventArgs();
+        CardInDeckChanged(this, eventArgs);
     }
 }

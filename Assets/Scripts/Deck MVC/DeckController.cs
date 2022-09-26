@@ -3,47 +3,51 @@ using System.Collections;
 using UnityEngine;
 
 // Interface for the enemy controller
-public interface IEnemyController
+public interface IDeckController
 {
 }
 
 // Implementation of the enemy controller
-public class EnemyController : IEnemyController
+public class DeckController : IDeckController
 {
 
     // Keep references to the model and view
-    private readonly IEnemyModel model;
-    private readonly IEnemyView view;
+    private readonly IDeckModel model;
+    private readonly IDeckView view;
+
+
 
 
     // Controller depends on interfaces for the model and view
-    public EnemyController(IEnemyModel model, IEnemyView view)
+    public DeckController(IDeckModel model, IDeckView view)
     {
         //Register
         this.model = model;
         this.view = view;
-        model.OnCardsChanged += FixViewPos;
+
         // Listen to input from the view
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
+        view.CardInDeckChanged += RizeLayer;
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
-    private void FixViewPos(object sender, EnemyCardChangeEventArgs e)
+    private void ChangeTurn(object sender, TurmChangedEventArgs e)
     {
-        Debug.Log("FixEDVIEWPOS");
 
-        for (int i = 0; i < model.Cards.Count; i++)
-        {
-            model.Cards[i].Position = model.HandPos[i].position;
-            SyncData();
-        }
-
+        SyncData();
     }
 
-    private void HandleClicked(object sender, EnemyChangedEventArgs e)
+    private void RizeLayer(object sender, CardLayerChangeEventArgs e)
     {
-        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
+        model.Cards[model.Cards.Count - 1].Layer++;
+        SyncData();
+        Debug.Log("Rise Lauer bItch");
+    }
+
+    private void HandleClicked(object sender, DeckChangedEventArgs e)
+    {
+        //if (model.Cards[index].Color == model.Deck.Cards[model.Deck.Cards.Count - 1].Color || model.Cards[index].Number == model.Deck.Cards[model.Deck.Cards.Count - 1].Number)
         //{
         //    Debug.Log("You Played " + model.Cards[index]);
         //}
@@ -53,10 +57,7 @@ public class EnemyController : IEnemyController
 
     private void ClickedOnCard(int Index)
     {
-        if (model.Cards[Index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[Index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
-        {
-            Debug.Log("You Played " + model.Cards[Index]);
-        }
+
 
     }
 
@@ -73,19 +74,19 @@ public class EnemyController : IEnemyController
     {
         view.Cards = model.Cards;
         view.Position = model.Position;
-        view.HandPos = model.HandPos;
-        view.HandCount = model.HandCount;
     }
+
+
 
     //private void InisializeCards()
     //{
 
 
-    //    if (_Enemy.Hand.Count < 8)
+    //    if (_Deck.Hand.Count < 8)
     //    {
-    //        _Enemy.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Enemy";
-    //        model.Position = new Vector3(_Enemy.transform.position.x + _Enemy.Hand.Count * 3.5f, _Enemy.transform.position.y);
+    //        _Deck.Hand.Add((CardModel)model);
+    //        model.BelongsTo = "Deck";
+    //        model.Position = new Vector3(_Deck.transform.position.x + _Deck.Hand.Count * 3.5f, _Deck.transform.position.y);
     //        SyncData();
 
     //    }
@@ -101,8 +102,8 @@ public class EnemyController : IEnemyController
     //    {
     //        if (!_manager.added)
     //        {
-    //            _manager.Board.Add(ThisCard());
-    //            model.Position = _manager.BoardPos.position;
+    //            _manager.Deck.Add(ThisCard());
+    //            model.Position = _manager.DeckPos.position;
     //            _manager.added = true;
     //            SyncData();
     //        }

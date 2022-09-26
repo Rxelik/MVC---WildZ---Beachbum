@@ -22,11 +22,23 @@ public class PlayerController : IPlayerController
         //Register
         this.model = model;
         this.view = view;
-
+        model.OnCardsChanged += FixViewPos;
         // Listen to input from the view
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
+    }
+
+    private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
+    {
+        Debug.Log("FixEDVIEWPOS");
+            
+            for (int i = 0; i < model.Cards.Count; i++)
+            {
+                model.Cards[i].Position = model.HandPos[i].position;
+                SyncData();
+            }
+        
     }
 
     private void HandleClicked(object sender, PlayerChangedEventArgs e)
@@ -61,6 +73,8 @@ public class PlayerController : IPlayerController
     {
         view.Cards = model.Cards;
         view.Position = model.Position;
+        view.HandPos = model.HandPos;
+        view.HandCount = model.HandCount;
     }
 
     //private void InisializeCards()

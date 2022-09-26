@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using System.Collections.Generic;
 // Dispatched when the card is clicked Or Enabled
 public class CardClickedEventArgs : EventArgs { }
 public class CardOnEnableEventArgs : EventArgs { }
@@ -57,11 +58,14 @@ public class CardView : MonoBehaviour, ICardView
     [SerializeField] public Color _InspectorColor;
     public SpriteRenderer _sprite;
     public TextMeshPro gs;
+
+    public List<GameObject> PlayerTransforms;
+    public List<GameObject> EnemyTransforms;
     private void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
-        StartCoroutine(WaitBeforeRegister());
-
+       // StartCoroutine(WaitBeforeRegister());
+        GetTransforms();
     }
     void Update()
     {
@@ -86,17 +90,28 @@ public class CardView : MonoBehaviour, ICardView
 
     IEnumerator WaitBeforeRegister()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.25f);
         var eventArgs = new CardOnEnableEventArgs();
         OnEnableEvent(this, eventArgs);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.25f);
         var eventArgss = new OnLayerChangeEventArgs();
         OnLayerChangeEve(this, eventArgss);
         print("rized laya");
     }
-    //public void ChangeLayer()
-    //{
-    //    GameManager.Instance.Layer++;
-    //    _sprite.sortingOrder = GameManager.Instance.Layer;
-    //}
+    
+    private void GetTransforms()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            PlayerTransforms.Add(GameObject.Find($"Player Card Pos "+i));
+        }
+        for (int i = 0; i < 9; i++)
+        {
+            EnemyTransforms.Add(GameObject.Find($"Enemy Card Pos " + i));
+        }
+    }
+    private void AllignCards()
+    {
+
+    }
 }

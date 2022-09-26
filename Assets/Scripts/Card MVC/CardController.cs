@@ -43,11 +43,14 @@ public class CardController : ICardController
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         SyncData();
+        Debug.Log("Synced POS Data");
+
     }
 
     private void RiseLayer(object sender, CardLayerChangeEventArgs e)
     {
         SyncData();
+        Debug.Log("Synced Layer Data");
     }
     // Sync the view's position with the model's position
     private void SyncData()
@@ -65,7 +68,7 @@ public class CardController : ICardController
 
         view.Name = model.Name; 
 
-        Debug.Log("Synced Data");
+        
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)
