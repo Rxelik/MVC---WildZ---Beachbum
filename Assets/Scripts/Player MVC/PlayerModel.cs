@@ -128,10 +128,10 @@ public class PlayerModel : IPlayerModel
     }
     public int HandCount
     {
-        get { return _HandCount; }
+        get { return Cards.Count; }
         set
         {
-            // Only if the position changes
+            // Only if the Count changes
             if (_HandCount != value)
             {
                 // Set new position

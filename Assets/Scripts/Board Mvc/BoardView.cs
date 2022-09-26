@@ -16,7 +16,7 @@ public interface IBoardView
     // Dispatched when the card is clicked
     event EventHandler<BoardChangedEventArgs> OnClicked;
     event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged;
-    event EventHandler<TurmChangedEventArgs> TurnChanged;
+    event EventHandler<TurnChangedEventArgs> TurnChanged;
     Vector3 Position { set; }
     [SerializeField] List<CardModel> Cards { set; }
 
@@ -32,7 +32,7 @@ public class BoardView : MonoBehaviour, IBoardView
     // Dispatched when the enemy is clicked
     public event EventHandler<BoardChangedEventArgs> OnClicked = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged = (sender, e) => { };
-    public event EventHandler<TurmChangedEventArgs> TurnChanged = (sender, e) => { };
+    public event EventHandler<TurnChangedEventArgs> TurnChanged = (sender, e) => { };
 
     public Vector3 Position { set { transform.position = value; } }
 

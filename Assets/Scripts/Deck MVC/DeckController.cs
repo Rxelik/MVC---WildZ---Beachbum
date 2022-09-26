@@ -32,12 +32,6 @@ public class DeckController : IDeckController
         SyncData();
     }
 
-    private void ChangeTurn(object sender, TurmChangedEventArgs e)
-    {
-
-        SyncData();
-    }
-
     private void RizeLayer(object sender, CardLayerChangeEventArgs e)
     {
         model.Cards[model.Cards.Count - 1].Layer++;

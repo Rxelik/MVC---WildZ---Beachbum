@@ -128,7 +128,7 @@ public class EnemyModel : IEnemyModel
     }
     public int HandCount
     {
-        get { return _HandCount; }
+        get { return Cards.Count; }
         set
         {
             // Only if the position changes

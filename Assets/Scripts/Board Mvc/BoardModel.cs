@@ -7,7 +7,7 @@ using System;
 public class BoardChangedEventArgs { }
 public class OnCardsInBoardChangeEventArgs { }
 public class BoardCardChangeEventArgs { }
-public class TurmChangedEventArgs { }
+public class TurnChangedEventArgs { }
 
 
 
@@ -18,7 +18,7 @@ public interface IBoardModel
     event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged;
     event EventHandler<OnBoardChangeEventArgs> OnBoardChanged;
     event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
-    event EventHandler<TurmChangedEventArgs> OnTurnChangeEve;
+    event EventHandler<TurnChangedEventArgs> OnTurnChangeEve;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
@@ -39,7 +39,7 @@ public class BoardModel : IBoardModel
     public event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged = (sender, e) => { };
     public event EventHandler<OnBoardChangeEventArgs> OnBoardChanged = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
-    public event EventHandler<TurmChangedEventArgs> OnTurnChangeEve = (sender, e) => { };
+    public event EventHandler<TurnChangedEventArgs> OnTurnChangeEve = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -109,7 +109,7 @@ public class BoardModel : IBoardModel
                 _CurrentTurn = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new TurmChangedEventArgs();
+                var eventArgs = new TurnChangedEventArgs();
                 OnTurnChangeEve(this, eventArgs);
             }
         }

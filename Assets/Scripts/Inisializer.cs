@@ -71,7 +71,7 @@ public class Inisializer : MonoBehaviour
         _playermodel.Cards = new List<CardModel>();
         _playermodel.Board = (BoardModel)_boardmodel;
         _playermodel.HandPos = PlayerTransforms;
-        _playermodel.HandCount = 10;
+        //_playermodel.HandCount = 10;
         // Create the view
         var PlayerViewFactory = new PlayerViewFactory();
         var _view = PlayerViewFactory.View;
@@ -94,7 +94,7 @@ public class Inisializer : MonoBehaviour
         _Enemyermodel.Cards = new List<CardModel>();
         _Enemyermodel.Board = (BoardModel)_boardmodel;
         _Enemyermodel.HandPos = EnemyTransforms;
-        _Enemyermodel.HandCount = 10;
+       // _Enemyermodel.HandCount = 10;
         // Create the view
         var EnemyViewFactory = new EnemyViewFactory();
         var Enemyview = EnemyViewFactory.View;

@@ -31,7 +31,6 @@ public class PlayerController : IPlayerController
 
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-        Debug.Log("FixEDVIEWPOS");
             
             for (int i = 0; i < model.Cards.Count; i++)
             {

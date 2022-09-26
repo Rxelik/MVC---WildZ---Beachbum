@@ -33,16 +33,9 @@ public class BoardController : IBoardController
         SyncData();
     }
 
-    private void ChangeTurn(object sender, TurmChangedEventArgs e)
+    private void ChangeTurn(object sender, TurnChangedEventArgs e)
     {
-        if (model.CurrentTurn == "Player")
-        {
-            model.CurrentTurn = "Enemy";
-        }
-        else
-        {
-            model.CurrentTurn = "Player";
-        }
+        Debug.Log("ENTERED CHANGE TURN!!!");
         SyncData();
     }
 
