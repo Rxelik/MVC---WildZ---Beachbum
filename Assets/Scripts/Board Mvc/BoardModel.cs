@@ -7,6 +7,7 @@ using System;
 public class BoardChangedEventArgs { }
 public class OnCardsInBoardChangeEventArgs { }
 public class BoardCardChangeEventArgs { }
+public class TurmChangedEventArgs { }
 
 
 
@@ -17,11 +18,13 @@ public interface IBoardModel
     event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged;
     event EventHandler<OnBoardChangeEventArgs> OnBoardChanged;
     event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
+    event EventHandler<TurmChangedEventArgs> OnTurnChangeEve;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
-    [SerializeField] int Layer { get; set; }
     BoardModel Board { get; set; }
+
+    string CurrentTurn { get; set; }
 }
 
 public class BoardModel : IBoardModel
@@ -30,12 +33,13 @@ public class BoardModel : IBoardModel
     [SerializeField] List<CardModel> _Cards;
     [SerializeField] string _BelongsTo;
     [SerializeField] BoardModel _Board;
-    [SerializeField] int _Layer;
+    [SerializeField] string _CurrentTurn;
 
     public event EventHandler<BoardChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged = (sender, e) => { };
     public event EventHandler<OnBoardChangeEventArgs> OnBoardChanged = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
+    public event EventHandler<TurmChangedEventArgs> OnTurnChangeEve = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -93,38 +97,20 @@ public class BoardModel : IBoardModel
         }
     }
 
-    public string BelongsTo
+    public string CurrentTurn
     {
-        get { return _BelongsTo; }
+        get { return _CurrentTurn; }
         set
         {
             // Only if the position changes
-            if (_BelongsTo != value)
+            if (_CurrentTurn != value)
             {
                 // Set new position
-                _BelongsTo = value;
+                _CurrentTurn = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new BoardChangedEventArgs();
-                OnPositionChanged(this, eventArgs);
-            }
-        }
-    }
-
-    public int Layer
-    {
-        get { return _Layer; }
-        set
-        {
-            // Only if the position changes
-            if (_Layer != value)
-            {
-                // Set new position
-                _Layer = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new CardLayerChangeEventArgs();
-                OnLayerChanged(this, eventArgs);
+                var eventArgs = new TurmChangedEventArgs();
+                OnTurnChangeEve(this, eventArgs);
             }
         }
     }

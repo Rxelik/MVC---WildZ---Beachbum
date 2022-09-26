@@ -11,6 +11,8 @@ public class OnLayerChangeEventArgs : EventArgs { }
 
 
 
+
+
 // Interface for the card view
 public interface ICardView
 {
@@ -76,8 +78,8 @@ public class CardView : MonoBehaviour, ICardView
                 && hit.transform == transform
             )
             {
-                var eventArgs = new CardClickedEventArgs();
-                OnClicked(this, eventArgs);
+                //var eventArgs = new CardClickedEventArgs();
+                //OnClicked(this, eventArgs);
             }
         }
     }
@@ -87,7 +89,7 @@ public class CardView : MonoBehaviour, ICardView
         yield return new WaitForSeconds(3);
         var eventArgs = new CardOnEnableEventArgs();
         OnEnableEvent(this, eventArgs);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         var eventArgss = new OnLayerChangeEventArgs();
         OnLayerChangeEve(this, eventArgss);
         print("rized laya");

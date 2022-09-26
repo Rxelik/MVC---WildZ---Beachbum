@@ -16,9 +16,11 @@ public interface IBoardView
     // Dispatched when the card is clicked
     event EventHandler<BoardChangedEventArgs> OnClicked;
     event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged;
+    event EventHandler<TurmChangedEventArgs> TurnChanged;
     Vector3 Position { set; }
     [SerializeField] List<CardModel> Cards { set; }
 
+    [SerializeField] string CurrentTurn { set; }
 }
 
 
@@ -30,11 +32,15 @@ public class BoardView : MonoBehaviour, IBoardView
     // Dispatched when the enemy is clicked
     public event EventHandler<BoardChangedEventArgs> OnClicked = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged = (sender, e) => { };
+    public event EventHandler<TurmChangedEventArgs> TurnChanged = (sender, e) => { };
+
     public Vector3 Position { set { transform.position = value; } }
 
     public List<CardModel> Cards { set => _InspectorCards = value; }
+    public string CurrentTurn { set => _CurrentTurn = value; }
 
     [SerializeField] public List<CardModel> _InspectorCards;
+    [SerializeField] string _CurrentTurn;
 
     private void Awake()
     {
@@ -42,7 +48,7 @@ public class BoardView : MonoBehaviour, IBoardView
     }
     void Update()
     {
-        
+
     }
 
     private IEnumerator RizeTopCardLayer()

@@ -28,7 +28,21 @@ public class BoardController : IBoardController
         // Listen to input from the view
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
         view.CardInBoardChanged += RizeLayer;
+        model.OnTurnChangeEve += ChangeTurn;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void ChangeTurn(object sender, TurmChangedEventArgs e)
+    {
+        if (model.CurrentTurn == "Player")
+        {
+            model.CurrentTurn = "Enemy";
+        }
+        else
+        {
+            model.CurrentTurn = "Player";
+        }
         SyncData();
     }
 
@@ -71,6 +85,7 @@ public class BoardController : IBoardController
     {
         view.Cards = model.Cards;
         view.Position = model.Position;
+        view.CurrentTurn = model.CurrentTurn;
     }
 
 

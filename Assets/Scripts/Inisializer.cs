@@ -15,6 +15,7 @@ public class Inisializer : MonoBehaviour
     public List<ButtonIndex> Enemybuttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
+    public ButtonIndex DeckButton;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class Inisializer : MonoBehaviour
         // Set some initial state
         _boardmodel.Position = new Vector3(0, 0, 0);
         _boardmodel.Cards = new List<CardModel>();
+        _boardmodel.CurrentTurn = "Player";
         // Create the view
         var BoardviewFactory = new BoardViewFactory();
         var Boardview = BoardviewFactory.View;
@@ -107,6 +109,12 @@ public class Inisializer : MonoBehaviour
             item.enemyModel = (EnemyModel)_Enemyermodel;
             item.boardModel = (BoardModel)_boardmodel;
         }
+        #endregion
+
+        #region Button Refrence For Deck Button
+        DeckButton.playerModel = (PlayerModel)_playermodel;
+        DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
+        DeckButton.boardModel = (BoardModel)_boardmodel;
         #endregion
 
         //_______________________________________________\\

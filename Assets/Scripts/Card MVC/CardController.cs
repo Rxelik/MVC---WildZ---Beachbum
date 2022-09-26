@@ -28,13 +28,14 @@ public class CardController : ICardController
         view.OnClicked += HandleClicked;
         view.OnEnableEvent += StartOfGameDraw;
         view.OnLayerChangeEve += LayerRized;
+        model.OnPositionChanged += ChangePosition;
         // Set the view's initial state by synching with the model
         SyncData();
     }
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
-
+        SyncData();
     }
 
 
@@ -43,6 +44,7 @@ public class CardController : ICardController
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         SyncData();
+        Debug.Log($"Position Synced!");
     }
 
     private void LayerRized(object sender, OnLayerChangeEventArgs e)

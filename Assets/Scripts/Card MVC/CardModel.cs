@@ -63,6 +63,7 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardPositionChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
+                Debug.Log("Position Changed (CARD POS)");
             }
         }
     }
