@@ -18,6 +18,10 @@ public interface IDeckModel
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
+
+    void AddCard(CardModel card);
+    void RemoveCard(CardModel card);
+
 }
 
 public class DeckModel : IDeckModel
@@ -65,6 +69,17 @@ public class DeckModel : IDeckModel
             }
         }
     }
-
+    public void AddCard(CardModel card)
+    {
+        Cards.Add(card);
+        var eventArgs = new OnCardsInDeckChangeEventArgs();
+        CardInDeckChanged(this, eventArgs);
+    }
+    public void RemoveCard(CardModel card)
+    {
+        Cards.Remove(card);
+        var eventArgs = new OnCardsInDeckChangeEventArgs();
+        CardInDeckChanged(this, eventArgs);
+    }
 }
 

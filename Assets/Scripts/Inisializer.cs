@@ -3,6 +3,10 @@ using System.Drawing;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using Random = System.Random;
+using System.Linq;
+
 public class Inisializer : MonoBehaviour
 {
     public int InsializeDeckSize = 100;
@@ -139,6 +143,7 @@ public class Inisializer : MonoBehaviour
         //_______________________________________________\\
 
         yield return new WaitForSeconds(0.5f);
+
         #region Cards Maker
 
         int CardIndex;
@@ -343,10 +348,13 @@ public class Inisializer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         #region Add Cards To Board
+        var rnd = new Random();
+        var randomizedList = tempList.OrderBy(item => rnd.Next());
 
-        foreach (var item in tempList)
+
+        foreach (var item in randomizedList)
         {
-            _boardmodel.Cards.Add(item);
+            _boardmodel.AddCard(item);
         }
 
         #endregion
@@ -354,11 +362,13 @@ public class Inisializer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         #region Add Cards To Player Hand
+        
         for (int i = 0; i < HandSize; i++)
         {
-            _playermodel.Cards.Add(_boardmodel.Cards[i]);
+
+            _playermodel.AddCard(_boardmodel.Cards[i]);
             _playermodel.Cards[i].Position = PlayerTransforms[i].position;
-            _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
+            _boardmodel.RemoveCard(_boardmodel.Cards[i]);
         }
             
         
@@ -367,16 +377,16 @@ public class Inisializer : MonoBehaviour
         #region Add Cards To Enemy Hand
         for (int i = 0; i < HandSize; i++)
         {
-            _Enemyermodel.Cards.Add(_boardmodel.Cards[i]);
+            _Enemyermodel.AddCard(_boardmodel.Cards[i]);
             _Enemyermodel.Cards[i].Position = EnemyTransforms[i].position;
-            _boardmodel.Cards.Remove(_boardmodel.Cards[i]);
+            _boardmodel.RemoveCard(_boardmodel.Cards[i]);
         }
         #endregion
 
         //_______________________________________________\\
 
         #region Add First Card To Deck
-        _Deckmodel.Cards.Add(_boardmodel.Cards[_boardmodel.Cards.Count - 1]);
+        _Deckmodel.AddCard(_boardmodel.Cards[_boardmodel.Cards.Count - 1]);
         _Deckmodel.Cards[0].Position = new Vector3(-5, 0, -5);
         #endregion
         

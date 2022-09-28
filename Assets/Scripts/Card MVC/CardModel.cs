@@ -36,7 +36,6 @@ public interface ICardModel
 
     bool IsSuper { get; set; }
     bool IsWild { get; set; }
-    
 
 }
 
@@ -206,4 +205,5 @@ public class CardModel : ICardModel
             }
         }
     }
+
 }

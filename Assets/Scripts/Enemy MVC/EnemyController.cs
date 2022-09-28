@@ -31,7 +31,7 @@ public class EnemyController : IEnemyController
 
     private void FixViewPos(object sender, EnemyCardChangeEventArgs e)
     {
-        
+
         for (int i = 0; i < model.Cards.Count; i++)
         {
             model.Cards[i].Position = model.HandPos[i].position;
@@ -73,7 +73,6 @@ public class EnemyController : IEnemyController
         view.Cards = model.Cards;
         view.Position = model.Position;
         view.HandPos = model.HandPos;
-        view.HandCount = model.HandCount;
     }
 
     //private void InisializeCards()

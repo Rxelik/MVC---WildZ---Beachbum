@@ -25,6 +25,9 @@ public interface IBoardModel
     BoardModel Board { get; set; }
 
     string CurrentTurn { get; set; }
+
+    void AddCard(CardModel card);
+    void RemoveCard(CardModel card);
 }
 
 public class BoardModel : IBoardModel
@@ -113,6 +116,19 @@ public class BoardModel : IBoardModel
                 OnTurnChangeEve(this, eventArgs);
             }
         }
+    }
+
+    public void AddCard(CardModel card)
+    {
+        Cards.Add(card);
+        var eventArgs = new OnCardsInBoardChangeEventArgs();
+        CardInBoardChanged(this, eventArgs);
+    }
+    public void RemoveCard(CardModel card)
+    {
+        Cards.Remove(card);
+        var eventArgs = new OnCardsInBoardChangeEventArgs();
+        CardInBoardChanged(this, eventArgs);
     }
 }
 

@@ -17,10 +17,10 @@ public interface IPlayerModel
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards{ get; set; }
-    [SerializeField] int HandCount{ get; set; }
     BoardModel Board { get; set; }
     [SerializeField] List<Transform> HandPos { get; set; }
-
+    void AddCard(CardModel card);
+    void RemoveCard(CardModel card);
 }
 
 public class PlayerModel : IPlayerModel
@@ -30,7 +30,7 @@ public class PlayerModel : IPlayerModel
     [SerializeField] string _BelongsTo;
     [SerializeField] BoardModel _Board;
     [SerializeField] List<Transform> _HandPos;
-    [SerializeField] int _HandCount;
+
 
     public event EventHandler<PlayerChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<PlayerCardChangeEventArgs> OnCardsChanged = (sender, e) => { };
@@ -126,22 +126,18 @@ public class PlayerModel : IPlayerModel
             }
         }
     }
-    public int HandCount
-    {
-        get { return Cards.Count; }
-        set
-        {
-            // Only if the Count changes
-            if (_HandCount != value)
-            {
-                // Set new position
-                _HandCount = value;
 
-                // Dispatch the 'position changed' event
-                var eventArgs = new PlayerCardChangeEventArgs();
-                OnCardsChanged(this, eventArgs);
-                Debug.Log("COUNT OF CARDS CHANGED!!!!");
-            }
-        }
+
+    public void AddCard(CardModel card)
+    {
+        Cards.Add(card);
+        var eventArgs = new PlayerCardChangeEventArgs();
+        OnCardsChanged(this, eventArgs);
+    }
+    public void RemoveCard(CardModel card)
+    {
+        Cards.Remove(card);
+        var eventArgs = new PlayerCardChangeEventArgs();
+        OnCardsChanged(this, eventArgs);
     }
 }

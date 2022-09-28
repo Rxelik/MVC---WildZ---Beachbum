@@ -73,7 +73,6 @@ public class PlayerController : IPlayerController
         view.Cards = model.Cards;
         view.Position = model.Position;
         view.HandPos = model.HandPos;
-        view.HandCount = model.HandCount;
     }
 
     //private void InisializeCards()

@@ -30,7 +30,7 @@ public class ButtonIndex : MonoBehaviour
                         {
                             item.Position = new Vector3(-5, 0, -5);
                             item.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                            deckModel.Cards.Add(item);
+                            deckModel.AddCard(item);
                         }
                     }
                     foreach (var items in playerModel.Cards.Reverse<CardModel>())
@@ -38,18 +38,25 @@ public class ButtonIndex : MonoBehaviour
 
                         if (deckModel.Cards.Contains(items))
                         {
-                            playerModel.Cards.Remove(items);
+                            if (items == playerModel.Cards[index])
+                            {
+
+                            }
+                            else
+                            {
+                                playerModel.Cards.Remove(items);
+                            }
                         }
                     }
+                    playerModel.RemoveCard(playerModel.Cards[index]);
                     ChangeTurn();
                 }
                 else
                 {
                     playerModel.Cards[index].Position = new Vector3(-5, 0, -5);
                     playerModel.Cards[index].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                    deckModel.Cards.Add(playerModel.Cards[index]);
-                    playerModel.Cards.Remove(playerModel.Cards[index]);
-                    playerModel.HandCount--;
+                    deckModel.AddCard(playerModel.Cards[index]);
+                    playerModel.RemoveCard(playerModel.Cards[index]);
                     ChangeTurn();
                 }
             }
@@ -75,7 +82,7 @@ public class ButtonIndex : MonoBehaviour
                         {
                             item.Position = new Vector3(-5, 0, -5);
                             item.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                            deckModel.Cards.Add(item);
+                            deckModel.AddCard(item);
                         }
                     }
                     foreach (var items in enemyModel.Cards.Reverse<CardModel>())
@@ -83,18 +90,25 @@ public class ButtonIndex : MonoBehaviour
 
                         if (deckModel.Cards.Contains(items))
                         {
-                            enemyModel.Cards.Remove(items);
+                            if (items == enemyModel.Cards[index])
+                            {
+
+                            }
+                            else
+                            {
+                                enemyModel.Cards.Remove(items);
+                            }
                         }
                     }
+                    enemyModel.RemoveCard(enemyModel.Cards[index]);
                     ChangeTurn();
                 }
                 else
                 {
                     enemyModel.Cards[index].Position = new Vector3(-5, 0, -5);
                     enemyModel.Cards[index].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                    deckModel.Cards.Add(enemyModel.Cards[index]);
-                    enemyModel.Cards.Remove(enemyModel.Cards[index]);
-                    enemyModel.HandCount--;
+                    deckModel.AddCard(enemyModel.Cards[index]);
+                    enemyModel.RemoveCard(enemyModel.Cards[index]);
                     ChangeTurn();
                 }
             }
@@ -106,16 +120,15 @@ public class ButtonIndex : MonoBehaviour
     {
         if (boardModel.CurrentTurn == "Player")
         {
-            playerModel.Cards.Add(boardModel.Cards[boardModel.Cards.Count - 1]);
-            playerModel.HandCount--;
-            boardModel.Cards.Remove(boardModel.Cards[boardModel.Cards.Count - 1]);
+            playerModel.AddCard(boardModel.Cards[boardModel.Cards.Count - 1]);
+
+            boardModel.RemoveCard(boardModel.Cards[boardModel.Cards.Count - 1]);
             ChangeTurn();
         }
         else
         {
-            enemyModel.Cards.Add(boardModel.Cards[boardModel.Cards.Count - 1]);
-            enemyModel.HandCount--;
-            boardModel.Cards.Remove(boardModel.Cards[boardModel.Cards.Count - 1]);
+            enemyModel.AddCard(boardModel.Cards[boardModel.Cards.Count - 1]);
+            boardModel.RemoveCard(boardModel.Cards[boardModel.Cards.Count - 1]);
             ChangeTurn();
         }
     }
