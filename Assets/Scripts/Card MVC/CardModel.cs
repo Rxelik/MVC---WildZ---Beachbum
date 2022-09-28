@@ -174,7 +174,7 @@ public class CardModel : ICardModel
 
     public bool IsSuper
     {
-        get { return _IsSuper = false; }
+        get { return _IsSuper; }
         set
         {
             // Only if the position changes
@@ -191,7 +191,7 @@ public class CardModel : ICardModel
     }
     public bool IsWild
     {
-        get { return _IsWild = false; }
+        get { return _IsWild; }
         set
         {
             // Only if the position changes

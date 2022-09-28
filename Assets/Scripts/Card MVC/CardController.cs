@@ -68,6 +68,9 @@ public class CardController : ICardController
 
         view.Name = model.Name; 
 
+        view.IsSuper = model.IsSuper;
+
+        view.IsWild = model.IsWild;
         
     }
 

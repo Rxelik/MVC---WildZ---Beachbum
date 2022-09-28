@@ -30,6 +30,9 @@ public interface ICardView
     string BelongsTo { set; }
     int Layer { set; }
     string Name { set; }
+
+    bool IsSuper { set; }
+    bool IsWild { set; }
 }
 
 // Implementation of the enemy view
@@ -51,11 +54,15 @@ public class CardView : MonoBehaviour, ICardView
     public String BelongsTo { set { _ = value; _inspectorBelongsTo = value;  } }
     public string Name { set => gameObject.name = value; }
     public int Layer { set { _sprite.sortingOrder = value; } }
+    public bool IsSuper { set { _IsSuper = value; } }
+    public bool IsWild { set { _IsWild = value; } }
 
-    [SerializeField] private Vector3 _inspectPos;
-    [SerializeField] public int _inspectNumber;
+    [SerializeField] Vector3 _inspectPos;
+    [SerializeField] int _inspectNumber;
     [SerializeField] private String _inspectorBelongsTo;
-    [SerializeField] public Color _InspectorColor;
+    [SerializeField] Color _InspectorColor;
+    [SerializeField] bool _IsSuper;
+    [SerializeField] bool _IsWild;
     public SpriteRenderer _sprite;
     public TextMeshPro gs;
 
