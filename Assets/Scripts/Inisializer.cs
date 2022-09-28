@@ -139,31 +139,202 @@ public class Inisializer : MonoBehaviour
         //_______________________________________________\\
 
         yield return new WaitForSeconds(0.5f);
+        #region Cards Maker
 
-        #region Card
+        int CardIndex;
+        int SuperCards = 2;
         List<CardModel> tempList = new List<CardModel>();
 
-        for (int i = 0; i < InsializeDeckSize; i++)
+        #region Red Cards
+        for (int i = 0; i < SuperCards; i++)
         {
-            colorRND = Random.Range(0, 4);
-            numRND = Random.Range(1, 9);
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
             _Cardmodel.Position = new Vector3(0, 0, 0);
-            _Cardmodel.Color = Colors[colorRND];
-            _Cardmodel.Number = numRND;
+            _Cardmodel.Color = Color.red;
+            _Cardmodel.Number = 0;
             _Cardmodel.Layer = 1;
-            _Cardmodel.Name = "Card " + _Cardmodel.Number;
+            _Cardmodel.Name = "Red Card Super";
+            _Cardmodel.IsSuper = true;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
             var Cardview = CardviewFactory.View;
-            
+
             // Create the controller
             var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
+
+        CardIndex = 1;
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 1; j < 3; j++)
+            {
+                var CardmodelFactory = new CardModelFactory();
+                var _Cardmodel = CardmodelFactory.Model;
+                // Set some initial state
+                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Color = Color.red;
+                _Cardmodel.Number = CardIndex;
+                _Cardmodel.Layer = 1;
+                _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                tempList.Add((CardModel)_Cardmodel);
+                // Create the view
+                var CardviewFactory = new CardViewFactory();
+                var Cardview = CardviewFactory.View;
+
+                // Create the controller
+                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+                var Cardcontroller = controllerFactory.Controller;
+            }
+            CardIndex++;
+        }
+        #endregion
+
+        #region Blue Cards
+        for (int i = 0; i < SuperCards; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 0;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Blue Card Super";
+            _Cardmodel.IsSuper = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+
+        CardIndex = 1;
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 1; j < 3; j++)
+            {
+                var CardmodelFactory = new CardModelFactory();
+                var _Cardmodel = CardmodelFactory.Model;
+                // Set some initial state
+                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Color = Color.blue;
+                _Cardmodel.Number = CardIndex;
+                _Cardmodel.Layer = 1;
+                _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                tempList.Add((CardModel)_Cardmodel);
+                // Create the view
+                var CardviewFactory = new CardViewFactory();
+                var Cardview = CardviewFactory.View;
+
+                // Create the controller
+                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+                var Cardcontroller = controllerFactory.Controller;
+            }
+            CardIndex++;
+        }
+        #endregion
+
+        #region Yellow Cards
+        for (int i = 0; i < SuperCards; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.yellow;
+            _Cardmodel.Number = 0;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Yellow Card Super";
+            _Cardmodel.IsSuper = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+
+        CardIndex = 1;
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 1; j < 3; j++)
+            {
+                var CardmodelFactory = new CardModelFactory();
+                var _Cardmodel = CardmodelFactory.Model;
+                // Set some initial state
+                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Color = Color.yellow;
+                _Cardmodel.Number = CardIndex;
+                _Cardmodel.Layer = 1;
+                _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                tempList.Add((CardModel)_Cardmodel);
+                // Create the view
+                var CardviewFactory = new CardViewFactory();
+                var Cardview = CardviewFactory.View;
+
+                // Create the controller
+                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+                var Cardcontroller = controllerFactory.Controller;
+            }
+            CardIndex++;
+        }
+        #endregion
+
+        #region Blue Cards
+        for (int i = 0; i < SuperCards; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 0;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Blue Card Super";
+            _Cardmodel.IsSuper = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        CardIndex = 1;
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 1; j < 3; j++)
+            {
+                var CardmodelFactory = new CardModelFactory();
+                var _Cardmodel = CardmodelFactory.Model;
+                // Set some initial state
+                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Color = Color.green;
+                _Cardmodel.Number = CardIndex;
+                _Cardmodel.Layer = 1;
+                _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                tempList.Add((CardModel)_Cardmodel);
+                // Create the view
+                var CardviewFactory = new CardViewFactory();
+                var Cardview = CardviewFactory.View;
+
+                // Create the controller
+                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+                var Cardcontroller = controllerFactory.Controller;
+            }
+            CardIndex++;
+        }
+        #endregion
 
         #endregion
 

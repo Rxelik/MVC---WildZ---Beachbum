@@ -8,6 +8,8 @@ public class CardNumberChangedEventArgs : EventArgs { }
 public class CardChangedBelongsEventArgs : EventArgs { }
 public class CardLayerChangeEventArgs : EventArgs { }
 public class CardNameChangeEventArgs : EventArgs { }
+public class CardIsSuperEventArgs : EventArgs { }
+public class CardIsWildEventArgs : EventArgs { }
 
 
 
@@ -21,6 +23,8 @@ public interface ICardModel
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
     event EventHandler<CardNameChangeEventArgs> NameChanged;
     event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
+    event EventHandler<CardIsSuperEventArgs > OnSuper;
+    event EventHandler<CardIsWildEventArgs> OnWild;
 
     // Position of the enemy
     Vector3 Position { get; set; }
@@ -28,8 +32,12 @@ public interface ICardModel
     int Number { get; set; }
     string BelongsTo { get; set; }
     int Layer { get; set; }
-
     string Name { get; set; }
+
+    bool IsSuper { get; set; }
+    bool IsWild { get; set; }
+    
+
 }
 
 // Implementation of the enemy model interface
@@ -42,6 +50,8 @@ public class CardModel : ICardModel
     [SerializeField] int _Number;
     [SerializeField] string _BelongsTo;
                      string _Name;
+    [SerializeField] bool _IsSuper;
+    [SerializeField] bool _IsWild;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
@@ -49,6 +59,8 @@ public class CardModel : ICardModel
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
     public event EventHandler<CardNameChangeEventArgs> NameChanged = (sender, e) => { };
+    public event EventHandler<CardIsSuperEventArgs> OnSuper = (sender, e) => { };
+    public event EventHandler<CardIsWildEventArgs> OnWild = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -160,5 +172,38 @@ public class CardModel : ICardModel
         }
     }
 
-    
+    public bool IsSuper
+    {
+        get { return _IsSuper = false; }
+        set
+        {
+            // Only if the position changes
+            if (_IsSuper != value)
+            {
+                // Set new position
+                _IsSuper = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardIsSuperEventArgs();
+                OnSuper(this, eventArgs);
+            }
+        }
+    }
+    public bool IsWild
+    {
+        get { return _IsWild = false; }
+        set
+        {
+            // Only if the position changes
+            if (_IsWild != value)
+            {
+                // Set new position
+                _IsWild = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardIsWildEventArgs();
+                OnWild(this, eventArgs);
+            }
+        }
+    }
 }
