@@ -139,6 +139,7 @@ public class Inisializer : MonoBehaviour
         DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
         DeckButton.boardModel = (BoardModel)_boardmodel;
         DeckButton.deckModel = (DeckModel)_Deckmodel;
+        GameManager.Instance.boardModel = (BoardModel)_boardmodel;
         #endregion
 
         //_______________________________________________\\
@@ -578,7 +579,7 @@ public class Inisializer : MonoBehaviour
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
             _Cardmodel.Position = new Vector3(0, 0, 0);
-            _Cardmodel.Color = Color.black;
+            _Cardmodel.Color = Color.white;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Wild +2 Card";

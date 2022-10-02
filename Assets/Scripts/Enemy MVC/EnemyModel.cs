@@ -142,4 +142,36 @@ public class EnemyModel : IEnemyModel
     {
         return Cards[Cards.Count - 1];
     }
+    public bool HasCounter()
+    {
+        bool hasBam = false;
+        bool hasNum = false;
+        foreach (var item in Cards)
+        {
+            if (item.IsBamboozle)
+            {
+                hasBam = true;
+                break;
+            }
+            //if (item.Number == 22 || item.Number == 44)
+            //{
+            //    hasNum = true;
+            //    break;
+            //}
+        }
+
+        if (hasBam == true)
+        {
+            return true;
+        }
+        else if (hasNum == true)
+        {
+            return true;
+
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

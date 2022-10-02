@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,13 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
+    public BoardModel boardModel;
     public Transform CardsInPlayPos;
     public int _index = 0;
+    public TextMeshProUGUI Turn;
+
+    private void Update()
+    {
+        Turn.text = boardModel.CurrentTurn;
+    }
 }
