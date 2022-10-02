@@ -341,8 +341,31 @@ public class Inisializer : MonoBehaviour
         }
         #endregion
 
+        #region Wild Super
+        for (int i = 0; i < 2; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.black;
+            _Cardmodel.Number = 99;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "SUPER DUPER WILD CARD";
+            _Cardmodel.IsSuper = true;
+            _Cardmodel.IsWild = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
         #endregion
 
+        #endregion
         //_______________________________________________\\
 
         yield return new WaitForSeconds(0.5f);

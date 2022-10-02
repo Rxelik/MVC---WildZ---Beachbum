@@ -22,5 +22,5 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public Transform CardsInPlayPos;
-
+    public int _index = 0;
 }
