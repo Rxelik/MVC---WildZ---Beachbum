@@ -149,9 +149,13 @@ public class Inisializer : MonoBehaviour
 
         int CardIndex;
         int SuperCards = 2;
+        int PlusTwo = 2;
+        int PlusFour = 1;
         List<CardModel> tempList = new List<CardModel>();
 
         #region Red Cards
+        
+        #region Super
         for (int i = 0; i < SuperCards; i++)
         {
             var CardmodelFactory = new CardModelFactory();
@@ -172,7 +176,53 @@ public class Inisializer : MonoBehaviour
             var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
+        #endregion
 
+        #region +2
+        for (int i = 0; i < PlusTwo; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.red;
+            _Cardmodel.Number = 22;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Red +2";
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region +4
+        for (int i = 0; i < PlusFour; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.red;
+            _Cardmodel.Number = 44;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Red +4";
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region Normal
         CardIndex = 1;
         for (int i = 0; i < 9; i++)
         {
@@ -199,7 +249,11 @@ public class Inisializer : MonoBehaviour
         }
         #endregion
 
+        #endregion
+
         #region Blue Cards
+
+        #region Super
         for (int i = 0; i < SuperCards; i++)
         {
             var CardmodelFactory = new CardModelFactory();
@@ -220,7 +274,53 @@ public class Inisializer : MonoBehaviour
             var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
+        #endregion
 
+        #region +2
+        for (int i = 0; i < PlusTwo; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 22;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Blue +2";
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region +4
+        for (int i = 0; i < PlusFour; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 44;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Blue +4";
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region Normal
         CardIndex = 1;
         for (int i = 0; i < 9; i++)
         {
@@ -247,7 +347,11 @@ public class Inisializer : MonoBehaviour
         }
         #endregion
 
+        #endregion
+
         #region Yellow Cards
+
+        #region Super
         for (int i = 0; i < SuperCards; i++)
         {
             var CardmodelFactory = new CardModelFactory();
@@ -268,7 +372,53 @@ public class Inisializer : MonoBehaviour
             var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
+        #endregion
 
+        #region +2
+        for (int i = 0; i < SuperCards; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.yellow;
+            _Cardmodel.Number = 22;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Yellow +2";
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region +4
+        for (int i = 0; i < SuperCards; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.yellow;
+            _Cardmodel.Number = 44;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Yellow +4";
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region Normal
         CardIndex = 1;
         for (int i = 0; i < 9; i++)
         {
@@ -295,7 +445,10 @@ public class Inisializer : MonoBehaviour
         }
         #endregion
 
+        #endregion
+
         #region Blue Cards
+        #region Super
         for (int i = 0; i < SuperCards; i++)
         {
             var CardmodelFactory = new CardModelFactory();
@@ -316,6 +469,56 @@ public class Inisializer : MonoBehaviour
             var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
+        #endregion
+
+        #region +2
+        for (int i = 0; i < SuperCards; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 22;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Blue +2";
+            _Cardmodel.IsSuper = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #region +4
+        for (int i = 0; i < PlusFour; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 44;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Blue +4";
+            _Cardmodel.IsSuper = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+
+        #region Normal
         CardIndex = 1;
         for (int i = 0; i < 9; i++)
         {
@@ -342,7 +545,11 @@ public class Inisializer : MonoBehaviour
         }
         #endregion
 
-        #region Wild Super
+        #endregion
+
+        #region Wilds
+
+        #region WildSuper
         for (int i = 0; i < 2; i++)
         {
             var CardmodelFactory = new CardModelFactory();
@@ -352,7 +559,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Color = Color.black;
             _Cardmodel.Number = 99;
             _Cardmodel.Layer = 1;
-            _Cardmodel.Name = "SUPER DUPER WILD CARD";
+            _Cardmodel.Name = "SUPER DUPER WILD SUPER CARD";
             _Cardmodel.IsSuper = true;
             _Cardmodel.IsWild = true;
             tempList.Add((CardModel)_Cardmodel);
@@ -365,6 +572,55 @@ public class Inisializer : MonoBehaviour
             var Cardcontroller = controllerFactory.Controller;
         }
         #endregion
+
+        #region Wild +4
+        for (int i = 0; i < PlusFour; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.black;
+            _Cardmodel.Number = 22;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Wild +2 Card";
+            _Cardmodel.IsWild = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
+        #endregion
+
+        #region Bamoozle
+        for (int i = 0; i < 2; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Color = Color.magenta;
+            _Cardmodel.Number = 0;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "BAMBELUBBUZELABZLE Card";
+            _Cardmodel.IsBamboozle = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
+
 
         #endregion
         //_______________________________________________\\

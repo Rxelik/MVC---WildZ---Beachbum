@@ -138,4 +138,8 @@ public class EnemyModel : IEnemyModel
         var eventArgs = new EnemyCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }
+    public CardModel TopCard()
+    {
+        return Cards[Cards.Count - 1];
+    }
 }

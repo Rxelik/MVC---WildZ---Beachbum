@@ -130,5 +130,9 @@ public class BoardModel : IBoardModel
         var eventArgs = new OnCardsInBoardChangeEventArgs();
         CardInBoardChanged(this, eventArgs);
     }
+    public CardModel TopCard()
+    {
+        return Cards[Cards.Count - 1];
+    }
 }
 

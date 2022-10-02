@@ -10,6 +10,7 @@ public class CardLayerChangeEventArgs : EventArgs { }
 public class CardNameChangeEventArgs : EventArgs { }
 public class CardIsSuperEventArgs : EventArgs { }
 public class CardIsWildEventArgs : EventArgs { }
+public class CardIsBamboozleEventArgs : EventArgs { }
 
 
 
@@ -25,6 +26,7 @@ public interface ICardModel
     event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
     event EventHandler<CardIsSuperEventArgs > OnSuper;
     event EventHandler<CardIsWildEventArgs> OnWild;
+    event EventHandler<CardIsBamboozleEventArgs> OnBamboozle;
 
     // Position of the enemy
     Vector3 Position { get; set; }
@@ -36,6 +38,7 @@ public interface ICardModel
 
     bool IsSuper { get; set; }
     bool IsWild { get; set; }
+    bool IsBamboozle { get; set; }
 
 }
 
@@ -51,6 +54,7 @@ public class CardModel : ICardModel
                      string _Name;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
+    [SerializeField] bool _IsBamboozle;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
@@ -60,6 +64,7 @@ public class CardModel : ICardModel
     public event EventHandler<CardNameChangeEventArgs> NameChanged = (sender, e) => { };
     public event EventHandler<CardIsSuperEventArgs> OnSuper = (sender, e) => { };
     public event EventHandler<CardIsWildEventArgs> OnWild = (sender, e) => { };
+    public event EventHandler<CardIsBamboozleEventArgs> OnBamboozle = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -205,5 +210,21 @@ public class CardModel : ICardModel
             }
         }
     }
+    public bool IsBamboozle
+    {
+        get { return _IsBamboozle; }
+        set
+        {
+            // Only if the position changes
+            if (_IsBamboozle != value)
+            {
+                // Set new position
+                _IsBamboozle = value;
 
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardIsBamboozleEventArgs();
+                OnBamboozle(this, eventArgs);
+            }
+        }
+    }
 }

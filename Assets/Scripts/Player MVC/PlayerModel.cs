@@ -140,4 +140,8 @@ public class PlayerModel : IPlayerModel
         var eventArgs = new PlayerCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }
+    public CardModel TopCard()
+    {
+        return Cards[Cards.Count - 1];
+    }
 }

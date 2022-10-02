@@ -81,5 +81,10 @@ public class DeckModel : IDeckModel
         var eventArgs = new OnCardsInDeckChangeEventArgs();
         CardInDeckChanged(this, eventArgs);
     }
+
+    public CardModel TopCard()
+    {
+        return Cards[Cards.Count - 1];
+    }
 }
 

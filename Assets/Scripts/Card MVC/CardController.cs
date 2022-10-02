@@ -55,7 +55,6 @@ public class CardController : ICardController
     // Sync the view's position with the model's position
     private void SyncData()
     {
-
         view.Position = model.Position;
 
         view.Color = model.Color;
@@ -71,7 +70,8 @@ public class CardController : ICardController
         view.IsSuper = model.IsSuper;
 
         view.IsWild = model.IsWild;
-        
+
+        view.IsBamboozle = model.IsBamboozle;
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

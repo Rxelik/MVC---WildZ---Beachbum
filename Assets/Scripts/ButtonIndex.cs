@@ -21,60 +21,75 @@ public class ButtonIndex : MonoBehaviour
         {
             CardModel ChosenCard = playerModel.Cards[index];
 
-
-            #region Wild
-            if (ChosenCard.IsWild)
+            if (deckModel.TopCard().Number != 22 && deckModel.TopCard().Number != 44)
             {
-                foreach (var item in PlayerColorChooser)
+                #region Wild
+                if (ChosenCard.IsWild)
                 {
-                    item.SetActive(true);
-                }
-            }
-            #endregion
-
-            if (ChosenCard.Color == deckModel.Cards[deckModel.Cards.Count - 1].Color
-             || ChosenCard.Number == deckModel.Cards[deckModel.Cards.Count - 1].Number)
-            {
-
-                #region Super
-                if (ChosenCard.IsSuper)
-                {
-
-
-                    for (int i = playerModel.Cards.Count - 1; i >= 0; i--)
+                    foreach (var item in PlayerColorChooser)
                     {
-                        if (playerModel.Cards[i].Color == ChosenCard.Color)
+                        item.SetActive(true);
+                    }
+                }
+                #endregion
+
+                if (ChosenCard.Color == deckModel.TopCard().Color
+                 || ChosenCard.Number == deckModel.TopCard().Number 
+                 || deckModel.TopCard().IsBamboozle)
+                {
+
+                    #region Super
+                    if (ChosenCard.IsSuper)
+                    {
+
+
+                        for (int i = playerModel.Cards.Count - 1; i >= 0; i--)
                         {
-                            if (playerModel.Cards[i] == ChosenCard) { }
-                            else
+                            if (playerModel.Cards[i].Color == ChosenCard.Color)
                             {
-                                playerModel.Cards[i].Position = new Vector3(-5, 0, -5);
-                                playerModel.Cards[i].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                                deckModel.AddCard(playerModel.Cards[i]);
-                                playerModel.RemoveCard(playerModel.Cards[i]);
+                                if (playerModel.Cards[i] == ChosenCard) { }
+                                else
+                                {
+                                    playerModel.Cards[i].Position = new Vector3(-5, 0, -5);
+                                    playerModel.Cards[i].Layer = deckModel.TopCard().Layer + 2;
+                                    deckModel.AddCard(playerModel.Cards[i]);
+                                    playerModel.RemoveCard(playerModel.Cards[i]);
+                                }
                             }
                         }
+                        ChosenCard.Position = new Vector3(-5, 0, -5);
+                        ChosenCard.Layer = deckModel.TopCard().Layer + 2;
+                        deckModel.AddCard(ChosenCard);
+                        playerModel.RemoveCard(ChosenCard);
                     }
-                    ChosenCard.Position = new Vector3(-5, 0, -5);
-                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                    deckModel.AddCard(ChosenCard);
-                    playerModel.RemoveCard(ChosenCard);
-                }
-                #endregion
+                    #endregion
 
-                #region Normal
-                else
+                    #region Normal
+                    else
+                    {
+                        ChosenCard.Position = new Vector3(-5, 0, -5);
+                        ChosenCard.Layer = deckModel.TopCard().Layer + 2;
+                        deckModel.AddCard(ChosenCard);
+                        playerModel.RemoveCard(ChosenCard);
+                    }
+                    #endregion
+
+                    ChangeTurn();
+                }
+            }
+            else
+            {
+                if (ChosenCard.IsBamboozle)
                 {
                     ChosenCard.Position = new Vector3(-5, 0, -5);
-                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    ChosenCard.Layer = deckModel.TopCard().Layer + 2;
                     deckModel.AddCard(ChosenCard);
                     playerModel.RemoveCard(ChosenCard);
                 }
-                #endregion
-
-                ChangeTurn();
             }
         }
+
+
 
     }
 
@@ -85,59 +100,73 @@ public class ButtonIndex : MonoBehaviour
         if (boardModel.CurrentTurn == "Enemy")
         {
             CardModel ChosenCard = enemyModel.Cards[index];
-
-            #region Wild
-            if (ChosenCard.IsWild)
+            if (deckModel.TopCard().Number != 22 && deckModel.TopCard().Number != 44)
             {
-                foreach (var item in EnemeyColorChooser)
+                #region Wild
+                if (ChosenCard.IsWild)
                 {
-                    item.SetActive(true);
-                }
-            }
-            #endregion
-
-            if (ChosenCard.Color == deckModel.Cards[deckModel.Cards.Count - 1].Color
-             || ChosenCard.Number == deckModel.Cards[deckModel.Cards.Count - 1].Number)
-            {
-                #region Super
-                if (ChosenCard.IsSuper)
-                {
-
-
-                    for (int i = enemyModel.Cards.Count - 1; i >= 0; i--)
+                    foreach (var item in EnemeyColorChooser)
                     {
-                        if (enemyModel.Cards[i].Color == ChosenCard.Color)
+                        item.SetActive(true);
+                    }
+                }
+                #endregion
+
+                if (ChosenCard.Color == deckModel.TopCard().Color
+                 || ChosenCard.Number == deckModel.TopCard().Number
+                 || deckModel.TopCard().IsBamboozle)
+                {
+                    #region Super
+                    if (ChosenCard.IsSuper)
+                    {
+
+
+                        for (int i = enemyModel.Cards.Count - 1; i >= 0; i--)
                         {
-                            if (enemyModel.Cards[i] == ChosenCard) { }
-                            else
+                            if (enemyModel.Cards[i].Color == ChosenCard.Color)
                             {
-                                enemyModel.Cards[i].Position = new Vector3(-5, 0, -5);
-                                enemyModel.Cards[i].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                                deckModel.AddCard(enemyModel.Cards[i]);
-                                enemyModel.RemoveCard(enemyModel.Cards[i]);
+                                if (enemyModel.Cards[i] == ChosenCard) { }
+                                else
+                                {
+                                    enemyModel.Cards[i].Position = new Vector3(-5, 0, -5);
+                                    enemyModel.Cards[i].Layer = deckModel.TopCard().Layer + 2;
+                                    deckModel.AddCard(enemyModel.Cards[i]);
+                                    enemyModel.RemoveCard(enemyModel.Cards[i]);
+                                }
                             }
                         }
+                        ChosenCard.Position = new Vector3(-5, 0, -5);
+                        ChosenCard.Layer = deckModel.TopCard().Layer + 2;
+                        deckModel.AddCard(ChosenCard);
+                        enemyModel.RemoveCard(ChosenCard);
                     }
-                    ChosenCard.Position = new Vector3(-5, 0, -5);
-                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                    deckModel.AddCard(ChosenCard);
-                    enemyModel.RemoveCard(ChosenCard);
-                }
-                #endregion
+                    #endregion
 
-                #region Normal
-                else
+                    #region Normal
+                    else
+                    {
+                        ChosenCard.Position = new Vector3(-5, 0, -5);
+                        ChosenCard.Layer = deckModel.TopCard().Layer + 2;
+                        deckModel.AddCard(ChosenCard);
+                        enemyModel.RemoveCard(ChosenCard);
+                    }
+                    #endregion
+
+                    ChangeTurn();
+                }
+            }
+            else
+            {
+                if (ChosenCard.IsBamboozle)
                 {
                     ChosenCard.Position = new Vector3(-5, 0, -5);
-                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    ChosenCard.Layer = deckModel.TopCard().Layer + 2;
                     deckModel.AddCard(ChosenCard);
-                    enemyModel.RemoveCard(ChosenCard);
+                    playerModel.RemoveCard(ChosenCard);
                 }
-                #endregion
-
-                ChangeTurn();
             }
         }
+
 
     }
 
@@ -177,7 +206,7 @@ public class ButtonIndex : MonoBehaviour
         else
         {
             ChosenCard.Position = new Vector3(-5, 0, -5);
-            ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+            ChosenCard.Layer = deckModel.TopCard().Layer + 2;
             deckModel.AddCard(ChosenCard);
             playerModel.RemoveCard(ChosenCard);
         }
@@ -196,14 +225,14 @@ public class ButtonIndex : MonoBehaviour
                 else
                 {
                     playerModel.Cards[i].Position = new Vector3(-5, 0, -5);
-                    playerModel.Cards[i].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    playerModel.Cards[i].Layer = deckModel.TopCard().Layer + 2;
                     deckModel.AddCard(playerModel.Cards[i]);
                     playerModel.RemoveCard(playerModel.Cards[i]);
                 }
             }
         }
         ChosenCard.Position = new Vector3(-5, 0, -5);
-        ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+        ChosenCard.Layer = deckModel.TopCard().Layer + 2;
         deckModel.AddCard(ChosenCard);
         playerModel.RemoveCard(ChosenCard);
     }
@@ -220,32 +249,94 @@ public class ButtonIndex : MonoBehaviour
                 else
                 {
                     enemyModel.Cards[i].Position = new Vector3(-5, 0, -5);
-                    enemyModel.Cards[i].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    enemyModel.Cards[i].Layer = deckModel.TopCard().Layer + 2;
                     deckModel.AddCard(enemyModel.Cards[i]);
                     enemyModel.RemoveCard(enemyModel.Cards[i]);
                 }
             }
         }
         ChosenCard.Position = new Vector3(-5, 0, -5);
-        ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+        ChosenCard.Layer = deckModel.TopCard().Layer + 2;
         deckModel.AddCard(ChosenCard);
         enemyModel.RemoveCard(ChosenCard);
     }
-    public void TakeFromDeck()
+    public void TakeFromBoard()
     {
+        #region Player
         if (boardModel.CurrentTurn == "Player")
         {
-            playerModel.AddCard(boardModel.Cards[boardModel.Cards.Count - 1]);
+            if (deckModel.TopCard().Number == 22)
+            {
 
-            boardModel.RemoveCard(boardModel.Cards[boardModel.Cards.Count - 1]);
-            ChangeTurn();
+                for (int i = 0; i < 1; i++)
+                {
+                    playerModel.AddCard(boardModel.TopCard());
+
+                    boardModel.RemoveCard(boardModel.TopCard());
+                }
+                deckModel.TopCard().Number = 0;
+
+            }
+
+            if (deckModel.TopCard().Number == 44)
+            {
+
+                for (int i = 0; i < 3; i++)
+                {
+                    playerModel.AddCard(boardModel.TopCard());
+
+                    boardModel.RemoveCard(boardModel.TopCard());
+                }
+                deckModel.TopCard().Number = 0;
+
+            }
+            else
+            {
+                playerModel.AddCard(boardModel.TopCard());
+
+                boardModel.RemoveCard(boardModel.TopCard());
+            }
+
         }
-        else
+        #endregion
+
+        #region Enemey
+        if (boardModel.CurrentTurn == "Enemy")
         {
-            enemyModel.AddCard(boardModel.Cards[boardModel.Cards.Count - 1]);
-            boardModel.RemoveCard(boardModel.Cards[boardModel.Cards.Count - 1]);
-            ChangeTurn();
+            if (deckModel.TopCard().Number == 22)
+            {
+
+                for (int i = 0; i < 1; i++)
+                {
+                    enemyModel.AddCard(boardModel.TopCard());
+
+                    boardModel.RemoveCard(boardModel.TopCard());
+                }
+                deckModel.TopCard().Number = 0;
+
+            }
+
+            if (deckModel.TopCard().Number == 44)
+            {
+
+                for (int i = 0; i < 3; i++)
+                {
+                    enemyModel.AddCard(boardModel.TopCard());
+
+                    boardModel.RemoveCard(boardModel.TopCard());
+                }
+                deckModel.TopCard().Number = 0;
+
+            }
+            else
+            {
+                enemyModel.AddCard(boardModel.TopCard());
+
+                boardModel.RemoveCard(boardModel.TopCard());
+            }
         }
+        #endregion
+        ChangeTurn();
     }
 
     public void ChangeTurn()

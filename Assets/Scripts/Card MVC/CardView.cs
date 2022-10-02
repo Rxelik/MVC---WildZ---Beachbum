@@ -33,6 +33,7 @@ public interface ICardView
 
     bool IsSuper { set; }
     bool IsWild { set; }
+    bool IsBamboozle { set; }
 }
 
 // Implementation of the enemy view
@@ -56,6 +57,7 @@ public class CardView : MonoBehaviour, ICardView
     public int Layer { set { _sprite.sortingOrder = value; } }
     public bool IsSuper { set { _IsSuper = value; } }
     public bool IsWild { set { _IsWild = value; } }
+    public bool IsBamboozle { set { _IsBamboozle = value; } }
 
     [SerializeField] Vector3 _inspectPos;
     [SerializeField] int _inspectNumber;
@@ -63,6 +65,7 @@ public class CardView : MonoBehaviour, ICardView
     [SerializeField] Color _InspectorColor;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
+    [SerializeField] bool _IsBamboozle;
     public SpriteRenderer _sprite;
     public TextMeshPro gs;
 
