@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using Random = System.Random;
 using System.Linq;
+using Color = UnityEngine.Color;
 
 public class Inisializer : MonoBehaviour
 {

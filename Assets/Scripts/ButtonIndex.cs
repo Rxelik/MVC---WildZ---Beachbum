@@ -258,6 +258,15 @@ public class ButtonIndex : MonoBehaviour
         {
             boardModel.CurrentTurn = "Player";
         }
+
+        foreach (var item in PlayerColorChooser)
+        {
+            item.gameObject.SetActive(false);
+        }
+        foreach (var item in EnemeyColorChooser)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
 
