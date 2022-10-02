@@ -16,49 +16,41 @@ public class ButtonIndex : MonoBehaviour
     {
         if (boardModel.CurrentTurn == "Player")
         {
+            CardModel ChosenCard = playerModel.Cards[index];
 
-            if (playerModel.Cards[index].Color == deckModel.Cards[deckModel.Cards.Count - 1].Color
-             || playerModel.Cards[index].Number == deckModel.Cards[deckModel.Cards.Count - 1].Number)
+            if (ChosenCard.Color == deckModel.Cards[deckModel.Cards.Count - 1].Color
+             || ChosenCard.Number == deckModel.Cards[deckModel.Cards.Count - 1].Number)
             {
-
-                if (playerModel.Cards[index].IsSuper)
+                if (ChosenCard.IsSuper)
                 {
-                    Color CardColor = playerModel.Cards[index].Color;
-                    foreach (var item in playerModel.Cards)
-                    {
-                        if (item.Color == CardColor)
-                        {
-                            item.Position = new Vector3(-5, 0, -5);
-                            item.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                            deckModel.AddCard(item);
-                        }
-                    }
-                    foreach (var items in playerModel.Cards.Reverse<CardModel>())
-                    {
 
-                        if (deckModel.Cards.Contains(items))
+                    for (int i = playerModel.Cards.Count - 1; i >= 0; i--)
+                    {
+                        if (playerModel.Cards[i].Color == ChosenCard.Color)
                         {
-                            if (items == playerModel.Cards[index])
-                            {
-
-                            }
+                            if (playerModel.Cards[i] == ChosenCard) { }
                             else
                             {
-                                playerModel.Cards.Remove(items);
+                                playerModel.Cards[i].Position = new Vector3(-5, 0, -5);
+                                playerModel.Cards[i].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                                deckModel.AddCard(playerModel.Cards[i]);
+                                playerModel.RemoveCard(playerModel.Cards[i]);
                             }
                         }
                     }
-                    playerModel.RemoveCard(playerModel.Cards[index]);
-                    ChangeTurn();
+                    ChosenCard.Position = new Vector3(-5, 0, -5);
+                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    deckModel.AddCard(ChosenCard);
+                    playerModel.RemoveCard(ChosenCard);
                 }
                 else
                 {
-                    playerModel.Cards[index].Position = new Vector3(-5, 0, -5);
-                    playerModel.Cards[index].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                    deckModel.AddCard(playerModel.Cards[index]);
-                    playerModel.RemoveCard(playerModel.Cards[index]);
-                    ChangeTurn();
+                    ChosenCard.Position = new Vector3(-5, 0, -5);
+                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    deckModel.AddCard(ChosenCard);
+                    playerModel.RemoveCard(ChosenCard);
                 }
+                    ChangeTurn();
             }
         }
 
@@ -68,49 +60,41 @@ public class ButtonIndex : MonoBehaviour
     {
         if (boardModel.CurrentTurn == "Enemy")
         {
+            CardModel ChosenCard = enemyModel.Cards[index];
 
-            if (enemyModel.Cards[index].Color == deckModel.Cards[deckModel.Cards.Count - 1].Color
-             || enemyModel.Cards[index].Number == deckModel.Cards[deckModel.Cards.Count - 1].Number)
+            if (ChosenCard.Color == deckModel.Cards[deckModel.Cards.Count - 1].Color
+             || ChosenCard.Number == deckModel.Cards[deckModel.Cards.Count - 1].Number)
             {
-
-                if (enemyModel.Cards[index].IsSuper)
+                if (ChosenCard.IsSuper)
                 {
-                    Color CardColor = enemyModel.Cards[index].Color;
-                    foreach (var item in enemyModel.Cards)
-                    {
-                        if (item.Color == CardColor)
-                        {
-                            item.Position = new Vector3(-5, 0, -5);
-                            item.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                            deckModel.AddCard(item);
-                        }
-                    }
-                    foreach (var items in enemyModel.Cards.Reverse<CardModel>())
-                    {
 
-                        if (deckModel.Cards.Contains(items))
+                    for (int i = enemyModel.Cards.Count - 1; i >= 0; i--)
+                    {
+                        if (enemyModel.Cards[i].Color == ChosenCard.Color)
                         {
-                            if (items == enemyModel.Cards[index])
-                            {
-
-                            }
+                            if (enemyModel.Cards[i] == ChosenCard) { }
                             else
                             {
-                                enemyModel.Cards.Remove(items);
+                                enemyModel.Cards[i].Position = new Vector3(-5, 0, -5);
+                                enemyModel.Cards[i].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                                deckModel.AddCard(enemyModel.Cards[i]);
+                                enemyModel.RemoveCard(enemyModel.Cards[i]);
                             }
                         }
                     }
-                    enemyModel.RemoveCard(enemyModel.Cards[index]);
-                    ChangeTurn();
+                    ChosenCard.Position = new Vector3(-5, 0, -5);
+                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    deckModel.AddCard(ChosenCard);
+                    enemyModel.RemoveCard(ChosenCard);
                 }
                 else
                 {
-                    enemyModel.Cards[index].Position = new Vector3(-5, 0, -5);
-                    enemyModel.Cards[index].Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
-                    deckModel.AddCard(enemyModel.Cards[index]);
-                    enemyModel.RemoveCard(enemyModel.Cards[index]);
-                    ChangeTurn();
+                    ChosenCard.Position = new Vector3(-5, 0, -5);
+                    ChosenCard.Layer = deckModel.Cards[deckModel.Cards.Count - 1].Layer + 2;
+                    deckModel.AddCard(ChosenCard);
+                    enemyModel.RemoveCard(ChosenCard);
                 }
+                ChangeTurn();
             }
         }
 
