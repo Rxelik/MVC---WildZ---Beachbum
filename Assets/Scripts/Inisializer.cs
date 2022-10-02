@@ -482,7 +482,6 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Blue +2";
-            _Cardmodel.IsSuper = true;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -505,7 +504,6 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Blue +4";
-            _Cardmodel.IsSuper = true;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -574,7 +572,7 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         #region Wild +4
-        for (int i = 0; i < PlusFour; i++)
+        for (int i = 0; i < 4; i++)
         {
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
