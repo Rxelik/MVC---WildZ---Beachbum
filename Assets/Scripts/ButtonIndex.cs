@@ -81,6 +81,7 @@ public class ButtonIndex : MonoBehaviour
                             TakeFromBoard();
                             ChangeTurn();
                             print("Inside 22 or 44");
+                            deckModel.TopCard().Number = 99;
                         }
                     }
                     #endregion
@@ -239,7 +240,7 @@ public class ButtonIndex : MonoBehaviour
                     boardModel.RemoveCard(boardModel.TopCard());
                     print("Took 2 Card For Enemy");
                     ChangeTurn();
-                deckModel.TopCard().Number = 0;
+                    deckModel.TopCard().Number = 0;
                 }
 
             }
@@ -262,8 +263,9 @@ public class ButtonIndex : MonoBehaviour
             deckModel.AddCard(ChosenCard);
             playerModel.RemoveCard(ChosenCard);
             ChangeTurn();
+            deckModel.TopCard().Number = 0;
         }
-
+        deckModel.TopCard().Number = 0;
     }
 
     public void WildSuper()
@@ -289,7 +291,7 @@ public class ButtonIndex : MonoBehaviour
         deckModel.AddCard(ChosenCard);
         playerModel.RemoveCard(ChosenCard);
         ChangeTurn();
-
+        deckModel.TopCard().Number = 0;
     }
 
     public void WildEnemySuper()
@@ -307,6 +309,7 @@ public class ButtonIndex : MonoBehaviour
                     enemyModel.Cards[i].Layer = deckModel.TopCard().Layer + 2;
                     deckModel.AddCard(enemyModel.Cards[i]);
                     enemyModel.RemoveCard(enemyModel.Cards[i]);
+                    deckModel.TopCard().Number = 0;
                 }
             }
         }
@@ -315,7 +318,6 @@ public class ButtonIndex : MonoBehaviour
         deckModel.AddCard(ChosenCard);
         enemyModel.RemoveCard(ChosenCard);
         ChangeTurn();
-
     }
     public void TakeFromBoard()
     {
@@ -331,8 +333,8 @@ public class ButtonIndex : MonoBehaviour
                     playerModel.AddCard(boardModel.TopCard());
                     boardModel.RemoveCard(boardModel.TopCard());
                     print("Took 2 Card For player");
+                    deckModel.TopCard().Number = 0;
                 }
-                deckModel.TopCard().Number = 0;
                 ChangeTurn();
             }
 
@@ -345,8 +347,8 @@ public class ButtonIndex : MonoBehaviour
                     boardModel.RemoveCard(boardModel.TopCard());
                     print("Took 4 Card For player");
 
+                    deckModel.TopCard().Number = 0;
                 }
-                deckModel.TopCard().Number = 0;
                 ChangeTurn();
 
             }
@@ -371,8 +373,8 @@ public class ButtonIndex : MonoBehaviour
                     enemyModel.AddCard(boardModel.TopCard());
                     boardModel.RemoveCard(boardModel.TopCard());
                     print("Took 2 Card For enemy");
+                    deckModel.TopCard().Number = 0;
                 }
-                deckModel.TopCard().Number = 0;
                 ChangeTurn();
             }
 
@@ -385,8 +387,8 @@ public class ButtonIndex : MonoBehaviour
                     boardModel.RemoveCard(boardModel.TopCard());
                     print("Took 4 Card For enemy");
 
+                    deckModel.TopCard().Number = 0;
                 }
-                deckModel.TopCard().Number = 0;
                 ChangeTurn();
 
             }
