@@ -134,5 +134,10 @@ public class BoardModel : IBoardModel
     {
         return Cards[Cards.Count - 1];
     }
+
+    public void ChangeTurn(string Turn)
+    {
+        CurrentTurn = Turn;
+    }
 }
 

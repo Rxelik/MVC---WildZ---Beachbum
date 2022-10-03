@@ -14,6 +14,7 @@ public class ButtonIndex : MonoBehaviour
     public DeckModel deckModel;
     public List<GameObject> PlayerColorChooser;
     public List<GameObject> EnemeyColorChooser;
+    bool taketwo = false;
     public void ChoosePlayerCard(int index)
     {
         if (boardModel.CurrentTurn == "Player")
@@ -34,10 +35,10 @@ public class ButtonIndex : MonoBehaviour
                 #endregion
 
                 if (ChosenCard.Color == deckModel.TopCard().Color
-                     || ChosenCard.Number == deckModel.TopCard().Number
-                     || deckModel.TopCard().IsBamboozle)
+                 || ChosenCard.Number == deckModel.TopCard().Number
+                 || deckModel.TopCard().IsBamboozle)
                 {
-
+                    print("In Normal");
                     #region Super
                     if (ChosenCard.IsSuper)
                     {
@@ -53,6 +54,9 @@ public class ButtonIndex : MonoBehaviour
                                     deckModel.AddCard(playerModel.Cards[i]);
                                     playerModel.RemoveCard(playerModel.Cards[i]);
                                 }
+                                if (!ChosenCard.IsWild) { }
+                                else
+                                    ChangeTurn();
                             }
                         }
                         ChosenCard.Position = new Vector3(-5, 0, -5);
@@ -72,7 +76,7 @@ public class ButtonIndex : MonoBehaviour
                         deckModel.AddCard(ChosenCard);
                         playerModel.RemoveCard(ChosenCard);
                         ChangeTurn();
-                        if (ChosenCard.Number == 22 | ChosenCard.Number == 44)
+                        if (ChosenCard.Number == 22 | ChosenCard.Number == 44 && !ChosenCard.IsWild)
                         {
                             TakeFromBoard();
                             ChangeTurn();
@@ -107,6 +111,7 @@ public class ButtonIndex : MonoBehaviour
         {
             GameManager.Instance._index = index;
             CardModel ChosenCard = enemyModel.Cards[index];
+
             if (deckModel.TopCard().Number != 22 && deckModel.TopCard().Number != 44)
             {
                 #region Wild
@@ -123,11 +128,10 @@ public class ButtonIndex : MonoBehaviour
                  || ChosenCard.Number == deckModel.TopCard().Number
                  || deckModel.TopCard().IsBamboozle)
                 {
+                    print("In Normal");
                     #region Super
                     if (ChosenCard.IsSuper)
                     {
-
-
                         for (int i = enemyModel.Cards.Count - 1; i >= 0; i--)
                         {
                             if (enemyModel.Cards[i].Color == ChosenCard.Color)
@@ -140,14 +144,19 @@ public class ButtonIndex : MonoBehaviour
                                     deckModel.AddCard(enemyModel.Cards[i]);
                                     enemyModel.RemoveCard(enemyModel.Cards[i]);
                                 }
+                                if (!ChosenCard.IsWild) { }
+                                else
+                                    ChangeTurn();
                             }
                         }
                         ChosenCard.Position = new Vector3(-5, 0, -5);
                         ChosenCard.Layer = deckModel.TopCard().Layer + 2;
                         deckModel.AddCard(ChosenCard);
                         enemyModel.RemoveCard(ChosenCard);
+                        ChangeTurn();
                     }
                     #endregion
+
 
                     #region Normal
                     else
@@ -157,9 +166,11 @@ public class ButtonIndex : MonoBehaviour
                         deckModel.AddCard(ChosenCard);
                         enemyModel.RemoveCard(ChosenCard);
                         ChangeTurn();
-                        if (ChosenCard.Number == 22 | ChosenCard.Number == 44)
+                        if (ChosenCard.Number == 22 | ChosenCard.Number == 44 && !ChosenCard.IsWild)
                         {
                             TakeFromBoard();
+                            ChangeTurn();
+                            print("Inside 22 or 44");
                         }
                     }
                     #endregion
@@ -174,11 +185,7 @@ public class ButtonIndex : MonoBehaviour
                     ChosenCard.Position = new Vector3(-5, 0, -5);
                     ChosenCard.Layer = deckModel.TopCard().Layer + 2;
                     deckModel.AddCard(ChosenCard);
-                    playerModel.RemoveCard(ChosenCard);
-                }
-                else
-                {
-                    TakeFromBoard();
+                    enemyModel.RemoveCard(ChosenCard);
                 }
             }
         }
@@ -188,7 +195,6 @@ public class ButtonIndex : MonoBehaviour
 
     public void ChangeCardColor(string color)
     {
-        //CardModel ChosenCard = playerModel.Cards[GameManager.Instance._index];
         CardModel ChosenCard;
         if (boardModel.CurrentTurn == "Enemy")
         {
@@ -208,7 +214,37 @@ public class ButtonIndex : MonoBehaviour
         if (color == "Blue")
             ChosenCard.Color = Color.blue;
 
-        if (ChosenCard.IsWild)
+        if (ChosenCard.Number == 22 || ChosenCard.Number == 44)
+        {
+            ChangeTurn();
+            if (boardModel.CurrentTurn == "Player")
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    playerModel.AddCard(boardModel.TopCard());
+
+                    boardModel.RemoveCard(boardModel.TopCard());
+                    print("Took 2 Card For player");
+                    ChangeTurn();
+                    deckModel.TopCard().Number = 0;
+
+                }
+                deckModel.TopCard().Number = 0;
+            }
+            else
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    enemyModel.AddCard(boardModel.TopCard());
+                    boardModel.RemoveCard(boardModel.TopCard());
+                    print("Took 2 Card For Enemy");
+                    ChangeTurn();
+                deckModel.TopCard().Number = 0;
+                }
+
+            }
+        }
+        if (ChosenCard.IsSuper)
         {
             if (boardModel.CurrentTurn == "Player")
             {
@@ -225,8 +261,9 @@ public class ButtonIndex : MonoBehaviour
             ChosenCard.Layer = deckModel.TopCard().Layer + 2;
             deckModel.AddCard(ChosenCard);
             playerModel.RemoveCard(ChosenCard);
+            ChangeTurn();
         }
-        ChangeTurn();
+
     }
 
     public void WildSuper()
@@ -251,19 +288,6 @@ public class ButtonIndex : MonoBehaviour
         ChosenCard.Layer = deckModel.TopCard().Layer + 2;
         deckModel.AddCard(ChosenCard);
         playerModel.RemoveCard(ChosenCard);
-        if (deckModel.TopCard().Number == 22 || deckModel.TopCard().Number == 44)
-        {
-            if (enemyModel.HasCounter())
-            {
-
-            }
-            else
-            {
-
-                TakeFromBoard();
-            }
-
-        }
         ChangeTurn();
 
     }
@@ -276,10 +300,7 @@ public class ButtonIndex : MonoBehaviour
         {
             if (enemyModel.Cards[i].Color == ChosenCard.Color)
             {
-                if (enemyModel.Cards[i] == ChosenCard)
-                {
-
-                }
+                if (enemyModel.Cards[i] == ChosenCard) { }
                 else
                 {
                     enemyModel.Cards[i].Position = new Vector3(-5, 0, -5);
@@ -293,60 +314,49 @@ public class ButtonIndex : MonoBehaviour
         ChosenCard.Layer = deckModel.TopCard().Layer + 2;
         deckModel.AddCard(ChosenCard);
         enemyModel.RemoveCard(ChosenCard);
-        if (deckModel.TopCard().Number == 22 || deckModel.TopCard().Number == 44)
-        {
-            if (enemyModel.HasCounter())
-            {
-
-            }
-            else
-            {
-
-                TakeFromBoard();
-            }
-
-        }
         ChangeTurn();
 
     }
     public void TakeFromBoard()
     {
+
         #region Player
         if (boardModel.CurrentTurn == "Player")
         {
             if (deckModel.TopCard().Number == 22)
             {
 
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     playerModel.AddCard(boardModel.TopCard());
-
                     boardModel.RemoveCard(boardModel.TopCard());
+                    print("Took 2 Card For player");
                 }
                 deckModel.TopCard().Number = 0;
-
+                ChangeTurn();
             }
 
             if (deckModel.TopCard().Number == 44)
             {
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     playerModel.AddCard(boardModel.TopCard());
-
                     boardModel.RemoveCard(boardModel.TopCard());
+                    print("Took 4 Card For player");
+
                 }
                 deckModel.TopCard().Number = 0;
+                ChangeTurn();
 
             }
             else
             {
                 playerModel.AddCard(boardModel.TopCard());
-
                 boardModel.RemoveCard(boardModel.TopCard());
-
+                print("Took 1 Card For player");
+                deckModel.TopCard().Number = 0;
             }
-            ChangeTurn();
         }
         #endregion
 
@@ -356,49 +366,51 @@ public class ButtonIndex : MonoBehaviour
             if (deckModel.TopCard().Number == 22)
             {
 
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     enemyModel.AddCard(boardModel.TopCard());
-
                     boardModel.RemoveCard(boardModel.TopCard());
+                    print("Took 2 Card For enemy");
                 }
                 deckModel.TopCard().Number = 0;
-
+                ChangeTurn();
             }
 
             if (deckModel.TopCard().Number == 44)
             {
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     enemyModel.AddCard(boardModel.TopCard());
-
                     boardModel.RemoveCard(boardModel.TopCard());
+                    print("Took 4 Card For enemy");
+
                 }
                 deckModel.TopCard().Number = 0;
+                ChangeTurn();
 
             }
             else
             {
                 enemyModel.AddCard(boardModel.TopCard());
-
                 boardModel.RemoveCard(boardModel.TopCard());
-
+                print("Took 1 Card For enemy");
+                deckModel.TopCard().Number = 0;
             }
-            ChangeTurn();
         }
         #endregion
+        ChangeTurn();
     }
 
     public void ChangeTurn()
     {
         if (boardModel.CurrentTurn == "Player")
         {
-            boardModel.CurrentTurn = "Enemy";
+            boardModel.ChangeTurn("Enemy");
         }
         else
         {
-            boardModel.CurrentTurn = "Player";
+            boardModel.ChangeTurn("Player");
         }
 
         foreach (var item in PlayerColorChooser)
@@ -409,6 +421,7 @@ public class ButtonIndex : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
+        taketwo = false;
     }
 
 
