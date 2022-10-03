@@ -217,9 +217,9 @@ public class ButtonIndex : MonoBehaviour
 
         if (ChosenCard.Number == 22 || ChosenCard.Number == 44)
         {
-            ChangeTurn();
-            if (boardModel.CurrentTurn == "Player")
+            if (boardModel.CurrentTurn == "Player" && !enemyModel.HasCounter())
             {
+                ChangeTurn();
                 for (int i = 0; i < 2; i++)
                 {
                     playerModel.AddCard(boardModel.TopCard());
@@ -232,8 +232,9 @@ public class ButtonIndex : MonoBehaviour
                 }
                 deckModel.TopCard().Number = 0;
             }
-            else
+            else if (boardModel.CurrentTurn == "Enemey" && !playerModel.HasCounter())
             {
+                ChangeTurn();
                 for (int i = 0; i < 2; i++)
                 {
                     enemyModel.AddCard(boardModel.TopCard());
@@ -265,7 +266,7 @@ public class ButtonIndex : MonoBehaviour
             ChangeTurn();
             deckModel.TopCard().Number = 0;
         }
-        deckModel.TopCard().Number = 0;
+        //deckModel.TopCard().Number = 0;
     }
 
     public void WildSuper()
@@ -323,7 +324,7 @@ public class ButtonIndex : MonoBehaviour
     {
 
         #region Player
-        if (boardModel.CurrentTurn == "Player")
+        if (boardModel.CurrentTurn == "Player" && !enemyModel.HasCounter())
         {
             if (deckModel.TopCard().Number == 22)
             {
@@ -351,19 +352,19 @@ public class ButtonIndex : MonoBehaviour
                 }
                 ChangeTurn();
 
-            }
-            else
-            {
-                playerModel.AddCard(boardModel.TopCard());
-                boardModel.RemoveCard(boardModel.TopCard());
-                print("Took 1 Card For player");
-                deckModel.TopCard().Number = 0;
-            }
+            }   
+        }
+        else
+        {
+            playerModel.AddCard(boardModel.TopCard());
+            boardModel.RemoveCard(boardModel.TopCard());
+            print("Took 1 Card For enemy");
+            deckModel.TopCard().Number = 0;
         }
         #endregion
 
         #region Enemey
-        if (boardModel.CurrentTurn == "Enemy")
+        if (boardModel.CurrentTurn == "Enemy" && !enemyModel.HasCounter())
         {
             if (deckModel.TopCard().Number == 22)
             {
@@ -392,16 +393,17 @@ public class ButtonIndex : MonoBehaviour
                 ChangeTurn();
 
             }
-            else
-            {
-                enemyModel.AddCard(boardModel.TopCard());
-                boardModel.RemoveCard(boardModel.TopCard());
-                print("Took 1 Card For enemy");
-                deckModel.TopCard().Number = 0;
-            }
+
         }
-        #endregion
+        else
+        {
+            enemyModel.AddCard(boardModel.TopCard());
+            boardModel.RemoveCard(boardModel.TopCard());
+            print("Took 1 Card For enemy");
+            deckModel.TopCard().Number = 0;
+        }
         ChangeTurn();
+        #endregion
     }
 
     public void ChangeTurn()
