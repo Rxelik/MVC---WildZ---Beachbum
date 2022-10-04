@@ -28,7 +28,14 @@ public class DeckController : IDeckController
         // Listen to input from the view
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
         view.CardInDeckChanged += RizeLayer;
+        model.OnTurnChangeEve += ChangeTurn;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void ChangeTurn(object sender, TurnChangedEventArgs e)
+    {
+        Debug.Log("ENTERED CHANGE TURN!!!");
         SyncData();
     }
 
@@ -41,7 +48,7 @@ public class DeckController : IDeckController
 
     private void HandleClicked(object sender, DeckChangedEventArgs e)
     {
-        //if (model.Cards[index].Color == model.Deck.Cards[model.Deck.Cards.Count - 1].Color || model.Cards[index].Number == model.Deck.Cards[model.Deck.Cards.Count - 1].Number)
+        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
         //{
         //    Debug.Log("You Played " + model.Cards[index]);
         //}
@@ -51,7 +58,10 @@ public class DeckController : IDeckController
 
     private void ClickedOnCard(int Index)
     {
-
+        if (model.Cards[Index].Color == model.Deck.Cards[model.Deck.Cards.Count - 1].Color || model.Cards[Index].Number == model.Deck.Cards[model.Deck.Cards.Count - 1].Number)
+        {
+            Debug.Log("You Played " + model.Cards[Index]);
+        }
 
     }
 
@@ -68,6 +78,7 @@ public class DeckController : IDeckController
     {
         view.Cards = model.Cards;
         view.Position = model.Position;
+        view.CurrentTurn = model.CurrentTurn;
     }
 
 
@@ -76,11 +87,11 @@ public class DeckController : IDeckController
     //{
 
 
-    //    if (_Deck.Hand.Count < 8)
+    //    if (_Board.Hand.Count < 8)
     //    {
-    //        _Deck.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Deck";
-    //        model.Position = new Vector3(_Deck.transform.position.x + _Deck.Hand.Count * 3.5f, _Deck.transform.position.y);
+    //        _Board.Hand.Add((CardModel)model);
+    //        model.BelongsTo = "Board";
+    //        model.Position = new Vector3(_Board.transform.position.x + _Board.Hand.Count * 3.5f, _Board.transform.position.y);
     //        SyncData();
 
     //    }
@@ -96,8 +107,8 @@ public class DeckController : IDeckController
     //    {
     //        if (!_manager.added)
     //        {
-    //            _manager.Deck.Add(ThisCard());
-    //            model.Position = _manager.DeckPos.position;
+    //            _manager.Board.Add(ThisCard());
+    //            model.Position = _manager.BoardPos.position;
     //            _manager.added = true;
     //            SyncData();
     //        }

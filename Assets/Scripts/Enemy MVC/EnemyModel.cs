@@ -5,18 +5,20 @@ using System;
 
 
 public class EnemyChangedEventArgs { }
-public class OnBoardEnemyChangeEventArgs { }
+public class OnDeckEnemyChangeEventArgs { }
 public class EnemyCardChangeEventArgs { }
+public class EnemyTookFromBoardEventArgs { }
 
 public interface IEnemyModel
 {
     // Dispatched when the position changes
     event EventHandler<EnemyChangedEventArgs> OnPositionChanged;
     event EventHandler<EnemyCardChangeEventArgs> OnCardsChanged;
-    event EventHandler<OnBoardEnemyChangeEventArgs> OnBoardChanged;
-
+    event EventHandler<OnDeckEnemyChangeEventArgs> OnDeckChanged;
+    event EventHandler<EnemyTookFromBoardEventArgs> OnTakeCardFromBoard;
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
+    DeckModel Deck { get; set; }
     BoardModel Board { get; set; }
     [SerializeField] List<Transform> HandPos { get; set; }
     void AddCard(CardModel card);
@@ -29,11 +31,13 @@ public class EnemyModel : IEnemyModel
     [SerializeField] List<CardModel> _Cards;
     [SerializeField] string _BelongsTo;
     [SerializeField] BoardModel _Board;
+    [SerializeField] DeckModel _Deck;
     [SerializeField] List<Transform> _HandPos;
 
     public event EventHandler<EnemyChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<EnemyCardChangeEventArgs> OnCardsChanged = (sender, e) => { };
-    public event EventHandler<OnBoardEnemyChangeEventArgs> OnBoardChanged = (sender, e) => { };
+    public event EventHandler<OnDeckEnemyChangeEventArgs> OnDeckChanged = (sender, e) => { };
+    public event EventHandler<EnemyTookFromBoardEventArgs> OnTakeCardFromBoard = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -72,6 +76,23 @@ public class EnemyModel : IEnemyModel
         }
     }
 
+    public DeckModel Deck
+    {
+        get { return _Deck; }
+        set
+        {
+            // Only if the position changes
+            if (_Deck != value)
+            {
+                // Set new position
+                _Deck = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new OnDeckEnemyChangeEventArgs();
+                OnDeckChanged(this, eventArgs);
+            }
+        }
+    }
     public BoardModel Board
     {
         get { return _Board; }
@@ -84,12 +105,11 @@ public class EnemyModel : IEnemyModel
                 _Board = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new OnBoardEnemyChangeEventArgs();
-                OnBoardChanged(this, eventArgs);
+                var eventArgs = new EnemyTookFromBoardEventArgs();
+                OnTakeCardFromBoard(this, eventArgs);
             }
         }
     }
-
     public string BelongsTo
     {
         get { return _BelongsTo; }
@@ -126,6 +146,7 @@ public class EnemyModel : IEnemyModel
         }
     }
 
+
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
@@ -141,6 +162,13 @@ public class EnemyModel : IEnemyModel
     public CardModel TopCard()
     {
         return Cards[Cards.Count - 1];
+    }
+    public void TakeCard(int amout)
+    {
+        for (int i = 0; i < amout; i++)
+        {
+            Cards.Add(Deck.TopCard());
+        }
     }
     public bool HasCounter()
     {

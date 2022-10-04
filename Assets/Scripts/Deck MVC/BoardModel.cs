@@ -7,7 +7,6 @@ using System;
 public class BoardChangedEventArgs { }
 public class OnCardsInBoardChangeEventArgs { }
 public class BoardCardChangeEventArgs { }
-public class TurnChangedEventArgs { }
 
 
 
@@ -16,33 +15,22 @@ public interface IBoardModel
     // Dispatched when the position changes
     event EventHandler<BoardChangedEventArgs> OnPositionChanged;
     event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged;
-    event EventHandler<OnBoardChangeEventArgs> OnBoardChanged;
-    event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
-    event EventHandler<TurnChangedEventArgs> OnTurnChangeEve;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
-    BoardModel Board { get; set; }
-
-    string CurrentTurn { get; set; }
 
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+
 }
 
 public class BoardModel : IBoardModel
 {
     [SerializeField] Vector3 _Position;
     [SerializeField] List<CardModel> _Cards;
-    [SerializeField] string _BelongsTo;
-    [SerializeField] BoardModel _Board;
-    [SerializeField] string _CurrentTurn;
 
     public event EventHandler<BoardChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<OnCardsInBoardChangeEventArgs> CardInBoardChanged = (sender, e) => { };
-    public event EventHandler<OnBoardChangeEventArgs> OnBoardChanged = (sender, e) => { };
-    public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
-    public event EventHandler<TurnChangedEventArgs> OnTurnChangeEve = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -81,43 +69,6 @@ public class BoardModel : IBoardModel
             }
         }
     }
-
-    public BoardModel Board
-    {
-        get { return _Board; }
-        set
-        {
-            // Only if the position changes
-            if (_Board != value)
-            {
-                // Set new position
-                _Board = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new OnBoardChangeEventArgs();
-                OnBoardChanged(this, eventArgs);
-            }
-        }
-    }
-
-    public string CurrentTurn
-    {
-        get { return _CurrentTurn; }
-        set
-        {
-            // Only if the position changes
-            if (_CurrentTurn != value)
-            {
-                // Set new position
-                _CurrentTurn = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new TurnChangedEventArgs();
-                OnTurnChangeEve(this, eventArgs);
-            }
-        }
-    }
-
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
@@ -130,14 +81,10 @@ public class BoardModel : IBoardModel
         var eventArgs = new OnCardsInBoardChangeEventArgs();
         CardInBoardChanged(this, eventArgs);
     }
+
     public CardModel TopCard()
     {
         return Cards[Cards.Count - 1];
-    }
-
-    public void ChangeTurn(string Turn)
-    {
-        CurrentTurn = Turn;
     }
 }
 

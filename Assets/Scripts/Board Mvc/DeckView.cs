@@ -11,11 +11,11 @@ using System.Collections.Generic;
 
 
 // Interface for the card view
-public interface IBoardView
+public interface IDeckView
 {
     // Dispatched when the card is clicked
-    event EventHandler<BoardChangedEventArgs> OnClicked;
-    event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged;
+    event EventHandler<DeckChangedEventArgs> OnClicked;
+    event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged;
     event EventHandler<TurnChangedEventArgs> TurnChanged;
     Vector3 Position { set; }
     [SerializeField] List<CardModel> Cards { set; }
@@ -26,12 +26,12 @@ public interface IBoardView
 
 // Implementation of the enemy view
 [System.Serializable]
-public class BoardView : MonoBehaviour, IBoardView
+public class DeckView : MonoBehaviour, IDeckView
 {
 
     // Dispatched when the enemy is clicked
-    public event EventHandler<BoardChangedEventArgs> OnClicked = (sender, e) => { };
-    public event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged = (sender, e) => { };
+    public event EventHandler<DeckChangedEventArgs> OnClicked = (sender, e) => { };
+    public event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged = (sender, e) => { };
     public event EventHandler<TurnChangedEventArgs> TurnChanged = (sender, e) => { };
 
     public Vector3 Position { set { transform.position = value; } }
@@ -55,6 +55,6 @@ public class BoardView : MonoBehaviour, IBoardView
     {
         yield return new WaitForSeconds(5);
         var eventArgs = new CardLayerChangeEventArgs();
-        CardInBoardChanged(this, eventArgs);
+        CardInDeckChanged(this, eventArgs);
     }
 }

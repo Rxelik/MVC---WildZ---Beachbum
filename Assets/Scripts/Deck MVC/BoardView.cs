@@ -11,11 +11,11 @@ using System.Collections.Generic;
 
 
 // Interface for the card view
-public interface IDeckView
+public interface IBoardView
 {
     // Dispatched when the card is clicked
-    event EventHandler<DeckChangedEventArgs> OnClicked;
-    event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged;
+    event EventHandler<BoardChangedEventArgs> OnClicked;
+    event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged;
     Vector3 Position { set; }
     [SerializeField] List<CardModel> Cards { set; }
 
@@ -24,12 +24,12 @@ public interface IDeckView
 
 // Implementation of the enemy view
 [System.Serializable]
-public class DeckView : MonoBehaviour, IDeckView
+public class BoardView : MonoBehaviour, IBoardView
 {
 
     // Dispatched when the enemy is clicked
-    public event EventHandler<DeckChangedEventArgs> OnClicked = (sender, e) => { };
-    public event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged = (sender, e) => { };
+    public event EventHandler<BoardChangedEventArgs> OnClicked = (sender, e) => { };
+    public event EventHandler<CardLayerChangeEventArgs> CardInBoardChanged = (sender, e) => { };
 
     public Vector3 Position { set { transform.position = value; } }
 
@@ -39,7 +39,7 @@ public class DeckView : MonoBehaviour, IDeckView
 
     private void Awake()
     {
-        StartCoroutine(RizeTopCardLayer());
+     //   StartCoroutine(RizeTopCardLayer());
     }
     void Update()
     {
@@ -50,6 +50,6 @@ public class DeckView : MonoBehaviour, IDeckView
     {
         yield return new WaitForSeconds(5);
         var eventArgs = new CardLayerChangeEventArgs();
-        CardInDeckChanged(this, eventArgs);
+        CardInBoardChanged(this, eventArgs);
     }
 }

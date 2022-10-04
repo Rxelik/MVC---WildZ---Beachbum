@@ -32,7 +32,7 @@ public class Inisializer : MonoBehaviour
 
         #region Board
         ///
-        var BoardmodelFactory = new BoardModelFactory();
+        var BoardmodelFactory = new DeckModelFactory();
         var _boardmodel = BoardmodelFactory.Model;
 
         // Set some initial state
@@ -40,27 +40,27 @@ public class Inisializer : MonoBehaviour
         _boardmodel.Cards = new List<CardModel>();
         _boardmodel.CurrentTurn = "Player";
         // Create the view
-        var BoardviewFactory = new BoardViewFactory();
+        var BoardviewFactory = new DeckViewFactory();
         var Boardview = BoardviewFactory.View;
 
 
-        var _BcontrollerFactory = new BoardControllerFactory(_boardmodel, Boardview);
+        var _BcontrollerFactory = new DeckControllerFactory(_boardmodel, Boardview);
         var Bcontroller = _BcontrollerFactory.Controller;
         #endregion
 
         #region Deck
         ///
-        var DeckmodelFactory = new DeckModelFactory();
+        var DeckmodelFactory = new BoardModelFactory();
         var _Deckmodel = DeckmodelFactory.Model;
 
         // Set some initial state
         _Deckmodel.Position = new Vector3(0, 0, 0);
         _Deckmodel.Cards = new List<CardModel>();
         // Create the view
-        var DeckviewFactory = new DeckViewFactory();
+        var DeckviewFactory = new BoardViewFactory();
         var Deckview = DeckviewFactory.View;
 
-        var DeckcontrollerFactory = new DeckControllerFactory(_Deckmodel, Deckview);
+        var DeckcontrollerFactory = new BoardControllerFactory(_Deckmodel, Deckview);
         var Deckcontroller = DeckcontrollerFactory.Controller;
         #endregion
 
@@ -74,7 +74,7 @@ public class Inisializer : MonoBehaviour
         // Set some initial state
         _playermodel.Position = new Vector3(0, 0, 0);
         _playermodel.Cards = new List<CardModel>();
-        _playermodel.Board = (BoardModel)_boardmodel;
+        _playermodel.Deck = (DeckModel)_boardmodel;
         _playermodel.HandPos = PlayerTransforms;
         //_playermodel.HandCount = 10;
         // Create the view
@@ -119,8 +119,8 @@ public class Inisializer : MonoBehaviour
         {
             item.playerModel = (PlayerModel)_playermodel;
             item.enemyModel = (EnemyModel)_Enemyermodel;
-            item.boardModel = (BoardModel)_boardmodel;
-            item.deckModel = (DeckModel)_Deckmodel;
+            item.boardModel = (DeckModel)_boardmodel;
+            item.deckModel = (BoardModel)_Deckmodel;
         }
         #endregion
 
@@ -129,17 +129,17 @@ public class Inisializer : MonoBehaviour
         {
             item.playerModel = (PlayerModel)_playermodel;
             item.enemyModel = (EnemyModel)_Enemyermodel;
-            item.boardModel = (BoardModel)_boardmodel;
-            item.deckModel = (DeckModel)_Deckmodel;
+            item.boardModel = (DeckModel)_boardmodel;
+            item.deckModel = (BoardModel)_Deckmodel;
         }
         #endregion
 
         #region Button Refrence For Deck Button
         DeckButton.playerModel = (PlayerModel)_playermodel;
         DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
-        DeckButton.boardModel = (BoardModel)_boardmodel;
-        DeckButton.deckModel = (DeckModel)_Deckmodel;
-        GameManager.Instance.boardModel = (BoardModel)_boardmodel;
+        DeckButton.boardModel = (DeckModel)_boardmodel;
+        DeckButton.deckModel = (BoardModel)_Deckmodel;
+        GameManager.Instance.deckModel = (DeckModel)_boardmodel;
         #endregion
 
         //_______________________________________________\\

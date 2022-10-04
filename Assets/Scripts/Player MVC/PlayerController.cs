@@ -52,7 +52,7 @@ public class PlayerController : IPlayerController
 
     private void ClickedOnCard(int Index)
     {
-        if (model.Cards[Index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[Index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
+        if (model.Cards[Index].Color == model.Deck.Cards[model.Deck.Cards.Count - 1].Color || model.Cards[Index].Number == model.Deck.Cards[model.Deck.Cards.Count - 1].Number)
         {
             Debug.Log("You Played " + model.Cards[Index]);
         }

@@ -21,13 +21,13 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    public BoardModel boardModel;
+    public DeckModel deckModel;
     public Transform CardsInPlayPos;
     public int _index = 0;
     public TextMeshProUGUI Turn;
 
     private void Update()
     {
-        Turn.text = boardModel.CurrentTurn;
+        Turn.text = deckModel.CurrentTurn;
     }
 }

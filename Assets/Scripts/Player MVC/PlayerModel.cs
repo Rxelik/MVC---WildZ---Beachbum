@@ -5,18 +5,21 @@ using System;
 
 
 public class PlayerChangedEventArgs { }
-public class OnBoardChangeEventArgs { }
+public class OnDeckChangeEventArgs { }
 public class PlayerCardChangeEventArgs { }
+public class PlayerTookFromBoardEventArgs { }
 
 public interface IPlayerModel
 {
     // Dispatched when the position changes
     event EventHandler<PlayerChangedEventArgs> OnPositionChanged;
     event EventHandler<PlayerCardChangeEventArgs> OnCardsChanged;
-    event EventHandler<OnBoardChangeEventArgs> OnBoardChanged;
+    event EventHandler<OnDeckChangeEventArgs> OnBoardChanged;
+    event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards{ get; set; }
+    DeckModel Deck { get; set; }
     BoardModel Board { get; set; }
     [SerializeField] List<Transform> HandPos { get; set; }
     void AddCard(CardModel card);
@@ -28,13 +31,16 @@ public class PlayerModel : IPlayerModel
     [SerializeField] Vector3 _Position;
     [SerializeField] List<CardModel> _Cards;
     [SerializeField] string _BelongsTo;
-    [SerializeField] BoardModel _Board;
+    [SerializeField] DeckModel _Deck;
     [SerializeField] List<Transform> _HandPos;
+    [SerializeField] BoardModel _Board;
 
 
     public event EventHandler<PlayerChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<PlayerCardChangeEventArgs> OnCardsChanged = (sender, e) => { };
-    public event EventHandler<OnBoardChangeEventArgs> OnBoardChanged = (sender, e) => { };
+    public event EventHandler<OnDeckChangeEventArgs> OnBoardChanged = (sender, e) => { };
+    public event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard = (sender, e) => { };
+
 
     public Vector3 Position
     {
@@ -73,6 +79,23 @@ public class PlayerModel : IPlayerModel
         }
     }
 
+    public DeckModel Deck
+    {
+        get { return _Deck; }
+        set
+        {
+            // Only if the position changes
+            if (_Deck != value)
+            {
+                // Set new position
+                _Deck = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new OnDeckChangeEventArgs();
+                OnBoardChanged(this, eventArgs);
+            }
+        }
+    }
     public BoardModel Board
     {
         get { return _Board; }
@@ -85,12 +108,11 @@ public class PlayerModel : IPlayerModel
                 _Board = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new OnBoardChangeEventArgs();
-                OnBoardChanged(this, eventArgs);
+                var eventArgs = new PlayerTookFromBoardEventArgs();
+                OnTakeCardFromBoard(this, eventArgs);
             }
         }
     }
-
     public string BelongsTo
     {
         get { return _BelongsTo; }
@@ -143,6 +165,14 @@ public class PlayerModel : IPlayerModel
     public CardModel TopCard()
     {
         return Cards[Cards.Count - 1];
+    }
+
+    public void TakeCard(int amout)
+    {
+        for (int i = 0; i < amout; i++)
+        {
+        Cards.Add(Board.TopCard());
+        }
     }
 
     public bool HasCounter()

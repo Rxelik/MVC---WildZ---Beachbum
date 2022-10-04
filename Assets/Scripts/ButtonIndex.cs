@@ -10,11 +10,10 @@ public class ButtonIndex : MonoBehaviour
 {
     public PlayerModel playerModel;
     public EnemyModel enemyModel;
-    public BoardModel boardModel;
-    public DeckModel deckModel;
+    public DeckModel boardModel;
+    public BoardModel deckModel;
     public List<GameObject> PlayerColorChooser;
     public List<GameObject> EnemeyColorChooser;
-    bool taketwo = false;
     public void ChoosePlayerCard(int index)
     {
         if (boardModel.CurrentTurn == "Player")
@@ -359,7 +358,6 @@ public class ButtonIndex : MonoBehaviour
             playerModel.AddCard(boardModel.TopCard());
             boardModel.RemoveCard(boardModel.TopCard());
             print("Took 1 Card For enemy");
-            deckModel.TopCard().Number = 0;
         }
         #endregion
 
@@ -400,7 +398,6 @@ public class ButtonIndex : MonoBehaviour
             enemyModel.AddCard(boardModel.TopCard());
             boardModel.RemoveCard(boardModel.TopCard());
             print("Took 1 Card For enemy");
-            deckModel.TopCard().Number = 0;
         }
         ChangeTurn();
         #endregion
@@ -408,14 +405,8 @@ public class ButtonIndex : MonoBehaviour
 
     public void ChangeTurn()
     {
-        if (boardModel.CurrentTurn == "Player")
-        {
-            boardModel.ChangeTurn("Enemy");
-        }
-        else
-        {
-            boardModel.ChangeTurn("Player");
-        }
+            boardModel.ChangeTurn();
+        
 
         foreach (var item in PlayerColorChooser)
         {
@@ -425,7 +416,6 @@ public class ButtonIndex : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
-        taketwo = false;
     }
 
 
