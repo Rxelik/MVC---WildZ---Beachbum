@@ -267,7 +267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -591,7 +595,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &61047800
 GameObject:
@@ -644,7 +652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -1047,7 +1059,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &129393769
 GameObject:
@@ -1105,7 +1121,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &129393772
 MonoBehaviour:
@@ -1288,7 +1308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -1497,7 +1521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -1840,7 +1868,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &288686936
 GameObject:
@@ -2358,7 +2390,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &404693191
 GameObject:
@@ -2798,7 +2834,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &528693930
 MonoBehaviour:
@@ -3367,7 +3407,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &615186746
 GameObject:
@@ -3457,7 +3501,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &618925877
 MonoBehaviour:
@@ -3795,7 +3843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -4060,7 +4112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -4347,7 +4403,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &771824161
 MonoBehaviour:
@@ -4491,7 +4551,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -4645,7 +4709,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &799493809
 MonoBehaviour:
@@ -4794,7 +4862,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &822671067
 MonoBehaviour:
@@ -5167,7 +5239,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &876461267
 MonoBehaviour:
@@ -5395,7 +5471,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &895629574
 MonoBehaviour:
@@ -5571,7 +5651,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -7138,7 +7222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -7580,7 +7668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -8032,7 +8124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -8181,7 +8277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -8559,7 +8659,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &1630105415
 MonoBehaviour:
@@ -8703,7 +8807,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -8912,7 +9020,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &1688543654
 MonoBehaviour:
@@ -9152,7 +9264,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &1729660835
 GameObject:
@@ -9205,7 +9321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -9499,7 +9619,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -9823,7 +9947,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &1814828630
 GameObject:
@@ -10136,7 +10264,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -10335,7 +10467,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -10882,7 +11018,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!1 &1968515881
 GameObject:
@@ -10993,7 +11133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsializeDeckSize: 100
-  HandSize: 10
+  HandSize: 16
   Colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.123636246, a: 1}
@@ -11190,7 +11330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -11325,7 +11469,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &2016861763
 MonoBehaviour:
@@ -11567,7 +11715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}
@@ -11800,7 +11952,11 @@ MonoBehaviour:
   - {fileID: 1491923817}
   - {fileID: 466181946}
   - {fileID: 1445785981}
-  EnemyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Player
 --- !u!114 &2103647603
 MonoBehaviour:
@@ -11944,7 +12100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
   EnemyColorChooser:
   - {fileID: 336037244}
   - {fileID: 825120131}

@@ -23,6 +23,13 @@ public class ButtonIndexV2 : MonoBehaviour
             manager.ChosenCard = playerModel.Cards[Index];
             NormalCard(playerModel.Cards[Index], playerModel);
             SuperCard(playerModel.Cards[Index], playerModel);
+            if (playerModel.Cards[Index].IsWild && boardModel.TopCard().Number != 22 || playerModel.Cards[Index].IsWild && boardModel.TopCard().Number != 44)
+            {
+                foreach (var item in PlayerColorChooser)
+                {
+                    item.SetActive(true);
+                }
+            }
             print("Inside Player");
 
         }
@@ -31,13 +38,20 @@ public class ButtonIndexV2 : MonoBehaviour
             manager.ChosenCard = enemyModel.Cards[Index];
             NormalCard(enemyModel.Cards[Index], enemyModel);
             SuperCard(enemyModel.Cards[Index], enemyModel);
+            if (enemyModel.Cards[Index].IsWild && boardModel.TopCard().Number != 22 || enemyModel.Cards[Index].IsWild && boardModel.TopCard().Number != 44)
+            {
+                foreach (var item in EnemyColorChooser)
+                {
+                    item.SetActive(true);
+                }
+            }
             print("Inside Enemy");
         }
-
+        
     }
     private void Start()
     {
-        ChangeTurn();
+        //ChangeTurn();
         manager = GameManager.Instance;
     }
 
@@ -95,14 +109,8 @@ public class ButtonIndexV2 : MonoBehaviour
             }
 
         }
-        if (card.IsWild && boardModel.TopCard().Number != 22 || card.IsWild && boardModel.TopCard().Number != 44)
-        {
-            foreach (var item in PlayerColorChooser)
-            {
-                item.SetActive(true);
-            }
-        }
 
+       
     }
     void NormalCard(CardModel card, EnemyModel model)
     {
@@ -158,13 +166,8 @@ public class ButtonIndexV2 : MonoBehaviour
                 PlusFour(card, enemyModel);
             }
         }
-        if (card.IsWild && boardModel.TopCard().Number != 22 || card.IsWild && boardModel.TopCard().Number != 44)
-        {
-            foreach (var item in EnemyColorChooser)
-            {
-                item.SetActive(true);
-            }
-        }
+
+        
     }
 
 
@@ -178,7 +181,10 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else
         {
-            if (card.IsSuper && boardModel.TopCard().Color == card.Color && deckModel.CurrentTurn == "Player" || card.IsWild && card.Color != Color.black)
+            if (card.IsSuper && boardModel.TopCard().Color == card.Color
+                && deckModel.CurrentTurn == "Player"
+                || card.IsWild && card.Color != Color.black
+                || card.IsSuper && boardModel.TopCard().Number == 0)
             {
                 for (int i = model.Cards.Count - 1; i >= 0; i--)
                 {
@@ -202,7 +208,9 @@ public class ButtonIndexV2 : MonoBehaviour
 
             }
         }
-        RemoveButtons();
+
+        
+
 
     }
     void SuperCard(CardModel card, EnemyModel model)
@@ -213,7 +221,10 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else
         {
-            if (card.IsSuper && boardModel.TopCard().Color == card.Color && deckModel.CurrentTurn == "Player" || card.IsWild && card.Color != Color.black)
+            if (card.IsSuper && boardModel.TopCard().Color == card.Color
+                && deckModel.CurrentTurn == "Enemy"
+                || card.IsWild && card.Color != Color.black
+                || card.IsSuper && boardModel.TopCard().Number == 0)
             {
                 for (int i = model.Cards.Count - 1; i >= 0; i--)
                 {
@@ -226,6 +237,7 @@ public class ButtonIndexV2 : MonoBehaviour
                             model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                             boardModel.AddCard(model.Cards[i]);
                             model.RemoveCard(model.Cards[i]);
+
                         }
                     }
                 }
@@ -234,9 +246,11 @@ public class ButtonIndexV2 : MonoBehaviour
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
                 ChangeTurn();
-
+          RemoveButtons();
             }
         }
+        
+
     }
     void WildCard(string color)
     {
@@ -256,18 +270,15 @@ public class ButtonIndexV2 : MonoBehaviour
                 PlusTwo(manager.ChosenCard, playerModel);
             if (manager.ChosenCard.Number == 44)
                 PlusFour(manager.ChosenCard, playerModel);
-            
-
         }
-        if (deckModel.CurrentTurn == "Enemy")
+        else if (deckModel.CurrentTurn == "Enemy")
         {
             if (manager.ChosenCard.IsSuper)
-                SuperCard(manager.ChosenCard, playerModel);
+                SuperCard(manager.ChosenCard, enemyModel);
             if (manager.ChosenCard.Number == 22)
                 PlusTwo(manager.ChosenCard, enemyModel);
             if (manager.ChosenCard.Number == 44)
                 PlusFour(manager.ChosenCard, enemyModel);
-
         }
 
         RemoveButtons();
@@ -339,6 +350,7 @@ public class ButtonIndexV2 : MonoBehaviour
         boardModel.AddCard(card);
         model.RemoveCard(card);
         RemoveButtons();
+
     }
     void PlusFour(CardModel card, EnemyModel model)
     {
@@ -406,19 +418,30 @@ public class ButtonIndexV2 : MonoBehaviour
     public void ChangeTurn()
     {
         deckModel.ChangeTurn();
+
         RemoveButtons();
+        for (int i = 0; i < PlayerColorChooser.Count; i++)
+        {
+            PlayerColorChooser[i].SetActive(false);
+            print(PlayerColorChooser[i]);
+        }
+        for (int i = 0; i < EnemyColorChooser.Count; i++)
+        {
+            EnemyColorChooser[i].SetActive(false);
+            print(PlayerColorChooser[i]);
 
-
+        }
     }
     void RemoveButtons()
     {
         foreach (var item in PlayerColorChooser)
         {
-            item.gameObject.SetActive(false);
+            item.SetActive(false);
         }
         foreach (var item in EnemyColorChooser)
         {
-            item.gameObject.SetActive(false);
+            item.SetActive(false);
         }
+
     }
 }
