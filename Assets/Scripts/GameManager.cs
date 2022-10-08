@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
+    public CardModel ChosenCard;
 
     private void Update()
     {

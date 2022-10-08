@@ -154,6 +154,15 @@ MonoBehaviour:
   _index: 0
   Draw: 0
   Turn: {fileID: 769783262}
+  ChosenCard:
+    _Layer: 0
+    _Color: {r: 0, g: 0, b: 0, a: 0}
+    _Position: {x: 0, y: 0, z: 0}
+    _Number: 0
+    _BelongsTo: 
+    _IsSuper: 0
+    _IsWild: 0
+    _IsBamboozle: 0
 --- !u!4 &14892770
 Transform:
   m_ObjectHideFlags: 0
@@ -259,7 +268,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &43924707
 MonoBehaviour:
@@ -573,8 +586,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &61047800
 GameObject:
@@ -628,7 +645,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &61047803
 MonoBehaviour:
@@ -1021,8 +1042,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &129393769
 GameObject:
@@ -1075,8 +1100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &129393772
 MonoBehaviour:
@@ -1260,7 +1289,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &170462283
 MonoBehaviour:
@@ -1465,7 +1498,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &249160409
 MonoBehaviour:
@@ -1798,8 +1835,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &288686936
 GameObject:
@@ -1994,11 +2035,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 336037244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &336037247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2042,8 +2084,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 336037246}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2311,8 +2353,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &404693191
 GameObject:
@@ -2520,11 +2566,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 466181946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &466181949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2568,8 +2615,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 466181948}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2746,8 +2793,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &528693930
 MonoBehaviour:
@@ -3311,8 +3362,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &615186746
 GameObject:
@@ -3397,8 +3452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &618925877
 MonoBehaviour:
@@ -3737,7 +3796,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &682263427
 MonoBehaviour:
@@ -3998,7 +4061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &763093694
 MonoBehaviour:
@@ -4275,8 +4342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &771824161
 MonoBehaviour:
@@ -4421,7 +4492,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &785813233
 MonoBehaviour:
@@ -4565,8 +4640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &799493809
 MonoBehaviour:
@@ -4617,7 +4696,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 155
+          m_IntArgument: 15
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4710,8 +4789,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &822671067
 MonoBehaviour:
@@ -4852,11 +4935,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 825120131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &825120134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4900,8 +4984,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 336037246}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5078,8 +5162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &876461267
 MonoBehaviour:
@@ -5302,8 +5390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &895629574
 MonoBehaviour:
@@ -5480,7 +5572,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &946632881
 MonoBehaviour:
@@ -5970,11 +6066,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1013424479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &1013424482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6018,8 +6115,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 466181948}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7042,7 +7139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1332970313
 MonoBehaviour:
@@ -7331,11 +7432,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445785981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &1445785984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7379,8 +7481,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 466181948}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7479,7 +7581,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1477317541
 MonoBehaviour:
@@ -7620,11 +7726,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1491923817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &1491923820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7668,8 +7775,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 466181948}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7926,7 +8033,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1556904152
 MonoBehaviour:
@@ -8071,7 +8182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1592829918
 MonoBehaviour:
@@ -8212,11 +8327,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1601267244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &1601267247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8260,8 +8376,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 336037246}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8438,8 +8554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &1630105415
 MonoBehaviour:
@@ -8584,7 +8704,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1640380619
 MonoBehaviour:
@@ -8783,8 +8907,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &1688543654
 MonoBehaviour:
@@ -9019,8 +9147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &1729660835
 GameObject:
@@ -9074,7 +9206,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1729660838
 MonoBehaviour:
@@ -9215,11 +9351,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1777917239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d867152bf72de3a47b6e2655ae599c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
 --- !u!114 &1777917242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9263,8 +9400,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeCardColor
+      - m_Target: {fileID: 336037246}
+        m_MethodName: WildCard
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9363,7 +9500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1785542241
 MonoBehaviour:
@@ -9677,8 +9818,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &1814828630
 GameObject:
@@ -9992,7 +10137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1841294549
 MonoBehaviour:
@@ -10187,7 +10336,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &1906192116
 MonoBehaviour:
@@ -10724,8 +10877,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!1 &1968515881
 GameObject:
@@ -10864,6 +11021,10 @@ MonoBehaviour:
   - {fileID: 2016861762}
   - {fileID: 618925876}
   - {fileID: 876461266}
+  - {fileID: 1013424481}
+  - {fileID: 1491923819}
+  - {fileID: 466181948}
+  - {fileID: 1445785983}
   Enemybuttons:
   - {fileID: 2110488517}
   - {fileID: 1556904151}
@@ -10885,6 +11046,10 @@ MonoBehaviour:
   - {fileID: 1729660837}
   - {fileID: 1592829917}
   - {fileID: 170462282}
+  - {fileID: 336037246}
+  - {fileID: 825120133}
+  - {fileID: 1777917241}
+  - {fileID: 1601267246}
   PlayerTransforms:
   - {fileID: 1816745240}
   - {fileID: 1795147057}
@@ -11026,7 +11191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &2004480623
 MonoBehaviour:
@@ -11151,8 +11320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &2016861763
 MonoBehaviour:
@@ -11395,7 +11568,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &2052249314
 MonoBehaviour:
@@ -11618,8 +11795,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemeyColorChooser: []
+  PlayerColorChooser:
+  - {fileID: 1013424479}
+  - {fileID: 1491923817}
+  - {fileID: 466181946}
+  - {fileID: 1445785981}
+  EnemyColorChooser: []
   BelongsTo: Player
 --- !u!114 &2103647603
 MonoBehaviour:
@@ -11670,7 +11851,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 131
+          m_IntArgument: 13
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11764,7 +11945,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColorChooser: []
-  EnemeyColorChooser: []
+  EnemyColorChooser:
+  - {fileID: 336037244}
+  - {fileID: 825120131}
+  - {fileID: 1777917239}
+  - {fileID: 1601267244}
   BelongsTo: Enemy
 --- !u!114 &2110488518
 MonoBehaviour:
