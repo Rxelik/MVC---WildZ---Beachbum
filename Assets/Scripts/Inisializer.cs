@@ -17,8 +17,8 @@ public class Inisializer : MonoBehaviour
     int colorRND;
     int numRND;
     public ButtonIndex DeckButton;
-    public List<ButtonIndex> Playerbuttons;
-    public List<ButtonIndex> Enemybuttons;
+    public List<ButtonIndexV2> Playerbuttons;
+    public List<ButtonIndexV2> Enemybuttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
 
@@ -30,38 +30,38 @@ public class Inisializer : MonoBehaviour
     {
         //_______________________________________________\\
 
-        #region Board
-        ///
-        var BoardmodelFactory = new DeckModelFactory();
-        var _boardmodel = BoardmodelFactory.Model;
-
-        // Set some initial state
-        _boardmodel.Position = new Vector3(0, 0, 0);
-        _boardmodel.Cards = new List<CardModel>();
-        _boardmodel.CurrentTurn = "Player";
-        // Create the view
-        var BoardviewFactory = new DeckViewFactory();
-        var Boardview = BoardviewFactory.View;
-
-
-        var _BcontrollerFactory = new DeckControllerFactory(_boardmodel, Boardview);
-        var Bcontroller = _BcontrollerFactory.Controller;
-        #endregion
-
         #region Deck
         ///
-        var DeckmodelFactory = new BoardModelFactory();
-        var _Deckmodel = DeckmodelFactory.Model;
+        var DeckmodelFactory = new DeckModelFactory();
+        var _deckmodel = DeckmodelFactory.Model;
 
         // Set some initial state
-        _Deckmodel.Position = new Vector3(0, 0, 0);
-        _Deckmodel.Cards = new List<CardModel>();
+        _deckmodel.Position = new Vector3(0, 0, 0);
+        _deckmodel.Cards = new List<CardModel>();
+        _deckmodel.CurrentTurn = "Player";
         // Create the view
-        var DeckviewFactory = new BoardViewFactory();
+        var DeckviewFactory = new DeckViewFactory();
         var Deckview = DeckviewFactory.View;
 
-        var DeckcontrollerFactory = new BoardControllerFactory(_Deckmodel, Deckview);
-        var Deckcontroller = DeckcontrollerFactory.Controller;
+
+        var DeckviewcontrollerFactory = new DeckControllerFactory(_deckmodel, Deckview);
+        var Deckcontroller = DeckviewcontrollerFactory.Controller;
+        #endregion
+
+        #region Board
+        ///
+        var BoardmodelFactory = new BoardModelFactory();
+        var _Boardmodel = BoardmodelFactory.Model;
+
+        // Set some initial state
+        _Boardmodel.Position = new Vector3(0, 0, 0);
+        _Boardmodel.Cards = new List<CardModel>();
+        // Create the view
+        var BoardviewFactory = new BoardViewFactory();
+        var Boardview = BoardviewFactory.View;
+
+        var BoardcontrollerFactory = new BoardControllerFactory(_Boardmodel, Boardview);
+        var Boardcontroller = BoardcontrollerFactory.Controller;
         #endregion
 
         //_______________________________________________\\
@@ -74,7 +74,8 @@ public class Inisializer : MonoBehaviour
         // Set some initial state
         _playermodel.Position = new Vector3(0, 0, 0);
         _playermodel.Cards = new List<CardModel>();
-        _playermodel.Deck = (DeckModel)_boardmodel;
+        _playermodel.Deck = (DeckModel)_deckmodel;
+        _playermodel.Board = (BoardModel)_Boardmodel;
         _playermodel.HandPos = PlayerTransforms;
         //_playermodel.HandCount = 10;
         // Create the view
@@ -89,6 +90,7 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         //_______________________________________________\\
+
         #region Enemy
 
         var EnemyModelFactory = new EnemyModelFactory();
@@ -97,7 +99,8 @@ public class Inisializer : MonoBehaviour
         // Set some initial state
         _Enemyermodel.Position = new Vector3(0, 0, 0);
         _Enemyermodel.Cards = new List<CardModel>();
-        _Enemyermodel.Board = (BoardModel)_boardmodel;
+        _Enemyermodel.Deck = (DeckModel)_deckmodel;
+        _Enemyermodel.Board = (BoardModel)_Boardmodel;
         _Enemyermodel.HandPos = EnemyTransforms;
        // _Enemyermodel.HandCount = 10;
         // Create the view
@@ -119,8 +122,8 @@ public class Inisializer : MonoBehaviour
         {
             item.playerModel = (PlayerModel)_playermodel;
             item.enemyModel = (EnemyModel)_Enemyermodel;
-            item.boardModel = (DeckModel)_boardmodel;
-            item.deckModel = (BoardModel)_Deckmodel;
+            item.deckModel = (DeckModel)_deckmodel;
+            item.boardModel = (BoardModel)_Boardmodel;
         }
         #endregion
 
@@ -129,17 +132,17 @@ public class Inisializer : MonoBehaviour
         {
             item.playerModel = (PlayerModel)_playermodel;
             item.enemyModel = (EnemyModel)_Enemyermodel;
-            item.boardModel = (DeckModel)_boardmodel;
-            item.deckModel = (BoardModel)_Deckmodel;
+            item.deckModel = (DeckModel)_deckmodel;
+            item.boardModel = (BoardModel)_Boardmodel;
         }
         #endregion
 
         #region Button Refrence For Deck Button
         DeckButton.playerModel = (PlayerModel)_playermodel;
         DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
-        DeckButton.boardModel = (DeckModel)_boardmodel;
-        DeckButton.deckModel = (BoardModel)_Deckmodel;
-        GameManager.Instance.deckModel = (DeckModel)_boardmodel;
+        DeckButton.deckModel = (DeckModel)_deckmodel;
+        DeckButton.boardModel = (BoardModel)_Boardmodel;
+        GameManager.Instance.deckModel = (DeckModel)_deckmodel;
         #endregion
 
         //_______________________________________________\\
@@ -622,18 +625,19 @@ public class Inisializer : MonoBehaviour
 
 
         #endregion
+
         //_______________________________________________\\
 
         yield return new WaitForSeconds(0.5f);
 
-        #region Add Cards To Board
+        #region Add Cards To Deck
         var rnd = new Random();
         var randomizedList = tempList.OrderBy(item => rnd.Next());
 
 
         foreach (var item in randomizedList)
         {
-            _boardmodel.AddCard(item);
+            _deckmodel.AddCard(item);
         }
 
         #endregion
@@ -645,9 +649,9 @@ public class Inisializer : MonoBehaviour
         for (int i = 0; i < HandSize; i++)
         {
 
-            _playermodel.AddCard(_boardmodel.Cards[i]);
+            _playermodel.AddCard(_deckmodel.Cards[i]);
             _playermodel.Cards[i].Position = PlayerTransforms[i].position;
-            _boardmodel.RemoveCard(_boardmodel.Cards[i]);
+            _deckmodel.RemoveCard(_deckmodel.Cards[i]);
         }
             
         
@@ -656,17 +660,17 @@ public class Inisializer : MonoBehaviour
         #region Add Cards To Enemy Hand
         for (int i = 0; i < HandSize; i++)
         {
-            _Enemyermodel.AddCard(_boardmodel.Cards[i]);
+            _Enemyermodel.AddCard(_deckmodel.Cards[i]);
             _Enemyermodel.Cards[i].Position = EnemyTransforms[i].position;
-            _boardmodel.RemoveCard(_boardmodel.Cards[i]);
+            _deckmodel.RemoveCard(_deckmodel.Cards[i]);
         }
         #endregion
 
         //_______________________________________________\\
 
-        #region Add First Card To Deck
-        _Deckmodel.AddCard(_boardmodel.Cards[_boardmodel.Cards.Count - 1]);
-        _Deckmodel.Cards[0].Position = new Vector3(-5, 0, -5);
+        #region Add First Card To Board
+        _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+        _Boardmodel.Cards[0].Position = new Vector3(-5, 0, -5);
         #endregion
         
         //_______________________________________________\\

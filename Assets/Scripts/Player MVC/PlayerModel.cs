@@ -18,7 +18,7 @@ public interface IPlayerModel
     event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard;
 
     Vector3 Position { get; set; }
-    [SerializeField] List<CardModel> Cards{ get; set; }
+    [SerializeField] List<CardModel> Cards { get; set; }
     DeckModel Deck { get; set; }
     BoardModel Board { get; set; }
     [SerializeField] List<Transform> HandPos { get; set; }
@@ -171,7 +171,8 @@ public class PlayerModel : IPlayerModel
     {
         for (int i = 0; i < amout; i++)
         {
-        Cards.Add(Board.TopCard());
+            AddCard(Deck.TopCard());
+            Deck.RemoveCard(TopCard());
         }
     }
 
@@ -186,13 +187,47 @@ public class PlayerModel : IPlayerModel
                 hasBam = true;
                 break;
             }
-            //if (item.Number == 22 || item.Number == 44)
-            //{
-            //    hasNum = true;
-            //    break;
-            //}
+            if (item.Number == 22)
+            {
+                hasNum = true;
+                break;
+            }
+            if (item.Number == 44)
+            {
+                hasNum = true;
+                break;
+            }
         }
-
+        if (hasBam == true)
+        {
+            return true;
+        }
+        else if (hasNum == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool Has44()
+    {
+        bool hasBam = false;
+        bool hasNum = false;
+        foreach (var item in Cards)
+        {
+            if (item.IsBamboozle)
+            {
+                hasBam = true;
+                break;
+            }
+            if (item.Number == 44)
+            {
+                hasNum = true;
+                break;
+            }
+        }
         if (hasBam == true)
         {
             return true;

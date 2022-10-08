@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public DeckModel deckModel;
     public Transform CardsInPlayPos;
     public int _index = 0;
+    public int Draw = 0;
     public TextMeshProUGUI Turn;
 
     private void Update()

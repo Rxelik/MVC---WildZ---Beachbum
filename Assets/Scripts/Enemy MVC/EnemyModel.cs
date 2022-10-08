@@ -167,7 +167,8 @@ public class EnemyModel : IEnemyModel
     {
         for (int i = 0; i < amout; i++)
         {
-            Cards.Add(Deck.TopCard());
+            AddCard(Deck.TopCard());
+            Deck.RemoveCard(TopCard());
         }
     }
     public bool HasCounter()
@@ -181,13 +182,50 @@ public class EnemyModel : IEnemyModel
                 hasBam = true;
                 break;
             }
-            //if (item.Number == 22 || item.Number == 44)
-            //{
-            //    hasNum = true;
-            //    break;
-            //}
+            if (item.Number == 22)
+            {
+                hasNum = true;
+                break;
+            }
+            if (item.Number == 44)
+            {
+                hasNum = true;
+                break;
+            }
         }
 
+        if (hasBam == true)
+        {
+            return true;
+        }
+        else if (hasNum == true)
+        {
+            return true;
+
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    public bool Has44()
+    {
+        bool hasBam = false;
+        bool hasNum = false;
+        foreach (var item in Cards)
+        {
+            if (item.IsBamboozle)
+            {
+                hasBam = true;
+                break;
+            }
+            if (item.Number == 44)
+            {
+                hasNum = true;
+                break;
+            }
+        }
         if (hasBam == true)
         {
             return true;

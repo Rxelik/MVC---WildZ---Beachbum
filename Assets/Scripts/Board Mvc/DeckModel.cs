@@ -135,12 +135,12 @@ public class DeckModel : IDeckModel
         return Cards[Cards.Count - 1];
     }
 
+    bool swapper = true;
     public void ChangeTurn()
     {
-         bool swapper = false;
-        swapper =! swapper;
+        swapper = !swapper;
 
-        if (!swapper)
+        if (swapper)
         {
             CurrentTurn = "Player";
         }
