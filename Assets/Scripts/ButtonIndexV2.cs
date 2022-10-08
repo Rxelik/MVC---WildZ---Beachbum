@@ -95,7 +95,8 @@ public class ButtonIndexV2 : MonoBehaviour
 
 
             }
-            if (boardModel.TopCard().Number == 22 && card.Number == 22 || card.Number == 22 && card.Color == boardModel.TopCard().Color
+            if (boardModel.TopCard().Number == 22 && card.Number == 22 
+                || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number !=44
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
                 PlusTwo(card, playerModel);
@@ -153,7 +154,8 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
 
-            if (boardModel.TopCard().Number == 22 && card.Number == 22 || card.Number == 22 && card.Color == boardModel.TopCard().Color
+            if (boardModel.TopCard().Number == 22 && card.Number == 22
+                || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 44
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
                 PlusTwo(card, enemyModel);
@@ -182,7 +184,7 @@ public class ButtonIndexV2 : MonoBehaviour
         else
         {
             if (card.IsSuper && boardModel.TopCard().Color == card.Color
-                && deckModel.CurrentTurn == "Player"
+                && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
                 || card.IsSuper && boardModel.TopCard().Number == 0)
             {
@@ -222,7 +224,7 @@ public class ButtonIndexV2 : MonoBehaviour
         else
         {
             if (card.IsSuper && boardModel.TopCard().Color == card.Color
-                && deckModel.CurrentTurn == "Enemy"
+                && deckModel.CurrentTurn == "Enemy" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
                 || card.IsSuper && boardModel.TopCard().Number == 0)
             {
@@ -420,17 +422,6 @@ public class ButtonIndexV2 : MonoBehaviour
         deckModel.ChangeTurn();
 
         RemoveButtons();
-        for (int i = 0; i < PlayerColorChooser.Count; i++)
-        {
-            PlayerColorChooser[i].SetActive(false);
-            print(PlayerColorChooser[i]);
-        }
-        for (int i = 0; i < EnemyColorChooser.Count; i++)
-        {
-            EnemyColorChooser[i].SetActive(false);
-            print(PlayerColorChooser[i]);
-
-        }
     }
     void RemoveButtons()
     {
