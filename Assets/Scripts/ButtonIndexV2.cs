@@ -54,7 +54,9 @@ public class ButtonIndexV2 : MonoBehaviour
                 && card.Number != 44
                 && card.Number != 22
                 && boardModel.TopCard().Number != 22
-                && boardModel.TopCard().Number != 44)
+                && boardModel.TopCard().Number != 44
+                || card.IsBamboozle && boardModel.TopCard().Number == 22
+                || card.IsBamboozle && boardModel.TopCard().Number == 44)
             {
                 card.Position = new Vector3(-5, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
@@ -78,7 +80,8 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
 
-            if (boardModel.TopCard().Number == 22 && card.Number == 22 || card.Number == 22 && card.Color == boardModel.TopCard().Color)
+            if (boardModel.TopCard().Number == 22 && card.Number == 22 || card.Number == 22 && card.Color == boardModel.TopCard().Color
+                || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
                 #region +2/+4
 
@@ -111,7 +114,8 @@ public class ButtonIndexV2 : MonoBehaviour
             }
             if (card.Color == boardModel.TopCard().Color && card.Number == 44
                 || boardModel.TopCard().Number == 22 && card.Number == 44
-                || boardModel.TopCard().Number == 44 && card.Number == 44)
+                || boardModel.TopCard().Number == 44 && card.Number == 44
+                || card.Number == 44 && boardModel.TopCard().IsBamboozle)
             {
                 #region +4
                 if (enemyModel.Has44())
@@ -158,7 +162,9 @@ public class ButtonIndexV2 : MonoBehaviour
             && card.Number != 44
             && card.Number != 22
             && boardModel.TopCard().Number != 22
-            && boardModel.TopCard().Number != 44)
+            && boardModel.TopCard().Number != 44
+            || card.IsBamboozle && boardModel.TopCard().Number == 22
+            || card.IsBamboozle && boardModel.TopCard().Number == 44)
             {
                 card.Position = new Vector3(-5, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
@@ -182,7 +188,8 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
 
-            if (boardModel.TopCard().Number == 22 && card.Number == 22 || card.Number == 22 && card.Color == boardModel.TopCard().Color)
+            if (boardModel.TopCard().Number == 22 && card.Number == 22 || card.Number == 22 && card.Color == boardModel.TopCard().Color
+                || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
                 #region +2/+4
 
@@ -215,7 +222,8 @@ public class ButtonIndexV2 : MonoBehaviour
             }
             if (card.Color == boardModel.TopCard().Color && card.Number == 44
                 || boardModel.TopCard().Number == 22 && card.Number == 44
-                || boardModel.TopCard().Number == 44 && card.Number == 44)
+                || boardModel.TopCard().Number == 44 && card.Number == 44
+                || card.Number == 44 && boardModel.TopCard().IsBamboozle)
             {
                 #region +4
                 if (playerModel.Has44())
