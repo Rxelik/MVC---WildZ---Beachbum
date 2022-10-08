@@ -47,7 +47,7 @@ public class ButtonIndexV2 : MonoBehaviour
             }
             print("Inside Enemy");
         }
-        
+
     }
     private void Start()
     {
@@ -110,7 +110,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
         }
 
-       
+
     }
     void NormalCard(CardModel card, EnemyModel model)
     {
@@ -167,7 +167,7 @@ public class ButtonIndexV2 : MonoBehaviour
             }
         }
 
-        
+
     }
 
 
@@ -209,7 +209,7 @@ public class ButtonIndexV2 : MonoBehaviour
             }
         }
 
-        
+
 
 
     }
@@ -246,10 +246,10 @@ public class ButtonIndexV2 : MonoBehaviour
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
                 ChangeTurn();
-          RemoveButtons();
+                RemoveButtons();
             }
         }
-        
+
 
     }
     void WildCard(string color)
@@ -443,5 +443,88 @@ public class ButtonIndexV2 : MonoBehaviour
             item.SetActive(false);
         }
 
+    }
+
+    public void TakeFromDeck()
+    {
+        if (deckModel.CurrentTurn == "Player")
+        {
+            if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22|| !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
+            {
+                print("Cant Draw");
+            }
+            else if(boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
+            {
+                if (manager.Draw == 0)
+                {
+                    ChangeTurn();
+                    playerModel.TakeCard(1);
+                }
+                else
+                {
+                    playerModel.TakeCard(manager.Draw);
+                        manager.Draw = 0;
+                    ChangeTurn();
+                }
+            }
+            else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
+            {
+                if (playerModel.HasCounter())
+                {
+                    if (manager.Draw == 0)
+                    {
+                        playerModel.TakeCard(1);
+                        ChangeTurn();
+                    }
+                    else
+                    {
+                        playerModel.TakeCard(manager.Draw);
+                        manager.Draw = 0;
+                        ChangeTurn();
+                    }
+                }
+
+            }
+
+        }
+        else if (deckModel.CurrentTurn == "Enemy")
+        {
+            if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22|| !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
+            {
+                print("Cant Draw How you even got here?");
+            }
+            else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
+            {
+                if (manager.Draw == 0)
+                {
+                    enemyModel.TakeCard(1);
+                    ChangeTurn();
+                }
+                else
+                {
+                    enemyModel.TakeCard(manager.Draw);
+                    manager.Draw = 0;
+                    ChangeTurn();
+                }
+            }
+            else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
+            {
+                if (enemyModel.HasCounter())
+                {
+                    if (manager.Draw == 0)
+                    {
+                        enemyModel.TakeCard(1);
+                        ChangeTurn();
+                    }
+                    else
+                    {
+                        enemyModel.TakeCard(manager.Draw);
+                        manager.Draw = 0;
+                        ChangeTurn();
+                    }
+                }
+
+            }
+        }
     }
 }

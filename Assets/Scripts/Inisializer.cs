@@ -16,7 +16,7 @@ public class Inisializer : MonoBehaviour
     public List<Color> Colors;
     int colorRND;
     int numRND;
-    public ButtonIndex DeckButton;
+    public ButtonIndexV2 DeckButton;
     public List<ButtonIndexV2> Playerbuttons;
     public List<ButtonIndexV2> Enemybuttons;
     public List<Transform> PlayerTransforms;
@@ -638,6 +638,7 @@ public class Inisializer : MonoBehaviour
         foreach (var item in randomizedList)
         {
             _deckmodel.AddCard(item);
+
         }
 
         #endregion
@@ -671,6 +672,7 @@ public class Inisializer : MonoBehaviour
         #region Add First Card To Board
         _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         _Boardmodel.Cards[0].Position = new Vector3(-5, 0, -5);
+        _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         #endregion
         
         //_______________________________________________\\
