@@ -43,7 +43,4 @@ public class EnemyView : MonoBehaviour, IEnemyView
 
     public int _HandCount;
 
-    void Update()
-    {
-    }
 }

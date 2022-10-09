@@ -41,11 +41,6 @@ public class BoardView : MonoBehaviour, IBoardView
     {
      //   StartCoroutine(RizeTopCardLayer());
     }
-    void Update()
-    {
-
-    }
-
     private IEnumerator RizeTopCardLayer()
     {
         yield return new WaitForSeconds(5);

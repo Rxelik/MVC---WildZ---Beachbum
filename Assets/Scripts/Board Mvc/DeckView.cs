@@ -42,19 +42,15 @@ public class DeckView : MonoBehaviour, IDeckView
     [SerializeField] public List<CardModel> _InspectorCards;
     [SerializeField] string _CurrentTurn;
 
-    private void Awake()
-    {
-        StartCoroutine(RizeTopCardLayer());
-    }
-    void Update()
-    {
+    //private void Awake()
+    //{
+    //    StartCoroutine(RizeTopCardLayer());
+    //}
 
-    }
-
-    private IEnumerator RizeTopCardLayer()
-    {
-        yield return new WaitForSeconds(5);
-        var eventArgs = new CardLayerChangeEventArgs();
-        CardInDeckChanged(this, eventArgs);
-    }
+    //private IEnumerator RizeTopCardLayer()
+    //{
+    //    yield return new WaitForSeconds(5);
+    //    var eventArgs = new CardLayerChangeEventArgs();
+    //    CardInDeckChanged(this, eventArgs);
+    //}
 }
