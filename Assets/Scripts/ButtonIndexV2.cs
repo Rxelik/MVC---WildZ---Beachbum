@@ -462,7 +462,6 @@ public class ButtonIndexV2 : MonoBehaviour
                     playerModel.TakeCard(manager.Draw);
                         manager.Draw = 0;
                     ChangeTurn();
-                boardModel.TopCard().Number = 98;
                 }
             }
             else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
@@ -473,15 +472,15 @@ public class ButtonIndexV2 : MonoBehaviour
                     {
                         playerModel.TakeCard(1);
                         ChangeTurn();
-                    }   
+                    }
                     else
                     {
                         playerModel.TakeCard(manager.Draw);
                         manager.Draw = 0;
                         ChangeTurn();
-                boardModel.TopCard().Number = 98;
                     }
                 }
+                boardModel.TopCard().Number = 98;
             }
 
         }
@@ -503,7 +502,6 @@ public class ButtonIndexV2 : MonoBehaviour
                     enemyModel.TakeCard(manager.Draw);
                     manager.Draw = 0;
                     ChangeTurn();
-                boardModel.TopCard().Number = 98;
                 }
             }
             else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
@@ -520,9 +518,9 @@ public class ButtonIndexV2 : MonoBehaviour
                         enemyModel.TakeCard(manager.Draw);
                         manager.Draw = 0;
                         ChangeTurn();
-                boardModel.TopCard().Number = 98;
                     }
                 }
+                boardModel.TopCard().Number = 98;
             }
         }
     }
