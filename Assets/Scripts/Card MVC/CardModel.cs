@@ -3,6 +3,7 @@ using UnityEngine;
 
 // Dispatched when the enemy's position changes
 public class CardPositionChangedEventArgs : EventArgs { }
+public class CardRotationChangedEventArgs : EventArgs { }
 public class CardColorChangedEventArgs : EventArgs { }
 public class CardNumberChangedEventArgs : EventArgs { }
 public class CardChangedBelongsEventArgs : EventArgs { }
@@ -11,6 +12,8 @@ public class CardNameChangeEventArgs : EventArgs { }
 public class CardIsSuperEventArgs : EventArgs { }
 public class CardIsWildEventArgs : EventArgs { }
 public class CardIsBamboozleEventArgs : EventArgs { }
+public class CardSlotInHandEventArgs : EventArgs { }
+public class OnIndexChangedArgs : EventArgs { }
 
 
 
@@ -19,6 +22,8 @@ public interface ICardModel
 {
     // Dispatched when the position changes
     event EventHandler<CardPositionChangedEventArgs> OnPositionChanged;
+    event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
+    event EventHandler<CardSlotInHandEventArgs> OnSlotInHandChanged;
     event EventHandler<CardColorChangedEventArgs> OnColorChanged;
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
@@ -27,11 +32,14 @@ public interface ICardModel
     event EventHandler<CardIsSuperEventArgs > OnSuper;
     event EventHandler<CardIsWildEventArgs> OnWild;
     event EventHandler<CardIsBamboozleEventArgs> OnBamboozle;
+    event EventHandler<OnIndexChangedArgs> IndexChanged;
 
     // Position of the enemy
     Vector3 Position { get; set; }
+    Quaternion Rotation { get; set; }
     Color Color { get; set; }
     int Number { get; set; }
+    int SlotInHand { get; set; }
     string BelongsTo { get; set; }
     int Layer { get; set; }
     string Name { get; set; }
@@ -49,14 +57,18 @@ public class CardModel : ICardModel
     [SerializeField] int _Layer;
     [SerializeField] Color _Color;
     [SerializeField] Vector3 _Position;
+    [SerializeField] Quaternion _Rotation;
     [SerializeField] int _Number;
+    [SerializeField] int _SlotInHand;
     [SerializeField] string _BelongsTo;
-                     string _Name;
+    string _Name;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
     [SerializeField] bool _IsBamboozle;
+    [SerializeField] ButtonIndexV2 _ButtonIndex;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
+    public event EventHandler<CardSlotInHandEventArgs> OnSlotInHandChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
     public event EventHandler<CardNumberChangedEventArgs> OnNumberChanged = (sender, e) => { };
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
@@ -65,6 +77,8 @@ public class CardModel : ICardModel
     public event EventHandler<CardIsSuperEventArgs> OnSuper = (sender, e) => { };
     public event EventHandler<CardIsWildEventArgs> OnWild = (sender, e) => { };
     public event EventHandler<CardIsBamboozleEventArgs> OnBamboozle = (sender, e) => { };
+    public event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
+    public event EventHandler<OnIndexChangedArgs> IndexChanged;
 
     public Vector3 Position
     {
@@ -85,6 +99,24 @@ public class CardModel : ICardModel
         }
     }
 
+    public Quaternion Rotation
+    {
+        get { return _Rotation; }
+        set
+        {
+            // Only if the position changes
+            if (_Rotation != value)
+            {
+                // Set new position
+                _Rotation = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardRotationChangedEventArgs();
+                OnRotationChanged(this, eventArgs);
+                Debug.Log("Changed Card POS");
+            }
+        }
+    }
 
     public Color Color
     {
@@ -227,4 +259,6 @@ public class CardModel : ICardModel
             }
         }
     }
+
+    public int SlotInHand { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }

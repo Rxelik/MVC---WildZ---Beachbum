@@ -14,6 +14,7 @@ public class PlayerController : IPlayerController
     // Keep references to the model and view
     private readonly IPlayerModel model;
     private readonly IPlayerView view;
+    
 
 
     // Controller depends on interfaces for the model and view
@@ -29,15 +30,30 @@ public class PlayerController : IPlayerController
         SyncData();
     }
 
+
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
+
+
+
+        foreach (var item in model.Cards)
+        {
+            item.Position = new Vector3(-10, -8, 0);
+        }
+
+
+        float slide = 0f;
+        float rot = 0f;
+        for (int i = 0; i < model.Cards.Count; i++)
+        {
+            model.Cards[i].Position = new Vector3(model.Cards[i].Position.x + slide, model.Cards[i].Position.y, model.Cards[i].Position.z);
+            model.Cards[i].SlotInHand = i;
+            //model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].Rotation.z + rot);
             
-            for (int i = 0; i < model.Cards.Count; i++)
-            {
-                model.Cards[i].Position = model.HandPos[i].position;
-                SyncData();
-            }
-        
+            slide += 3f;
+            rot += 1.5f;
+        }
+        SyncData();
     }
 
     private void HandleClicked(object sender, PlayerChangedEventArgs e)
