@@ -70,7 +70,8 @@ public class ButtonIndexV2 : MonoBehaviour
                 && boardModel.TopCard().Number != 22
                 && boardModel.TopCard().Number != 44
                 || card.IsBamboozle && boardModel.TopCard().Number == 22
-                || card.IsBamboozle && boardModel.TopCard().Number == 44)
+                || card.IsBamboozle && boardModel.TopCard().Number == 44
+                || boardModel.TopCard().IsBamboozle)
             {
                 card.Position = new Vector3(-5, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
@@ -130,7 +131,8 @@ public class ButtonIndexV2 : MonoBehaviour
             && boardModel.TopCard().Number != 22
             && boardModel.TopCard().Number != 44
             || card.IsBamboozle && boardModel.TopCard().Number == 22
-            || card.IsBamboozle && boardModel.TopCard().Number == 44)
+            || card.IsBamboozle && boardModel.TopCard().Number == 44
+            || boardModel.TopCard().IsBamboozle)
             {
                 card.Position = new Vector3(-5, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
@@ -474,7 +476,7 @@ public class ButtonIndexV2 : MonoBehaviour
                         ChangeTurn();
                     }
                 }
-
+                boardModel.TopCard().Number = 98;
             }
 
         }
@@ -514,7 +516,7 @@ public class ButtonIndexV2 : MonoBehaviour
                         ChangeTurn();
                     }
                 }
-
+                boardModel.TopCard().Number = 98;
             }
         }
     }
