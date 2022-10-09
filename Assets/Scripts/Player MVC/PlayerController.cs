@@ -38,7 +38,7 @@ public class PlayerController : IPlayerController
 
         foreach (var item in model.Cards)
         {
-            item.Position = new Vector3(-10, -8, 0);
+            item.Position = new Vector3(-22, -8, 0);
         }
 
 
@@ -47,10 +47,9 @@ public class PlayerController : IPlayerController
         for (int i = 0; i < model.Cards.Count; i++)
         {
             model.Cards[i].Position = new Vector3(model.Cards[i].Position.x + slide, model.Cards[i].Position.y, model.Cards[i].Position.z);
-            model.Cards[i].SlotInHand = i;
             //model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].Rotation.z + rot);
             
-            slide += 3f;
+            slide += 3.5f;
             rot += 1.5f;
         }
         SyncData();

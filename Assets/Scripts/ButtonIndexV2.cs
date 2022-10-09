@@ -16,7 +16,12 @@ public class ButtonIndexV2 : MonoBehaviour
     public string BelongsTo;
     public int Index;
 
-    public void PlayCard()
+    private void OnMouseDown()
+    {
+        PlayCard(Index);
+        print("click");
+    }
+    public void PlayCard(int Index)
     {
         if (deckModel.CurrentTurn == "Player" && BelongsTo == "Player")
         {

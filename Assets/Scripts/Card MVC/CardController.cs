@@ -75,7 +75,6 @@ public class CardController : ICardController
 
         view.IsBamboozle = model.IsBamboozle;
 
-        view.SlotInHand = model.SlotInHand;
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

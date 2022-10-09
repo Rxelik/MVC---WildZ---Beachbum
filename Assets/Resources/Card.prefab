@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 7915642185187091685}
   - component: {fileID: 7266716411848905878}
   - component: {fileID: 6442943471924255222}
-  - component: {fileID: 6273237265234944052}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -129,7 +128,7 @@ Transform:
   m_GameObject: {fileID: 847150334145477223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3761742031089092951}
   - {fileID: 928208682}
@@ -224,7 +223,7 @@ MonoBehaviour:
   gs: {fileID: 0}
   PlayerTransforms: []
   EnemyTransforms: []
-  V2Inspector: {fileID: 6273237265234944052}
+  V2Inspector: {fileID: 0}
 --- !u!114 &6442943471924255222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,30 +278,6 @@ MonoBehaviour:
   - {fileID: -5550625373973314145, guid: b6977903caf54b04e8b6e33e43deed14, type: 3}
   CardSprite: {fileID: 1165076477712135441}
   view: {fileID: 7266716411848905878}
---- !u!114 &6273237265234944052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847150334145477223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerColorChooser:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  EnemyColorChooser:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  BelongsTo: Player
-  Index: 0
 --- !u!1 &8370810589954279674
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +380,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6273237265234944052}
+      objectReference: {fileID: 0}
     - target: {fileID: 5312692841634603892, guid: d9d360780e1b1114fa9a8675d0437f58,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

@@ -12,7 +12,6 @@ public class CardNameChangeEventArgs : EventArgs { }
 public class CardIsSuperEventArgs : EventArgs { }
 public class CardIsWildEventArgs : EventArgs { }
 public class CardIsBamboozleEventArgs : EventArgs { }
-public class CardSlotInHandEventArgs : EventArgs { }
 public class OnIndexChangedArgs : EventArgs { }
 
 
@@ -23,7 +22,6 @@ public interface ICardModel
     // Dispatched when the position changes
     event EventHandler<CardPositionChangedEventArgs> OnPositionChanged;
     event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
-    event EventHandler<CardSlotInHandEventArgs> OnSlotInHandChanged;
     event EventHandler<CardColorChangedEventArgs> OnColorChanged;
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
@@ -39,7 +37,6 @@ public interface ICardModel
     Quaternion Rotation { get; set; }
     Color Color { get; set; }
     int Number { get; set; }
-    int SlotInHand { get; set; }
     string BelongsTo { get; set; }
     int Layer { get; set; }
     string Name { get; set; }
@@ -59,7 +56,6 @@ public class CardModel : ICardModel
     [SerializeField] Vector3 _Position;
     [SerializeField] Quaternion _Rotation;
     [SerializeField] int _Number;
-    [SerializeField] int _SlotInHand;
     [SerializeField] string _BelongsTo;
     string _Name;
     [SerializeField] bool _IsSuper;
@@ -68,7 +64,6 @@ public class CardModel : ICardModel
     [SerializeField] ButtonIndexV2 _ButtonIndex;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
-    public event EventHandler<CardSlotInHandEventArgs> OnSlotInHandChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
     public event EventHandler<CardNumberChangedEventArgs> OnNumberChanged = (sender, e) => { };
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
@@ -260,5 +255,4 @@ public class CardModel : ICardModel
         }
     }
 
-    public int SlotInHand { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }

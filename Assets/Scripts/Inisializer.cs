@@ -7,6 +7,7 @@ using System;
 using Random = System.Random;
 using System.Linq;
 using Color = UnityEngine.Color;
+using UnityEngine.UIElements;
 
 public class Inisializer : MonoBehaviour
 {
@@ -17,17 +18,33 @@ public class Inisializer : MonoBehaviour
     int colorRND;
     int numRND;
     public ButtonIndexV2 DeckButton;
-    public List<ButtonIndexV2> Playerbuttons;
-    public List<ButtonIndexV2> Enemybuttons;
-    public List<Transform> PlayerTransforms;
-    public List<Transform> EnemyTransforms;
+    public ButtonIndexV2 Playerbutton;
+    List<ButtonIndexV2> PlayerButtonList = new List<ButtonIndexV2>();
+    public ButtonIndexV2 Enemybuttons;
 
     void Awake()
     {
         StartCoroutine(Build());
     }
+
     IEnumerator Build()
     {
+        float slide = 0f;
+        float rot = 0f;
+        for (int i = 0; i < 25; i++)
+        {
+            ButtonIndexV2 currentB;
+            currentB = Instantiate(Playerbutton, new Vector3(-22, -8, 0), Quaternion.identity);
+            PlayerButtonList.Add(currentB);
+        }
+
+        for (int j = 0; j < 25; j++)
+        {
+            PlayerButtonList[j].transform.position = new Vector3(PlayerButtonList[j].transform.position.x + slide, PlayerButtonList[j].transform.position.y, PlayerButtonList[j].transform.position.z);
+            //PlayerButtonList[j].transform.rotation = Quaternion.Euler(0, 0, PlayerButtonList[j].transform.rotation.z + rot);
+            slide += 3.5f;
+            rot += 1.5f;
+        }
         //_______________________________________________\\
 
         #region Deck
@@ -76,7 +93,7 @@ public class Inisializer : MonoBehaviour
         _playermodel.Cards = new List<CardModel>();
         _playermodel.Deck = (DeckModel)_deckmodel;
         _playermodel.Board = (BoardModel)_Boardmodel;
-        _playermodel.HandPos = PlayerTransforms;
+        //_playermodel.HandPos = PlayerTransforms;
         //_playermodel.HandCount = 10;
         // Create the view
         var PlayerViewFactory = new PlayerViewFactory();
@@ -101,7 +118,7 @@ public class Inisializer : MonoBehaviour
         _Enemyermodel.Cards = new List<CardModel>();
         _Enemyermodel.Deck = (DeckModel)_deckmodel;
         _Enemyermodel.Board = (BoardModel)_Boardmodel;
-        _Enemyermodel.HandPos = EnemyTransforms;
+       // _Enemyermodel.HandPos = EnemyTransforms;
        // _Enemyermodel.HandCount = 10;
         // Create the view
         var EnemyViewFactory = new EnemyViewFactory();
@@ -118,13 +135,13 @@ public class Inisializer : MonoBehaviour
 
         #region Button Refrence For Player And Board
 
-        //foreach (var item in Playerbuttons)
-        //{
-        //    item.playerModel = (PlayerModel)_playermodel;
-        //    item.enemyModel = (EnemyModel)_Enemyermodel;
-        //    item.deckModel = (DeckModel)_deckmodel;
-        //    item.boardModel = (BoardModel)_Boardmodel;
-        //}
+        foreach (var item in PlayerButtonList)
+        {
+            item.playerModel = (PlayerModel)_playermodel;
+            item.enemyModel = (EnemyModel)_Enemyermodel;
+            item.deckModel = (DeckModel)_deckmodel;
+            item.boardModel = (BoardModel)_Boardmodel;
+        }
         //#endregion
 
         //#region Button Refrence For Enemy And Board

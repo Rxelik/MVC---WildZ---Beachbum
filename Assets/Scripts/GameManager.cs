@@ -30,6 +30,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Turn.text = deckModel.CurrentTurn;
+        //Turn.text = deckModel.CurrentTurn;
     }
 }
