@@ -32,18 +32,18 @@ public class EnemyController : IEnemyController
     private void FixViewPos(object sender, EnemyCardChangeEventArgs e)
     {
 
+        float moveRight = 0;
+        int CardLayer = model.Cards.Count;
         for (int i = 0; i < model.Cards.Count; i++)
         {
-            model.Cards[i].Position = model.HandPos[i].position;
+            ///model.Cards[i].OrderInHandChanged += HandleClicked;
+            model.Cards[i].Position = new Vector3(-18 + moveRight, 9f, 0);
             model.Cards[i].HandOrder = i;
-            SyncData();
+            model.Cards[i].Layer = CardLayer;
+            moveRight += 2.5f;
+            CardLayer -= 1;
         }
-        for (int i = 0; i < model.Cards.Count; i++)
-        {
-            model.Cards[i].HandOrder = i;
-            SyncData();
-
-        }
+        SyncData();
     }
 
     private void HandleClicked(object sender, EnemyChangedEventArgs e)

@@ -20,6 +20,7 @@ public interface IEnemyView
     [SerializeField] List<Transform> HandPos { set; }
     [SerializeField] int HandCount { set; }
 
+
 }
 
 
@@ -32,6 +33,7 @@ public class EnemyView : MonoBehaviour, IEnemyView
     public event EventHandler<EnemyChangedEventArgs> OnClicked = (sender, e) => { };
     public Vector3 Position { set { transform.position = value; } }
 
+
     public List<CardModel> Cards { set => _InspectorCards = value; }
     public List<Transform> HandPos { set => _HandPos = value; }
     public int HandCount { set => _HandCount = value; }
@@ -42,5 +44,7 @@ public class EnemyView : MonoBehaviour, IEnemyView
     [SerializeField] public List<Transform> _HandPos;
 
     public int _HandCount;
+
+    public string BelongsTo;
 
 }

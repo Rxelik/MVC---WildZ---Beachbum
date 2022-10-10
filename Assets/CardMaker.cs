@@ -13,10 +13,16 @@ public class CardMaker : MonoBehaviour
     public SpriteRenderer CardSprite;
 
     public CardView view;
+    private void Update()
+    {
+        CardSprite.sortingOrder = view._sprite.sortingOrder;
+    }
     private void Start()
     {
         StartCoroutine(BuildCards());
     }
+
+   
     IEnumerator BuildCards()
     {
         yield return new WaitForSeconds(1);

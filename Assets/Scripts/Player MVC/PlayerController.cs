@@ -31,12 +31,16 @@ public class PlayerController : IPlayerController
 
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-
+       float moveRight = 0;
+       int CardLayer = model.Cards.Count;
         for (int i = 0; i < model.Cards.Count; i++)
         {
-            model.Cards[i].OrderInHandChanged += HandleClicked;
-            model.Cards[i].Position = model.HandPos[i].position;
+            ///model.Cards[i].OrderInHandChanged += HandleClicked;
+            model.Cards[i].Position = new Vector3(-18 + moveRight, -9f, 0);
             model.Cards[i].HandOrder = i;
+            model.Cards[i].Layer = CardLayer;
+            moveRight += 2.5f;
+            CardLayer -= 1;
         }
             SyncData();
 
