@@ -11448,10 +11448,6 @@ MonoBehaviour:
   - {fileID: 2016861762}
   - {fileID: 618925876}
   - {fileID: 876461266}
-  - {fileID: 1013424481}
-  - {fileID: 1491923819}
-  - {fileID: 466181948}
-  - {fileID: 1445785983}
   Enemybuttons:
   - {fileID: 2110488517}
   - {fileID: 1556904151}
@@ -11473,10 +11469,6 @@ MonoBehaviour:
   - {fileID: 1729660837}
   - {fileID: 1592829917}
   - {fileID: 170462282}
-  - {fileID: 336037246}
-  - {fileID: 825120133}
-  - {fileID: 1777917241}
-  - {fileID: 1601267246}
   PlayerTransforms:
   - {fileID: 1816745240}
   - {fileID: 1795147057}

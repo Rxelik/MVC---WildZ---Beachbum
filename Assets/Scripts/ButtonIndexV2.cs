@@ -14,13 +14,8 @@ public class ButtonIndexV2 : MonoBehaviour
     public List<GameObject> EnemyColorChooser;
     GameManager manager;
     public string BelongsTo;
-    public int Index;
+    //public int Index;
 
-    private void OnMouseDown()
-    {
-        PlayCard(Index);
-        print("click");
-    }
     public void PlayCard(int Index)
     {
         if (deckModel.CurrentTurn == "Player" && BelongsTo == "Player")
@@ -56,6 +51,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     private void Start()
     {
+        //ChangeTurn();
         manager = GameManager.Instance;
     }
 
