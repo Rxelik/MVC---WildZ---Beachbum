@@ -30,7 +30,13 @@ public class CardController : ICardController
         model.OnPositionChanged += ChangePosition;
         model.OnLayerChanged += RiseLayer;
         model.ChangedBelongTo += ChangedName;
+        model.OrderInHandChanged += Count;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void Count(object sender, OrderInHandEventArgs e)
+    {
         SyncData();
     }
 

@@ -211,6 +211,7 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new OrderInHandEventArgs();
                 OrderInHandChanged(this, eventArgs);
+                Debug.Log("Inside HandOrder");
             }
         }
     }

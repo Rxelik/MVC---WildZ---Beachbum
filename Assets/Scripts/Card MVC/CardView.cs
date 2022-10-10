@@ -38,6 +38,7 @@ public interface ICardView
     bool IsSuper { set; }
     bool IsWild { set; }
     bool IsBamboozle { set; }
+
 }
 
 // Implementation of the enemy view
@@ -50,8 +51,8 @@ public class CardView : MonoBehaviour, ICardView
     public event EventHandler<CardColorChangedEventArgs> OnColorChange = (sender, e) => { };
     public event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve = (sender, e) => { };
 
-    public int Number { set { _ = value; _inspectNumber = value; } }
-    public int HandOrder { set { _ = value; _inspectOrderInHand = value; } }
+    public int Number { set { ; _inspectNumber = value; } }
+    public int HandOrder { set { _inspectOrderInHand = value; } }
     public PlayerModel Player { set { _InspectorPlayer = value; } }
     public EnemyModel Enemy { set { _InspectorEnemy = value; } }
     public Vector3 Position { set { transform.position = value; _inspectPos = value; } }
@@ -59,7 +60,7 @@ public class CardView : MonoBehaviour, ICardView
 
     // Set the Card Color position
     public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
-    public String BelongsTo { set { _inspectorBelongsTo = value;  } }
+    public string BelongsTo { set { _inspectorBelongsTo = value;  } }
     public string Name { set => gameObject.name = value; }
     public int Layer { set { _sprite.sortingOrder = value; } }
     public bool IsSuper { set { _IsSuper = value; } }
@@ -67,12 +68,11 @@ public class CardView : MonoBehaviour, ICardView
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
 
-
-    [SerializeField] Vector3 _inspectPos;
-    [SerializeField] Quaternion _inspectRot;
+    public Vector3 _inspectPos;
+    public Quaternion _inspectRot;
     public int _inspectNumber;
     public int _inspectOrderInHand;
-    [SerializeField] String _inspectorBelongsTo;
+    [SerializeField] string _inspectorBelongsTo;
     public Color _InspectorColor;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
@@ -95,6 +95,7 @@ public class CardView : MonoBehaviour, ICardView
     void Update()
     {
         v2.BelongsTo = _inspectorBelongsTo;
+        
         //gs.text = _inspectNumber.ToString();
         //gs.sortingOrder = _sprite.sortingOrder;
         // If the primary mouse button was pressed this frame

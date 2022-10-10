@@ -24,7 +24,7 @@ public class PlayerController : IPlayerController
         this.view = view;
         model.OnCardsChanged += FixViewPos;
         // Listen to input from the view
-        view.OnClicked += (sender, e) => HandleClicked(sender, e);
+        //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
     }
@@ -34,25 +34,23 @@ public class PlayerController : IPlayerController
 
         for (int i = 0; i < model.Cards.Count; i++)
         {
+            model.Cards[i].OrderInHandChanged += HandleClicked;
             model.Cards[i].Position = model.HandPos[i].position;
             model.Cards[i].HandOrder = i;
-            SyncData();
         }
+            SyncData();
 
-        for (int i = 0; i < model.Cards.Count; i++)
+
+    }
+
+    private void HandleClicked(object sender, OrderInHandEventArgs e)
+    {
+        for (int i = 0; i < model.Cards.Count-1; i++)
         {
             model.Cards[i].HandOrder = i;
             SyncData();
 
         }
-    }
-
-    private void HandleClicked(object sender, PlayerChangedEventArgs e)
-    {
-        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
-        //{
-        //    Debug.Log("You Played " + model.Cards[index]);
-        //}
     }
 
     // Called when the view is clicked
