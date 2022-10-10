@@ -7,6 +7,7 @@ using System;
 using Random = System.Random;
 using System.Linq;
 using Color = UnityEngine.Color;
+using UnityEditor;
 
 public class Inisializer : MonoBehaviour
 {
@@ -19,13 +20,15 @@ public class Inisializer : MonoBehaviour
     public ButtonIndexV2 DeckButton;
     public List<ButtonIndexV2> Playerbuttons;
     public List<ButtonIndexV2> Enemybuttons;
+    public List<ButtonIndexV2> buttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
-
     void Awake()
     {
         StartCoroutine(Build());
     }
+
+    [Obsolete]
     IEnumerator Build()
     {
         //_______________________________________________\\
@@ -172,6 +175,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Name = "Red Card Super";
             _Cardmodel.IsSuper = true;
             tempList.Add((CardModel)_Cardmodel);
+            
             // Create the view
             var CardviewFactory = new CardViewFactory();
             var Cardview = CardviewFactory.View;
@@ -624,6 +628,18 @@ public class Inisializer : MonoBehaviour
         #endregion
 
 
+        foreach (var item in FindObjectsOfTypeAll(typeof(ButtonIndexV2)))
+        {
+            buttons.Add((ButtonIndexV2)item);
+        }
+        yield return new WaitForSeconds(1f);
+        foreach (var item in buttons)
+        {
+            item.playerModel = (PlayerModel)_playermodel;
+            item.enemyModel = (EnemyModel)_Enemyermodel;
+            item.deckModel = (DeckModel)_deckmodel;
+            item.boardModel = (BoardModel)_Boardmodel;
+        }
         #endregion
 
         //_______________________________________________\\

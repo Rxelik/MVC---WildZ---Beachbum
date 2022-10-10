@@ -57,6 +57,8 @@ public class CardController : ICardController
     {
         view.Position = model.Position;
 
+        view.Rotation = model.Rotation;
+
         view.Color = model.Color;
 
         view.Number = model.Number;

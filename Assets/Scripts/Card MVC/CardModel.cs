@@ -3,6 +3,7 @@ using UnityEngine;
 
 // Dispatched when the enemy's position changes
 public class CardPositionChangedEventArgs : EventArgs { }
+public class CardRotationChangedEventArgs : EventArgs { }
 public class CardColorChangedEventArgs : EventArgs { }
 public class CardNumberChangedEventArgs : EventArgs { }
 public class CardChangedBelongsEventArgs : EventArgs { }
@@ -19,6 +20,7 @@ public interface ICardModel
 {
     // Dispatched when the position changes
     event EventHandler<CardPositionChangedEventArgs> OnPositionChanged;
+    event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
     event EventHandler<CardColorChangedEventArgs> OnColorChanged;
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
@@ -30,6 +32,7 @@ public interface ICardModel
 
     // Position of the enemy
     Vector3 Position { get; set; }
+    Quaternion Rotation { get; set; }
     Color Color { get; set; }
     int Number { get; set; }
     string BelongsTo { get; set; }
@@ -49,6 +52,7 @@ public class CardModel : ICardModel
     [SerializeField] int _Layer;
     [SerializeField] Color _Color;
     [SerializeField] Vector3 _Position;
+    [SerializeField] Quaternion _Rotation;
     [SerializeField] int _Number;
     [SerializeField] string _BelongsTo;
                      string _Name;
@@ -57,6 +61,7 @@ public class CardModel : ICardModel
     [SerializeField] bool _IsBamboozle;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
+    public event EventHandler<CardRotationChangedEventArgs> OnRotationChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
     public event EventHandler<CardNumberChangedEventArgs> OnNumberChanged = (sender, e) => { };
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
@@ -84,7 +89,24 @@ public class CardModel : ICardModel
             }
         }
     }
+    public Quaternion Rotation
+    {
+        get { return _Rotation; }
+        set
+        {
+            // Only if the position changes
+            if (_Rotation != value)
+            {
+                // Set new position
+                _Rotation = value;
 
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardRotationChangedEventArgs();
+                OnRotationChanged(this, eventArgs);
+                Debug.Log("Changed Card POS");
+            }
+        }
+    }
 
     public Color Color
     {

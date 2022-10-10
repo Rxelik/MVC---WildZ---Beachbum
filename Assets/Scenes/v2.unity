@@ -158,6 +158,7 @@ MonoBehaviour:
     _Layer: 0
     _Color: {r: 0, g: 0, b: 0, a: 0}
     _Position: {x: 0, y: 0, z: 0}
+    _Rotation: {x: 0, y: 0, z: 0, w: 0}
     _Number: 0
     _BelongsTo: 
     _IsSuper: 0
@@ -278,6 +279,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &43924707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,6 +603,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &61047800
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +666,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &61047803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1069,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &129393769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1132,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &129393772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,6 +1325,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &170462283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1539,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &249160409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1874,6 +1882,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &288686936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2168,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &336037247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,6 +2492,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &404693191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,6 +2713,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &466181949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2934,6 +2946,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &528693930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3507,6 +3520,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &615186746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +3615,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &618925877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,6 +3963,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &682263427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4133,7 +4149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &752332413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4217,6 +4233,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &763093694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4503,6 +4520,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &771824161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4656,6 +4674,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &785813233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4809,6 +4828,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &799493809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4962,6 +4982,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &822671067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5115,6 +5136,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &825120134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5347,6 +5369,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &876461267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5579,6 +5602,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &895629574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5764,6 +5788,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &946632881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6266,6 +6291,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &1013424482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7343,6 +7369,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1332970313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7644,6 +7671,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &1445785984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7797,6 +7825,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1477317541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7950,6 +7979,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &1491923820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8404,6 +8434,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1556904152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8557,6 +8588,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1592829918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8710,6 +8742,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &1601267247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8942,6 +8975,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &1630105415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9095,6 +9129,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1640380619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9303,6 +9338,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &1688543654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9547,6 +9583,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &1729660835
 GameObject:
   m_ObjectHideFlags: 0
@@ -9609,6 +9646,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1729660838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9762,6 +9800,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: 
+  _index: 0
 --- !u!114 &1777917242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9915,6 +9954,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1785542241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10238,6 +10278,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &1814828630
 GameObject:
   m_ObjectHideFlags: 0
@@ -10561,6 +10602,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1841294549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10764,6 +10806,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &1906192116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10953,7 +10996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1927375787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11079,6 +11122,7 @@ MonoBehaviour:
   PlayerColorChooser: []
   EnemyColorChooser: []
   BelongsTo: 
+  _index: 0
 --- !u!1 &1941650205
 GameObject:
   m_ObjectHideFlags: 0
@@ -11311,6 +11355,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!1 &1968515881
 GameObject:
   m_ObjectHideFlags: 0
@@ -11469,6 +11514,7 @@ MonoBehaviour:
   - {fileID: 1729660837}
   - {fileID: 1592829917}
   - {fileID: 170462282}
+  buttons: []
   PlayerTransforms:
   - {fileID: 1816745240}
   - {fileID: 1795147057}
@@ -11620,6 +11666,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &2004480623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11754,6 +11801,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &2016861763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12005,6 +12053,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &2052249314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12237,6 +12286,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Player
+  _index: 0
 --- !u!114 &2103647603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12390,6 +12440,7 @@ MonoBehaviour:
   - {fileID: 1777917239}
   - {fileID: 1601267244}
   BelongsTo: Enemy
+  _index: 0
 --- !u!114 &2110488518
 MonoBehaviour:
   m_ObjectHideFlags: 0

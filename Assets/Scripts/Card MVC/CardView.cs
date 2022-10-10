@@ -26,6 +26,7 @@ public interface ICardView
     // Set the enemy's position
     int Number { set; }
     Vector3 Position { set; }
+    Quaternion Rotation { set; }
     Color Color { set; }
     string BelongsTo { set; }
     int Layer { set; }
@@ -49,6 +50,7 @@ public class CardView : MonoBehaviour, ICardView
     public int Number { set { _ = value; _inspectNumber = value; } }
 
     public Vector3 Position { set { transform.position = value; _inspectPos = value; } }
+    public Quaternion Rotation { set { transform.rotation = value; _inspectRot = value; } }
 
     // Set the Card Color position
     public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
@@ -59,7 +61,9 @@ public class CardView : MonoBehaviour, ICardView
     public bool IsWild { set { _IsWild = value; } }
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
+
     [SerializeField] Vector3 _inspectPos;
+    [SerializeField] Quaternion _inspectRot;
     public int _inspectNumber;
     [SerializeField] private String _inspectorBelongsTo;
     public Color _InspectorColor;
@@ -79,8 +83,8 @@ public class CardView : MonoBehaviour, ICardView
     }
     void Update()
     {
-        gs.text = _inspectNumber.ToString();
-        gs.sortingOrder = _sprite.sortingOrder;
+        //gs.text = _inspectNumber.ToString();
+        //gs.sortingOrder = _sprite.sortingOrder;
         // If the primary mouse button was pressed this frame
         if (Input.GetMouseButtonDown(0))
         {
