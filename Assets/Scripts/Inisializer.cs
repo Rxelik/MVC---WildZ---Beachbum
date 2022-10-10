@@ -23,6 +23,8 @@ public class Inisializer : MonoBehaviour
     public List<ButtonIndexV2> buttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
+
+    [Obsolete]
     void Awake()
     {
         StartCoroutine(Build());
@@ -119,34 +121,34 @@ public class Inisializer : MonoBehaviour
 
         //_______________________________________________\\
 
-        #region Button Refrence For Player And Board
+        //#region Button Refrence For Player And Board
 
-        foreach (var item in Playerbuttons)
-        {
-            item.playerModel = (PlayerModel)_playermodel;
-            item.enemyModel = (EnemyModel)_Enemyermodel;
-            item.deckModel = (DeckModel)_deckmodel;
-            item.boardModel = (BoardModel)_Boardmodel;
-        }
-        #endregion
+        //foreach (var item in Playerbuttons)
+        //{
+        //    item.playerModel = (PlayerModel)_playermodel;
+        //    item.enemyModel = (EnemyModel)_Enemyermodel;
+        //    item.deckModel = (DeckModel)_deckmodel;
+        //    item.boardModel = (BoardModel)_Boardmodel;
+        //}
+        //#endregion
 
-        #region Button Refrence For Enemy And Board
-        foreach (var item in Enemybuttons)
-        {
-            item.playerModel = (PlayerModel)_playermodel;
-            item.enemyModel = (EnemyModel)_Enemyermodel;
-            item.deckModel = (DeckModel)_deckmodel;
-            item.boardModel = (BoardModel)_Boardmodel;
-        }
-        #endregion
+        //#region Button Refrence For Enemy And Board
+        //foreach (var item in Enemybuttons)
+        //{
+        //    item.playerModel = (PlayerModel)_playermodel;
+        //    item.enemyModel = (EnemyModel)_Enemyermodel;
+        //    item.deckModel = (DeckModel)_deckmodel;
+        //    item.boardModel = (BoardModel)_Boardmodel;
+        //}
+        //#endregion
 
-        #region Button Refrence For Deck Button
-        DeckButton.playerModel = (PlayerModel)_playermodel;
-        DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
-        DeckButton.deckModel = (DeckModel)_deckmodel;
-        DeckButton.boardModel = (BoardModel)_Boardmodel;
+        //#region Button Refrence For Deck Button
+        //DeckButton.playerModel = (PlayerModel)_playermodel;
+        //DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
+        //DeckButton.deckModel = (DeckModel)_deckmodel;
+        //DeckButton.boardModel = (BoardModel)_Boardmodel;
         GameManager.Instance.deckModel = (DeckModel)_deckmodel;
-        #endregion
+        //#endregion
 
         //_______________________________________________\\
 
@@ -553,56 +555,56 @@ public class Inisializer : MonoBehaviour
 
         #endregion
 
-        #region Wilds
+        //#region Wilds
 
-        #region WildSuper
-        for (int i = 0; i < 2; i++)
-        {
-            var CardmodelFactory = new CardModelFactory();
-            var _Cardmodel = CardmodelFactory.Model;
-            // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
-            _Cardmodel.Color = Color.black;
-            _Cardmodel.Number = 99;
-            _Cardmodel.Layer = 1;
-            _Cardmodel.Name = "SUPER DUPER WILD SUPER CARD";
-            _Cardmodel.IsSuper = true;
-            _Cardmodel.IsWild = true;
-            tempList.Add((CardModel)_Cardmodel);
-            // Create the view
-            var CardviewFactory = new CardViewFactory();
-            var Cardview = CardviewFactory.View;
+        //#region WildSuper
+        //for (int i = 0; i < 2; i++)
+        //{
+        //    var CardmodelFactory = new CardModelFactory();
+        //    var _Cardmodel = CardmodelFactory.Model;
+        //    // Set some initial state
+        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Color = Color.black;
+        //    _Cardmodel.Number = 99;
+        //    _Cardmodel.Layer = 1;
+        //    _Cardmodel.Name = "SUPER DUPER WILD SUPER CARD";
+        //    _Cardmodel.IsSuper = true;
+        //    _Cardmodel.IsWild = true;
+        //    tempList.Add((CardModel)_Cardmodel);
+        //    // Create the view
+        //    var CardviewFactory = new CardViewFactory();
+        //    var Cardview = CardviewFactory.View;
 
-            // Create the controller
-            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-            var Cardcontroller = controllerFactory.Controller;
-        }
-        #endregion
+        //    // Create the controller
+        //    var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+        //    var Cardcontroller = controllerFactory.Controller;
+        //}
+        //#endregion
 
-        #region Wild +4
-        for (int i = 0; i < 4; i++)
-        {
-            var CardmodelFactory = new CardModelFactory();
-            var _Cardmodel = CardmodelFactory.Model;
-            // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
-            _Cardmodel.Color = Color.white;
-            _Cardmodel.Number = 22;
-            _Cardmodel.Layer = 1;
-            _Cardmodel.Name = "Wild +2 Card";
-            _Cardmodel.IsWild = true;
-            tempList.Add((CardModel)_Cardmodel);
-            // Create the view
-            var CardviewFactory = new CardViewFactory();
-            var Cardview = CardviewFactory.View;
+        //#region Wild +4
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    var CardmodelFactory = new CardModelFactory();
+        //    var _Cardmodel = CardmodelFactory.Model;
+        //    // Set some initial state
+        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Color = Color.white;
+        //    _Cardmodel.Number = 22;
+        //    _Cardmodel.Layer = 1;
+        //    _Cardmodel.Name = "Wild +2 Card";
+        //    _Cardmodel.IsWild = true;
+        //    tempList.Add((CardModel)_Cardmodel);
+        //    // Create the view
+        //    var CardviewFactory = new CardViewFactory();
+        //    var Cardview = CardviewFactory.View;
 
-            // Create the controller
-            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-            var Cardcontroller = controllerFactory.Controller;
-        }
-        #endregion
+        //    // Create the controller
+        //    var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+        //    var Cardcontroller = controllerFactory.Controller;
+        //}
+        //#endregion
 
-        #endregion
+        //#endregion
 
         #region Bamoozle
         for (int i = 0; i < 2; i++)
@@ -628,9 +630,10 @@ public class Inisializer : MonoBehaviour
         #endregion
 
 
-        foreach (var item in FindObjectsOfTypeAll(typeof(ButtonIndexV2)))
+        foreach (var item in FindSceneObjectsOfType(typeof(ButtonIndexV2)))
         {
-            buttons.Add((ButtonIndexV2)item);
+            if (item)
+                buttons.Add((ButtonIndexV2)item);
         }
         yield return new WaitForSeconds(1f);
         foreach (var item in buttons)
@@ -669,6 +672,7 @@ public class Inisializer : MonoBehaviour
             _playermodel.AddCard(_deckmodel.Cards[i]);
             _playermodel.Cards[i].Position = PlayerTransforms[i].position;
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
+            _playermodel.Cards[i].BelongsTo = "Player";
         }
             
         
@@ -680,6 +684,7 @@ public class Inisializer : MonoBehaviour
             _Enemyermodel.AddCard(_deckmodel.Cards[i]);
             _Enemyermodel.Cards[i].Position = EnemyTransforms[i].position;
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
+            _Enemyermodel.Cards[i].BelongsTo = "Enemy";
         }
         #endregion
 

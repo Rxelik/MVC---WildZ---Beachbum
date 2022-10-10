@@ -29,9 +29,16 @@ public class CardController : ICardController
         view.OnEnableEvent += StartOfGameDraw;
         model.OnPositionChanged += ChangePosition;
         model.OnLayerChanged += RiseLayer;
+        model.ChangedBelongTo += ChangedName;
         // Set the view's initial state by synching with the model
         SyncData();
     }
+
+    private void ChangedName(object sender, CardChangedBelongsEventArgs e)
+    {
+        SyncData();
+    }
+
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
@@ -74,6 +81,12 @@ public class CardController : ICardController
         view.IsWild = model.IsWild;
 
         view.IsBamboozle = model.IsBamboozle;
+
+        view.Player = model.Player;
+
+        view.Enemy = model.Enemy;
+
+        view.HandOrder = model.HandOrder;
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

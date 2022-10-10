@@ -12,6 +12,10 @@ public class CardNameChangeEventArgs : EventArgs { }
 public class CardIsSuperEventArgs : EventArgs { }
 public class CardIsWildEventArgs : EventArgs { }
 public class CardIsBamboozleEventArgs : EventArgs { }
+public class CardBelongsToPlayerEventArgs : EventArgs { }
+public class CardBelongsToEnemyEventArgs : EventArgs { }
+public class OrderInHandEventArgs : EventArgs { }
+
 
 
 
@@ -22,6 +26,7 @@ public interface ICardModel
     event EventHandler<CardPositionChangedEventArgs> OnPositionChanged;
     event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
     event EventHandler<CardColorChangedEventArgs> OnColorChanged;
+    event EventHandler<OrderInHandEventArgs> OrderInHandChanged;
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
     event EventHandler<CardNameChangeEventArgs> NameChanged;
@@ -29,12 +34,15 @@ public interface ICardModel
     event EventHandler<CardIsSuperEventArgs > OnSuper;
     event EventHandler<CardIsWildEventArgs> OnWild;
     event EventHandler<CardIsBamboozleEventArgs> OnBamboozle;
+    event EventHandler<CardBelongsToPlayerEventArgs> OnPlayerChange;
+    event EventHandler<CardBelongsToEnemyEventArgs> OnEnemyChange;
 
     // Position of the enemy
     Vector3 Position { get; set; }
     Quaternion Rotation { get; set; }
     Color Color { get; set; }
     int Number { get; set; }
+    int HandOrder { get; set; }
     string BelongsTo { get; set; }
     int Layer { get; set; }
     string Name { get; set; }
@@ -43,6 +51,8 @@ public interface ICardModel
     bool IsWild { get; set; }
     bool IsBamboozle { get; set; }
 
+    PlayerModel Player { get; set; }
+    EnemyModel Enemy { get; set; }
 }
 
 // Implementation of the enemy model interface
@@ -54,14 +64,18 @@ public class CardModel : ICardModel
     [SerializeField] Vector3 _Position;
     [SerializeField] Quaternion _Rotation;
     [SerializeField] int _Number;
+    [SerializeField] int _HandOrder;
     [SerializeField] string _BelongsTo;
                      string _Name;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
     [SerializeField] bool _IsBamboozle;
+    [SerializeField] PlayerModel _Player;
+    [SerializeField] EnemyModel _Enemy;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<CardRotationChangedEventArgs> OnRotationChanged = (sender, e) => { };
+    public event EventHandler<OrderInHandEventArgs> OrderInHandChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
     public event EventHandler<CardNumberChangedEventArgs> OnNumberChanged = (sender, e) => { };
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
@@ -70,7 +84,46 @@ public class CardModel : ICardModel
     public event EventHandler<CardIsSuperEventArgs> OnSuper = (sender, e) => { };
     public event EventHandler<CardIsWildEventArgs> OnWild = (sender, e) => { };
     public event EventHandler<CardIsBamboozleEventArgs> OnBamboozle = (sender, e) => { };
+    public event EventHandler<CardBelongsToPlayerEventArgs> OnPlayerChange = (sender, e) => { };
+    public event EventHandler<CardBelongsToEnemyEventArgs> OnEnemyChange = (sender, e) => { };
 
+
+    public PlayerModel Player
+    {
+        get { return _Player; }
+        set
+        {
+            // Only if the position changes
+            if (_Player != value)
+            {
+                // Set new position
+                _Player = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardBelongsToPlayerEventArgs();
+                OnPlayerChange(this, eventArgs);
+                Debug.Log("Changed Card POS");
+            }
+        }
+    }
+    public EnemyModel Enemy
+    {
+        get { return _Enemy; }
+        set
+        {
+            // Only if the position changes
+            if (_Enemy != value)
+            {
+                // Set new position
+                _Enemy = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardBelongsToEnemyEventArgs();
+                OnEnemyChange(this, eventArgs);
+                Debug.Log("Changed Card POS");
+            }
+        }
+    }
     public Vector3 Position
     {
         get { return _Position; }
@@ -141,6 +194,23 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardNumberChangedEventArgs();
                 OnNumberChanged(this, eventArgs);
+            }
+        }
+    }  
+    public int HandOrder
+    {
+        get { return _HandOrder; }
+        set
+        {
+            // Only if the position changes
+            if (_HandOrder != value)
+            {
+                // Set new position
+                _HandOrder = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new OrderInHandEventArgs();
+                OrderInHandChanged(this, eventArgs);
             }
         }
     }

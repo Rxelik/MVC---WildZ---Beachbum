@@ -8,6 +8,8 @@ public class CardMaker : MonoBehaviour
     public List<Sprite> Green;
     public List<Sprite> Blue;
     public List<Sprite> Yellow;
+    public List<Sprite> White;
+    public List<Sprite> Black;
     public SpriteRenderer CardSprite;
 
     public CardView view;
@@ -49,6 +51,12 @@ public class CardMaker : MonoBehaviour
                 case 9:
                     CardSprite.sprite = Red[8];
                     break;
+                case 22:
+                    CardSprite.sprite = Red[9];
+                    break;
+                case 44:
+                    CardSprite.sprite = Red[10];
+                    break;
                 default:
                     break;
             }
@@ -83,6 +91,12 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 9:
                     CardSprite.sprite = Green[8];
+                    break;
+                case 22:
+                    CardSprite.sprite = Green[9];
+                    break;
+                case 44:
+                    CardSprite.sprite = Green[10];
                     break;
                 default:
                     break;
@@ -119,6 +133,12 @@ public class CardMaker : MonoBehaviour
                 case 9:
                     CardSprite.sprite = Blue[8];
                     break;
+                case 22:
+                    CardSprite.sprite = Blue[9];
+                    break;
+                case 44:
+                    CardSprite.sprite = Blue[10];
+                    break;
                 default:
                     break;
             }
@@ -153,6 +173,26 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 9:
                     CardSprite.sprite = Yellow[8];
+                    break;
+                case 22:
+                    CardSprite.sprite = Yellow[9];
+                    break;
+                case 44:
+                    CardSprite.sprite = Yellow[10];
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (view._InspectorColor == Color.white)
+        {
+            switch (view._inspectNumber)
+            {
+                case 22:
+                    CardSprite.sprite = White[0];
+                    break;
+                case 44:
+                    CardSprite.sprite = White[1];
                     break;
                 default:
                     break;

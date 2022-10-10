@@ -15,12 +15,12 @@ public class ButtonIndexV2 : MonoBehaviour
     GameManager manager;
     public string BelongsTo;
     public int _index;
-    //public int Index;
+    public CardView cardView;
 
 
     void OnMouseDown()
     {
-        PlayCard(_index);
+        PlayCard(cardView._inspectOrderInHand);
     }
     public void PlayCard(int Index)
     {

@@ -20,6 +20,7 @@ public interface IPlayerView
     [SerializeField] List<Transform> HandPos { set; }
     [SerializeField] int HandCount { set; }
 
+
 }
 
 
@@ -32,6 +33,7 @@ public class PlayerView : MonoBehaviour, IPlayerView
     public event EventHandler<PlayerChangedEventArgs> OnClicked = (sender, e) => { };
     public Vector3 Position { set { transform.position = value; } }
 
+
     public List<CardModel> Cards { set => _InspectorCards = value; }
     public List<Transform> HandPos { set => _HandPos = value; }
     public int HandCount { set => _HandCount = value; }
@@ -43,7 +45,6 @@ public class PlayerView : MonoBehaviour, IPlayerView
 
     public int _HandCount;
 
-    void Update()
-    {
-    }
+    public string BelongsTo;
+
 }

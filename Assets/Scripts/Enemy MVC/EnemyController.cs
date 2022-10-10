@@ -35,9 +35,15 @@ public class EnemyController : IEnemyController
         for (int i = 0; i < model.Cards.Count; i++)
         {
             model.Cards[i].Position = model.HandPos[i].position;
+            model.Cards[i].HandOrder = i;
             SyncData();
         }
+        for (int i = 0; i < model.Cards.Count; i++)
+        {
+            model.Cards[i].HandOrder = i;
+            SyncData();
 
+        }
     }
 
     private void HandleClicked(object sender, EnemyChangedEventArgs e)
