@@ -56,14 +56,12 @@ public class CardController : ICardController
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         SyncData();
-        Debug.Log("Synced POS Data");
 
     }
 
     private void RiseLayer(object sender, CardLayerChangeEventArgs e)
     {
         SyncData();
-        Debug.Log("Synced Layer Data");
     }
     // Sync the view's position with the model's position
     private void SyncData()

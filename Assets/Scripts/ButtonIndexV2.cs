@@ -18,6 +18,16 @@ public class ButtonIndexV2 : MonoBehaviour
     public CardView cardView;
     public CardMaker _cardMaker;
 
+    public bool isAI = false;
+    bool AIplayed = false;
+    private void Update()
+    {
+        if (isAI && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
+        {
+            StartCoroutine(AIplayCard());
+            print("GOT IN");
+        }
+    }
     void OnMouseDown()
     {
         PlayCard(cardView._inspectOrderInHand);
@@ -35,7 +45,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
-               StartCoroutine(_cardMaker.BuildWild(2));
+                StartCoroutine(_cardMaker.BuildWild(2));
             }
             print("Inside Player");
 
@@ -298,11 +308,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
 
     #endregion
-    void AIplayCard()
-    {
-        var AiTurn = enemyModel.Cards.Where(c => c.Color == boardModel.TopCard().Color || c.Number == boardModel.TopCard().Number).ToList();
 
-    }
 
     void PlusTwo(CardModel card, EnemyModel model)
     {
@@ -541,5 +547,43 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator AIplayCard()
+    {
+        AIplayed = true;
+        yield return new WaitForSeconds(1f);
+        var AiTurn = enemyModel.Cards.Where(c =>
+        c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.Number == 22 && boardModel.TopCard().Number == 22
+        || c.Number == 44 && boardModel.TopCard().Number == 22
+        || c.Number == 44 && boardModel.TopCard().Number == 44
+        ).ToList();
+        if (AiTurn.Count == 0)
+        {
+            enemyModel.TakeCard(1);
+            ChangeTurn();
+        }
+        else
+        {
+            manager.ChosenCard = AiTurn[0];
+            print(AiTurn[0].Name);
+            NormalCard(AiTurn[0], enemyModel);
+            SuperCard(AiTurn[0], enemyModel);
+            if (AiTurn[0].IsWild && boardModel.TopCard().Number != 22 || AiTurn[0].IsWild && boardModel.TopCard().Number != 44)
+            {
+                List<string> colors = new List<string>();
+                colors.Add("Red");
+                colors.Add("Green");
+                colors.Add("Blue");
+                colors.Add("Yellow");
+                int rand = 0;
+                WildCard(colors[Random.Range(rand, 3)]);
+
+               // StartCoroutine(_cardMaker.BuildWild(2));
+            }
+        }
+        AIplayed = false;
     }
 }

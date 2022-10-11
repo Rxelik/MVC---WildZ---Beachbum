@@ -39,6 +39,7 @@ public interface ICardView
     bool IsWild { set; }
     bool IsBamboozle { set; }
 
+    SpriteRenderer Sprite { set; }
 }
 
 // Implementation of the enemy view
@@ -51,7 +52,7 @@ public class CardView : MonoBehaviour, ICardView
     public event EventHandler<CardColorChangedEventArgs> OnColorChange = (sender, e) => { };
     public event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve = (sender, e) => { };
 
-    public int Number { set { ; _inspectNumber = value; } }
+    public int Number { set {; _inspectNumber = value; } }
     public int HandOrder { set { _inspectOrderInHand = value; } }
     public PlayerModel Player { set { _InspectorPlayer = value; } }
     public EnemyModel Enemy { set { _InspectorEnemy = value; } }
@@ -60,13 +61,14 @@ public class CardView : MonoBehaviour, ICardView
 
     // Set the Card Color position
     public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
-    public string BelongsTo { set { _inspectorBelongsTo = value;  } }
+    public string BelongsTo { set { _inspectorBelongsTo = value; } }
     public string Name { set => gameObject.name = value; }
-    public int Layer { set { _sprite.sortingOrder = value; } }
+    public int Layer { set { _InspectorSprite.sortingOrder = value; } }
     public bool IsSuper { set { _IsSuper = value; } }
     public bool IsWild { set { _IsWild = value; } }
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
+    public SpriteRenderer Sprite { set { GetComponent<SpriteRenderer>(); _InspectorSprite = value; } }
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
@@ -77,10 +79,10 @@ public class CardView : MonoBehaviour, ICardView
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
     [SerializeField] bool _IsBamboozle;
-    public SpriteRenderer _sprite;
+    public SpriteRenderer _InspectorSprite;
     //public TextMeshPro gs;
 
-   // public List<GameObject> PlayerTransforms;
+    // public List<GameObject> PlayerTransforms;
     //public List<GameObject> EnemyTransforms;
     public ButtonIndexV2 v2;
     public PlayerModel _InspectorPlayer;
@@ -88,14 +90,14 @@ public class CardView : MonoBehaviour, ICardView
 
     private void Awake()
     {
-        _sprite = GetComponent<SpriteRenderer>();
-       // StartCoroutine(WaitBeforeRegister());
+        _InspectorSprite = GetComponent<SpriteRenderer>();
+        // StartCoroutine(WaitBeforeRegister());
         //GetTransforms();
     }
     void Update()
     {
         v2.BelongsTo = _inspectorBelongsTo;
-        
+
         //gs.text = _inspectNumber.ToString();
         //gs.sortingOrder = _sprite.sortingOrder;
         // If the primary mouse button was pressed this frame
@@ -125,16 +127,16 @@ public class CardView : MonoBehaviour, ICardView
         OnLayerChangeEve(this, eventArgss);
         print("rized laya");
     }
-    
+
     private void GetTransforms()
     {
         for (int i = 0; i < 9; i++)
         {
-         //   PlayerTransforms.Add(GameObject.Find($"Player Card Pos "+i));
+            //   PlayerTransforms.Add(GameObject.Find($"Player Card Pos "+i));
         }
         for (int i = 0; i < 9; i++)
         {
-       //     EnemyTransforms.Add(GameObject.Find($"Enemy Card Pos " + i));
+            //     EnemyTransforms.Add(GameObject.Find($"Enemy Card Pos " + i));
         }
     }
     private void AllignCards()

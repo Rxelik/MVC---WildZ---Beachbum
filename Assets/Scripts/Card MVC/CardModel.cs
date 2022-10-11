@@ -15,6 +15,7 @@ public class CardIsBamboozleEventArgs : EventArgs { }
 public class CardBelongsToPlayerEventArgs : EventArgs { }
 public class CardBelongsToEnemyEventArgs : EventArgs { }
 public class OrderInHandEventArgs : EventArgs { }
+public class CardSpriteChangedEventArgs : EventArgs { }
 
 
 
@@ -36,6 +37,7 @@ public interface ICardModel
     event EventHandler<CardIsBamboozleEventArgs> OnBamboozle;
     event EventHandler<CardBelongsToPlayerEventArgs> OnPlayerChange;
     event EventHandler<CardBelongsToEnemyEventArgs> OnEnemyChange;
+    event EventHandler<CardSpriteChangedEventArgs> ChangedSprite;
 
     // Position of the enemy
     Vector3 Position { get; set; }
@@ -53,6 +55,8 @@ public interface ICardModel
 
     PlayerModel Player { get; set; }
     EnemyModel Enemy { get; set; }
+
+    Sprite Sprite { get; set; }
 }
 
 // Implementation of the enemy model interface
@@ -72,6 +76,7 @@ public class CardModel : ICardModel
     [SerializeField] bool _IsBamboozle;
     [SerializeField] PlayerModel _Player;
     [SerializeField] EnemyModel _Enemy;
+    [SerializeField] Sprite _Sprite;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<CardRotationChangedEventArgs> OnRotationChanged = (sender, e) => { };
@@ -86,7 +91,7 @@ public class CardModel : ICardModel
     public event EventHandler<CardIsBamboozleEventArgs> OnBamboozle = (sender, e) => { };
     public event EventHandler<CardBelongsToPlayerEventArgs> OnPlayerChange = (sender, e) => { };
     public event EventHandler<CardBelongsToEnemyEventArgs> OnEnemyChange = (sender, e) => { };
-
+    public event EventHandler<CardSpriteChangedEventArgs> ChangedSprite = (sender, e) => { };
 
     public PlayerModel Player
     {
@@ -138,7 +143,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardPositionChangedEventArgs();
                 OnPositionChanged(this, eventArgs);
-                Debug.Log("Changed Card POS");
             }
         }
     }
@@ -211,7 +215,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new OrderInHandEventArgs();
                 OrderInHandChanged(this, eventArgs);
-                Debug.Log("Inside HandOrder");
             }
         }
     }
@@ -317,6 +320,25 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardIsBamboozleEventArgs();
                 OnBamboozle(this, eventArgs);
+            }
+        }
+    }
+
+    public Sprite Sprite
+    {
+        get { return _Sprite; }
+        set
+        {
+            // Only if the position changes
+            if (_Sprite != value)
+            {
+                // Set new position
+                _Sprite = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardSpriteChangedEventArgs();
+                ChangedSprite(this, eventArgs);
+                Debug.Log("Changed Card POS");
             }
         }
     }

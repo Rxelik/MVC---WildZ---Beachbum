@@ -18,7 +18,7 @@ public class CardMaker : MonoBehaviour
     {
 
         if (Button == false)
-        CardSprite.sortingOrder = view._sprite.sortingOrder;
+        CardSprite.sortingOrder = view._InspectorSprite.sortingOrder;
     }
     private void Start()
     {

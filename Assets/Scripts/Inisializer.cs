@@ -18,6 +18,7 @@ public class Inisializer : MonoBehaviour
     int colorRND;
     int numRND;
     public ButtonIndexV2 DeckButton;
+    public ButtonIndexV2 AI;
     public List<GameObject> Playerbuttons;
     public List<GameObject> Enemybuttons;
     public List<ButtonIndexV2> buttons;
@@ -658,9 +659,17 @@ public class Inisializer : MonoBehaviour
                 item3.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
                 item3.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
             }
+
         }
+
         #endregion
 
+        #region AI
+        AI.playerModel = (PlayerModel)_playermodel;
+        AI.enemyModel = (EnemyModel)_Enemyermodel;
+        AI.deckModel = (DeckModel)_deckmodel;
+        AI.boardModel = (BoardModel)_Boardmodel;
+        #endregion
         //_______________________________________________\\
 
         yield return new WaitForSeconds(0.5f);
@@ -684,7 +693,7 @@ public class Inisializer : MonoBehaviour
 
         for (int i = 0; i < HandSize; i++)
         {
-            yield return new WaitForSeconds(0.2f);
+            //yield return new WaitForSeconds(0.2f);
             _playermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
             _playermodel.Cards[i].BelongsTo = "Player";
@@ -696,7 +705,7 @@ public class Inisializer : MonoBehaviour
         #region Add Cards To Enemy Hand
         for (int i = 0; i < HandSize; i++)
         {
-            yield return new WaitForSeconds(0.2f);
+            //yield return new WaitForSeconds(0.2f);
             _Enemyermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
             _Enemyermodel.Cards[i].BelongsTo = "Enemy";
