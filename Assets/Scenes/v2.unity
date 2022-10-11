@@ -160,6 +160,7 @@ MonoBehaviour:
     _Position: {x: 0, y: 0, z: 0}
     _Rotation: {x: 0, y: 0, z: 0, w: 0}
     _Number: 0
+    _HandOrder: 0
     _BelongsTo: 
     _IsSuper: 0
     _IsWild: 0
@@ -937,6 +938,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &336037247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,6 +1330,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &466181949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2328,6 +2331,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &825120134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3021,6 +3025,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &1013424482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4192,6 +4197,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &1445785984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,6 +4352,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &1491923820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4801,6 +4808,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &1601267247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5034,6 +5042,7 @@ MonoBehaviour:
   - {fileID: 1601267244}
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!114 &1777917242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5739,6 +5748,7 @@ MonoBehaviour:
   EnemyColorChooser: []
   BelongsTo: 
   _index: 0
+  cardView: {fileID: 0}
 --- !u!1 &1941650205
 GameObject:
   m_ObjectHideFlags: 0
