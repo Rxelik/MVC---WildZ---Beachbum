@@ -165,6 +165,7 @@ MonoBehaviour:
     _IsSuper: 0
     _IsWild: 0
     _IsBamboozle: 0
+    _Sprite: {fileID: 0}
 --- !u!4 &14892770
 Transform:
   m_ObjectHideFlags: 0
@@ -2717,6 +2718,11 @@ MonoBehaviour:
   _index: 0
   cardView: {fileID: 0}
   _cardMaker: {fileID: 0}
+  superSprites:
+  - {fileID: 1072612022876217574, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
+  - {fileID: 8232461720263320301, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
+  - {fileID: 8874006926371578084, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
+  - {fileID: 9047806757350544253, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   isAI: 1
 --- !u!1 &984338853
 GameObject:
@@ -5561,6 +5567,7 @@ MonoBehaviour:
   _index: 0
   cardView: {fileID: 0}
   _cardMaker: {fileID: 0}
+  superSprites: []
   isAI: 0
 --- !u!1 &1941650205
 GameObject:

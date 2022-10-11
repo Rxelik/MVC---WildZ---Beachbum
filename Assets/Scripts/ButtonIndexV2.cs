@@ -18,6 +18,7 @@ public class ButtonIndexV2 : MonoBehaviour
     public CardView cardView;
     public CardMaker _cardMaker;
 
+    public List<Sprite> superSprites;
     public bool isAI = false;
     bool AIplayed = false;
     private void Update()
@@ -573,15 +574,17 @@ public class ButtonIndexV2 : MonoBehaviour
             SuperCard(AiTurn[0], enemyModel);
             if (AiTurn[0].IsWild && boardModel.TopCard().Number != 22 || AiTurn[0].IsWild && boardModel.TopCard().Number != 44)
             {
+                Color _color = AiTurn[0].Color;
                 List<string> colors = new List<string>();
                 colors.Add("Red");
                 colors.Add("Green");
                 colors.Add("Blue");
                 colors.Add("Yellow");
-                int rand = 0;
-                WildCard(colors[Random.Range(rand, 3)]);
-
-               // StartCoroutine(_cardMaker.BuildWild(2));
+                int rand = Random.Range(0, 3);
+                WildCard(colors[rand]);
+                AiTurn[0].Color = Color.white;
+                AiTurn[0].Sprite = superSprites[rand];
+                AiTurn[0].Color = _color;
             }
         }
         AIplayed = false;

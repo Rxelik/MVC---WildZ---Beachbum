@@ -31,7 +31,13 @@ public class CardController : ICardController
         model.OnLayerChanged += RiseLayer;
         model.ChangedBelongTo += ChangedName;
         model.OrderInHandChanged += Count;
+        model.ChangedSprite += ChangedSprite;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void ChangedSprite(object sender, CardSpriteChangedEventArgs e)
+    {
         SyncData();
     }
 
@@ -91,6 +97,8 @@ public class CardController : ICardController
         view.Enemy = model.Enemy;
 
         view.HandOrder = model.HandOrder;
+
+        view.Sprite = model.Sprite;
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

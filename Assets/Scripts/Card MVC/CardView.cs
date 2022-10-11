@@ -39,7 +39,7 @@ public interface ICardView
     bool IsWild { set; }
     bool IsBamboozle { set; }
 
-    SpriteRenderer Sprite { set; }
+    Sprite Sprite { set; }
 }
 
 // Implementation of the enemy view
@@ -68,7 +68,7 @@ public class CardView : MonoBehaviour, ICardView
     public bool IsWild { set { _IsWild = value; } }
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
-    public SpriteRenderer Sprite { set { GetComponent<SpriteRenderer>(); _InspectorSprite = value; } }
+    public Sprite Sprite { set { GetComponent<SpriteRenderer>(); _InspectorSprite.sprite = value; } }
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
