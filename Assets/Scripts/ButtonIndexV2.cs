@@ -16,7 +16,7 @@ public class ButtonIndexV2 : MonoBehaviour
     public string BelongsTo;
     public int _index;
     public CardView cardView;
-
+    public CardMaker _cardMaker;
 
     void OnMouseDown()
     {
@@ -35,6 +35,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
+               StartCoroutine(_cardMaker.BuildWild(2));
             }
             print("Inside Player");
 
@@ -50,6 +51,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
+                StartCoroutine(_cardMaker.BuildWild(2));
             }
             print("Inside Enemy");
         }
@@ -79,7 +81,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 || card.IsBamboozle && boardModel.TopCard().Number == 44
                 || boardModel.TopCard().IsBamboozle)
             {
-                card.Position = new Vector3(-5, 0, -5);
+                card.Position = new Vector3(-7, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
@@ -88,7 +90,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 if (card.IsBamboozle)
                 {
                     manager.Draw = 0;
-                    card.Position = new Vector3(-5, 0, -5);
+                    card.Position = new Vector3(-7, 0, -5);
                     card.Layer = boardModel.TopCard().Layer + 2;
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
@@ -102,8 +104,9 @@ public class ButtonIndexV2 : MonoBehaviour
 
 
             }
-            if (boardModel.TopCard().Number == 22 && card.Number == 22 
-                || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number !=44
+            if (boardModel.TopCard().Number == 22 && card.Number == 22
+
+                || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 44
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
                 PlusTwo(card, playerModel);
@@ -140,7 +143,7 @@ public class ButtonIndexV2 : MonoBehaviour
             || card.IsBamboozle && boardModel.TopCard().Number == 44
             || boardModel.TopCard().IsBamboozle)
             {
-                card.Position = new Vector3(-5, 0, -5);
+                card.Position = new Vector3(-7, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
@@ -149,7 +152,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 if (card.IsBamboozle)
                 {
                     manager.Draw = 0;
-                    card.Position = new Vector3(-5, 0, -5);
+                    card.Position = new Vector3(-7, 0, -5);
                     card.Layer = boardModel.TopCard().Layer + 2;
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
@@ -203,14 +206,14 @@ public class ButtonIndexV2 : MonoBehaviour
                         if (model.Cards[i] == card) { }
                         else
                         {
-                            model.Cards[i].Position = new Vector3(-5, 0, -5);
+                            model.Cards[i].Position = new Vector3(-7, 0, -5);
                             model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                             boardModel.AddCard(model.Cards[i]);
                             model.RemoveCard(model.Cards[i]);
                         }
                     }
                 }
-                card.Position = new Vector3(-5, 0, -5);
+                card.Position = new Vector3(-7, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
@@ -243,7 +246,7 @@ public class ButtonIndexV2 : MonoBehaviour
                         if (model.Cards[i] == card) { }
                         else
                         {
-                            model.Cards[i].Position = new Vector3(-5, 0, -5);
+                            model.Cards[i].Position = new Vector3(-7, 0, -5);
                             model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                             boardModel.AddCard(model.Cards[i]);
                             model.RemoveCard(model.Cards[i]);
@@ -251,7 +254,7 @@ public class ButtonIndexV2 : MonoBehaviour
                         }
                     }
                 }
-                card.Position = new Vector3(-5, 0, -5);
+                card.Position = new Vector3(-7, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
@@ -292,7 +295,6 @@ public class ButtonIndexV2 : MonoBehaviour
         }
 
         RemoveButtons();
-
     }
 
     #endregion
@@ -314,18 +316,18 @@ public class ButtonIndexV2 : MonoBehaviour
             if (manager.Draw == 0)
             {
                 playerModel.TakeCard(2);
-                card.Number = 98;
+                card.Number = 222;
             }
             else
             {
                 manager.Draw += 2;
                 playerModel.TakeCard(manager.Draw);
                 manager.Draw = 0;
-                card.Number = 98;
+                card.Number = 222;
             }
         }
 
-        card.Position = new Vector3(-5, 0, -5);
+        card.Position = new Vector3(-7, 0, -5);
         card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
@@ -344,18 +346,18 @@ public class ButtonIndexV2 : MonoBehaviour
             if (manager.Draw == 0)
             {
                 enemyModel.TakeCard(2);
-                card.Number = 98;
+                card.Number = 222;
             }
             else
             {
                 manager.Draw += 2;
                 enemyModel.TakeCard(manager.Draw);
                 manager.Draw = 0;
-                card.Number = 98;
+                card.Number = 222;
             }
         }
 
-        card.Position = new Vector3(-5, 0, -5);
+        card.Position = new Vector3(-7, 0, -5);
         card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
@@ -375,7 +377,7 @@ public class ButtonIndexV2 : MonoBehaviour
             if (manager.Draw == 0)
             {
                 playerModel.TakeCard(4);
-                card.Number = 98;
+                card.Number = 444;
 
             }
             else
@@ -383,12 +385,12 @@ public class ButtonIndexV2 : MonoBehaviour
                 manager.Draw += 4;
                 playerModel.TakeCard(manager.Draw);
                 manager.Draw = 0;
-                card.Number = 98;
+                card.Number = 444;
 
             }
         }
 
-        card.Position = new Vector3(-5, 0, -5);
+        card.Position = new Vector3(-7, 0, -5);
         card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
@@ -407,18 +409,18 @@ public class ButtonIndexV2 : MonoBehaviour
             if (manager.Draw == 0)
             {
                 enemyModel.TakeCard(4);
-                card.Number = 98;
+                card.Number = 444;
             }
             else
             {
                 manager.Draw += 4;
                 enemyModel.TakeCard(manager.Draw);
                 manager.Draw = 0;
-                card.Number = 98;
+                card.Number = 444;
             }
         }
 
-        card.Position = new Vector3(-5, 0, -5);
+        card.Position = new Vector3(-7, 0, -5);
         card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
@@ -448,11 +450,11 @@ public class ButtonIndexV2 : MonoBehaviour
     {
         if (deckModel.CurrentTurn == "Player")
         {
-            if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22|| !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
+            if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 || !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
             {
                 print("Cant Draw");
             }
-            else if(boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
+            else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
             {
                 if (manager.Draw == 0)
                 {
@@ -462,9 +464,12 @@ public class ButtonIndexV2 : MonoBehaviour
                 else
                 {
                     playerModel.TakeCard(manager.Draw);
-                        manager.Draw = 0;
+                    manager.Draw = 0;
                     ChangeTurn();
-                boardModel.TopCard().Number = 98;
+                    if (boardModel.TopCard().Number == 22)
+                        boardModel.TopCard().Number = 222;
+                    else
+                        boardModel.TopCard().Number = 444;
                 }
             }
             else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
@@ -475,13 +480,16 @@ public class ButtonIndexV2 : MonoBehaviour
                     {
                         playerModel.TakeCard(1);
                         ChangeTurn();
-                    }   
+                    }
                     else
                     {
                         playerModel.TakeCard(manager.Draw);
                         manager.Draw = 0;
                         ChangeTurn();
-                boardModel.TopCard().Number = 98;
+                        if (boardModel.TopCard().Number == 22)
+                            boardModel.TopCard().Number = 222;
+                        else
+                            boardModel.TopCard().Number = 444;
                     }
                 }
             }
@@ -489,7 +497,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else if (deckModel.CurrentTurn == "Enemy")
         {
-            if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22|| !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
+            if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22 || !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
             {
                 print("Cant Draw How you even got here?");
             }
@@ -505,7 +513,10 @@ public class ButtonIndexV2 : MonoBehaviour
                     enemyModel.TakeCard(manager.Draw);
                     manager.Draw = 0;
                     ChangeTurn();
-                boardModel.TopCard().Number = 98;
+                    if (boardModel.TopCard().Number == 22)
+                        boardModel.TopCard().Number = 222;
+                    else
+                        boardModel.TopCard().Number = 444;
                 }
             }
             else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
@@ -522,7 +533,10 @@ public class ButtonIndexV2 : MonoBehaviour
                         enemyModel.TakeCard(manager.Draw);
                         manager.Draw = 0;
                         ChangeTurn();
-                boardModel.TopCard().Number = 98;
+                        if (boardModel.TopCard().Number == 22)
+                            boardModel.TopCard().Number = 222;
+                        else
+                            boardModel.TopCard().Number = 444;
                     }
                 }
             }

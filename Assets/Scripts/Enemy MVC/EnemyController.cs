@@ -40,8 +40,9 @@ public class EnemyController : IEnemyController
             model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, 9f, i);
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            moveRight += 3f;
+            moveRight += 2.3f;
             CardLayer -= 1;
+            model.Cards[i].BelongsTo = "Enemy";
         }
 
         SyncData();

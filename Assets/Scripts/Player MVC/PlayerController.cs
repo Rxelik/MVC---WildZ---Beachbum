@@ -39,10 +39,11 @@ public class PlayerController : IPlayerController
             model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9f, i);
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            moveRight += 3f;
+            moveRight += 2.3f;
             CardLayer -= 1;
-            SyncData();
+            model.Cards[i].BelongsTo = "Player";
         }
+            SyncData();
 
 
     }

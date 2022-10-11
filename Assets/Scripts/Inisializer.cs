@@ -18,8 +18,8 @@ public class Inisializer : MonoBehaviour
     int colorRND;
     int numRND;
     public ButtonIndexV2 DeckButton;
-    public List<ButtonIndexV2> Playerbuttons;
-    public List<ButtonIndexV2> Enemybuttons;
+    public List<GameObject> Playerbuttons;
+    public List<GameObject> Enemybuttons;
     public List<ButtonIndexV2> buttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
@@ -41,7 +41,7 @@ public class Inisializer : MonoBehaviour
         var _deckmodel = DeckmodelFactory.Model;
 
         // Set some initial state
-        _deckmodel.Position = new Vector3(0, 0, 0);
+        _deckmodel.Position = new Vector3(20, 0, 0);
         _deckmodel.Cards = new List<CardModel>();
         _deckmodel.CurrentTurn = "Player";
         // Create the view
@@ -59,7 +59,7 @@ public class Inisializer : MonoBehaviour
         var _Boardmodel = BoardmodelFactory.Model;
 
         // Set some initial state
-        _Boardmodel.Position = new Vector3(0, 0, 0);
+        _Boardmodel.Position = new Vector3(20, 0, 0);
         _Boardmodel.Cards = new List<CardModel>();
         // Create the view
         var BoardviewFactory = new BoardViewFactory();
@@ -77,7 +77,7 @@ public class Inisializer : MonoBehaviour
         var _playermodel = PlayerModelFactory.Model;
 
         // Set some initial state
-        _playermodel.Position = new Vector3(0, 0, 0);
+        _playermodel.Position = new Vector3(20, 0, 0);
         _playermodel.Cards = new List<CardModel>();
         _playermodel.Deck = (DeckModel)_deckmodel;
         _playermodel.Board = (BoardModel)_Boardmodel;
@@ -102,12 +102,12 @@ public class Inisializer : MonoBehaviour
         var _Enemyermodel = EnemyModelFactory.Model;
 
         // Set some initial state
-        _Enemyermodel.Position = new Vector3(0, 0, 0);
+        _Enemyermodel.Position = new Vector3(20, 0, 0);
         _Enemyermodel.Cards = new List<CardModel>();
         _Enemyermodel.Deck = (DeckModel)_deckmodel;
         _Enemyermodel.Board = (BoardModel)_Boardmodel;
         _Enemyermodel.HandPos = EnemyTransforms;
-       // _Enemyermodel.HandCount = 10;
+        // _Enemyermodel.HandCount = 10;
         // Create the view
         var EnemyViewFactory = new EnemyViewFactory();
         var Enemyview = EnemyViewFactory.View;
@@ -163,21 +163,21 @@ public class Inisializer : MonoBehaviour
         List<CardModel> tempList = new List<CardModel>();
 
         #region Red Cards
-        
+
         //#region Super
         //for (int i = 0; i < SuperCards; i++)
         //{
         //    var CardmodelFactory = new CardModelFactory();
         //    var _Cardmodel = CardmodelFactory.Model;
         //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Position = new Vector3(20, 0, 0);
         //    _Cardmodel.Color = Color.red;
         //    _Cardmodel.Number = 0;
         //    _Cardmodel.Layer = 1;
         //    _Cardmodel.Name = "Red Card Super";
         //    _Cardmodel.IsSuper = true;
         //    tempList.Add((CardModel)_Cardmodel);
-            
+
         //    // Create the view
         //    var CardviewFactory = new CardViewFactory();
         //    var Cardview = CardviewFactory.View;
@@ -194,7 +194,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.red;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -216,7 +216,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.red;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -241,7 +241,7 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Position = new Vector3(20, 0, 0);
                 _Cardmodel.Color = Color.red;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -269,7 +269,7 @@ public class Inisializer : MonoBehaviour
         //    var CardmodelFactory = new CardModelFactory();
         //    var _Cardmodel = CardmodelFactory.Model;
         //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Position = new Vector3(20, 0, 0);
         //    _Cardmodel.Color = Color.blue;
         //    _Cardmodel.Number = 0;
         //    _Cardmodel.Layer = 1;
@@ -292,7 +292,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -314,7 +314,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -339,7 +339,7 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Position = new Vector3(20, 0, 0);
                 _Cardmodel.Color = Color.blue;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -367,7 +367,7 @@ public class Inisializer : MonoBehaviour
         //    var CardmodelFactory = new CardModelFactory();
         //    var _Cardmodel = CardmodelFactory.Model;
         //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Position = new Vector3(20, 0, 0);
         //    _Cardmodel.Color = Color.yellow;
         //    _Cardmodel.Number = 0;
         //    _Cardmodel.Layer = 1;
@@ -390,7 +390,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.yellow;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -412,7 +412,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.yellow;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -437,7 +437,7 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Position = new Vector3(20, 0, 0);
                 _Cardmodel.Color = Color.yellow;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -464,7 +464,7 @@ public class Inisializer : MonoBehaviour
         //    var CardmodelFactory = new CardModelFactory();
         //    var _Cardmodel = CardmodelFactory.Model;
         //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Position = new Vector3(20, 0, 0);
         //    _Cardmodel.Color = Color.blue;
         //    _Cardmodel.Number = 0;
         //    _Cardmodel.Layer = 1;
@@ -487,7 +487,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -509,7 +509,7 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(0, 0, 0);
+            _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -535,7 +535,7 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(0, 0, 0);
+                _Cardmodel.Position = new Vector3(20, 0, 0);
                 _Cardmodel.Color = Color.green;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -563,7 +563,7 @@ public class Inisializer : MonoBehaviour
         //    var CardmodelFactory = new CardModelFactory();
         //    var _Cardmodel = CardmodelFactory.Model;
         //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Position = new Vector3(20, 0, 0);
         //    _Cardmodel.Color = Color.black;
         //    _Cardmodel.Number = 99;
         //    _Cardmodel.Layer = 1;
@@ -581,28 +581,28 @@ public class Inisializer : MonoBehaviour
         //}
         //#endregion
 
-        //#region Wild +4
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    var CardmodelFactory = new CardModelFactory();
-        //    var _Cardmodel = CardmodelFactory.Model;
-        //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
-        //    _Cardmodel.Color = Color.white;
-        //    _Cardmodel.Number = 22;
-        //    _Cardmodel.Layer = 1;
-        //    _Cardmodel.Name = "Wild +2 Card";
-        //    _Cardmodel.IsWild = true;
-        //    tempList.Add((CardModel)_Cardmodel);
-        //    // Create the view
-        //    var CardviewFactory = new CardViewFactory();
-        //    var Cardview = CardviewFactory.View;
+        #region Wild +2
+        for (int i = 0; i < 4; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.white;
+            _Cardmodel.Number = 22;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Wild +2 Card";
+            _Cardmodel.IsWild = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
 
-        //    // Create the controller
-        //    var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-        //    var Cardcontroller = controllerFactory.Controller;
-        //}
-        //#endregion
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+        #endregion
 
         #endregion
 
@@ -612,7 +612,7 @@ public class Inisializer : MonoBehaviour
         //    var CardmodelFactory = new CardModelFactory();
         //    var _Cardmodel = CardmodelFactory.Model;
         //    // Set some initial state
-        //    _Cardmodel.Position = new Vector3(0, 0, 0);
+        //    _Cardmodel.Position = new Vector3(20, 0, 0);
         //    _Cardmodel.Color = Color.magenta;
         //    _Cardmodel.Number = 0;
         //    _Cardmodel.Layer = 1;
@@ -642,6 +642,22 @@ public class Inisializer : MonoBehaviour
             item.enemyModel = (EnemyModel)_Enemyermodel;
             item.deckModel = (DeckModel)_deckmodel;
             item.boardModel = (BoardModel)_Boardmodel;
+            foreach (var item2 in Playerbuttons)
+            {
+                item.PlayerColorChooser.Add(item2);
+                item2.GetComponent<ButtonIndexV2>().playerModel = (PlayerModel)_playermodel;
+                item2.GetComponent<ButtonIndexV2>().enemyModel = (EnemyModel)_Enemyermodel;
+                item2.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
+                item2.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
+            }
+            foreach (var item3 in Enemybuttons)
+            {
+                item.EnemyColorChooser.Add(item3);
+                item3.GetComponent<ButtonIndexV2>().playerModel = (PlayerModel)_playermodel;
+                item3.GetComponent<ButtonIndexV2>().enemyModel = (EnemyModel)_Enemyermodel;
+                item3.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
+                item3.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
+            }
         }
         #endregion
 
@@ -665,16 +681,16 @@ public class Inisializer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         #region Add Cards To Player Hand
-        
+
         for (int i = 0; i < HandSize; i++)
         {
             yield return new WaitForSeconds(0.2f);
-            _playermodel.AddCard(_deckmodel.Cards[i]);  
+            _playermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
             _playermodel.Cards[i].BelongsTo = "Player";
         }
-            
-        
+
+
         #endregion
 
         #region Add Cards To Enemy Hand
@@ -691,10 +707,10 @@ public class Inisializer : MonoBehaviour
 
         #region Add First Card To Board
         _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
-        _Boardmodel.Cards[0].Position = new Vector3(-5, 0, -5);
+        _Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
         _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         #endregion
-        
+
         //_______________________________________________\\
 
     }
