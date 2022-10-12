@@ -35,17 +35,22 @@ public class PlayerController : IPlayerController
        int CardLayer = model.Cards.Count;
         for (int i = 0; i < model.Cards.Count; i++)
         {
-            ///model.Cards[i].OrderInHandChanged += HandleClicked;
-            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9f, i);
+            //model.Cards[i].OrderInHandChanged += HandleClicked;
+            model.Cards[i].Position = Vector3.Lerp(model.Cards[i].Position, new Vector3(- model.Cards.Count + moveRight, -9f, i),2);
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
             moveRight += 2.3f;
             CardLayer -= 1;
             model.Cards[i].BelongsTo = "Player";
-        }
             SyncData();
+        }
 
+        //while (t < duration)
+        //{
+        //    t += Time.deltaTime / duration;
+        //    model.Cards[i].Position = Vector3.Lerp(model.Cards[i].Position, new Vector3(-model.Cards.Count + moveRight, -9f, i), t / duration);
 
+        //}
     }
 
     private void HandleClicked(object sender, OrderInHandEventArgs e)

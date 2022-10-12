@@ -36,6 +36,7 @@ public class CardController : ICardController
         SyncData();
     }
 
+
     private void ChangedSprite(object sender, CardSpriteChangedEventArgs e)
     {
         SyncData();
@@ -62,7 +63,6 @@ public class CardController : ICardController
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         SyncData();
-
     }
 
     private void RiseLayer(object sender, CardLayerChangeEventArgs e)
@@ -70,7 +70,8 @@ public class CardController : ICardController
         SyncData();
     }
     // Sync the view's position with the model's position
-    private void SyncData()
+
+     void SyncData()
     {
         view.Position = model.Position;
 
@@ -84,7 +85,7 @@ public class CardController : ICardController
 
         view.Layer = model.Layer;
 
-        view.Name = model.Name; 
+        view.Name = model.Name;
 
         view.IsSuper = model.IsSuper;
 
@@ -99,6 +100,25 @@ public class CardController : ICardController
         view.HandOrder = model.HandOrder;
 
         view.Sprite = model.Sprite;
+
+        //float t = 0;
+        //float duration = 10;
+        //if (model.BelongsTo == "Player")
+        //{
+        //    while (t < duration)
+        //    {
+        //        t += Time.deltaTime / duration;
+        //        view.Position = Vector2.Lerp(model.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
+        //    }
+        //}
+        //if (model.BelongsTo == "Enemy")
+        //{
+        //    while (t < duration)
+        //    {
+        //        t += Time.deltaTime / duration;
+        //        view.Position = Vector2.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
+        //    }
+        //}
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

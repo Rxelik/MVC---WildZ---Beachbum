@@ -680,11 +680,11 @@ public class Inisializer : MonoBehaviour
         var rnd = new Random();
         var randomizedList = tempList.OrderBy(item => rnd.Next());
 
-
         foreach (var item in randomizedList)
         {
+            item.Enemy = (EnemyModel)_Enemyermodel;
+            item.Player = (PlayerModel)_playermodel;
             _deckmodel.AddCard(item);
-
         }
 
         #endregion

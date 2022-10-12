@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 // Dispatched when the card is clicked Or Enabled
 public class CardClickedEventArgs : EventArgs { }
 public class CardOnEnableEventArgs : EventArgs { }
@@ -22,6 +23,7 @@ public interface ICardView
     event EventHandler<CardOnEnableEventArgs> OnEnableEvent;
     event EventHandler<CardColorChangedEventArgs> OnColorChange;
     event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve;
+    event EventHandler<CardPositionChangedEventArgs> CardPos;
 
     // Set the enemy's position
     [SerializeField] PlayerModel Player { set; }
@@ -40,6 +42,7 @@ public interface ICardView
     bool IsBamboozle { set; }
 
     Sprite Sprite { set; }
+
 }
 
 // Implementation of the enemy view
@@ -51,6 +54,9 @@ public class CardView : MonoBehaviour, ICardView
     public event EventHandler<CardOnEnableEventArgs> OnEnableEvent = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChange = (sender, e) => { };
     public event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve = (sender, e) => { };
+    public event EventHandler<CardPositionChangedEventArgs> CardPos = (sender, e) => { };
+
+
 
     public int Number { set {; _inspectNumber = value; } }
     public int HandOrder { set { _inspectOrderInHand = value; } }
@@ -90,10 +96,18 @@ public class CardView : MonoBehaviour, ICardView
 
     private void Awake()
     {
+        CardPos += CardView_CardPos;
         _InspectorSprite = GetComponent<SpriteRenderer>();
         // StartCoroutine(WaitBeforeRegister());
         //GetTransforms();
     }
+
+    private void CardView_CardPos(object sender, CardPositionChangedEventArgs e)
+    {
+        StartCoroutine(AllignCards());
+        print("Inside Corutide Of View");
+    }
+
     void Update()
     {
         v2.BelongsTo = _inspectorBelongsTo;
@@ -139,8 +153,26 @@ public class CardView : MonoBehaviour, ICardView
             //     EnemyTransforms.Add(GameObject.Find($"Enemy Card Pos " + i));
         }
     }
-    private void AllignCards()
+    float duration = 1;
+     IEnumerator AllignCards()
     {
-
+        float t = 0;
+        if (_inspectorBelongsTo == "Player")
+        {
+            while (t < duration)
+            {
+                t += Time.deltaTime / duration;
+                transform.position = Vector2.MoveTowards(transform.position, _InspectorPlayer.Cards[_inspectOrderInHand].Position, t / duration);
+                yield return null;
+            }
+            print("Inside Player Cards");
+        }
+        else if (_inspectorBelongsTo == "Enemy")
+        {
+            t += Time.deltaTime / duration;
+            transform.position = Vector2.MoveTowards(transform.position, _InspectorEnemy.Cards[_inspectOrderInHand].Position, t / duration);
+            yield return null;
+        }
+            print("Inside Player Enemy");
     }
 }

@@ -50,7 +50,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
-                StartCoroutine(_cardMaker.BuildWild (2));
+                StartCoroutine(_cardMaker.BuildWild(2));
             }
             print("Inside Player");
 
@@ -564,49 +564,62 @@ public class ButtonIndexV2 : MonoBehaviour
     {
         AIplayed = true;
         yield return new WaitForSeconds(1f);
-        var AiTurn = enemyModel.Cards.Where(c =>
-        
+        var SuperCards = enemyModel.Cards.Where(c =>
            c.Number == 0 && boardModel.TopCard().Number == 0
+        || c.IsSuper && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.IsWild && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Number == 22 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 44
-        || c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         ).ToList();
-        if (AiTurn.Count == 0)
+
+        var NormalCards = enemyModel.Cards.Where(c =>
+        c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44).ToList();
+
+        if (SuperCards.Count() == 0 && NormalCards.Count == 0)
         {
             enemyModel.TakeCard(1);
             ChangeTurn();
         }
-        else
+        if (SuperCards.Count >= 1)
         {
-            manager.ChosenCard = AiTurn[0];
-            print(AiTurn[0].Name);
-            NormalCard(AiTurn[0], enemyModel);
-            SuperCard(AiTurn[0], enemyModel);
-            if   (AiTurn[0].IsWild && boardModel.TopCard().Number != 22 
-               || AiTurn[0].IsWild && boardModel.TopCard().Number != 44 
-               || AiTurn[0].IsWild && AiTurn[0].IsSuper)
-            {
-                List<string> colors = new List<string>();
-                colors.Add("Red");
-                colors.Add("Green");
-                colors.Add("Blue");
-                colors.Add("Yellow");
-                int rand = Random.Range(0, 3);
-                WildCard(colors[rand]);
-                // AiTurn[0].Color = Color.white;
-                if (AiTurn[0].IsWild && !AiTurn[0].IsSuper)
-                {
-                AiTurn[0].Sprite = wildSprites[rand];
-                }
-                else
-                {
-                    AiTurn[0].Sprite = WildSuperSprites[rand];
-                }
-            }
+            AiChooseCard(SuperCards[0]);
+            NormalCards.Clear();
+        }
+        else if (NormalCards.Count >= 1)
+        {
+            AiChooseCard(NormalCards[0]);
         }
         AIplayed = false;
+    }
+
+    private void AiChooseCard(CardModel card)
+    {
+        manager.ChosenCard = card;
+        print(card.Name);
+        NormalCard(card, enemyModel);
+        SuperCard(card, enemyModel);
+        if (card.IsWild && boardModel.TopCard().Number != 22
+           || card.IsWild && boardModel.TopCard().Number != 44
+           || card.IsWild && card.IsSuper)
+        {
+            List<string> colors = new List<string>();
+            colors.Add("Red");
+            colors.Add("Green");
+            colors.Add("Blue");
+            colors.Add("Yellow");
+            int rand = Random.Range(0, 3);
+            WildCard(colors[rand]);
+            // AiTurn[0].Color = Color.white;
+            if (card.IsWild && !card.IsSuper)
+            {
+                card.Sprite = wildSprites[rand];
+            }
+            else
+            {
+                card.Sprite = WildSuperSprites[rand];
+            }
+        }
     }
 }
