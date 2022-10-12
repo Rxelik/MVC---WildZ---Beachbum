@@ -10,6 +10,7 @@ public class CardMaker : MonoBehaviour
     public List<Sprite> Yellow;
     public List<Sprite> White;
     public List<Sprite> Black;
+    public List<Sprite> Cyan;
     public SpriteRenderer CardSprite;
 
     public CardView view;
@@ -67,6 +68,9 @@ public class CardMaker : MonoBehaviour
                 case 44:
                     CardSprite.sprite = Red[10];
                     break;
+                case 0:
+                    CardSprite.sprite = Red[11];
+                    break;
                 default:
                     break;
             }
@@ -107,6 +111,9 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 44:
                     CardSprite.sprite = Green[10];
+                    break;
+                case 0:
+                    CardSprite.sprite = Green[11];
                     break;
                 default:
                     break;
@@ -149,6 +156,9 @@ public class CardMaker : MonoBehaviour
                 case 44:
                     CardSprite.sprite = Blue[10];
                     break;
+                case 0:
+                    CardSprite.sprite = Blue[11];
+                    break;
                 default:
                     break;
             }
@@ -190,6 +200,9 @@ public class CardMaker : MonoBehaviour
                 case 44:
                     CardSprite.sprite = Yellow[10];
                     break;
+                case 0:
+                    CardSprite.sprite = Yellow[11];
+                    break;
                 default:
                     break;
             }
@@ -201,7 +214,7 @@ public class CardMaker : MonoBehaviour
                 case 22:
                     CardSprite.sprite = White[0];
                     break;
-                case 44:
+                case 99:
                     CardSprite.sprite = White[1];
                     break;
                 default:
@@ -250,6 +263,9 @@ public class CardMaker : MonoBehaviour
                 case 44:
                     CardSprite.sprite = Red[10];
                     break;
+                case 0:
+                    CardSprite.sprite = Red[11];
+                    break;
                 default:
                     break;
             }
@@ -290,6 +306,9 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 44:
                     CardSprite.sprite = Green[10];
+                    break;
+                case 0:
+                    CardSprite.sprite = Green[11];
                     break;
                 default:
                     break;
@@ -332,6 +351,9 @@ public class CardMaker : MonoBehaviour
                 case 44:
                     CardSprite.sprite = Blue[10];
                     break;
+                case 0:
+                    CardSprite.sprite = Blue[11];
+                    break;
                 default:
                     break;
             }
@@ -373,6 +395,9 @@ public class CardMaker : MonoBehaviour
                 case 44:
                     CardSprite.sprite = Yellow[10];
                     break;
+                case 0:
+                    CardSprite.sprite = Yellow[11];
+                    break;
                 default:
                     break;
             }
@@ -384,7 +409,7 @@ public class CardMaker : MonoBehaviour
                 case 22:
                     CardSprite.sprite = White[0];
                     break;
-                case 44:
+                case 99:
                     CardSprite.sprite = White[1];
                     break;
                 default:

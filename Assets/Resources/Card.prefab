@@ -107,7 +107,7 @@ MonoBehaviour:
   _IsSuper: 0
   _IsWild: 0
   _IsBamboozle: 0
-  _sprite: {fileID: 847150334145477222}
+  _InspectorSprite: {fileID: 0}
   v2: {fileID: 5496405441866682127}
 --- !u!114 &-8933952006197382600
 MonoBehaviour:
@@ -133,6 +133,7 @@ MonoBehaviour:
   - {fileID: 8333299500283382621, guid: d860634c5a2b4a04fbb0ef514a5d1f33, type: 3}
   - {fileID: 1072612022876217574, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   - {fileID: 5234815018139670700, guid: 0542deb2f29a11e46a0aee396901d209, type: 3}
+  - {fileID: 6308132535517830798, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   Green:
   - {fileID: -5918291495638345018, guid: cfc65458f4346d943bb7746ea0c36e8b, type: 3}
   - {fileID: 3557646530624589587, guid: cfc65458f4346d943bb7746ea0c36e8b, type: 3}
@@ -145,6 +146,7 @@ MonoBehaviour:
   - {fileID: 5839421090670604152, guid: cfc65458f4346d943bb7746ea0c36e8b, type: 3}
   - {fileID: 8874006926371578084, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   - {fileID: 2636293434144242206, guid: 0542deb2f29a11e46a0aee396901d209, type: 3}
+  - {fileID: 7981902420718068315, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   Blue:
   - {fileID: 8216913325596954191, guid: 07f40999cc718184da9611676981bfa0, type: 3}
   - {fileID: -5224872559736584506, guid: 07f40999cc718184da9611676981bfa0, type: 3}
@@ -157,6 +159,7 @@ MonoBehaviour:
   - {fileID: -4513214531032762950, guid: 07f40999cc718184da9611676981bfa0, type: 3}
   - {fileID: 8232461720263320301, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   - {fileID: 6439262320095407318, guid: 0542deb2f29a11e46a0aee396901d209, type: 3}
+  - {fileID: -8646794427231163231, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   Yellow:
   - {fileID: 8258887340182529086, guid: b6977903caf54b04e8b6e33e43deed14, type: 3}
   - {fileID: -4321777067234242369, guid: b6977903caf54b04e8b6e33e43deed14, type: 3}
@@ -169,10 +172,12 @@ MonoBehaviour:
   - {fileID: -5550625373973314145, guid: b6977903caf54b04e8b6e33e43deed14, type: 3}
   - {fileID: 9047806757350544253, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   - {fileID: -6150378280524201171, guid: 0542deb2f29a11e46a0aee396901d209, type: 3}
+  - {fileID: 2960497297611472325, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   White:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
-  - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
+  - {fileID: 21300000, guid: 35c4239e347bf884b914a276699296bd, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 6587215133960815618}
   view: {fileID: 7266716411848905878}
   Button: 0
@@ -194,6 +199,8 @@ MonoBehaviour:
   _index: 0
   cardView: {fileID: 7266716411848905878}
   _cardMaker: {fileID: -8933952006197382600}
+  superSprites: []
+  isAI: 0
 --- !u!65 &4373260886045596614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,15 +284,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8874006926371578084, guid: 17f75c3e700534d43aefb73e46d2bff4,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.97, y: 8.56}
+  m_Size: {x: 5.98, y: 8.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
