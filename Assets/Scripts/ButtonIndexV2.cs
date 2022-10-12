@@ -23,10 +23,13 @@ public class ButtonIndexV2 : MonoBehaviour
     bool AIplayed = false;
     private void Update()
     {
-        if (isAI && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
+        if (deckModel != null)
         {
-            StartCoroutine(AIplayCard());
-            print("GOT IN");
+            if (isAI && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
+            {
+                StartCoroutine(AIplayCard());
+                print("GOT IN");
+            }
         }
     }
     void OnMouseDown()
@@ -115,7 +118,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
 
             }
-            if (boardModel.TopCard().Number == 22 && card.Number == 22
+            if (boardModel.TopCard().Number == 22 && card.Number == 22 || boardModel.TopCard().Number == 222 && card.Number == 22
 
                 || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 44
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
@@ -125,6 +128,8 @@ public class ButtonIndexV2 : MonoBehaviour
             if (card.Color == boardModel.TopCard().Color && card.Number == 44
                 || boardModel.TopCard().Number == 22 && card.Number == 44
                 || boardModel.TopCard().Number == 44 && card.Number == 44
+                || boardModel.TopCard().Number == 222 && card.Number == 44
+                || boardModel.TopCard().Number == 444 && card.Number == 44
                 || card.Number == 44 && boardModel.TopCard().IsBamboozle)
             {
                 PlusFour(card, playerModel);
@@ -176,7 +181,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
 
-            if (boardModel.TopCard().Number == 22 && card.Number == 22
+            if (boardModel.TopCard().Number == 22 && card.Number == 22 || boardModel.TopCard().Number == 222 && card.Number == 22
                 || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 44
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
@@ -185,6 +190,8 @@ public class ButtonIndexV2 : MonoBehaviour
             if (card.Color == boardModel.TopCard().Color && card.Number == 44
                 || boardModel.TopCard().Number == 22 && card.Number == 44
                 || boardModel.TopCard().Number == 44 && card.Number == 44
+                || boardModel.TopCard().Number == 222 && card.Number == 44
+                || boardModel.TopCard().Number == 444 && card.Number == 44
                 || card.Number == 44 && boardModel.TopCard().IsBamboozle)
             {
                 PlusFour(card, enemyModel);
@@ -555,7 +562,9 @@ public class ButtonIndexV2 : MonoBehaviour
         AIplayed = true;
         yield return new WaitForSeconds(1f);
         var AiTurn = enemyModel.Cards.Where(c =>
+        
         c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.IsWild && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Number == 22 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 22
@@ -574,7 +583,6 @@ public class ButtonIndexV2 : MonoBehaviour
             SuperCard(AiTurn[0], enemyModel);
             if (AiTurn[0].IsWild && boardModel.TopCard().Number != 22 || AiTurn[0].IsWild && boardModel.TopCard().Number != 44)
             {
-                Color _color = AiTurn[0].Color;
                 List<string> colors = new List<string>();
                 colors.Add("Red");
                 colors.Add("Green");
@@ -584,7 +592,6 @@ public class ButtonIndexV2 : MonoBehaviour
                 WildCard(colors[rand]);
                 AiTurn[0].Color = Color.white;
                 AiTurn[0].Sprite = superSprites[rand];
-                AiTurn[0].Color = _color;
             }
         }
         AIplayed = false;
