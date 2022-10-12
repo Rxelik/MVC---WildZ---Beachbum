@@ -947,6 +947,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -1308,6 +1309,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -2347,6 +2349,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -2718,11 +2721,16 @@ MonoBehaviour:
   _index: 0
   cardView: {fileID: 0}
   _cardMaker: {fileID: 0}
-  superSprites:
+  wildSprites:
   - {fileID: 1072612022876217574, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
-  - {fileID: 8232461720263320301, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   - {fileID: 8874006926371578084, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
+  - {fileID: 8232461720263320301, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
   - {fileID: 9047806757350544253, guid: 17f75c3e700534d43aefb73e46d2bff4, type: 3}
+  WildSuperSprites:
+  - {fileID: 6308132535517830798, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: 7981902420718068315, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: -8646794427231163231, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: 2960497297611472325, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   isAI: 1
 --- !u!1 &984338853
 GameObject:
@@ -3053,6 +3061,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -4182,6 +4191,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -4294,6 +4304,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -4707,6 +4718,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -4898,6 +4910,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 6bda789352a6f9f428d69f58cf084d27, type: 3}
   Black: []
+  Cyan: []
   CardSprite: {fileID: 336037251}
   view: {fileID: 0}
   Button: 1
@@ -5567,7 +5580,8 @@ MonoBehaviour:
   _index: 0
   cardView: {fileID: 0}
   _cardMaker: {fileID: 0}
-  superSprites: []
+  wildSprites: []
+  WildSuperSprites: []
   isAI: 0
 --- !u!1 &1941650205
 GameObject:
@@ -5757,7 +5771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsializeDeckSize: 100
-  HandSize: 20
+  HandSize: 1
   Colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.123636246, a: 1}
