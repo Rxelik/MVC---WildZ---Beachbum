@@ -695,7 +695,7 @@ public class Inisializer : MonoBehaviour
 
         for (int i = 0; i < HandSize; i++)
         {
-            //yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.2f);
             _playermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
             _playermodel.Cards[i].BelongsTo = "Player";
@@ -707,7 +707,7 @@ public class Inisializer : MonoBehaviour
         #region Add Cards To Enemy Hand
         for (int i = 0; i < HandSize; i++)
         {
-            //yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.2f);
             _Enemyermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
             _Enemyermodel.Cards[i].BelongsTo = "Enemy";

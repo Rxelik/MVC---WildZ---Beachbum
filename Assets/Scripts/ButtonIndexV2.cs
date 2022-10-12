@@ -236,6 +236,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
+                card.Number = 0;
                 ChangeTurn();
 
             }
@@ -277,6 +278,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
+                card.Number = 0;
                 ChangeTurn();
                 RemoveButtons();
             }
@@ -566,10 +568,10 @@ public class ButtonIndexV2 : MonoBehaviour
         
            c.Number == 0 && boardModel.TopCard().Number == 0
         || c.IsWild && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Number == 22 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 44
+        || c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         ).ToList();
         if (AiTurn.Count == 0)
