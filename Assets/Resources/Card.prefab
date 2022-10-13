@@ -179,6 +179,7 @@ MonoBehaviour:
   Black: []
   Cyan: []
   CardSprite: {fileID: 6587215133960815618}
+  CardBack: {fileID: 21300000, guid: 7af289f85666d974594d81a1680fdfa5, type: 3}
   view: {fileID: 7266716411848905878}
   Button: 0
 --- !u!114 &5496405441866682127

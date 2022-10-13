@@ -151,7 +151,7 @@ public class Inisializer : MonoBehaviour
         //DeckButton.boardModel = (BoardModel)_Boardmodel;
         #endregion
 
-        GameManager.Instance.deckModel = (DeckModel)_deckmodel;
+
 
         //_______________________________________________\\
 
@@ -724,6 +724,8 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         //_______________________________________________\\
-
+        GameManager.Instance.deckModel = (DeckModel)_deckmodel;
+        GameManager.Instance.player = (PlayerModel)_playermodel;
+        GameManager.Instance.enemy = (EnemyModel)_Enemyermodel;
     }
 }

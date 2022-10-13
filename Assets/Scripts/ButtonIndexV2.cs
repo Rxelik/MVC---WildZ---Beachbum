@@ -24,18 +24,22 @@ public class ButtonIndexV2 : MonoBehaviour
     bool AIplayed = false;
     private void Update()
     {
-        if (deckModel != null)
+        if (!manager.GameEnded)
         {
-            if (isAI && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
+            if (deckModel != null)
             {
-                StartCoroutine(AIplayCard());
-                print("GOT IN");
+                if (isAI && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
+                {
+                    StartCoroutine(AIplayCard());
+                    print("GOT IN");
+                }
             }
         }
     }
     void OnMouseDown()
     {
-        PlayCard(cardView._inspectOrderInHand);
+        if (!manager.GameEnded)
+            PlayCard(cardView._inspectOrderInHand);
     }
     public void PlayCard(int Index)
     {
@@ -465,38 +469,20 @@ public class ButtonIndexV2 : MonoBehaviour
 
     public void TakeFromDeck()
     {
-        if (deckModel.CurrentTurn == "Player")
+        if (!manager.GameEnded)
         {
-            if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 || !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
+            if (deckModel.CurrentTurn == "Player")
             {
-                print("Cant Draw");
-            }
-            else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
-            {
-                if (manager.Draw == 0)
+                if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 || !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
                 {
-                    ChangeTurn();
-                    playerModel.TakeCard(1);
+                    print("Cant Draw");
                 }
-                else
-                {
-                    playerModel.TakeCard(manager.Draw);
-                    manager.Draw = 0;
-                    ChangeTurn();
-                    if (boardModel.TopCard().Number == 22)
-                        boardModel.TopCard().Number = 222;
-                    else
-                        boardModel.TopCard().Number = 444;
-                }
-            }
-            else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
-            {
-                if (playerModel.HasCounter())
+                else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
                 {
                     if (manager.Draw == 0)
                     {
-                        playerModel.TakeCard(1);
                         ChangeTurn();
+                        playerModel.TakeCard(1);
                     }
                     else
                     {
@@ -509,36 +495,36 @@ public class ButtonIndexV2 : MonoBehaviour
                             boardModel.TopCard().Number = 444;
                     }
                 }
-            }
+                else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
+                {
+                    if (playerModel.HasCounter())
+                    {
+                        if (manager.Draw == 0)
+                        {
+                            playerModel.TakeCard(1);
+                            ChangeTurn();
+                        }
+                        else
+                        {
+                            playerModel.TakeCard(manager.Draw);
+                            manager.Draw = 0;
+                            ChangeTurn();
+                            if (boardModel.TopCard().Number == 22)
+                                boardModel.TopCard().Number = 222;
+                            else
+                                boardModel.TopCard().Number = 444;
+                        }
+                    }
+                }
 
-        }
-        else if (deckModel.CurrentTurn == "Enemy")
-        {
-            if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22 || !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
-            {
-                print("Cant Draw How you even got here?");
             }
-            else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
+            else if (deckModel.CurrentTurn == "Enemy")
             {
-                if (manager.Draw == 0)
+                if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22 || !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
                 {
-                    enemyModel.TakeCard(1);
-                    ChangeTurn();
+                    print("Cant Draw How you even got here?");
                 }
-                else
-                {
-                    enemyModel.TakeCard(manager.Draw);
-                    manager.Draw = 0;
-                    ChangeTurn();
-                    if (boardModel.TopCard().Number == 22)
-                        boardModel.TopCard().Number = 222;
-                    else
-                        boardModel.TopCard().Number = 444;
-                }
-            }
-            else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
-            {
-                if (enemyModel.HasCounter())
+                else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
                 {
                     if (manager.Draw == 0)
                     {
@@ -556,8 +542,30 @@ public class ButtonIndexV2 : MonoBehaviour
                             boardModel.TopCard().Number = 444;
                     }
                 }
+                else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
+                {
+                    if (enemyModel.HasCounter())
+                    {
+                        if (manager.Draw == 0)
+                        {
+                            enemyModel.TakeCard(1);
+                            ChangeTurn();
+                        }
+                        else
+                        {
+                            enemyModel.TakeCard(manager.Draw);
+                            manager.Draw = 0;
+                            ChangeTurn();
+                            if (boardModel.TopCard().Number == 22)
+                                boardModel.TopCard().Number = 222;
+                            else
+                                boardModel.TopCard().Number = 444;
+                        }
+                    }
+                }
             }
         }
+
     }
 
     IEnumerator AIplayCard()

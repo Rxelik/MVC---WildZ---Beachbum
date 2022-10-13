@@ -22,14 +22,30 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     public DeckModel deckModel;
+    public PlayerModel player;
+    public EnemyModel enemy;
     public Transform CardsInPlayPos;
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
     public CardModel ChosenCard;
+    public bool GameEnded = false;
 
     private void Update()
     {
+        if (GameEnded == false)
         Turn.text = deckModel.CurrentTurn;
+
+        if (player.Cards.Count == 0)
+        {
+           GameEnded = true;
+            Turn.text = "Player WON!";
+        }
+
+        if (enemy.Cards.Count == 0)
+        {
+            GameEnded = true;
+            Turn.text = "AI WON!";
+        }
     }
 }

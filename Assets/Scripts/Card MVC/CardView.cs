@@ -80,7 +80,7 @@ public class CardView : MonoBehaviour, ICardView
     public Quaternion _inspectRot;
     public int _inspectNumber;
     public int _inspectOrderInHand;
-    [SerializeField] string _inspectorBelongsTo;
+    public string _inspectorBelongsTo;
     public Color _InspectorColor;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
