@@ -176,6 +176,7 @@ MonoBehaviour:
   White:
   - {fileID: 21300000, guid: 6714e016860875943b51a4669ad7bb8e, type: 3}
   - {fileID: 21300000, guid: 35c4239e347bf884b914a276699296bd, type: 3}
+  - {fileID: 21300000, guid: 40ec151fc31c6b343ba6d2f674ceff7b, type: 3}
   Black: []
   Cyan: []
   CardSprite: {fileID: 6587215133960815618}

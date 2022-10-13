@@ -610,26 +610,26 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         #region Bamoozle
-        //for (int i = 0; i < 2; i++)
-        //{
-        //    var CardmodelFactory = new CardModelFactory();
-        //    var _Cardmodel = CardmodelFactory.Model;
-        //    // Set some initial state
-        //    //_Cardmodel.Position = new Vector3(20, 0, 0);
-        //    _Cardmodel.Color = Color.magenta;
-        //    _Cardmodel.Number = 0;
-        //    _Cardmodel.Layer = 1;
-        //    _Cardmodel.Name = "BAMBELUBBUZELABZLE Card";
-        //    _Cardmodel.IsBamboozle = true;
-        //    tempList.Add((CardModel)_Cardmodel);
-        //    // Create the view
-        //    var CardviewFactory = new CardViewFactory();
-        //    var Cardview = CardviewFactory.View;
+        for (int i = 0; i < 2; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            //_Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.white;
+            _Cardmodel.Number = 55;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Bammbozlek Card";
+            _Cardmodel.IsBamboozle = true;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
 
-        //    // Create the controller
-        //    var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-        //    var Cardcontroller = controllerFactory.Controller;
-        //}
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
         #endregion
 
 

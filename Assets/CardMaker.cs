@@ -5,15 +5,19 @@ using UnityEngine;
 public class CardMaker : MonoBehaviour
 {
     public List<Sprite> Red;
+    [Space] 
     public List<Sprite> Green;
+    [Space]
     public List<Sprite> Blue;
+    [Space]
     public List<Sprite> Yellow;
+    [Space]
     public List<Sprite> White;
-    public List<Sprite> Black;
-    public List<Sprite> Cyan;
+    [Space]
     public SpriteRenderer CardSprite;
+    [Space]
     public Sprite CardBack;
-
+    [Space]
     public CardView view;
     public bool Button = false;
     bool SwappedFace = false;
@@ -237,6 +241,9 @@ public class CardMaker : MonoBehaviour
                 case 99:
                     CardSprite.sprite = White[1];
                     break;
+                case 55:
+                    CardSprite.sprite = White[2];
+                    break;
                 default:
                     break;
             }
@@ -455,6 +462,9 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 99:
                     CardSprite.sprite = White[1];
+                    break;
+                case 55:
+                    CardSprite.sprite = White[2];
                     break;
                 default:
                     break;

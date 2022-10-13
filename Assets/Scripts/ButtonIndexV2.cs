@@ -220,7 +220,8 @@ public class ButtonIndexV2 : MonoBehaviour
             if (card.IsSuper && boardModel.TopCard().Color == card.Color
                 && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
-                || card.IsSuper && boardModel.TopCard().Number == 0)
+                || card.IsSuper && boardModel.TopCard().Number == 0
+                || boardModel.TopCard().IsBamboozle && card.IsSuper)
             {
                 for (int i = model.Cards.Count - 1; i >= 0; i--)
                 {
@@ -579,11 +580,15 @@ public class ButtonIndexV2 : MonoBehaviour
         || c.Number == 22 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 44
+        || boardModel.TopCard().IsBamboozle
         ).ToList();
 
         var NormalCards = enemyModel.Cards.Where(c =>
         c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44).ToList();
+        || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.IsBamboozle && boardModel.TopCard().Number == 22
+        || c.IsBamboozle && boardModel.TopCard().Number == 44
+        || boardModel.TopCard().IsBamboozle).ToList();
 
         if (SuperCards.Count() == 0 && NormalCards.Count == 0)
         {
@@ -610,7 +615,8 @@ public class ButtonIndexV2 : MonoBehaviour
         SuperCard(card, enemyModel);
         if (card.IsWild && boardModel.TopCard().Number != 22
            || card.IsWild && boardModel.TopCard().Number != 44
-           || card.IsWild && card.IsSuper)
+           || card.IsWild && card.IsSuper
+            )
         {
             List<string> colors = new List<string>();
             colors.Add("Red");
