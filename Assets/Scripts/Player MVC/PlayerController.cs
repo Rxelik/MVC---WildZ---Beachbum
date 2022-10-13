@@ -31,36 +31,43 @@ public class PlayerController : IPlayerController
 
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-       float moveRight = 0;
-       int CardLayer = model.Cards.Count;
+        float moveRight = 0;
+        int CardLayer = model.Cards.Count;
+
         for (int i = 0; i < model.Cards.Count; i++)
         {
-            //model.Cards[i].OrderInHandChanged += HandleClicked;
-            model.Cards[i].Position = Vector3.Lerp(model.Cards[i].Position, new Vector3(- model.Cards.Count + moveRight, -9f, i),2);
+
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
+            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9f, i * i);
             moveRight += 2.3f;
             CardLayer -= 1;
-            model.Cards[i].BelongsTo = "Player";
+            if (model.Cards[i].BelongsTo == "Player")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "Player";
+            }
+            else if (model.Cards[i].BelongsTo == "FlyingToPlayer")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "FlyingToPlayer";
+            }
             SyncData();
         }
+            SyncData();
 
-        //while (t < duration)
-        //{
-        //    t += Time.deltaTime / duration;
-        //    model.Cards[i].Position = Vector3.Lerp(model.Cards[i].Position, new Vector3(-model.Cards.Count + moveRight, -9f, i), t / duration);
-
-        //}
     }
 
     private void HandleClicked(object sender, OrderInHandEventArgs e)
     {
-        for (int i = 0; i < model.Cards.Count-1; i++)
+        for (int i = 0; i < model.Cards.Count - 1; i++)
         {
             model.Cards[i].HandOrder = i;
             SyncData();
 
         }
+        SyncData();
+
     }
 
     // Called when the view is clicked

@@ -154,11 +154,16 @@ public class PlayerModel : IPlayerModel
     {
         Cards.Add(card);
         var eventArgs = new PlayerCardChangeEventArgs();
+        if (card.BelongsTo == "Deck")
+            card.BelongsTo = "FlyingToPlayer";
+        //else
+        //    card.BelongsTo = "Player";
         OnCardsChanged(this, eventArgs);
     }
     public void RemoveCard(CardModel card)
     {
         Cards.Remove(card);
+        card.BelongsTo = "Board";
         var eventArgs = new PlayerCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }

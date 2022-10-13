@@ -105,8 +105,8 @@ public class CardModel : ICardModel
                 _Player = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new CardBelongsToPlayerEventArgs();
-                OnPlayerChange(this, eventArgs);
+                //var eventArgs = new CardBelongsToPlayerEventArgs();
+                //OnPlayerChange(this, eventArgs);
                 Debug.Log("Changed Card POS");
             }
         }
@@ -123,8 +123,8 @@ public class CardModel : ICardModel
                 _Enemy = value;
 
                 // Dispatch the 'position changed' event
-                var eventArgs = new CardBelongsToEnemyEventArgs();
-                OnEnemyChange(this, eventArgs);
+                //var eventArgs = new CardBelongsToEnemyEventArgs();
+                //OnEnemyChange(this, eventArgs);
                 Debug.Log("Changed Card POS");
             }
         }
@@ -233,6 +233,7 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardChangedBelongsEventArgs();
                 ChangedBelongTo(this, eventArgs);
+                Debug.Log("Changed Belong T o!");
             }
         }
     }

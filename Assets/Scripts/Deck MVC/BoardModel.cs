@@ -72,6 +72,7 @@ public class BoardModel : IBoardModel
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
+        card.BelongsTo = "Board";
         var eventArgs = new OnCardsInBoardChangeEventArgs();
         CardInBoardChanged(this, eventArgs);
     }

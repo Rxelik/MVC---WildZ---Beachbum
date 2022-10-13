@@ -31,21 +31,31 @@ public class EnemyController : IEnemyController
 
     private void FixViewPos(object sender, EnemyCardChangeEventArgs e)
     {
-
         float moveRight = 0;
         int CardLayer = model.Cards.Count;
+
         for (int i = 0; i < model.Cards.Count; i++)
         {
-            ///model.Cards[i].OrderInHandChanged += HandleClicked;
-            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, 9f, i);
+
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
+            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, 9f, i * i);
             moveRight += 2.3f;
             CardLayer -= 1;
-            model.Cards[i].BelongsTo = "Enemy";
+            if (model.Cards[i].BelongsTo == "Enemy")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "Enemy";
+            }
+            else if (model.Cards[i].BelongsTo == "FlyingToEnemy")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "FlyingToEnemy";
+            }
+            SyncData();
         }
-
         SyncData();
+
     }
 
     private void HandleClicked(object sender, EnemyChangedEventArgs e)

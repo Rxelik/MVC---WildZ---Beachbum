@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7266716411848905878}
   - component: {fileID: -8933952006197382600}
   - component: {fileID: 5496405441866682127}
-  - component: {fileID: 4373260886045596614}
+  - component: {fileID: 3548965274274475184}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847150334145477223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8600935, y: 2.3035343, z: 1.8897104}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8178122425631317295}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7266716411848905878
@@ -199,21 +199,35 @@ MonoBehaviour:
   _index: 0
   cardView: {fileID: 7266716411848905878}
   _cardMaker: {fileID: -8933952006197382600}
-  superSprites: []
+  wildSprites: []
+  WildSuperSprites: []
   isAI: 0
---- !u!65 &4373260886045596614
-BoxCollider:
+--- !u!61 &3548965274274475184
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847150334145477223}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.8619814, y: 8.514717, z: 0.20000002}
-  m_Center: {x: -0.012406826, y: 0.024968147, z: -0.000000014901161}
+  m_Size: {x: 5.7, y: 8.5}
+  m_EdgeRadius: 0
 --- !u!1 &8016047645408740737
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,14 +298,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 8874006926371578084, guid: 17f75c3e700534d43aefb73e46d2bff4,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.98, y: 8.56}
+  m_Size: {x: 5.97, y: 8.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

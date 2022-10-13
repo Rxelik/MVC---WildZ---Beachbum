@@ -150,12 +150,18 @@ public class EnemyModel : IEnemyModel
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
+        if (card.BelongsTo == "Deck")
+            card.BelongsTo = "FlyingToEnemy";
+        //else
+        //    card.BelongsTo = "Enemy";
+
         var eventArgs = new EnemyCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }
     public void RemoveCard(CardModel card)
     {
         Cards.Remove(card);
+        card.BelongsTo = "Board";
         var eventArgs = new EnemyCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }
