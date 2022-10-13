@@ -719,8 +719,13 @@ public class Inisializer : MonoBehaviour
         #region Add First Card To Board
         _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
-        _Boardmodel.Cards[0].BelongsTo = "Board";
+        _Boardmodel.Cards[0].IsSuper = false;
+        _Boardmodel.Cards[0].IsBamboozle = false;
+        _Boardmodel.Cards[0].IsWild = false;
+       // _Boardmodel.Cards[0].Color = Colors[UnityEngine.Random.Range(1, 2)];
+        _Boardmodel.Cards[0].Number = UnityEngine.Random.Range(1, 9);
         _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+        _Boardmodel.Cards[0].BelongsTo = "Board";
         #endregion
 
         //_______________________________________________\\

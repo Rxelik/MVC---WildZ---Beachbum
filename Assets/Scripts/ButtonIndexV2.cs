@@ -575,12 +575,18 @@ public class ButtonIndexV2 : MonoBehaviour
         yield return new WaitForSeconds(1f);
         var SuperCards = enemyModel.Cards.Where(c =>
            c.Number == 0 && boardModel.TopCard().Number == 0
-        || c.IsSuper && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.IsWild && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.IsWild && !c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+        || c.IsWild && c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Number == 22 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 22
         || c.Number == 44 && boardModel.TopCard().Number == 44
-        || boardModel.TopCard().IsBamboozle
+        || boardModel.TopCard().IsBamboozle && c.IsSuper && c.IsSuper
+        || boardModel.TopCard().IsBamboozle && c.IsWild
+        || boardModel.TopCard().IsBamboozle && c.IsSuper
+        || boardModel.TopCard().IsBamboozle && c.Number == 0
+        || boardModel.TopCard().IsBamboozle && c.Number == 22
+        || boardModel.TopCard().IsBamboozle && c.Number == 44
         ).ToList();
 
         var NormalCards = enemyModel.Cards.Where(c =>
@@ -588,7 +594,8 @@ public class ButtonIndexV2 : MonoBehaviour
         || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.IsBamboozle && boardModel.TopCard().Number == 22
         || c.IsBamboozle && boardModel.TopCard().Number == 44
-        || boardModel.TopCard().IsBamboozle).ToList();
+        || boardModel.TopCard().IsBamboozle
+        ).ToList();
 
         if (SuperCards.Count() == 0 && NormalCards.Count == 0)
         {
