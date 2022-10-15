@@ -44,7 +44,8 @@ public class Inisializer : MonoBehaviour
         // Set some initial state
         //_deckmodel.Position = new Vector3(20, 0, 0);
         _deckmodel.Cards = new List<CardModel>();
-        _deckmodel.CurrentTurn = "Player";
+        DeckModel deck;
+        deck = (DeckModel)_deckmodel;
         // Create the view
         var DeckviewFactory = new DeckViewFactory();
         var Deckview = DeckviewFactory.View;
@@ -733,5 +734,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.deckModel = (DeckModel)_deckmodel;
         GameManager.Instance.player = (PlayerModel)_playermodel;
         GameManager.Instance.enemy = (EnemyModel)_Enemyermodel;
+
+        deck.ChangeTurn();
     }
 }
