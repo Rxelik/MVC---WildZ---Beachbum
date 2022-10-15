@@ -276,9 +276,9 @@ public class CardMaker : MonoBehaviour
         }
     }
 
-    public IEnumerator BuildWild(int num)
+    public IEnumerator BuildWild()
     {
-        yield return new WaitForSeconds(num);
+        yield return new WaitForSeconds(2f);
         if (view._InspectorColor == Color.red)
         {
             switch (view._inspectNumber)

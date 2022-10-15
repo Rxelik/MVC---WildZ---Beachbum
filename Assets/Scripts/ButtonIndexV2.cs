@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class ButtonIndexV2 : MonoBehaviour
 {
@@ -50,11 +51,23 @@ public class ButtonIndexV2 : MonoBehaviour
             SuperCard(playerModel.Cards[Index], playerModel);
             if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
             {
-                foreach (var item in PlayerColorChooser)
+                if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 44)
                 {
-                    item.SetActive(true);
+
                 }
-                StartCoroutine(_cardMaker.BuildWild(2));
+                else if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 22)
+                {
+
+                }
+                else
+                {
+                    foreach (var item in PlayerColorChooser)
+                    {
+                        item.SetActive(true);
+                    }
+                    StartCoroutine(_cardMaker.BuildWild());
+                }
+
             }
             print("Inside Player");
 
@@ -70,7 +83,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
-                StartCoroutine(_cardMaker.BuildWild(2));
+                StartCoroutine(_cardMaker.BuildWild());
             }
             print("Inside Enemy");
         }
@@ -215,9 +228,8 @@ public class ButtonIndexV2 : MonoBehaviour
 
         }
         else
-        {
-            StartCoroutine(LerpSuper(card, model));
-        }
+        StartCoroutine(LerpSuper(card, model));
+        
 
 
 
@@ -226,6 +238,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
     IEnumerator LerpSuper(CardModel card, PlayerModel model)
     {
+        yield return new WaitUntil(() => card.Color != Color.white);
         if (card.IsSuper && boardModel.TopCard().Color == card.Color
                 && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
@@ -309,7 +322,7 @@ public class ButtonIndexV2 : MonoBehaviour
         if (deckModel.CurrentTurn == "Player")
         {
             if (manager.ChosenCard.IsSuper)
-                SuperCard(manager.ChosenCard, playerModel);
+                StartCoroutine(LerpSuper(manager.ChosenCard, playerModel));
             if (manager.ChosenCard.Number == 22)
                 PlusTwo(manager.ChosenCard, playerModel);
             if (manager.ChosenCard.Number == 44)
