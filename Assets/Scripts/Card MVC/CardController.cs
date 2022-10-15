@@ -111,8 +111,11 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Board")
         {
+            if (model.Board.Cards.Count <= 1) { }
+            else
+                model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
 
-            model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;

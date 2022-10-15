@@ -44,6 +44,7 @@ public class PlayerController : IPlayerController
 
     private void HandleClicked(object sender, OrderInHandEventArgs e)
     {
+        FixPosition();
         for (int i = 0; i < model.Cards.Count - 1; i++)
         {
             model.Cards[i].HandOrder = i;
