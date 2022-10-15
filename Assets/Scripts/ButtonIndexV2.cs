@@ -17,7 +17,6 @@ public class ButtonIndexV2 : MonoBehaviour
     public int _index;
     public CardView cardView;
     public CardMaker _cardMaker;
-
     public List<Sprite> wildSprites;
     public List<Sprite> WildSuperSprites;
     public bool isAI = false;
@@ -48,7 +47,7 @@ public class ButtonIndexV2 : MonoBehaviour
             manager.ChosenCard = playerModel.Cards[Index];
             NormalCard(playerModel.Cards[Index], playerModel);
             SuperCard(playerModel.Cards[Index], playerModel);
-            if (playerModel.Cards[Index].IsWild && boardModel.TopCard().Number != 22 || playerModel.Cards[Index].IsWild && boardModel.TopCard().Number != 44)
+            if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 22 || manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
             {
                 foreach (var item in PlayerColorChooser)
                 {
@@ -96,8 +95,8 @@ public class ButtonIndexV2 : MonoBehaviour
                 && card.Number != 22
                 && boardModel.TopCard().Number != 22
                 && boardModel.TopCard().Number != 44
-                || card.IsBamboozle && boardModel.TopCard().Number == 22
-                || card.IsBamboozle && boardModel.TopCard().Number == 44
+                || card.IsBamboozle
+                || card.IsBamboozle
                 || boardModel.TopCard().IsBamboozle)
             {
                 //card.Position = new Vector3(-7, 0, -5);
@@ -133,7 +132,6 @@ public class ButtonIndexV2 : MonoBehaviour
             if (card.Color == boardModel.TopCard().Color && card.Number == 44
                 || boardModel.TopCard().Number == 22 && card.Number == 44
                 || boardModel.TopCard().Number == 44 && card.Number == 44
-                || boardModel.TopCard().Number == 222 && card.Number == 44
                 || boardModel.TopCard().Number == 444 && card.Number == 44
                 || card.Number == 44 && boardModel.TopCard().IsBamboozle)
             {
@@ -572,14 +570,14 @@ public class ButtonIndexV2 : MonoBehaviour
     IEnumerator AIplayCard()
     {
         AIplayed = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.75f);
         var SuperCards = enemyModel.Cards.Where(c =>
            c.Number == 0 && boardModel.TopCard().Number == 0
         || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.IsWild && !c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.IsWild && c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
         || c.Number == 22 && boardModel.TopCard().Number == 22
-        || c.Number == 44 && boardModel.TopCard().Number == 22
+        || c.Number == 44 && boardModel.TopCard().Number == 22 && boardModel.TopCard().Number != 222
         || c.Number == 44 && boardModel.TopCard().Number == 44
         || boardModel.TopCard().IsBamboozle && c.IsSuper && c.IsSuper
         || boardModel.TopCard().IsBamboozle && c.IsWild
@@ -632,15 +630,7 @@ public class ButtonIndexV2 : MonoBehaviour
             colors.Add("Yellow");
             int rand = Random.Range(0, 3);
             WildCard(colors[rand]);
-            // AiTurn[0].Color = Color.white;
-            if (card.IsWild && !card.IsSuper)
-            {
-                card.Sprite = wildSprites[rand];
-            }
-            else
-            {
-                card.Sprite = WildSuperSprites[rand];
-            }
+            
         }
     }
 }

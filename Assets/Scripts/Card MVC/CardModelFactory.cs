@@ -39,6 +39,7 @@ public class CardViewFactory : ICardViewFactory
     {
         var prefab = Resources.Load<GameObject>("Card");
         var instance = UnityEngine.Object.Instantiate(prefab);
+        prefab.transform.position = new Vector3(20, 0, 0);
         View = instance.GetComponent<ICardView>();
     }
 }

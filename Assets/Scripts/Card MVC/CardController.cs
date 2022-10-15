@@ -60,7 +60,7 @@ public class CardController : ICardController
     public IEnumerator Lerp()
     {
         float t = 0;
-        float duration = 0.75f;
+        float duration = 0.45f;
 
         if (model.BelongsTo == "FlyingToPlayer")
         {
@@ -111,7 +111,7 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Board")
         {
-            while (t < duration)
+            while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector2.Lerp(model.Position, new Vector3(-7, 0, -5), t / duration);

@@ -34,18 +34,25 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (GameEnded == false)
-        Turn.text = deckModel.CurrentTurn;
+            Turn.text = deckModel.CurrentTurn;
 
-        if (player.Cards.Count == 0)
+        if (player.Cards.Count == 0 || player.Cards.Count > 20)
         {
-           GameEnded = true;
-            Turn.text = "Player WON!";
+            GameEnded = true;
+            if (player.Cards.Count > 20)
+                Turn.text = "Player WON, Opponent OverDrew";
+            else
+                Turn.text = "Player WON";
+
         }
 
         if (enemy.Cards.Count == 0)
         {
             GameEnded = true;
-            Turn.text = "AI WON!";
+            if (player.Cards.Count > 20)
+                Turn.text = "Opponent WON, Player OverDrew";
+            else
+                Turn.text = "Opponent WON";
         }
     }
 }

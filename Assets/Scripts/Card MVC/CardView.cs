@@ -86,6 +86,7 @@ public class CardView : MonoBehaviour, ICardView
     [SerializeField] bool _IsWild;
     [SerializeField] bool _IsBamboozle;
     public SpriteRenderer _InspectorSprite;
+    public SpriteRenderer DefultCard;
     //public TextMeshPro gs;
 
     // public List<GameObject> PlayerTransforms;
