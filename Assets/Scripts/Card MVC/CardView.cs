@@ -40,6 +40,7 @@ public interface ICardView
     bool IsSuper { set; }
     bool IsWild { set; }
     bool IsBamboozle { set; }
+    bool CanPlayCard { set; }
 
     Sprite Sprite { set; }
 
@@ -72,6 +73,7 @@ public class CardView : MonoBehaviour, ICardView
     public int Layer { set { _InspectorSprite.sortingOrder = value; } }
     public bool IsSuper { set { _IsSuper = value; } }
     public bool IsWild { set { _IsWild = value; } }
+    public bool CanPlayCard { set { _CanPlayCard = value; } }
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
     public Sprite Sprite { set { GetComponent<SpriteRenderer>(); _InspectorSprite.sprite = value; } }
@@ -85,6 +87,7 @@ public class CardView : MonoBehaviour, ICardView
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
     [SerializeField] bool _IsBamboozle;
+    [SerializeField] bool _CanPlayCard;
     public SpriteRenderer _InspectorSprite;
     public SpriteRenderer DefultCard;
     //public TextMeshPro gs;

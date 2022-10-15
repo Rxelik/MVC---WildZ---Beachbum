@@ -23,38 +23,22 @@ public class PlayerController : IPlayerController
         this.model = model;
         this.view = view;
         model.OnCardsChanged += FixViewPos;
+        model.Deck.OnTurnChangeEve += FixPos;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
+    private void FixPos(object sender, TurnChangedEventArgs e)
+    {
+        FixPosition() ;
+    }
+
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-        float moveRight = 0;
-        int CardLayer = model.Cards.Count;
-
-        for (int i = 0; i < model.Cards.Count; i++)
-        {
-
-            model.Cards[i].HandOrder = i;
-            model.Cards[i].Layer = CardLayer;
-            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9f, i * i);
-            moveRight += 2.3f;
-            CardLayer -= 1;
-            if (model.Cards[i].BelongsTo == "Player")
-            {
-                model.Cards[i].BelongsTo = "";
-                model.Cards[i].BelongsTo = "Player";
-            }
-            else if (model.Cards[i].BelongsTo == "FlyingToPlayer")
-            {
-                model.Cards[i].BelongsTo = "";
-                model.Cards[i].BelongsTo = "FlyingToPlayer";
-            }
-            SyncData();
-        }
-            SyncData();
+        FixPosition();
+        SyncData();
 
     }
 
@@ -70,6 +54,35 @@ public class PlayerController : IPlayerController
 
     }
 
+    private void FixPosition()
+    {
+        float moveRight = 0;
+        int CardLayer = model.Cards.Count;
+
+        for (int i = 0; i < model.Cards.Count; i++)
+        {
+
+            model.Cards[i].HandOrder = i;
+            model.Cards[i].Layer = CardLayer;
+            if (model.Cards[i].CanPlayCardTest())
+                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9.5f, i * i);
+            else if (!model.Cards[i].CanPlayCardTest())
+                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -12f, i * i);
+            moveRight += 2.3f;
+            CardLayer -= 1;
+            if (model.Cards[i].BelongsTo == "Player")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "Player";
+            }
+            else if (model.Cards[i].BelongsTo == "FlyingToPlayer")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "FlyingToPlayer";
+            }
+            SyncData();
+        }
+    }
     // Called when the view is clicked
 
     private void ClickedOnCard(int Index)

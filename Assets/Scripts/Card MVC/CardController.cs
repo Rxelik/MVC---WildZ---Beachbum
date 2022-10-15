@@ -173,6 +173,8 @@ public class CardController : ICardController
         view.HandOrder = model.HandOrder;
 
         view.Sprite = model.Sprite;
+
+        view.CanPlayCard = model.CanPlayCard;
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)
