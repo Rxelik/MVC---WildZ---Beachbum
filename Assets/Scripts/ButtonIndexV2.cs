@@ -45,9 +45,10 @@ public class ButtonIndexV2 : MonoBehaviour
         if (deckModel.CurrentTurn == "Player" && BelongsTo == "Player")
         {
             manager.ChosenCard = playerModel.Cards[Index];
+                
             NormalCard(playerModel.Cards[Index], playerModel);
             SuperCard(playerModel.Cards[Index], playerModel);
-            if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 22 || manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
+            if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
             {
                 foreach (var item in PlayerColorChooser)
                 {
@@ -570,7 +571,7 @@ public class ButtonIndexV2 : MonoBehaviour
     IEnumerator AIplayCard()
     {
         AIplayed = true;
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.85f);
         var SuperCards = enemyModel.Cards.Where(c =>
            c.Number == 0 && boardModel.TopCard().Number == 0
         || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
@@ -585,6 +586,7 @@ public class ButtonIndexV2 : MonoBehaviour
         || boardModel.TopCard().IsBamboozle && c.Number == 0
         || boardModel.TopCard().IsBamboozle && c.Number == 22
         || boardModel.TopCard().IsBamboozle && c.Number == 44
+        || boardModel.TopCard().IsBamboozle
         ).ToList();
 
         var NormalCards = enemyModel.Cards.Where(c =>

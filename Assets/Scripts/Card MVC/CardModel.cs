@@ -17,6 +17,7 @@ public class CardBelongsToEnemyEventArgs : EventArgs { }
 public class OrderInHandEventArgs : EventArgs { }
 public class CardSpriteChangedEventArgs : EventArgs { }
 public class CanPlayCardEventArgs : EventArgs { }
+public class CardFoundBoardEventArgs : EventArgs { }
 
 
 
@@ -38,6 +39,7 @@ public interface ICardModel
     event EventHandler<CardIsBamboozleEventArgs> OnBamboozle;
     event EventHandler<CardBelongsToPlayerEventArgs> OnPlayerChange;
     event EventHandler<CardBelongsToEnemyEventArgs> OnEnemyChange;
+    event EventHandler<CardFoundBoardEventArgs> OnBoardFind;
     event EventHandler<CardSpriteChangedEventArgs> ChangedSprite;
     event EventHandler<CanPlayCardEventArgs> CanPlayCardEve;
 
@@ -58,6 +60,7 @@ public interface ICardModel
 
     PlayerModel Player { get; set; }
     EnemyModel Enemy { get; set; }
+    BoardModel Board { get; set; }
 
     Sprite Sprite { get; set; }
 }
@@ -80,6 +83,7 @@ public class CardModel : ICardModel
     [SerializeField] bool _CanPlayCard;
     [SerializeField] PlayerModel _Player;
     [SerializeField] EnemyModel _Enemy;
+    [SerializeField] BoardModel _Board;
     [SerializeField] Sprite _Sprite;
 
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
@@ -97,6 +101,7 @@ public class CardModel : ICardModel
     public event EventHandler<CardBelongsToEnemyEventArgs> OnEnemyChange = (sender, e) => { };
     public event EventHandler<CardSpriteChangedEventArgs> ChangedSprite = (sender, e) => { };
     public event EventHandler<CanPlayCardEventArgs> CanPlayCardEve = (sender, e) => { };
+    public event EventHandler<CardFoundBoardEventArgs> OnBoardFind = (sender, e) => { };
 
     public PlayerModel Player
     {
@@ -126,6 +131,24 @@ public class CardModel : ICardModel
             {
                 // Set new position
                 _Enemy = value;
+
+                // Dispatch the 'position changed' event
+                //var eventArgs = new CardBelongsToEnemyEventArgs();
+                //OnEnemyChange(this, eventArgs);
+                Debug.Log("Changed Card POS");
+            }
+        }
+    }
+    public BoardModel Board
+    {
+        get { return _Board; }
+        set
+        {
+            // Only if the position changes
+            if (_Board != value)
+            {
+                // Set new position
+                _Board = value;
 
                 // Dispatch the 'position changed' event
                 //var eventArgs = new CardBelongsToEnemyEventArgs();
@@ -367,26 +390,28 @@ public class CardModel : ICardModel
 
     public bool CanPlayCardTest()
     {
-        if (Player.Board.Cards.Count >0)
+        if (Board.Cards.Count > 0)
         {
-            if (Number == 0 && Player.Board.TopCard().Number == 0
-                    || IsSuper && !IsWild && Player.Board.TopCard().Color == Color && Player.Board.TopCard().Number != 22 && Player.Board.TopCard().Number != 44
-                    || IsWild && !IsSuper && Player.Board.TopCard().Number != 22 && Player.Board.TopCard().Number != 44
-                    || IsWild && IsSuper && Player.Board.TopCard().Number != 22 && Player.Board.TopCard().Number != 44
-                    || Number == 22 && Player.Board.TopCard().Number == 22
-                    || Number == 44 && Player.Board.TopCard().Number == 22 && Player.Board.TopCard().Number != 222
-                    || Number == 44 && Player.Board.TopCard().Number == 44
-                    || Player.Board.TopCard().IsBamboozle && IsSuper && IsSuper
-                    || Player.Board.TopCard().IsBamboozle && IsWild
-                    || Player.Board.TopCard().IsBamboozle && IsSuper
-                    || Player.Board.TopCard().IsBamboozle && Number == 0
-                    || Player.Board.TopCard().IsBamboozle && Number == 22
-                    || Player.Board.TopCard().IsBamboozle && Number == 44
-                    || Number == Player.Board.TopCard().Number && Player.Board.TopCard().Number != 22 && Player.Board.TopCard().Number != 44
-                    || Color == Player.Board.TopCard().Color && Player.Board.TopCard().Number != 22 && Player.Board.TopCard().Number != 44
-                    || IsBamboozle && Player.Board.TopCard().Number == 22
-                    || IsBamboozle && Player.Board.TopCard().Number == 44
-                    || Player.Board.TopCard().IsBamboozle)
+            if (Number == 0 && Board.TopCard().Number == 0
+                    || IsSuper && !IsWild && Board.TopCard().Color == Color && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
+                    || IsWild && !IsSuper && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
+                    || IsWild && IsSuper && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
+                    || Number == 22 && Board.TopCard().Number == 22
+                    || Number == 22 && Board.TopCard().Number == 222
+                    || Number == 44 && Board.TopCard().Number == 22 && Board.TopCard().Number != 222
+                    || Number == 44 && Board.TopCard().Number == 44
+                    || Board.TopCard().IsBamboozle && IsSuper && IsSuper
+                    || Board.TopCard().IsBamboozle && IsWild
+                    || Board.TopCard().IsBamboozle && IsSuper
+                    || Board.TopCard().IsBamboozle && Number == 0
+                    || Board.TopCard().IsBamboozle && Number == 22
+                    || Board.TopCard().IsBamboozle && Number == 44
+                    || Number == Board.TopCard().Number && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
+                    || Color == Board.TopCard().Color && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
+                    || IsBamboozle && Board.TopCard().Number == 22
+                    || IsBamboozle && Board.TopCard().Number == 44
+                    || Board.TopCard().IsBamboozle
+                    || IsBamboozle)
             {
                 return true;
 

@@ -32,7 +32,7 @@ public class PlayerController : IPlayerController
 
     private void FixPos(object sender, TurnChangedEventArgs e)
     {
-        FixPosition() ;
+        FixPosition();
     }
 
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
@@ -65,11 +65,11 @@ public class PlayerController : IPlayerController
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
             if (model.Cards[i].CanPlayCardTest())
-                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9.5f, i * i);
+                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9.5f, -CardLayer);
             else if (!model.Cards[i].CanPlayCardTest())
-                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -12f, i * i);
+                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -12f, -CardLayer);
             moveRight += 2.3f;
-            CardLayer -= 1;
+            CardLayer += 1;
             if (model.Cards[i].BelongsTo == "Player")
             {
                 model.Cards[i].BelongsTo = "";
@@ -82,6 +82,7 @@ public class PlayerController : IPlayerController
             }
             SyncData();
         }
+            SyncData();
     }
     // Called when the view is clicked
 

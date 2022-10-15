@@ -24,24 +24,27 @@ public class CardMaker : MonoBehaviour
     private void Update()
     {
 
-        if (Button == false)
-            CardSprite.sortingOrder = view._InspectorSprite.sortingOrder;
 
-        if (!SwappedFace)
+        if (!Button)
         {
-            if (view._inspectorBelongsTo == "Player"
-            || view._inspectorBelongsTo == "Board"
-            || view._inspectorBelongsTo == "FlyingToPlayer"
-            || view._inspectorBelongsTo == "FlyingToEnemy")
+            CardSprite.sortingOrder = view._InspectorSprite.sortingOrder;
+            if (!SwappedFace)
             {
-                SwappedFace = true;
-                StartCoroutine(BuildCards(0.05f));
+                if (view._inspectorBelongsTo == "Player"
+                || view._inspectorBelongsTo == "Board"
+                || view._inspectorBelongsTo == "FlyingToPlayer"
+                || view._inspectorBelongsTo == "FlyingToEnemy")
+                {
+                    SwappedFace = true;
+                    StartCoroutine(BuildCards(0.05f));
+                }
+            }
+            if (view._inspectorBelongsTo == "Deck")
+            {
+                CardSprite.sprite = CardBack;
             }
         }
-        if (view._inspectorBelongsTo == "Deck")
-        {
-            CardSprite.sprite = CardBack;
-        }
+        
 
     }
     private void Start()

@@ -684,6 +684,7 @@ public class Inisializer : MonoBehaviour
         {
             item.Enemy = (EnemyModel)_Enemyermodel;
             item.Player = (PlayerModel)_playermodel;
+            item.Board = (BoardModel)_Boardmodel;
             item.Position = new Vector3(20, 0, 0);
             item.BelongsTo = "Deck";
             _deckmodel.AddCard(item);
