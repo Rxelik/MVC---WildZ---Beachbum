@@ -216,39 +216,45 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else
         {
-            if (card.IsSuper && boardModel.TopCard().Color == card.Color
-                && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-                || card.IsWild && card.Color != Color.black
-                || card.IsSuper && boardModel.TopCard().Number == 0
-                || boardModel.TopCard().IsBamboozle && card.IsSuper)
-            {
-                for (int i = model.Cards.Count - 1; i >= 0; i--)
-                {
-                    if (model.Cards[i].Color == card.Color)
-                    {
-                        if (model.Cards[i] == card) { }
-                        else
-                        {
-                            model.Cards[i].BelongsTo = "Board";
-                            model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
-                            boardModel.AddCard(model.Cards[i]);
-                            model.RemoveCard(model.Cards[i]);
-                        }
-                    }
-                }
-                ////card.Position = new Vector3(-7, 0, -5);
-                card.Layer = boardModel.TopCard().Layer + 2;
-                boardModel.AddCard(card);
-                model.RemoveCard(card);
-                card.Number = 0;
-                ChangeTurn();
-
-            }
+            StartCoroutine(LerpSuper(card, model));
         }
 
 
 
 
+    }
+
+    IEnumerator LerpSuper(CardModel card, PlayerModel model)
+    {
+        if (card.IsSuper && boardModel.TopCard().Color == card.Color
+                && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+                || card.IsWild && card.Color != Color.black
+                || card.IsSuper && boardModel.TopCard().Number == 0
+                || boardModel.TopCard().IsBamboozle && card.IsSuper)
+        {
+            for (int i = model.Cards.Count - 1; i >= 0; i--)
+            {
+                if (model.Cards[i].Color == card.Color)
+                {
+                    if (model.Cards[i] == card) { }
+                    else
+                    {
+                        yield return new WaitForSeconds(0.20f);
+                        model.Cards[i].BelongsTo = "Board";
+                        model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
+                        boardModel.AddCard(model.Cards[i]);
+                        model.RemoveCard(model.Cards[i]);
+                    }
+                }
+            }
+            ////card.Position = new Vector3(-7, 0, -5);
+            card.Layer = boardModel.TopCard().Layer + 2;
+            boardModel.AddCard(card);
+            model.RemoveCard(card);
+            card.Number = 0;
+            ChangeTurn();
+
+        }
     }
     void SuperCard(CardModel card, EnemyModel model)
     {

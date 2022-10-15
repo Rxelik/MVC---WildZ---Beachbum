@@ -76,7 +76,7 @@ public class CardView : MonoBehaviour, ICardView
     public bool CanPlayCard { set { _CanPlayCard = value; } }
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
-    public Sprite Sprite { set { GetComponent<SpriteRenderer>(); _InspectorSprite.sprite = value; } }
+    public Sprite Sprite { set { GetComponent<SpriteRenderer>(); } }
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
@@ -90,6 +90,7 @@ public class CardView : MonoBehaviour, ICardView
     [SerializeField] bool _CanPlayCard;
     public SpriteRenderer _InspectorSprite;
     public SpriteRenderer DefultCard;
+    public ParticleSystem ParticleEffect;
     //public TextMeshPro gs;
 
     // public List<GameObject> PlayerTransforms;
@@ -105,16 +106,27 @@ public class CardView : MonoBehaviour, ICardView
         //GetTransforms();
     }
 
-    private void CardView_CardPos(object sender, CardPositionChangedEventArgs e)
-    {
-        //StartCoroutine(AllignCards());
-        print("Inside Corutide Of View");
-    }
-
     void Update()
     {
         v2.BelongsTo = _inspectorBelongsTo;
+        if (_inspectorBelongsTo == "Player")
+        {
+            if (_CanPlayCard && ParticleEffect)
+            {
+                ParticleEffect.gameObject.SetActive(true);
+                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
+            }
 
+            if (!_CanPlayCard && ParticleEffect)
+            {
+                ParticleEffect.gameObject.SetActive(false);
+                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
+            }
+        }
+        else
+        {
+            ParticleEffect.gameObject.SetActive(false);
+        }
         //gs.text = _inspectNumber.ToString();
         //gs.sortingOrder = _sprite.sortingOrder;
         // If the primary mouse button was pressed this frame

@@ -111,10 +111,12 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Board")
         {
+
+            model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, new Vector3(-7, 0, -5), t / duration);
+                view.Position = Vector2.Lerp(model.Position, new Vector3(0, 0, 0), t / duration);
                 SyncData();
                 yield return null;
             }

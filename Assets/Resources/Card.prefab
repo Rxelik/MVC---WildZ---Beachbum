@@ -33,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8178122425631317295}
+  - {fileID: 7688753275485888601}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,8 +109,9 @@ MonoBehaviour:
   _IsWild: 0
   _IsBamboozle: 0
   _CanPlayCard: 0
-  _InspectorSprite: {fileID: 0}
+  _InspectorSprite: {fileID: 6587215133960815618}
   DefultCard: {fileID: 847150334145477222}
+  ParticleEffect: {fileID: 7688753275485888602}
   v2: {fileID: 5496405441866682127}
 --- !u!114 &-8933952006197382600
 MonoBehaviour:
@@ -311,3 +313,89 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1251554283330144232
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 847150334145477221}
+    m_Modifications:
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693692, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_Name
+      value: Card Glow Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929962563080693692, guid: c940ad9c3d047d84e8d37477866431d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c940ad9c3d047d84e8d37477866431d2, type: 3}
+--- !u!4 &7688753275485888601 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8929962563080693681, guid: c940ad9c3d047d84e8d37477866431d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1251554283330144232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7688753275485888602 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8929962563080693682, guid: c940ad9c3d047d84e8d37477866431d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1251554283330144232}
+  m_PrefabAsset: {fileID: 0}

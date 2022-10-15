@@ -413,11 +413,17 @@ public class CardModel : ICardModel
                     || Board.TopCard().IsBamboozle
                     || IsBamboozle)
             {
+                CanPlayCard = true;
+                var eventArgs = new CanPlayCardEventArgs();
+                CanPlayCardEve(this, eventArgs);
                 return true;
 
             }
             else
             {
+                CanPlayCard = false;
+                var eventArgs = new CanPlayCardEventArgs();
+                CanPlayCardEve(this, eventArgs);
                 return false;
             }
         }
