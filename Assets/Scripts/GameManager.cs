@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         if (GameEnded == false)
             Turn.text = deckModel.CurrentTurn;
 
-        if (player.Cards.Count == 0 || player.Cards.Count > 20)
+        if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
             GameEnded = true;
             if (player.Cards.Count > 20)

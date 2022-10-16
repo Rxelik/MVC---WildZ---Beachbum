@@ -61,13 +61,13 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
                 else
                 {
-                    foreach (var item in PlayerColorChooser)
-                    {
-                        item.SetActive(true);
-                    }
-                    StartCoroutine(_cardMaker.BuildWild());
-                }
 
+                }
+                foreach (var item in PlayerColorChooser)
+                {
+                    item.SetActive(true);
+                }
+                StartCoroutine(_cardMaker.BuildWild());
             }
             print("Inside Player");
 
@@ -114,7 +114,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 || boardModel.TopCard().IsBamboozle)
             {
                 //card.Position = new Vector3(-7, 0, -5);
-                card.Layer = boardModel.TopCard().Layer + 2;
+                //card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
 
@@ -123,7 +123,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     manager.Draw = 0;
                     ////card.Position = new Vector3(-7, 0, -5);
-                    card.Layer = boardModel.TopCard().Layer + 2;
+                    //card.Layer = boardModel.TopCard().Layer + 2;
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
                 }
@@ -177,7 +177,7 @@ public class ButtonIndexV2 : MonoBehaviour
             || boardModel.TopCard().IsBamboozle)
             {
                 ////card.Position = new Vector3(-7, 0, -5);
-                card.Layer = boardModel.TopCard().Layer + 2;
+                //card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
 
@@ -186,7 +186,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     manager.Draw = 0;
                     ////card.Position = new Vector3(-7, 0, -5);
-                    card.Layer = boardModel.TopCard().Layer + 2;
+                    //card.Layer = boardModel.TopCard().Layer + 2;
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
                 }
@@ -238,7 +238,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
     IEnumerator LerpSuper(CardModel card, PlayerModel model)
     {
-        yield return new WaitUntil(() => card.Color != Color.white);
+       
         if (card.IsSuper && boardModel.TopCard().Color == card.Color
                 && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
@@ -261,13 +261,48 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
             ////card.Position = new Vector3(-7, 0, -5);
-            card.Layer = boardModel.TopCard().Layer + 2;
+            //card.Layer = boardModel.TopCard().Layer + 2;
             boardModel.AddCard(card);
             model.RemoveCard(card);
             card.Number = 0;
             ChangeTurn();
 
         }
+    }
+
+
+    void Wappa(CardModel card, PlayerModel model)
+    {
+
+        if (card.IsSuper && boardModel.TopCard().Color == card.Color
+               && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+               || card.IsWild && card.Color != Color.black
+               || card.IsSuper && boardModel.TopCard().Number == 0
+               || boardModel.TopCard().IsBamboozle && card.IsSuper)
+        {
+            for (int i = model.Cards.Count - 1; i >= 0; i--)
+            {
+                if (model.Cards[i].Color == card.Color)
+                {
+                    if (model.Cards[i] == card) { }
+                    else
+                    {
+                        model.Cards[i].BelongsTo = "Board";
+                        model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
+                        boardModel.AddCard(model.Cards[i]);
+                        model.RemoveCard(model.Cards[i]);
+                    }
+                }
+            }
+            ////card.Position = new Vector3(-7, 0, -5);
+            //card.Layer = boardModel.TopCard().Layer + 2;
+            boardModel.AddCard(card);
+            model.RemoveCard(card);
+            card.Number = 0;
+            ChangeTurn();
+
+        }
+
     }
     void SuperCard(CardModel card, EnemyModel model)
     {
@@ -298,7 +333,7 @@ public class ButtonIndexV2 : MonoBehaviour
                     }
                 }
                 //card.Position = new Vector3(-7, 0, -5);
-                card.Layer = boardModel.TopCard().Layer + 2;
+                //card.Layer = boardModel.TopCard().Layer + 2;
                 boardModel.AddCard(card);
                 model.RemoveCard(card);
                 card.Number = 0;
@@ -322,7 +357,8 @@ public class ButtonIndexV2 : MonoBehaviour
         if (deckModel.CurrentTurn == "Player")
         {
             if (manager.ChosenCard.IsSuper)
-                StartCoroutine(LerpSuper(manager.ChosenCard, playerModel));
+              //  StartCoroutine(LerpSuper(manager.ChosenCard, playerModel));
+                Wappa(manager.ChosenCard, playerModel);
             if (manager.ChosenCard.Number == 22)
                 PlusTwo(manager.ChosenCard, playerModel);
             if (manager.ChosenCard.Number == 44)
@@ -368,7 +404,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
 
         //card.Position = new Vector3(-7, 0, -5);
-        card.Layer = boardModel.TopCard().Layer + 2;
+        //card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
         RemoveButtons();
@@ -398,7 +434,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
 
         //card.Position = new Vector3(-7, 0, -5);
-        card.Layer = boardModel.TopCard().Layer + 2;
+        //card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
         RemoveButtons();
@@ -431,7 +467,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
 
         //card.Position = new Vector3(-7, 0, -5);
-        card.Layer = boardModel.TopCard().Layer + 2;
+        //card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
         RemoveButtons();
@@ -461,7 +497,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
 
         //card.Position = new Vector3(-7, 0, -5);
-        card.Layer = boardModel.TopCard().Layer + 2;
+        //card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
         RemoveButtons();

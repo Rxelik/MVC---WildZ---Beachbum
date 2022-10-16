@@ -188,7 +188,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardRotationChangedEventArgs();
                 OnRotationChanged(this, eventArgs);
-                Debug.Log("Changed Card POS");
             }
         }
     }
@@ -261,7 +260,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new CardChangedBelongsEventArgs();
                 ChangedBelongTo(this, eventArgs);
-                Debug.Log("Changed Belong T o!");
             }
         }
     }
@@ -396,22 +394,22 @@ public class CardModel : ICardModel
                     || IsSuper && !IsWild && Board.TopCard().Color == Color && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
                     || IsWild && !IsSuper && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
                     || IsWild && IsSuper && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
-                    || Number == 22 && Board.TopCard().Number == 22
-                    || Number == 22 && Board.TopCard().Number == 222
-                    || Number == 44 && Board.TopCard().Number == 22 && Board.TopCard().Number != 222
-                    || Number == 44 && Board.TopCard().Number == 44
                     || Board.TopCard().IsBamboozle && IsSuper && IsSuper
                     || Board.TopCard().IsBamboozle && IsWild
                     || Board.TopCard().IsBamboozle && IsSuper
                     || Board.TopCard().IsBamboozle && Number == 0
                     || Board.TopCard().IsBamboozle && Number == 22
                     || Board.TopCard().IsBamboozle && Number == 44
-                    || Number == Board.TopCard().Number && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
-                    || Color == Board.TopCard().Color && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
                     || IsBamboozle && Board.TopCard().Number == 22
                     || IsBamboozle && Board.TopCard().Number == 44
                     || Board.TopCard().IsBamboozle
-                    || IsBamboozle)
+                    || IsBamboozle
+                    || Number == 22 && Board.TopCard().Number == 22
+                    || Number == 22 && Board.TopCard().Number == 222
+                    || Number == 44 && Board.TopCard().Number == 22 && Board.TopCard().Number != 222
+                    || Number == 44 && Board.TopCard().Number == 44
+                    || Number == Board.TopCard().Number && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
+                    || Color == Board.TopCard().Color && Board.TopCard().Number != 22 && Board.TopCard().Number != 44)
             {
                 CanPlayCard = true;
                 var eventArgs = new CanPlayCardEventArgs();

@@ -5765,7 +5765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsializeDeckSize: 100
-  HandSize: 15
+  HandSize: 10
   Colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.123636246, a: 1}

@@ -24,10 +24,19 @@ public class PlayerController : IPlayerController
         this.view = view;
         model.OnCardsChanged += FixViewPos;
         model.Deck.OnTurnChangeEve += FixPos;
+        model.Board.CardInBoardChanged += EnemyPlayed;
+
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
+    }
+
+    private void EnemyPlayed(object sender, OnCardsInBoardChangeEventArgs e)
+    {
+        
+        FixPosition();
+        Debug.Log("ENEMY PLAYED");
     }
 
     private void FixPos(object sender, TurnChangedEventArgs e)
@@ -37,21 +46,22 @@ public class PlayerController : IPlayerController
 
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-        FixPosition();
+
+       FixPosition();
         SyncData();
 
     }
 
     private void HandleClicked(object sender, OrderInHandEventArgs e)
     {
-        FixPosition();
         for (int i = 0; i < model.Cards.Count - 1; i++)
         {
             model.Cards[i].HandOrder = i;
-            SyncData();
+            //SyncData();
 
         }
         SyncData();
+        FixPosition();
 
     }
 
@@ -59,16 +69,19 @@ public class PlayerController : IPlayerController
     {
         float moveRight = 0;
         int CardLayer = model.Cards.Count;
-
         for (int i = 0; i < model.Cards.Count; i++)
         {
 
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
             if (model.Cards[i].CanPlayCardTest())
+            {
                 model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9.5f, -CardLayer);
+            }
             else if (!model.Cards[i].CanPlayCardTest())
+            {
                 model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -12f, -CardLayer);
+            }
             moveRight += 2.3f;
             CardLayer += 1;
             if (model.Cards[i].BelongsTo == "Player")
@@ -83,7 +96,6 @@ public class PlayerController : IPlayerController
             }
             SyncData();
         }
-            SyncData();
     }
     // Called when the view is clicked
 

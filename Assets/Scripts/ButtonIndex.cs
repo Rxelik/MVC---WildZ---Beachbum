@@ -13,7 +13,7 @@ public class ButtonIndex : MonoBehaviour
     public DeckModel deckModel;
     public BoardModel boardModel;
     public List<GameObject> PlayerColorChooser;
-    public List<GameObject> EnemeyColorChooser;
+    public List<GameObject> EnemyColorChooser;
     public void ChoosePlayerCard(int index)
     {
         if (deckModel.CurrentTurn == "Player")
@@ -117,7 +117,7 @@ public class ButtonIndex : MonoBehaviour
                 #region Wild
                 if (ChosenCard.IsWild)
                 {
-                    foreach (var item in EnemeyColorChooser)
+                    foreach (var item in EnemyColorChooser)
                     {
                         item.SetActive(true);
                     }
@@ -231,7 +231,7 @@ public class ButtonIndex : MonoBehaviour
                 }
                 boardModel.TopCard().Number = 0;
             }
-            else if (deckModel.CurrentTurn == "Enemey" && !playerModel.HasCounter())
+            else if (deckModel.CurrentTurn == "Enemy" && !playerModel.HasCounter())
             {
                 ChangeTurn();
                 for (int i = 0; i < 2; i++)
@@ -361,7 +361,7 @@ public class ButtonIndex : MonoBehaviour
         }
         #endregion
 
-        #region Enemey
+        #region Enemy
         if (deckModel.CurrentTurn == "Enemy" && !enemyModel.HasCounter())
         {
             if (boardModel.TopCard().Number == 22)
@@ -412,7 +412,7 @@ public class ButtonIndex : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
-        foreach (var item in EnemeyColorChooser)
+        foreach (var item in EnemyColorChooser)
         {
             item.gameObject.SetActive(false);
         }

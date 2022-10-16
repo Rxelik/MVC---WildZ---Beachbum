@@ -49,7 +49,6 @@ public class CardController : ICardController
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
     {
         _manager.StartCoroutine(Lerp());
-        Debug.Log("INSIDE CARD CHANGE NAME");
     }
 
     // Called when the view is clicked
@@ -115,11 +114,11 @@ public class CardController : ICardController
             else
                 model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
 
-
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector2.Lerp(model.Position, new Vector3(0, 0, 0), t / duration);
+                model.Layer = 2*model.Board.Cards.Count;
                 SyncData();
                 yield return null;
             }
@@ -152,6 +151,7 @@ public class CardController : ICardController
     void SyncData()
     {
         //view.Position = model.Position;
+        view.CanPlayCard = model.CanPlayCard;
 
         view.Rotation = model.Rotation;
 
@@ -179,7 +179,6 @@ public class CardController : ICardController
 
         view.Sprite = model.Sprite;
 
-        view.CanPlayCard = model.CanPlayCard;
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

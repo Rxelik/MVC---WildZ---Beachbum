@@ -35,7 +35,6 @@ public class DeckController : IDeckController
 
     private void ChangeTurn(object sender, TurnChangedEventArgs e)
     {
-        Debug.Log("ENTERED CHANGE TURN!!!");
         SyncData();
     }
 
