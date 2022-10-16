@@ -83,6 +83,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
+                
                 StartCoroutine(_cardMaker.BuildWild());
             }
             print("Inside Enemy");
@@ -254,7 +255,7 @@ public class ButtonIndexV2 : MonoBehaviour
                     {
                         yield return new WaitForSeconds(0.20f);
                         model.Cards[i].BelongsTo = "Board";
-                        model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
+                        //model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                         boardModel.AddCard(model.Cards[i]);
                         model.RemoveCard(model.Cards[i]);
                     }
@@ -271,7 +272,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
 
 
-    void Wappa(CardModel card, PlayerModel model)
+    IEnumerator Wappa(CardModel card, PlayerModel model)
     {
 
         if (card.IsSuper && boardModel.TopCard().Color == card.Color
@@ -287,8 +288,9 @@ public class ButtonIndexV2 : MonoBehaviour
                     if (model.Cards[i] == card) { }
                     else
                     {
+                        yield return new WaitForSeconds(0.20f);
                         model.Cards[i].BelongsTo = "Board";
-                        model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
+                        //model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                         boardModel.AddCard(model.Cards[i]);
                         model.RemoveCard(model.Cards[i]);
                     }
@@ -325,7 +327,7 @@ public class ButtonIndexV2 : MonoBehaviour
                         else
                         {
                             model.Cards[i].BelongsTo = "Board";
-                            model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
+                           // model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                             boardModel.AddCard(model.Cards[i]);
                             model.RemoveCard(model.Cards[i]);
 
@@ -346,6 +348,11 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     void WildCard(string color)
     {
+        StartCoroutine(LerpWIlds(color));
+    }
+
+    IEnumerator LerpWIlds(string color)
+    {
         if (color == "Red")
             manager.ChosenCard.Color = Color.red;
         if (color == "Green")
@@ -354,11 +361,12 @@ public class ButtonIndexV2 : MonoBehaviour
             manager.ChosenCard.Color = Color.yellow;
         if (color == "Blue")
             manager.ChosenCard.Color = Color.blue;
+        yield return new WaitForSeconds(0.15f);
+
         if (deckModel.CurrentTurn == "Player")
         {
             if (manager.ChosenCard.IsSuper)
-              //  StartCoroutine(LerpSuper(manager.ChosenCard, playerModel));
-                Wappa(manager.ChosenCard, playerModel);
+                manager.StartCoroutine((Wappa(manager.ChosenCard, playerModel)));
             if (manager.ChosenCard.Number == 22)
                 PlusTwo(manager.ChosenCard, playerModel);
             if (manager.ChosenCard.Number == 44)
@@ -376,7 +384,6 @@ public class ButtonIndexV2 : MonoBehaviour
 
         RemoveButtons();
     }
-
     #endregion
 
 

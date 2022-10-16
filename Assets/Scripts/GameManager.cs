@@ -40,18 +40,18 @@ public class GameManager : MonoBehaviour
         {
             GameEnded = true;
             if (player.Cards.Count > 20)
-                Turn.text = "Player WON, Opponent OverDrew";
-            else
+                Turn.text = "Opponent Has Over 20 Cards Player Won!";
+            else if (player.Cards.Count == 0)
                 Turn.text = "Player WON";
 
         }
 
-        if (enemy.Cards.Count == 0)
+        if (enemy.Cards.Count == 0 || player.Cards.Count > 20)
         {
             GameEnded = true;
             if (player.Cards.Count > 20)
-                Turn.text = "Opponent WON, Player OverDrew";
-            else
+                Turn.text = "Player Has Over 20 Cards Opponent Won!";
+            else if(enemy.Cards.Count == 0)
                 Turn.text = "Opponent WON";
         }
     }
