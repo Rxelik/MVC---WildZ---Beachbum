@@ -163,6 +163,7 @@ public class PlayerModel : IPlayerModel
     public void RemoveCard(CardModel card)
     {
         Cards.Remove(card);
+        card.Layer = Board.Cards.Count;
         card.BelongsTo = "Board";
         var eventArgs = new PlayerCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);

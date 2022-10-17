@@ -91,6 +91,7 @@ public class CardView : MonoBehaviour, ICardView
     public SpriteRenderer _InspectorSprite;
     public SpriteRenderer DefultCard;
     public ParticleSystem ParticleEffect;
+    public Transform Arc;
     //public TextMeshPro gs;
 
     // public List<GameObject> PlayerTransforms;
@@ -110,15 +111,19 @@ public class CardView : MonoBehaviour, ICardView
     {
         v2.BelongsTo = _inspectorBelongsTo;
         if (_inspectorBelongsTo == "Player")
-        {
+        {      
+
+
             if (_CanPlayCard && ParticleEffect)
             {
+                Arc.rotation = Quaternion.Euler(0, 0, 0);
                 ParticleEffect.gameObject.SetActive(true);
                 ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
             }
 
             if (!_CanPlayCard && ParticleEffect)
             {
+                Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
                 ParticleEffect.gameObject.SetActive(false);
                 ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
             }

@@ -100,7 +100,7 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Enemy")
         {
-            while (t < 0.75f)
+            while (t < 1f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
@@ -112,13 +112,14 @@ public class CardController : ICardController
         {
             if (model.Board.Cards.Count <= 1) { }
             else
+            {
                 model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+            }
 
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector2.Lerp(model.Position, new Vector3(0, 0, 0), t / duration);
-                model.Layer = 2*model.Board.Cards.Count;
                 SyncData();
                 yield return null;
             }

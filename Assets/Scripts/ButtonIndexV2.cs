@@ -47,7 +47,7 @@ public class ButtonIndexV2 : MonoBehaviour
         if (deckModel.CurrentTurn == "Player" && BelongsTo == "Player")
         {
             manager.ChosenCard = playerModel.Cards[Index];
-                
+
             NormalCard(playerModel.Cards[Index], playerModel);
             SuperCard(playerModel.Cards[Index], playerModel);
             if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
@@ -84,7 +84,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
-                
+
                 StartCoroutine(_cardMaker.BuildWild());
             }
             print("Inside Enemy");
@@ -231,7 +231,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else
             manager.StartCoroutine(LerpSuper(card, model));
-        
+
 
 
 
@@ -240,7 +240,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
     IEnumerator LerpSuper(CardModel card, PlayerModel model)
     {
-       
+
         if (card.IsSuper && boardModel.TopCard().Color == card.Color
                 && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
@@ -263,7 +263,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
             }
             ////card.Position = new Vector3(-7, 0, -5);
-            //card.Layer = boardModel.TopCard().Layer + 2;
+            card.Layer = boardModel.TopCard().Layer + 2;
             boardModel.AddCard(card);
             model.RemoveCard(card);
             card.Number = 0;
@@ -309,7 +309,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     void SuperCard(CardModel card, EnemyModel model)
     {
-        
+
         if (card.Color == Color.white)
         {
 
@@ -319,7 +319,8 @@ public class ButtonIndexV2 : MonoBehaviour
             if (card.IsSuper && boardModel.TopCard().Color == card.Color
                 && deckModel.CurrentTurn == "Enemy" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
                 || card.IsWild && card.Color != Color.black
-                || card.IsSuper && boardModel.TopCard().Number == 0)
+                || card.IsSuper && boardModel.TopCard().Number == 0
+                || boardModel.TopCard().IsBamboozle && card.IsSuper)
             {
                 for (int i = model.Cards.Count - 1; i >= 0; i--)
                 {
@@ -329,7 +330,7 @@ public class ButtonIndexV2 : MonoBehaviour
                         else
                         {
                             model.Cards[i].BelongsTo = "Board";
-                           // model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
+                            //model.Cards[i].Layer = boardModel.TopCard().Layer + 2;
                             boardModel.AddCard(model.Cards[i]);
                             model.RemoveCard(model.Cards[i]);
 
@@ -343,7 +344,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 card.Number = 0;
                 ChangeTurn();
                 RemoveButtons();
-                
+
             }
         }
 
@@ -351,7 +352,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     void WildCard(string color)
     {
-        
+
         StartCoroutine(LerpWIlds(color));
     }
 
@@ -710,7 +711,8 @@ public class ButtonIndexV2 : MonoBehaviour
 
     private void AiChooseCard(CardModel card)
     {
-        
+
+        int rand = Random.Range(0, 3);
         manager.ChosenCard = card;
         print(card.Name);
         NormalCard(card, enemyModel);
@@ -722,12 +724,11 @@ public class ButtonIndexV2 : MonoBehaviour
         {
             colors.Add("Red");
             colors.Add("Green");
-            colors.Add("Blue");
             colors.Add("Yellow");
-            int rand = Random.Range(0, 3);
+            colors.Add("Blue");
             EnemyWild(colors[rand]);
-            
+
         }
-        
+
     }
 }

@@ -73,6 +73,7 @@ public class BoardModel : IBoardModel
     {
         Cards.Add(card);
         card.BelongsTo = "Board";
+        card.Layer = Cards.Count;
         var eventArgs = new OnCardsInBoardChangeEventArgs();
         CardInBoardChanged(this, eventArgs);
     }
