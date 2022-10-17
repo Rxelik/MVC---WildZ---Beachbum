@@ -36,7 +36,6 @@ public class PlayerController : IPlayerController
     {
         
         FixPosition();
-        Debug.Log("ENEMY PLAYED");
     }
 
     private void FixPos(object sender, TurnChangedEventArgs e)

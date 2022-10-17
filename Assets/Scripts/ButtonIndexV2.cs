@@ -22,6 +22,7 @@ public class ButtonIndexV2 : MonoBehaviour
     public List<Sprite> WildSuperSprites;
     public bool isAI = false;
     bool AIplayed = false;
+    List<string> colors = new List<string>();
     private void Update()
     {
         if (!manager.GameEnded)
@@ -111,7 +112,6 @@ public class ButtonIndexV2 : MonoBehaviour
                 && boardModel.TopCard().Number != 22
                 && boardModel.TopCard().Number != 44
                 || card.IsBamboozle
-                || card.IsBamboozle
                 || boardModel.TopCard().IsBamboozle)
             {
                 //card.Position = new Vector3(-7, 0, -5);
@@ -179,8 +179,7 @@ public class ButtonIndexV2 : MonoBehaviour
             {
                 ////card.Position = new Vector3(-7, 0, -5);
                 //card.Layer = boardModel.TopCard().Layer + 2;
-                boardModel.AddCard(card);
-                model.RemoveCard(card);
+
 
                 #region Bamboozle
                 if (card.IsBamboozle)
@@ -195,6 +194,8 @@ public class ButtonIndexV2 : MonoBehaviour
 
                 else
                 {
+                    boardModel.AddCard(card);
+                    model.RemoveCard(card);
                     ChangeTurn();
                 }
             }
@@ -229,7 +230,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
         }
         else
-        StartCoroutine(LerpSuper(card, model));
+            manager.StartCoroutine(LerpSuper(card, model));
         
 
 
@@ -308,6 +309,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     void SuperCard(CardModel card, EnemyModel model)
     {
+        
         if (card.Color == Color.white)
         {
 
@@ -341,6 +343,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 card.Number = 0;
                 ChangeTurn();
                 RemoveButtons();
+                
             }
         }
 
@@ -348,6 +351,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     void WildCard(string color)
     {
+        
         StartCoroutine(LerpWIlds(color));
     }
 
@@ -385,6 +389,32 @@ public class ButtonIndexV2 : MonoBehaviour
         RemoveButtons();
     }
     #endregion
+
+
+
+    void EnemyWild(string color)
+    {
+        if (color == "Red")
+            manager.ChosenCard.Color = Color.red;
+        if (color == "Green")
+            manager.ChosenCard.Color = Color.green;
+        if (color == "Yellow")
+            manager.ChosenCard.Color = Color.yellow;
+        if (color == "Blue")
+            manager.ChosenCard.Color = Color.blue;
+
+        else if (deckModel.CurrentTurn == "Enemy")
+        {
+            if (manager.ChosenCard.IsSuper)
+                SuperCard(manager.ChosenCard, enemyModel);
+            if (manager.ChosenCard.Number == 22)
+                PlusTwo(manager.ChosenCard, enemyModel);
+            if (manager.ChosenCard.Number == 44)
+                PlusFour(manager.ChosenCard, enemyModel);
+        }
+
+        RemoveButtons();
+    }
 
 
     void PlusTwo(CardModel card, EnemyModel model)
@@ -632,6 +662,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
     IEnumerator AIplayCard()
     {
+        print("AI Played");
         AIplayed = true;
         yield return new WaitForSeconds(0.85f);
         var SuperCards = enemyModel.Cards.Where(c =>
@@ -672,12 +703,14 @@ public class ButtonIndexV2 : MonoBehaviour
         else if (NormalCards.Count >= 1)
         {
             AiChooseCard(NormalCards[0]);
+            SuperCards.Clear();
         }
         AIplayed = false;
     }
 
     private void AiChooseCard(CardModel card)
     {
+        
         manager.ChosenCard = card;
         print(card.Name);
         NormalCard(card, enemyModel);
@@ -687,14 +720,14 @@ public class ButtonIndexV2 : MonoBehaviour
            || card.IsWild && card.IsSuper
             )
         {
-            List<string> colors = new List<string>();
             colors.Add("Red");
             colors.Add("Green");
             colors.Add("Blue");
             colors.Add("Yellow");
             int rand = Random.Range(0, 3);
-            WildCard(colors[rand]);
+            EnemyWild(colors[rand]);
             
         }
+        
     }
 }

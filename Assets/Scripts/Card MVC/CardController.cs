@@ -100,7 +100,7 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Enemy")
         {
-            while (t < duration)
+            while (t < 0.75f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);

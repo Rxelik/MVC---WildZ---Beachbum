@@ -14,7 +14,7 @@ public class Inisializer : MonoBehaviour
     public int InsializeDeckSize = 100;
     public int HandSize = 10;
 
-    public List<Color> Colors;
+    public List<Color> Colors = new List<Color>();
     int colorRND;
     int numRND;
     public ButtonIndexV2 DeckButton;
@@ -717,14 +717,20 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         //_______________________________________________\\
+        Random rnds = new Random();
+        List<Color> wappas = new List<Color>();
 
+        wappas.Add(Color.red);
+        wappas.Add(Color.yellow);
+        wappas.Add(Color.blue);
+        wappas.Add(Color.yellow);
         #region Add First Card To Board
         _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+        _Boardmodel.Cards[0].Color = wappas[UnityEngine.Random.Range(0,4)];
         //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
         _Boardmodel.Cards[0].IsSuper = false;
         _Boardmodel.Cards[0].IsBamboozle = false;
         _Boardmodel.Cards[0].IsWild = false;
-       // _Boardmodel.Cards[0].Color = Colors[UnityEngine.Random.Range(1, 2)];
         _Boardmodel.Cards[0].Number = UnityEngine.Random.Range(1, 9);
         _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         _Boardmodel.Cards[0].BelongsTo = "Board";

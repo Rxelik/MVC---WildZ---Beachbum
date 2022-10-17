@@ -135,7 +135,7 @@ public class DeckModel : IDeckModel
         return Cards[Cards.Count - 1];
     }
 
-    bool swapper = true;
+    bool swapper = false;
     public void ChangeTurn()
     {
         swapper = !swapper;
