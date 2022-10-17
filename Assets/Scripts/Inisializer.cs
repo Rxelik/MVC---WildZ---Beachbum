@@ -40,7 +40,7 @@ public class Inisializer : MonoBehaviour
         ///
         var DeckmodelFactory = new DeckModelFactory();
         var _deckmodel = DeckmodelFactory.Model;
-
+        _deckmodel.Position = new Vector3(20, 0, 0);
         // Set some initial state
         //_deckmodel.Position = new Vector3(20, 0, 0);
         _deckmodel.Cards = new List<CardModel>();

@@ -28,18 +28,25 @@ public class GameManager : MonoBehaviour
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
+    public TextMeshProUGUI timer;
     public CardModel ChosenCard;
+    public bool PlayerCanPlay;
     public bool GameEnded = false;
+    private float Timer;
 
     private void Update()
     {
         if (GameEnded == false)
+        {
+            Timer += Time.deltaTime;
             Turn.text = deckModel.CurrentTurn;
+            timer.text = Timer.ToString();
+        }
 
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
             GameEnded = true;
-            if (player.Cards.Count > 20)
+            if (enemy.Cards.Count > 20)
                 Turn.text = "Opponent Has Over 20 Cards Player Won!";
             else if (player.Cards.Count == 0)
                 Turn.text = "Player WON";

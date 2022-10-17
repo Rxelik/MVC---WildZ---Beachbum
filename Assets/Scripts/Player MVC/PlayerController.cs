@@ -10,7 +10,7 @@ public interface IPlayerController
 // Implementation of the enemy controller
 public class PlayerController : IPlayerController
 {
-
+    private GameManager _manager;
     // Keep references to the model and view
     private readonly IPlayerModel model;
     private readonly IPlayerView view;
@@ -20,12 +20,13 @@ public class PlayerController : IPlayerController
     public PlayerController(IPlayerModel model, IPlayerView view)
     {
         //Register
+
         this.model = model;
         this.view = view;
         model.OnCardsChanged += FixViewPos;
         model.Deck.OnTurnChangeEve += FixPos;
         model.Board.CardInBoardChanged += EnemyPlayed;
-
+        _manager = GameManager.Instance;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
@@ -46,7 +47,7 @@ public class PlayerController : IPlayerController
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
 
-       FixPosition();
+        FixPosition();
         SyncData();
 
     }
@@ -66,13 +67,16 @@ public class PlayerController : IPlayerController
 
     private void FixPosition()
     {
+
         float moveRight = 0;
         int CardLayer = model.Cards.Count;
+
         for (int i = 0; i < model.Cards.Count; i++)
         {
 
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
+            
             if (model.Cards[i].CanPlayCardTest())
             {
                 model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9.5f, -CardLayer);
@@ -94,6 +98,19 @@ public class PlayerController : IPlayerController
                 model.Cards[i].BelongsTo = "FlyingToPlayer";
             }
             SyncData();
+
+            foreach (var item in model.Cards)
+            {
+                if (item.CanPlayCard)
+                {
+                    _manager.PlayerCanPlay = true;
+                    break;
+                }
+                else
+                {
+                    _manager.PlayerCanPlay = false;
+                }
+            }
         }
     }
     // Called when the view is clicked

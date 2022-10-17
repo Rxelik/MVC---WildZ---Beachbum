@@ -29,6 +29,7 @@ public class DeckController : IDeckController
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
         view.CardInDeckChanged += RizeLayer;
         model.OnTurnChangeEve += ChangeTurn;
+        
         // Set the view's initial state by synching with the model
         SyncData();
     }
@@ -42,7 +43,6 @@ public class DeckController : IDeckController
     {
         model.Cards[model.Cards.Count - 1].Layer++;
         SyncData();
-        Debug.Log("Rise Lauer bItch");
     }
 
     private void HandleClicked(object sender, DeckChangedEventArgs e)

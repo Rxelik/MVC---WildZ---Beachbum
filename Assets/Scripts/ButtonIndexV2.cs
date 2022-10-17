@@ -242,10 +242,10 @@ public class ButtonIndexV2 : MonoBehaviour
     {
 
         if (card.IsSuper && boardModel.TopCard().Color == card.Color
-                && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-                || card.IsWild && card.Color != Color.black
-                || card.IsSuper && boardModel.TopCard().Number == 0
-                || boardModel.TopCard().IsBamboozle && card.IsSuper)
+                && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44 && !card.IsBamboozle
+                || card.IsWild && card.Color != Color.black && !card.IsBamboozle
+                || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
+                || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
         {
             for (int i = model.Cards.Count - 1; i >= 0; i--)
             {
@@ -276,11 +276,11 @@ public class ButtonIndexV2 : MonoBehaviour
     IEnumerator Wappa(CardModel card, PlayerModel model)
     {
 
-        if (card.IsSuper && boardModel.TopCard().Color == card.Color
+        if (card.IsSuper && boardModel.TopCard().Color == card.Color && !card.IsBamboozle
                && deckModel.CurrentTurn == "Player" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-               || card.IsWild && card.Color != Color.black
-               || card.IsSuper && boardModel.TopCard().Number == 0
-               || boardModel.TopCard().IsBamboozle && card.IsSuper)
+               || card.IsWild && card.Color != Color.black && !card.IsBamboozle
+               || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
+               || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
         {
             for (int i = model.Cards.Count - 1; i >= 0; i--)
             {
@@ -317,10 +317,10 @@ public class ButtonIndexV2 : MonoBehaviour
         else
         {
             if (card.IsSuper && boardModel.TopCard().Color == card.Color
-                && deckModel.CurrentTurn == "Enemy" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-                || card.IsWild && card.Color != Color.black
-                || card.IsSuper && boardModel.TopCard().Number == 0
-                || boardModel.TopCard().IsBamboozle && card.IsSuper)
+                && deckModel.CurrentTurn == "Enemy" && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44 && !card.IsBamboozle
+                || card.IsWild && card.Color != Color.black && !card.IsBamboozle
+                || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
+                || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
             {
                 for (int i = model.Cards.Count - 1; i >= 0; i--)
                 {
@@ -665,7 +665,7 @@ public class ButtonIndexV2 : MonoBehaviour
     {
         print("AI Played");
         AIplayed = true;
-        yield return new WaitForSeconds(0.85f);
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0.85f,2f));
         var SuperCards = enemyModel.Cards.Where(c =>
            c.Number == 0 && boardModel.TopCard().Number == 0
         || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
@@ -711,7 +711,6 @@ public class ButtonIndexV2 : MonoBehaviour
 
     private void AiChooseCard(CardModel card)
     {
-
         int rand = Random.Range(0, 3);
         manager.ChosenCard = card;
         print(card.Name);
@@ -727,8 +726,6 @@ public class ButtonIndexV2 : MonoBehaviour
             colors.Add("Yellow");
             colors.Add("Blue");
             EnemyWild(colors[rand]);
-
         }
-
     }
 }

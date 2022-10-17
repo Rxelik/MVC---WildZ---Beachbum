@@ -34,6 +34,7 @@ public class DeckView : MonoBehaviour, IDeckView
     public event EventHandler<CardLayerChangeEventArgs> CardInDeckChanged = (sender, e) => { };
     public event EventHandler<TurnChangedEventArgs> TurnChanged = (sender, e) => { };
 
+    PlayerView Player;
     public Vector3 Position { set { transform.position = value; } }
 
     public List<CardModel> Cards { set => _InspectorCards = value; }
@@ -41,6 +42,20 @@ public class DeckView : MonoBehaviour, IDeckView
 
     [SerializeField] public List<CardModel> _InspectorCards;
     [SerializeField] string _CurrentTurn;
+
+    public ParticleSystem ParticleEffect;
+
+    private void Update()
+    {
+        if (!GameManager.Instance.PlayerCanPlay && _CurrentTurn == "Player")
+        {
+            ParticleEffect.gameObject.SetActive(true);
+        }
+        else if(GameManager.Instance.PlayerCanPlay)
+        {
+            ParticleEffect.gameObject.SetActive(false);
+        }
+    }
 
     //private void Awake()
     //{
