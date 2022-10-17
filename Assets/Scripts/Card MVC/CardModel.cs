@@ -407,6 +407,7 @@ public class CardModel : ICardModel
                     || Number == 22 && Board.TopCard().Number == 222
                     || Number == 44 && Board.TopCard().Number == 22 && Board.TopCard().Number != 222
                     || Number == 44 && Board.TopCard().Number == 44
+                    || Number == 44 && Board.TopCard().Number == 444
                     || Number == Board.TopCard().Number && Board.TopCard().Number != 22 && Board.TopCard().Number != 44
                     || Color == Board.TopCard().Color && Board.TopCard().Number != 22 && Board.TopCard().Number != 44)
             {
