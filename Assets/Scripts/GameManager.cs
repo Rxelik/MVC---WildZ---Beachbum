@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameEnded == false)
         {
-            Timer += Time.deltaTime;
+           // Timer += Time.deltaTime;
             Turn.text = deckModel.CurrentTurn;
             timer.text = Timer.ToString();
         }

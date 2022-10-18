@@ -51,7 +51,7 @@ public class DeckView : MonoBehaviour, IDeckView
         {
             ParticleEffect.gameObject.SetActive(true);
         }
-        else if(GameManager.Instance.PlayerCanPlay)
+        else if(GameManager.Instance.PlayerCanPlay && _CurrentTurn != "Player")
         {
             ParticleEffect.gameObject.SetActive(false);
         }
