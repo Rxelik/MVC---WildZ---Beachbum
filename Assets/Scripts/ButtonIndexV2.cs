@@ -38,8 +38,8 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     void OnMouseDown()
     {
-        if (!manager.GameEnded)
-            PlayCard(cardView._inspectOrderInHand);
+        //if (!manager.GameEnded)
+        //    PlayCard(cardView._inspectOrderInHand);
     }
     public void PlayCard(int Index)
     {
