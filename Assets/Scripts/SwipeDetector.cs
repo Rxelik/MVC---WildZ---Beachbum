@@ -97,15 +97,20 @@ public class SwipeDetector : MonoBehaviour
 
     void OnSwipeUp()
     {
-
-        Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-        print("Swipe Up");
-
-
-        if (targetObject.GetComponent<ButtonIndexV2>().cardView._inspectorBelongsTo == "Player")
+        if (GameManager.Instance.deckModel.CurrentTurn == "Player")
         {
-            targetObject.GetComponent<ButtonIndexV2>().PlayCard(targetObject.GetComponent<ButtonIndexV2>().cardView._inspectOrderInHand);
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+            v2 = targetObject.GetComponent<ButtonIndexV2>();
+            if (v2.cardView._IsSuper)
+            {
+                v2.PlayCard(v2.cardView._inspectOrderInHand);
+            }
+            else
+            {
+                v2.PlayCard(v2.cardView._inspectOrderInHand);
+            }
         }
+        print("Swipe Up");
     }
 
     void OnSwipeDown()
