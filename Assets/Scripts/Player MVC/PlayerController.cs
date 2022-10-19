@@ -85,7 +85,7 @@ public class PlayerController : IPlayerController
             {
                 model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -12f, -CardLayer);
             }
-            moveRight += 2.3f;
+            moveRight += 2.8f;
             CardLayer += 1;
             if (model.Cards[i].BelongsTo == "Player")
             {

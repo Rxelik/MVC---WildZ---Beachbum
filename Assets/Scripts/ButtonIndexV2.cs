@@ -21,6 +21,7 @@ public class ButtonIndexV2 : MonoBehaviour
     public List<Sprite> WildSuperSprites;
     public bool isAI = false;
     bool AIplayed = false;
+    public bool PlayerPlayed = false;
     List<string> colors = new List<string>();
     private void Update()
     {
@@ -43,8 +44,9 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     public void PlayCard(int Index)
     {
-        if (deckModel.CurrentTurn == "Player" && BelongsTo == "Player")
+        if (deckModel.CurrentTurn == "Player")
         {
+            PlayerPlayed = true;
             manager.ChosenCard = playerModel.Cards[Index];
 
             NormalCard(playerModel.Cards[Index], playerModel);
@@ -70,24 +72,23 @@ public class ButtonIndexV2 : MonoBehaviour
                 StartCoroutine(_cardMaker.BuildWild());
             }
             print("Inside Player");
-
         }
-        if (deckModel.CurrentTurn == "Enemy" && BelongsTo == "Enemy")
-        {
-            manager.ChosenCard = enemyModel.Cards[Index];
-            NormalCard(enemyModel.Cards[Index], enemyModel);
-            SuperCard(enemyModel.Cards[Index], enemyModel);
-            if (enemyModel.Cards[Index].IsWild && boardModel.TopCard().Number != 22 || enemyModel.Cards[Index].IsWild && boardModel.TopCard().Number != 44)
-            {
-                foreach (var item in EnemyColorChooser)
-                {
-                    item.SetActive(true);
-                }
+        //if (deckModel.CurrentTurn == "Enemy" && BelongsTo == "Enemy")
+        //{
+        //    manager.ChosenCard = enemyModel.Cards[Index];
+        //    NormalCard(enemyModel.Cards[Index], enemyModel);
+        //    SuperCard(enemyModel.Cards[Index], enemyModel);
+        //    if (enemyModel.Cards[Index].IsWild && boardModel.TopCard().Number != 22 || enemyModel.Cards[Index].IsWild && boardModel.TopCard().Number != 44)
+        //    {
+        //        foreach (var item in EnemyColorChooser)
+        //        {
+        //            item.SetActive(true);
+        //        }
 
-                StartCoroutine(_cardMaker.BuildWild());
-            }
-            print("Inside Enemy");
-        }
+        //        StartCoroutine(_cardMaker.BuildWild());
+        //    }
+        //    print("Inside Enemy");
+        //}
 
     }
     private void Start()
@@ -133,6 +134,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     ChangeTurn();
                 }
+                PlayerPlayed = false;
 
 
             }
@@ -142,6 +144,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
             {
                 PlusTwo(card, playerModel);
+                PlayerPlayed = false;
             }
             if (card.Color == boardModel.TopCard().Color && card.Number == 44
                 || boardModel.TopCard().Number == 22 && card.Number == 44
@@ -150,6 +153,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 || card.Number == 44 && boardModel.TopCard().IsBamboozle)
             {
                 PlusFour(card, playerModel);
+                PlayerPlayed = false;
             }
 
         }
@@ -267,7 +271,7 @@ public class ButtonIndexV2 : MonoBehaviour
             model.RemoveCard(card);
             card.Number = 0;
             ChangeTurn();
-
+            PlayerPlayed = false;
         }
     }
 
@@ -302,6 +306,7 @@ public class ButtonIndexV2 : MonoBehaviour
             model.RemoveCard(card);
             card.Number = 0;
             ChangeTurn();
+            PlayerPlayed = false;
 
         }
 
@@ -664,7 +669,7 @@ public class ButtonIndexV2 : MonoBehaviour
     {
         print("AI Played");
         AIplayed = true;
-        yield return new WaitForSeconds(UnityEngine.Random.Range(0.85f,2f));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0.85f, 2f));
         var SuperCards = enemyModel.Cards.Where(c =>
            c.Number == 0 && boardModel.TopCard().Number == 0
         || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44

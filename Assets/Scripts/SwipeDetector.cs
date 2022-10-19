@@ -13,18 +13,20 @@ public class SwipeDetector : MonoBehaviour
 
     public ButtonIndexV2 v2;
 
+    CardView _cardView;
+
     Vector3 mousePosition;
     // Update is called once per frame
 
     void Update()
     {
+        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         foreach (Touch touch in Input.touches)
         {
 
             if (touch.phase == TouchPhase.Began)
             {
-                mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 fingerUpPos = touch.position;
                 fingerDownPos = touch.position;
             }
@@ -57,6 +59,7 @@ public class SwipeDetector : MonoBehaviour
             if (fingerDownPos.y - fingerUpPos.y > 0)
             {
                 OnSwipeUp();
+                
             }
             else if (fingerDownPos.y - fingerUpPos.y < 0)
             {
@@ -97,18 +100,11 @@ public class SwipeDetector : MonoBehaviour
 
     void OnSwipeUp()
     {
-        if (GameManager.Instance.deckModel.CurrentTurn == "Player")
+        RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
+        if (rayHit.collider != null)
         {
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            v2 = targetObject.GetComponent<ButtonIndexV2>();
-            if (v2.cardView._IsSuper)
-            {
-                v2.PlayCard(v2.cardView._inspectOrderInHand);
-            }
-            else
-            {
-                v2.PlayCard(v2.cardView._inspectOrderInHand);
-            }
+            _cardView = rayHit.collider.GetComponent<CardView>();
+            v2.PlayCard(_cardView._inspectOrderInHand);
         }
         print("Swipe Up");
     }

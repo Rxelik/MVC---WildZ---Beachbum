@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 847150334145477222}
   - component: {fileID: 7266716411848905878}
   - component: {fileID: -8933952006197382600}
-  - component: {fileID: 5496405441866682127}
   - component: {fileID: 3548965274274475184}
   m_Layer: 0
   m_Name: Card
@@ -60,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847150334145477223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5051726990145408204}
@@ -144,7 +143,7 @@ MonoBehaviour:
   DefultCard: {fileID: 847150334145477222}
   ParticleEffect: {fileID: 7688753275485888602}
   Arc: {fileID: 5051726990145408204}
-  v2: {fileID: 5496405441866682127}
+  v2: {fileID: 0}
 --- !u!114 &-8933952006197382600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,27 +216,6 @@ MonoBehaviour:
   CardBack: {fileID: 21300000, guid: 7af289f85666d974594d81a1680fdfa5, type: 3}
   view: {fileID: 7266716411848905878}
   Button: 0
---- !u!114 &5496405441866682127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847150334145477223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerColorChooser: []
-  EnemyColorChooser: []
-  BelongsTo: 
-  _index: 0
-  cardView: {fileID: 7266716411848905878}
-  _cardMaker: {fileID: -8933952006197382600}
-  wildSprites: []
-  WildSuperSprites: []
-  isAI: 0
 --- !u!61 &3548965274274475184
 BoxCollider2D:
   m_ObjectHideFlags: 0

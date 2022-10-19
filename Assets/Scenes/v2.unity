@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 14892770}
   - component: {fileID: 14892769}
   - component: {fileID: 14892771}
+  - component: {fileID: 14892772}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -198,8 +199,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectSwipeAfterRelease: 0
-  SWIPE_THRESHOLD: 20
-  v2: {fileID: 0}
+  SWIPE_THRESHOLD: 150
+  v2: {fileID: 14892772}
+--- !u!114 &14892772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14892768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerColorChooser: []
+  EnemyColorChooser: []
+  BelongsTo: 
+  _index: 0
+  cardView: {fileID: 0}
+  _cardMaker: {fileID: 0}
+  wildSprites: []
+  WildSuperSprites: []
+  isAI: 0
+  PlayerPlayed: 0
 --- !u!1 &15657506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,6 +2772,7 @@ MonoBehaviour:
   - {fileID: -8646794427231163231, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   - {fileID: 2960497297611472325, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   isAI: 1
+  PlayerPlayed: 0
 --- !u!1 &984338853
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,6 +5753,7 @@ MonoBehaviour:
   wildSprites: []
   WildSuperSprites: []
   isAI: 0
+  PlayerPlayed: 0
 --- !u!1 &1941650205
 GameObject:
   m_ObjectHideFlags: 0
