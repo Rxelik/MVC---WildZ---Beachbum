@@ -106,7 +106,6 @@ public class SwipeDetector : MonoBehaviour
             _cardView = rayHit.collider.GetComponent<CardView>();
             v2.PlayCard(_cardView._inspectOrderInHand);
         }
-        print("Swipe Up");
     }
 
     void OnSwipeDown()

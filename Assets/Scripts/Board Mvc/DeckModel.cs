@@ -149,5 +149,20 @@ public class DeckModel : IDeckModel
             CurrentTurn = "Enemy";
         }
     }
+
+    public void PlayAgain()
+    {
+
+        if (CurrentTurn == "Player")
+        {
+            CurrentTurn = "";
+            CurrentTurn = "Player";
+        }
+        else if (CurrentTurn == "Enemy")
+        {
+            CurrentTurn = "";
+            CurrentTurn = "Enemy";
+        }
+    }
 }
 

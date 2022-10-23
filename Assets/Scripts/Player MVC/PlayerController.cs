@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using System.Drawing;
+using TMPro;
 
 // Interface for the enemy controller
 public interface IPlayerController
@@ -26,6 +30,7 @@ public class PlayerController : IPlayerController
         model.OnCardsChanged += FixViewPos;
         model.Deck.OnTurnChangeEve += FixPos;
         model.Board.CardInBoardChanged += EnemyPlayed;
+        model.Deck.CardInDeckChanged += DrewCard;
         _manager = GameManager.Instance;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
@@ -33,22 +38,28 @@ public class PlayerController : IPlayerController
         SyncData();
     }
 
+
+
     private void EnemyPlayed(object sender, OnCardsInBoardChangeEventArgs e)
     {
-        
-        FixPosition();
+       FixPosition();
     }
 
     private void FixPos(object sender, TurnChangedEventArgs e)
     {
-        FixPosition();
+       FixPosition();
     }
-
+    private void DrewCard(object sender, OnCardsInDeckChangeEventArgs e)
+    {
+     FixPosition();
+    }
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
+       // FixPosition();
 
-        FixPosition();
-        SyncData();
+
+        // SyncData();
+
 
     }
 
@@ -58,32 +69,46 @@ public class PlayerController : IPlayerController
         {
             model.Cards[i].HandOrder = i;
             //SyncData();
-
         }
-        SyncData();
-        FixPosition();
+       // SyncData();
+        // FixPosition();
 
     }
 
     private void FixPosition()
     {
+        //R Y B G
+        if (!model.FirstTurn)
+        {
+            view.SortedHand = model.Cards.OrderBy(go => go.Color.g)
+                .ThenBy(go => go.Color == UnityEngine.Color.white)
+                .ThenBy(go => go.Color.b)
+                .ThenBy(go => go.Color == UnityEngine.Color.yellow)
+                .ThenBy(go => go.Color.r)
+                .ToList();
+            model.Cards.Clear();
+        }
+
+        foreach (var item in view.SortedHand)
+        {
+            model.Cards.Add(item);
+        }
 
         float moveRight = 0;
         int CardLayer = model.Cards.Count;
-
         for (int i = 0; i < model.Cards.Count; i++)
         {
 
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            
+
             if (model.Cards[i].CanPlayCardTest())
             {
-                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -9.5f, -CardLayer);
+                model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -9.5f, -CardLayer);
             }
             else if (!model.Cards[i].CanPlayCardTest())
             {
-                model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, -12f, -CardLayer);
+                model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
             }
             moveRight += 2.8f;
             CardLayer += 1;
@@ -92,12 +117,11 @@ public class PlayerController : IPlayerController
                 model.Cards[i].BelongsTo = "";
                 model.Cards[i].BelongsTo = "Player";
             }
-            else if (model.Cards[i].BelongsTo == "FlyingToPlayer")
-            {
-                model.Cards[i].BelongsTo = "";
-                model.Cards[i].BelongsTo = "FlyingToPlayer";
-            }
-            SyncData();
+            //else if (model.Cards[i].BelongsTo == "FlyingToPlayer")
+            //{
+            //    model.Cards[i].BelongsTo = "";
+            //    model.Cards[i].BelongsTo = "FlyingToPlayer";
+            //}
 
             foreach (var item in model.Cards)
             {
@@ -112,6 +136,7 @@ public class PlayerController : IPlayerController
                 }
             }
         }
+        SyncData();
     }
     // Called when the view is clicked
 

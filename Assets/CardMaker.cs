@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardMaker : MonoBehaviour
 {
     public List<Sprite> Red;
-    [Space] 
+    [Space]
     public List<Sprite> Green;
     [Space]
     public List<Sprite> Blue;
@@ -30,30 +30,57 @@ public class CardMaker : MonoBehaviour
             CardSprite.sortingOrder = view._InspectorSprite.sortingOrder;
             if (!SwappedFace)
             {
-                if (view._inspectorBelongsTo == "Player"
-                || view._inspectorBelongsTo == "Board"
-                || view._inspectorBelongsTo == "FlyingToPlayer"
-                || view._inspectorBelongsTo == "FlyingToEnemy")
+                if (view._IsSuper && !view._IsWild)
                 {
-                    SwappedFace = true;
-                    StartCoroutine(BuildCards(0.05f));
+                    SwapCards(0);
+                }
+                else if (!view._IsSuper && view._IsWild)
+                {
+                    SwapCards(0);
+                }
+                else if (!view._IsSuper && !view._IsWild)
+                {
+                    SwapCards(0);
+                }
+                else if (!SwappedFace && view._IsSuper && view._IsWild)
+                {
+
+                    SwapCards(1.5f);
                 }
             }
             if (view._inspectorBelongsTo == "Deck")
             {
                 CardSprite.sprite = CardBack;
             }
+
+
         }
-        
+
 
     }
     private void Start()
     {
-       // if (Button == false)
-          //  StartCoroutine(BuildCards(1));
+        // if (Button == false)
+        //  StartCoroutine(BuildCards(1));
     }
 
 
+    void SwapCards(float num)
+    {
+        if (view._inspectorBelongsTo == "Player"
+|| view._inspectorBelongsTo == "Board"
+|| view._inspectorBelongsTo == "FlyingToPlayer"
+|| view._inspectorBelongsTo == "FlyingToEnemy")
+        {
+            SwappedFace = true;
+            StartCoroutine(BuildCards(num));
+        }
+
+        if (view._inspectorBelongsTo == "Deck")
+        {
+            CardSprite.sprite = CardBack;
+        }
+    }
     public IEnumerator BuildCards(float num)
     {
         yield return new WaitForSeconds(num);
@@ -312,13 +339,13 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 22:
                     CardSprite.sprite = Red[9];
-                    break;     
+                    break;
                 case 222:
                     CardSprite.sprite = Red[9];
                     break;
                 case 44:
                     CardSprite.sprite = Red[10];
-                    break;    
+                    break;
                 case 444:
                     CardSprite.sprite = Red[10];
                     break;
@@ -362,13 +389,13 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 22:
                     CardSprite.sprite = Green[9];
-                    break;           
+                    break;
                 case 222:
                     CardSprite.sprite = Green[9];
                     break;
                 case 44:
                     CardSprite.sprite = Green[10];
-                    break;          
+                    break;
                 case 444:
                     CardSprite.sprite = Green[10];
                     break;
@@ -412,13 +439,13 @@ public class CardMaker : MonoBehaviour
                     break;
                 case 22:
                     CardSprite.sprite = Blue[9];
-                    break;   
+                    break;
                 case 222:
                     CardSprite.sprite = Blue[9];
                     break;
                 case 44:
                     CardSprite.sprite = Blue[10];
-                    break;               
+                    break;
                 case 444:
                     CardSprite.sprite = Blue[10];
                     break;

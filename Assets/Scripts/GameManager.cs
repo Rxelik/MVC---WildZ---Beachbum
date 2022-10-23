@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public bool PlayerCanPlay;
     public bool GameEnded = false;
     private float Timer;
+    public bool PlayerPlayed = false;
 
     private void Update()
     {
@@ -61,5 +62,10 @@ public class GameManager : MonoBehaviour
             else if(enemy.Cards.Count == 0)
                 Turn.text = "Opponent WON";
         }
+    }
+
+   void CountScore()
+    {
+
     }
 }

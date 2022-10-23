@@ -85,7 +85,7 @@ public class CardView : MonoBehaviour, ICardView
     public string _inspectorBelongsTo;
     public Color _InspectorColor;
     public bool _IsSuper;
-    [SerializeField] bool _IsWild;
+    public bool _IsWild;
     [SerializeField] bool _IsBamboozle;
     public bool _CanPlayCard;
     public SpriteRenderer _InspectorSprite;
@@ -109,7 +109,8 @@ public class CardView : MonoBehaviour, ICardView
 
     void Update()
     {
-       // v2.BelongsTo = _inspectorBelongsTo;
+        // v2.BelongsTo = _inspectorBelongsTo;
+
         if (_inspectorBelongsTo == "Board")
         {
             gameObject.transform.localScale = new Vector3(0.7f,0.7f);

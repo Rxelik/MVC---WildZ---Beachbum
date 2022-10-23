@@ -84,6 +84,7 @@ public class Inisializer : MonoBehaviour
         _playermodel.Deck = (DeckModel)_deckmodel;
         _playermodel.Board = (BoardModel)_Boardmodel;
         _playermodel.HandPos = PlayerTransforms;
+        _playermodel.FirstTurn = true;
         //_playermodel.HandCount = 10;
         // Create the view
         var PlayerViewFactory = new PlayerViewFactory();
@@ -703,6 +704,7 @@ public class Inisializer : MonoBehaviour
             _playermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
         }
+        _playermodel.FirstTurn = false;
 
 
         #endregion
@@ -740,7 +742,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.deckModel = (DeckModel)_deckmodel;
         GameManager.Instance.player = (PlayerModel)_playermodel;
         GameManager.Instance.enemy = (EnemyModel)_Enemyermodel;
-
         deck.ChangeTurn();
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using System.Linq;
 
 public class PlayerChangedEventArgs { }
 public class OnDeckChangeEventArgs { }
@@ -24,6 +24,9 @@ public interface IPlayerModel
     [SerializeField] List<Transform> HandPos { get; set; }
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+
+    bool FirstTurn { get; set; }
+    bool FirstTurnMethod();
 }
 
 public class PlayerModel : IPlayerModel
@@ -34,6 +37,7 @@ public class PlayerModel : IPlayerModel
     [SerializeField] DeckModel _Deck;
     [SerializeField] List<Transform> _HandPos;
     [SerializeField] BoardModel _Board;
+    [SerializeField] bool _FirstTurn;
 
 
     public event EventHandler<PlayerChangedEventArgs> OnPositionChanged = (sender, e) => { };
@@ -148,7 +152,23 @@ public class PlayerModel : IPlayerModel
             }
         }
     }
+    public bool FirstTurn
+    {
+        get { return _FirstTurn; }
+        set
+        {
+            // Only if the position changes
+            if (_FirstTurn != value)
+            {
+                // Set new position
+                _FirstTurn = value;
 
+                // Dispatch the 'position changed' event
+                var eventArgs = new PlayerChangedEventArgs();
+                OnPositionChanged(this, eventArgs);
+            }
+        }
+    }
 
     public void AddCard(CardModel card)
     {
@@ -173,10 +193,11 @@ public class PlayerModel : IPlayerModel
         return Cards[Cards.Count - 1];
     }
 
-    public void TakeCard(int amout)
+    public IEnumerator TakeCard(int amout)
     {
         for (int i = 0; i < amout; i++)
         {
+            yield return new WaitForSeconds(0.25f);
             AddCard(Deck.TopCard());
             Deck.RemoveCard(TopCard());
         }
@@ -247,7 +268,18 @@ public class PlayerModel : IPlayerModel
         {
             return false;
         }
-    }
+    }  
 
-    
+    public bool FirstTurnMethod()
+    {
+        if (FirstTurn)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+
+        }
+    }
 }

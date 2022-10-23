@@ -172,6 +172,7 @@ MonoBehaviour:
     _Sprite: {fileID: 0}
   PlayerCanPlay: 0
   GameEnded: 0
+  PlayerPlayed: 0
 --- !u!4 &14892770
 Transform:
   m_ObjectHideFlags: 0
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectSwipeAfterRelease: 0
-  SWIPE_THRESHOLD: 150
+  SWIPE_THRESHOLD: 75
   v2: {fileID: 14892772}
 --- !u!114 &14892772
 MonoBehaviour:
@@ -222,7 +223,6 @@ MonoBehaviour:
   wildSprites: []
   WildSuperSprites: []
   isAI: 0
-  PlayerPlayed: 0
 --- !u!1 &15657506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2772,6 @@ MonoBehaviour:
   - {fileID: -8646794427231163231, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   - {fileID: 2960497297611472325, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
   isAI: 1
-  PlayerPlayed: 0
 --- !u!1 &984338853
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,7 +4109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1441814724
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5753,7 +5752,6 @@ MonoBehaviour:
   wildSprites: []
   WildSuperSprites: []
   isAI: 0
-  PlayerPlayed: 0
 --- !u!1 &1941650205
 GameObject:
   m_ObjectHideFlags: 0

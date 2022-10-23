@@ -44,6 +44,7 @@ public class CardController : ICardController
     private void Count(object sender, OrderInHandEventArgs e)
     {
         SyncData();
+
     }
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
@@ -54,7 +55,7 @@ public class CardController : ICardController
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
-        SyncData();
+       // SyncData();
     }
     public IEnumerator Lerp()
     {
@@ -68,8 +69,8 @@ public class CardController : ICardController
                 t += Time.deltaTime / duration;
                 view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
-
                 model.BelongsTo = "Player";
+
             }
 
         }
@@ -89,12 +90,13 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Player")
         {
-            while (t < duration)
-            {
-                t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(model.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
-                yield return null;
-            }
+            view.Position = model.Position;
+            //while (t < duration)
+            //{
+            //    t += Time.deltaTime / duration;
+            //    view.Position = Vector3.Lerp(model.Position, model.Player.Cards [model.HandOrder].Position, t / duration);
+            //    yield return null;
+            //}
 
         }
 
@@ -120,7 +122,7 @@ public class CardController : ICardController
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector2.Lerp(model.Position, new Vector3(0, 0, 0), t / duration);
-                SyncData();
+               // SyncData();
                 yield return null;
             }
         }
@@ -130,7 +132,7 @@ public class CardController : ICardController
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector2.Lerp(model.Position, new Vector3(20, 0, 0), t / duration);
-                SyncData();
+               // SyncData();
                 yield return null;
             }
         }
@@ -152,6 +154,7 @@ public class CardController : ICardController
     void SyncData()
     {
         //view.Position = model.Position;
+
         view.CanPlayCard = model.CanPlayCard;
 
         view.Rotation = model.Rotation;
