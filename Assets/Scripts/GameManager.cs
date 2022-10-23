@@ -33,7 +33,10 @@ public class GameManager : MonoBehaviour
     public bool PlayerCanPlay;
     public bool GameEnded = false;
     private float Timer;
+    public GameObject PassButton;
     public bool PlayerPlayed = false;
+
+
 
     private void Update()
     {

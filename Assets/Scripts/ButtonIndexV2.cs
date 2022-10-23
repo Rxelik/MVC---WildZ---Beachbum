@@ -45,34 +45,38 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     public void PlayCard(int Index)
     {
-        if (deckModel.CurrentTurn == "Player" && !PlayerPlayed)
+        if (deckModel.CurrentTurn == "Player")
         {
-            manager.PlayerPlayed = true;
             manager.ChosenCard = playerModel.Cards[Index];
-
-            NormalCard(playerModel.Cards[Index], playerModel);
-            SuperCard(playerModel.Cards[Index], playerModel);
-            if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
+            manager.PlayerPlayed = true;
+            
+            if (playerModel.Cards[Index].CanPlayCard)
             {
-                if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 44)
+                NormalCard(playerModel.Cards[Index], playerModel);
+                SuperCard(playerModel.Cards[Index], playerModel);
+                if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
                 {
+                    if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 44)
+                    {
 
-                }
-                else if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 22)
-                {
+                    }
+                    else if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 22)
+                    {
 
-                }
-                else
-                {
+                    }
+                    else
+                    {
 
+                    }
+                    foreach (var item in PlayerColorChooser)
+                    {
+                        item.SetActive(true);
+                    }
+                    // StartCoroutine(_cardMaker.BuildWild());
                 }
-                foreach (var item in PlayerColorChooser)
-                {
-                    item.SetActive(true);
-                }
-                // StartCoroutine(_cardMaker.BuildWild());
             }
             print("Inside Player");
+
         }
         //if (deckModel.CurrentTurn == "Enemy" && BelongsTo == "Enemy")
         //{
@@ -400,7 +404,7 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else if (deckModel.CurrentTurn == "Enemy")
         {
-            if (manager.ChosenCard.IsSuper) 
+            if (manager.ChosenCard.IsSuper)
                 SuperCard(manager.ChosenCard, enemyModel);
             if (manager.ChosenCard.Number == 22)
                 PlusTwo(manager.ChosenCard, enemyModel);
@@ -581,6 +585,7 @@ public class ButtonIndexV2 : MonoBehaviour
         deckModel.ChangeTurn();
 
         RemoveButtons();
+
     }
     void RemoveButtons()
     {
@@ -592,9 +597,32 @@ public class ButtonIndexV2 : MonoBehaviour
         {
             item.SetActive(false);
         }
-
+        manager.PassButton.SetActive(false);
     }
 
+
+    IEnumerator CanPlayCard()
+    {
+        CardModel card;
+        card = deckModel.TopCard();
+
+        StartCoroutine(playerModel.TakeCard(1));
+        yield return new WaitForSeconds(0.30f);
+        if (card.CanPlayCard)
+        {
+            foreach (var item in playerModel.Cards)
+            {
+                item.CanPlayCard = false;
+            }
+            manager.PassButton.SetActive(true);
+            card.CanPlayCard = true;
+            PlayerPlayed = false;
+        }
+        else if (!card.CanPlayCard)
+        {
+            ChangeTurn();
+        }
+    }
     public void TakeFromDeck()
     {
         if (!manager.GameEnded)
@@ -609,8 +637,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 {
                     if (manager.Draw == 0)
                     {
-                        ChangeTurn();
-                        StartCoroutine(playerModel.TakeCard(1));
+                        StartCoroutine(CanPlayCard());
                     }
                     else
                     {

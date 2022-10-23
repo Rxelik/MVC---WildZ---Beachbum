@@ -665,6 +665,7 @@ public class Inisializer : MonoBehaviour
             }
 
         }
+        GameManager.Instance.PassButton.SetActive(false);
 
         #endregion
 
@@ -728,7 +729,7 @@ public class Inisializer : MonoBehaviour
         wappas.Add(Color.yellow);
         #region Add First Card To Board
         _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
-        _Boardmodel.Cards[0].Color = wappas[UnityEngine.Random.Range(0,4)];
+        _Boardmodel.Cards[0].Color = wappas[UnityEngine.Random.Range(0, 4)];
         //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
         _Boardmodel.Cards[0].IsSuper = false;
         _Boardmodel.Cards[0].IsBamboozle = false;
