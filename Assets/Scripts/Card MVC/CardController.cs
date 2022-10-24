@@ -135,11 +135,12 @@ public class CardController : ICardController
         }
         if (model.BelongsTo == "Deck")
         {
+            model.Rotation = Quaternion.Euler(0, 0, 0);
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, new Vector3(20, 0, 0), t / duration);
-               // SyncData();
+                view.Position = Vector3.Lerp(Vector3.zero, new Vector3(20, 0, 0), t / duration);
+               //    SyncData();
                 yield return null;
             }
         }

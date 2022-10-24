@@ -49,6 +49,7 @@ public class Inisializer : MonoBehaviour
         // Create the view
         var DeckviewFactory = new DeckViewFactory();
         var Deckview = DeckviewFactory.View;
+        Deckview.Inisialize = true;
 
 
         var DeckviewcontrollerFactory = new DeckControllerFactory(_deckmodel, Deckview);
@@ -70,6 +71,7 @@ public class Inisializer : MonoBehaviour
         var BoardcontrollerFactory = new BoardControllerFactory(_Boardmodel, Boardview);
         var Boardcontroller = BoardcontrollerFactory.Controller;
         #endregion
+        _deckmodel.Board = (BoardModel)_Boardmodel;
 
         //_______________________________________________\\
 
@@ -743,6 +745,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.deckModel = (DeckModel)_deckmodel;
         GameManager.Instance.player = (PlayerModel)_playermodel;
         GameManager.Instance.enemy = (EnemyModel)_Enemyermodel;
+        Deckview.Inisialize = false;
         deck.ChangeTurn();
 
     }

@@ -115,7 +115,11 @@ public class CardView : MonoBehaviour, ICardView
         {
             gameObject.transform.localScale = new Vector3(0.7f,0.7f);
         }
-            if (_inspectorBelongsTo == "Enemy")
+        if (_inspectorBelongsTo == "Deck")
+        {
+            gameObject.transform.localScale = new Vector3(1f, 1f);
+        }
+        if (_inspectorBelongsTo == "Enemy")
         {
             Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
         }

@@ -48,10 +48,10 @@ public class ButtonIndexV2 : MonoBehaviour
         if (deckModel.CurrentTurn == "Player" && !PlayerPlayed)
         {
             manager.ChosenCard = playerModel.Cards[Index];
-            
+
             if (playerModel.Cards[Index].CanPlayCard)
             {
-            manager.PlayerPlayed = true;    
+                manager.PlayerPlayed = true;
                 NormalCard(playerModel.Cards[Index], playerModel);
                 SuperCard(playerModel.Cards[Index], playerModel);
                 if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
@@ -390,16 +390,24 @@ public class ButtonIndexV2 : MonoBehaviour
         {
             manager.PlayerPlayed = false;
         }
+
+        if (manager.ChosenCard.Number == 22)
+            PlusTwo(manager.ChosenCard, playerModel);
+        if (manager.ChosenCard.Number == 44)
+            PlusFour(manager.ChosenCard, playerModel);
+
         yield return new WaitForSeconds(0.15f);
 
         if (deckModel.CurrentTurn == "Player")
         {
+
             if (manager.ChosenCard.IsSuper)
+            {
                 manager.StartCoroutine((Wappa(manager.ChosenCard, playerModel)));
-            if (manager.ChosenCard.Number == 22)
-                PlusTwo(manager.ChosenCard, playerModel);
-            if (manager.ChosenCard.Number == 44)
-                PlusFour(manager.ChosenCard, playerModel);
+
+            }
+
+
             manager.PlayerPlayed = false;
         }
         else if (deckModel.CurrentTurn == "Enemy")
@@ -481,16 +489,19 @@ public class ButtonIndexV2 : MonoBehaviour
         {
             manager.Draw += 2;
             ChangeTurn();
-            manager.PlayerPlayed = false;
         }
         else
         {
             if (manager.Draw == 0)
             {
-                StartCoroutine(enemyModel.TakeCard(2));
+                for (int i = 0; i < 2; i++)
+                {
+                    enemyModel.AddCard(deckModel.TopCard());
+                    deckModel.RemoveCard(deckModel.TopCard());
+                }
+
                 card.Number = 222;
                 deckModel.PlayAgain();
-                manager.PlayerPlayed = false;
             }
             else
             {
@@ -499,7 +510,6 @@ public class ButtonIndexV2 : MonoBehaviour
                 manager.Draw = 0;
                 card.Number = 222;
                 deckModel.PlayAgain();
-                manager.PlayerPlayed = false;
             }
         }
 
@@ -598,6 +608,7 @@ public class ButtonIndexV2 : MonoBehaviour
             item.SetActive(false);
         }
         manager.PassButton.SetActive(false);
+        manager.PlayerPlayed = false;
     }
 
 

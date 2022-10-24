@@ -47,12 +47,16 @@ public class DeckController : IDeckController
 
     private void HandleClicked(object sender, DeckChangedEventArgs e)
     {
-        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
-        //{
-        //    Debug.Log("You Played " + model.Cards[index]);
-        //}
+        GameManager.Instance.StartCoroutine(FlyToDeck());
     }
-
+    IEnumerator FlyToDeck()
+    {
+        foreach (var item in model.Board.Cards)
+        {
+            yield return new WaitForSeconds(0.10f);
+            model.AddCard(item);
+        }
+    }
     // Called when the view is clicked
 
     private void ClickedOnCard(int Index)
