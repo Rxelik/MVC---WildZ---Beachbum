@@ -42,20 +42,20 @@ public class PlayerController : IPlayerController
 
     private void EnemyPlayed(object sender, OnCardsInBoardChangeEventArgs e)
     {
-       FixPosition();
+        FixPosition();
     }
 
     private void FixPos(object sender, TurnChangedEventArgs e)
     {
-       FixPosition();
+        FixPosition();
     }
     private void DrewCard(object sender, OnCardsInDeckChangeEventArgs e)
     {
-     FixPosition();
+        FixPosition();
     }
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-       // FixPosition();
+        // FixPosition();
 
 
         // SyncData();
@@ -70,7 +70,7 @@ public class PlayerController : IPlayerController
             model.Cards[i].HandOrder = i;
             //SyncData();
         }
-       // SyncData();
+        // SyncData();
         // FixPosition();
 
     }
@@ -102,14 +102,23 @@ public class PlayerController : IPlayerController
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
 
-            if (model.Cards[i].CanPlayCardTest())
-            {
-                model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -9.5f, -CardLayer);
-            }
-            else if (!model.Cards[i].CanPlayCardTest())
+            if (model.Deck.CurrentTurn != "Player")
             {
                 model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                model.Cards[i].CanPlayCard = false;
             }
+            else
+            {
+                if (model.Cards[i].CanPlayCardTest())
+                {
+                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -9.5f, -CardLayer);
+                }
+                else if (!model.Cards[i].CanPlayCardTest())
+                {
+                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                }
+            }
+
             moveRight += 2.8f;
             CardLayer += 1;
             if (model.Cards[i].BelongsTo == "Player")
