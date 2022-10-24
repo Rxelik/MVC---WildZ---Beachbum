@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public GameObject PassButton;
     public bool PlayerPlayed = false;
 
+    public int PlayerScore;
+    public int AIScore;
 
 
     private void Update()
@@ -49,26 +51,101 @@ public class GameManager : MonoBehaviour
 
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
+            if (!GameEnded)
+                CountScorePlayerScore();
             GameEnded = true;
             if (enemy.Cards.Count > 20)
                 Turn.text = "Opponent Has Over 20 Cards Player Won!";
             else if (player.Cards.Count == 0)
                 Turn.text = "Player WON";
 
+            CountScorePlayerScore();
+
         }
 
         if (enemy.Cards.Count == 0 || player.Cards.Count > 20)
         {
+            if (!GameEnded)
+                CountScoreAIScore();
             GameEnded = true;
             if (player.Cards.Count > 20)
                 Turn.text = "Player Has Over 20 Cards Opponent Won!";
             else if(enemy.Cards.Count == 0)
                 Turn.text = "Opponent WON";
+
+
+
         }
+
     }
 
-   void CountScore()
+   void CountScorePlayerScore()
     {
-
+        
+        foreach (var item in enemy.Cards)
+        {
+            if (item.Number > 0 && item.Number > 9)
+            {
+                PlayerScore += 5;
+            }
+            if (item.Number == 22 && !item.IsWild)
+            {
+                PlayerScore += 10;
+            }
+            if (item.Number == 44)
+            {
+                PlayerScore += 10;
+            }
+            if (item.Number == 22 && item.IsWild)
+            {
+                PlayerScore += 20;
+            }
+            if (item.Number == 0)
+            {
+                PlayerScore += 25;
+            }
+            if (item.IsSuper && item.IsWild)
+            {
+                PlayerScore += 30;
+            }
+            if (item.IsBamboozle)
+            {
+                PlayerScore += 40;
+            }
+        }
+    }
+    void CountScoreAIScore()
+    {
+        foreach (var item in player.Cards)
+        {
+            if (item.Number > 0 && item.Number > 9)
+            {
+                PlayerScore += 5;
+            }
+            if (item.Number == 22 && !item.IsWild)
+            {
+                PlayerScore += 10;
+            }
+            if (item.Number == 44)
+            {
+                PlayerScore += 10;
+            }
+            if (item.Number == 22 && item.IsWild)
+            {
+                PlayerScore += 20;
+            }
+            if (item.Number == 0)
+            {
+                PlayerScore += 25;
+            }
+            if (item.IsSuper && item.IsWild)
+            {
+                PlayerScore += 30;
+            }
+            if (item.IsBamboozle)
+            {
+                PlayerScore += 40;
+            }
+        }
     }
 }

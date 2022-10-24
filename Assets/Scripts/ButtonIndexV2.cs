@@ -45,13 +45,13 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     public void PlayCard(int Index)
     {
-        if (deckModel.CurrentTurn == "Player")
+        if (deckModel.CurrentTurn == "Player" && !PlayerPlayed)
         {
             manager.ChosenCard = playerModel.Cards[Index];
-            manager.PlayerPlayed = true;
             
             if (playerModel.Cards[Index].CanPlayCard)
             {
+            manager.PlayerPlayed = true;    
                 NormalCard(playerModel.Cards[Index], playerModel);
                 SuperCard(playerModel.Cards[Index], playerModel);
                 if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)

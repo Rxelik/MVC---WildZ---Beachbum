@@ -39,6 +39,7 @@ public class CardController : ICardController
 
     private void ChangedCon(object sender, CanPlayCardEventArgs e)
     {
+
         SyncData();
     }
 
