@@ -81,6 +81,14 @@ public class CardController : ICardController
             }
 
         }
+
+
+        if (model.BelongsTo == "ViewPlayer")
+        {
+            view.Position = new Vector3((model.Player.Cards[model.HandOrder].Position.x * 1.10f) + model.HandOrder, -8f, 0);
+            model.Layer = 20;
+            SyncData();
+        }
         if (model.BelongsTo == "FlyingToEnemy")
         {
             while (t < duration)

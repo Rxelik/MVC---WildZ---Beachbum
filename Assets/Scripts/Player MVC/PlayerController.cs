@@ -31,6 +31,7 @@ public class PlayerController : IPlayerController
         model.Deck.OnTurnChangeEve += FixPos;
         model.Board.CardInBoardChanged += EnemyPlayed;
         model.Deck.CardInDeckChanged += DrewCard;
+        model.ViewCardsEve += ViewCards;
         _manager = GameManager.Instance;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
@@ -38,7 +39,21 @@ public class PlayerController : IPlayerController
         SyncData();
     }
 
-
+    private void ViewCards(object sender, OnViewCardsEventArgs e)
+    {
+        foreach (var item in model.Cards)
+        {
+            
+            if (item.BelongsTo == "ViewPlayer")
+            {
+                item.BelongsTo = "Player";
+            }
+            else if (item.BelongsTo == "Player")
+            {
+                item.BelongsTo = "ViewPlayer";
+            }
+        }
+    }
 
     private void EnemyPlayed(object sender, OnCardsInBoardChangeEventArgs e)
     {

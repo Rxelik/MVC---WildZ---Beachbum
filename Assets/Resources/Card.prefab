@@ -143,6 +143,7 @@ MonoBehaviour:
   DefultCard: {fileID: 847150334145477222}
   ParticleEffect: {fileID: 7688753275485888602}
   Arc: {fileID: 5051726990145408204}
+  EnableArc: 1
   v2: {fileID: 0}
 --- !u!114 &-8933952006197382600
 MonoBehaviour:

@@ -42,7 +42,7 @@ public class PlayerView : MonoBehaviour, IPlayerView
     public int HandCount { set => _HandCount = value; }
 
 
-    [SerializeField] public List<CardModel> _InspectorCardss;
+    public List<CardModel> _InspectorCardss;
     [SerializeField] public List<CardModel> _TestCards = new List<CardModel>();
 
     [SerializeField] public List<Transform> _HandPos;

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     #endregion
     public DeckModel deckModel;
     public PlayerModel player;
+    public PlayerView playerView;
     public EnemyModel enemy;
     public Transform CardsInPlayPos;
     public int _index = 0;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     private float Timer;
     public GameObject PassButton;
     public bool PlayerPlayed = false;
-
+    public bool TooKToHand = false;
     public int PlayerScore;
     public int AIScore;
 
@@ -51,7 +52,6 @@ public class GameManager : MonoBehaviour
 
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
-            if (!GameEnded)
                 CountScorePlayerScore();
             GameEnded = true;
             if (enemy.Cards.Count > 20)
@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
             else if (player.Cards.Count == 0)
                 Turn.text = "Player WON";
 
-            CountScorePlayerScore();
 
         }
 

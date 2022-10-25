@@ -595,7 +595,7 @@ public class ButtonIndexV2 : MonoBehaviour
         deckModel.ChangeTurn();
 
         RemoveButtons();
-
+        manager.TooKToHand = false;
     }
     void RemoveButtons()
     {
@@ -634,12 +634,14 @@ public class ButtonIndexV2 : MonoBehaviour
             ChangeTurn();
         }
     }
+
     public void TakeFromDeck()
     {
         if (!manager.GameEnded)
         {
-            if (deckModel.CurrentTurn == "Player")
+            if (deckModel.CurrentTurn == "Player" && !manager.TooKToHand)
             {
+                manager.TooKToHand = true;
                 if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 || !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
                 {
                     print("Cant Draw");
@@ -684,102 +686,106 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
 
             }
-            else if (deckModel.CurrentTurn == "Enemy")
-            {
-                if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22 || !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
-                {
-                    print("Cant Draw How you even got here?");
-                }
-                else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
-                {
-                    if (manager.Draw == 0)
-                    {
-                        StartCoroutine(enemyModel.TakeCard(1));
-                        ChangeTurn();
-                    }
-                    else
-                    {
-                        StartCoroutine(enemyModel.TakeCard(manager.Draw));
-                        manager.Draw = 0;
-                        ChangeTurn();
-                        if (boardModel.TopCard().Number == 22)
-                            boardModel.TopCard().Number = 222;
-                        else
-                            boardModel.TopCard().Number = 444;
-                    }
-                }
-                else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
-                {
-                    if (enemyModel.HasCounter())
-                    {
-                        if (manager.Draw == 0)
-                        {
-                            StartCoroutine(enemyModel.TakeCard(1));
-                            ChangeTurn();
-                        }
-                        else
-                        {
-                            StartCoroutine(enemyModel.TakeCard(manager.Draw));
-                            manager.Draw = 0;
-                            ChangeTurn();
-                            if (boardModel.TopCard().Number == 22)
-                                boardModel.TopCard().Number = 222;
-                            else
-                                boardModel.TopCard().Number = 444;
-                        }
-                    }
-                }
-            }
+            //else if (deckModel.CurrentTurn == "Enemy")
+            //{
+            //    if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22 || !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
+            //    {
+            //        print("Cant Draw How you even got here?");
+            //    }
+            //    else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
+            //    {
+            //        if (manager.Draw == 0)
+            //        {
+            //            StartCoroutine(enemyModel.TakeCard(1));
+            //            ChangeTurn();
+            //        }
+            //        else
+            //        {
+            //            StartCoroutine(enemyModel.TakeCard(manager.Draw));
+            //            manager.Draw = 0;
+            //            ChangeTurn();
+            //            if (boardModel.TopCard().Number == 22)
+            //                boardModel.TopCard().Number = 222;
+            //            else
+            //                boardModel.TopCard().Number = 444;
+            //        }
+            //    }
+            //    else if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 44)
+            //    {
+            //        if (enemyModel.HasCounter())
+            //        {
+            //            if (manager.Draw == 0)
+            //            {
+            //                StartCoroutine(enemyModel.TakeCard(1));
+            //                ChangeTurn();
+            //            }
+            //            else
+            //            {
+            //                StartCoroutine(enemyModel.TakeCard(manager.Draw));
+            //                manager.Draw = 0;
+            //                ChangeTurn();
+            //                if (boardModel.TopCard().Number == 22)
+            //                    boardModel.TopCard().Number = 222;
+            //                else
+            //                    boardModel.TopCard().Number = 444;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
     }
 
     IEnumerator AIplayCard()
     {
-        print("AI Played");
-        AIplayed = true;
-        yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 2.5f));
-        var SuperCards = enemyModel.Cards.Where(c =>
-           c.Number == 0 && boardModel.TopCard().Number == 0
-        || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.IsWild && !c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.IsWild && c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.Number == 22 && boardModel.TopCard().Number == 22
-        || c.Number == 44 && boardModel.TopCard().Number == 22 && boardModel.TopCard().Number != 222
-        || c.Number == 44 && boardModel.TopCard().Number == 44
-        || boardModel.TopCard().IsBamboozle && c.IsSuper && c.IsSuper
-        || boardModel.TopCard().IsBamboozle && c.IsWild
-        || boardModel.TopCard().IsBamboozle && c.IsSuper
-        || boardModel.TopCard().IsBamboozle && c.Number == 0
-        || boardModel.TopCard().IsBamboozle && c.Number == 22
-        || boardModel.TopCard().IsBamboozle && c.Number == 44
-        || boardModel.TopCard().IsBamboozle
-        ).ToList();
+        if (!manager.GameEnded)
+        {
+            print("AI Played");
+            AIplayed = true;
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 2.5f));
+            var SuperCards = enemyModel.Cards.Where(c =>
+               c.Number == 0 && boardModel.TopCard().Number == 0
+            || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.IsWild && !c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.IsWild && c.IsSuper && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.Number == 22 && boardModel.TopCard().Number == 22
+            || c.Number == 44 && boardModel.TopCard().Number == 22 && boardModel.TopCard().Number != 222
+            || c.Number == 44 && boardModel.TopCard().Number == 44
+            || boardModel.TopCard().IsBamboozle && c.IsSuper && c.IsSuper
+            || boardModel.TopCard().IsBamboozle && c.IsWild
+            || boardModel.TopCard().IsBamboozle && c.IsSuper
+            || boardModel.TopCard().IsBamboozle && c.Number == 0
+            || boardModel.TopCard().IsBamboozle && c.Number == 22
+            || boardModel.TopCard().IsBamboozle && c.Number == 44
+            || boardModel.TopCard().IsBamboozle
+            ).ToList();
 
-        var NormalCards = enemyModel.Cards.Where(c =>
-        c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
-        || c.IsBamboozle && boardModel.TopCard().Number == 22
-        || c.IsBamboozle && boardModel.TopCard().Number == 44
-        || boardModel.TopCard().IsBamboozle
-        ).ToList();
+            var NormalCards = enemyModel.Cards.Where(c =>
+            c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.IsBamboozle && boardModel.TopCard().Number == 22
+            || c.IsBamboozle && boardModel.TopCard().Number == 44
+            || boardModel.TopCard().IsBamboozle
+            ).ToList();
 
-        if (SuperCards.Count() == 0 && NormalCards.Count == 0)
-        {
-            StartCoroutine(enemyModel.TakeCard(1));
-            ChangeTurn();
+            if (SuperCards.Count() == 0 && NormalCards.Count == 0)
+            {
+                StartCoroutine(enemyModel.TakeCard(1));
+                ChangeTurn();
+            }
+            if (SuperCards.Count >= 1)
+            {
+                AiChooseCard(SuperCards[0]);
+                NormalCards.Clear();
+            }
+            else if (NormalCards.Count >= 1)
+            {
+                AiChooseCard(NormalCards[0]);
+                SuperCards.Clear();
+            }
+            AIplayed = false;
         }
-        if (SuperCards.Count >= 1)
-        {
-            AiChooseCard(SuperCards[0]);
-            NormalCards.Clear();
-        }
-        else if (NormalCards.Count >= 1)
-        {
-            AiChooseCard(NormalCards[0]);
-            SuperCards.Clear();
-        }
-        AIplayed = false;
+
     }
 
     private void AiChooseCard(CardModel card)

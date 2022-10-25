@@ -8,6 +8,7 @@ public class PlayerChangedEventArgs { }
 public class OnDeckChangeEventArgs { }
 public class PlayerCardChangeEventArgs { }
 public class PlayerTookFromBoardEventArgs { }
+public class OnViewCardsEventArgs { }
 
 public interface IPlayerModel
 {
@@ -16,6 +17,7 @@ public interface IPlayerModel
     event EventHandler<PlayerCardChangeEventArgs> OnCardsChanged;
     event EventHandler<OnDeckChangeEventArgs> OnBoardChanged;
     event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard;
+    event EventHandler<OnViewCardsEventArgs> ViewCardsEve;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
@@ -27,6 +29,7 @@ public interface IPlayerModel
 
     bool FirstTurn { get; set; }
     bool FirstTurnMethod();
+    void ViewCards();
 }
 
 public class PlayerModel : IPlayerModel
@@ -44,6 +47,7 @@ public class PlayerModel : IPlayerModel
     public event EventHandler<PlayerCardChangeEventArgs> OnCardsChanged = (sender, e) => { };
     public event EventHandler<OnDeckChangeEventArgs> OnBoardChanged = (sender, e) => { };
     public event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard = (sender, e) => { };
+    public event EventHandler<OnViewCardsEventArgs> ViewCardsEve = (sender, e) => { };
 
 
     public Vector3 Position
@@ -281,5 +285,11 @@ public class PlayerModel : IPlayerModel
             return false;
 
         }
+    }
+
+    public void ViewCards()
+    {
+        var eventArgs = new OnViewCardsEventArgs();
+        ViewCardsEve(this, eventArgs);
     }
 }

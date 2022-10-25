@@ -45,7 +45,7 @@ public class CardMaker : MonoBehaviour
                 else if (!SwappedFace && view._IsSuper && view._IsWild)
                 {
 
-                    SwapCards(0.60f);
+                    SwapCards(0.70f);
                 }
             }
             if (view._inspectorBelongsTo == "Deck")

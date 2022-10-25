@@ -745,6 +745,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.deckModel = (DeckModel)_deckmodel;
         GameManager.Instance.player = (PlayerModel)_playermodel;
         GameManager.Instance.enemy = (EnemyModel)_Enemyermodel;
+        GameManager.Instance.playerView = (PlayerView)_view;
         Deckview.Inisialize = false;
         deck.ChangeTurn();
 

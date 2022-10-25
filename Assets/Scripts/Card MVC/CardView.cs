@@ -5,6 +5,7 @@ using TMPro;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
 // Dispatched when the card is clicked Or Enabled
 public class CardClickedEventArgs : EventArgs { }
 public class CardOnEnableEventArgs : EventArgs { }
@@ -92,6 +93,7 @@ public class CardView : MonoBehaviour, ICardView
     public SpriteRenderer DefultCard;
     public ParticleSystem ParticleEffect;
     public Transform Arc;
+    public bool EnableArc = true;
     //public TextMeshPro gs;
 
     // public List<GameObject> PlayerTransforms;
@@ -110,7 +112,10 @@ public class CardView : MonoBehaviour, ICardView
     void Update()
     {
         // v2.BelongsTo = _inspectorBelongsTo;
-
+        if (_inspectorBelongsTo == "ViewPlayer")
+        {
+            Arc.rotation = Quaternion.Euler(0, 0, 0);
+        }
         if (_inspectorBelongsTo == "Board")
         {
             gameObject.transform.localScale = new Vector3(0.7f,0.7f);
@@ -134,7 +139,11 @@ public class CardView : MonoBehaviour, ICardView
 
             if (!_CanPlayCard && ParticleEffect)
             {
-                Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+                if (!EnableArc)
+                    Arc.rotation = Quaternion.Euler(0, 0, 0);
+                else
+                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+
                 ParticleEffect.gameObject.SetActive(false);
                 ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
             }
