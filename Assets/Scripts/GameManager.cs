@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public PlayerModel player;
     public PlayerView playerView;
     public EnemyModel enemy;
-    public Transform CardsInPlayPos;
+   // public Transform CardsInPlayPos;
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
@@ -146,5 +146,13 @@ public class GameManager : MonoBehaviour
                 PlayerScore += 40;
             }
         }
+    }
+
+    int toolbarInt = 0;
+    string[] toolbarStrings = { "Toolbar1", "Toolbar2", "Toolbar3" };
+
+    void OnGUI()
+    {
+        toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarStrings);
     }
 }

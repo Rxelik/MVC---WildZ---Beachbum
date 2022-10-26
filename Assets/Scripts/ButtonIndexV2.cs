@@ -6,26 +6,31 @@ using UnityEngine;
 
 public class ButtonIndexV2 : MonoBehaviour
 {
+    GameManager manager;
+    Server _server;
+    [Header("Model")]
     public PlayerModel playerModel;
     public EnemyModel enemyModel;
     public DeckModel deckModel;
     public BoardModel boardModel;
-    public List<GameObject> PlayerColorChooser;
-    public List<GameObject> EnemyColorChooser;
-    GameManager manager;
-    Server _server;
-    public string BelongsTo;
-    public int _index;
     public CardView cardView;
     public CardMaker _cardMaker;
-    public List<Sprite> wildSprites;
-    public List<Sprite> WildSuperSprites;
-    public bool isAI = false;
+    [Space]
+    [Header("List")]
+    public List<GameObject> PlayerColorChooser;
+    public List<GameObject> EnemyColorChooser;
+    List<string> colors = new List<string>();
+    [Space]
+    [Header("Attributes")]
+    public string BelongsTo;
+    public int _index;
+    bool isAI = false;
     bool AIplayed = false;
     bool PlayerPlayed = false;
-    List<string> colors = new List<string>();
 
-    
+
+    //public List<Sprite> wildSprites;
+    //public List<Sprite> WildSuperSprites;
     private void Update()
     {
         PlayerPlayed = manager.PlayerPlayed;
@@ -254,11 +259,6 @@ public class ButtonIndexV2 : MonoBehaviour
         }
         else
             manager.StartCoroutine(LerpSuper(card, model));
-
-
-
-
-
     }
 
     IEnumerator LerpSuper(CardModel card, PlayerModel model)
@@ -691,6 +691,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 }
 
             }
+            #region Enemy
             //else if (deckModel.CurrentTurn == "Enemy")
             //{
             //    if (!enemyModel.HasCounter() && boardModel.TopCard().Number == 22 || !enemyModel.HasCounter() && boardModel.TopCard().Number == 44)
@@ -738,7 +739,7 @@ public class ButtonIndexV2 : MonoBehaviour
             //    }
             //}
         }
-
+        #endregion
     }
 
     IEnumerator AIplayCard()
@@ -782,11 +783,15 @@ public class ButtonIndexV2 : MonoBehaviour
             {
                 AiChooseCard(SuperCards[0]);
                 NormalCards.Clear();
+                _server.TestCanPlayCard(SuperCards[0],enemyModel);
+
             }
             else if (NormalCards.Count >= 1)
             {
                 AiChooseCard(NormalCards[0]);
                 SuperCards.Clear();
+                _server.TestCanPlayCard(NormalCards[0], enemyModel);
+
             }
             AIplayed = false;
         }

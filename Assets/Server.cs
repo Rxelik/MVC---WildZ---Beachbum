@@ -36,7 +36,7 @@ public class Server : MonoBehaviour
 
     public void TestCanPlayCard(CardModel card, PlayerModel model)
     {
-        Debug.Log(model + "Played " + card.Name);
+        Debug.Log(model + " Played " + card.Name);
         if (card.CanPlayCard)
         {
             Debug.Log("Top Card is " + _boardModel.TopCard().Name);
@@ -45,6 +45,11 @@ public class Server : MonoBehaviour
     }
     public void TestCanPlayCard(CardModel card, EnemyModel model)
     {
-
+        Debug.Log(model + " Played " + card.Name);
+        if (card.CanPlayCard)
+        {
+            Debug.Log("Top Card is " + _boardModel.TopCard().Name);
+            Debug.Log(card.Name + " IsValid");
+        }
     }
 }
