@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
 using Color = UnityEngine.Color;
+using static GameManager;
 // Dispatched when the card is clicked Or Enabled
 
 
@@ -50,6 +51,12 @@ public class PlayerView : MonoBehaviour, IPlayerView
     public int _HandCount;
 
     public string BelongsTo;
+
+    private void Start()
+    {
+    }
+
+
 
     private void Update()
     {

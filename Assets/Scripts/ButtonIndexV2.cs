@@ -8,7 +8,7 @@ public class ButtonIndexV2 : MonoBehaviour
 {
     GameManager manager;
     Server _server;
-    [Header("Model")]
+    [Header("Models")]
     public PlayerModel playerModel;
     public EnemyModel enemyModel;
     public DeckModel deckModel;
@@ -24,9 +24,9 @@ public class ButtonIndexV2 : MonoBehaviour
     [Header("Attributes")]
     public string BelongsTo;
     public int _index;
-    bool isAI = false;
-    bool AIplayed = false;
-    bool PlayerPlayed = false;
+    public bool isAI = false;
+    public bool AIplayed = false;
+    public bool PlayerPlayed = false;
 
 
     //public List<Sprite> wildSprites;
@@ -642,7 +642,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
     public void TakeFromDeck()
     {
-        if (!manager.GameEnded)
+        if (!manager.GameEnded && !GameManager.Instance.PlayerPlayed)
         {
             if (deckModel.CurrentTurn == "Player" && !manager.TooKToHand)
             {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using UnityEditor;
+using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,12 +23,16 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
+    public class OnCardSpriteEvent { }
+
+    public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
     #endregion
     public DeckModel deckModel;
     public PlayerModel player;
     public PlayerView playerView;
     public EnemyModel enemy;
-   // public Transform CardsInPlayPos;
+    // public Transform CardsInPlayPos;
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
@@ -39,7 +46,7 @@ public class GameManager : MonoBehaviour
     public bool TooKToHand = false;
     public int PlayerScore;
     public int AIScore;
-
+    public string CardVersion = "Version 1";
 
     private void Update()
     {
@@ -52,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
-                CountScorePlayerScore();
+            CountScorePlayerScore();
             GameEnded = true;
             if (enemy.Cards.Count > 20)
                 Turn.text = "Opponent Has Over 20 Cards Player Won!";
@@ -69,7 +76,7 @@ public class GameManager : MonoBehaviour
             GameEnded = true;
             if (player.Cards.Count > 20)
                 Turn.text = "Player Has Over 20 Cards Opponent Won!";
-            else if(enemy.Cards.Count == 0)
+            else if (enemy.Cards.Count == 0)
                 Turn.text = "Opponent WON";
 
 
@@ -78,9 +85,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-   void CountScorePlayerScore()
+    void CountScorePlayerScore()
     {
-        
+
         foreach (var item in enemy.Cards)
         {
             if (item.Number > 0 && item.Number > 9)
@@ -148,11 +155,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int toolbarInt = 0;
-    string[] toolbarStrings = { "Toolbar1", "Toolbar2", "Toolbar3" };
-
-    void OnGUI()
+    public void ChangeSprite(string Version)
     {
-        toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarStrings);
+        print("InsideChangeSprite");
+        CardVersion = Version;
+        print(CardVersion);
+        var eventArgs = new OnCardSpriteEvent();
+        SpriteChangeEve(this, eventArgs);
     }
 }
+//public class EditModeFunctions : EditorWindow
+//{
+//    [MenuItem("Window/Edit Mode Functions")]
+//    public static void ShowWindow()
+//    {
+//        GetWindow<EditModeFunctions>("Edit Mode Functions");
+//    }
+
+//    private void OnGUI()
+//    {
+//        if (GUILayout.Button("Version 1"))
+//        {
+//            GameManager.Instance.ChangeSprite("Version 1");
+//        }
+//        if (GUILayout.Button("Version 2"))
+//        {
+//            GameManager.Instance.ChangeSprite("Version 2");
+//        }
+//        if (GUILayout.Button("Version 3"))
+//        {
+//            GameManager.Instance.ChangeSprite("Version 3");
+//        }
+//    }
+
+//}

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine.Video;
+using static GameManager;
 // Dispatched when the card is clicked Or Enabled
 public class CardClickedEventArgs : EventArgs { }
 public class CardOnEnableEventArgs : EventArgs { }
@@ -108,7 +109,20 @@ public class CardView : MonoBehaviour, ICardView
         // StartCoroutine(WaitBeforeRegister());
         //GetTransforms();
     }
+    private void Start()
+    {
+        GameManager.Instance.SpriteChangeEve += CardView_SpriteChangeEve;
+    }
 
+    private void CardView_SpriteChangeEve(object sender, OnCardSpriteEvent e)
+    {
+        print("Building New Sprite");
+        if (_inspectorBelongsTo == "Player")
+        {
+            StartCoroutine(GetComponent<CardMaker>().BuildCards(0));
+        }
+
+    }
     void Update()
     {
         // v2.BelongsTo = _inspectorBelongsTo;
@@ -118,7 +132,7 @@ public class CardView : MonoBehaviour, ICardView
         }
         if (_inspectorBelongsTo == "Board")
         {
-            gameObject.transform.localScale = new Vector3(0.7f,0.7f);
+            gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
         }
         if (_inspectorBelongsTo == "Deck")
         {
@@ -128,8 +142,8 @@ public class CardView : MonoBehaviour, ICardView
         {
             Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
         }
-            if (_inspectorBelongsTo == "Player")
-        {      
+        if (_inspectorBelongsTo == "Player")
+        {
             if (_CanPlayCard && ParticleEffect)
             {
                 Arc.rotation = Quaternion.Euler(0, 0, 0);
