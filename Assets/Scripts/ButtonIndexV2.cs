@@ -13,6 +13,7 @@ public class ButtonIndexV2 : MonoBehaviour
     public List<GameObject> PlayerColorChooser;
     public List<GameObject> EnemyColorChooser;
     GameManager manager;
+    Server _server;
     public string BelongsTo;
     public int _index;
     public CardView cardView;
@@ -23,6 +24,8 @@ public class ButtonIndexV2 : MonoBehaviour
     bool AIplayed = false;
     bool PlayerPlayed = false;
     List<string> colors = new List<string>();
+
+    
     private void Update()
     {
         PlayerPlayed = manager.PlayerPlayed;
@@ -49,6 +52,7 @@ public class ButtonIndexV2 : MonoBehaviour
         {
             manager.ChosenCard = playerModel.Cards[Index];
 
+            _server.TestCanPlayCard(manager.ChosenCard, playerModel);
             if (playerModel.Cards[Index].CanPlayCard)
             {
                 manager.PlayerPlayed = true;
@@ -100,6 +104,7 @@ public class ButtonIndexV2 : MonoBehaviour
     {
         //ChangeTurn();
         manager = GameManager.Instance;
+        _server = Server.Instance;
     }
 
     void NormalCard(CardModel card, PlayerModel model)

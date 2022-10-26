@@ -8,6 +8,7 @@ using Random = System.Random;
 using System.Linq;
 using Color = UnityEngine.Color;
 using UnityEditor;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Inisializer : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Inisializer : MonoBehaviour
     public List<ButtonIndexV2> buttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
+    public Server _Server;
 
     [Obsolete]
     void Awake()
@@ -694,7 +696,10 @@ public class Inisializer : MonoBehaviour
             item.BelongsTo = "Deck";
             _deckmodel.AddCard(item);
         }
-
+        _Server._enemyModel = (EnemyModel)_Enemyermodel;
+        _Server._playerModel = (PlayerModel)_playermodel;
+        _Server._boardModel = (BoardModel)_Boardmodel;
+        _Server._deckModel = (DeckModel)_deckmodel;
         #endregion
 
         yield return new WaitForSeconds(0.5f);

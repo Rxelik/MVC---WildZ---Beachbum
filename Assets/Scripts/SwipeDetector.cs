@@ -29,20 +29,20 @@ public class SwipeDetector : MonoBehaviour
     }
     private void ProcessInput()
     {
+
         if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Stationary))
         {
-            duration += Time.deltaTime;
 
-            if (duration > 0.25f)
+            duration += Time.deltaTime;
+            if (duration > 0.50f)
                 OnLongTap();
 
         }
-        if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
+        else if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
         {
-            if (duration < 0.25f)
-            {
+            if (duration < 0.50f)
                 OnTap();
-            }
+
         }
         if (is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
         {
@@ -50,20 +50,18 @@ public class SwipeDetector : MonoBehaviour
             // rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (rayHit.collider.gameObject.GetComponent<CardView>()._inspectorBelongsTo == "Player")
             {
-                GameManager.Instance.player.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer = rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand + 10;
+                GameManager.Instance.player.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer -= 20;
                 rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
                 if (rayHit.collider.gameObject.GetComponent<CardView>()._CanPlayCard)
                 {
                 }
                 else
                 {
-                    rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector3
+                    rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector2
                    (rayHit.collider.gameObject.GetComponent<CardView>().
                    gameObject.transform.position.x,
                    rayHit.collider.gameObject.GetComponent<CardView>().
-                   gameObject.transform.position.y - 5,
-                   rayHit.collider.gameObject.GetComponent<CardView>().
-                   gameObject.transform.position.z);
+                   gameObject.transform.position.y - 5);
                 }
             }
         }
@@ -72,6 +70,7 @@ public class SwipeDetector : MonoBehaviour
     //Callback function, when just a short tap occurs
     private void OnTap()
     {
+        is_touched = true;
         rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
         if (rayHit.collider != null)
         {
@@ -91,7 +90,7 @@ public class SwipeDetector : MonoBehaviour
             rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (rayHit.collider.gameObject.GetComponent<CardView>()._inspectorBelongsTo == "Player")
             {
-                GameManager.Instance.player.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer = 20;
+                GameManager.Instance.player.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer +=20;
                 rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
                 if (rayHit.collider.gameObject.GetComponent<CardView>()._CanPlayCard)
                 {
