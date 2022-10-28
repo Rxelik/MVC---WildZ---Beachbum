@@ -136,11 +136,25 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, new Vector3(0, 0, 0), t / duration);
+
+                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
                // SyncData();
                 yield return null;
             }
         }
+
+        if (model.BelongsTo == "ColorPick")
+        {
+           
+            while (t < 1.5f)
+            {
+                t += Time.deltaTime / duration;
+                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
+                yield return null;
+            }
+            model.Position = Vector3.zero;
+        }
+
         if (model.BelongsTo == "Deck")
         {
             model.Rotation = Quaternion.Euler(0, 0, 0);

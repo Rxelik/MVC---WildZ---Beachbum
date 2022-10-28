@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class CardMaker : MonoBehaviour
 {
@@ -48,32 +49,43 @@ public class CardMaker : MonoBehaviour
     [Space]
     public CardView view;
     public bool Button = false;
-    bool SwappedFace = false;
+    public bool SwappedFace = false;
     private void Update()
     {
 
 
         if (!Button)
         {
+            if (view._inspectorBelongsTo == "ColorPick" && view._InspectorColor == Color.white && !view._IsBamboozle)
+            {
+                SwappedFace = false;
+            }
+            if (view._inspectorBelongsTo == "ColorPick" && view._InspectorColor == Color.white && view._IsBamboozle)
+            {
+                SwappedFace = true;
+            }
             CardSprite.sortingOrder = view._InspectorSprite.sortingOrder;
             if (!SwappedFace)
             {
                 if (view._IsSuper && !view._IsWild)
                 {
-                    SwapCards(0);
+                    SwapCards();
                 }
                 else if (!view._IsSuper && view._IsWild)
                 {
-                    SwapCards(0);
+                    SwapCards();
                 }
                 else if (!view._IsSuper && !view._IsWild)
                 {
-                    SwapCards(0);
+                    SwapCards();
                 }
                 else if (!SwappedFace && view._IsSuper && view._IsWild)
                 {
-
-                    SwapCards(0.70f);
+                    SwapCards();
+                }
+                else if (view._IsBamboozle)
+                {
+                    SwapCards();
                 }
             }
             if (view._inspectorBelongsTo == "Deck")
@@ -94,15 +106,37 @@ public class CardMaker : MonoBehaviour
     }
 
 
-    void SwapCards(float num)
+    void SwapCards()
     {
         if (view._inspectorBelongsTo == "Player"
 || view._inspectorBelongsTo == "Board"
 || view._inspectorBelongsTo == "FlyingToPlayer"
 || view._inspectorBelongsTo == "FlyingToEnemy")
         {
-            SwappedFace = true;
-            StartCoroutine(BuildCards(num));
+
+
+            if (view._inspectorBelongsTo == "Board" || (view._inspectorBelongsTo == "ViewPlayer"))
+            {
+                if (view._IsBamboozle)
+                {
+                    SwappedFace = false;
+                    BuildCards();
+                }
+                else
+                {
+                    if (view._InspectorColor != Color.white)
+                    {
+                        SwappedFace = false;
+                        BuildCards();
+                    }
+                }
+
+            }
+            else
+            {
+                SwappedFace = true;
+                BuildCards();
+            }
         }
 
         if (view._inspectorBelongsTo == "Deck")
@@ -111,10 +145,8 @@ public class CardMaker : MonoBehaviour
             CardSprite.sprite = CardBack;
         }
     }
-    public IEnumerator BuildCards(float num)
+    public void BuildCards()
     {
-        yield return new WaitForSeconds(num);
-
         if (GameManager.Instance.CardVersion == "Version 1")
         {
             if (view._InspectorColor == Color.red)
@@ -161,6 +193,9 @@ public class CardMaker : MonoBehaviour
                         CardSprite.sprite = Red[10];
                         break;
                     case 0:
+                        CardSprite.sprite = Red[11];
+                        break;
+                    case 99:
                         CardSprite.sprite = Red[11];
                         break;
                     default:
@@ -213,6 +248,9 @@ public class CardMaker : MonoBehaviour
                     case 0:
                         CardSprite.sprite = Green[11];
                         break;
+                    case 99:
+                        CardSprite.sprite = Green[11];
+                        break;
                     default:
                         break;
                 }
@@ -263,6 +301,9 @@ public class CardMaker : MonoBehaviour
                     case 0:
                         CardSprite.sprite = Blue[11];
                         break;
+                    case 99:
+                        CardSprite.sprite = Blue[11];
+                        break;
                     default:
                         break;
                 }
@@ -311,6 +352,9 @@ public class CardMaker : MonoBehaviour
                         CardSprite.sprite = Yellow[10];
                         break;
                     case 0:
+                        CardSprite.sprite = Yellow[11];
+                        break;
+                    case 99:
                         CardSprite.sprite = Yellow[11];
                         break;
                     default:
@@ -383,6 +427,9 @@ public class CardMaker : MonoBehaviour
                     case 0:
                         CardSprite.sprite = Red2[11];
                         break;
+                    case 99:
+                        CardSprite.sprite = Red2[11];
+                        break;
                     default:
                         break;
                 }
@@ -431,6 +478,9 @@ public class CardMaker : MonoBehaviour
                         CardSprite.sprite = Green2[10];
                         break;
                     case 0:
+                        CardSprite.sprite = Green2[11];
+                        break;
+                    case 99:
                         CardSprite.sprite = Green2[11];
                         break;
                     default:
@@ -483,6 +533,9 @@ public class CardMaker : MonoBehaviour
                     case 0:
                         CardSprite.sprite = Blue2[11];
                         break;
+                    case 99:
+                        CardSprite.sprite = Blue2[11];
+                        break;
                     default:
                         break;
                 }
@@ -531,6 +584,9 @@ public class CardMaker : MonoBehaviour
                         CardSprite.sprite = Yellow2[10];
                         break;
                     case 0:
+                        CardSprite.sprite = Yellow2[11];
+                        break;
+                    case 99:
                         CardSprite.sprite = Yellow2[11];
                         break;
                     default:
@@ -603,6 +659,9 @@ public class CardMaker : MonoBehaviour
                     case 0:
                         CardSprite.sprite = Red3[11];
                         break;
+                    case 99:
+                        CardSprite.sprite = Red3[11];
+                        break;
                     default:
                         break;
                 }
@@ -651,6 +710,9 @@ public class CardMaker : MonoBehaviour
                         CardSprite.sprite = Green3[10];
                         break;
                     case 0:
+                        CardSprite.sprite = Green3[11];
+                        break;
+                    case 99:
                         CardSprite.sprite = Green3[11];
                         break;
                     default:
@@ -703,6 +765,9 @@ public class CardMaker : MonoBehaviour
                     case 0:
                         CardSprite.sprite = Blue3[11];
                         break;
+                    case 99:
+                        CardSprite.sprite = Blue3[11];
+                        break;
                     default:
                         break;
                 }
@@ -751,6 +816,9 @@ public class CardMaker : MonoBehaviour
                         CardSprite.sprite = Yellow3[10];
                         break;
                     case 0:
+                        CardSprite.sprite = Yellow3[11];
+                        break;
+                    case 99:
                         CardSprite.sprite = Yellow3[11];
                         break;
                     default:

@@ -88,7 +88,7 @@ public class CardView : MonoBehaviour, ICardView
     public Color _InspectorColor;
     public bool _IsSuper;
     public bool _IsWild;
-    [SerializeField] bool _IsBamboozle;
+    public bool _IsBamboozle;
     public bool _CanPlayCard;
     public SpriteRenderer _InspectorSprite;
     public SpriteRenderer DefultCard;
@@ -119,7 +119,7 @@ public class CardView : MonoBehaviour, ICardView
         print("Building New Sprite");
         if (_inspectorBelongsTo == "Player")
         {
-            StartCoroutine(GetComponent<CardMaker>().BuildCards(0));
+            GetComponent<CardMaker>().BuildCards();
         }
 
     }
@@ -130,7 +130,7 @@ public class CardView : MonoBehaviour, ICardView
         {
             Arc.rotation = Quaternion.Euler(0, 0, 0);
         }
-        if (_inspectorBelongsTo == "Board")
+        if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
             gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
         }

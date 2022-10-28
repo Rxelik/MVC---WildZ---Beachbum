@@ -70,7 +70,7 @@ public class PlayerController : IPlayerController
     }
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-        // FixPosition();
+        //FixPosition();
 
 
         // SyncData();
@@ -177,7 +177,7 @@ public class PlayerController : IPlayerController
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         // Update the view with the new position
-        SyncData();
+       // SyncData();
 
     }
 

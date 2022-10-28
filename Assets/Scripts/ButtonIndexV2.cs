@@ -75,7 +75,9 @@ public class ButtonIndexV2 : MonoBehaviour
                     }
                     else
                     {
-
+                        playerModel.RemoveCard(manager.ChosenCard);
+                        manager.ChosenCard.BelongsTo = "ColorPick";
+                        manager.ChosenCard.Layer = 1000;
                     }
                     foreach (var item in PlayerColorChooser)
                     {
@@ -270,6 +272,10 @@ public class ButtonIndexV2 : MonoBehaviour
                 || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
                 || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
         {
+            if (card.IsWild)
+            {
+                yield return new WaitForSeconds(0.50f);
+            }
             for (int i = model.Cards.Count - 1; i >= 0; i--)
             {
                 if (model.Cards[i].Color == card.Color)
@@ -306,6 +312,9 @@ public class ButtonIndexV2 : MonoBehaviour
                || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
                || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
         {
+            boardModel.AddCard(card);
+            card.Layer = 1000;
+
             for (int i = model.Cards.Count - 1; i >= 0; i--)
             {
                 if (model.Cards[i].Color == card.Color)
@@ -321,8 +330,9 @@ public class ButtonIndexV2 : MonoBehaviour
                     }
                 }
             }
-            ////card.Position = new Vector3(-7, 0, -5);
-            //card.Layer = boardModel.TopCard().Layer + 2;
+            yield return new WaitForSeconds(0.20f);
+            //card.Position = new Vector3(-7, 0, -5);
+            card.Layer = boardModel.TopCard().Layer + 2;
             boardModel.AddCard(card);
             model.RemoveCard(card);
             card.Number = 0;
@@ -602,6 +612,7 @@ public class ButtonIndexV2 : MonoBehaviour
         RemoveButtons();
         manager.TooKToHand = false;
     }
+
     void RemoveButtons()
     {
         foreach (var item in PlayerColorChooser)
@@ -783,7 +794,7 @@ public class ButtonIndexV2 : MonoBehaviour
             {
                 AiChooseCard(SuperCards[0]);
                 NormalCards.Clear();
-                _server.TestCanPlayCard(SuperCards[0],enemyModel);
+                _server.TestCanPlayCard(SuperCards[0], enemyModel);
 
             }
             else if (NormalCards.Count >= 1)
