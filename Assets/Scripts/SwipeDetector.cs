@@ -34,7 +34,7 @@ public class SwipeDetector : MonoBehaviour
         {
 
             duration += Time.deltaTime;
-            if (duration > 0.50f)
+            if (duration > 0.65f)
                 OnLongTap();
 
         }
@@ -57,10 +57,12 @@ public class SwipeDetector : MonoBehaviour
                 }
                 else
                 {
-                    rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector2(rayHit.collider.gameObject.GetComponent<CardView>().
+                   rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector3(rayHit.collider.gameObject.GetComponent<CardView>().
                    gameObject.transform.position.x,
                    rayHit.collider.gameObject.GetComponent<CardView>().
-                   gameObject.transform.position.y - 5);
+                   gameObject.transform.position.y - 5, 
+                   rayHit.collider.gameObject.GetComponent<CardView>().
+                   gameObject.transform.position.z);
                 }
             }
         }

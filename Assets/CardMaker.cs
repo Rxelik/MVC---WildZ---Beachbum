@@ -109,9 +109,9 @@ public class CardMaker : MonoBehaviour
     void SwapCards()
     {
         if (view._inspectorBelongsTo == "Player"
-|| view._inspectorBelongsTo == "Board"
-|| view._inspectorBelongsTo == "FlyingToPlayer"
-|| view._inspectorBelongsTo == "FlyingToEnemy")
+        || view._inspectorBelongsTo == "Board"
+        || view._inspectorBelongsTo == "FlyingToPlayer"
+        || view._inspectorBelongsTo == "FlyingToEnemy")
         {
 
 

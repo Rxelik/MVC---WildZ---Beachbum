@@ -53,7 +53,7 @@ public class ButtonIndexV2 : MonoBehaviour
     }
     public void PlayCard(int Index)
     {
-        if (deckModel.CurrentTurn == "Player" && !PlayerPlayed)
+        if (deckModel.CurrentTurn == "Player" && !manager.PlayerPlayed)
         {
             manager.ChosenCard = playerModel.Cards[Index];
 
@@ -660,7 +660,14 @@ public class ButtonIndexV2 : MonoBehaviour
                 manager.TooKToHand = true;
                 if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 || !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
                 {
-                    print("Cant Draw");
+                    if (boardModel.TopCard().Number == 22)
+                    {
+                        boardModel.TopCard().Number = 222;
+                    }
+                    if (boardModel.TopCard().Number == 44)
+                    {
+                        boardModel.TopCard().Number = 444;
+                    }
                 }
                 else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
                 {

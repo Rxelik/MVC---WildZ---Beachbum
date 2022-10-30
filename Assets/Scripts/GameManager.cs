@@ -5,7 +5,8 @@ using TMPro;
 using System;
 using UnityEditor;
 using static GameManager;
-
+using Spine.Unity;
+using Spine;
 public class GameManager : MonoBehaviour
 {
     #region Singelton
@@ -47,6 +48,23 @@ public class GameManager : MonoBehaviour
     public int PlayerScore;
     public int AIScore;
     public string CardVersion = "Version 1";
+
+
+    public GameObject Spine;
+    public SkeletonGraphic skeletonAnimation;
+    private void Start()
+    {
+        skeletonAnimation.AnimationState.End += AnimationState_End;
+    }
+
+    private void AnimationState_End(TrackEntry trackEntry)
+    {
+        if (trackEntry.TrackIndex != 4)
+        {
+            Spine.SetActive(false);
+        }
+        print("Anim Ended");
+    }
 
     private void Update()
     {
