@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+    #endregion
 
     public class OnCardSpriteEvent { }
 
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
-    #endregion
     public DeckModel deckModel;
     public PlayerModel player;
     public PlayerView playerView;
