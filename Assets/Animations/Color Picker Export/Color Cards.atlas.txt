@@ -1,0 +1,62 @@
+
+Color Cards.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Blue Card
+  rotate: true
+  xy: 918, 2
+  size: 657, 914
+  orig: 657, 914
+  offset: 0, 0
+  index: -1
+Blue Glow
+  rotate: true
+  xy: 2, 661
+  size: 654, 899
+  orig: 654, 899
+  offset: 0, 0
+  index: -1
+Green Card
+  rotate: true
+  xy: 1834, 2
+  size: 657, 914
+  orig: 657, 914
+  offset: 0, 0
+  index: -1
+Green Glow
+  rotate: true
+  xy: 903, 661
+  size: 654, 899
+  orig: 654, 899
+  offset: 0, 0
+  index: -1
+Red Card
+  rotate: true
+  xy: 2750, 2
+  size: 657, 914
+  orig: 657, 914
+  offset: 0, 0
+  index: -1
+Red Glow
+  rotate: true
+  xy: 1804, 661
+  size: 654, 899
+  orig: 654, 899
+  offset: 0, 0
+  index: -1
+Yellow Card
+  rotate: true
+  xy: 2, 3
+  size: 656, 914
+  orig: 656, 914
+  offset: 0, 0
+  index: -1
+Yellow Glow
+  rotate: true
+  xy: 2705, 661
+  size: 654, 899
+  orig: 654, 899
+  offset: 0, 0
+  index: -1

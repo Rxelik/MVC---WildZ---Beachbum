@@ -385,7 +385,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
 
     }
-    void WildCard(string color)
+    public void WildCard(string color)
     {
 
         StartCoroutine(LerpWIlds(color));
