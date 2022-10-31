@@ -137,6 +137,7 @@ public class CardView : MonoBehaviour, ICardView
         if (_inspectorBelongsTo == "Deck")
         {
             gameObject.transform.localScale = new Vector3(1f, 1f);
+            Layer = 3;
         }
         if (_inspectorBelongsTo == "Enemy")
         {
@@ -144,7 +145,7 @@ public class CardView : MonoBehaviour, ICardView
         }
         if (_inspectorBelongsTo == "Player")
         {
-            if (_CanPlayCard && ParticleEffect)
+            if (_CanPlayCard && ParticleEffect && !GameManager.Instance.GameEnded)
             {
                 Arc.rotation = Quaternion.Euler(0, 0, 0);
                 ParticleEffect.gameObject.SetActive(true);
