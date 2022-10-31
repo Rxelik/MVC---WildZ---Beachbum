@@ -27,17 +27,25 @@ public class Inisializer : MonoBehaviour
     public List<Transform> EnemyTransforms;
     public Server _Server;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            ResetGame();
+            print("W");
+        }
+    }
     [Obsolete]
     void Awake()
     {
         StartCoroutine(Build());
     }
-
+    
     [Obsolete]
     IEnumerator Build()
     {
         //_______________________________________________\\
-
+        GameManager.Instance.GameEnded = false;
         #region Deck
         ///
         var DeckmodelFactory = new DeckModelFactory();
@@ -753,5 +761,20 @@ public class Inisializer : MonoBehaviour
         Deckview.Inisialize = false;
         deck.ChangeTurn();
 
+    }
+
+    public void ResetGame()
+    {
+        for (int i = 0; i < GameManager.Instance.CardsObjects.Count; i++)
+        {
+           Destroy(GameManager.Instance.CardsObjects[i]);
+        }
+        GameManager.Instance.player.Cards.Clear();
+        GameManager.Instance.enemy.Cards.Clear();
+        GameManager.Instance.deckModel.Cards.Clear();
+        GameManager.Instance.player.Board.Cards.Clear();
+        GameManager.Instance.CardsObjects.Clear();
+        StartCoroutine(Build());
+        GameManager.Instance.GameEnded = false;
     }
 }

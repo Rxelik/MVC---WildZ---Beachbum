@@ -39,6 +39,7 @@ public class BoardViewFactory : IBoardViewFactory
         var instance = UnityEngine.Object.Instantiate(prefab);
         View = instance.GetComponent<IBoardView>();
         instance.name = "Board";
+        GameManager.Instance.CardsObjects.Add(instance);
     }
 }
 

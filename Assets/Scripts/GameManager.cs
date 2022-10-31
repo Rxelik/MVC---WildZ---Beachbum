@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public int Draw = 0;
     public TextMeshProUGUI Turn;
     public TextMeshProUGUI timer;
+    public TextMeshProUGUI AIScoreUGUI;
+    public TextMeshProUGUI PlayerScoreUGUI;
     public CardModel ChosenCard;
     public bool PlayerCanPlay;
     public bool GameEnded = false;
@@ -45,13 +47,15 @@ public class GameManager : MonoBehaviour
     public GameObject PassButton;
     public bool PlayerPlayed = false;
     public bool TooKToHand = false;
-    public int PlayerScore;
-    public int AIScore;
+    public int PlayerScore = 0;
+    public int AIScore = 0;
     public string CardVersion = "Version 1";
 
 
     public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
+
+    public List<GameObject> CardsObjects = new List<GameObject>();
     private void Start()
     {
         skeletonAnimation.AnimationState.End += AnimationState_End;
@@ -68,6 +72,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        AIScoreUGUI.text = AIScore.ToString();
+        PlayerScoreUGUI.text = PlayerScore.ToString();
         if (GameEnded == false)
         {
             Timer += Time.deltaTime;
@@ -77,7 +83,8 @@ public class GameManager : MonoBehaviour
 
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
-            CountScorePlayerScore();
+            if (!GameEnded)
+                CountScorePlayerScore();
             GameEnded = true;
             if (enemy.Cards.Count > 20)
                 Turn.text = "Opponent Has Over 20 Cards Player Won!";
@@ -87,13 +94,15 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (enemy.Cards.Count == 0 || player.Cards.Count > 20)
+        if (enemy.Cards.Count == 0 || player.Cards.Count > 20 && PlayerScore <75)
         {
             if (!GameEnded)
                 CountScoreAIScore();
             GameEnded = true;
             if (player.Cards.Count > 20)
+            {
                 Turn.text = "Player Has Over 20 Cards Opponent Won!";
+            }
             else if (enemy.Cards.Count == 0)
                 Turn.text = "Opponent WON";
 
@@ -108,7 +117,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var item in enemy.Cards)
         {
-            if (item.Number > 0 && item.Number > 9)
+            if (item.Number >= 9)
             {
                 PlayerScore += 5;
             }
@@ -144,31 +153,31 @@ public class GameManager : MonoBehaviour
         {
             if (item.Number > 0 && item.Number > 9)
             {
-                PlayerScore += 5;
+                AIScore += 5;
             }
             if (item.Number == 22 && !item.IsWild)
             {
-                PlayerScore += 10;
+                AIScore += 10;
             }
             if (item.Number == 44)
             {
-                PlayerScore += 10;
+                AIScore += 10;
             }
             if (item.Number == 22 && item.IsWild)
             {
-                PlayerScore += 20;
+                AIScore += 20;
             }
             if (item.Number == 0)
             {
-                PlayerScore += 25;
+                AIScore += 25;
             }
             if (item.IsSuper && item.IsWild)
             {
-                PlayerScore += 30;
+                AIScore += 30;
             }
             if (item.IsBamboozle)
             {
-                PlayerScore += 40;
+                AIScore += 40;
             }
         }
     }

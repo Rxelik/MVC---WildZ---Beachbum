@@ -39,7 +39,8 @@ public class EnemyViewFactory : IEnemyViewFactory
         var prefab = Resources.Load<GameObject>("Enemy");
         var instance = UnityEngine.Object.Instantiate(prefab);
         View = instance.GetComponent<IEnemyView>();
-        instance.name = "Enemy";
+        instance.name = "Enemy"; 
+        GameManager.Instance.CardsObjects.Add(instance);
     }
 }
 

@@ -39,6 +39,7 @@ public class DeckViewFactory : IDeckViewFactory
         var instance = UnityEngine.Object.Instantiate(prefab);
         View = instance.GetComponent<IDeckView>();
         instance.name = "Deck";
+        GameManager.Instance.CardsObjects.Add(instance);
     }
 }
 
