@@ -32,7 +32,14 @@ public class CardController : ICardController
         model.ChangedBelongTo += ChangedName;
         model.OrderInHandChanged += Count;
         model.ChangedSprite += ChangedSprite;
+        model.CanPlayCardEve += ChangedCon;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void ChangedCon(object sender, CanPlayCardEventArgs e)
+    {
+
         SyncData();
     }
 
@@ -44,18 +51,18 @@ public class CardController : ICardController
     private void Count(object sender, OrderInHandEventArgs e)
     {
         SyncData();
+
     }
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
     {
         _manager.StartCoroutine(Lerp());
-        Debug.Log("INSIDE CARD CHANGE NAME");
     }
 
     // Called when the view is clicked
     private void HandleClicked(object sender, CardClickedEventArgs e)
     {
-        SyncData();
+       // SyncData();
     }
     public IEnumerator Lerp()
     {
@@ -69,10 +76,18 @@ public class CardController : ICardController
                 t += Time.deltaTime / duration;
                 view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
-
                 model.BelongsTo = "Player";
+
             }
 
+        }
+
+
+        if (model.BelongsTo == "ViewPlayer")
+        {
+            view.Position = new Vector3((model.Player.Cards[model.HandOrder].Position.x * 1.10f) + model.HandOrder, -8f, 0);
+            model.Layer = 20;
+            SyncData();
         }
         if (model.BelongsTo == "FlyingToEnemy")
         {
@@ -90,18 +105,19 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Player")
         {
-            while (t < duration)
-            {
-                t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(model.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
-                yield return null;
-            }
+            view.Position = model.Position;
+            //while (t < duration)
+            //{
+            //    t += Time.deltaTime / duration;
+            //    view.Position = Vector3.Lerp(model.Position, model.Player.Cards [model.HandOrder].Position, t / duration);
+            //    yield return null;
+            //}
 
         }
 
         if (model.BelongsTo == "Enemy")
         {
-            while (t < duration)
+            while (t < 1f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
@@ -111,21 +127,42 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "Board")
         {
+            if (model.Board.Cards.Count <= 1) { }
+            else
+            {
+                model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+            }
+
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, new Vector3(-7, 0, -5), t / duration);
-                SyncData();
+
+                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
+               // SyncData();
                 yield return null;
             }
         }
+
+        if (model.BelongsTo == "ColorPick")
+        {
+           
+            while (t < 1.5f)
+            {
+                t += Time.deltaTime / duration;
+                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
+                yield return null;
+            }
+            model.Position = Vector3.zero;
+        }
+
         if (model.BelongsTo == "Deck")
         {
+            model.Rotation = Quaternion.Euler(0, 0, 0);
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, new Vector3(20, 0, 0), t / duration);
-                SyncData();
+                view.Position = Vector3.Lerp(Vector3.zero, new Vector3(20, 0, 0), t / duration);
+               //    SyncData();
                 yield return null;
             }
         }
@@ -147,6 +184,8 @@ public class CardController : ICardController
     void SyncData()
     {
         //view.Position = model.Position;
+
+        view.CanPlayCard = model.CanPlayCard;
 
         view.Rotation = model.Rotation;
 
@@ -173,6 +212,7 @@ public class CardController : ICardController
         view.HandOrder = model.HandOrder;
 
         view.Sprite = model.Sprite;
+
     }
 
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

@@ -8,13 +8,14 @@ using Random = System.Random;
 using System.Linq;
 using Color = UnityEngine.Color;
 using UnityEditor;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Inisializer : MonoBehaviour
 {
     public int InsializeDeckSize = 100;
     public int HandSize = 10;
 
-    public List<Color> Colors;
+    public List<Color> Colors = new List<Color>();
     int colorRND;
     int numRND;
     public ButtonIndexV2 DeckButton;
@@ -24,6 +25,7 @@ public class Inisializer : MonoBehaviour
     public List<ButtonIndexV2> buttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
+    public Server _Server;
 
     [Obsolete]
     void Awake()
@@ -40,14 +42,16 @@ public class Inisializer : MonoBehaviour
         ///
         var DeckmodelFactory = new DeckModelFactory();
         var _deckmodel = DeckmodelFactory.Model;
-
+        _deckmodel.Position = new Vector3(20, 0, 0);
         // Set some initial state
         //_deckmodel.Position = new Vector3(20, 0, 0);
         _deckmodel.Cards = new List<CardModel>();
-        _deckmodel.CurrentTurn = "Player";
+        DeckModel deck;
+        deck = (DeckModel)_deckmodel;
         // Create the view
         var DeckviewFactory = new DeckViewFactory();
         var Deckview = DeckviewFactory.View;
+        Deckview.Inisialize = true;
 
 
         var DeckviewcontrollerFactory = new DeckControllerFactory(_deckmodel, Deckview);
@@ -69,6 +73,7 @@ public class Inisializer : MonoBehaviour
         var BoardcontrollerFactory = new BoardControllerFactory(_Boardmodel, Boardview);
         var Boardcontroller = BoardcontrollerFactory.Controller;
         #endregion
+        _deckmodel.Board = (BoardModel)_Boardmodel;
 
         //_______________________________________________\\
 
@@ -83,6 +88,7 @@ public class Inisializer : MonoBehaviour
         _playermodel.Deck = (DeckModel)_deckmodel;
         _playermodel.Board = (BoardModel)_Boardmodel;
         _playermodel.HandPos = PlayerTransforms;
+        _playermodel.FirstTurn = true;
         //_playermodel.HandCount = 10;
         // Create the view
         var PlayerViewFactory = new PlayerViewFactory();
@@ -663,6 +669,7 @@ public class Inisializer : MonoBehaviour
             }
 
         }
+        GameManager.Instance.PassButton.SetActive(false);
 
         #endregion
 
@@ -684,11 +691,15 @@ public class Inisializer : MonoBehaviour
         {
             item.Enemy = (EnemyModel)_Enemyermodel;
             item.Player = (PlayerModel)_playermodel;
+            item.Board = (BoardModel)_Boardmodel;
             item.Position = new Vector3(20, 0, 0);
             item.BelongsTo = "Deck";
             _deckmodel.AddCard(item);
         }
-
+        _Server._enemyModel = (EnemyModel)_Enemyermodel;
+        _Server._playerModel = (PlayerModel)_playermodel;
+        _Server._boardModel = (BoardModel)_Boardmodel;
+        _Server._deckModel = (DeckModel)_deckmodel;
         #endregion
 
         yield return new WaitForSeconds(0.5f);
@@ -701,6 +712,7 @@ public class Inisializer : MonoBehaviour
             _playermodel.AddCard(_deckmodel.Cards[i]);
             _deckmodel.RemoveCard(_deckmodel.Cards[i]);
         }
+        _playermodel.FirstTurn = false;
 
 
         #endregion
@@ -715,14 +727,20 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         //_______________________________________________\\
+        Random rnds = new Random();
+        List<Color> wappas = new List<Color>();
 
+        wappas.Add(Color.red);
+        wappas.Add(Color.yellow);
+        wappas.Add(Color.blue);
+        wappas.Add(Color.yellow);
         #region Add First Card To Board
         _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+        _Boardmodel.Cards[0].Color = wappas[UnityEngine.Random.Range(0, 4)];
         //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
         _Boardmodel.Cards[0].IsSuper = false;
         _Boardmodel.Cards[0].IsBamboozle = false;
         _Boardmodel.Cards[0].IsWild = false;
-       // _Boardmodel.Cards[0].Color = Colors[UnityEngine.Random.Range(1, 2)];
         _Boardmodel.Cards[0].Number = UnityEngine.Random.Range(1, 9);
         _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         _Boardmodel.Cards[0].BelongsTo = "Board";
@@ -732,5 +750,9 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.deckModel = (DeckModel)_deckmodel;
         GameManager.Instance.player = (PlayerModel)_playermodel;
         GameManager.Instance.enemy = (EnemyModel)_Enemyermodel;
+        GameManager.Instance.playerView = (PlayerView)_view;
+        Deckview.Inisialize = false;
+        deck.ChangeTurn();
+
     }
 }

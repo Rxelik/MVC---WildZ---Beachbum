@@ -29,13 +29,13 @@ public class DeckController : IDeckController
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
         view.CardInDeckChanged += RizeLayer;
         model.OnTurnChangeEve += ChangeTurn;
+        
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
     private void ChangeTurn(object sender, TurnChangedEventArgs e)
     {
-        Debug.Log("ENTERED CHANGE TURN!!!");
         SyncData();
     }
 
@@ -43,17 +43,20 @@ public class DeckController : IDeckController
     {
         model.Cards[model.Cards.Count - 1].Layer++;
         SyncData();
-        Debug.Log("Rise Lauer bItch");
     }
 
     private void HandleClicked(object sender, DeckChangedEventArgs e)
     {
-        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
-        //{
-        //    Debug.Log("You Played " + model.Cards[index]);
-        //}
+        GameManager.Instance.StartCoroutine(FlyToDeck());
     }
-
+    IEnumerator FlyToDeck()
+    {
+        foreach (var item in model.Board.Cards)
+        {
+            yield return new WaitForSeconds(0.10f);
+            model.AddCard(item);
+        }
+    }
     // Called when the view is clicked
 
     private void ClickedOnCard(int Index)

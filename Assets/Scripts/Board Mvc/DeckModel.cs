@@ -8,6 +8,7 @@ public class DeckChangedEventArgs { }
 public class OnCardsInDeckChangeEventArgs { }
 public class DeckCardChangeEventArgs { }
 public class TurnChangedEventArgs { }
+public class OnCardsInBoardChangeDeckEventArgs { }
 
 
 
@@ -19,11 +20,13 @@ public interface IDeckModel
     event EventHandler<OnDeckChangeEventArgs> OnDeckChanged;
     event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
     event EventHandler<TurnChangedEventArgs> OnTurnChangeEve;
+    event EventHandler<OnCardsInBoardChangeDeckEventArgs> OnCardsInBoardEve;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
     DeckModel Deck { get; set; }
 
+    BoardModel Board { get; set; }  
     string CurrentTurn { get; set; }
 
     void AddCard(CardModel card);
@@ -37,12 +40,14 @@ public class DeckModel : IDeckModel
     [SerializeField] string _BelongsTo;
     [SerializeField] DeckModel _Deck;
     [SerializeField] string _CurrentTurn;
+    [SerializeField] BoardModel _Board;
 
     public event EventHandler<DeckChangedEventArgs> OnPositionChanged = (sender, e) => { };
     public event EventHandler<OnCardsInDeckChangeEventArgs> CardInDeckChanged = (sender, e) => { };
     public event EventHandler<OnDeckChangeEventArgs> OnDeckChanged = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
     public event EventHandler<TurnChangedEventArgs> OnTurnChangeEve = (sender, e) => { };
+    public event EventHandler<OnCardsInBoardChangeDeckEventArgs> OnCardsInBoardEve = (sender, e) => { };
 
     public Vector3 Position
     {
@@ -99,7 +104,23 @@ public class DeckModel : IDeckModel
             }
         }
     }
+    public BoardModel Board
+    {
+        get { return _Board; }
+        set
+        {
+            // Only if the position changes
+            if (_Board != value)
+            {
+                // Set new position
+                _Board = value;
 
+                // Dispatch the 'position changed' event
+                var eventArgs = new OnCardsInBoardChangeDeckEventArgs();
+                OnCardsInBoardEve(this, eventArgs);
+            }
+        }
+    }
     public string CurrentTurn
     {
         get { return _CurrentTurn; }
@@ -121,6 +142,7 @@ public class DeckModel : IDeckModel
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
+        card.BelongsTo = "Deck";
         var eventArgs = new OnCardsInDeckChangeEventArgs();
         CardInDeckChanged(this, eventArgs);
     }
@@ -135,7 +157,7 @@ public class DeckModel : IDeckModel
         return Cards[Cards.Count - 1];
     }
 
-    bool swapper = true;
+    bool swapper = false;
     public void ChangeTurn()
     {
         swapper = !swapper;
@@ -146,6 +168,21 @@ public class DeckModel : IDeckModel
         }
         else
         {
+            CurrentTurn = "Enemy";
+        }
+    }
+
+    public void PlayAgain()
+    {
+
+        if (CurrentTurn == "Player")
+        {
+            CurrentTurn = "";
+            CurrentTurn = "Player";
+        }
+        else if (CurrentTurn == "Enemy")
+        {
+            CurrentTurn = "";
             CurrentTurn = "Enemy";
         }
     }

@@ -39,7 +39,7 @@ public class EnemyController : IEnemyController
 
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, 9f, i * i);
+            model.Cards[i].Position = new Vector3(-model.Cards.Count + moveRight, 12f, -CardLayer);
             moveRight += 2.3f;
             CardLayer -= 1;
             if (model.Cards[i].BelongsTo == "Enemy")

@@ -5,6 +5,8 @@ using TMPro;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
+using static GameManager;
 // Dispatched when the card is clicked Or Enabled
 public class CardClickedEventArgs : EventArgs { }
 public class CardOnEnableEventArgs : EventArgs { }
@@ -40,6 +42,7 @@ public interface ICardView
     bool IsSuper { set; }
     bool IsWild { set; }
     bool IsBamboozle { set; }
+    bool CanPlayCard { set; }
 
     Sprite Sprite { set; }
 
@@ -72,9 +75,10 @@ public class CardView : MonoBehaviour, ICardView
     public int Layer { set { _InspectorSprite.sortingOrder = value; } }
     public bool IsSuper { set { _IsSuper = value; } }
     public bool IsWild { set { _IsWild = value; } }
+    public bool CanPlayCard { set { _CanPlayCard = value; } }
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
-    public Sprite Sprite { set { GetComponent<SpriteRenderer>(); _InspectorSprite.sprite = value; } }
+    public Sprite Sprite { set { GetComponent<SpriteRenderer>(); } }
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
@@ -82,11 +86,15 @@ public class CardView : MonoBehaviour, ICardView
     public int _inspectOrderInHand;
     public string _inspectorBelongsTo;
     public Color _InspectorColor;
-    [SerializeField] bool _IsSuper;
-    [SerializeField] bool _IsWild;
-    [SerializeField] bool _IsBamboozle;
+    public bool _IsSuper;
+    public bool _IsWild;
+    public bool _IsBamboozle;
+    public bool _CanPlayCard;
     public SpriteRenderer _InspectorSprite;
     public SpriteRenderer DefultCard;
+    public ParticleSystem ParticleEffect;
+    public Transform Arc;
+    public bool EnableArc = true;
     //public TextMeshPro gs;
 
     // public List<GameObject> PlayerTransforms;
@@ -101,17 +109,63 @@ public class CardView : MonoBehaviour, ICardView
         // StartCoroutine(WaitBeforeRegister());
         //GetTransforms();
     }
-
-    private void CardView_CardPos(object sender, CardPositionChangedEventArgs e)
+    private void Start()
     {
-        //StartCoroutine(AllignCards());
-        print("Inside Corutide Of View");
+        GameManager.Instance.SpriteChangeEve += CardView_SpriteChangeEve;
     }
 
+    private void CardView_SpriteChangeEve(object sender, OnCardSpriteEvent e)
+    {
+        print("Building New Sprite");
+        if (_inspectorBelongsTo == "Player")
+        {
+            GetComponent<CardMaker>().BuildCards();
+        }
+
+    }
     void Update()
     {
-        v2.BelongsTo = _inspectorBelongsTo;
+        // v2.BelongsTo = _inspectorBelongsTo;
+        if (_inspectorBelongsTo == "ViewPlayer")
+        {
+            Arc.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
+        {
+            gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
+        }
+        if (_inspectorBelongsTo == "Deck")
+        {
+            gameObject.transform.localScale = new Vector3(1f, 1f);
+        }
+        if (_inspectorBelongsTo == "Enemy")
+        {
+            Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
+        }
+        if (_inspectorBelongsTo == "Player")
+        {
+            if (_CanPlayCard && ParticleEffect)
+            {
+                Arc.rotation = Quaternion.Euler(0, 0, 0);
+                ParticleEffect.gameObject.SetActive(true);
+                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
+            }
 
+            if (!_CanPlayCard && ParticleEffect)
+            {
+                if (!EnableArc)
+                    Arc.rotation = Quaternion.Euler(0, 0, 0);
+                else
+                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+
+                ParticleEffect.gameObject.SetActive(false);
+                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
+            }
+        }
+        else
+        {
+            ParticleEffect.gameObject.SetActive(false);
+        }
         //gs.text = _inspectNumber.ToString();
         //gs.sortingOrder = _sprite.sortingOrder;
         // If the primary mouse button was pressed this frame

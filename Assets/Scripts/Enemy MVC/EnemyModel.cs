@@ -169,10 +169,11 @@ public class EnemyModel : IEnemyModel
     {
         return Cards[Cards.Count - 1];
     }
-    public void TakeCard(int amout)
+    public IEnumerator TakeCard(int amout)
     {
         for (int i = 0; i < amout; i++)
         {
+            yield return new WaitForSeconds(0.35f);
             AddCard(Deck.TopCard());
             Deck.RemoveCard(TopCard());
         }
