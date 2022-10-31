@@ -512,11 +512,9 @@ public class ButtonIndexV2 : MonoBehaviour
         {
             if (manager.Draw == 0)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    enemyModel.AddCard(deckModel.TopCard());
-                    deckModel.RemoveCard(deckModel.TopCard());
-                }
+                AI.Instance.StartCoroutine(enemyModel.TakeCard(2));
+                card.Number = 222;
+                deckModel.PlayAgain();
 
                 card.Number = 222;
                 deckModel.PlayAgain();
