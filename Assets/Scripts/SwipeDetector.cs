@@ -40,7 +40,7 @@ public class SwipeDetector : MonoBehaviour
         }
         else if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
         {
-            if (duration < 0.50f)
+            if (duration < 0.60f)
                 OnTap();
 
         }

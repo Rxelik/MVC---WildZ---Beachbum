@@ -825,7 +825,7 @@ public class ButtonIndexV2 : MonoBehaviour
         manager.ChosenCard = card;
         print(card.Name);
         NormalCard(card, enemyModel);
-        SuperCard(card, enemyModel);
+        AI.Instance.StartCoroutine(SuperCard(card, enemyModel));
         if (card.IsWild && boardModel.TopCard().Number != 22
            || card.IsWild && boardModel.TopCard().Number != 44
            || card.IsWild && card.IsSuper

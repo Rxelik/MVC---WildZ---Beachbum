@@ -103,6 +103,7 @@ public class CardModel : ICardModel
     public event EventHandler<CanPlayCardEventArgs> CanPlayCardEve = (sender, e) => { };
     public event EventHandler<CardFoundBoardEventArgs> OnBoardFind = (sender, e) => { };
 
+
     public PlayerModel Player
     {
         get { return _Player; }

@@ -32,11 +32,17 @@ public class PlayerController : IPlayerController
         model.Board.CardInBoardChanged += EnemyPlayed;
         model.Deck.CardInDeckChanged += DrewCard;
         model.ViewCardsEve += ViewCards;
+        model.PlayerPlayedEve += PlayerPlayed;
         _manager = GameManager.Instance;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
+    }
+
+    private void PlayerPlayed(object sender, PlayerPlayedCard e)
+    {
+        FixPosition();
     }
 
     private void ViewCards(object sender, OnViewCardsEventArgs e)

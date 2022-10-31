@@ -9,6 +9,7 @@ public class OnDeckChangeEventArgs { }
 public class PlayerCardChangeEventArgs { }
 public class PlayerTookFromBoardEventArgs { }
 public class OnViewCardsEventArgs { }
+public class PlayerPlayedCard : EventArgs { }
 
 public interface IPlayerModel
 {
@@ -18,6 +19,7 @@ public interface IPlayerModel
     event EventHandler<OnDeckChangeEventArgs> OnBoardChanged;
     event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard;
     event EventHandler<OnViewCardsEventArgs> ViewCardsEve;
+    event EventHandler<PlayerPlayedCard> PlayerPlayedEve;
 
     Vector3 Position { get; set; }
     [SerializeField] List<CardModel> Cards { get; set; }
@@ -48,6 +50,7 @@ public class PlayerModel : IPlayerModel
     public event EventHandler<OnDeckChangeEventArgs> OnBoardChanged = (sender, e) => { };
     public event EventHandler<PlayerTookFromBoardEventArgs> OnTakeCardFromBoard = (sender, e) => { };
     public event EventHandler<OnViewCardsEventArgs> ViewCardsEve = (sender, e) => { };
+    public event EventHandler<PlayerPlayedCard> PlayerPlayedEve = (sender, e) => { };
 
 
     public Vector3 Position
@@ -177,19 +180,19 @@ public class PlayerModel : IPlayerModel
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
-        var eventArgs = new PlayerCardChangeEventArgs();
         if (card.BelongsTo == "Deck")
             card.BelongsTo = "FlyingToPlayer";
         //else
         //    card.BelongsTo = "Player";
-        OnCardsChanged(this, eventArgs);
+        //var eventArgs = new PlayerCardChangeEventArgs();
+        //OnCardsChanged(this, eventArgs);
     }
     public void RemoveCard(CardModel card)
     {
         Cards.Remove(card);
         card.Layer = Board.Cards.Count;
-        var eventArgs = new PlayerCardChangeEventArgs();
-        OnCardsChanged(this, eventArgs);
+        var eventArgs = new PlayerPlayedCard();
+        PlayerPlayedEve(this, eventArgs);
     }
     public CardModel TopCard()
     {

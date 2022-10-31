@@ -743,7 +743,6 @@ public class Inisializer : MonoBehaviour
         _Boardmodel.Cards[0].IsWild = false;
         _Boardmodel.Cards[0].Number = UnityEngine.Random.Range(1, 9);
         _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
-        _Boardmodel.Cards[0].BelongsTo = "Board";
         #endregion
 
         //_______________________________________________\\
