@@ -377,9 +377,9 @@ public class ButtonIndexV2 : MonoBehaviour
                     }
                 }
                 yield return new WaitForSeconds(0.20f);
-                //card.Position = new Vector3(-7, 0, -5);
+                    //card.Position = new Vector3(-7, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
-                //boardModel.AddCard(card);
+                boardModel.AddCard(card);
                 model.RemoveCard(card);
                 card.Number = 0;
                 ChangeTurn();

@@ -40,7 +40,7 @@ public class Inisializer : MonoBehaviour
     {
         StartCoroutine(Build());
     }
-    
+
     [Obsolete]
     IEnumerator Build()
     {
@@ -766,9 +766,10 @@ public class Inisializer : MonoBehaviour
 
     public void ResetGame()
     {
+        GameManager.Instance.GameEnded = false;
         for (int i = 0; i < GameManager.Instance.CardsObjects.Count; i++)
         {
-           Destroy(GameManager.Instance.CardsObjects[i]);
+            Destroy(GameManager.Instance.CardsObjects[i]);
         }
         GameManager.Instance.player.Cards.Clear();
         GameManager.Instance.enemy.Cards.Clear();
