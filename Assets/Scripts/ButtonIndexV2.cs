@@ -219,6 +219,7 @@ public class ButtonIndexV2 : MonoBehaviour
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
                     deckModel.PlayAgain();
+                    AIplayed = false;
                 }
                 #endregion
 
@@ -378,7 +379,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 yield return new WaitForSeconds(0.20f);
                 //card.Position = new Vector3(-7, 0, -5);
                 card.Layer = boardModel.TopCard().Layer + 2;
-                boardModel.AddCard(card);
+                //boardModel.AddCard(card);
                 model.RemoveCard(card);
                 card.Number = 0;
                 ChangeTurn();
@@ -391,10 +392,10 @@ public class ButtonIndexV2 : MonoBehaviour
     public void WildCard(string color)
     {
 
-        StartCoroutine(LerpWIlds(color));
+        StartCoroutine(LerpWilds(color));
     }
 
-    IEnumerator LerpWIlds(string color)
+    IEnumerator LerpWilds(string color)
     {
         if (color == "Red")
             manager.ChosenCard.Color = Color.red;
@@ -483,6 +484,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 StartCoroutine(playerModel.TakeCard(2));
                 card.Number = 222;
                 deckModel.PlayAgain();
+                AIplayed = false;
             }
             else
             {
@@ -491,6 +493,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 manager.Draw = 0;
                 card.Number = 222;
                 deckModel.PlayAgain();
+                AIplayed = false;
             }
         }
 
@@ -551,6 +554,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 StartCoroutine(playerModel.TakeCard(4));
                 card.Number = 444;
                 deckModel.PlayAgain();
+                AIplayed = false;
             }
             else
             {
@@ -559,6 +563,7 @@ public class ButtonIndexV2 : MonoBehaviour
                 manager.Draw = 0;
                 card.Number = 444;
                 deckModel.PlayAgain();
+                AIplayed = false;
 
             }
         }
@@ -612,6 +617,7 @@ public class ButtonIndexV2 : MonoBehaviour
 
         RemoveButtons();
         manager.TooKToHand = false;
+        AIplayed = false;
     }
 
     void RemoveButtons()
@@ -812,7 +818,6 @@ public class ButtonIndexV2 : MonoBehaviour
                 _server.TestCanPlayCard(NormalCards[0], enemyModel);
 
             }
-            AIplayed = false;
         }
 
     }

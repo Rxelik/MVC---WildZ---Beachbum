@@ -7,6 +7,8 @@ using UnityEditor;
 using static GameManager;
 using Spine.Unity;
 using Spine;
+using UnityEngine.UI;
+
 public class GameManager : MonoBehaviour
 {
     #region Singelton
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
     public int PlayerScore = 0;
     public int AIScore = 0;
     public string CardVersion = "Version 1";
-
+    public GameObject ContinueButton;
 
     public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
@@ -79,8 +81,12 @@ public class GameManager : MonoBehaviour
             Timer += Time.deltaTime;
             Turn.text = deckModel.CurrentTurn;
             timer.text = Timer.ToString();
+            ContinueButton.SetActive(false);
         }
-
+        else
+        {
+            ContinueButton.SetActive(true);
+        }
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {
             if (!GameEnded)
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (enemy.Cards.Count == 0 || player.Cards.Count > 20 && PlayerScore <75)
+        if (enemy.Cards.Count == 0 || player.Cards.Count > 20 && PlayerScore < 75)
         {
             if (!GameEnded)
                 CountScoreAIScore();
@@ -117,7 +123,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var item in enemy.Cards)
         {
-            if (item.Number >= 9)
+            if (item.Number > 0 && item.Number <= 9)
             {
                 PlayerScore += 5;
             }
@@ -151,7 +157,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var item in player.Cards)
         {
-            if (item.Number > 0 && item.Number > 9)
+            if (item.Number > 0 && item.Number <= 9)
             {
                 AIScore += 5;
             }

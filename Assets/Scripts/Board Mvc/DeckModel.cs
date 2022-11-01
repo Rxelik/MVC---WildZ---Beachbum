@@ -184,6 +184,7 @@ public class DeckModel : IDeckModel
         {
             CurrentTurn = "";
             CurrentTurn = "Enemy";
+            
         }
     }
 }

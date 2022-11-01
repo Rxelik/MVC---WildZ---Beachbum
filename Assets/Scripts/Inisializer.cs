@@ -760,6 +760,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.playerView = (PlayerView)_view;
         Deckview.Inisialize = false;
         deck.ChangeTurn();
+        GameManager.Instance.GameEnded = false;
 
     }
 
@@ -775,6 +776,5 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.player.Board.Cards.Clear();
         GameManager.Instance.CardsObjects.Clear();
         StartCoroutine(Build());
-        GameManager.Instance.GameEnded = false;
     }
 }
