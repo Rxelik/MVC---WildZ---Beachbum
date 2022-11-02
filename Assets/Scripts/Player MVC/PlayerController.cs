@@ -34,12 +34,17 @@ public class PlayerController : IPlayerController
         model.ViewCardsEve += ViewCards;
         model.PlayerPlayedEve += PlayerPlayed;
         _manager = GameManager.Instance;
+        GameManager.Instance.VersionChange += VersionChanged;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
-    }
 
+    }
+    private void VersionChanged(object sender, GameManager.OnCardVersionChange e)
+    {
+        FixPosition();
+    }
     private void PlayerPlayed(object sender, PlayerPlayedCard e)
     {
         FixPosition();
@@ -49,7 +54,7 @@ public class PlayerController : IPlayerController
     {
         foreach (var item in model.Cards)
         {
-            
+
             if (item.BelongsTo == "ViewPlayer")
             {
                 item.BelongsTo = "Player";
@@ -130,13 +135,34 @@ public class PlayerController : IPlayerController
             }
             else
             {
-                if (model.Cards[i].CanPlayCardTest())
+                if (GameManager.Instance.CardVersion == "Version 1")
                 {
-                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -9.5f, -CardLayer);
+                    if (model.Cards[i].CanPlayCardTest())
+                    {
+                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -9.5f, -CardLayer);
+                    }
+                    else
+                    {
+                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                    }
                 }
-                else if (!model.Cards[i].CanPlayCardTest())
+
+                if (GameManager.Instance.CardVersion == "Version 2")
                 {
-                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                    if (model.Cards[i].CanPlayCardTest())
+                    {
+                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
+                    }
+                    else
+                    {
+                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                    }
+                }
+
+
+                if (GameManager.Instance.CardVersion == "Version 3")
+                {
+                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12, -CardLayer);
                 }
             }
 
@@ -183,7 +209,7 @@ public class PlayerController : IPlayerController
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         // Update the view with the new position
-       // SyncData();
+        // SyncData();
 
     }
 

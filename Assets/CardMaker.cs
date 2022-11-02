@@ -48,6 +48,8 @@ public class CardMaker : MonoBehaviour
     public Sprite CardBack;
     [Space]
     public CardView view;
+
+    public SpriteRenderer dim;
     public bool Button = false;
     public bool SwappedFace = false;
     private void Update()
@@ -94,10 +96,30 @@ public class CardMaker : MonoBehaviour
                 CardSprite.sprite = CardBack;
             }
 
+            if (view._inspectorBelongsTo == "Player")
+            {
+                if (GameManager.Instance.CardVersion == "Version 2" || GameManager.Instance.CardVersion == "Version 3")
+                {
+                    if (!view._CanPlayCard && GameManager.Instance.deckModel.CurrentTurn == "Player")
+                    {
+                        CardSprite.color = Color.gray;
+                    }
+                    else
+                    {
+                        CardSprite.color = Color.white;
+                    }
+                    if (view._CanPlayCard)
+                    {
+                        CardSprite.color = Color.white;
+                    }
+                }
+                else if (GameManager.Instance.CardVersion == "Version 1")
+                {
+                    CardSprite.color = Color.white;
+                }
+            }
 
         }
-
-
     }
     private void Start()
     {

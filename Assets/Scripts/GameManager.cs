@@ -27,10 +27,12 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+    public class OnCardVersionChange : EventArgs { }
 
     public class OnCardSpriteEvent { }
 
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
+    public event EventHandler<OnCardVersionChange> VersionChange = (sender, e) => { };
     public DeckModel deckModel;
     public PlayerModel player;
     public PlayerView playerView;
@@ -195,6 +197,8 @@ public class GameManager : MonoBehaviour
         print(CardVersion);
         var eventArgs = new OnCardSpriteEvent();
         SpriteChangeEve(this, eventArgs);
+        var eventArgss = new OnCardVersionChange();
+        VersionChange(this, eventArgss);
     }
 }
 //public class EditModeFunctions : EditorWindow

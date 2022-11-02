@@ -10,10 +10,10 @@ public class SpineAnim : MonoBehaviour
     public SkeletonGraphic skeletonAnimation;
     public AnimationStateData stateData;
     public string Color;
-    //private void Start()
-    //{
-    //    skeletonAnimation.AnimationState.End += AnimationState_End;
-    //}
+    private void Start()
+    {
+        //skeletonAnimation.AnimationState.End += AnimationState_End;
+    }
     private void OnEnable()
     {
         Spine.SetActive(true);

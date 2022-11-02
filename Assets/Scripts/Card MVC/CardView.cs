@@ -143,25 +143,42 @@ public class CardView : MonoBehaviour, ICardView
         {
             Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
         }
+
         if (_inspectorBelongsTo == "Player")
         {
-            if (_CanPlayCard && ParticleEffect && !GameManager.Instance.GameEnded)
+            if (GameManager.Instance.CardVersion == "Version 1")
             {
-                Arc.rotation = Quaternion.Euler(0, 0, 0);
-                ParticleEffect.gameObject.SetActive(true);
-                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
+                if (_CanPlayCard && ParticleEffect && !GameManager.Instance.GameEnded)
+                {
+                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+                    ParticleEffect.gameObject.SetActive(true);
+                    ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
+                    ParticleEffect.gameObject.transform.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+                    ParticleEffect.transform.localPosition = new Vector3(ParticleEffect.gameObject.transform.rotation.z * -0.20f, 0, 0);
+
+
+                }
+
+                if (!_CanPlayCard && ParticleEffect)
+                {
+                    //if (!EnableArc)
+                    //    Arc.rotation = Quaternion.Euler(0, 0, 0);
+                    //else
+                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+                    ParticleEffect.gameObject.SetActive(false);
+                    ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
+
+                }
             }
 
-            if (!_CanPlayCard && ParticleEffect)
+            if (GameManager.Instance.CardVersion == "Version 2" || GameManager.Instance.CardVersion == "Version 3")
             {
-                if (!EnableArc)
-                    Arc.rotation = Quaternion.Euler(0, 0, 0);
-                else
-                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
-
+                Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
                 ParticleEffect.gameObject.SetActive(false);
                 ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
+
             }
+
         }
         else
         {
