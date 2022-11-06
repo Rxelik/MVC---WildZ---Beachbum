@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
-public class CardMaker : MonoBehaviour
+public class CardMaker : MvcModels 
 {
     #region Version 1
     public List<Sprite> Red;
@@ -52,10 +51,10 @@ public class CardMaker : MonoBehaviour
     public SpriteRenderer dim;
     public bool Button = false;
     public bool SwappedFace = false;
+
+    
     private void Update()
     {
-
-
         if (!Button)
         {
             if (view._inspectorBelongsTo == "ColorPick" && view._InspectorColor == Color.white && !view._IsBamboozle)
@@ -100,7 +99,7 @@ public class CardMaker : MonoBehaviour
             {
                 if (GameManager.Instance.CardVersion == "Version 2" || GameManager.Instance.CardVersion == "Version 3")
                 {
-                    if (!view._CanPlayCard && GameManager.Instance.deckModel.CurrentTurn == "Player")
+                    if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
                     {
                         CardSprite.color = Color.gray;
                     }

@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 0}
+  CardsInPlayPos: {fileID: 0}
   _index: 0
   Draw: 0
   Turn: {fileID: 1316069435}
@@ -1825,6 +1826,24 @@ Transform:
   m_Father: {fileID: 1845574683}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &788265608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8852777157930610358, guid: 172e84f3b4c98224280ede10e174907e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1157286304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &788265609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788265608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3423d89f4abf22e46a3097829b97deb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &856739764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,6 +2873,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -1034
       objectReference: {fileID: 0}
+    - target: {fileID: 8852777157930610352, guid: 172e84f3b4c98224280ede10e174907e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 788265609}
+    - target: {fileID: 8852777157930610352, guid: 172e84f3b4c98224280ede10e174907e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DrawCard
+      objectReference: {fileID: 0}
     - target: {fileID: 8852777157976920900, guid: 172e84f3b4c98224280ede10e174907e,
         type: 3}
       propertyPath: m_ScaleFactor
@@ -3041,7 +3070,8 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8852777157930610355, guid: 172e84f3b4c98224280ede10e174907e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 172e84f3b4c98224280ede10e174907e, type: 3}
 --- !u!1 &1197196860
 GameObject:
@@ -4347,18 +4377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1870467215 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8852777157930610355, guid: 172e84f3b4c98224280ede10e174907e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1157286304}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1917414218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6777329513127545447, guid: 172e84f3b4c98224280ede10e174907e,
@@ -4612,6 +4630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986057253}
   - component: {fileID: 1986057252}
+  - component: {fileID: 1986057254}
   m_Layer: 0
   m_Name: Inisializer
   m_TagString: Untagged
@@ -4631,15 +4650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837af74bd645b684f8c75439093c19a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InsializeDeckSize: 25
   HandSize: 10
-  Colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0.123636246, a: 1}
-  - {r: 1, g: 0.8461646, b: 0, a: 1}
-  - {r: 0, g: 0.038576603, b: 1, a: 1}
-  DeckButton: {fileID: 1870467215}
-  AI: {fileID: 980547653}
   Playerbuttons:
   - {fileID: 1917414218}
   - {fileID: 93209883}
@@ -4694,6 +4705,7 @@ MonoBehaviour:
   - {fileID: 1443720037}
   - {fileID: 1147019480}
   _Server: {fileID: 1245915196}
+  MvcModels: {fileID: 1986057254}
 --- !u!4 &1986057253
 Transform:
   m_ObjectHideFlags: 0
@@ -4708,6 +4720,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1986057254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986057251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2179adb1f7a2f44b7e97ea0a355c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996858849
 GameObject:
   m_ObjectHideFlags: 0

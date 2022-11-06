@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeDetector : MonoBehaviour
+public class SwipeDetector : MvcModels
 {
     private Vector2 fingerDownPos;
     private Vector2 fingerUpPos;
@@ -50,7 +50,7 @@ public class SwipeDetector : MonoBehaviour
             // rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (rayHit.collider.gameObject.GetComponent<CardView>()._inspectorBelongsTo == "Player")
             {
-                GameManager.Instance.player.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer -= 20;
+                playerModel.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer -= 20;
                 rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
                 if (rayHit.collider.gameObject.GetComponent<CardView>()._CanPlayCard)
                 {
@@ -93,7 +93,7 @@ public class SwipeDetector : MonoBehaviour
             rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (rayHit.collider.gameObject.GetComponent<CardView>()._inspectorBelongsTo == "Player")
             {
-                GameManager.Instance.player.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer += 20;
+                playerModel.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer += 20;
                 rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
                 if (rayHit.collider.gameObject.GetComponent<CardView>()._CanPlayCard)
                 {

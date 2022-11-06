@@ -45,6 +45,8 @@ public interface ICardView
     bool CanPlayCard { set; }
 
     Sprite Sprite { set; }
+
+    AnimationCurve Curve { get; }
     
 }
 
@@ -79,6 +81,7 @@ public class CardView : MonoBehaviour, ICardView
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
     public Sprite Sprite { set { GetComponent<SpriteRenderer>(); } }
+    public AnimationCurve Curve { get => _curve;}
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
@@ -103,7 +106,9 @@ public class CardView : MonoBehaviour, ICardView
     public PlayerModel _InspectorPlayer;
     public EnemyModel _InspectorEnemy;
 
-    public AnimationCurve curve;
+    public AnimationCurve _curve;
+    private ICardView _cardViewImplementation;
+
     private void Awake()
     {
         _InspectorSprite = GetComponent<SpriteRenderer>();

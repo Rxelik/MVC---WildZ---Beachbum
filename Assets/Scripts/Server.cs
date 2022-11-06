@@ -27,13 +27,6 @@ public class Server : MonoBehaviour
     public DeckModel _deckModel;
     public BoardModel _boardModel;
 
-
-
-
-
-
-
-
     public void TestCanPlayCard(CardModel card, PlayerModel model)
     {
         Debug.Log(model + " Played " + card.Name);
@@ -41,6 +34,10 @@ public class Server : MonoBehaviour
         {
             Debug.Log("Top Card is " + _boardModel.TopCard().Name);
             Debug.Log(card.Name + " IsValid");
+        }
+        else
+        {
+            Debug.Log("Request Denied");
         }
     }
     public void TestCanPlayCard(CardModel card, EnemyModel model)
@@ -50,6 +47,10 @@ public class Server : MonoBehaviour
         {
             Debug.Log("Top Card is " + _boardModel.TopCard().Name);
             Debug.Log(card.Name + " IsValid");
+        }
+        else
+        {
+            Debug.Log("Request Denied");
         }
     }
 }

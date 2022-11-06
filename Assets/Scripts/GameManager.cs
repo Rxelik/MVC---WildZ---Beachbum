@@ -4,12 +4,11 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEditor;
-using static GameManager;
 using Spine.Unity;
 using Spine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MvcModels
 {
     #region Singelton
     public static GameManager Instance { get; private set; }
@@ -33,11 +32,11 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
     public event EventHandler<OnCardVersionChange> VersionChange = (sender, e) => { };
-    public DeckModel deckModel;
-    public PlayerModel player;
+    //public DeckModel deckModel;
+    //public PlayerModel player;
     public PlayerView playerView;
-    public EnemyModel enemy;
-    // public Transform CardsInPlayPos;
+    //public EnemyModel enemy;
+     public Transform CardsInPlayPos;
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
@@ -82,7 +81,7 @@ public class GameManager : MonoBehaviour
         if (GameEnded == false)
         {
             Turn.text = deckModel.CurrentTurn;
-            timer.text = enemy.Cards.Count.ToString();
+            timer.text = enemyModel.Cards.Count.ToString();
         }
 
         if (GameEnded == true && !clicked)
@@ -93,29 +92,29 @@ public class GameManager : MonoBehaviour
         {
             ContinueButton.SetActive(false);
         }
-        if (player.Cards.Count == 0 || enemy.Cards.Count > 20 && PlayerScore < 75)
+        if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20 && PlayerScore < 75)
         {
             if (!GameEnded)
                 CountScorePlayerScore();
             GameEnded = true;
-            if (enemy.Cards.Count > 20)
+            if (enemyModel.Cards.Count > 20)
                 Turn.text = "Opponent Has Over 20 Cards Player Won!";
-            else if (player.Cards.Count == 0)
+            else if (playerModel.Cards.Count == 0)
                 Turn.text = "Player WON";
 
 
         }
 
-        if (enemy.Cards.Count == 0 || player.Cards.Count > 20 && PlayerScore < 75)
+        if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20 && PlayerScore < 75)
         {
             if (!GameEnded)
                 CountScoreAIScore();
             GameEnded = true;
-            if (player.Cards.Count > 20)
+            if (playerModel.Cards.Count > 20)
             {
                 Turn.text = "Player Has Over 20 Cards Opponent Won!";
             }
-            else if (enemy.Cards.Count == 0)
+            else if (enemyModel.Cards.Count == 0)
                 Turn.text = "Opponent WON";
 
 
@@ -127,7 +126,7 @@ public class GameManager : MonoBehaviour
     void CountScorePlayerScore()
     {
 
-        foreach (var item in enemy.Cards)
+        foreach (var item in enemyModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
             {
@@ -161,7 +160,7 @@ public class GameManager : MonoBehaviour
     }
     void CountScoreAIScore()
     {
-        foreach (var item in player.Cards)
+        foreach (var item in playerModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
             {

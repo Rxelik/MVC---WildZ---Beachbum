@@ -12,7 +12,7 @@ public class CardController : ICardController
 {
     private GameManager _manager;
 
-
+        
     // Keep references to the model and view
     private readonly ICardModel model;
     private readonly ICardView view;
@@ -137,9 +137,9 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-
-                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
-               // SyncData();
+                view.Position = Vector2.Lerp(model.Position, Vector2.zero, view.Curve.Evaluate(t / duration));
+                
+                // SyncData();
                 yield return null;
             }
         }
