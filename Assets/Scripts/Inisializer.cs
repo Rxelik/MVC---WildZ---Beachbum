@@ -667,14 +667,14 @@ public class Inisializer : MonoBehaviour
                 item2.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
                 item2.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
             }
-            foreach (var item3 in Enemybuttons)
-            {
-                item.EnemyColorChooser.Add(item3);
-                item3.GetComponent<ButtonIndexV2>().playerModel = (PlayerModel)_playermodel;
-                item3.GetComponent<ButtonIndexV2>().enemyModel = (EnemyModel)_Enemyermodel;
-                item3.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
-                item3.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
-            }
+            //foreach (var item3 in Enemybuttons)
+            //{
+            //    item.EnemyColorChooser.Add(item3);
+            //    item3.GetComponent<ButtonIndexV2>().playerModel = (PlayerModel)_playermodel;
+            //    item3.GetComponent<ButtonIndexV2>().enemyModel = (EnemyModel)_Enemyermodel;
+            //    item3.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
+            //    item3.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
+            //}
 
         }
         GameManager.Instance.PassButton.SetActive(false);
@@ -761,12 +761,14 @@ public class Inisializer : MonoBehaviour
         Deckview.Inisialize = false;
         deck.ChangeTurn();
         GameManager.Instance.GameEnded = false;
+        GameManager.Instance.clicked = false;
 
     }
 
     public void ResetGame()
     {
-        GameManager.Instance.GameEnded = false;
+
+        GameManager.Instance.clicked = true;    
         for (int i = 0; i < GameManager.Instance.CardsObjects.Count; i++)
         {
             Destroy(GameManager.Instance.CardsObjects[i]);

@@ -45,7 +45,7 @@ public interface ICardView
     bool CanPlayCard { set; }
 
     Sprite Sprite { set; }
-
+    
 }
 
 // Implementation of the enemy view
@@ -103,6 +103,7 @@ public class CardView : MonoBehaviour, ICardView
     public PlayerModel _InspectorPlayer;
     public EnemyModel _InspectorEnemy;
 
+    public AnimationCurve curve;
     private void Awake()
     {
         _InspectorSprite = GetComponent<SpriteRenderer>();
@@ -155,8 +156,6 @@ public class CardView : MonoBehaviour, ICardView
                     ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
                     ParticleEffect.gameObject.transform.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
                     ParticleEffect.transform.localPosition = new Vector3(ParticleEffect.gameObject.transform.rotation.z * -0.20f, 0, 0);
-
-
                 }
 
                 if (!_CanPlayCard && ParticleEffect)
@@ -176,7 +175,6 @@ public class CardView : MonoBehaviour, ICardView
                 Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
                 ParticleEffect.gameObject.SetActive(false);
                 ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
-
             }
 
         }

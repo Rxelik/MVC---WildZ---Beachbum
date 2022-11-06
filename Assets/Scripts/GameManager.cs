@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
 
+    public bool clicked = false;
     public List<GameObject> CardsObjects = new List<GameObject>();
     private void Start()
     {
@@ -83,11 +84,15 @@ public class GameManager : MonoBehaviour
             Timer += Time.deltaTime;
             Turn.text = deckModel.CurrentTurn;
             timer.text = Timer.ToString();
-            ContinueButton.SetActive(false);
         }
-        else
+
+        if (GameEnded == true && !clicked)
         {
             ContinueButton.SetActive(true);
+        }
+        else if(GameEnded == false && clicked)
+        {
+            ContinueButton.SetActive(false);
         }
         if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
         {

@@ -624,7 +624,7 @@ public class ButtonIndexV2 : MonoBehaviour
     {
         foreach (var item in PlayerColorChooser)
         {
-            item.SetActive(false);
+            item.SetActive(false);  
         }
         foreach (var item in EnemyColorChooser)
         {
