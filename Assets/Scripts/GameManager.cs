@@ -32,11 +32,8 @@ public class GameManager : MvcModels
 
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
     public event EventHandler<OnCardVersionChange> VersionChange = (sender, e) => { };
-    //public DeckModel deckModel;
-    //public PlayerModel player;
     public PlayerView playerView;
-    //public EnemyModel enemy;
-     public Transform CardsInPlayPos;
+    public Transform CardsInPlayPos;
     public int _index = 0;
     public int Draw = 0;
     public TextMeshProUGUI Turn;
@@ -54,7 +51,6 @@ public class GameManager : MvcModels
     public int AIScore = 0;
     public string CardVersion = "Version 2";
     public GameObject ContinueButton;
-
     public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
 
