@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
     public CardModel ChosenCard;
     public bool PlayerCanPlay;
     public bool GameEnded = false;
-    private float Timer;
-    public GameObject PassButton;
     public bool PlayerPlayed = false;
     public bool TooKToHand = false;
+    private float Timer;
+    public GameObject PassButton;
     public int PlayerScore = 0;
     public int AIScore = 0;
-    public string CardVersion = "Version 1";
+    public string CardVersion = "Version 2";
     public GameObject ContinueButton;
 
     public GameObject Spine;
@@ -81,9 +81,8 @@ public class GameManager : MonoBehaviour
         PlayerScoreUGUI.text = PlayerScore.ToString();
         if (GameEnded == false)
         {
-            Timer += Time.deltaTime;
             Turn.text = deckModel.CurrentTurn;
-            timer.text = Timer.ToString();
+            timer.text = enemy.Cards.Count.ToString();
         }
 
         if (GameEnded == true && !clicked)
@@ -94,7 +93,7 @@ public class GameManager : MonoBehaviour
         {
             ContinueButton.SetActive(false);
         }
-        if (player.Cards.Count == 0 || enemy.Cards.Count > 20)
+        if (player.Cards.Count == 0 || enemy.Cards.Count > 20 && PlayerScore < 75)
         {
             if (!GameEnded)
                 CountScorePlayerScore();

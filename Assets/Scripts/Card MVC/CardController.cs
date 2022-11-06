@@ -81,32 +81,9 @@ public class CardController : ICardController
                 view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
                 model.BelongsTo = "Player";
-
             }
 
         }
-
-
-        if (model.BelongsTo == "ViewPlayer")
-        {
-            view.Position = new Vector3((model.Player.Cards[model.HandOrder].Position.x * 1.10f) + model.HandOrder, -8f, 0);
-            model.Layer = 20;
-            SyncData();
-        }
-        if (model.BelongsTo == "FlyingToEnemy")
-        {
-            while (t < duration)
-            {
-                t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Enemy.Cards[model.HandOrder].Position, t / duration);
-                yield return null;
-
-                model.BelongsTo = "Enemy";
-
-            }
-        }
-
-
         if (model.BelongsTo == "Player")
         {
             view.Position = model.Position;
@@ -119,8 +96,28 @@ public class CardController : ICardController
 
         }
 
+        if (model.BelongsTo == "ViewPlayer")
+        {
+            view.Position = new Vector3((model.Player.Cards[model.HandOrder].Position.x * 1.10f) + model.HandOrder, -8f, 0);
+            model.Layer = 20;
+            SyncData();
+        }
+        if (model.BelongsTo == "FlyingToEnemy")
+        {
+            while (t < duration)
+            {
+                t += Time.deltaTime / duration;
+                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), new Vector3(0, 12.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                yield return null;
+
+                model.BelongsTo = "Enemy";
+
+            }
+        }
+
         if (model.BelongsTo == "Enemy")
         {
+          //  view.Position = model.Position;
             while (t < 1f)
             {
                 t += Time.deltaTime / duration;

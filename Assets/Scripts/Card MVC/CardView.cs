@@ -142,7 +142,7 @@ public class CardView : MonoBehaviour, ICardView
         }
         if (_inspectorBelongsTo == "Enemy")
         {
-            Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
+          //  Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
         }
 
         if (_inspectorBelongsTo == "Player")
