@@ -14,9 +14,9 @@ public class TakeFromDeck : MvcModels
     {
         if (!manager.GameEnded && !GameManager.Instance.PlayerPlayed)
         {
-            if (deckModel.CurrentTurn == "Player" && !manager.TooKToHand)
+            if (deckModel.CurrentTurn == "Player" && !manager.TookToHand)
             {
-                manager.TooKToHand = true;
+                manager.TookToHand = true;
                 if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 ||
                     !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
                 {
@@ -102,7 +102,7 @@ public class TakeFromDeck : MvcModels
     {
         deckModel.ChangeTurn();
 
-        manager.TooKToHand = false;
+        manager.TookToHand = false;
     }
 
 }

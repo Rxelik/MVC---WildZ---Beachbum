@@ -660,11 +660,11 @@ public class ButtonIndexV2 : MvcModels
 
     }
 
-    void ChangeTurn(bool anotherTurn)
+   public void ChangeTurn(bool anotherTurn)
     {
 
         RemoveButtons();
-        manager.TooKToHand = false;
+        manager.TookToHand = false;
         AIplayed = false;
         if (!anotherTurn)
         {

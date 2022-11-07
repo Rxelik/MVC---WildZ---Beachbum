@@ -44,7 +44,7 @@ public class GameManager : MvcModels
     public bool PlayerCanPlay;
     public bool GameEnded = false;
     public bool PlayerPlayed = false;
-    public bool TooKToHand = false;
+    public bool TookToHand = false;
     private float Timer;
     public GameObject PassButton;
     public int PlayerScore = 0;
