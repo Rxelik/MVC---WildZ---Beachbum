@@ -46,11 +46,12 @@ public class Inisializer : MonoBehaviour
         var DeckviewFactory = new DeckViewFactory();
         var Deckview = DeckviewFactory.View;
         Deckview.Inisialize = true;
-        
+
         var DeckviewcontrollerFactory = new DeckControllerFactory(_deckmodel, Deckview);
         var Deckcontroller = DeckviewcontrollerFactory.Controller;
         #endregion
 
+        MvcModels.deckModel = (DeckModel)_deckmodel;
         #region Board
         ///
         var BoardmodelFactory = new BoardModelFactory();
@@ -68,6 +69,7 @@ public class Inisializer : MonoBehaviour
         #endregion
         _deckmodel.Board = (BoardModel)_Boardmodel;
 
+        MvcModels.boardModel = (BoardModel)_Boardmodel;
 
         //_______________________________________________\\
 
@@ -94,7 +96,7 @@ public class Inisializer : MonoBehaviour
         var controller = _controllerFactory.Controller;
 
         #endregion
-
+        MvcModels.playerModel = (PlayerModel)_playermodel;
         //_______________________________________________\\
 
         #region Enemy
@@ -119,7 +121,7 @@ public class Inisializer : MonoBehaviour
         var Enemycontroller = EnemycontrollerFactory.Controller;
 
         #endregion
-
+        MvcModels.enemyModel = (EnemyModel)_Enemyermodel;
         #region Old Button Ref
         //_______________________________________________\\
 
@@ -738,16 +740,13 @@ public class Inisializer : MonoBehaviour
         deck.ChangeTurn();
         GameManager.Instance.GameEnded = false;
         GameManager.Instance.clicked = false;
-        MvcModels.enemyModel = (EnemyModel)_Enemyermodel;
-        MvcModels.playerModel = (PlayerModel)_playermodel;
-        MvcModels.boardModel = (BoardModel)_Boardmodel;
-        MvcModels.deckModel = (DeckModel)_deckmodel;
+
     }
 
     public void ResetGame()
     {
 
-        GameManager.Instance.clicked = true;    
+        GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.CardsObjects.Count; i++)
         {
             Destroy(GameManager.Instance.CardsObjects[i]);
