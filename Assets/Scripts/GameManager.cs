@@ -72,51 +72,48 @@ public class GameManager : MvcModels
 
     private void Update()
     {
-        AIScoreUGUI.text = AIScore.ToString();
-        PlayerScoreUGUI.text = PlayerScore.ToString();
-        if (GameEnded == false)
+        if (!deckView._Inisialize)
         {
-            Turn.text = deckModel.CurrentTurn;
-            timer.text = enemyModel.Cards.Count.ToString();
-        }
-
-        if (GameEnded == true && !clicked)
-        {
-            ContinueButton.SetActive(true);
-        }
-        else if(GameEnded == false && clicked)
-        {
-            ContinueButton.SetActive(false);
-        }
-        if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20 && PlayerScore < 75)
-        {
-            if (!GameEnded)
-                CountScorePlayerScore();
-            GameEnded = true;
-            if (enemyModel.Cards.Count > 20)
-                Turn.text = "Opponent Has Over 20 Cards Player Won!";
-            else if (playerModel.Cards.Count == 0)
-                Turn.text = "Player WON";
-
-
-        }
-
-        if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20 && PlayerScore < 75)
-        {
-            if (!GameEnded)
-                CountScoreAIScore();
-            GameEnded = true;
-            if (playerModel.Cards.Count > 20)
+            AIScoreUGUI.text = AIScore.ToString();
+            PlayerScoreUGUI.text = PlayerScore.ToString();
+            if (GameEnded == false)
             {
-                Turn.text = "Player Has Over 20 Cards Opponent Won!";
+                Turn.text = deckModel.CurrentTurn;
+                timer.text = enemyModel.Cards.Count.ToString();
             }
-            else if (enemyModel.Cards.Count == 0)
-                Turn.text = "Opponent WON";
 
+            if (GameEnded == true && !clicked)
+            {
+                ContinueButton.SetActive(true);
+            }
+            else if (GameEnded == false && clicked)
+            {
+                ContinueButton.SetActive(false);
+            }
+            if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20 && PlayerScore < 75)
+            {
+                if (!GameEnded)
+                    CountScorePlayerScore();
+                GameEnded = true;
+                if (enemyModel.Cards.Count > 20)
+                    Turn.text = "Opponent Has Over 20 Cards Player Won!";
+                else if (playerModel.Cards.Count == 0)
+                    Turn.text = "Player WON";
+            }
 
-
+            if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20 && PlayerScore < 75)
+            {
+                if (!GameEnded)
+                    CountScoreAIScore();
+                GameEnded = true;
+                if (playerModel.Cards.Count > 20)
+                {
+                    Turn.text = "Player Has Over 20 Cards Opponent Won!";
+                }
+                else if (enemyModel.Cards.Count == 0)
+                    Turn.text = "Opponent WON";
+            }
         }
-
     }
 
     void CountScorePlayerScore()

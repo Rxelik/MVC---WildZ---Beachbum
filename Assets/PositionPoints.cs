@@ -26,14 +26,5 @@ public class PositionPoints : MonoBehaviour
     {
         iTween.DrawPath(positionPoints);
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

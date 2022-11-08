@@ -13,8 +13,6 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class Inisializer : MonoBehaviour
 {
     public int HandSize = 10;
-    public List<GameObject> Playerbuttons;
-    public List<GameObject> Enemybuttons;
     public List<ButtonIndexV2> buttons;
     public List<Transform> PlayerTransforms;
     public List<Transform> EnemyTransforms;
@@ -52,6 +50,7 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         MvcModels.deckModel = (DeckModel)_deckmodel;
+        MvcModels.deckView = (DeckView)Deckview;
         #region Board
         ///
         var BoardmodelFactory = new BoardModelFactory();

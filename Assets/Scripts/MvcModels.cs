@@ -22,6 +22,7 @@ public class MvcModels : MonoBehaviour
     //#endregion
     public static PlayerModel playerModel;
     public static EnemyModel enemyModel;
-    public static DeckModel deckModel;
     public static BoardModel boardModel;
+    public static DeckModel deckModel;
+    public static DeckView deckView;
 }

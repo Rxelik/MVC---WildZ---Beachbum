@@ -52,7 +52,7 @@ public interface ICardView
 
 // Implementation of the enemy view
 [System.Serializable]
-public class CardView : MonoBehaviour, ICardView
+public class CardView : MvcModels, ICardView
 {
     // Dispatched when the enemy is clicked
     public event EventHandler<CardClickedEventArgs> OnClicked = (sender, e) => { };
@@ -175,10 +175,15 @@ public class CardView : MonoBehaviour, ICardView
                 }
             }
 
+            float cardPercentAlongRail;
+            cardPercentAlongRail = _inspectOrderInHand * 10f;
             if (GameManager.Instance.CardVersion == "Version 2" || GameManager.Instance.CardVersion == "Version 3")
             {
-                Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+                //Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
                 ParticleEffect.gameObject.SetActive(false);
+
+                iTween.PutOnPath(gameObject,PositionPoints.Instance.positionPoints, cardPercentAlongRail);
+                print(cardPercentAlongRail);
                 ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
             }
 
