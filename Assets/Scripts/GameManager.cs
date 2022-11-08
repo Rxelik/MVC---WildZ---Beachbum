@@ -30,6 +30,7 @@ public class GameManager : MvcModels
 
     public class OnCardSpriteEvent { }
 
+    public PlayerModel player;
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
     public event EventHandler<OnCardVersionChange> VersionChange = (sender, e) => { };
     public PlayerView playerView;
@@ -59,6 +60,7 @@ public class GameManager : MvcModels
     private void Start()
     {
         skeletonAnimation.AnimationState.End += AnimationState_End;
+        player = playerModel;
     }
 
     private void AnimationState_End(TrackEntry trackEntry)

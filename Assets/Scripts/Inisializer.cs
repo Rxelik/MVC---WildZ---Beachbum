@@ -19,13 +19,11 @@ public class Inisializer : MonoBehaviour
     public Server _Server;
     public MvcModels MvcModels;
 
-    [Obsolete]
     void Awake()
     {
         StartCoroutine(Build());
     }
 
-    [Obsolete]
     IEnumerator Build()
     {
         //_______________________________________________\\
@@ -121,38 +119,6 @@ public class Inisializer : MonoBehaviour
 
         #endregion
         MvcModels.enemyModel = (EnemyModel)_Enemyermodel;
-        #region Old Button Ref
-        //_______________________________________________\\
-
-        //#region Button Refrence For Player And Board
-
-        //foreach (var item in Playerbuttons)
-        //{
-        //    item.playerModel = (PlayerModel)_playermodel;
-        //    item.enemyModel = (EnemyModel)_Enemyermodel;
-        //    item.deckModel = (DeckModel)_deckmodel;
-        //    item.boardModel = (BoardModel)_Boardmodel;
-        //}
-        //#endregion
-
-        //#region Button Refrence For Enemy And Board
-        //foreach (var item in Enemybuttons)
-        //{
-        //    item.playerModel = (PlayerModel)_playermodel;
-        //    item.enemyModel = (EnemyModel)_Enemyermodel;
-        //    item.deckModel = (DeckModel)_deckmodel;
-        //    item.boardModel = (BoardModel)_Boardmodel;
-        //}
-        //#endregion
-
-        //#region Button Refrence For Deck Button
-        //DeckButton.playerModel = (PlayerModel)_playermodel;
-        //DeckButton.enemyModel = (EnemyModel)_Enemyermodel;
-        //DeckButton.deckModel = (DeckModel)_deckmodel;
-        //DeckButton.boardModel = (BoardModel)_Boardmodel;
-        #endregion
-
-
 
         //_______________________________________________\\
 
@@ -634,36 +600,7 @@ public class Inisializer : MonoBehaviour
         #endregion
 
 
-        foreach (var item in FindSceneObjectsOfType(typeof(ButtonIndexV2)))
-        {
-            if (item)
-                buttons.Add((ButtonIndexV2)item);
-        }
         yield return new WaitForSeconds(1f);
-        foreach (var item in buttons)
-        {
-            //item.playerModel = (PlayerModel)_playermodel;
-            //item.enemyModel = (EnemyModel)_Enemyermodel;
-            //item.deckModel = (DeckModel)_deckmodel;
-            //item.boardModel = (BoardModel)_Boardmodel;
-            //foreach (var item2 in Playerbuttons)
-            //{
-            //    item.PlayerColorChooser.Add(item2);
-            //    item2.GetComponent<ButtonIndexV2>().playerModel = (PlayerModel)_playermodel;
-            //    item2.GetComponent<ButtonIndexV2>().enemyModel = (EnemyModel)_Enemyermodel;
-            //    item2.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
-            //    item2.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
-            //}
-            //foreach (var item3 in Enemybuttons)
-            //{
-            //    item.EnemyColorChooser.Add(item3);
-            //    item3.GetComponent<ButtonIndexV2>().playerModel = (PlayerModel)_playermodel;
-            //    item3.GetComponent<ButtonIndexV2>().enemyModel = (EnemyModel)_Enemyermodel;
-            //    item3.GetComponent<ButtonIndexV2>().deckModel = (DeckModel)_deckmodel;
-            //    item3.GetComponent<ButtonIndexV2>().boardModel = (BoardModel)_Boardmodel;
-            //}
-
-        }
         GameManager.Instance.PassButton.SetActive(false);
 
         #endregion
