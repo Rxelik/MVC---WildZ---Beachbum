@@ -32,7 +32,7 @@ public interface ICardView
     [SerializeField] EnemyModel Enemy { set; }
     int Number { set; }
     int HandOrder { set; }
-    Vector3 Position { set; }
+    Vector3 Position { get; set; }
     Quaternion Rotation { set; }
     Color Color { set; }
     string BelongsTo { set; }
@@ -67,7 +67,7 @@ public class CardView : MvcModels, ICardView
     public int HandOrder { set { _inspectOrderInHand = value; } }
     public PlayerModel Player { set { _InspectorPlayer = value; } }
     public EnemyModel Enemy { set { _InspectorEnemy = value; } }
-    public Vector3 Position { set { transform.position = value; _inspectPos = value; } }
+    public Vector3 Position { set { transform.position = value; _inspectPos = value; } get => transform.position; }
     public Quaternion Rotation { set { transform.rotation = value; _inspectRot = value; } }
 
     // Set the Card Color position

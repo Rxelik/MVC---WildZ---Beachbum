@@ -692,6 +692,7 @@ public class Inisializer : MonoBehaviour
         //GameManager.Instance.deckModel.Cards.Clear();
         //GameManager.Instance.playerModel.Board.Cards.Clear();
         //GameManager.Instance.CardsObjects.Clear();
+        GameManager.Instance.ContinueButton.SetActive(false);
         StartCoroutine(Build());
     }
 }

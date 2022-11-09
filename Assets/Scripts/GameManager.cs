@@ -84,13 +84,9 @@ public class GameManager : MvcModels
                 timer.text = enemyModel.Cards.Count.ToString();
             }
 
-            if (GameEnded == true && !clicked)
+            if (GameEnded && !clicked)
             {
                 ContinueButton.SetActive(true);
-            }
-            else if (GameEnded == false && clicked)
-            {
-                ContinueButton.SetActive(false);
             }
             if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20 && PlayerScore < 75)
             {

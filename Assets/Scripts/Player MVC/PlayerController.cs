@@ -123,7 +123,6 @@ public class PlayerController : IPlayerController
         int CardLayer = model.Cards.Count;
         for (int i = 0; i < model.Cards.Count; i++)
         {
-
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
 
@@ -134,7 +133,6 @@ public class PlayerController : IPlayerController
             }
             else
             {
-
                 if (model.Cards[i].CanPlayCardTest())
                 {
                     model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
@@ -143,7 +141,6 @@ public class PlayerController : IPlayerController
                 {
                     model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
                 }
-
             }
 
             moveRight += 2.8f;
@@ -174,9 +171,6 @@ public class PlayerController : IPlayerController
         }
         SyncData();
     }
-    // Called when the view is clicked
-
-    // Called when the model's position changes
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         // Update the view with the new position

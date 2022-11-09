@@ -78,7 +78,7 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Player.Cards[model.HandOrder].Position, t / duration);
+                view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
                 model.BelongsTo = "Player";
             }
@@ -86,14 +86,13 @@ public class CardController : ICardController
         }
         if (model.BelongsTo == "Player")
         {
-            view.Position = model.Position;
-            //while (t < duration)
-            //{
-            //    t += Time.deltaTime / duration;
-            //    view.Position = Vector3.Lerp(model.Position, model.Player.Cards [model.HandOrder].Position, t / duration);
-            //    yield return null;
-            //}
-
+            while (t < duration)
+            {
+                t += Time.deltaTime / duration;
+                view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
+                yield return null;
+                //model.BelongsTo = "Player";
+            }
         }
 
         if (model.BelongsTo == "ViewPlayer")
@@ -132,14 +131,14 @@ public class CardController : ICardController
             else
             {
                 model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+                SyncData();
             }
 
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
                 view.Position = Vector2.Lerp(model.Position, Vector2.zero, view.Curve.Evaluate(t / duration));
-                
-                // SyncData();
+
                 yield return null;
             }
         }

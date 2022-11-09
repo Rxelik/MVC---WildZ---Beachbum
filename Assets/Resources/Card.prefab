@@ -233,8 +233,8 @@ MonoBehaviour:
   - {fileID: -7846332575410952053, guid: 20b026c65374e614e98393a0c862a005, type: 3}
   - {fileID: -7648080950426862687, guid: 20b026c65374e614e98393a0c862a005, type: 3}
   White:
-  - {fileID: 21300000, guid: 6f9315db1b12c3a49b81ee52fe1474c3, type: 3}
-  - {fileID: 21300000, guid: cbc6725ff2d3e74469e5b2a17a7f05c3, type: 3}
+  - {fileID: 8772548143014677152, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
+  - {fileID: 7570145973966283090, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 21300000, guid: 40ec151fc31c6b343ba6d2f674ceff7b, type: 3}
   Red2:
   - {fileID: -8415582599563522889, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}

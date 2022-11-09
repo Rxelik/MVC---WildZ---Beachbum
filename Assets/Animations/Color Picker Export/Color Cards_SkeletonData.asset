@@ -18,11 +18,9 @@ MonoBehaviour:
   skeletonJSON: {fileID: 4900000, guid: 11076d4a9815587429226e430b065d8b, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
-    requiresBlendModeMaterials: 1
-    applyAdditiveMaterial: 1
-    additiveMaterials:
-    - pageName: Color Cards.png
-      material: {fileID: 2100000, guid: 4e82b3f957f6c5449bd3f141dfa2fbe1, type: 2}
+    requiresBlendModeMaterials: 0
+    applyAdditiveMaterial: 0
+    additiveMaterials: []
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []

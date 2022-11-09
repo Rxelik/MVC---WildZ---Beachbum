@@ -93,6 +93,7 @@ public class CardMaker : MvcModels
             {
                 SwappedFace = false;
                 CardSprite.sprite = CardBack;
+                CardSprite.color = Color.white;
             }
 
             if (view._inspectorBelongsTo == "Player")
@@ -111,6 +112,10 @@ public class CardMaker : MvcModels
                 }
             }
 
+            if (view._inspectorBelongsTo == "Board")
+            {
+                CardSprite.color = Color.white;
+            }
         }
     }
     private void Start()

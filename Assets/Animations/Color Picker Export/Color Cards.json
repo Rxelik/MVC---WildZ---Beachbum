@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "PKPnhLJ3/SkD4EzRkYpDIKiaWzM",
+	"hash": "VBGoYi5l8I5CLdecKa7SmlJ41AE",
 	"spine": "3.8.99",
 	"x": -325.36,
 	"y": -485,
@@ -327,6 +327,50 @@
 			"Yellow Bone2": {
 				"scale": [
 					{ "time": 0.1667, "y": 0 }
+				]
+			}
+		}
+	},
+	"None": {
+		"slots": {
+			"Blue Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" }
 				]
 			}
 		}
