@@ -47,7 +47,7 @@ public interface ICardView
     Sprite Sprite { set; }
 
     AnimationCurve Curve { get; }
-    
+
 }
 
 // Implementation of the enemy view
@@ -81,7 +81,7 @@ public class CardView : MvcModels, ICardView
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
     public Sprite Sprite { set { GetComponent<SpriteRenderer>(); } }
-    public AnimationCurve Curve { get => _curve;}
+    public AnimationCurve Curve { get => _curve; }
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
@@ -129,6 +129,7 @@ public class CardView : MvcModels, ICardView
         }
 
     }
+
     void Update()
     {
         // v2.BelongsTo = _inspectorBelongsTo;
@@ -136,101 +137,26 @@ public class CardView : MvcModels, ICardView
         {
             Arc.rotation = Quaternion.Euler(0, 0, 0);
         }
+
         if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
             gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
         }
+
         if (_inspectorBelongsTo == "Deck")
         {
             gameObject.transform.localScale = new Vector3(1f, 1f);
             Layer = 3;
         }
+
         if (_inspectorBelongsTo == "Enemy")
         {
-          //  Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
+            //  Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
         }
 
         if (_inspectorBelongsTo == "Player")
         {
-            if (GameManager.Instance.CardVersion == "Version 1")
-            {
-                if (_CanPlayCard && ParticleEffect && !GameManager.Instance.GameEnded)
-                {
-                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
-                    ParticleEffect.gameObject.SetActive(true);
-                    ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
-                    ParticleEffect.gameObject.transform.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
-                    ParticleEffect.transform.localPosition = new Vector3(ParticleEffect.gameObject.transform.rotation.z * -0.20f, 0, 0);
-                }
-
-                if (!_CanPlayCard && ParticleEffect)
-                {
-                    //if (!EnableArc)
-                    //    Arc.rotation = Quaternion.Euler(0, 0, 0);
-                    //else
-                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
-                    ParticleEffect.gameObject.SetActive(false);
-                    ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
-
-                }
-            }
-
-            float cardPercentAlongRail;
-            cardPercentAlongRail = _inspectOrderInHand * 10f;
-            if (GameManager.Instance.CardVersion == "Version 2" || GameManager.Instance.CardVersion == "Version 3")
-            {
-                //Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
-                ParticleEffect.gameObject.SetActive(false);
-
-                iTween.PutOnPath(gameObject,PositionPoints.Instance.positionPoints, cardPercentAlongRail);
-                print(cardPercentAlongRail);
-                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
-            }
-
-        }
-        else
-        {
-            ParticleEffect.gameObject.SetActive(false);
-        }
-        //gs.text = _inspectNumber.ToString();
-        //gs.sortingOrder = _sprite.sortingOrder;
-        // If the primary mouse button was pressed this frame
-        if (Input.GetMouseButtonDown(0))
-        {
-            // If the mouse hit this enemy
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (
-                Physics.Raycast(ray, out hit)
-                && hit.transform == transform
-            )
-            {
-                //var eventArgs = new CardClickedEventArgs();
-                //OnClicked(this, eventArgs);
-            }
-        }
-    }
-
-    IEnumerator WaitBeforeRegister()
-    {
-        yield return new WaitForSeconds(0.25f);
-        var eventArgs = new CardOnEnableEventArgs();
-        OnEnableEvent(this, eventArgs);
-        yield return new WaitForSeconds(0.25f);
-        var eventArgss = new OnLayerChangeEventArgs();
-        OnLayerChangeEve(this, eventArgss);
-        print("rized laya");
-    }
-
-    private void GetTransforms()
-    {
-        for (int i = 0; i < 9; i++)
-        {
-            //   PlayerTransforms.Add(GameObject.Find($"Player Card Pos "+i));
-        }
-        for (int i = 0; i < 9; i++)
-        {
-            //     EnemyTransforms.Add(GameObject.Find($"Enemy Card Pos " + i));
+            Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
         }
     }
 }

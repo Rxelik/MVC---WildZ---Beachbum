@@ -70,7 +70,6 @@ public class PlayerController : IPlayerController
     {
         FixPosition();
     }
-
     private void FixPos(object sender, TurnChangedEventArgs e)
     {
         FixPosition();
@@ -135,35 +134,16 @@ public class PlayerController : IPlayerController
             }
             else
             {
-                if (GameManager.Instance.CardVersion == "Version 1")
+
+                if (model.Cards[i].CanPlayCardTest())
                 {
-                    if (model.Cards[i].CanPlayCardTest())
-                    {
-                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -9.5f, -CardLayer);
-                    }
-                    else
-                    {
-                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
-                    }
+                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
+                }
+                else
+                {
+                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
                 }
 
-                if (GameManager.Instance.CardVersion == "Version 2")
-                {
-                    if (model.Cards[i].CanPlayCardTest())
-                    {
-                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
-                    }
-                    else
-                    {
-                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
-                    }
-                }
-
-
-                if (GameManager.Instance.CardVersion == "Version 3")
-                {
-                        model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12, -CardLayer);
-                }
             }
 
             moveRight += 2.8f;
@@ -196,15 +176,6 @@ public class PlayerController : IPlayerController
     }
     // Called when the view is clicked
 
-    private void ClickedOnCard(int Index)
-    {
-        if (model.Cards[Index].Color == model.Deck.Cards[model.Deck.Cards.Count - 1].Color || model.Cards[Index].Number == model.Deck.Cards[model.Deck.Cards.Count - 1].Number)
-        {
-            Debug.Log("You Played " + model.Cards[Index]);
-        }
-
-    }
-
     // Called when the model's position changes
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
@@ -220,39 +191,4 @@ public class PlayerController : IPlayerController
         view.Position = model.Position;
         view.HandPos = model.HandPos;
     }
-
-    //private void InisializeCards()
-    //{
-
-
-    //    if (_player.Hand.Count < 8)
-    //    {
-    //        _player.Hand.Add((CardModel)model);
-    //        model.BelongsTo = "Player";
-    //        model.Position = new Vector3(_player.transform.position.x + _player.Hand.Count * 3.5f, _player.transform.position.y);
-    //        SyncData();
-
-    //    }
-    //    else if (_enemy.Hand.Count < 8)
-    //    {
-    //        _enemy.Hand.Add(ThisCard());
-    //        model.BelongsTo = "Enemy";
-    //        model.Position = new Vector3(_enemy.transform.position.x + _enemy.Hand.Count * 3.5f, _enemy.transform.position.y);
-    //        SyncData();
-
-    //    }
-    //    else
-    //    {
-    //        if (!_manager.added)
-    //        {
-    //            _manager.Board.Add(ThisCard());
-    //            model.Position = _manager.BoardPos.position;
-    //            _manager.added = true;
-    //            SyncData();
-    //        }
-    //        else
-    //            _manager.Deck.Add(ThisCard());
-    //    }
-    //}
-
 }

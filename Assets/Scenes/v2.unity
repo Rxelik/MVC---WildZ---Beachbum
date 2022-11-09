@@ -1007,17 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837af74bd645b684f8c75439093c19a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandSize: 20
-  Playerbuttons:
-  - {fileID: 6777329512113226695}
-  - {fileID: 8285605271583437691}
-  - {fileID: 9034909175205506782}
-  - {fileID: 1382636132438951662}
-  Enemybuttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  HandSize: 10
   buttons: []
   PlayerTransforms:
   - {fileID: 0}
