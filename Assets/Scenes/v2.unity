@@ -180,7 +180,7 @@ MonoBehaviour:
   PassButton: {fileID: 8852777156921101707}
   PlayerScore: 0
   AIScore: 0
-  CardVersion: Version 2
+  CardVersion: Version 1
   ContinueButton: {fileID: 8852777156821672706}
   Spine: {fileID: 8852777158454993407}
   skeletonAnimation: {fileID: 8852777158454993400}
@@ -2514,7 +2514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8852777156772704942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4624,7 +4624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8852777158215771467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5650,7 +5650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8852777158662247899
 RectTransform:
   m_ObjectHideFlags: 0

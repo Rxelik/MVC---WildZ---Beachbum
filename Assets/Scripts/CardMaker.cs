@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardMaker : MvcModels 
+public class CardMaker : MvcModels
 {
     #region Version 1
     public List<Sprite> Red;
@@ -52,7 +52,7 @@ public class CardMaker : MvcModels
     public bool Button = false;
     public bool SwappedFace = false;
 
-    
+
     private void Update()
     {
         if (!Button)
@@ -97,22 +97,15 @@ public class CardMaker : MvcModels
 
             if (view._inspectorBelongsTo == "Player")
             {
-                if (GameManager.Instance.CardVersion == "Version 2" || GameManager.Instance.CardVersion == "Version 3")
+                if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
                 {
-                    if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
-                    {
-                        CardSprite.color = Color.gray;
-                    }
-                    else
-                    {
-                        CardSprite.color = Color.white;
-                    }
-                    if (view._CanPlayCard)
-                    {
-                        CardSprite.color = Color.white;
-                    }
+                    CardSprite.color = Color.gray;
                 }
-                else if (GameManager.Instance.CardVersion == "Version 1")
+                else
+                {
+                    CardSprite.color = Color.white;
+                }
+                if (view._CanPlayCard)
                 {
                     CardSprite.color = Color.white;
                 }

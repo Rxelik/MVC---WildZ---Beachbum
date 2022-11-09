@@ -5,6 +5,39 @@ TextureImporter:
   - first:
       213: -8415582599563522889
     second: Filled New Red_0
+  - first:
+      213: -6240698829245714875
+    second: Filled New Red_1
+  - first:
+      213: -5390152880101258738
+    second: Filled New Red_2
+  - first:
+      213: 9171125278519683456
+    second: Filled New Red_3
+  - first:
+      213: 312752372339319307
+    second: Filled New Red_4
+  - first:
+      213: -8579201939000647210
+    second: Filled New Red_5
+  - first:
+      213: -7458800537543317245
+    second: Filled New Red_6
+  - first:
+      213: 7044305268391526305
+    second: Filled New Red_7
+  - first:
+      213: -5443736840393340008
+    second: Filled New Red_8
+  - first:
+      213: -1301885096981190224
+    second: Filled New Red_9
+  - first:
+      213: -4973506025691401698
+    second: Filled New Red_10
+  - first:
+      213: 3444268562668208636
+    second: Filled New Red_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,10 +162,10 @@ TextureImporter:
       name: Filled New Red_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 7
-        width: 3935
-        height: 1876
+        x: 200
+        y: 1506
+        width: 705
+        height: 963
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +179,241 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Filled New Red_1
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 1506
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54eec9cba759469a0800000000000000
+      internalID: -6240698829245714875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_2
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 1506
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a048883845235b0800000000000000
+      internalID: -5390152880101258738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_3
+      rect:
+        serializedVersion: 2
+        x: 3445
+        y: 1506
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08965c0a9d1664f70800000000000000
+      internalID: 9171125278519683456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_4
+      rect:
+        serializedVersion: 2
+        x: 4526
+        y: 1506
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0222f720ae175400800000000000000
+      internalID: 312752372339319307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_5
+      rect:
+        serializedVersion: 2
+        x: 5608
+        y: 1506
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d126818a4d80f880800000000000000
+      internalID: -8579201939000647210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 263
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 309ec35fd640d7890800000000000000
+      internalID: -7458800537543317245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_7
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 263
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afb3ebb15662c160800000000000000
+      internalID: 7044305268391526305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_8
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 263
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89bc5a19f26f374b0800000000000000
+      internalID: -5443736840393340008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_9
+      rect:
+        serializedVersion: 2
+        x: 3445
+        y: 263
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9af08e666ceede0800000000000000
+      internalID: -1301885096981190224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_10
+      rect:
+        serializedVersion: 2
+        x: 4526
+        y: 263
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e123662de9e8afab0800000000000000
+      internalID: -4973506025691401698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filled New Red_11
+      rect:
+        serializedVersion: 2
+        x: 5608
+        y: 263
+        width: 705
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf142ec52008ccf20800000000000000
+      internalID: 3444268562668208636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0d418fea9bdf0e142bc4b04f98c1a256
+    spriteID: 04e8a8d16a460f64a95b174c0dc33d3c
     internalID: 0
     vertices: []
     indices: 
