@@ -156,7 +156,9 @@ public class CardView : MvcModels, ICardView
 
         if (_inspectorBelongsTo == "Player")
         {
-            Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+             Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, _inspectOrderInHand * 0.1f);
+           // transform.position = pointInPath;
         }
     }
 }

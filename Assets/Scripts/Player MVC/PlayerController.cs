@@ -121,30 +121,43 @@ public class PlayerController : IPlayerController
 
         float moveRight = 0;
         int CardLayer = model.Cards.Count;
+
+
         for (int i = 0; i < model.Cards.Count; i++)
         {
+
+            #region OGway
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, model.Cards[i].HandOrder * 0.1f);
 
             if (model.Deck.CurrentTurn != "Player")
             {
+                //model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y,-CardLayer);
                 model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
                 model.Cards[i].CanPlayCard = false;
             }
             else
             {
+
                 if (model.Cards[i].CanPlayCardTest())
-                {
+                { 
                     model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
+                    //model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
                 }
                 else
                 {
                     model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                   // model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
                 }
+
             }
 
             moveRight += 2.8f;
             CardLayer += 1;
+
+
+            #endregion
             if (model.Cards[i].BelongsTo == "Player")
             {
                 model.Cards[i].BelongsTo = "";

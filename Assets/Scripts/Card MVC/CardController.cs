@@ -91,7 +91,6 @@ public class CardController : ICardController
                 t += Time.deltaTime / duration;
                 view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
-                //model.BelongsTo = "Player";
             }
         }
 
