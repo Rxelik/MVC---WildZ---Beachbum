@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PositionPoints : MonoBehaviour
+public class PositionPoints : MvcModels
 {
     #region Singelton
     public static PositionPoints Instance { get; private set; }
@@ -26,5 +26,5 @@ public class PositionPoints : MonoBehaviour
     {
         iTween.DrawPath(positionPoints);
     }
-
+    
 }

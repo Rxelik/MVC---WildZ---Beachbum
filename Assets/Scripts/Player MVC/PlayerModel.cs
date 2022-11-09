@@ -184,8 +184,8 @@ public class PlayerModel : IPlayerModel
             card.BelongsTo = "FlyingToPlayer";
         //else
         //    card.BelongsTo = "Player";
-        //var eventArgs = new PlayerCardChangeEventArgs();
-        //OnCardsChanged(this, eventArgs);
+        var eventArgs = new PlayerCardChangeEventArgs();
+        OnCardsChanged(this, eventArgs);
     }
     public void RemoveCard(CardModel card)
     {
@@ -193,6 +193,8 @@ public class PlayerModel : IPlayerModel
         card.Layer = Board.Cards.Count;
         var eventArgs = new PlayerPlayedCard();
         PlayerPlayedEve(this, eventArgs);
+        var eventArgss = new PlayerCardChangeEventArgs();
+        OnCardsChanged(this, eventArgss);
     }
     public CardModel TopCard()
     {

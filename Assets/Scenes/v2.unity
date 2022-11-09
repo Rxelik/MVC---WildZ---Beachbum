@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837af74bd645b684f8c75439093c19a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandSize: 10
+  HandSize: 14
   buttons: []
   PlayerTransforms:
   - {fileID: 0}
@@ -1021,6 +1021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347267744674768904, guid: 78923e184be93cc429c882cf0aa3bf4c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5347267744674768904, guid: 78923e184be93cc429c882cf0aa3bf4c,
         type: 3}

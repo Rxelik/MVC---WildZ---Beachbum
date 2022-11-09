@@ -475,7 +475,7 @@ public class ButtonIndexV2 : MvcModels
             else
             {
                 manager.Draw += 2;
-                StartCoroutine(enemyModel.TakeCard(manager.Draw));
+                AI.Instance.StartCoroutine(enemyModel.TakeCard(manager.Draw));
                 manager.Draw = 0;
                 card.Number = 222;
                 ChangeTurn(true);

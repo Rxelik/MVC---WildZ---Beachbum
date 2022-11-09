@@ -69,6 +69,7 @@ public class PlayerController : IPlayerController
     private void EnemyPlayed(object sender, OnCardsInBoardChangeEventArgs e)
     {
         FixPosition();
+
     }
     private void FixPos(object sender, TurnChangedEventArgs e)
     {
@@ -80,7 +81,8 @@ public class PlayerController : IPlayerController
     }
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-        //FixPosition();
+        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f,0.5f,1.2f) , 1, 1);
+
 
 
         // SyncData();
@@ -133,8 +135,8 @@ public class PlayerController : IPlayerController
 
             if (model.Deck.CurrentTurn != "Player")
             {
-                //model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y,-CardLayer);
-                model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y,-CardLayer);
+                //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
                 model.Cards[i].CanPlayCard = false;
             }
             else
@@ -142,8 +144,8 @@ public class PlayerController : IPlayerController
 
                 if (model.Cards[i].CanPlayCardTest())
                 { 
-                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
-                    //model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                    //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
+                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
                 }
                 else
                 {
