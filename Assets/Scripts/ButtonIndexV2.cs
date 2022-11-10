@@ -668,7 +668,7 @@ public class ButtonIndexV2 : MvcModels
             manager.PlayerPlayed = false;
         }
         if (anotherTurn && deckModel.CurrentTurn == "Player")
-            StartCoroutine(PlayAgain());
+            AI.Instance.StartCoroutine(PlayAgain());
         else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
         {
             deckModel.PlayAgain();

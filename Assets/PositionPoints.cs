@@ -21,6 +21,7 @@ public class PositionPoints : MvcModels
     }
     #endregion
     public Transform[] positionPoints;
+    public Transform _LookAt;
 
     private void OnDrawGizmos()
     {

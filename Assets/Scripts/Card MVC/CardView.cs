@@ -138,27 +138,27 @@ public class CardView : MvcModels, ICardView
             Arc.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
+        else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
             gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
         }
 
-        if (_inspectorBelongsTo == "Deck")
+        else if (_inspectorBelongsTo == "Deck")
         {
             gameObject.transform.localScale = new Vector3(1f, 1f);
             Layer = 3;
         }
 
-        if (_inspectorBelongsTo == "Enemy")
+        else if (_inspectorBelongsTo == "Enemy")
         {
             //  Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
         }
 
-        if (_inspectorBelongsTo == "Player")
+        else if (_inspectorBelongsTo == "Player")
         {
-             Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
-            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ( (_inspectOrderInHand +0.5f) / playerModel.Cards.Count));
-            transform.position = pointInPath;
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((_inspectOrderInHand + 0.5f) / playerModel.Cards.Count));
+            //transform.position = pointInPath;
+
         }
     }
 }

@@ -98,17 +98,18 @@ public class CardMaker : MvcModels
 
             if (view._inspectorBelongsTo == "Player")
             {
-                if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
-                {
-                    CardSprite.color = Color.gray;
-                }
-                else
-                {
-                    CardSprite.color = Color.white;
-                }
+                //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
+                //{
+                //    CardSprite.color = Color.gray;
+                //}
+
                 if (view._CanPlayCard)
                 {
                     CardSprite.color = Color.white;
+                }
+                else
+                {
+                    CardSprite.color = Color.gray;
                 }
             }
 

@@ -81,7 +81,6 @@ public class PlayerController : IPlayerController
     }
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f,0.5f,1.2f) , 1, 1);
 
 
 
@@ -104,6 +103,7 @@ public class PlayerController : IPlayerController
 
     private void FixPosition()
     {
+        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f, 0.15f, 1.25f), 1, 1);
         //R Y B G
         if (!model.FirstTurn)
         {
@@ -112,6 +112,7 @@ public class PlayerController : IPlayerController
                 .ThenBy(go => go.Color.b)
                 .ThenBy(go => go.Color == UnityEngine.Color.yellow)
                 .ThenBy(go => go.Color.r)
+                .ThenBy(go => go.Number)
                 .ToList();
             model.Cards.Clear();
         }
@@ -131,11 +132,11 @@ public class PlayerController : IPlayerController
             #region OGway
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, model.Cards[i].HandOrder * 0.1f);
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((model.Cards[i].HandOrder + 0.5f) / model.Cards.Count));
 
             if (model.Deck.CurrentTurn != "Player")
             {
-                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y,-CardLayer);
+                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
                 //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
                 model.Cards[i].CanPlayCard = false;
             }
@@ -143,18 +144,31 @@ public class PlayerController : IPlayerController
             {
 
                 if (model.Cards[i].CanPlayCardTest())
-                { 
+                {
                     //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
-                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y+1, -CardLayer);
                 }
                 else
                 {
-                    model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
-                   // model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                    // model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
                 }
 
             }
-
+            int middle;
+            middle = model.Cards.Count / 2;
+            if (model.Cards[i].HandOrder >= middle)
+            {
+                model.Cards[i].Rotation = Quaternion.Euler(0, 0, -model.Cards[i].HandOrder*0.25f);
+            }
+            else if (model.Cards[i].HandOrder == middle)
+            {
+                model.Cards[i].Rotation = Quaternion.Euler(0, 0, -model.Cards[i].HandOrder *0.25f);
+            }
+            else
+            {
+                model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].HandOrder*0.25f);
+            }
             moveRight += 2.8f;
             CardLayer += 1;
 
