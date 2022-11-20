@@ -20,14 +20,7 @@ public class SpineAnim : MonoBehaviour
         skeletonAnimation.AnimationState.SetAnimation(4, "Summon Animation", false);
     }
 
-    //private void AnimationState_End(TrackEntry trackEntry)
-    //{
-    //    if (trackEntry.TrackIndex != 4)
-    //    {
-    //        Spine.SetActive(false);
-    //    }
-    //    print("Anim Ended");
-    //}
+
 
     public void ChooseColor(string _Color)
     {

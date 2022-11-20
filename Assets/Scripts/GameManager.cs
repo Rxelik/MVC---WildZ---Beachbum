@@ -31,8 +31,16 @@ public class GameManager : MvcModels
     public class OnCardSpriteEvent { }
 
     public PlayerModel player;
-    public event EventHandler<OnCardSpriteEvent> SpriteChangeEve = (sender, e) => { };
-    public event EventHandler<OnCardVersionChange> VersionChange = (sender, e) => { };
+    public event EventHandler<OnCardSpriteEvent> SpriteChangeEve;
+    public event EventHandler<OnCardVersionChange> VersionChange;
+
+    public event EventHandler<OnLooseAnimEventArgs> OnLooseEve;
+    public event EventHandler<OnRoundLooseAnimEventArgs> OnRoundLooseEve;
+    public event EventHandler<OnWinAnimEventArgs> OnWinEve;
+    public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
+    public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
+
+
     public PlayerView playerView;
     public Transform CardsInPlayPos;
     public int _index = 0;
@@ -62,6 +70,7 @@ public class GameManager : MvcModels
         skeletonAnimation.AnimationState.End += AnimationState_End;
         player = playerModel;
     }
+
 
     private void AnimationState_End(TrackEntry trackEntry)
     {
@@ -93,10 +102,22 @@ public class GameManager : MvcModels
                 if (!GameEnded)
                     CountScorePlayerScore();
                 GameEnded = true;
+
                 if (enemyModel.Cards.Count > 20)
+                {
                     Turn.text = "Opponent Has Over 20 Cards Player Won!";
+                    var eventArgss = new OnRoundWinAnimEventArgs();
+                    print("GAME MANAAGER");
+                    OnRoundWinEve(this, eventArgss);
+                    print("GAME MANAAGER");
+                }
                 else if (playerModel.Cards.Count == 0)
+                {
                     Turn.text = "Player WON";
+                    var eventArgss = new OnRoundWinAnimEventArgs();
+                    print("GAME MANAAGER");
+                    OnRoundWinEve(this, eventArgss);
+                }
             }
 
             if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20 && PlayerScore < 75)
@@ -107,9 +128,17 @@ public class GameManager : MvcModels
                 if (playerModel.Cards.Count > 20)
                 {
                     Turn.text = "Player Has Over 20 Cards Opponent Won!";
+                    var eventLoose = new OnLooseAnimEventArgs();
+                    print("GAME MANAAGER");
+                    OnLooseEve(this, eventLoose);
                 }
                 else if (enemyModel.Cards.Count == 0)
+                {
                     Turn.text = "Opponent WON";
+                    var eventLoose = new OnLooseAnimEventArgs();
+                    print("GAME MANAAGER");
+                    OnLooseEve(this, eventLoose);
+                }
             }
         }
     }
@@ -189,6 +218,7 @@ public class GameManager : MvcModels
         print("InsideChangeSprite");
         CardVersion = Version;
         print(CardVersion);
+
         var eventArgs = new OnCardSpriteEvent();
         SpriteChangeEve(this, eventArgs);
         var eventArgss = new OnCardVersionChange();

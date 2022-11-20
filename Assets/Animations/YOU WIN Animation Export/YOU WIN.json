@@ -1,0 +1,928 @@
+{
+"skeleton": {
+	"hash": "WsQwKb8NtMsYFyR0vFGH4ZiHvrI",
+	"spine": "3.8.99",
+	"x": -1064.56,
+	"y": -238.67,
+	"width": 2057,
+	"height": 808,
+	"images": "./images/",
+	"audio": "C:/Users/yarde/Desktop/Team PlayFool/VFX/Animations/YOU WIN"
+},
+"bones": [
+	{ "name": "root", "y": 0.76, "color": "ffffffff" },
+	{ "name": "Y", "parent": "root", "x": -772.25, "y": 1.5, "color": "f700ffff" },
+	{ "name": "O", "parent": "root", "x": -512.12, "y": 10.09, "color": "f700ffff" },
+	{ "name": "U", "parent": "root", "x": -206.6, "y": 2.73, "color": "f700ffff" },
+	{ "name": "U Shine", "parent": "U", "x": 20.6, "y": -45.4, "color": "000000ff" },
+	{ "name": "Y Shine", "parent": "Y", "x": -116.91, "y": 148.47, "color": "000000ff" },
+	{ "name": "W", "parent": "root", "x": 259.47, "y": 21.14, "color": "f700ffff" },
+	{ "name": "I", "parent": "root", "x": 542.91, "y": 19.91, "color": "f700ffff" },
+	{ "name": "N", "parent": "root", "x": 760.09, "y": 17.46, "color": "f700ffff" },
+	{ "name": "W Shine", "parent": "W", "x": 128.49, "y": 139.23, "color": "000000ff" },
+	{ "name": "Green Card", "parent": "root", "y": -120.76, "color": "ffffffff" },
+	{ "name": "Green Glow", "parent": "Green Card", "x": -348.85, "y": 292.17, "color": "1aff00ff" },
+	{ "name": "Blue Card", "parent": "root", "y": -120.76, "color": "ffffffff" },
+	{ "name": "Blue Glow", "parent": "Blue Card", "x": -142.71, "y": 409.97, "color": "00bbffff" },
+	{ "name": "Yellow Card", "parent": "root", "y": -120.76, "color": "ffffffff" },
+	{ "name": "Yellow Glow", "parent": "Yellow Card", "x": 74.47, "y": 402.6, "color": "fdff00ff" },
+	{ "name": "Red Card", "parent": "root", "y": -120.76, "color": "ffffffff" },
+	{ "name": "Red Glow", "parent": "Red Card", "x": 283.06, "y": 304.44, "color": "ff0000ff" },
+	{ "name": "Backglow Left", "parent": "root", "x": -492.08, "y": 5.96, "color": "ffb500ff" },
+	{ "name": "Backglow Right", "parent": "root", "x": 484.12, "y": 16.39, "color": "ffa400ff" },
+	{ "name": "Backglow Left2", "parent": "root", "x": -893.75, "y": 5.96, "color": "ffb500ff" },
+	{ "name": "Backglow Right2", "parent": "root", "x": 881.58, "y": 16.39, "color": "ffa400ff" },
+	{ "name": "Backglow Right3", "parent": "root", "x": 256.99, "y": 16.39, "color": "ffa400ff" },
+	{ "name": "Backglow Left3", "parent": "root", "x": -201.86, "y": 5.96, "color": "ffb500ff" }
+],
+"slots": [
+	{ "name": "Backglow Left", "bone": "Backglow Left", "attachment": "Backglow Left", "blend": "additive" },
+	{ "name": "Backglow Left2", "bone": "Backglow Left2", "attachment": "Backglow Left", "blend": "additive" },
+	{ "name": "Backglow Left4", "bone": "Backglow Left3", "attachment": "Backglow Left", "blend": "additive" },
+	{ "name": "Backglow Right", "bone": "Backglow Right", "attachment": "Backglow Right", "blend": "additive" },
+	{ "name": "Backglow Right2", "bone": "Backglow Right2", "attachment": "Backglow Right", "blend": "additive" },
+	{ "name": "Backglow Right3", "bone": "Backglow Right3", "attachment": "Backglow Right", "blend": "additive" },
+	{ "name": "Red Card", "bone": "Red Card", "attachment": "Red Card" },
+	{ "name": "Red Glow", "bone": "Red Glow", "attachment": "Red Glow", "blend": "additive" },
+	{ "name": "Yellow Card", "bone": "Yellow Card", "attachment": "Yellow Card" },
+	{ "name": "Yellow Glow", "bone": "Yellow Glow", "attachment": "Yellow Glow", "blend": "additive" },
+	{ "name": "Blue Card", "bone": "Blue Card", "attachment": "Blue Card" },
+	{ "name": "Blue Glow", "bone": "Blue Glow", "attachment": "Blue Glow", "blend": "additive" },
+	{ "name": "Green Card", "bone": "Green Card", "attachment": "Green Card" },
+	{ "name": "Green Glow", "bone": "Green Glow", "attachment": "Green Glow", "blend": "additive" },
+	{ "name": "N", "bone": "N", "attachment": "N" },
+	{ "name": "I", "bone": "I", "attachment": "I" },
+	{ "name": "W", "bone": "W", "attachment": "W" },
+	{ "name": "U", "bone": "U", "attachment": "U" },
+	{ "name": "O", "bone": "O", "attachment": "O" },
+	{ "name": "Y", "bone": "Y", "attachment": "Y" },
+	{ "name": "Y Shine", "bone": "Y Shine", "attachment": "Y Shine" },
+	{ "name": "W Shine", "bone": "W Shine", "attachment": "W Shine" },
+	{ "name": "U Shine", "bone": "U Shine", "attachment": "U Shine" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Backglow Left": {
+				"Backglow Left": { "x": -2.49, "y": -4.89, "width": 1258, "height": 1263 }
+			},
+			"Backglow Left2": {
+				"Backglow Left": { "x": -2.49, "y": -4.89, "width": 1258, "height": 1263 }
+			},
+			"Backglow Left4": {
+				"Backglow Left": { "x": -2.49, "y": -4.89, "width": 1258, "height": 1263 }
+			},
+			"Backglow Right": {
+				"Backglow Right": { "x": 16.32, "y": -15.31, "width": 1258, "height": 1263 }
+			},
+			"Backglow Right2": {
+				"Backglow Right": { "x": 16.32, "y": -15.31, "width": 1258, "height": 1263 }
+			},
+			"Backglow Right3": {
+				"Backglow Right": { "x": 16.32, "y": -15.31, "width": 1258, "height": 1263 }
+			},
+			"Blue Card": {
+				"Blue Card": { "x": -147.06, "y": 409.83, "width": 279, "height": 345 }
+			},
+			"Blue Glow": {
+				"Blue Glow": { "x": -6.35, "y": 1.87, "width": 555, "height": 555 }
+			},
+			"Green Card": {
+				"Green Card": { "x": -345.56, "y": 303.33, "width": 350, "height": 352 }
+			},
+			"Green Glow": {
+				"Green Glow": { "x": 5.29, "y": 11.16, "width": 534, "height": 534 }
+			},
+			"I": {
+				"I": { "x": 1.53, "y": -2.34, "width": 338, "height": 500 }
+			},
+			"N": {
+				"N": { "x": -1.65, "y": -0.88, "width": 468, "height": 508 }
+			},
+			"O": {
+				"O": { "x": 3.56, "y": 5.48, "width": 510, "height": 510 }
+			},
+			"Red Card": {
+				"Red Card": { "x": 274.44, "y": 305.83, "width": 350, "height": 351 }
+			},
+			"Red Glow": {
+				"Red Glow": { "x": -4.12, "y": 4.39, "width": 547, "height": 547 }
+			},
+			"U": {
+				"U": { "x": 4.04, "y": 13.34, "width": 494, "height": 505 }
+			},
+			"U Shine": {
+				"U Shine": { "x": 1.93, "y": 7.74, "width": 207, "height": 205 }
+			},
+			"W": {
+				"W": { "x": -6.53, "y": -4.56, "width": 647, "height": 504 }
+			},
+			"W Shine": {
+				"W Shine": { "x": -3.02, "y": 3.7, "width": 507, "height": 507 }
+			},
+			"Y": {
+				"Y": { "x": -0.82, "y": 13.57, "width": 491, "height": 505 }
+			},
+			"Y Shine": {
+				"Y Shine": { "x": -0.9, "y": -1.4, "width": 349, "height": 348 }
+			},
+			"Yellow Card": {
+				"Yellow Card": { "x": 77.94, "y": 411.83, "width": 279, "height": 345 }
+			},
+			"Yellow Glow": {
+				"Yellow Glow": { "x": 2.47, "y": 0.73, "width": 547, "height": 548 }
+			}
+		}
+	}
+],
+"animations": {
+	"None": {
+		"slots": {
+			"Backglow Left": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Backglow Left2": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Backglow Left4": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Backglow Right": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Backglow Right2": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Backglow Right3": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"I": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"N": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"O": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"U": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"U Shine": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"W": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"W Shine": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Y": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Y Shine": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Card": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	},
+	"YOU WIN Animation": {
+		"slots": {
+			"Backglow Left": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.2667, "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6, "color": "ffffffff" },
+					{ "time": 0.8, "color": "ffffff00" }
+				]
+			},
+			"Backglow Left2": {
+				"color": [
+					{ "color": "ffffffd4" },
+					{ "time": 0.1667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.6333, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffffd4" }
+				]
+			},
+			"Backglow Left4": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.4667, "color": "ffffff00" },
+					{ "time": 0.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				]
+			},
+			"Backglow Right": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.4667, "color": "ffffff00" },
+					{ "time": 0.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				]
+			},
+			"Backglow Right2": {
+				"color": [
+					{ "color": "ffffff7f" },
+					{ "time": 0.1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffff00" },
+					{ "time": 0.7667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.9, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff7f" }
+				]
+			},
+			"Backglow Right3": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.3667, "color": "ffffff00" },
+					{ "time": 0.5667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7, "color": "ffffffff" },
+					{ "time": 0.9, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"translate": [
+					{ "time": 1, "x": 2.3 }
+				]
+			},
+			"Y": {
+				"translate": [
+					{ "x": 772.25, "y": -1271.52 },
+					{ "time": 0.1667, "x": -2.3 }
+				],
+				"scale": [
+					{ "time": 0.0667 },
+					{ "time": 0.1333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.2333 }
+				]
+			},
+			"O": {
+				"translate": [
+					{ "x": 512.12, "y": -1271.52 },
+					{ "time": 0.2333, "x": -2.3 }
+				],
+				"scale": [
+					{ "time": 0.1333 },
+					{ "time": 0.2, "x": 1.2, "y": 1.2 },
+					{ "time": 0.3 }
+				]
+			},
+			"U": {
+				"translate": [
+					{ "x": 206.6, "y": -1271.52 },
+					{ "time": 0.3, "x": -2.3 }
+				],
+				"scale": [
+					{ "time": 0.2 },
+					{ "time": 0.2667, "x": 1.2, "y": 1.2 },
+					{ "time": 0.3667 }
+				]
+			},
+			"W": {
+				"translate": [
+					{ "x": -259.47, "y": -1271.52 },
+					{ "time": 0.3667, "x": -2.3 }
+				],
+				"scale": [
+					{ "time": 0.2667 },
+					{ "time": 0.3333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.4333 }
+				]
+			},
+			"I": {
+				"translate": [
+					{ "x": -542.91, "y": -1271.52 },
+					{ "time": 0.4333, "x": -2.3 }
+				],
+				"scale": [
+					{ "time": 0.3333 },
+					{ "time": 0.4, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5 }
+				]
+			},
+			"N": {
+				"translate": [
+					{ "x": -760.09, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3 }
+				],
+				"scale": [
+					{ "time": 0.4 },
+					{ "time": 0.4667, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5667 }
+				]
+			},
+			"Green Card": {
+				"rotate": [
+					{ "angle": -45, "curve": "stepped" },
+					{ "time": 0.5, "angle": -45 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": -5 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3 }
+				]
+			},
+			"Blue Card": {
+				"rotate": [
+					{ "angle": -15, "curve": "stepped" },
+					{ "time": 0.5, "angle": -15 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": -2 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3 }
+				]
+			},
+			"Yellow Card": {
+				"rotate": [
+					{ "angle": 15, "curve": "stepped" },
+					{ "time": 0.5, "angle": 15 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": 2 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3 }
+				]
+			},
+			"Red Card": {
+				"rotate": [
+					{ "angle": 45, "curve": "stepped" },
+					{ "time": 0.5, "angle": 45 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": 5 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3 }
+				]
+			},
+			"Red Glow": {
+				"translate": [
+					{ "x": -283.06, "curve": "stepped" },
+					{ "time": 0.4333, "x": -283.06 },
+					{ "time": 0.5 },
+					{ "time": 1.3333, "x": 8.78, "y": 12.65 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1, "x": 0, "y": 0 },
+					{ "time": 1.3333 }
+				]
+			},
+			"Yellow Glow": {
+				"translate": [
+					{ "x": -74.47, "curve": "stepped" },
+					{ "time": 0.4333, "x": -74.47 },
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{ "x": 0.727, "y": 0.727 },
+					{ "time": 0.2667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9333, "x": 0, "y": 0 },
+					{ "time": 1.1667 }
+				]
+			},
+			"Blue Glow": {
+				"translate": [
+					{ "x": 142.71, "curve": "stepped" },
+					{ "time": 0.4333, "x": 142.71 },
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{ "x": 0.364, "y": 0.364 },
+					{ "time": 0.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7333, "x": 0, "y": 0 },
+					{ "time": 0.9333 }
+				]
+			},
+			"Green Glow": {
+				"translate": [
+					{ "x": 348.85, "curve": "stepped" },
+					{ "time": 0.4333, "x": 348.85 },
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5, "x": 0, "y": 0 },
+					{ "time": 0.7333 }
+				]
+			},
+			"Backglow Left": {
+				"scale": [
+					{ "x": 0.3, "y": 0.3 },
+					{ "time": 0.1, "x": 0, "y": 0 },
+					{ "time": 0.7667 },
+					{ "time": 1, "x": 0.3, "y": 0.3 }
+				]
+			},
+			"Backglow Right": {
+				"scale": [
+					{ "x": 0.3, "y": 0.3 },
+					{ "time": 0.4667 },
+					{ "time": 0.8, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0.3, "y": 0.3 }
+				]
+			},
+			"Backglow Left2": {
+				"scale": [
+					{ "x": 0.6, "y": 0.6 },
+					{ "time": 0.2667 },
+					{ "time": 0.6, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0.6, "y": 0.6 }
+				]
+			},
+			"Backglow Right2": {
+				"scale": [
+					{ "x": 0.6, "y": 0.6 },
+					{ "time": 0.2, "x": 0, "y": 0 },
+					{ "time": 0.8667 },
+					{ "time": 1, "x": 0.6, "y": 0.6 }
+				]
+			},
+			"Backglow Right3": {
+				"scale": [
+					{ "x": 0.15, "y": 0.15 },
+					{ "time": 0.5667 },
+					{ "time": 0.9, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0.15, "y": 0.15 }
+				]
+			},
+			"Backglow Left3": {
+				"scale": [
+					{ "x": 0.5, "y": 0.5 },
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.8333 },
+					{ "time": 1, "x": 0.5, "y": 0.5 }
+				]
+			},
+			"Y Shine": {
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0, "y": 0 },
+					{ "time": 1, "curve": "stepped" },
+					{ "time": 1.0667 },
+					{ "time": 1.2667, "x": 0, "y": 0 }
+				]
+			},
+			"W Shine": {
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5, "x": 0, "y": 0 },
+					{ "time": 0.6667, "curve": "stepped" },
+					{ "time": 0.7333 },
+					{ "time": 0.9333, "x": 0, "y": 0 }
+				]
+			},
+			"U Shine": {
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6667, "x": 0, "y": 0 },
+					{ "time": 0.8333, "curve": "stepped" },
+					{ "time": 0.9 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"YOU WIN Animation & Rise": {
+		"slots": {
+			"Backglow Left": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.2667, "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6, "color": "ffffffff" },
+					{ "time": 0.8, "color": "ffffff00" }
+				]
+			},
+			"Backglow Left2": {
+				"color": [
+					{ "color": "ffffffd4" },
+					{ "time": 0.1667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.6333, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffffd4" }
+				]
+			},
+			"Backglow Left4": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.4667, "color": "ffffff00" },
+					{ "time": 0.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				]
+			},
+			"Backglow Right": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.4667, "color": "ffffff00" },
+					{ "time": 0.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				]
+			},
+			"Backglow Right2": {
+				"color": [
+					{ "color": "ffffff7f" },
+					{ "time": 0.1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffff00" },
+					{ "time": 0.7667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.9, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff7f" }
+				]
+			},
+			"Backglow Right3": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.3667, "color": "ffffff00" },
+					{ "time": 0.5667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7, "color": "ffffffff" },
+					{ "time": 0.9, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"translate": [
+					{ "time": 1, "x": 2.3 }
+				]
+			},
+			"Y": {
+				"translate": [
+					{ "x": 772.25, "y": -1271.52 },
+					{ "time": 0.1667, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -2.3, "y": 1531.32 }
+				],
+				"scale": [
+					{ "time": 0.0667 },
+					{ "time": 0.1333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.2333 }
+				]
+			},
+			"O": {
+				"translate": [
+					{ "x": 512.12, "y": -1271.52 },
+					{ "time": 0.2333, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -2.3, "y": 1531.32 }
+				],
+				"scale": [
+					{ "time": 0.1333 },
+					{ "time": 0.2, "x": 1.2, "y": 1.2 },
+					{ "time": 0.3 }
+				]
+			},
+			"U": {
+				"translate": [
+					{ "x": 206.6, "y": -1271.52 },
+					{ "time": 0.3, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -2.3, "y": 1531.32 }
+				],
+				"scale": [
+					{ "time": 0.2 },
+					{ "time": 0.2667, "x": 1.2, "y": 1.2 },
+					{ "time": 0.3667 }
+				]
+			},
+			"W": {
+				"translate": [
+					{ "x": -259.47, "y": -1271.52 },
+					{ "time": 0.3667, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -2.3, "y": 1531.32 }
+				],
+				"scale": [
+					{ "time": 0.2667 },
+					{ "time": 0.3333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.4333 }
+				]
+			},
+			"I": {
+				"translate": [
+					{ "x": -542.91, "y": -1271.52 },
+					{ "time": 0.4333, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -2.3, "y": 1531.32 }
+				],
+				"scale": [
+					{ "time": 0.3333 },
+					{ "time": 0.4, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5 }
+				]
+			},
+			"N": {
+				"translate": [
+					{ "x": -760.09, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -2.3, "y": 1531.32 }
+				],
+				"scale": [
+					{ "time": 0.4 },
+					{ "time": 0.4667, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5667 }
+				]
+			},
+			"Green Card": {
+				"rotate": [
+					{ "angle": -45, "curve": "stepped" },
+					{ "time": 0.5, "angle": -45 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": -5 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": 131.16, "y": 1525.49 }
+				]
+			},
+			"Blue Card": {
+				"rotate": [
+					{ "angle": -15, "curve": "stepped" },
+					{ "time": 0.5, "angle": -15 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": -2 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": 51.14, "y": 1530.39 }
+				]
+			},
+			"Yellow Card": {
+				"rotate": [
+					{ "angle": 15, "curve": "stepped" },
+					{ "time": 0.5, "angle": 15 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": 2 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -55.74, "y": 1530.39 }
+				]
+			},
+			"Red Card": {
+				"rotate": [
+					{ "angle": 45, "curve": "stepped" },
+					{ "time": 0.5, "angle": 45 },
+					{ "time": 0.6667 },
+					{ "time": 0.7667, "angle": 5 }
+				],
+				"translate": [
+					{ "y": -1271.52, "curve": "stepped" },
+					{ "time": 0.4333, "y": -1271.52 },
+					{ "time": 0.5, "x": -2.3, "curve": "stepped" },
+					{ "time": 1.3333, "x": -2.3 },
+					{ "time": 1.9, "x": -135.76, "y": 1525.49 }
+				]
+			},
+			"Red Glow": {
+				"translate": [
+					{ "x": -283.06, "curve": "stepped" },
+					{ "time": 0.4333, "x": -283.06 },
+					{ "time": 0.5 },
+					{ "time": 1.3333, "x": 8.78, "y": 12.65 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1, "x": 0, "y": 0 },
+					{ "time": 1.3333 }
+				]
+			},
+			"Yellow Glow": {
+				"translate": [
+					{ "x": -74.47, "curve": "stepped" },
+					{ "time": 0.4333, "x": -74.47 },
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{ "x": 0.727, "y": 0.727 },
+					{ "time": 0.2667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9333, "x": 0, "y": 0 },
+					{ "time": 1.1667 }
+				]
+			},
+			"Blue Glow": {
+				"translate": [
+					{ "x": 142.71, "curve": "stepped" },
+					{ "time": 0.4333, "x": 142.71 },
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{ "x": 0.364, "y": 0.364 },
+					{ "time": 0.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7333, "x": 0, "y": 0 },
+					{ "time": 0.9333 }
+				]
+			},
+			"Green Glow": {
+				"translate": [
+					{ "x": 348.85, "curve": "stepped" },
+					{ "time": 0.4333, "x": 348.85 },
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5, "x": 0, "y": 0 },
+					{ "time": 0.7333 }
+				]
+			},
+			"Backglow Left": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.9, "y": 459.4 }
+				],
+				"scale": [
+					{ "x": 0.3, "y": 0.3 },
+					{ "time": 0.1, "x": 0, "y": 0 },
+					{ "time": 0.7667 },
+					{ "time": 1, "x": 0.3, "y": 0.3 }
+				]
+			},
+			"Backglow Right": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.9, "y": 459.4 }
+				],
+				"scale": [
+					{ "x": 0.3, "y": 0.3 },
+					{ "time": 0.4667 },
+					{ "time": 0.8, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0.3, "y": 0.3 }
+				]
+			},
+			"Backglow Left2": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.9, "y": 918.79 }
+				],
+				"scale": [
+					{ "x": 0.6, "y": 0.6 },
+					{ "time": 0.2667 },
+					{ "time": 0.6, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0.6, "y": 0.6 }
+				]
+			},
+			"Backglow Right2": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.9, "y": 918.79 }
+				],
+				"scale": [
+					{ "x": 0.6, "y": 0.6 },
+					{ "time": 0.2, "x": 0, "y": 0 },
+					{ "time": 0.8667 },
+					{ "time": 1, "x": 0.6, "y": 0.6 }
+				]
+			},
+			"Backglow Right3": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.9, "y": 229.7 }
+				],
+				"scale": [
+					{ "x": 0.15, "y": 0.15 },
+					{ "time": 0.5667 },
+					{ "time": 0.9, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0.15, "y": 0.15 }
+				]
+			},
+			"Backglow Left3": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.9, "y": 765.66 }
+				],
+				"scale": [
+					{ "x": 0.5, "y": 0.5 },
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.8333 },
+					{ "time": 1, "x": 0.5, "y": 0.5 }
+				]
+			},
+			"Y Shine": {
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0, "y": 0 },
+					{ "time": 1, "curve": "stepped" },
+					{ "time": 1.0667 },
+					{ "time": 1.2667, "x": 0, "y": 0 }
+				]
+			},
+			"W Shine": {
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5, "x": 0, "y": 0 },
+					{ "time": 0.6667, "curve": "stepped" },
+					{ "time": 0.7333 },
+					{ "time": 0.9333, "x": 0, "y": 0 }
+				]
+			},
+			"U Shine": {
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6667, "x": 0, "y": 0 },
+					{ "time": 0.8333, "curve": "stepped" },
+					{ "time": 0.9 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}
