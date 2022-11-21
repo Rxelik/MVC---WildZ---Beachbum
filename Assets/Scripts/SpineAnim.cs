@@ -14,16 +14,15 @@ public class SpineAnim : MonoBehaviour
     public int ptes;
     private void Start()
     {
-        skeletonAnimation.AnimationState.End += AnimationState_End;
     }
 
     private void AnimationState_End(TrackEntry trackEntry)
     {
-        if (skeletonAnimation.startingAnimation != "Summon Animation")
-        {
-           GameManager.Instance.StartCoroutine(DelayDeactive());
-        }
-        print("Anim Ended");
+        //if (skeletonAnimation.startingAnimation != "Summon Animation")
+        //{
+        //   GameManager.Instance.StartCoroutine(DelayDeactive());
+        //}
+        //print("Anim Ended");
     }
 
     IEnumerator DelayDeactive()

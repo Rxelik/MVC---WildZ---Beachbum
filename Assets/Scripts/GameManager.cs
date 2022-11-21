@@ -112,8 +112,8 @@ public class GameManager : MvcModels
                 }
                 else if (PlayerScore > 75)
                 {
-                    var eventRoundWin = new OnRoundWinAnimEventArgs();
-                    OnRoundWinEve(this, eventRoundWin);
+                    var eventRoundWin = new OnWinAnimEventArgs();
+                    OnWinEve(this, eventRoundWin);
                 }
             }
 

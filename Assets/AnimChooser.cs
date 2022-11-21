@@ -22,11 +22,17 @@ public class AnimChooser : MonoBehaviour
 
     private void AnimationState_End(TrackEntry trackEntry)
     {
-        if (skeletonAnimation.startingAnimation == "Summon Animation")
+        print(trackEntry.Animation.Name);
+        if (trackEntry.Animation.Name != "Choose Color Anim")
         {
-            gameObject.SetActive(false);
+            StartCoroutine(DelayDeactive());
         }
-        print("Anim Ended");
+    }
+
+    IEnumerator DelayDeactive()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()

@@ -1161,7 +1161,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 
+  startingAnimation: None
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -1558,7 +1558,7 @@ PrefabInstance:
     - target: {fileID: 6533368456122913100, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6533368456122913136, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
         type: 3}
@@ -1948,7 +1948,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 
+  startingAnimation: None
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -2208,7 +2208,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 
+  startingAnimation: None
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -2706,7 +2706,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 
+  startingAnimation: None
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -5504,7 +5504,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 
+  startingAnimation: None
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -5587,7 +5587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8852777158454993408
 MonoBehaviour:
   m_ObjectHideFlags: 0
