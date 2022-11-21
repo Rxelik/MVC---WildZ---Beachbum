@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using Spine;
+using System.Drawing;
 
 public class SpineAnim : MonoBehaviour
 {
@@ -10,35 +11,52 @@ public class SpineAnim : MonoBehaviour
     public SkeletonGraphic skeletonAnimation;
     public AnimationStateData stateData;
     public string Color;
+    public int ptes;
     private void Start()
     {
-        //skeletonAnimation.AnimationState.End += AnimationState_End;
+        skeletonAnimation.AnimationState.End += AnimationState_End;
     }
-    private void OnEnable()
+
+    private void AnimationState_End(TrackEntry trackEntry)
     {
-        Spine.SetActive(true);
-        skeletonAnimation.AnimationState.SetAnimation(4, "Summon Animation", false);
+        if (skeletonAnimation.startingAnimation != "Summon Animation")
+        {
+           GameManager.Instance.StartCoroutine(DelayDeactive());
+        }
+        print("Anim Ended");
     }
 
+    IEnumerator DelayDeactive()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
+    }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            skeletonAnimation.AnimationState.SetAnimation(ptes, "Red Picked", false);
+        }
+    }
 
     public void ChooseColor(string _Color)
     {
         if (_Color == "Red")
         {
-            skeletonAnimation.AnimationState.SetAnimation(4, "Red Picked", false);
+            skeletonAnimation.AnimationState.SetAnimation(6, "Red Picked", false);
         }
         if (_Color == "Green")
         {
-            skeletonAnimation.AnimationState.SetAnimation(4, "Green Picked", false);
+            skeletonAnimation.AnimationState.SetAnimation(6, "Green Picked", false);
         }
         if (_Color == "Blue")
         {
-            skeletonAnimation.AnimationState.SetAnimation(4, "Blue Picked", false);
+            skeletonAnimation.AnimationState.SetAnimation(6, "Blue Picked", false);
         }
         if (_Color == "Yellow")
         {
-            skeletonAnimation.AnimationState.SetAnimation(5, "Yellow Picked", false);
+            skeletonAnimation.AnimationState.SetAnimation(6, "Yellow Picked", false);
         }
 
 

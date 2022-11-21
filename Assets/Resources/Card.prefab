@@ -235,7 +235,7 @@ MonoBehaviour:
   White:
   - {fileID: 8772548143014677152, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 7570145973966283090, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
-  - {fileID: 21300000, guid: 40ec151fc31c6b343ba6d2f674ceff7b, type: 3}
+  - {fileID: 21300000, guid: 56a3b0b26eb1a2043a3e98efdadda58b, type: 3}
   Red2:
   - {fileID: -8415582599563522889, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
   - {fileID: -6240698829245714875, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
@@ -291,7 +291,7 @@ MonoBehaviour:
   White2:
   - {fileID: 8772548143014677152, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 7570145973966283090, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
-  - {fileID: 21300000, guid: 40ec151fc31c6b343ba6d2f674ceff7b, type: 3}
+  - {fileID: 21300000, guid: 56a3b0b26eb1a2043a3e98efdadda58b, type: 3}
   Red3:
   - {fileID: 7829426244860202883, guid: dbb466c313516c74f96a6151a14f77f2, type: 3}
   - {fileID: -2652701373212946414, guid: dbb466c313516c74f96a6151a14f77f2, type: 3}
@@ -347,7 +347,7 @@ MonoBehaviour:
   White3:
   - {fileID: 8772548143014677152, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 7570145973966283090, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
-  - {fileID: 21300000, guid: 40ec151fc31c6b343ba6d2f674ceff7b, type: 3}
+  - {fileID: 21300000, guid: 56a3b0b26eb1a2043a3e98efdadda58b, type: 3}
   CardSprite: {fileID: 6587215133960815618}
   CardBack: {fileID: 21300000, guid: 7af289f85666d974594d81a1680fdfa5, type: 3}
   view: {fileID: 7266716411848905878}

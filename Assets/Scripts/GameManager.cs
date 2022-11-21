@@ -67,19 +67,19 @@ public class GameManager : MvcModels
     public List<GameObject> CardsObjects = new List<GameObject>();
     private void Start()
     {
-        skeletonAnimation.AnimationState.End += AnimationState_End;
+        //skeletonAnimation.AnimationState.End += AnimationState_End;
         player = playerModel;
     }
 
 
-    private void AnimationState_End(TrackEntry trackEntry)
-    {
-        if (trackEntry.TrackIndex != 4)
-        {
-            Spine.SetActive(false);
-        }
-        print("Anim Ended");
-    }
+    //private void AnimationState_End(TrackEntry trackEntry)
+    //{
+    //    if (trackEntry.TrackIndex != 4)
+    //    {
+    //        Spine.SetActive(false);
+    //    }
+    //    print("Anim Ended");
+    //}
 
     private void Update()
     {
@@ -97,55 +97,54 @@ public class GameManager : MvcModels
             {
                 ContinueButton.SetActive(true);
             }
-            if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20 && PlayerScore < 75)
+
+            if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
             {
                 if (!GameEnded)
+                {
                     CountScorePlayerScore();
-                GameEnded = true;
-
-                if (enemyModel.Cards.Count > 20)
-                {
-                    Turn.text = "Opponent Has Over 20 Cards Player Won!";
-                    var eventArgss = new OnRoundWinAnimEventArgs();
-                    print("GAME MANAAGER");
-                    OnRoundWinEve(this, eventArgss);
-                    print("GAME MANAAGER");
                 }
-                else if (playerModel.Cards.Count == 0)
+                if (PlayerScore < 75)
                 {
-                    Turn.text = "Player WON";
-                    var eventArgss = new OnRoundWinAnimEventArgs();
-                    print("GAME MANAAGER");
-                    OnRoundWinEve(this, eventArgss);
+                    Turn.text = "";
+                    var eventRoundWin = new OnRoundWinAnimEventArgs();
+                    OnRoundWinEve(this, eventRoundWin);
+                }
+                else if (PlayerScore > 75)
+                {
+                    var eventRoundWin = new OnRoundWinAnimEventArgs();
+                    OnRoundWinEve(this, eventRoundWin);
                 }
             }
 
-            if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20 && PlayerScore < 75)
+            if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
             {
                 if (!GameEnded)
+                {
                     CountScoreAIScore();
-                GameEnded = true;
-                if (playerModel.Cards.Count > 20)
-                {
-                    Turn.text = "Player Has Over 20 Cards Opponent Won!";
-                    var eventLoose = new OnLooseAnimEventArgs();
-                    print("GAME MANAAGER");
-                    OnLooseEve(this, eventLoose);
                 }
-                else if (enemyModel.Cards.Count == 0)
+                if (GameEnded)
                 {
-                    Turn.text = "Opponent WON";
-                    var eventLoose = new OnLooseAnimEventArgs();
-                    print("GAME MANAAGER");
-                    OnLooseEve(this, eventLoose);
+                    if (AIScore < 75)
+                    {
+                        Turn.text = "";
+                        var eventLoose = new OnRoundLooseAnimEventArgs();
+                        OnRoundLooseEve(this, eventLoose);
+                    }
+                    else if (AIScore > 75)
+                    {
+                        var eventLoose = new OnLooseAnimEventArgs();
+                        OnLooseEve(this, eventLoose);
+                    }
                 }
             }
         }
+
     }
 
     void CountScorePlayerScore()
     {
-
+        GameEnded = true;
         foreach (var item in enemyModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
@@ -180,6 +179,7 @@ public class GameManager : MvcModels
     }
     void CountScoreAIScore()
     {
+        GameEnded = true;
         foreach (var item in playerModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
@@ -224,29 +224,11 @@ public class GameManager : MvcModels
         var eventArgss = new OnCardVersionChange();
         VersionChange(this, eventArgss);
     }
+
+    public void CallChooseCard()
+    {
+        var chooseCardAnimEvent = new OnChooseCardAnimEventArgs();
+        OnChooseCardEve(this, chooseCardAnimEvent);
+    }
 }
-//public class EditModeFunctions : EditorWindow
-//{
-//    [MenuItem("Window/Edit Mode Functions")]
-//    public static void ShowWindow()
-//    {
-//        GetWindow<EditModeFunctions>("Edit Mode Functions");
-//    }
 
-//    private void OnGUI()
-//    {
-//        if (GUILayout.Button("Version 1"))
-//        {
-//            GameManager.Instance.ChangeSprite("Version 1");
-//        }
-//        if (GUILayout.Button("Version 2"))
-//        {
-//            GameManager.Instance.ChangeSprite("Version 2");
-//        }
-//        if (GUILayout.Button("Version 3"))
-//        {
-//            GameManager.Instance.ChangeSprite("Version 3");
-//        }
-//    }
-
-//}

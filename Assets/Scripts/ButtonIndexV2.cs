@@ -68,6 +68,7 @@ public class ButtonIndexV2 : MvcModels
                             playerModel.RemoveCard(manager.ChosenCard);
                             manager.ChosenCard.BelongsTo = "ColorPick";
                             manager.ChosenCard.Layer = 1000;
+                            manager.CallChooseCard();
                         }
                         foreach (var item in PlayerColorChooser) { item.SetActive(true); }
                     }
@@ -80,7 +81,12 @@ public class ButtonIndexV2 : MvcModels
     {
         manager = GameManager.Instance;
         _server = Server.Instance;
+
+        var eventLoose = new OnLooseAnimEventArgs();
+
     }
+
+
 
     #region NormalCards
 

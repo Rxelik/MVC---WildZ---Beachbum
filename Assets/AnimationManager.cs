@@ -49,32 +49,47 @@ public class AnimationManager : MonoBehaviour
     private void AnimationManagerOnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
         ChooseCardAnim.SetActive(true);
-        print("ON CHOOSE");
-
+        print("Choose Color Anim");
     }
 
     private void AnimationManager_OnRoundLooseEve(object sender, OnRoundLooseAnimEventArgs e)
     {
         RoundLooseAnim.SetActive(true);
-        print("ON CHOOSE");
+        print("Round Lost Anim");
     }
     private void AnimationManager_OnRoundWinEve(object sender, OnRoundWinAnimEventArgs e)
     {
         RoundWinAnim.SetActive(true);
-        print("ON CHOOSE");
-
+        print("Round Win Anim");
     }
 
     private void AnimationManager_OnWinEve(object sender, OnWinAnimEventArgs e)
     {
         WinAnim.SetActive(true);
-        print("ONWIN");
-
+        print("Win Game Anim");
     }
 
     private void AnimationManager_OnLooseEve(object sender, OnLooseAnimEventArgs e)
     {
         LooseAnim.SetActive(true);
-        print("ONLOOSE");
+        print("Loose Game Anim");
+    }
+
+    public void DeActiveAnim()
+    {
+        LooseAnim.SetActive(false);
+        WinAnim.SetActive(false);
+        RoundWinAnim.SetActive(false);
+        RoundLooseAnim.SetActive(false);
+        ChooseCardAnim.SetActive(false);
+    }
+    public IEnumerator DelayDeActive()
+    {
+        yield return new WaitForSeconds(0.15f);
+        LooseAnim.SetActive(false);
+        WinAnim.SetActive(false);
+        RoundWinAnim.SetActive(false);
+        RoundLooseAnim.SetActive(false);
+        ChooseCardAnim.SetActive(false);
     }
 }

@@ -17,15 +17,25 @@ public class AnimChooser : MonoBehaviour
     public string animName;
     private void Start()
     {
-        //skeletonAnimation.AnimationState.End += AnimationState_End;
+        skeletonAnimation.AnimationState.End += AnimationState_End;
     }
+
+    private void AnimationState_End(TrackEntry trackEntry)
+    {
+        if (skeletonAnimation.startingAnimation == "Summon Animation")
+        {
+            gameObject.SetActive(false);
+        }
+        print("Anim Ended");
+    }
+
     private void OnEnable()
     {
         PlayAnim();
     }
     public void PlayAnim()
     {
-        Spine.SetActive(true);
+        //Spine.SetActive(true);
         skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, false);
     }
 }
