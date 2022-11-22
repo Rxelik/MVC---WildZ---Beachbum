@@ -192,6 +192,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 8852777158454993400}
   clicked: 0
   CardsObjects: []
+  Trigger: 0
 --- !u!4 &14892770
 Transform:
   m_ObjectHideFlags: 0
@@ -1161,7 +1162,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: None
+  startingAnimation: 
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -1207,6 +1208,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 883055463}
   trackIndex: 2
   animName: Round Lost Animation
+  animNamse: 
 --- !u!1 &937529315 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6533368456122913100, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
@@ -1948,7 +1950,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: None
+  startingAnimation: 
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -1994,6 +1996,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 1318465674}
   trackIndex: 2
   animName: YOU WIN Animation
+  animNamse: YOU WIN Animation
 --- !u!1 &1335295799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,7 +2211,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: None
+  startingAnimation: 
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -2254,6 +2257,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 1474491955}
   trackIndex: 3
   animName: Round Won Animation
+  animNamse: 
 --- !u!1 &1516740695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2710,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: None
+  startingAnimation: 
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -2752,6 +2756,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 1841997627}
   trackIndex: 2
   animName: Opponent Win & Rise
+  animNamse: Opponent Win & Rise
 --- !u!1 &1848415739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,7 +2853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837af74bd645b684f8c75439093c19a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandSize: 10
+  HandSize: 8
   buttons: []
   PlayerTransforms:
   - {fileID: 0}
@@ -5504,7 +5509,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: None
+  startingAnimation: 
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -5604,6 +5609,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 8852777158454993400}
   trackIndex: 6
   animName: Summon Animation
+  animNamse: Summon Animation
 --- !u!1 &8852777158510925377
 GameObject:
   m_ObjectHideFlags: 0

@@ -696,5 +696,6 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.GameEnded = false;
         AnimationManager.Instance.DeActiveAnim();
         StartCoroutine(Build());
+        GameManager.Instance.Trigger = false;
     }
 }

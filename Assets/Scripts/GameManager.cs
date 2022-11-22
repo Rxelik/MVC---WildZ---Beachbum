@@ -65,6 +65,8 @@ public class GameManager : MvcModels
 
     public bool clicked = false;
     public List<GameObject> CardsObjects = new List<GameObject>();
+    [HideInInspector] public bool Trigger = false;
+
     private void Start()
     {
         //skeletonAnimation.AnimationState.End += AnimationState_End;
@@ -104,16 +106,18 @@ public class GameManager : MvcModels
                 {
                     CountScorePlayerScore();
                 }
-                if (PlayerScore < 75)
+                if (PlayerScore < 75 && !Trigger)
                 {
                     Turn.text = "";
                     var eventRoundWin = new OnRoundWinAnimEventArgs();
                     OnRoundWinEve(this, eventRoundWin);
+                    Trigger = true;
                 }
-                else if (PlayerScore > 75)
+                else if (PlayerScore > 75 && !Trigger)
                 {
                     var eventRoundWin = new OnWinAnimEventArgs();
                     OnWinEve(this, eventRoundWin);
+                    Trigger = true;
                 }
             }
 
@@ -125,16 +129,18 @@ public class GameManager : MvcModels
                 }
                 if (GameEnded)
                 {
-                    if (AIScore < 75)
+                    if (AIScore < 75 && !Trigger)
                     {
                         Turn.text = "";
                         var eventLoose = new OnRoundLooseAnimEventArgs();
                         OnRoundLooseEve(this, eventLoose);
+                        Trigger = true;
                     }
-                    else if (AIScore > 75)
+                    else if (AIScore > 75 && !Trigger)
                     {
                         var eventLoose = new OnLooseAnimEventArgs();
                         OnLooseEve(this, eventLoose);
+                        Trigger = true;
                     }
                 }
             }

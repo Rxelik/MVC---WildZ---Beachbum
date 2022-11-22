@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "54WosNqAwU+jvFaSNx+bdlKJe6M",
+	"hash": "JAKfgfNkdrL6PWc3gQ0uqMJs2AU",
 	"spine": "3.8.99",
 	"x": -627.5,
 	"y": -122.5,
@@ -67,10 +67,10 @@
 		"bones": {
 			"root": {
 				"translate": [
-					{ "x": -1700 },
+					{ "x": -2500 },
 					{ "time": 0.1333, "curve": "stepped" },
 					{ "time": 1.3667 },
-					{ "time": 1.5667, "x": 1700 }
+					{ "time": 1.5667, "x": 2500 }
 				]
 			},
 			"Banner": {
@@ -100,10 +100,10 @@
 		"bones": {
 			"root": {
 				"translate": [
-					{ "x": -1700 },
+					{ "x": -2500 },
 					{ "time": 0.1333, "curve": "stepped" },
 					{ "time": 1.3667 },
-					{ "time": 1.5667, "x": 1700 }
+					{ "time": 1.5667, "x": 2500 }
 				]
 			},
 			"Banner2": {
