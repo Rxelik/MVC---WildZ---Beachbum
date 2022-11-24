@@ -10,7 +10,7 @@ public class OnWinAnimEventArgs { }
 public class OnRoundWinAnimEventArgs { }
 public class OnChooseCardAnimEventArgs { }
 
-public class AnimationManager : MonoBehaviour
+public class AnimationManager : MvcModels
 {
     #region Singelton
     public static AnimationManager Instance { get; private set; }
@@ -48,7 +48,11 @@ public class AnimationManager : MonoBehaviour
 
     private void AnimationManagerOnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
-        ChooseCardAnim.SetActive(true);
+        if (playerModel.Cards.Count >= 1)
+        {
+            ChooseCardAnim.SetActive(true);
+
+        }
     }
 
     private void AnimationManager_OnRoundLooseEve(object sender, OnRoundLooseAnimEventArgs e)

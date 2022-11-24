@@ -8,18 +8,33 @@ using Random = System.Random;
 using System.Linq;
 using Color = UnityEngine.Color;
 using UnityEditor;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class Inisializer : MonoBehaviour
 {
+
+
+    #region Singelton
+    public static Inisializer Instance { get; private set; }
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        StartCoroutine(Build());
+    }
+    #endregion
     public int HandSize = 10;
     public Server _Server;
     public MvcModels MvcModels;
 
-    void Awake()
-    {
-        StartCoroutine(Build());
-    }
+
 
     IEnumerator Build()
     {

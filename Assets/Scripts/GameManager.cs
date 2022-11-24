@@ -74,7 +74,7 @@ public class GameManager : MvcModels
 
             if (gameEnded && !clicked)
             {
-                continueButton.SetActive(true);
+                StartCoroutine(ContinueEnumerator());
             }
 
             if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
@@ -212,6 +212,13 @@ public class GameManager : MvcModels
     {
         var chooseCardAnimEvent = new OnChooseCardAnimEventArgs();
         OnChooseCardEve(this, chooseCardAnimEvent);
+    }
+
+    IEnumerator ContinueEnumerator()
+    {
+        clicked = true;
+        yield return new WaitForSeconds(1.75f);
+        Inisializer.Instance.ResetGame();
     }
 }
 

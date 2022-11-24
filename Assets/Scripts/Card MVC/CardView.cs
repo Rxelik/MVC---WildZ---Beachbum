@@ -140,7 +140,7 @@ public class CardView : MvcModels, ICardView
 
         else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
-            gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f);
         }
 
         else if (_inspectorBelongsTo == "Deck")
