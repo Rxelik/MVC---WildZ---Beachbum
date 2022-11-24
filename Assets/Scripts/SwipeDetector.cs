@@ -30,18 +30,9 @@ public class SwipeDetector : MvcModels
     private void ProcessInput()
     {
 
-        if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Stationary))
+        if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
         {
-
-            duration += Time.deltaTime;
-            if (duration > 0.65f)
-                OnLongTap();
-
-        }
-        else if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
-        {
-            if (duration < 0.60f)
-                OnTap();
+            OnTap();
 
         }
         if (is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
@@ -57,12 +48,12 @@ public class SwipeDetector : MvcModels
                 }
                 else
                 {
-                   rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector3(rayHit.collider.gameObject.GetComponent<CardView>().
-                   gameObject.transform.position.x,
-                   rayHit.collider.gameObject.GetComponent<CardView>().
-                   gameObject.transform.position.y - 5, 
-                   rayHit.collider.gameObject.GetComponent<CardView>().
-                   gameObject.transform.position.z);
+                    rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector3(rayHit.collider.gameObject.GetComponent<CardView>().
+                    gameObject.transform.position.x,
+                    rayHit.collider.gameObject.GetComponent<CardView>().
+                    gameObject.transform.position.y - 5,
+                    rayHit.collider.gameObject.GetComponent<CardView>().
+                    gameObject.transform.position.z);
                 }
             }
         }
@@ -75,7 +66,7 @@ public class SwipeDetector : MvcModels
         if (rayHit.collider != null)
         {
             _cardView = rayHit.collider.GetComponent<CardView>();
-            if (_cardView._inspectorBelongsTo == "Player" && _cardView._CanPlayCard && !GameManager.Instance.PlayerPlayed)
+            if (_cardView._inspectorBelongsTo == "Player" && _cardView._CanPlayCard && !GameManager.Instance.playerPlayed)
             {
                 v2.PlayCard(_cardView._inspectOrderInHand);
                 is_touched = true;

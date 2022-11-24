@@ -26,9 +26,14 @@ public class BoardController : IBoardController
         this.view = view;
 
         // Listen to input from the view
-        view.OnClicked += (sender, e) => HandleClicked(sender, e);
         view.CardInBoardChanged += RizeLayer;
+        model.CardInBoardChanged += Model_CardInBoardChanged; ;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void Model_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
+    {
         SyncData();
     }
 
@@ -36,6 +41,8 @@ public class BoardController : IBoardController
     {
         model.Cards[model.Cards.Count - 1].Layer++;
         SyncData();
+
+
     }
 
     private void HandleClicked(object sender, BoardChangedEventArgs e)

@@ -13,9 +13,6 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class Inisializer : MonoBehaviour
 {
     public int HandSize = 10;
-    public List<ButtonIndexV2> buttons;
-    public List<Transform> PlayerTransforms;
-    public List<Transform> EnemyTransforms;
     public Server _Server;
     public MvcModels MvcModels;
 
@@ -27,7 +24,7 @@ public class Inisializer : MonoBehaviour
     IEnumerator Build()
     {
         //_______________________________________________\\
-        GameManager.Instance.GameEnded = false;
+        GameManager.Instance.gameEnded = false;
         #region Deck
         ///
         var DeckmodelFactory = new DeckModelFactory();
@@ -67,6 +64,7 @@ public class Inisializer : MonoBehaviour
         _deckmodel.Board = (BoardModel)_Boardmodel;
 
         MvcModels.boardModel = (BoardModel)_Boardmodel;
+        MvcModels.boardView = (BoardView)Boardview;
 
         //_______________________________________________\\
 
@@ -80,7 +78,6 @@ public class Inisializer : MonoBehaviour
         _playermodel.Cards = new List<CardModel>();
         _playermodel.Deck = (DeckModel)_deckmodel;
         _playermodel.Board = (BoardModel)_Boardmodel;
-        _playermodel.HandPos = PlayerTransforms;
         _playermodel.FirstTurn = true;
         //_playermodel.HandCount = 10;
         // Create the view
@@ -106,7 +103,6 @@ public class Inisializer : MonoBehaviour
         _Enemyermodel.Cards = new List<CardModel>();
         _Enemyermodel.Deck = (DeckModel)_deckmodel;
         _Enemyermodel.Board = (BoardModel)_Boardmodel;
-        _Enemyermodel.HandPos = EnemyTransforms;
         // _Enemyermodel.HandCount = 10;
         // Create the view
         var EnemyViewFactory = new EnemyViewFactory();
@@ -146,8 +142,8 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Red Card Super";
             _Cardmodel.IsSuper = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
-
             // Create the view
             var CardviewFactory = new CardViewFactory();
             var Cardview = CardviewFactory.View;
@@ -169,6 +165,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Red +2";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -191,6 +188,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Red +4";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -216,6 +214,7 @@ public class Inisializer : MonoBehaviour
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
                 _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                _Cardmodel.Board = (BoardModel)_Boardmodel;
                 tempList.Add((CardModel)_Cardmodel);
                 // Create the view
                 var CardviewFactory = new CardViewFactory();
@@ -245,6 +244,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Blue Card Super";
             _Cardmodel.IsSuper = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -267,6 +267,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Blue +2";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -289,6 +290,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Blue +4";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -314,6 +316,7 @@ public class Inisializer : MonoBehaviour
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
                 _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                _Cardmodel.Board = (BoardModel)_Boardmodel;
                 tempList.Add((CardModel)_Cardmodel);
                 // Create the view
                 var CardviewFactory = new CardViewFactory();
@@ -343,6 +346,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Yellow Card Super";
             _Cardmodel.IsSuper = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -365,6 +369,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Yellow +2";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -387,6 +392,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Yellow +4";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -412,6 +418,7 @@ public class Inisializer : MonoBehaviour
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
                 _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                _Cardmodel.Board = (BoardModel)_Boardmodel;
                 tempList.Add((CardModel)_Cardmodel);
                 // Create the view
                 var CardviewFactory = new CardViewFactory();
@@ -440,6 +447,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Green Card Super";
             _Cardmodel.IsSuper = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -462,6 +470,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Green +2";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -484,6 +493,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Green +4";
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -510,6 +520,7 @@ public class Inisializer : MonoBehaviour
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
                 _Cardmodel.Name = "Card " + _Cardmodel.Number;
+                _Cardmodel.Board = (BoardModel)_Boardmodel;
                 tempList.Add((CardModel)_Cardmodel);
                 // Create the view
                 var CardviewFactory = new CardViewFactory();
@@ -540,6 +551,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Name = "SUPER DUPER WILD SUPER CARD";
             _Cardmodel.IsSuper = true;
             _Cardmodel.IsWild = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -563,6 +575,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Wild +2 Card";
             _Cardmodel.IsWild = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -588,6 +601,7 @@ public class Inisializer : MonoBehaviour
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "Bammbozlek Card";
             _Cardmodel.IsBamboozle = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
             tempList.Add((CardModel)_Cardmodel);
             // Create the view
             var CardviewFactory = new CardViewFactory();
@@ -600,12 +614,12 @@ public class Inisializer : MonoBehaviour
         #endregion
 
 
-        yield return new WaitForSeconds(1f);
-        GameManager.Instance.PassButton.SetActive(false);
+
 
         #endregion
 
         //_______________________________________________\\
+
 
         yield return new WaitForSeconds(0.5f);
 
@@ -674,7 +688,7 @@ public class Inisializer : MonoBehaviour
         //_______________________________________________\\
         Deckview.Inisialize = false;
         deck.ChangeTurn();
-        GameManager.Instance.GameEnded = false;
+        GameManager.Instance.gameEnded = false;
         GameManager.Instance.clicked = false;
 
     }
@@ -683,19 +697,19 @@ public class Inisializer : MonoBehaviour
     {
 
         GameManager.Instance.clicked = true;
-        for (int i = 0; i < GameManager.Instance.CardsObjects.Count; i++)
+        for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {
-            Destroy(GameManager.Instance.CardsObjects[i]);
+            Destroy(GameManager.Instance.cardsObjects[i]);
         }
         //GameManager.Instance.playerModel.Cards.Clear();
         //GameManager.Instance.enemyModel.Cards.Clear();
         //GameManager.Instance.deckModel.Cards.Clear();
         //GameManager.Instance.playerModel.Board.Cards.Clear();
         //GameManager.Instance.CardsObjects.Clear();
-        GameManager.Instance.ContinueButton.SetActive(false);
-        GameManager.Instance.GameEnded = false;
+        GameManager.Instance.continueButton.SetActive(false);
+        GameManager.Instance.gameEnded = false;
         AnimationManager.Instance.DeActiveAnim();
         StartCoroutine(Build());
-        GameManager.Instance.Trigger = false;
+        GameManager.Instance.trigger = false;
     }
 }

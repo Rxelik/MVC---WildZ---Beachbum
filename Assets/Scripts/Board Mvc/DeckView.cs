@@ -55,7 +55,7 @@ public class DeckView : MonoBehaviour, IDeckView
             ShuffleCards();
         }
 
-        if (!GameManager.Instance.PlayerCanPlay && _CurrentTurn == "Player")
+        if (!GameManager.Instance.playerCanPlay && _CurrentTurn == "Player")
         {
             ParticleEffect.gameObject.SetActive(true);
         }

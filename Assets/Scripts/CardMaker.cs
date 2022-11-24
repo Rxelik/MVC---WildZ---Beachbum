@@ -55,6 +55,10 @@ public class CardMaker : MvcModels
 
     private void Update()
     {
+        if (view._InspectorColor == Color.clear && CardSprite)
+        {
+            CardSprite.gameObject.SetActive(false);
+        }
         if (!Button)
         {
             if (view._inspectorBelongsTo == "ColorPick" && view._InspectorColor == Color.white && !view._IsBamboozle)
@@ -167,7 +171,7 @@ public class CardMaker : MvcModels
     }
     public void BuildCards()
     {
-        if (GameManager.Instance.CardVersion == "Version 1")
+        if (GameManager.Instance.cardVersion == "Version 1")
         {
             if (view._InspectorColor == Color.red)
             {
@@ -399,7 +403,7 @@ public class CardMaker : MvcModels
                 }
             }
         }
-        if (GameManager.Instance.CardVersion == "Version 2")
+        if (GameManager.Instance.cardVersion == "Version 2")
         {
             if (view._InspectorColor == Color.red)
             {
@@ -631,7 +635,7 @@ public class CardMaker : MvcModels
                 }
             }
         }
-        if (GameManager.Instance.CardVersion == "Version 3")
+        if (GameManager.Instance.cardVersion == "Version 3")
         {
             if (view._InspectorColor == Color.red)
             {

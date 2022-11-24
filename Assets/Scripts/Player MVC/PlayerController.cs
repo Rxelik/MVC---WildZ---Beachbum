@@ -189,12 +189,12 @@ public class PlayerController : IPlayerController
             {
                 if (item.CanPlayCard)
                 {
-                    _manager.PlayerCanPlay = true;
+                    _manager.playerCanPlay = true;
                     break;
                 }
                 else
                 {
-                    _manager.PlayerCanPlay = false;
+                    _manager.playerCanPlay = false;
                 }
             }
         }

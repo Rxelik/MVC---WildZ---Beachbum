@@ -28,8 +28,8 @@ public class ButtonIndexV2 : MvcModels
 
     private void Update()
     {
-        PlayerPlayed = manager.PlayerPlayed;
-        if (!manager.GameEnded)
+        PlayerPlayed = manager.playerPlayed;
+        if (!manager.gameEnded)
         {
             if (deckModel != null)
             {
@@ -48,26 +48,26 @@ public class ButtonIndexV2 : MvcModels
     }
     public void PlayCard(int Index)
     {
-        if (!manager.GameEnded)
+        if (!manager.gameEnded)
         {
-            if (deckModel.CurrentTurn == "Player" && !manager.PlayerPlayed)
+            if (deckModel.CurrentTurn == "Player" && !manager.playerPlayed)
             {
-                manager.ChosenCard = playerModel.Cards[Index];
-                _server.TestCanPlayCard(manager.ChosenCard, playerModel);
+                manager.chosenCard = playerModel.Cards[Index];
+                _server.TestCanPlayCard(manager.chosenCard, playerModel);
                 if (playerModel.Cards[Index].CanPlayCard)
                 {
-                    manager.PlayerPlayed = true;
+                    manager.playerPlayed = true;
                     NormalCard(playerModel.Cards[Index], playerModel);
                     SuperCard(playerModel.Cards[Index], playerModel);
-                    if (manager.ChosenCard.IsWild && boardModel.TopCard().Number != 44)
+                    if (manager.chosenCard.IsWild && boardModel.TopCard().Number != 44)
                     {
-                        if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 44) { }
-                        else if (manager.ChosenCard.IsSuper && boardModel.TopCard().Number == 22) { }
+                        if (manager.chosenCard.IsSuper && boardModel.TopCard().Number == 44) { }
+                        else if (manager.chosenCard.IsSuper && boardModel.TopCard().Number == 22) { }
                         else
                         {
-                            playerModel.RemoveCard(manager.ChosenCard);
-                            manager.ChosenCard.BelongsTo = "ColorPick";
-                            manager.ChosenCard.Layer = 1000;
+                            playerModel.RemoveCard(manager.chosenCard);
+                            manager.chosenCard.BelongsTo = "ColorPick";
+                            manager.chosenCard.Layer = 1000;
                             manager.CallChooseCard();
                         }
                         foreach (var item in PlayerColorChooser) { item.SetActive(true); }
@@ -163,7 +163,7 @@ public class ButtonIndexV2 : MvcModels
                 #region Bamboozle
                 if (card.IsBamboozle)
                 {
-                    manager.Draw = 0;
+                    manager.draw = 0;
                     ////card.Position = new Vector3(-7, 0, -5);
                     //card.Layer = boardModel.TopCard().Layer + 2;
                     boardModel.AddCard(card);
@@ -203,7 +203,7 @@ public class ButtonIndexV2 : MvcModels
     IEnumerator PlayBambo(CardModel card, PlayerModel model)
     {
         yield return new WaitForSeconds(0.40f);
-        manager.Draw = 0;
+        manager.draw = 0;
         ////card.Position = new Vector3(-7, 0, -5);
         //card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
@@ -228,22 +228,22 @@ public class ButtonIndexV2 : MvcModels
     void EnemyWild(string color)
     {
         if (color == "Red")
-            manager.ChosenCard.Color = Color.red;
+            manager.chosenCard.Color = Color.red;
         if (color == "Green")
-            manager.ChosenCard.Color = Color.green;
+            manager.chosenCard.Color = Color.green;
         if (color == "Yellow")
-            manager.ChosenCard.Color = Color.yellow;
+            manager.chosenCard.Color = Color.yellow;
         if (color == "Blue")
-            manager.ChosenCard.Color = Color.blue;
+            manager.chosenCard.Color = Color.blue;
 
         else if (deckModel.CurrentTurn == "Enemy")
         {
-            if (manager.ChosenCard.IsSuper)
-                AI.Instance.StartCoroutine(SuperCard(manager.ChosenCard, enemyModel));
-            if (manager.ChosenCard.Number == 22)
-                PlusTwo(manager.ChosenCard, enemyModel);
-            if (manager.ChosenCard.Number == 44)
-                PlusFour(manager.ChosenCard, enemyModel);
+            if (manager.chosenCard.IsSuper)
+                AI.Instance.StartCoroutine(SuperCard(manager.chosenCard, enemyModel));
+            if (manager.chosenCard.Number == 22)
+                PlusTwo(manager.chosenCard, enemyModel);
+            if (manager.chosenCard.Number == 44)
+                PlusFour(manager.chosenCard, enemyModel);
         }
 
         RemoveButtons();
@@ -381,31 +381,31 @@ public class ButtonIndexV2 : MvcModels
     IEnumerator LerpWilds(string color)
     {
         if (color == "Red")
-            manager.ChosenCard.Color = Color.red;
+            manager.chosenCard.Color = Color.red;
         if (color == "Green")
-            manager.ChosenCard.Color = Color.green;
+            manager.chosenCard.Color = Color.green;
         if (color == "Yellow")
-            manager.ChosenCard.Color = Color.yellow;
+            manager.chosenCard.Color = Color.yellow;
         if (color == "Blue")
-            manager.ChosenCard.Color = Color.blue;
+            manager.chosenCard.Color = Color.blue;
         if (deckModel.CurrentTurn == "Player")
         {
 
         }
 
-        if (manager.ChosenCard.Number == 22)
-            PlusTwo(manager.ChosenCard, playerModel);
-        if (manager.ChosenCard.Number == 44)
-            PlusFour(manager.ChosenCard, playerModel);
+        if (manager.chosenCard.Number == 22)
+            PlusTwo(manager.chosenCard, playerModel);
+        if (manager.chosenCard.Number == 44)
+            PlusFour(manager.chosenCard, playerModel);
 
         yield return new WaitForSeconds(0.15f);
 
         if (deckModel.CurrentTurn == "Player")
         {
 
-            if (manager.ChosenCard.IsSuper)
+            if (manager.chosenCard.IsSuper)
             {
-                manager.StartCoroutine((Wappa(manager.ChosenCard, playerModel)));
+                manager.StartCoroutine((Wappa(manager.chosenCard, playerModel)));
 
             }
 
@@ -414,12 +414,12 @@ public class ButtonIndexV2 : MvcModels
         }
         else if (deckModel.CurrentTurn == "Enemy")
         {
-            if (manager.ChosenCard.IsSuper)
-                AI.Instance.StartCoroutine(SuperCard(manager.ChosenCard, enemyModel));
-            if (manager.ChosenCard.Number == 22)
-                PlusTwo(manager.ChosenCard, enemyModel);
-            if (manager.ChosenCard.Number == 44)
-                PlusFour(manager.ChosenCard, enemyModel);
+            if (manager.chosenCard.IsSuper)
+                AI.Instance.StartCoroutine(SuperCard(manager.chosenCard, enemyModel));
+            if (manager.chosenCard.Number == 22)
+                PlusTwo(manager.chosenCard, enemyModel);
+            if (manager.chosenCard.Number == 44)
+                PlusFour(manager.chosenCard, enemyModel);
         }
 
         RemoveButtons();
@@ -433,12 +433,12 @@ public class ButtonIndexV2 : MvcModels
     {
         if (playerModel.HasCounter())
         {
-            manager.Draw += 2;
+            manager.draw += 2;
             ChangeTurn(false);
         }
         else
         {
-            if (manager.Draw == 0)
+            if (manager.draw == 0)
             {
                 StartCoroutine(playerModel.TakeCard(2));
                 card.Number = 222;
@@ -448,9 +448,9 @@ public class ButtonIndexV2 : MvcModels
             }
             else
             {
-                manager.Draw += 2;
-                StartCoroutine(playerModel.TakeCard(manager.Draw));
-                manager.Draw = 0;
+                manager.draw += 2;
+                StartCoroutine(playerModel.TakeCard(manager.draw));
+                manager.draw = 0;
                 card.Number = 222;
                 ChangeTurn(true);
                 AIplayed = false;
@@ -467,12 +467,12 @@ public class ButtonIndexV2 : MvcModels
     {
         if (enemyModel.HasCounter())
         {
-            manager.Draw += 2;
+            manager.draw += 2;
             ChangeTurn(false);
         }
         else
         {
-            if (manager.Draw == 0)
+            if (manager.draw == 0)
             {
                 AI.Instance.StartCoroutine(enemyModel.TakeCard(2));
                 card.Number = 222;
@@ -480,9 +480,9 @@ public class ButtonIndexV2 : MvcModels
             }
             else
             {
-                manager.Draw += 2;
-                AI.Instance.StartCoroutine(enemyModel.TakeCard(manager.Draw));
-                manager.Draw = 0;
+                manager.draw += 2;
+                AI.Instance.StartCoroutine(enemyModel.TakeCard(manager.draw));
+                manager.draw = 0;
                 card.Number = 222;
                 ChangeTurn(true);
             }
@@ -499,12 +499,12 @@ public class ButtonIndexV2 : MvcModels
     {
         if (playerModel.Has44())
         {
-            manager.Draw += 4;
+            manager.draw += 4;
             ChangeTurn(false);
         }
         else
         {
-            if (manager.Draw == 0)
+            if (manager.draw == 0)
             {
                 StartCoroutine(playerModel.TakeCard(4));
                 card.Number = 444;
@@ -513,9 +513,9 @@ public class ButtonIndexV2 : MvcModels
             }
             else
             {
-                manager.Draw += 4;
-                StartCoroutine(playerModel.TakeCard(manager.Draw));
-                manager.Draw = 0;
+                manager.draw += 4;
+                StartCoroutine(playerModel.TakeCard(manager.draw));
+                manager.draw = 0;
                 card.Number = 444;
                 ChangeTurn(true);
                 AIplayed = false;
@@ -533,13 +533,13 @@ public class ButtonIndexV2 : MvcModels
     {
         if (enemyModel.Has44())
         {
-            manager.Draw += 4;
+            manager.draw += 4;
             ChangeTurn(false);
 
         }
         else
         {
-            if (manager.Draw == 0)
+            if (manager.draw == 0)
             {
                 StartCoroutine(enemyModel.TakeCard(4));
                 card.Number = 444;
@@ -549,9 +549,9 @@ public class ButtonIndexV2 : MvcModels
             }
             else
             {
-                manager.Draw += 4;
-                StartCoroutine(enemyModel.TakeCard(manager.Draw));
-                manager.Draw = 0;
+                manager.draw += 4;
+                StartCoroutine(enemyModel.TakeCard(manager.draw));
+                manager.draw = 0;
                 card.Number = 444;
                 ChangeTurn(true);
 
@@ -571,7 +571,7 @@ public class ButtonIndexV2 : MvcModels
     private void AiChooseCard(CardModel card)
     {
         int rand = Random.Range(0, 3);
-        manager.ChosenCard = card;
+        manager.chosenCard = card;
         print(card.Name);
         NormalCard(card, enemyModel);
         AI.Instance.StartCoroutine(SuperCard(card, enemyModel));
@@ -590,7 +590,7 @@ public class ButtonIndexV2 : MvcModels
 
     IEnumerator AIplayCard()
     {
-        if (!manager.GameEnded)
+        if (!manager.gameEnded)
         {
             print("AI Played");
             AIplayed = true;
@@ -658,7 +658,7 @@ public class ButtonIndexV2 : MvcModels
         {
             item.SetActive(false);
         }
-        manager.PassButton.SetActive(false);
+        manager.passButton.SetActive(false);
 
     }
 
@@ -666,12 +666,12 @@ public class ButtonIndexV2 : MvcModels
     {
 
         RemoveButtons();
-        manager.TookToHand = false;
+        manager.tookToHand = false;
         AIplayed = false;
         if (!anotherTurn)
         {
             deckModel.ChangeTurn();
-            manager.PlayerPlayed = false;
+            manager.playerPlayed = false;
         }
         if (anotherTurn && deckModel.CurrentTurn == "Player")
             AI.Instance.StartCoroutine(PlayAgain());
@@ -684,7 +684,7 @@ public class ButtonIndexV2 : MvcModels
     IEnumerator PlayAgain()
     {
         yield return new WaitForSeconds(0.50f);
-        manager.PlayerPlayed = false;
+        manager.playerPlayed = false;
         deckModel.PlayAgain();
     }
     #endregion

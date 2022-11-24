@@ -39,7 +39,7 @@ public class PlayerViewFactory : IPlayerViewFactory
         var instance = UnityEngine.Object.Instantiate(prefab);
         instance.name = "Player";
         View = instance.GetComponent<IPlayerView>(); 
-        GameManager.Instance.CardsObjects.Add(instance);
+        GameManager.Instance.cardsObjects.Add(instance);
     }
 }
 

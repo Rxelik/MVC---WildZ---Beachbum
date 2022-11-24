@@ -30,117 +30,94 @@ public class GameManager : MvcModels
 
     public class OnCardSpriteEvent { }
 
-    public PlayerModel player;
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve;
     public event EventHandler<OnCardVersionChange> VersionChange;
-
     public event EventHandler<OnLooseAnimEventArgs> OnLooseEve;
     public event EventHandler<OnRoundLooseAnimEventArgs> OnRoundLooseEve;
     public event EventHandler<OnWinAnimEventArgs> OnWinEve;
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
-
-
-    public PlayerView playerView;
-    public Transform CardsInPlayPos;
-    public int _index = 0;
-    public int Draw = 0;
-    public TextMeshProUGUI Turn;
-    public TextMeshProUGUI timer;
-    public TextMeshProUGUI AIScoreUGUI;
-    public TextMeshProUGUI PlayerScoreUGUI;
-    public CardModel ChosenCard;
-    public bool PlayerCanPlay;
-    public bool GameEnded = false;
-    public bool PlayerPlayed = false;
-    public bool TookToHand = false;
-    private float Timer;
-    public GameObject PassButton;
-    public int PlayerScore = 0;
-    public int AIScore = 0;
-    public string CardVersion = "Version 2";
-    public GameObject ContinueButton;
-    public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
+    public TextMeshProUGUI turn;
+    public TextMeshProUGUI timer;
+    public TextMeshProUGUI aiScoreUgui;
+    public TextMeshProUGUI playerScoreUgui;
+    public GameObject passButton;
+    public CardModel chosenCard;
+    public bool playerCanPlay;
+    public bool gameEnded = false;
+    public bool playerPlayed = false;
+    public bool tookToHand = false;
+    public int playerScore = 0;
+    public int aiScore = 0;
+    public string cardVersion = "Version 2";
+    public GameObject continueButton;
+    public GameObject spine;
+    public int _index = 0;
+    public int draw = 0;
 
     public bool clicked = false;
-    public List<GameObject> CardsObjects = new List<GameObject>();
-    [HideInInspector] public bool Trigger = false;
-
-    private void Start()
-    {
-        //skeletonAnimation.AnimationState.End += AnimationState_End;
-        player = playerModel;
-    }
-
-
-    //private void AnimationState_End(TrackEntry trackEntry)
-    //{
-    //    if (trackEntry.TrackIndex != 4)
-    //    {
-    //        Spine.SetActive(false);
-    //    }
-    //    print("Anim Ended");
-    //}
+    public List<GameObject> cardsObjects = new List<GameObject>();
+    [HideInInspector] public bool trigger = false;
 
     private void Update()
     {
         if (!deckView._Inisialize)
         {
-            AIScoreUGUI.text = AIScore.ToString();
-            PlayerScoreUGUI.text = PlayerScore.ToString();
-            if (GameEnded == false)
+            aiScoreUgui.text = aiScore.ToString();
+            playerScoreUgui.text = playerScore.ToString();
+            if (gameEnded == false)
             {
-                Turn.text = deckModel.CurrentTurn;
+                turn.text = deckModel.CurrentTurn;
                 timer.text = enemyModel.Cards.Count.ToString();
             }
 
-            if (GameEnded && !clicked)
+            if (gameEnded && !clicked)
             {
-                ContinueButton.SetActive(true);
+                continueButton.SetActive(true);
             }
 
             if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
             {
-                if (!GameEnded)
+                if (!gameEnded)
                 {
                     CountScorePlayerScore();
                 }
-                if (PlayerScore < 75 && !Trigger)
+                if (playerScore < 75 && !trigger)
                 {
-                    Turn.text = "";
+                    turn.text = "";
                     var eventRoundWin = new OnRoundWinAnimEventArgs();
                     OnRoundWinEve(this, eventRoundWin);
-                    Trigger = true;
+                    trigger = true;
                 }
-                else if (PlayerScore > 75 && !Trigger)
+                else if (playerScore > 75 && !trigger)
                 {
                     var eventRoundWin = new OnWinAnimEventArgs();
                     OnWinEve(this, eventRoundWin);
-                    Trigger = true;
+                    trigger = true;
                 }
             }
 
             if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
             {
-                if (!GameEnded)
+                if (!gameEnded)
                 {
                     CountScoreAIScore();
                 }
-                if (GameEnded)
+                if (gameEnded)
                 {
-                    if (AIScore < 75 && !Trigger)
+                    if (aiScore < 75 && !trigger)
                     {
-                        Turn.text = "";
+                        turn.text = "";
                         var eventLoose = new OnRoundLooseAnimEventArgs();
                         OnRoundLooseEve(this, eventLoose);
-                        Trigger = true;
+                        trigger = true;
                     }
-                    else if (AIScore > 75 && !Trigger)
+                    else if (aiScore > 75 && !trigger)
                     {
                         var eventLoose = new OnLooseAnimEventArgs();
                         OnLooseEve(this, eventLoose);
-                        Trigger = true;
+                        trigger = true;
                     }
                 }
             }
@@ -150,71 +127,71 @@ public class GameManager : MvcModels
 
     void CountScorePlayerScore()
     {
-        GameEnded = true;
+        gameEnded = true;
         foreach (var item in enemyModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
             {
-                PlayerScore += 5;
+                playerScore += 5;
             }
             if (item.Number == 22 && !item.IsWild)
             {
-                PlayerScore += 10;
+                playerScore += 10;
             }
             if (item.Number == 44)
             {
-                PlayerScore += 10;
+                playerScore += 10;
             }
             if (item.Number == 22 && item.IsWild)
             {
-                PlayerScore += 20;
+                playerScore += 20;
             }
             if (item.Number == 0)
             {
-                PlayerScore += 25;
+                playerScore += 25;
             }
             if (item.IsSuper && item.IsWild)
             {
-                PlayerScore += 30;
+                playerScore += 30;
             }
             if (item.IsBamboozle)
             {
-                PlayerScore += 40;
+                playerScore += 40;
             }
         }
     }
     void CountScoreAIScore()
     {
-        GameEnded = true;
+        gameEnded = true;
         foreach (var item in playerModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
             {
-                AIScore += 5;
+                aiScore += 5;
             }
             if (item.Number == 22 && !item.IsWild)
             {
-                AIScore += 10;
+                aiScore += 10;
             }
             if (item.Number == 44)
             {
-                AIScore += 10;
+                aiScore += 10;
             }
             if (item.Number == 22 && item.IsWild)
             {
-                AIScore += 20;
+                aiScore += 20;
             }
             if (item.Number == 0)
             {
-                AIScore += 25;
+                aiScore += 25;
             }
             if (item.IsSuper && item.IsWild)
             {
-                AIScore += 30;
+                aiScore += 30;
             }
             if (item.IsBamboozle)
             {
-                AIScore += 40;
+                aiScore += 40;
             }
         }
     }
@@ -222,8 +199,8 @@ public class GameManager : MvcModels
     public void ChangeSprite(string Version)
     {
         print("InsideChangeSprite");
-        CardVersion = Version;
-        print(CardVersion);
+        cardVersion = Version;
+        print(cardVersion);
 
         var eventArgs = new OnCardSpriteEvent();
         SpriteChangeEve(this, eventArgs);

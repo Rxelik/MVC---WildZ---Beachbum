@@ -33,13 +33,15 @@ public class CardController : ICardController
         model.OrderInHandChanged += Count;
         model.ChangedSprite += ChangedSprite;
         model.CanPlayCardEve += ChangedCon;
-
+        model.Board.CardInBoardChanged += Board_CardInBoardChanged;
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
-
-
+    private void Board_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
+    {
+        SyncData();
+    }
 
     private void ChangedCon(object sender, CanPlayCardEventArgs e)
     {
@@ -55,7 +57,6 @@ public class CardController : ICardController
     private void Count(object sender, OrderInHandEventArgs e)
     {
         SyncData();
-
     }
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)

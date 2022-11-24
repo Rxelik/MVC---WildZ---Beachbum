@@ -12,11 +12,11 @@ public class TakeFromDeck : MvcModels
     }
     public void DrawCard()
     {
-        if (!manager.GameEnded && !GameManager.Instance.PlayerPlayed)
+        if (!manager.gameEnded && !GameManager.Instance.playerPlayed)
         {
-            if (deckModel.CurrentTurn == "Player" && !manager.TookToHand)
+            if (deckModel.CurrentTurn == "Player" && !manager.tookToHand)
             {
-                manager.TookToHand = true;
+                manager.tookToHand = true;
                 if (!playerModel.HasCounter() && boardModel.TopCard().Number == 22 ||
                     !playerModel.HasCounter() && boardModel.TopCard().Number == 44)
                 {
@@ -32,14 +32,14 @@ public class TakeFromDeck : MvcModels
                 }
                 else if (boardModel.TopCard().Number != 22 || boardModel.TopCard().Number != 44)
                 {
-                    if (manager.Draw == 0)
+                    if (manager.draw == 0)
                     {
                         StartCoroutine(CanPlayCard());
                     }
                     else
                     {
-                        StartCoroutine(playerModel.TakeCard(manager.Draw));
-                        manager.Draw = 0;
+                        StartCoroutine(playerModel.TakeCard(manager.draw));
+                        manager.draw = 0;
                         ChangeTurn();
                         if (boardModel.TopCard().Number == 22)
                             boardModel.TopCard().Number = 222;
@@ -51,15 +51,15 @@ public class TakeFromDeck : MvcModels
                 {
                     if (playerModel.HasCounter())
                     {
-                        if (manager.Draw == 0)
+                        if (manager.draw == 0)
                         {
                             StartCoroutine(playerModel.TakeCard(1));
                             ChangeTurn();
                         }
                         else
                         {
-                            StartCoroutine(playerModel.TakeCard(manager.Draw));
-                            manager.Draw = 0;
+                            StartCoroutine(playerModel.TakeCard(manager.draw));
+                            manager.draw = 0;
                             ChangeTurn();
                             if (boardModel.TopCard().Number == 22)
                                 boardModel.TopCard().Number = 222;
@@ -87,9 +87,9 @@ public class TakeFromDeck : MvcModels
             {
                 item.CanPlayCard = false;
             }
-            manager.PassButton.SetActive(true);
+            manager.passButton.SetActive(true);
             card.CanPlayCard = true;
-            manager.PlayerPlayed = false;
+            manager.playerPlayed = false;
         }
         else if (!card.CanPlayCard)
         {
@@ -102,7 +102,7 @@ public class TakeFromDeck : MvcModels
     {
         deckModel.ChangeTurn();
 
-        manager.TookToHand = false;
+        manager.tookToHand = false;
     }
 
 }
