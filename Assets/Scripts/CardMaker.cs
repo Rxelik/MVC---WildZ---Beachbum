@@ -93,7 +93,7 @@ public class CardMaker : MvcModels
                     SwapCards();
                 }
             }
-            if (view._inspectorBelongsTo == "Deck")
+            if (view._inspectorBelongsTo == "Deck" || view._inspectorBelongsTo == "Enemy" || view._inspectorBelongsTo == "FlyingToEnemy")
             {
                 SwappedFace = false;
                 CardSprite.sprite = CardBack;

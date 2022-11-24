@@ -71,6 +71,7 @@ public class CardController : ICardController
     }
     public IEnumerator Lerp()
     {
+        SyncData();
         float t = 0;
         float duration = 0.45f;
 
@@ -106,24 +107,22 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), new Vector3(0, 12.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 yield return null;
-
                 model.BelongsTo = "Enemy";
 
             }
         }
 
-        if (model.BelongsTo == "Enemy")
-        {
-          //  view.Position = model.Position;
-            while (t < 1f)
-            {
-                t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
-                yield return null;
-            }
-        }
+        //if (model.BelongsTo == "Enemy")
+        //{
+        //    while (t < 1f)
+        //    {
+        //        t += Time.deltaTime / duration;
+        //        view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
+        //        yield return null;
+        //    }
+        //}
 
         if (model.BelongsTo == "Board")
         {
