@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: 02dc55f2db1a93042b3775edd0049a37
+guid: 7f72149ec228b554fb1150de44902cd8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1231533780090414815
+    second: Turn Timer_0
+  - first:
+      213: 4522840314685306765
+    second: Turn Timer_1
+  - first:
+      213: -8073684436944520791
+    second: Turn Timer_2
+  - first:
+      213: -8554806423572314064
+    second: Turn Timer_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,11 +133,95 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Turn Timer_0
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 1893
+        width: 340
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12911dc4d86b8eee0800000000000000
+      internalID: -1231533780090414815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turn Timer_1
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1403
+        width: 340
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8732ac9d4b54ce30800000000000000
+      internalID: 4522840314685306765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turn Timer_2
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 856
+        width: 340
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a97253e7c284ff80800000000000000
+      internalID: -8073684436944520791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turn Timer_3
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 428
+        width: 238
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0380eb012e8374980800000000000000
+      internalID: -8554806423572314064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 026edf8aec8f39c40893fba8ad4328c7
     internalID: 0
     vertices: []
     indices: 

@@ -7,6 +7,7 @@ using UnityEditor;
 using Spine.Unity;
 using Spine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MvcModels
 {
@@ -72,11 +73,15 @@ public class GameManager : MvcModels
                 timer.text = enemyModel.Cards.Count.ToString();
             }
 
-            if (gameEnded && !clicked)
+            if (gameEnded && !clicked && aiScore < 75 || gameEnded && !clicked && playerScore < 75)
             {
                 StartCoroutine(ContinueEnumerator());
             }
 
+            if (gameEnded && !clicked && aiScore > 75 || gameEnded && !clicked && playerScore > 75)
+            {
+                StartCoroutine(WinLooseEnumerator());
+            }
             if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
             {
                 if (!gameEnded)
@@ -219,6 +224,13 @@ public class GameManager : MvcModels
         clicked = true;
         yield return new WaitForSeconds(1.75f);
         Inisializer.Instance.ResetGame();
+    }
+
+    IEnumerator WinLooseEnumerator()
+    {
+        clicked = true;
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(0);
     }
 }
 

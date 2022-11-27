@@ -11,6 +11,7 @@ public class AnimChooser : MonoBehaviour
     public SkeletonGraphic skeletonAnimation;
     public AnimationStateData stateData;
 
+    public GameObject VFX;
     public int trackIndex;
     public string animName;
     public string animNamse;
@@ -26,6 +27,16 @@ public class AnimChooser : MonoBehaviour
         {
             print(trackEntry.Animation.Name);
             StartCoroutine(DelayDeactive());
+        }
+
+        if (trackEntry.Animation.Name == "Round Lost Animation")
+        {
+            VFX.SetActive(true);
+        }
+
+        if (trackEntry.Animation.Name == "Round Won Animation")
+        {
+            VFX.SetActive(true);
         }
         //else if (trackEntry.Animation.Name != "Opponent Win & Rise")
         //{
@@ -50,6 +61,7 @@ public class AnimChooser : MonoBehaviour
     IEnumerator DelayDeactive()
     {
         yield return new WaitForSeconds(1.5f);
+        VFX.SetActive(false);
         gameObject.SetActive(false);
     }
 

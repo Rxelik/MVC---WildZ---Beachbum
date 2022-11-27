@@ -668,6 +668,7 @@ public class ButtonIndexV2 : MvcModels
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;
+        TurnTimer.Instance.time = 100;
         if (!anotherTurn)
         {
             deckModel.ChangeTurn();
