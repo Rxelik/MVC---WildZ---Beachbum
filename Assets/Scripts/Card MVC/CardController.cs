@@ -88,6 +88,7 @@ public class CardController : ICardController
         }
         if (model.BelongsTo == "Player")
         {
+
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
@@ -136,7 +137,7 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, Vector2.zero, view.Curve.Evaluate(t / duration));
+                view.Position = Vector2.Lerp(model.Position, new Vector2(0,-0.5f), view.Curve.Evaluate(t / duration));
 
                 yield return null;
             }

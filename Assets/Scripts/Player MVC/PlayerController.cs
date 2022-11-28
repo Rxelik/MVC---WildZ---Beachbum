@@ -103,7 +103,7 @@ public class PlayerController : IPlayerController
 
     private void FixPosition()
     {
-        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f, 0.15f, 1.25f), 1, 1);
+        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f, 0.15f, 1.35f), 1, 1);
         //R Y B G
         if (!model.FirstTurn)
         {
@@ -146,7 +146,7 @@ public class PlayerController : IPlayerController
                 if (model.Cards[i].CanPlayCardTest())
                 {
                     //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
-                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y+1, -CardLayer);
+                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 2, -CardLayer);
                 }
                 else
                 {
@@ -155,23 +155,24 @@ public class PlayerController : IPlayerController
                 }
 
             }
-            int middle;
-            middle = model.Cards.Count / 2;
-            if (model.Cards[i].HandOrder >= middle)
-            {
-                model.Cards[i].Rotation = Quaternion.Euler(0, 0, -model.Cards[i].HandOrder*0.25f);
-            }
-            else if (model.Cards[i].HandOrder == middle)
-            {
-                model.Cards[i].Rotation = Quaternion.Euler(0, 0, -model.Cards[i].HandOrder *0.25f);
-            }
-            else
-            {
-                model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].HandOrder*0.25f);
-            }
             moveRight += 2.8f;
             CardLayer += 1;
-
+            //int middle;
+            //middle = model.Cards.Count / 2;
+            //if (model.Cards[i].HandOrder >= middle)
+            //{
+            //    model.Cards[i].Rotation = Quaternion.Euler(0, 0, -model.Cards[i].HandOrder * 0.25f);
+            //}
+            //else if (model.Cards[i].HandOrder == middle)
+            //{
+            //    model.Cards[i].Rotation = Quaternion.Euler(0, 0, -model.Cards[i].HandOrder * 0.25f);
+            //}
+            //else
+            //{
+            //    model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].HandOrder * 0.25f);
+            //}
+            float rotate = model.Cards[i].HandOrder - model.Cards.Count / 2;
+            model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -2);
 
             #endregion
             if (model.Cards[i].BelongsTo == "Player")

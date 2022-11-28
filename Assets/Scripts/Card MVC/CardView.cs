@@ -156,6 +156,7 @@ public class CardView : MvcModels, ICardView
 
         else if (_inspectorBelongsTo == "Player")
         {
+
             Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((_inspectOrderInHand + 0.5f) / playerModel.Cards.Count));
             //transform.position = pointInPath;
 
