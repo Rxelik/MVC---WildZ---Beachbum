@@ -16,6 +16,10 @@ public class SoundManager : MvcModels
     public AudioClip cardShuffle;
     [Space]
     [Header("Music")]
+    public AudioClip roundOver;
+    public AudioClip winLoose;
+    [Space]
+    [Header("Music")]
     public AudioClip mainMenu;
     public AudioClip gamePlay;
 
@@ -43,12 +47,11 @@ public class SoundManager : MvcModels
     // Initialize the singleton instance.
     private void Start()
     {
-        StartCoroutine(LateEvent());
+        CallEvent();
     }
 
-    private IEnumerator LateEvent()
+    public void CallEvent()
     {
-        yield return new WaitForSeconds(2);
         deckModel.CardInDeckChanged += DeckModel_CardInDeckChanged;
         boardModel.CardInBoardChanged += BoardModel_CardInBoardChanged;
         GameManager.Instance.OnChooseCardEve += Instance_OnChooseCardEve;
@@ -56,7 +59,7 @@ public class SoundManager : MvcModels
     }
     private void Instance_OnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
-        Play(colorPicked);
+       // Play(colorPicked);
     }
 
     private void BoardModel_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)

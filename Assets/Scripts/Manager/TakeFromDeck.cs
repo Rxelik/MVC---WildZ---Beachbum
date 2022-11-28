@@ -101,9 +101,7 @@ public class TakeFromDeck : MvcModels
     public void ChangeTurn()
     {
         deckModel.ChangeTurn();
-
         manager.tookToHand = false;
-        SoundManager.Instance.Play(SoundManager.Instance.passButton);
     }
 
 }

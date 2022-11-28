@@ -31,33 +31,27 @@ public class SpineAnim : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            skeletonAnimation.AnimationState.SetAnimation(ptes, "Red Picked", false);
-        }
-    }
-
     public void ChooseColor(string _Color)
     {
         if (_Color == "Red")
         {
+            SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Red Picked", false);
         }
         if (_Color == "Green")
         {
+            SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Green Picked", false);
         }
         if (_Color == "Blue")
         {
+            SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Blue Picked", false);
         }
         if (_Color == "Yellow")
         {
+            SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Yellow Picked", false);
         }
-
-
     }
 }

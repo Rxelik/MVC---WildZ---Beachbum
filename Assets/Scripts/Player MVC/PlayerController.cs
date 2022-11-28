@@ -132,7 +132,7 @@ public class PlayerController : IPlayerController
             #region OGway
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((model.Cards[i].HandOrder + 0.5f) / model.Cards.Count));
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.5f) / model.Cards.Count);
 
             if (model.Deck.CurrentTurn != "Player")
             {

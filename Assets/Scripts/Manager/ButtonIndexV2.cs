@@ -681,10 +681,29 @@ public class ButtonIndexV2 : MvcModels
             deckModel.PlayAgain();
         }
     }
+   public void PassTurn(bool anotherTurn)
+   {
 
+       RemoveButtons();
+       manager.tookToHand = false;
+       AIplayed = false;
+       TurnTimer.Instance.time = 100;
+       if (!anotherTurn)
+       {
+           deckModel.ChangeTurn();
+           manager.playerPlayed = false;
+       }
+       if (anotherTurn && deckModel.CurrentTurn == "Player")
+           AI.Instance.StartCoroutine(PlayAgain());
+       else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
+       {
+           deckModel.PlayAgain();
+       }
+       SoundManager.Instance.Play(SoundManager.Instance.passButton);
+    }
     IEnumerator PlayAgain()
     {
-        yield return new WaitForSeconds(0.50f);
+        yield return new WaitForSeconds(1f);
         manager.playerPlayed = false;
         deckModel.PlayAgain();
     }

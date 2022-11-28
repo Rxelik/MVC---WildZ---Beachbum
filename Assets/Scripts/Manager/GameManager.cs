@@ -225,6 +225,7 @@ public class GameManager : MvcModels
 
     IEnumerator ContinueEnumerator()
     {
+        SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
         yield return new WaitForSeconds(1.75f);
         Inisializer.Instance.ResetGame();
@@ -232,6 +233,7 @@ public class GameManager : MvcModels
 
     IEnumerator WinLooseEnumerator()
     {
+        SoundManager.Instance.Play(SoundManager.Instance.winLoose);
         clicked = true;
         yield return new WaitForSeconds(3f);
         uiCanvas.SetActive(false);

@@ -524,15 +524,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dccac6e3db888d84e92745c5a62bd6e0, type: 2}
+  m_sharedMaterial: {fileID: -4682777399512116188, guid: dccac6e3db888d84e92745c5a62bd6e0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -635,12 +636,12 @@ PrefabInstance:
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1440.4
+      value: -1434.31
       objectReference: {fileID: 0}
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -656.4
+      value: -655.14
       objectReference: {fileID: 0}
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
@@ -1196,15 +1197,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dccac6e3db888d84e92745c5a62bd6e0, type: 2}
+  m_sharedMaterial: {fileID: -4682777399512116188, guid: dccac6e3db888d84e92745c5a62bd6e0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1618,15 +1620,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dccac6e3db888d84e92745c5a62bd6e0, type: 2}
+  m_sharedMaterial: {fileID: -4682777399512116188, guid: dccac6e3db888d84e92745c5a62bd6e0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2021,15 +2024,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: ':'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dccac6e3db888d84e92745c5a62bd6e0, type: 2}
+  m_sharedMaterial: {fileID: -4682777399512116188, guid: dccac6e3db888d84e92745c5a62bd6e0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3797,7 +3801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360154641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1134.8367, y: 549.8888, z: -88.71336}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8852777156956314342}
@@ -4167,6 +4171,8 @@ MonoBehaviour:
   colorPicked: {fileID: 8300000, guid: 39331aaa4546ac84fb4f4cc68c1a688d, type: 3}
   passButton: {fileID: 8300000, guid: 2a9f78b0d4ce3a24bb847372fc53b862, type: 3}
   cardShuffle: {fileID: 8300000, guid: dfbe0a8ff1c8dbb4aa0b81985e411aab, type: 3}
+  roundOver: {fileID: 8300000, guid: 56749f7f92d5fd24296ffe07e3f0ed86, type: 3}
+  winLoose: {fileID: 8300000, guid: 2c64cc61c9a22e74e88e97b22f2cae82, type: 3}
   mainMenu: {fileID: 8300000, guid: 6b7fa33d81f8f3e49b8cd3c81088f0ea, type: 3}
   gamePlay: {fileID: 8300000, guid: 5926dbb3d05736f42ab268c5aa76037e, type: 3}
   LowPitchRange: 0.95
@@ -4200,7 +4206,7 @@ AudioSource:
   m_Volume: 0.05
   m_Pitch: 1.35
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -4296,7 +4302,7 @@ AudioSource:
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -5738,17 +5744,17 @@ PrefabInstance:
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.180945
+      value: 2.55
       objectReference: {fileID: 0}
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.180945
+      value: 2.55
       objectReference: {fileID: 0}
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.180945
+      value: 2.55
       objectReference: {fileID: 0}
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
@@ -5758,7 +5764,7 @@ PrefabInstance:
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -641.90454
+      value: -644.23
       objectReference: {fileID: 0}
     - target: {fileID: 5706249025247661869, guid: d0cdee5e768594e4c9c517aae6e2c313,
         type: 3}
@@ -6947,9 +6953,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 788265609}
-        m_MethodName: ChangeTurn
-        m_Mode: 1
+      - m_Target: {fileID: 14892772}
+        m_MethodName: PassTurn
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8126,15 +8132,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dccac6e3db888d84e92745c5a62bd6e0, type: 2}
+  m_sharedMaterial: {fileID: -4682777399512116188, guid: dccac6e3db888d84e92745c5a62bd6e0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
