@@ -23,6 +23,8 @@ public class SoundManager : MvcModels
     public AudioClip mainMenu;
     public AudioClip gamePlay;
 
+    public GameObject muteIcon;
+    public GameObject UnmuteIcon;
 
     // Random pitch adjustment range.
     public float LowPitchRange = .95f;
@@ -59,7 +61,7 @@ public class SoundManager : MvcModels
     }
     private void Instance_OnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
-       // Play(colorPicked);
+        // Play(colorPicked);
     }
 
     private void BoardModel_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
@@ -94,5 +96,26 @@ public class SoundManager : MvcModels
         EffectsSource.pitch = randomPitch;
         EffectsSource.clip = clips[randomIndex];
         EffectsSource.Play();
+    }
+
+    private bool toggleMute = false;
+    public void ToggleMute()
+    {
+        toggleMute = !toggleMute;
+
+        if (!toggleMute)
+        {
+            EffectsSource.volume = 0.55f;
+            MusicSource.volume = 0.05f;
+            UnmuteIcon.SetActive(true);
+            muteIcon.SetActive(false);
+        }
+        else
+        {
+            EffectsSource.volume = 0;
+            MusicSource.volume = 0;
+            UnmuteIcon.SetActive(false);
+            muteIcon.SetActive(true);
+        }
     }
 }

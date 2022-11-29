@@ -172,7 +172,7 @@ public class PlayerController : IPlayerController
             //    model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].HandOrder * 0.25f);
             //}
             float rotate = model.Cards[i].HandOrder - model.Cards.Count / 2;
-            model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -2);
+            model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -0.75f);
 
             #endregion
             if (model.Cards[i].BelongsTo == "Player")
@@ -199,7 +199,7 @@ public class PlayerController : IPlayerController
                 }
             }
         }
-        SyncData();
+       // SyncData();
     }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {

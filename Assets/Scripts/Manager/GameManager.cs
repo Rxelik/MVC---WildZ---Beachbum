@@ -42,7 +42,8 @@ public class GameManager : MvcModels
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
     public SkeletonGraphic skeletonAnimation;
     public TextMeshProUGUI turn;
-    public TextMeshProUGUI timer;
+    public TextMeshProUGUI aiCardCount;
+    public TextMeshProUGUI playerCardCount;
     public TextMeshProUGUI aiScoreUgui;
     public TextMeshProUGUI playerScoreUgui;
     public GameObject passButton;
@@ -65,6 +66,8 @@ public class GameManager : MvcModels
 
     private void Update()
     {
+        aiCardCount.text = enemyModel.Cards.Count.ToString();
+        playerCardCount.text = playerModel.Cards.Count.ToString();
         if (!deckView._Inisialize)
         {
             aiScoreUgui.text = aiScore.ToString();
@@ -72,7 +75,6 @@ public class GameManager : MvcModels
             if (gameEnded == false)
             {
                 turn.text = deckModel.CurrentTurn;
-                timer.text = enemyModel.Cards.Count.ToString();
             }
 
             if (gameEnded && !clicked && aiScore > 75 || gameEnded && !clicked && playerScore > 75)

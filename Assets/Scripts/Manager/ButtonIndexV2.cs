@@ -664,10 +664,11 @@ public class ButtonIndexV2 : MvcModels
 
    public void ChangeTurn(bool anotherTurn)
     {
-
+        
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;
+        SwipeDetector.Instance.time = 0;
         TurnTimer.Instance.time = 100;
         if (!anotherTurn)
         {

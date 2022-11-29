@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class SwipeDetector : MvcModels
 {
+    #region Singelton
+    public static SwipeDetector Instance { get; private set; }
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+    #endregion
     private Vector2 fingerDownPos;
     private Vector2 fingerUpPos;
 
@@ -27,6 +43,7 @@ public class SwipeDetector : MvcModels
         duration = 0;
         is_touched = false;
     }
+    
     private void ProcessInput()
     {
 
@@ -100,38 +117,49 @@ public class SwipeDetector : MvcModels
     }
     private void FixedUpdate()
     {
-        if (Input.touchCount > 0)
-            ProcessInput();
+
     }
+
+    public float time = 0;
     void Update()
     {
-
-        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        foreach (Touch touch in Input.touches)
+        if (deckModel.CurrentTurn == "Player")
         {
-
-            if (touch.phase == TouchPhase.Began)
+            time += Time.deltaTime;
+        }
+        if (deckModel.CurrentTurn != "Player")
+        {
+            time = 0;
+        }
+        if (time >=0.5f)
+        {
+            if (Input.touchCount > 0)
+                ProcessInput();
+            foreach (Touch touch in Input.touches)
             {
-                fingerUpPos = touch.position;
-                fingerDownPos = touch.position;
-            }
 
-            //Detects Swipe while finger is still moving on screen
-            if (touch.phase == TouchPhase.Moved)
-            {
-                if (!detectSwipeAfterRelease)
+                if (touch.phase == TouchPhase.Began)
+                {
+                    fingerUpPos = touch.position;
+                    fingerDownPos = touch.position;
+                }
+
+                //Detects Swipe while finger is still moving on screen
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    if (!detectSwipeAfterRelease)
+                    {
+                        fingerDownPos = touch.position;
+                        DetectSwipe();
+                    }
+                }
+
+                //Detects swipe after finger is released from screen
+                if (touch.phase == TouchPhase.Ended)
                 {
                     fingerDownPos = touch.position;
                     DetectSwipe();
                 }
-            }
-
-            //Detects swipe after finger is released from screen
-            if (touch.phase == TouchPhase.Ended)
-            {
-                fingerDownPos = touch.position;
-                DetectSwipe();
             }
         }
     }

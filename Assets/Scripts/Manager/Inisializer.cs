@@ -690,13 +690,13 @@ public class Inisializer : MonoBehaviour
         colors.Add(Color.blue);
         colors.Add(Color.yellow);
         #region Add First Card To Board
-        _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
-        _Boardmodel.Cards[0].Color = colors[UnityEngine.Random.Range(0, 4)];
+        _deckmodel.Cards[0].Color = colors[UnityEngine.Random.Range(0, 4)];
         //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
-        _Boardmodel.Cards[0].IsSuper = false;
-        _Boardmodel.Cards[0].IsBamboozle = false;
-        _Boardmodel.Cards[0].IsWild = false;
-        _Boardmodel.Cards[0].Number = UnityEngine.Random.Range(1, 9);
+        _deckmodel.TopCard().IsSuper = false;
+        _deckmodel.TopCard().IsBamboozle = false;
+        _deckmodel.TopCard().IsWild = false;
+        _deckmodel.TopCard().Number = UnityEngine.Random.Range(1, 9);
+        _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
         #endregion
 

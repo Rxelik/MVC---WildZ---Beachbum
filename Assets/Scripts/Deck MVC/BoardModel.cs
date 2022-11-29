@@ -21,6 +21,7 @@ public interface IBoardModel
 
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+    CardModel TopCard();
 
 }
 

@@ -7,7 +7,7 @@ using System.Drawing;
 
 public class SpineAnim : MonoBehaviour
 {
-    public GameObject Spine;
+   // public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
     public AnimationStateData stateData;
     public string Color;
