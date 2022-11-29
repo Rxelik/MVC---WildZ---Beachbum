@@ -600,6 +600,33 @@ public class Inisializer : MonoBehaviour
             var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
             var Cardcontroller = controllerFactory.Controller;
         }
+
+        #endregion
+
+        #region ChangeColor
+        for (int i = 0; i < 4; i++)
+        {
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.white;
+            _Cardmodel.Number = -1;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "ChangeColor Card";
+            _Cardmodel.IsWild = true;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
+
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
+        }
+
+
         #endregion
 
         #endregion
@@ -683,12 +710,13 @@ public class Inisializer : MonoBehaviour
 
         //_______________________________________________\\
         Random rnds = new Random();
-        List<Color> colors = new List<Color>();
-
-        colors.Add(Color.red);
-        colors.Add(Color.yellow);
-        colors.Add(Color.blue);
-        colors.Add(Color.yellow);
+        List<Color> colors = new List<Color>
+        {
+            Color.red,
+            Color.yellow,
+            Color.blue,
+            Color.yellow
+        };
         #region Add First Card To Board
         _deckmodel.Cards[0].Color = colors[UnityEngine.Random.Range(0, 4)];
         //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);

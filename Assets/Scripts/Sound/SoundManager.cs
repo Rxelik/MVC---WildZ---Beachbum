@@ -67,13 +67,11 @@ public class SoundManager : MvcModels
     private void BoardModel_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
     {
         Play(playCard);
-        print("PlayCard");
     }
 
     private void DeckModel_CardInDeckChanged(object sender, OnCardsInDeckChangeEventArgs e)
     {
         Play(draw);
-        print("DrawCard");
 
     }
 

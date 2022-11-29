@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class ButtonIndexV2 : MvcModels
 {
@@ -236,7 +237,8 @@ public class ButtonIndexV2 : MvcModels
         if (color == "Blue")
             manager.chosenCard.Color = Color.blue;
 
-        else if (deckModel.CurrentTurn == "Enemy")
+
+        else if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != -1)
         {
             if (manager.chosenCard.IsSuper)
                 AI.Instance.StartCoroutine(SuperCard(manager.chosenCard, enemyModel));
@@ -244,9 +246,18 @@ public class ButtonIndexV2 : MvcModels
                 PlusTwo(manager.chosenCard, enemyModel);
             if (manager.chosenCard.Number == 44)
                 PlusFour(manager.chosenCard, enemyModel);
+
+
         }
 
         RemoveButtons();
+
+        if (manager.chosenCard.Number == -1)
+        {
+            boardModel.AddCard(manager.chosenCard);
+            enemyModel.RemoveCard(manager.chosenCard);
+            ChangeTurn(false);
+        }
     }
     IEnumerator LerpSuper(CardModel card, PlayerModel model)
     {
@@ -409,7 +420,11 @@ public class ButtonIndexV2 : MvcModels
 
             }
 
-
+            if (manager.chosenCard.Number == -1)
+            {
+                boardModel.AddCard(manager.chosenCard);
+                ChangeTurn(false);
+            }
 
         }
         else if (deckModel.CurrentTurn == "Enemy")
@@ -578,16 +593,24 @@ public class ButtonIndexV2 : MvcModels
         if (card.IsWild && boardModel.TopCard().Number != 22
            || card.IsWild && boardModel.TopCard().Number != 44
            || card.IsWild && card.IsSuper
+           || card.IsWild && card.Number == -1
             )
         {
             colors.Add("Red");
             colors.Add("Green");
             colors.Add("Yellow");
             colors.Add("Blue");
-            EnemyWild(colors[rand]);
+            AI.Instance.StartCoroutine(IwaitBefore(rand));
         }
     }
 
+    IEnumerator IwaitBefore(int color)
+    {
+        manager.chosenCard.BelongsTo = "ColorPick";
+        manager.chosenCard.Layer += boardModel.TopCard().Layer + 2;
+        yield return new WaitForSeconds(1);
+        EnemyWild(colors[color]);
+    }
     IEnumerator AIplayCard()
     {
         if (!manager.gameEnded)
@@ -662,9 +685,9 @@ public class ButtonIndexV2 : MvcModels
 
     }
 
-   public void ChangeTurn(bool anotherTurn)
+    public void ChangeTurn(bool anotherTurn)
     {
-        
+
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;
@@ -682,25 +705,25 @@ public class ButtonIndexV2 : MvcModels
             deckModel.PlayAgain();
         }
     }
-   public void PassTurn(bool anotherTurn)
-   {
+    public void PassTurn(bool anotherTurn)
+    {
 
-       RemoveButtons();
-       manager.tookToHand = false;
-       AIplayed = false;
-       TurnTimer.Instance.time = 100;
-       if (!anotherTurn)
-       {
-           deckModel.ChangeTurn();
-           manager.playerPlayed = false;
-       }
-       if (anotherTurn && deckModel.CurrentTurn == "Player")
-           AI.Instance.StartCoroutine(PlayAgain());
-       else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
-       {
-           deckModel.PlayAgain();
-       }
-       SoundManager.Instance.Play(SoundManager.Instance.passButton);
+        RemoveButtons();
+        manager.tookToHand = false;
+        AIplayed = false;
+        TurnTimer.Instance.time = 100;
+        if (!anotherTurn)
+        {
+            deckModel.ChangeTurn();
+            manager.playerPlayed = false;
+        }
+        if (anotherTurn && deckModel.CurrentTurn == "Player")
+            AI.Instance.StartCoroutine(PlayAgain());
+        else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
+        {
+            deckModel.PlayAgain();
+        }
+        SoundManager.Instance.Play(SoundManager.Instance.passButton);
     }
     IEnumerator PlayAgain()
     {

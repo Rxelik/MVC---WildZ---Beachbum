@@ -72,10 +72,6 @@ public class GameManager : MvcModels
         {
             aiScoreUgui.text = aiScore.ToString();
             playerScoreUgui.text = playerScore.ToString();
-            if (gameEnded == false)
-            {
-                turn.text = deckModel.CurrentTurn;
-            }
 
             if (gameEnded && !clicked && aiScore > 75 || gameEnded && !clicked && playerScore > 75)
             {

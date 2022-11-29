@@ -78,7 +78,9 @@ public class CardMaker : MvcModels
                 }
                 else if (!view._IsSuper && view._IsWild)
                 {
+                    
                     SwapCards();
+                    
                 }
                 else if (!view._IsSuper && !view._IsWild)
                 {
@@ -135,7 +137,58 @@ public class CardMaker : MvcModels
         if (view._inspectorBelongsTo == "Player"
         || view._inspectorBelongsTo == "Board"
         || view._inspectorBelongsTo == "FlyingToPlayer"
-        || view._inspectorBelongsTo == "FlyingToEnemy")
+        || view._inspectorBelongsTo == "FlyingToEnemy"
+        || view._inspectorBelongsTo == "ColorPick" && deckModel.CurrentTurn == "Enemy")
+        {
+
+
+            if (view._inspectorBelongsTo == "Board" || (view._inspectorBelongsTo == "ViewPlayer"))
+            {
+                if (view._IsBamboozle)
+                {
+                    SwappedFace = false;
+                    BuildCards();
+                }
+                else
+                {
+                    if (view._InspectorColor != Color.white && view._inspectNumber !=1)
+                    {
+                        SwappedFace = false;
+                        BuildCards();
+                    }
+                }
+
+            }
+            else
+            {
+                if (deckModel.CurrentTurn == "Player")
+                {
+                    SwappedFace = true;
+                    BuildCards();
+                }
+                else
+                {
+                    SwappedFace = false;
+                    BuildCards();
+                }
+            }
+        }
+
+        if (view._inspectorBelongsTo == "Deck")
+        {
+            SwappedFace = false;
+            CardSprite.sprite = CardBack;
+        }
+    }
+
+
+    IEnumerator ISwapCards()
+    {
+        yield return new WaitForSeconds(0.50f);
+        if (view._inspectorBelongsTo == "Player"
+            || view._inspectorBelongsTo == "Board"
+            || view._inspectorBelongsTo == "FlyingToPlayer"
+            || view._inspectorBelongsTo == "FlyingToEnemy")
         {
 
 
@@ -454,6 +507,9 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Red2[11];
                         break;
+                    case -1:
+                        CardSprite.sprite = Red2[11];
+                        break;
                     default:
                         break;
                 }
@@ -505,6 +561,9 @@ public class CardMaker : MvcModels
                         CardSprite.sprite = Green2[11];
                         break;
                     case 99:
+                        CardSprite.sprite = Green2[11];
+                        break;
+                    case -1:
                         CardSprite.sprite = Green2[11];
                         break;
                     default:
@@ -560,6 +619,9 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Blue2[11];
                         break;
+                    case -1:
+                        CardSprite.sprite = Blue2[11];
+                        break;
                     default:
                         break;
                 }
@@ -613,6 +675,9 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Yellow2[11];
                         break;
+                    case -1:
+                        CardSprite.sprite = Yellow2[11];
+                        break;
                     default:
                         break;
                 }
@@ -629,6 +694,9 @@ public class CardMaker : MvcModels
                         break;
                     case 55:
                         CardSprite.sprite = White2[2];
+                        break;
+                    case -1:
+                        CardSprite.sprite = White2[3];
                         break;
                     default:
                         break;

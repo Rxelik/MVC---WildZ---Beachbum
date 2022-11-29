@@ -153,7 +153,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 //var eventArgs = new CardBelongsToEnemyEventArgs();
                 //OnEnemyChange(this, eventArgs);
-                Debug.Log("Changed Card POS");
             }
         }
     }
