@@ -4596,7 +4596,7 @@ AudioSource:
   m_Volume: 0.05
   m_Pitch: 1.35
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -4692,7 +4692,7 @@ AudioSource:
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -6373,7 +6373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837af74bd645b684f8c75439093c19a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandSize: 4
+  HandSize: 20
   _Server: {fileID: 1245915196}
   MvcModels: {fileID: 1986057254}
 --- !u!4 &1986057253
@@ -6565,7 +6565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2028838055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7555,7 +7555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7049498281488714651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -13, z: 0}
+  m_LocalPosition: {x: 0, y: -12, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_Children:
   - {fileID: 687541625}

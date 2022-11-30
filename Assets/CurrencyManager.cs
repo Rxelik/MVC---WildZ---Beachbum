@@ -30,6 +30,7 @@ public class CurrencyManager : MonoBehaviour
 
     private void Update()
     {
+        if (currency != null)
         currency.text = currentBalance.ToString();
     }
     void Start()

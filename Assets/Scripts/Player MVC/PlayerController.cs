@@ -103,7 +103,7 @@ public class PlayerController : IPlayerController
 
     private void FixPosition()
     {
-        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f, 0.10f, 1.15f), 1, 1);
+        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
         //R Y B G
         if (!model.FirstTurn)
         {
@@ -146,7 +146,7 @@ public class PlayerController : IPlayerController
                 if (model.Cards[i].CanPlayCardTest())
                 {
                     //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
-                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 2, -CardLayer);
+                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 1.50f, -CardLayer);
                 }
                 else
                 {
