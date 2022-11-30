@@ -103,6 +103,7 @@ public class CardModel : ICardModel
     public event EventHandler<CanPlayCardEventArgs> CanPlayCardEve = (sender, e) => { };
     public event EventHandler<CardFoundBoardEventArgs> OnBoardFind = (sender, e) => { };
 
+
     public PlayerModel Player
     {
         get { return _Player; }
@@ -152,7 +153,6 @@ public class CardModel : ICardModel
                 // Dispatch the 'position changed' event
                 //var eventArgs = new CardBelongsToEnemyEventArgs();
                 //OnEnemyChange(this, eventArgs);
-                Debug.Log("Changed Card POS");
             }
         }
     }

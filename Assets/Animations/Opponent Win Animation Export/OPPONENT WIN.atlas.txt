@@ -1,0 +1,83 @@
+
+OPPONENT WIN.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+E
+  rotate: true
+  xy: 915, 70
+  size: 243, 334
+  orig: 243, 334
+  offset: 0, 0
+  index: -1
+I
+  rotate: true
+  xy: 2, 47
+  size: 145, 331
+  orig: 145, 331
+  offset: 0, 0
+  index: -1
+N
+  rotate: false
+  xy: 964, 665
+  size: 274, 341
+  orig: 274, 341
+  offset: 0, 0
+  index: -1
+N1
+  rotate: false
+  xy: 2, 194
+  size: 283, 350
+  orig: 283, 350
+  offset: 0, 0
+  index: -1
+N2
+  rotate: false
+  xy: 287, 194
+  size: 283, 350
+  orig: 283, 350
+  offset: 0, 0
+  index: -1
+O1
+  rotate: false
+  xy: 339, 657
+  size: 328, 349
+  orig: 328, 349
+  offset: 0, 0
+  index: -1
+O2
+  rotate: false
+  xy: 572, 306
+  size: 328, 349
+  orig: 328, 349
+  offset: 0, 0
+  index: -1
+P1
+  rotate: true
+  xy: 572, 2
+  size: 302, 341
+  orig: 302, 341
+  offset: 0, 0
+  index: -1
+P2
+  rotate: false
+  xy: 902, 315
+  size: 302, 341
+  orig: 302, 341
+  offset: 0, 0
+  index: -1
+T
+  rotate: false
+  xy: 669, 658
+  size: 293, 348
+  orig: 293, 348
+  offset: 0, 0
+  index: -1
+W
+  rotate: true
+  xy: 2, 546
+  size: 460, 335
+  orig: 460, 335
+  offset: 0, 0
+  index: -1

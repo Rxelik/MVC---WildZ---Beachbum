@@ -1,0 +1,125 @@
+
+YOU WIN.png
+size: 4096,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Blue Card
+  rotate: false
+  xy: 2068, 127
+  size: 279, 345
+  orig: 279, 345
+  offset: 0, 0
+  index: -1
+Blue Glow
+  rotate: false
+  xy: 508, 466
+  size: 555, 555
+  orig: 555, 555
+  offset: 0, 0
+  index: -1
+Green Card
+  rotate: false
+  xy: 504, 20
+  size: 350, 352
+  orig: 350, 352
+  offset: 0, 0
+  index: -1
+Green Glow
+  rotate: false
+  xy: 2163, 487
+  size: 534, 534
+  orig: 534, 534
+  offset: 0, 0
+  index: -1
+I
+  rotate: true
+  xy: 2, 34
+  size: 338, 500
+  orig: 338, 500
+  offset: 0, 0
+  index: -1
+N
+  rotate: true
+  xy: 1208, 3
+  size: 468, 508
+  orig: 468, 508
+  offset: 0, 0
+  index: -1
+O
+  rotate: false
+  xy: 2699, 511
+  size: 510, 510
+  orig: 510, 510
+  offset: 0, 0
+  index: -1
+Red Card
+  rotate: false
+  xy: 856, 113
+  size: 350, 351
+  orig: 350, 351
+  offset: 0, 0
+  index: -1
+Red Glow
+  rotate: false
+  xy: 1614, 474
+  size: 547, 547
+  orig: 547, 547
+  offset: 0, 0
+  index: -1
+U
+  rotate: false
+  xy: 3211, 516
+  size: 494, 505
+  orig: 494, 505
+  offset: 0, 0
+  index: -1
+U Shine
+  rotate: true
+  xy: 2630, 278
+  size: 207, 205
+  orig: 207, 205
+  offset: 0, 0
+  index: -1
+W
+  rotate: true
+  xy: 2, 374
+  size: 647, 504
+  orig: 647, 504
+  offset: 0, 0
+  index: -1
+W Shine
+  rotate: false
+  xy: 2837, 2
+  size: 507, 507
+  orig: 507, 507
+  offset: 0, 0
+  index: -1
+Y
+  rotate: false
+  xy: 3346, 9
+  size: 491, 505
+  orig: 491, 505
+  offset: 0, 0
+  index: -1
+Y Shine
+  rotate: true
+  xy: 1718, 123
+  size: 349, 348
+  orig: 349, 348
+  offset: 0, 0
+  index: -1
+Yellow Card
+  rotate: false
+  xy: 2349, 140
+  size: 279, 345
+  orig: 279, 345
+  offset: 0, 0
+  index: -1
+Yellow Glow
+  rotate: false
+  xy: 1065, 473
+  size: 547, 548
+  orig: 547, 548
+  offset: 0, 0
+  index: -1

@@ -12,7 +12,7 @@ public class CardController : ICardController
 {
     private GameManager _manager;
 
-
+        
     // Keep references to the model and view
     private readonly ICardModel model;
     private readonly ICardView view;
@@ -33,7 +33,13 @@ public class CardController : ICardController
         model.OrderInHandChanged += Count;
         model.ChangedSprite += ChangedSprite;
         model.CanPlayCardEve += ChangedCon;
+        model.Board.CardInBoardChanged += Board_CardInBoardChanged;
         // Set the view's initial state by synching with the model
+        SyncData();
+    }
+
+    private void Board_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
+    {
         SyncData();
     }
 
@@ -51,7 +57,6 @@ public class CardController : ICardController
     private void Count(object sender, OrderInHandEventArgs e)
     {
         SyncData();
-
     }
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
@@ -66,6 +71,7 @@ public class CardController : ICardController
     }
     public IEnumerator Lerp()
     {
+        SyncData();
         float t = 0;
         float duration = 0.45f;
 
@@ -74,56 +80,44 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Player.Cards[model.HandOrder].Position, t / duration);
+                view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
                 model.BelongsTo = "Player";
-
             }
 
         }
-
-
-        if (model.BelongsTo == "ViewPlayer")
+        if (model.BelongsTo == "Player")
         {
-            view.Position = new Vector3((model.Player.Cards[model.HandOrder].Position.x * 1.10f) + model.HandOrder, -8f, 0);
-            model.Layer = 20;
-            SyncData();
+
+            while (t < duration)
+            {
+                t += Time.deltaTime / duration;
+                view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
+                yield return null;
+            }
         }
+
         if (model.BelongsTo == "FlyingToEnemy")
         {
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), model.Enemy.Cards[model.HandOrder].Position, t / duration);
+                view.Position = Vector3.Lerp(new Vector3(20, 0, 0), new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 yield return null;
-
                 model.BelongsTo = "Enemy";
 
             }
         }
 
-
-        if (model.BelongsTo == "Player")
-        {
-            view.Position = model.Position;
-            //while (t < duration)
-            //{
-            //    t += Time.deltaTime / duration;
-            //    view.Position = Vector3.Lerp(model.Position, model.Player.Cards [model.HandOrder].Position, t / duration);
-            //    yield return null;
-            //}
-
-        }
-
-        if (model.BelongsTo == "Enemy")
-        {
-            while (t < 1f)
-            {
-                t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
-                yield return null;
-            }
-        }
+        //if (model.BelongsTo == "Enemy")
+        //{
+        //    while (t < 1f)
+        //    {
+        //        t += Time.deltaTime / duration;
+        //        view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
+        //        yield return null;
+        //    }
+        //}
 
         if (model.BelongsTo == "Board")
         {
@@ -131,14 +125,14 @@ public class CardController : ICardController
             else
             {
                 model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+                SyncData();
             }
 
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
+                view.Position = Vector2.Lerp(model.Position, new Vector2(0,-0.5f), view.Curve.Evaluate(t / duration));
 
-                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
-               // SyncData();
                 yield return null;
             }
         }

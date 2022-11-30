@@ -26,11 +26,12 @@ public interface IDeckModel
     [SerializeField] List<CardModel> Cards { get; set; }
     DeckModel Deck { get; set; }
 
-    BoardModel Board { get; set; }  
+    BoardModel Board { get; set; }
     string CurrentTurn { get; set; }
 
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+    CardModel TopCard();
 }
 
 public class DeckModel : IDeckModel
@@ -184,6 +185,7 @@ public class DeckModel : IDeckModel
         {
             CurrentTurn = "";
             CurrentTurn = "Enemy";
+
         }
     }
 }

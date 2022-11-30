@@ -32,7 +32,7 @@ public interface ICardView
     [SerializeField] EnemyModel Enemy { set; }
     int Number { set; }
     int HandOrder { set; }
-    Vector3 Position { set; }
+    Vector3 Position { get; set; }
     Quaternion Rotation { set; }
     Color Color { set; }
     string BelongsTo { set; }
@@ -46,11 +46,13 @@ public interface ICardView
 
     Sprite Sprite { set; }
 
+    AnimationCurve Curve { get; }
+
 }
 
 // Implementation of the enemy view
 [System.Serializable]
-public class CardView : MonoBehaviour, ICardView
+public class CardView : MvcModels, ICardView
 {
     // Dispatched when the enemy is clicked
     public event EventHandler<CardClickedEventArgs> OnClicked = (sender, e) => { };
@@ -65,7 +67,7 @@ public class CardView : MonoBehaviour, ICardView
     public int HandOrder { set { _inspectOrderInHand = value; } }
     public PlayerModel Player { set { _InspectorPlayer = value; } }
     public EnemyModel Enemy { set { _InspectorEnemy = value; } }
-    public Vector3 Position { set { transform.position = value; _inspectPos = value; } }
+    public Vector3 Position { set { transform.position = value; _inspectPos = value; } get => transform.position; }
     public Quaternion Rotation { set { transform.rotation = value; _inspectRot = value; } }
 
     // Set the Card Color position
@@ -79,6 +81,7 @@ public class CardView : MonoBehaviour, ICardView
     public bool IsBamboozle { set { _IsBamboozle = value; } }
 
     public Sprite Sprite { set { GetComponent<SpriteRenderer>(); } }
+    public AnimationCurve Curve { get => _curve; }
 
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
@@ -103,6 +106,9 @@ public class CardView : MonoBehaviour, ICardView
     public PlayerModel _InspectorPlayer;
     public EnemyModel _InspectorEnemy;
 
+    public AnimationCurve _curve;
+    private ICardView _cardViewImplementation;
+
     private void Awake()
     {
         _InspectorSprite = GetComponent<SpriteRenderer>();
@@ -123,6 +129,7 @@ public class CardView : MonoBehaviour, ICardView
         }
 
     }
+
     void Update()
     {
         // v2.BelongsTo = _inspectorBelongsTo;
@@ -130,81 +137,29 @@ public class CardView : MonoBehaviour, ICardView
         {
             Arc.rotation = Quaternion.Euler(0, 0, 0);
         }
-        if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
+
+        else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
-            gameObject.transform.localScale = new Vector3(0.7f, 0.7f);
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f);
         }
-        if (_inspectorBelongsTo == "Deck")
+
+        else if (_inspectorBelongsTo == "Deck")
         {
             gameObject.transform.localScale = new Vector3(1f, 1f);
+            Layer = 3;
         }
-        if (_inspectorBelongsTo == "Enemy")
-        {
-            Arc.rotation = Quaternion.Euler(0, 0, (_inspectOrderInHand - 5) * 1.2f);
-        }
-        if (_inspectorBelongsTo == "Player")
-        {
-            if (_CanPlayCard && ParticleEffect)
-            {
-                Arc.rotation = Quaternion.Euler(0, 0, 0);
-                ParticleEffect.gameObject.SetActive(true);
-                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder - 1;
-            }
 
-            if (!_CanPlayCard && ParticleEffect)
-            {
-                if (!EnableArc)
-                    Arc.rotation = Quaternion.Euler(0, 0, 0);
-                else
-                    Arc.rotation = Quaternion.Euler(0, 0, (-_inspectOrderInHand + 5) * 1.2f);
+        else if (_inspectorBelongsTo == "Enemy")
+        {
+            gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
+        }
 
-                ParticleEffect.gameObject.SetActive(false);
-                ParticleEffect.GetComponent<Renderer>().sortingOrder = _InspectorSprite.sortingOrder;
-            }
-        }
-        else
+        else if (_inspectorBelongsTo == "Player")
         {
-            ParticleEffect.gameObject.SetActive(false);
-        }
-        //gs.text = _inspectNumber.ToString();
-        //gs.sortingOrder = _sprite.sortingOrder;
-        // If the primary mouse button was pressed this frame
-        if (Input.GetMouseButtonDown(0))
-        {
-            // If the mouse hit this enemy
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (
-                Physics.Raycast(ray, out hit)
-                && hit.transform == transform
-            )
-            {
-                //var eventArgs = new CardClickedEventArgs();
-                //OnClicked(this, eventArgs);
-            }
-        }
-    }
 
-    IEnumerator WaitBeforeRegister()
-    {
-        yield return new WaitForSeconds(0.25f);
-        var eventArgs = new CardOnEnableEventArgs();
-        OnEnableEvent(this, eventArgs);
-        yield return new WaitForSeconds(0.25f);
-        var eventArgss = new OnLayerChangeEventArgs();
-        OnLayerChangeEve(this, eventArgss);
-        print("rized laya");
-    }
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((_inspectOrderInHand + 0.5f) / playerModel.Cards.Count));
+            //transform.position = pointInPath;
 
-    private void GetTransforms()
-    {
-        for (int i = 0; i < 9; i++)
-        {
-            //   PlayerTransforms.Add(GameObject.Find($"Player Card Pos "+i));
-        }
-        for (int i = 0; i < 9; i++)
-        {
-            //     EnemyTransforms.Add(GameObject.Find($"Enemy Card Pos " + i));
         }
     }
 }

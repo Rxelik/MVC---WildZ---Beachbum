@@ -21,6 +21,7 @@ public interface IBoardModel
 
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+    CardModel TopCard();
 
 }
 
@@ -71,11 +72,16 @@ public class BoardModel : IBoardModel
     }
     public void AddCard(CardModel card)
     {
-        Cards.Add(card);
         card.BelongsTo = "Board";
+        Cards.Add(card);
         card.Layer = Cards.Count;
+        if (Cards.Count > 10)
+        {
+            ClearCards();
+        }
         var eventArgs = new OnCardsInBoardChangeEventArgs();
         CardInBoardChanged(this, eventArgs);
+
     }
     public void RemoveCard(CardModel card)
     {
@@ -87,6 +93,14 @@ public class BoardModel : IBoardModel
     public CardModel TopCard()
     {
         return Cards[Cards.Count - 1];
+    }
+
+    public void ClearCards()
+    {
+        for (int i = 0; i < Cards.Count - 8; i++)
+        {
+            Cards[i].Color = Color.clear;
+        }
     }
 }
 

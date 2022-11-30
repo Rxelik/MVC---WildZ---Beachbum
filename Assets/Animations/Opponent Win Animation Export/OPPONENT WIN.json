@@ -1,0 +1,137 @@
+{
+"skeleton": {
+	"hash": "hiylalnlIV0nwBrsgiFQG/AhaPE",
+	"spine": "3.8.99",
+	"x": -1586.58,
+	"y": -184.29,
+	"width": 3231,
+	"height": 353,
+	"images": "./images/",
+	"audio": "C:/Users/yarde/Desktop/Team PlayFool/VFX/Animations/Opponent Win"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Rotation Bone Left", "parent": "root", "x": -1572.23, "y": -136.83 },
+	{ "name": "Rotation Bone Right", "parent": "Rotation Bone Left", "x": 3207.75, "y": -7.96 }
+],
+"slots": [
+	{ "name": "N", "bone": "Rotation Bone Right", "attachment": "N" },
+	{ "name": "I", "bone": "Rotation Bone Right", "attachment": "I" },
+	{ "name": "W", "bone": "Rotation Bone Right", "attachment": "W" },
+	{ "name": "T", "bone": "Rotation Bone Right", "attachment": "T" },
+	{ "name": "N2", "bone": "Rotation Bone Right", "attachment": "N2" },
+	{ "name": "E", "bone": "Rotation Bone Right", "attachment": "E" },
+	{ "name": "N1", "bone": "Rotation Bone Right", "attachment": "N1" },
+	{ "name": "O2", "bone": "Rotation Bone Right", "attachment": "O2" },
+	{ "name": "P2", "bone": "Rotation Bone Right", "attachment": "P2" },
+	{ "name": "P1", "bone": "Rotation Bone Right", "attachment": "P1" },
+	{ "name": "O1", "bone": "Rotation Bone Right", "attachment": "O1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"E": {
+				"E": { "x": -1614.6, "y": 138.5, "width": 243, "height": 334 }
+			},
+			"I": {
+				"I": { "x": -341.6, "y": 142, "width": 145, "height": 331 }
+			},
+			"N": {
+				"N": { "x": -128.1, "y": 141, "width": 274, "height": 341 }
+			},
+			"N1": {
+				"N1": { "x": -1874.6, "y": 138.5, "width": 283, "height": 350 }
+			},
+			"N2": {
+				"N2": { "x": -1358.6, "y": 138.5, "width": 283, "height": 350 }
+			},
+			"O1": {
+				"O1": { "x": -3058.1, "y": 137, "width": 328, "height": 349 }
+			},
+			"O2": {
+				"O2": { "x": -2169.1, "y": 137, "width": 328, "height": 349 }
+			},
+			"P1": {
+				"P1": { "x": -2754.1, "y": 138, "width": 302, "height": 341 }
+			},
+			"P2": {
+				"P2": { "x": -2465.1, "y": 138, "width": 302, "height": 341 }
+			},
+			"T": {
+				"T": { "x": -1086.6, "y": 134.5, "width": 293, "height": 348 }
+			},
+			"W": {
+				"W": { "x": -633.1, "y": 141, "width": 460, "height": 335 }
+			}
+		}
+	}
+],
+"animations": {
+	"None": {},
+	"Opponent Win & Rise": {
+		"bones": {
+			"Rotation Bone Left": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "angle": 28.71 },
+					{ "time": 0.3333, "angle": -0.98 },
+					{ "time": 0.6, "angle": 1.95 },
+					{ "time": 0.6667 }
+				],
+				"translate": [
+					{ "y": 2229.72 },
+					{ "time": 0.1667 }
+				]
+			},
+			"Rotation Bone Right": {
+				"rotate": [
+					{ "time": 0.3333, "angle": -2.46 },
+					{ "time": 0.4333, "angle": -3.78 },
+					{ "time": 0.5 }
+				]
+			},
+			"root": {
+				"translate": [
+					{ "time": 1.3333 },
+					{ "time": 1.5333, "y": 563.33 },
+					{ "time": 1.7, "y": 701.33 },
+					{ "time": 1.8333, "y": 1086 }
+				],
+				"scale": [
+					{ "time": 1.3333 },
+					{ "time": 1.5333, "x": 1.055, "y": 1.055 },
+					{ "time": 1.7, "x": 1.118, "y": 1.118 },
+					{ "time": 1.8333, "x": 0.837, "y": 0.837, "curve": "stepped" },
+					{ "time": 1.8667, "x": 0.837, "y": 0.837 }
+				]
+			}
+		}
+	},
+	"Opponent Win Animation": {
+		"bones": {
+			"Rotation Bone Left": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "angle": 28.71 },
+					{ "time": 0.3333, "angle": -0.98 },
+					{ "time": 0.6, "angle": 1.95 },
+					{ "time": 0.6667, "curve": "stepped" },
+					{ "time": 1.3333 }
+				],
+				"translate": [
+					{ "y": 2229.72 },
+					{ "time": 0.1667 }
+				]
+			},
+			"Rotation Bone Right": {
+				"rotate": [
+					{ "time": 0.3333, "angle": -2.46 },
+					{ "time": 0.4333, "angle": -3.78 },
+					{ "time": 0.5 }
+				]
+			}
+		}
+	}
+}
+}
