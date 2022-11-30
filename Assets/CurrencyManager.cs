@@ -19,7 +19,9 @@ public class CurrencyManager : MonoBehaviour
         {
             Instance = this;
         }
+        DontDestroyOnLoad(this.gameObject);
     }
+
     #endregion
 
     public int currentBalance;
@@ -38,17 +40,22 @@ public class CurrencyManager : MonoBehaviour
 
     public void StartRun()
     {
-        currencyInRun -= 10;
+        currencyInRun = 10;
     }
 
-    public void OnGameOver()
+    public void OnGameLost()
     {
-        currentBalance += currencyInRun;
+        currentBalance -= (currencyInRun * 2);
+        PlayerPrefs.SetInt("currencyPref", currentBalance);
+    }
+    public void OnGameWon()
+    {
+        currentBalance += (currencyInRun * 2);
         PlayerPrefs.SetInt("currencyPref", currentBalance);
     }
     public void OnGameStart(int Money)
     {
-        currentBalance -= Money;
+        currencyInRun = Money;
         PlayerPrefs.SetInt("currencyPref", currentBalance);
     }
 }
