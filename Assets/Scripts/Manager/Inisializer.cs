@@ -611,7 +611,7 @@ public class Inisializer : MonoBehaviour
             // Set some initial state
             _Cardmodel.Position = new Vector3(20, 0, 0);
             _Cardmodel.Color = Color.white;
-            _Cardmodel.Number = -1;
+            _Cardmodel.Number = 88;
             _Cardmodel.Layer = 1;
             _Cardmodel.Name = "ChangeColor Card";
             _Cardmodel.IsWild = true;
