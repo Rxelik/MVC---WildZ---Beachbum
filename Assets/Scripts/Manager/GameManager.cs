@@ -41,7 +41,6 @@ public class GameManager : MvcModels
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
     public SkeletonGraphic skeletonAnimation;
-    public TextMeshProUGUI turn;
     public TextMeshProUGUI aiCardCount;
     public TextMeshProUGUI playerCardCount;
     public TextMeshProUGUI aiScoreUgui;
@@ -92,7 +91,6 @@ public class GameManager : MvcModels
                 }
                 if (playerScore < 75 && !trigger)
                 {
-                    turn.text = "";
                     var eventRoundWin = new OnRoundWinAnimEventArgs();
                     OnRoundWinEve(this, eventRoundWin);
                     trigger = true;
@@ -115,7 +113,6 @@ public class GameManager : MvcModels
                 {
                     if (aiScore < 75 && !trigger)
                     {
-                        turn.text = "";
                         var eventLoose = new OnRoundLooseAnimEventArgs();
                         OnRoundLooseEve(this, eventLoose);
                         trigger = true;

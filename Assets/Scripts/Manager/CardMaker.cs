@@ -78,9 +78,9 @@ public class CardMaker : MvcModels
                 }
                 else if (!view._IsSuper && view._IsWild)
                 {
-                    
+
                     SwapCards();
-                    
+
                 }
                 else if (!view._IsSuper && !view._IsWild)
                 {
@@ -151,7 +151,7 @@ public class CardMaker : MvcModels
                 }
                 else
                 {
-                    if (view._InspectorColor != Color.white && view._inspectNumber !=1)
+                    if (view._InspectorColor != Color.white)
                     {
                         SwappedFace = false;
                         BuildCards();
@@ -507,7 +507,7 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Red2[11];
                         break;
-                    case -1:
+                    case 88:
                         CardSprite.sprite = Red2[11];
                         break;
                     default:
@@ -563,7 +563,7 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Green2[11];
                         break;
-                    case -1:
+                    case 88:
                         CardSprite.sprite = Green2[11];
                         break;
                     default:
@@ -619,7 +619,7 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Blue2[11];
                         break;
-                    case -1:
+                    case 88:
                         CardSprite.sprite = Blue2[11];
                         break;
                     default:
@@ -675,7 +675,7 @@ public class CardMaker : MvcModels
                     case 99:
                         CardSprite.sprite = Yellow2[11];
                         break;
-                    case -1:
+                    case 88:
                         CardSprite.sprite = Yellow2[11];
                         break;
                     default:
@@ -695,7 +695,7 @@ public class CardMaker : MvcModels
                     case 55:
                         CardSprite.sprite = White2[2];
                         break;
-                    case -1:
+                    case 88:
                         CardSprite.sprite = White2[3];
                         break;
                     default:

@@ -238,7 +238,7 @@ public class ButtonIndexV2 : MvcModels
             manager.chosenCard.Color = Color.blue;
 
 
-        else if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != -1)
+        else if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != 88)
         {
             if (manager.chosenCard.IsSuper)
                 AI.Instance.StartCoroutine(SuperCard(manager.chosenCard, enemyModel));
@@ -252,7 +252,7 @@ public class ButtonIndexV2 : MvcModels
 
         RemoveButtons();
 
-        if (manager.chosenCard.Number == -1)
+        if (manager.chosenCard.Number == 88)
         {
             boardModel.AddCard(manager.chosenCard);
             enemyModel.RemoveCard(manager.chosenCard);
@@ -420,7 +420,7 @@ public class ButtonIndexV2 : MvcModels
 
             }
 
-            if (manager.chosenCard.Number == -1)
+            if (manager.chosenCard.Number == 88)
             {
                 boardModel.AddCard(manager.chosenCard);
                 ChangeTurn(false);
@@ -593,7 +593,7 @@ public class ButtonIndexV2 : MvcModels
         if (card.IsWild && boardModel.TopCard().Number != 22
            || card.IsWild && boardModel.TopCard().Number != 44
            || card.IsWild && card.IsSuper
-           || card.IsWild && card.Number == -1
+           || card.IsWild && card.Number == 88
             )
         {
             colors.Add("Red");

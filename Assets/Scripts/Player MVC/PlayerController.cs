@@ -103,7 +103,7 @@ public class PlayerController : IPlayerController
 
     private void FixPosition()
     {
-        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f, 0.15f, 1.35f), 1, 1);
+        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 8f, 0.10f, 1.15f), 1, 1);
         //R Y B G
         if (!model.FirstTurn)
         {
