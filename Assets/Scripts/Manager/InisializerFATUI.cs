@@ -137,7 +137,6 @@ public class InisializerFATUI : MonoBehaviour
 
         #region Cards Maker
 
-        int CardIndex;
         int SuperCards = 2;
         int PlusTwo = 2;
         int PlusFour = 1;
@@ -216,30 +215,25 @@ public class InisializerFATUI : MonoBehaviour
         #endregion
 
         #region Normal
-        CardIndex = 1;
-        for (int i = 0; i < 9; i++)
+        for (int j = 1; j < 1; j++)
         {
-            for (int j = 1; j < 3; j++)
-            {
-                var CardmodelFactory = new CardModelFactory();
-                var _Cardmodel = CardmodelFactory.Model;
-                // Set some initial state
-                //_Cardmodel.Position = new Vector3(20, 0, 0);
-                _Cardmodel.Color = Color.red;
-                _Cardmodel.Number = CardIndex;
-                _Cardmodel.Layer = 1;
-                _Cardmodel.Name = "Card " + _Cardmodel.Number;
-                _Cardmodel.Board = (BoardModel)_Boardmodel;
-                tempList.Add((CardModel)_Cardmodel);
-                // Create the view
-                var CardviewFactory = new CardViewFactory();
-                var Cardview = CardviewFactory.View;
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            //_Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.red;
+            _Cardmodel.Number = 1;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Card " + _Cardmodel.Number;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
 
-                // Create the controller
-                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-                var Cardcontroller = controllerFactory.Controller;
-            }
-            CardIndex++;
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
         }
         #endregion
 
@@ -318,30 +312,25 @@ public class InisializerFATUI : MonoBehaviour
         #endregion
 
         #region Normal
-        CardIndex = 1;
-        for (int i = 0; i < 9; i++)
+        for (int j = 1; j < 3; j++)
         {
-            for (int j = 1; j < 3; j++)
-            {
-                var CardmodelFactory = new CardModelFactory();
-                var _Cardmodel = CardmodelFactory.Model;
-                // Set some initial state
-                _Cardmodel.Position = new Vector3(20, 0, 0);
-                _Cardmodel.Color = Color.blue;
-                _Cardmodel.Number = CardIndex;
-                _Cardmodel.Layer = 1;
-                _Cardmodel.Name = "Card " + _Cardmodel.Number;
-                _Cardmodel.Board = (BoardModel)_Boardmodel;
-                tempList.Add((CardModel)_Cardmodel);
-                // Create the view
-                var CardviewFactory = new CardViewFactory();
-                var Cardview = CardviewFactory.View;
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.blue;
+            _Cardmodel.Number = 1;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Card " + _Cardmodel.Number;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
 
-                // Create the controller
-                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-                var Cardcontroller = controllerFactory.Controller;
-            }
-            CardIndex++;
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
         }
         #endregion
 
@@ -420,30 +409,25 @@ public class InisializerFATUI : MonoBehaviour
         #endregion
 
         #region Normal
-        CardIndex = 1;
-        for (int i = 0; i < 9; i++)
+        for (int j = 1; j < 3; j++)
         {
-            for (int j = 1; j < 3; j++)
-            {
-                var CardmodelFactory = new CardModelFactory();
-                var _Cardmodel = CardmodelFactory.Model;
-                // Set some initial state
-                _Cardmodel.Position = new Vector3(20, 0, 0);
-                _Cardmodel.Color = Color.yellow;
-                _Cardmodel.Number = CardIndex;
-                _Cardmodel.Layer = 1;
-                _Cardmodel.Name = "Card " + _Cardmodel.Number;
-                _Cardmodel.Board = (BoardModel)_Boardmodel;
-                tempList.Add((CardModel)_Cardmodel);
-                // Create the view
-                var CardviewFactory = new CardViewFactory();
-                var Cardview = CardviewFactory.View;
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.yellow;
+            _Cardmodel.Number = 1;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Card " + _Cardmodel.Number;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
 
-                // Create the controller
-                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-                var Cardcontroller = controllerFactory.Controller;
-            }
-            CardIndex++;
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
         }
         #endregion
 
@@ -522,30 +506,25 @@ public class InisializerFATUI : MonoBehaviour
 
 
         #region Normal
-        CardIndex = 1;
-        for (int i = 0; i < 9; i++)
+        for (int j = 1; j < 3; j++)
         {
-            for (int j = 1; j < 3; j++)
-            {
-                var CardmodelFactory = new CardModelFactory();
-                var _Cardmodel = CardmodelFactory.Model;
-                // Set some initial state
-                _Cardmodel.Position = new Vector3(20, 0, 0);
-                _Cardmodel.Color = Color.green;
-                _Cardmodel.Number = CardIndex;
-                _Cardmodel.Layer = 1;
-                _Cardmodel.Name = "Card " + _Cardmodel.Number;
-                _Cardmodel.Board = (BoardModel)_Boardmodel;
-                tempList.Add((CardModel)_Cardmodel);
-                // Create the view
-                var CardviewFactory = new CardViewFactory();
-                var Cardview = CardviewFactory.View;
+            var CardmodelFactory = new CardModelFactory();
+            var _Cardmodel = CardmodelFactory.Model;
+            // Set some initial state
+            _Cardmodel.Position = new Vector3(20, 0, 0);
+            _Cardmodel.Color = Color.green;
+            _Cardmodel.Number = 1;
+            _Cardmodel.Layer = 1;
+            _Cardmodel.Name = "Card " + _Cardmodel.Number;
+            _Cardmodel.Board = (BoardModel)_Boardmodel;
+            tempList.Add((CardModel)_Cardmodel);
+            // Create the view
+            var CardviewFactory = new CardViewFactory();
+            var Cardview = CardviewFactory.View;
 
-                // Create the controller
-                var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
-                var Cardcontroller = controllerFactory.Controller;
-            }
-            CardIndex++;
+            // Create the controller
+            var controllerFactory = new CardControllerFactory(_Cardmodel, Cardview);
+            var Cardcontroller = controllerFactory.Controller;
         }
         #endregion
 

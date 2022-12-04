@@ -12,4 +12,5 @@ public class MvcModels : MonoBehaviour
     public static DeckModel deckModel;
     public static DeckView deckView;
     public static BoardView boardView;
+
 }
