@@ -154,6 +154,10 @@ public class GameManager : MvcModels
             {
                 playerScore += 10;
             }
+            if (item.Number == 88)
+            {
+                playerScore += 15;
+            }
             if (item.Number == 22 && item.IsWild)
             {
                 playerScore += 20;
@@ -204,6 +208,10 @@ public class GameManager : MvcModels
             if (item.IsBamboozle)
             {
                 aiScore += 40;
+            }
+            if (item.Number == 88)
+            {
+                playerScore += 15;
             }
         }
     }

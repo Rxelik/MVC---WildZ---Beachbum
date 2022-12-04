@@ -48,12 +48,12 @@ public class CurrencyManager : MonoBehaviour
 
     public void OnGameLost()
     {
-        currentBalance -= (currencyInRun * 2);
+        currentBalance -= currencyInRun * 3 + Random.Range(1,99);
         PlayerPrefs.SetInt("currencyPref", currentBalance);
     }
     public void OnGameWon()
     {
-        currentBalance += (currencyInRun * 2);
+        currentBalance += currencyInRun * 3 + Random.Range(1, 99);
         PlayerPrefs.SetInt("currencyPref", currentBalance);
     }
     public void OnGameStart(int Money)
