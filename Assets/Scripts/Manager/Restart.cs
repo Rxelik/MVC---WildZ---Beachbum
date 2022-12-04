@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-    
-    
+
+
 
     public void RestartGame()
     {
+        SceneManager.LoadScene(0);
+    }
+    public void RestartGasme()
+    {
+        CurrencyManager.Instance.OnGameStart(CurrencyManager.Instance.currencyInRun);
         SceneManager.LoadScene(1);
     }
-
     public void StartGame(int JoinMoney)
     {
         if (CurrencyManager.Instance.currentBalance >= JoinMoney)

@@ -31,11 +31,13 @@ public class CurrencyManager : MonoBehaviour
     private void Update()
     {
         if (currency != null)
-        currency.text = currentBalance.ToString();
+            currency.text = currentBalance.ToString();
     }
     void Start()
     {
-        //PlayerPrefs.SetInt("currencyPref", 1337);
+#if UNITY_EDITOR
+        PlayerPrefs.SetInt("currencyPref", 1337);
+#endif
         currentBalance = PlayerPrefs.GetInt("currencyPref", 1337);
     }
 

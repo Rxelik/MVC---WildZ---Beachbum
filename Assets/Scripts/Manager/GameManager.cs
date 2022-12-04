@@ -74,6 +74,14 @@ public class GameManager : MvcModels
 
             if (gameEnded && !clicked && aiScore > 75 || gameEnded && !clicked && playerScore > 75)
             {
+                if (aiScore > 75)
+                {
+                    CurrencyManager.Instance.OnGameLost();
+                }
+                else if (playerScore > 75)
+                {
+                    CurrencyManager.Instance.OnGameWon();
+                }
                 StartCoroutine(WinLooseEnumerator());
             }
 

@@ -585,23 +585,27 @@ public class ButtonIndexV2 : MvcModels
 
     private void AiChooseCard(CardModel card)
     {
-        int rand = Random.Range(0, 3);
-        manager.chosenCard = card;
-        print(card.Name);
-        NormalCard(card, enemyModel);
-        AI.Instance.StartCoroutine(SuperCard(card, enemyModel));
-        if (card.IsWild && boardModel.TopCard().Number != 22
-           || card.IsWild && boardModel.TopCard().Number != 44
-           || card.IsWild && card.IsSuper
-           || card.IsWild && card.Number == 88
-            )
+        if (!manager.gameEnded)
         {
-            colors.Add("Red");
-            colors.Add("Green");
-            colors.Add("Yellow");
-            colors.Add("Blue");
-            AI.Instance.StartCoroutine(IwaitBefore(rand));
+            int rand = Random.Range(0, 3);
+            manager.chosenCard = card;
+            print(card.Name);
+            NormalCard(card, enemyModel);
+            AI.Instance.StartCoroutine(SuperCard(card, enemyModel));
+            if (card.IsWild && boardModel.TopCard().Number != 22
+                || card.IsWild && boardModel.TopCard().Number != 44
+                || card.IsWild && card.IsSuper
+                || card.IsWild && card.Number == 88
+               )
+            {
+                colors.Add("Red");
+                colors.Add("Green");
+                colors.Add("Yellow");
+                colors.Add("Blue");
+                AI.Instance.StartCoroutine(IwaitBefore(rand));
+            }
         }
+
     }
 
     IEnumerator IwaitBefore(int color)
