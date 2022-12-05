@@ -27,7 +27,7 @@ public interface IDeckView
 
 // Implementation of the enemy view
 [System.Serializable]
-public class DeckView : MonoBehaviour, IDeckView
+public class DeckView : MvcModels, IDeckView
 {
 
     // Dispatched when the enemy is clicked
@@ -59,7 +59,7 @@ public class DeckView : MonoBehaviour, IDeckView
         {
             ShuffleCards();
         }
-        if (!GameManager.Instance.playerCanPlay && _CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
+        if (!GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
         {
             ParticleEffect.gameObject.SetActive(true);
         }

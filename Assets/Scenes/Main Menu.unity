@@ -935,7 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e8279f35b8b0e4389eefb9e15e1c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selector: {fileID: 985661730}
 --- !u!1 &463803401
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +983,7 @@ GameObject:
   - component: {fileID: 687192839}
   - component: {fileID: 687192838}
   m_Layer: 5
-  m_Name: Player
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1505,18 +1504,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956395907}
   m_CullTransparentMesh: 0
---- !u!114 &985661730 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8547892782035539636, guid: 485699d343c70a54aa2c4516c2a6c6a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8547892782408832918}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e417152aa8aa30a4ebb86c800540f9b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1061325416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,7 +1756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e8279f35b8b0e4389eefb9e15e1c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selector: {fileID: 985661730}
 --- !u!1 &1165047996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,7 +2151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e8279f35b8b0e4389eefb9e15e1c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selector: {fileID: 985661730}
 --- !u!1 &1360154641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,6 +2195,7 @@ GameObject:
   - component: {fileID: 1466043942}
   - component: {fileID: 1466043941}
   - component: {fileID: 1466043940}
+  - component: {fileID: 1466043943}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -2316,7 +2302,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 985661730}
+      - m_Target: {fileID: 1466043943}
         m_MethodName: NameChange
         m_Mode: 1
         m_Arguments:
@@ -2382,6 +2368,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466043938}
   m_CullTransparentMesh: 0
+--- !u!114 &1466043943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466043938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e8279f35b8b0e4389eefb9e15e1c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470842727
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,7 +3356,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerSprite
       value: 
-      objectReference: {fileID: 687192838}
+      objectReference: {fileID: 0}
     - target: {fileID: 8547892782035539637, guid: 485699d343c70a54aa2c4516c2a6c6a8,
         type: 3}
       propertyPath: m_RootOrder

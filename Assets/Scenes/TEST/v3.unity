@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -266,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 8292856481418040217, guid: 8abc38fafc0440c49a9f71c4a434627b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8abc38fafc0440c49a9f71c4a434627b, type: 3}
@@ -7858,6 +7858,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf54bc3216b66aa42b2372d83b1a3efe, type: 3}
   aiSprite: {fileID: 624749005}
   playerSprite: {fileID: 1368330908}
+  aiSpriteEnd: {fileID: 2091721718}
+  playerSpriteEnd: {fileID: 687192838}
   aiName: {fileID: 979212488}
   playerName: {fileID: 284604050}
 --- !u!4 &2143862889

@@ -44,6 +44,7 @@ public class SpriteSelector : MonoBehaviour
     public void Ref()
     {
         playerSprite = GameObject.Find("PlayerSprite").GetComponent<Image>();
+        input = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
     }
     public bool isMale = true;
 

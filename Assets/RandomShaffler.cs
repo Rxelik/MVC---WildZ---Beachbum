@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class RandomShaffler : MonoBehaviour
 {
@@ -12,7 +13,14 @@ public class RandomShaffler : MonoBehaviour
     public List<Sprite> femaleSpritesList;
 
     public SpriteRenderer aiSprite;
-    public SpriteRenderer playerSprite;
+    public SpriteRenderer playerSprite;  
+    
+    public Image aiSpriteEnd;
+    public Image playerSpriteEnd;
+
+
+
+
 
     public TextMeshProUGUI aiName;
     public TextMeshProUGUI playerName;
@@ -21,8 +29,14 @@ public class RandomShaffler : MonoBehaviour
     {
         manager = GameManager.Instance;
         Randomize();
+
+        aiSpriteEnd.sprite = aiSprite.sprite;
+        playerSpriteEnd.sprite = playerSprite.sprite;
     }
 
+    void Update()
+    { 
+    }
     private void Randomize()
     {
         int rnd = Random.Range(0, 10);

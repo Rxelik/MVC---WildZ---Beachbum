@@ -20,4 +20,9 @@ public class GetReffrence : MonoBehaviour
     {
         SpriteSelector.Instance.ToggleGender();
     }
+
+    public void NameChange()
+    {
+        SpriteSelector.Instance.NameChange();
+    }
 }
