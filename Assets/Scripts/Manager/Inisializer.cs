@@ -17,7 +17,7 @@ public class Inisializer : MonoBehaviour
     public static Inisializer Instance { get; private set; }
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
+        // If there is an Instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
         {
@@ -904,5 +904,6 @@ public class Inisializer : MonoBehaviour
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();
+        GameManager.Instance.playerPlayed = false;
     }
 }

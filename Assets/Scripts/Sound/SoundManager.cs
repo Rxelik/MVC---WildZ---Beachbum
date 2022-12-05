@@ -29,12 +29,12 @@ public class SoundManager : MvcModels
     // Random pitch adjustment range.
     public float LowPitchRange = .95f;
     public float HighPitchRange = 1.05f;
-    // Singleton instance.
+    // Singleton Instance.
     #region Singelton
     public static SoundManager Instance { get; private set; }
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
+        // If there is an Instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
         {
@@ -46,7 +46,7 @@ public class SoundManager : MvcModels
         }
     }
     #endregion
-    // Initialize the singleton instance.
+    // Initialize the singleton Instance.
     private void Start()
     {
         CallEvent();

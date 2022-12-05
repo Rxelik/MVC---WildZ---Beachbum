@@ -53,8 +53,16 @@ public class DeckController : IDeckController
     {
         foreach (var item in model.Board.Cards)
         {
-            yield return new WaitForSeconds(0.10f);
-            model.AddCard(item);
+            if (model.Board.Cards.Count == 1)
+            {
+
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.10f);
+                model.AddCard(item);
+                model.Board.RemoveCard(item);
+            }
         }
     }
     // Called when the view is clicked

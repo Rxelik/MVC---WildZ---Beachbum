@@ -5,28 +5,46 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SpriteSelector : MonoBehaviour
 {
     #region Singelton
-    public static SpriteSelector Instance { get; private set; }
-    private void Awake()
-    {
-        // If there is an instance, and it's not me, delete myself.
 
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
+    public static SpriteSelector Instance;
+
+
+    void Awake()
+    {
+        if (Instance == null)
         {
             Instance = this;
         }
-        DontDestroyOnLoad(this.gameObject);
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
     }
 
     #endregion
 
+    private void Start()
+    {
+        Ref();
+        SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+    }
+
+    private void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
+    {
+        Ref();
+    }
+
+    public void Ref()
+    {
+        playerSprite = GameObject.Find("PlayerSprite").GetComponent<Image>();
+    }
     public bool isMale = true;
 
     public int mNumber = 0;
@@ -37,6 +55,7 @@ public class SpriteSelector : MonoBehaviour
     public TMP_InputField input;
 
     public string playerName;
+
 
     private void Update()
     {
@@ -59,12 +78,20 @@ public class SpriteSelector : MonoBehaviour
             {
                 mNumber++;
             }
+            else
+            {
+                mNumber = 0;
+            }
         }
         else
         {
             if (fNumber < 8)
             {
                 fNumber++;
+            }
+            else
+            {
+                fNumber = 0;
             }
         }
     }
@@ -76,12 +103,20 @@ public class SpriteSelector : MonoBehaviour
             {
                 mNumber--;
             }
+            else
+            {
+                mNumber = 8;
+            }
         }
         else
         {
             if (fNumber > 0)
             {
                 fNumber--;
+            }
+            else
+            {
+                fNumber = 8;
             }
         }
     }

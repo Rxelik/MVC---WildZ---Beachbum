@@ -8,7 +8,7 @@ public class SwipeDetector : MvcModels
     public static SwipeDetector Instance { get; private set; }
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
+        // If there is an Instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
         {
