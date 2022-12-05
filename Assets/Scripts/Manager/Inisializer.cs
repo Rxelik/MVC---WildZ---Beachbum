@@ -33,7 +33,7 @@ public class Inisializer : MonoBehaviour
     public int HandSize = 10;
     public Server _Server;
     public MvcModels MvcModels;
-
+    public bool FTUI = false;
 
 
     IEnumerator Build()
@@ -666,6 +666,8 @@ public class Inisializer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         #region Add Cards To Deck
+
+
         var rnd = new Random();
         var randomizedList = tempList.OrderBy(item => rnd.Next());
 
@@ -688,24 +690,158 @@ public class Inisializer : MonoBehaviour
 
         #region Add Cards To Player Hand
 
-        for (int i = 0; i < HandSize; i++)
+        if (!FTUI)
         {
-            yield return new WaitForSeconds(0.20f);
-            _playermodel.AddCard(_deckmodel.Cards[i]);
-            _deckmodel.RemoveCard(_deckmodel.Cards[i]);
+            for (int i = 0; i < HandSize; i++)
+            {
+                yield return new WaitForSeconds(0.20f);
+                _playermodel.AddCard(_deckmodel.Cards[i]);
+                _deckmodel.RemoveCard(_deckmodel.Cards[i]);
+            }
+            for (int i = 0; i < HandSize; i++)
+            {
+                yield return new WaitForSeconds(0.20f);
+                _Enemyermodel.AddCard(_deckmodel.Cards[i]);
+                _deckmodel.RemoveCard(_deckmodel.Cards[i]);
+            }
+        }
+        else
+        {
+            bool hasRedSuper = false;
+            bool hasRed3 = false;
+            bool hasRed1 = false;
+            bool hasRed44 = false;
+            bool hasYellow3 = false;
+            bool hasRed22 = false;
+            bool hasYello8 = false;
+            bool hasRed222 = false;
+
+
+            foreach (var cards in randomizedList)
+            {
+                if (cards.Color == Color.red && cards.Number == 5)
+                {
+                    _playermodel.AddCard(cards);
+                    _deckmodel.RemoveCard(cards);
+                    yield return new WaitForSeconds(0.2f);
+                }
+                if (cards.Color == Color.red && cards.IsSuper)
+                {
+                    if (!hasRedSuper)
+                    {
+                        _playermodel.AddCard(cards);
+                        _deckmodel.RemoveCard(cards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasRedSuper = true;
+                }
+                if (cards.Color == Color.red && cards.Number == 3)
+                {
+                    if (!hasRed3)
+                    {
+                        _playermodel.AddCard(cards);
+                        _deckmodel.RemoveCard(cards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasRed3 = true;
+                }
+                if (cards.Color == Color.red && cards.Number == 2)
+                {
+                    if (!hasRed1)
+                    {
+                        _playermodel.AddCard(cards);
+                        _deckmodel.RemoveCard(cards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasRed1 = true;
+                }
+                if (cards.Color == Color.red && cards.Number == 44)
+                {
+                    if (!hasRed44)
+                    {
+                        _playermodel.AddCard(cards);
+                        _deckmodel.RemoveCard(cards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasRed44 = true;
+                }
+                if (cards.Color == Color.yellow && cards.Number == 3)
+                {
+                    if (!hasYellow3)
+                    {
+                        _playermodel.AddCard(cards);
+                        _deckmodel.RemoveCard(cards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasYellow3 = true;
+                }
+                if (cards.IsWild && cards.Number == 22)
+                {
+                    if (!hasRed22)
+                    {
+                        _playermodel.AddCard(cards);
+                        _deckmodel.RemoveCard(cards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasRed22 = true;
+                }
+            }
+
+            foreach (var eCards in randomizedList)
+            {
+                if (eCards.Color == Color.red && eCards.Number == 7)
+                {
+                    _Enemyermodel.AddCard(eCards);
+                    _deckmodel.RemoveCard(eCards);
+                    yield return new WaitForSeconds(0.2f);
+                }
+                if (eCards.Color == Color.red && eCards.Number == 8)
+                {
+                    _Enemyermodel.AddCard(eCards);
+                    _deckmodel.RemoveCard(eCards);
+
+                    yield return new WaitForSeconds(0.2f);
+                }
+                if (eCards.Color == Color.red && eCards.Number == 3)
+                {
+                    _Enemyermodel.AddCard(eCards);
+                    _deckmodel.RemoveCard(eCards);
+                    yield return new WaitForSeconds(0.2f);
+
+                }
+                if (eCards.Color == Color.yellow && eCards.Number == 8)
+                {
+                    if (!hasYello8)
+                    {
+                        _Enemyermodel.AddCard(eCards);
+                        _deckmodel.RemoveCard(eCards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasYello8 = true;
+                }
+
+                if (eCards.Color == Color.green && eCards.Number == 22)
+                {
+                    if (!hasRed222)
+                    {
+                        _Enemyermodel.AddCard(eCards);
+                        _deckmodel.RemoveCard(eCards);
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    hasRed222 = true;
+                }
+
+            }
+
         }
         _playermodel.FirstTurn = false;
 
-
         #endregion
-
         #region Add Cards To Enemy Hand
-        for (int i = 0; i < HandSize; i++)
-        {
-            yield return new WaitForSeconds(0.20f);
-            _Enemyermodel.AddCard(_deckmodel.Cards[i]);
-            _deckmodel.RemoveCard(_deckmodel.Cards[i]);
-        }
+
+
+        yield return new WaitForSeconds(0.4f);
+
         #endregion
 
         //_______________________________________________\\
@@ -718,14 +854,27 @@ public class Inisializer : MonoBehaviour
             Color.yellow
         };
         #region Add First Card To Board
-        _deckmodel.Cards[0].Color = colors[UnityEngine.Random.Range(0, 4)];
-        //_Boardmodel.Cards[0].Position = new Vector3(-7, 0, -5);
-        _deckmodel.TopCard().IsSuper = false;
-        _deckmodel.TopCard().IsBamboozle = false;
-        _deckmodel.TopCard().IsWild = false;
-        _deckmodel.TopCard().Number = UnityEngine.Random.Range(1, 9);
-        _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
-        _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+
+        if (!FTUI)
+        {
+            _deckmodel.TopCard().Color = colors[UnityEngine.Random.Range(0, 4)];
+            _deckmodel.TopCard().IsSuper = false;
+            _deckmodel.TopCard().IsBamboozle = false;
+            _deckmodel.TopCard().IsWild = false;
+            _deckmodel.TopCard().Number = UnityEngine.Random.Range(1, 9);
+            _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+            _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+        }
+        else
+        {
+            _deckmodel.TopCard().IsSuper = false;
+            _deckmodel.TopCard().IsBamboozle = false;
+            _deckmodel.TopCard().IsWild = false;
+            _deckmodel.TopCard().Number = 7;
+            _deckmodel.TopCard().Color = Color.yellow;
+            _Boardmodel.AddCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+            _deckmodel.RemoveCard(_deckmodel.Cards[_deckmodel.Cards.Count - 1]);
+        }
         #endregion
 
         //_______________________________________________\\

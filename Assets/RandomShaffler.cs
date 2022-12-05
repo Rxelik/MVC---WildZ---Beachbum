@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class RandomShaffler : MonoBehaviour
+{
+    public List<string> maleNames;
+    public List<string> femaleNames;
+
+    public List<Sprite> maleSpritesList;
+    public List<Sprite> femaleSpritesList;
+
+    public SpriteRenderer aiSprite;
+    public SpriteRenderer playerSprite;
+
+    public TextMeshProUGUI aiName;
+    public TextMeshProUGUI playerName;
+    GameManager manager;
+    void Start()
+    {
+        manager = GameManager.Instance;
+        Randomize();
+    }
+
+    private void Randomize()
+    {
+        int rnd = Random.Range(0, 10);
+
+        if (rnd >= 5)
+        {
+            aiSprite.sprite = maleSpritesList[Random.Range(0, maleSpritesList.Count)];
+            aiName.text = maleNames[Random.Range(0, maleNames.Count)];
+        }
+        else
+        {
+            aiSprite.sprite = femaleSpritesList[Random.Range(0, femaleSpritesList.Count)];
+            aiName.text = femaleNames[Random.Range(0, femaleNames.Count)];
+        }
+
+        if (SpriteSelector.Instance.isMale)
+        {
+            playerSprite.sprite = maleSpritesList[SpriteSelector.Instance.mNumber];
+            aiName.text = maleNames[Random.Range(0, maleNames.Count)];
+        }
+        else
+        {
+            playerSprite.sprite = femaleSpritesList[SpriteSelector.Instance.fNumber];
+            aiName.text = femaleNames[Random.Range(0, maleNames.Count)];
+        }
+        playerName.text = SpriteSelector.Instance.playerName;
+    }
+}

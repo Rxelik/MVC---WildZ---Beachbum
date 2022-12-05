@@ -4559,11 +4559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8659306c2095b43aecdca8b3201819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LooseAnim: {fileID: 0}
-  WinAnim: {fileID: 0}
-  RoundWinAnim: {fileID: 0}
-  RoundLooseAnim: {fileID: 0}
-  ChooseCardAnim: {fileID: 0}
+  LooseAnim: {fileID: 1841997625}
+  WinAnim: {fileID: 1318465672}
+  RoundWinAnim: {fileID: 1474491953}
+  RoundLooseAnim: {fileID: 883055461}
+  ChooseCardAnim: {fileID: 8852777158454993407}
 --- !u!4 &1335295801
 Transform:
   m_ObjectHideFlags: 0
@@ -7178,6 +7178,7 @@ MonoBehaviour:
   HandSize: 1
   _Server: {fileID: 1245915196}
   MvcModels: {fileID: 1986057254}
+  FTUI: 0
 --- !u!4 &1986057253
 Transform:
   m_ObjectHideFlags: 0
@@ -9135,8 +9136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8d7e3ca9fadcd4aa171fffde3d7598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
-  enemySprite: {fileID: 0}
+  playerSprite: {fileID: 1098415839}
+  enemySprite: {fileID: 1426028707}
 --- !u!222 &8852777157214061616
 CanvasRenderer:
   m_ObjectHideFlags: 0
