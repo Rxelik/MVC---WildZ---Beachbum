@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class CurrencyManager : MonoBehaviour
 {
@@ -28,6 +30,8 @@ public class CurrencyManager : MonoBehaviour
     public int currentBalance;
     public int currencyInRun = 0;
     public TextMeshProUGUI currency;
+    public float timePressed;
+    public float allowClick;
 
     private void Update()
     {
@@ -40,16 +44,13 @@ public class CurrencyManager : MonoBehaviour
         PlayerPrefs.SetInt("currencyPref", 1337);
 #endif
         currentBalance = PlayerPrefs.GetInt("currencyPref", 1337);
+        timePressed = PlayerPrefs.GetFloat("timeSinceClick", 0f);
     }
 
-    public void StartRun()
-    {
-        currencyInRun = 10;
-    }
 
     public void OnGameLost()
     {
-        currentBalance -= currencyInRun * 3 + Random.Range(1,99);
+        currentBalance -= currencyInRun * 3 + Random.Range(1, 99);
         PlayerPrefs.SetInt("currencyPref", currentBalance);
     }
     public void OnGameWon()
@@ -61,5 +62,19 @@ public class CurrencyManager : MonoBehaviour
     {
         currencyInRun = Money;
         PlayerPrefs.SetInt("currencyPref", currentBalance);
+    }
+
+    public void ClickWhenAvaiable()
+    {
+        timePressed = DateTime.Now.Hour;
+        if (timePressed >= allowClick)
+        {
+            allowClick = 0;
+            allowClick += timePressed + 8;
+            print("AllowClick");
+            currentBalance += 15000;
+            PlayerPrefs.SetInt("currencyPref", currentBalance);
+            PlayerPrefs.SetFloat("timeSinceClick", timePressed);
+        }
     }
 }

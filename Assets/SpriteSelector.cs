@@ -32,6 +32,8 @@ public class SpriteSelector : MonoBehaviour
 
     private void Start()
     {
+        playerName = PlayerPrefs.GetString("currentName", "");
+
         Ref();
         SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
     }
@@ -56,7 +58,7 @@ public class SpriteSelector : MonoBehaviour
     public TMP_InputField input;
 
     public string playerName;
-
+    public TextMeshProUGUI namePlaceHolder;
 
     private void Update()
     {
@@ -130,5 +132,7 @@ public class SpriteSelector : MonoBehaviour
     public void NameChange()
     {
         playerName = input.text;
+        PlayerPrefs.SetString("currentName", playerName);
+        namePlaceHolder.text = "Current Name is " + playerName;
     }
 }

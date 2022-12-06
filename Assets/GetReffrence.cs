@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GetReffrence : MonoBehaviour
 {
-   
-
+    public Sprite male;
+    public Sprite female;
 
     public void GoUp()
     {
@@ -18,7 +18,16 @@ public class GetReffrence : MonoBehaviour
     }
     public void ToggleGender()
     {
+        if (SpriteSelector.Instance.isMale)
+        {
+            GetComponent<Image>().sprite = male;
+        }
+        else
+        {
+            GetComponent<Image>().sprite = female;
+        }
         SpriteSelector.Instance.ToggleGender();
+
     }
 
     public void NameChange()
