@@ -9,32 +9,28 @@ public class ButtonIndexV2 : MvcModels
 {
     GameManager manager;
     Server _server;
-    [Header("MvcModels")]
-    public CardView cardView;
-    public CardMaker _cardMaker;
-    [Space]
 
     [Header("List")]
     public List<GameObject> PlayerColorChooser;
     public List<GameObject> EnemyColorChooser;
-    List<string> colors = new List<string>();
+    private readonly List<string> colors = new List<string>();
 
     [Space]
     [Header("Attributes")]
     public string BelongsTo;
     public int _index;
-    public bool isAI = false;
+    public bool isAi = false;
     public bool AIplayed = false;
-    public bool PlayerPlayed = false;
+    public bool playerPlayed = false;
 
     private void Update()
     {
-        PlayerPlayed = manager.playerPlayed;
+        playerPlayed = manager.playerPlayed;
         if (!manager.gameEnded)
         {
             if (deckModel != null)
             {
-                if (isAI && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
+                if (isAi && deckModel.CurrentTurn == "Enemy" && AIplayed == false)
                 {
                     StartCoroutine(AIplayCard());
                     print("GOT IN");
@@ -49,32 +45,41 @@ public class ButtonIndexV2 : MvcModels
     }
     public void PlayCard(int Index)
     {
+        //Check if game is Active
         if (!manager.gameEnded)
         {
             if (deckModel.CurrentTurn == "Player" && !manager.playerPlayed)
             {
+                //Give Reference to Manager To Store in Local
                 manager.chosenCard = playerModel.Cards[Index];
+                //Fake Server Test
                 _server.TestCanPlayCard(manager.chosenCard, playerModel);
                 if (playerModel.Cards[Index].CanPlayCard)
                 {
                     manager.playerPlayed = true;
+                    //Two Methods Run in the same Time only 1 will active depends on the card Type
                     NormalCard(playerModel.Cards[Index], playerModel);
                     SuperCard(playerModel.Cards[Index], playerModel);
+                    //If Its Neither it will play this
                     if (manager.chosenCard.IsWild && boardModel.TopCard().Number != 44)
                     {
                         if (manager.chosenCard.IsSuper && boardModel.TopCard().Number == 44) { }
                         else if (manager.chosenCard.IsSuper && boardModel.TopCard().Number == 22) { }
                         else
                         {
+                            //ColorPick makes the Card to be in Board without being refed to Player/Opponent 
                             playerModel.RemoveCard(manager.chosenCard);
                             manager.chosenCard.BelongsTo = "ColorPick";
                             manager.chosenCard.Layer = 1000;
+                            //Calls for event of ColorPicker Animation
                             manager.CallChooseCard();
                         }
+                        //Opens 4 Invisible Buttons on top ofColorPick Animation!
                         foreach (var item in PlayerColorChooser) { item.SetActive(true); }
                     }
                 }
-                print("Inside Player");
+                //Active to see if it finds the card
+             //   print("Inside Player");
             }
         }
     }
@@ -82,12 +87,7 @@ public class ButtonIndexV2 : MvcModels
     {
         manager = GameManager.Instance;
         _server = Server.Instance;
-
-        var eventLoose = new OnLooseAnimEventArgs();
-
     }
-
-
 
     #region NormalCards
 
@@ -95,6 +95,7 @@ public class ButtonIndexV2 : MvcModels
     {
         if (deckModel.CurrentTurn == "Player" && !card.IsSuper && !card.IsWild)
         {
+            //All the Rules of non "Spacial Card"
             if (card.Color == boardModel.TopCard().Color
                 && card.Number != 44
                 && card.Number != 22
@@ -110,6 +111,7 @@ public class ButtonIndexV2 : MvcModels
             {
                 if (card.IsBamboozle)
                 {
+                    //Forcing Delay as fail safe to not play 2 cards in the same time
                     StartCoroutine(PlayBambo(card, model));
                 }
                 else
@@ -120,6 +122,8 @@ public class ButtonIndexV2 : MvcModels
 
                 }
             }
+            //22 and 44 =  are +2 and +4 Cards in play
+            //222 and 444 = are +2 and +4 Cards that were already activated.
             if (boardModel.TopCard().Number == 22 && card.Number == 22 || boardModel.TopCard().Number == 222 && card.Number == 22
 
                 || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 44
@@ -157,16 +161,10 @@ public class ButtonIndexV2 : MvcModels
                 || card.IsBamboozle && boardModel.TopCard().Number == 44
                 || boardModel.TopCard().IsBamboozle)
             {
-                ////card.Position = new Vector3(-7, 0, -5);
-                //card.Layer = boardModel.TopCard().Layer + 2;
-
-
                 #region Bamboozle
                 if (card.IsBamboozle)
                 {
                     manager.draw = 0;
-                    ////card.Position = new Vector3(-7, 0, -5);
-                    //card.Layer = boardModel.TopCard().Layer + 2;
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
                     ChangeTurn(true);
@@ -181,7 +179,8 @@ public class ButtonIndexV2 : MvcModels
                     ChangeTurn(false);
                 }
             }
-
+            //22 and 44 =  are +2 and +4 Cards in play
+            //222 and 444 = are +2 and +4 Cards that were already activated.
             if (boardModel.TopCard().Number == 22 && card.Number == 22 || boardModel.TopCard().Number == 222 && card.Number == 22
                 || card.Number == 22 && card.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 44
                 || card.Number == 22 && boardModel.TopCard().IsBamboozle)
@@ -205,12 +204,9 @@ public class ButtonIndexV2 : MvcModels
     {
         yield return new WaitForSeconds(0.40f);
         manager.draw = 0;
-        ////card.Position = new Vector3(-7, 0, -5);
-        //card.Layer = boardModel.TopCard().Layer + 2;
         boardModel.AddCard(card);
         model.RemoveCard(card);
         ChangeTurn(true);
-
     }
 
     #endregion
@@ -219,6 +215,7 @@ public class ButtonIndexV2 : MvcModels
     #region Super And Wild Card Method
     void SuperCard(CardModel card, PlayerModel model)
     {
+        //White is the default color
         if (card.Color == Color.white)
         {
 
@@ -228,6 +225,7 @@ public class ButtonIndexV2 : MvcModels
     }
     void EnemyWild(string color)
     {
+        //Enemy will play random Card
         if (color == "Red")
             manager.chosenCard.Color = Color.red;
         if (color == "Green")
@@ -237,10 +235,11 @@ public class ButtonIndexV2 : MvcModels
         if (color == "Blue")
             manager.chosenCard.Color = Color.blue;
 
-
+        //88 is ChangeColor
         else if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != 88)
         {
             if (manager.chosenCard.IsSuper)
+                //Ai is class that dose nothing but to play Corutine in different thread
                 AI.Instance.StartCoroutine(SuperCard(manager.chosenCard, enemyModel));
             if (manager.chosenCard.Number == 22)
                 PlusTwo(manager.chosenCard, enemyModel);
@@ -251,7 +250,7 @@ public class ButtonIndexV2 : MvcModels
         }
 
         RemoveButtons();
-
+        //88 is ChangeColor
         if (manager.chosenCard.Number == 88)
         {
             boardModel.AddCard(manager.chosenCard);
@@ -383,6 +382,7 @@ public class ButtonIndexV2 : MvcModels
 
 
     }
+    //This is the Method that the buttons are using
     public void WildCard(string color)
     {
 
@@ -583,30 +583,7 @@ public class ButtonIndexV2 : MvcModels
 
     #region AI
 
-    private void AiChooseCard(CardModel card)
-    {
-        if (!manager.gameEnded)
-        {
-            int rand = Random.Range(0, 3);
-            manager.chosenCard = card;
-            print(card.Name);
-            NormalCard(card, enemyModel);
-            AI.Instance.StartCoroutine(SuperCard(card, enemyModel));
-            if (card.IsWild && boardModel.TopCard().Number != 22
-                || card.IsWild && boardModel.TopCard().Number != 44
-                || card.IsWild && card.IsSuper
-                || card.IsWild && card.Number == 88
-               )
-            {
-                colors.Add("Red");
-                colors.Add("Green");
-                colors.Add("Yellow");
-                colors.Add("Blue");
-                AI.Instance.StartCoroutine(IwaitBefore(rand));
-            }
-        }
 
-    }
 
     IEnumerator IwaitBefore(int color)
     {
@@ -619,9 +596,15 @@ public class ButtonIndexV2 : MvcModels
     {
         if (!manager.gameEnded)
         {
+            //Using Linq to choose card. With Priority of the ||(OR`S) and Super first then normal Cards after that.
+            //I take AI list compare it the top card in board and make new list of card you can play.
+            //You take first card in that list and play it, remove the rest.
             print("AI Played");
             AIplayed = true;
+
+            //Using fake delay to make it more believable its a real player.
             yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 2.5f));
+            //This is all the rules in the game clamped in 1 Method
             var SuperCards = enemyModel.Cards.Where(c =>
                c.Number == 0 && boardModel.TopCard().Number == 0
             || c.IsSuper && !c.IsWild && boardModel.TopCard().Color == c.Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
@@ -671,6 +654,32 @@ public class ButtonIndexV2 : MvcModels
 
     }
 
+    private void AiChooseCard(CardModel card)
+    {
+        if (!manager.gameEnded)
+        {
+            int rand = Random.Range(0, 3);
+            manager.chosenCard = card;
+            print(card.Name);
+            NormalCard(card, enemyModel);
+            AI.Instance.StartCoroutine(SuperCard(card, enemyModel));
+            if (card.IsWild && boardModel.TopCard().Number != 22
+                || card.IsWild && boardModel.TopCard().Number != 44
+                || card.IsWild && card.IsSuper
+                || card.IsWild && card.Number == 88
+               )
+            {
+                //Adding colors and plays one chooses 1 randomly
+                colors.Add("Red");
+                colors.Add("Green");
+                colors.Add("Yellow");
+                colors.Add("Blue");
+                AI.Instance.StartCoroutine(IwaitBefore(rand));
+            }
+        }
+
+    }
+
     #endregion
 
     #region TurnOrder
@@ -709,6 +718,8 @@ public class ButtonIndexV2 : MvcModels
             deckModel.PlayAgain();
         }
     }
+
+    //The Button uses this Method.
     public void PassTurn(bool anotherTurn)
     {
 

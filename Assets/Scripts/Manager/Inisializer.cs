@@ -906,6 +906,6 @@ public class Inisializer : MonoBehaviour
         SoundManager.Instance.CallEvent();
         GameManager.Instance.playerPlayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
-        GameManager.Instance.GetComponent<ButtonIndexV2>().PlayerPlayed = false;
+        GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
     }
 }

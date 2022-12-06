@@ -31,8 +31,11 @@ public class GameManager : MvcModels
 
     public class OnCardSpriteEvent { }
 
+    [Header("Canvas")]
+    [Space]
     public GameObject uiCanvas;
     public GameObject EndGameCanvas;
+
     public event EventHandler<OnCardSpriteEvent> SpriteChangeEve;
     public event EventHandler<OnCardVersionChange> VersionChange;
     public event EventHandler<OnLooseAnimEventArgs> OnLooseEve;
@@ -40,32 +43,43 @@ public class GameManager : MvcModels
     public event EventHandler<OnWinAnimEventArgs> OnWinEve;
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
-    public SkeletonGraphic skeletonAnimation;
+
+    [Header("TextMeshPro")]
+    [Space]
     public TextMeshProUGUI aiCardCount;
     public TextMeshProUGUI playerCardCount;
     public TextMeshProUGUI aiScoreUgui;
     public TextMeshProUGUI playerScoreUgui;
-    public GameObject passButton;
+    [Space]
+
     public CardModel chosenCard;
+
+    [Header("Buttons")]
+    public GameObject passButton;
+    public GameObject continueButton;
+    public GameObject spine;
+    [Space]
+
+    [Header("Boolians")]
     public bool playerCanPlay;
     public bool gameEnded = false;
     public bool playerPlayed = false;
     public bool tookToHand = false;
+    [HideInInspector] public bool trigger = false;
+    [Space]
+
+    [Header("Attributes")]
+
     public int playerScore = 0;
     public int aiScore = 0;
     public string cardVersion = "Version 2";
-    public GameObject continueButton;
-    public GameObject spine;
     public int _index = 0;
     public int draw = 0;
-
     public int round = 0;
     public int _targetToWin;
 
-    public bool clicked = false;
+    [HideInInspector] public bool clicked = false;
     public List<GameObject> cardsObjects = new List<GameObject>();
-    [HideInInspector] public bool trigger = false;
-
     private void Update()
     {
         aiCardCount.text = enemyModel.Cards.Count.ToString();
