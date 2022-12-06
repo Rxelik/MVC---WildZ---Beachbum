@@ -236,6 +236,7 @@ public class GameManager : MvcModels
         }
     }
 
+    //Used to activate by 3 buttons to change the sprite of the cards.
     public void ChangeSprite(string Version)
     {
         print("InsideChangeSprite");
