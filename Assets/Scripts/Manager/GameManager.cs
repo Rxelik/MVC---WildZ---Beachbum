@@ -59,6 +59,9 @@ public class GameManager : MvcModels
     public int _index = 0;
     public int draw = 0;
 
+    public int round = 0;
+    public int _targetToWin;
+
     public bool clicked = false;
     public List<GameObject> cardsObjects = new List<GameObject>();
     [HideInInspector] public bool trigger = false;
@@ -72,20 +75,20 @@ public class GameManager : MvcModels
             aiScoreUgui.text = aiScore.ToString();
             playerScoreUgui.text = playerScore.ToString();
 
-            if (gameEnded && !clicked && aiScore > 75 || gameEnded && !clicked && playerScore > 75)
+            if (gameEnded && !clicked && aiScore > _targetToWin || gameEnded && !clicked && playerScore > _targetToWin)
             {
-                if (aiScore > 75)
+                if (aiScore > _targetToWin)
                 {
                     CurrencyManager.Instance.OnGameLost();
                 }
-                else if (playerScore > 75)
+                else if (playerScore > _targetToWin)
                 {
                     CurrencyManager.Instance.OnGameWon();
                 }
                 StartCoroutine(WinLooseEnumerator());
             }
 
-            else if (gameEnded && !clicked && aiScore < 75 || gameEnded && !clicked && playerScore < 75)
+            else if (gameEnded && !clicked && aiScore < _targetToWin || gameEnded && !clicked && playerScore < _targetToWin)
             {
                 StartCoroutine(ContinueEnumerator());
             }
@@ -97,13 +100,15 @@ public class GameManager : MvcModels
                 {
                     CountScorePlayerScore();
                 }
-                if (playerScore < 75 && !trigger)
+                if (playerScore < _targetToWin && !trigger)
                 {
                     var eventRoundWin = new OnRoundWinAnimEventArgs();
                     OnRoundWinEve(this, eventRoundWin);
                     trigger = true;
+                    round++;
+
                 }
-                else if (playerScore > 75 && !trigger)
+                else if (playerScore > _targetToWin && !trigger)
                 {
                     var eventRoundWin = new OnWinAnimEventArgs();
                     OnWinEve(this, eventRoundWin);
@@ -119,13 +124,14 @@ public class GameManager : MvcModels
                 }
                 if (gameEnded)
                 {
-                    if (aiScore < 75 && !trigger)
+                    if (aiScore < _targetToWin && !trigger)
                     {
                         var eventLoose = new OnRoundLooseAnimEventArgs();
                         OnRoundLooseEve(this, eventLoose);
                         trigger = true;
+                        round++;
                     }
-                    else if (aiScore > 75 && !trigger)
+                    else if (aiScore > _targetToWin && !trigger)
                     {
                         var eventLoose = new OnLooseAnimEventArgs();
                         OnLooseEve(this, eventLoose);

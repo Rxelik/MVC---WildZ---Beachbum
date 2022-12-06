@@ -40,7 +40,7 @@ public class RandomShaffler : MonoBehaviour
     }
     private void Randomize()
     {
-        backGroundImage.sprite = randomBackground[Random.Range(0,randomBackground.Count)];  
+       // backGroundImage.sprite = randomBackground[Random.Range(0,randomBackground.Count)];  
         int rnd = Random.Range(0, 10);
 
         if (rnd >= 5)

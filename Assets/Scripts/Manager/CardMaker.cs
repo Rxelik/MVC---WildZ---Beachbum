@@ -95,13 +95,18 @@ public class CardMaker : MvcModels
                     SwapCards();
                 }
             }
-            if (view._inspectorBelongsTo == "Deck" || view._inspectorBelongsTo == "Enemy" || view._inspectorBelongsTo == "FlyingToEnemy")
+            if (view._inspectorBelongsTo == "Enemy" || view._inspectorBelongsTo == "FlyingToEnemy" /*|| view._inspectorBelongsTo == "FlyingToPlayer"*/)
             {
                 SwappedFace = false;
                 CardSprite.sprite = CardBack;
                 CardSprite.color = Color.white;
             }
-
+            if (view._inspectorBelongsTo == "Deck")
+            {
+                SwappedFace = false;
+                CardSprite.sprite = CardBack;
+                CardSprite.color = new Color(0, 0, 0, 0);
+            }
             if (view._inspectorBelongsTo == "Player")
             {
                 //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
@@ -119,7 +124,7 @@ public class CardMaker : MvcModels
                 }
             }
 
-            if (view._inspectorBelongsTo == "Board")
+            if (view._inspectorBelongsTo == "Board" || view._inspectorBelongsTo == "FlyingToPlayer")
             {
                 CardSprite.color = Color.white;
             }
@@ -161,7 +166,7 @@ public class CardMaker : MvcModels
             }
             else
             {
-                if (deckModel.CurrentTurn == "Player")
+                if (deckModel.CurrentTurn == "Player" || view._inspectorBelongsTo == "FlyingToPlayer")
                 {
                     SwappedFace = true;
                     BuildCards();
