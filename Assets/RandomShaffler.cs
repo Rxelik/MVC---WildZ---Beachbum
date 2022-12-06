@@ -11,13 +11,14 @@ public class RandomShaffler : MonoBehaviour
 
     public List<Sprite> maleSpritesList;
     public List<Sprite> femaleSpritesList;
-
+    public List<Sprite> randomBackground;
+    [Space]
     public SpriteRenderer aiSprite;
     public SpriteRenderer playerSprite;  
     
     public Image aiSpriteEnd;
     public Image playerSpriteEnd;
-
+    public SpriteRenderer backGroundImage;
 
 
 
@@ -39,6 +40,7 @@ public class RandomShaffler : MonoBehaviour
     }
     private void Randomize()
     {
+        backGroundImage.sprite = randomBackground[Random.Range(0,randomBackground.Count)];  
         int rnd = Random.Range(0, 10);
 
         if (rnd >= 5)

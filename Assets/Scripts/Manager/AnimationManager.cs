@@ -51,7 +51,6 @@ public class AnimationManager : MvcModels
         if (playerModel.Cards.Count >= 1)
         {
             ChooseCardAnim.SetActive(true);
-
         }
     }
 
@@ -67,11 +66,13 @@ public class AnimationManager : MvcModels
     private void AnimationManager_OnWinEve(object sender, OnWinAnimEventArgs e)
     {
         WinAnim.SetActive(true);
+        StartCoroutine(DelayDeActive());
     }
 
     private void AnimationManager_OnLooseEve(object sender, OnLooseAnimEventArgs e)
     {
         LooseAnim.SetActive(true);
+        StartCoroutine(DelayDeActive());
     }
 
     public void DeActiveAnim()
@@ -84,7 +85,7 @@ public class AnimationManager : MvcModels
     }
     public IEnumerator DelayDeActive()
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(2f);
         LooseAnim.SetActive(false);
         WinAnim.SetActive(false);
         RoundWinAnim.SetActive(false);
