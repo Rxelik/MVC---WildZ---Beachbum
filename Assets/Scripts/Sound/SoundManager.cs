@@ -54,10 +54,10 @@ public class SoundManager : MvcModels
 
     public void CallEvent()
     {
+        PlayMusic(gamePlay);
         deckModel.CardInDeckChanged += DeckModel_CardInDeckChanged;
         boardModel.CardInBoardChanged += BoardModel_CardInBoardChanged;
         GameManager.Instance.OnChooseCardEve += Instance_OnChooseCardEve;
-        PlayMusic(gamePlay);
     }
     private void Instance_OnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
