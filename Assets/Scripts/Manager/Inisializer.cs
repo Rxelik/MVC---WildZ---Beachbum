@@ -58,7 +58,6 @@ public class Inisializer : MonoBehaviour
         var DeckviewcontrollerFactory = new DeckControllerFactory(_deckmodel, Deckview);
         var Deckcontroller = DeckviewcontrollerFactory.Controller;
         #endregion
-
         MvcModels.deckModel = (DeckModel)_deckmodel;
         MvcModels.deckView = (DeckView)Deckview;
         #region Board
@@ -837,6 +836,7 @@ public class Inisializer : MonoBehaviour
         _playermodel.FirstTurn = false;
 
         #endregion
+
         #region Add Cards To Enemy Hand
 
 
@@ -893,11 +893,6 @@ public class Inisializer : MonoBehaviour
         {
             Destroy(GameManager.Instance.cardsObjects[i]);
         }
-        //GameManager.Instance.playerModel.Cards.Clear();
-        //GameManager.Instance.enemyModel.Cards.Clear();
-        //GameManager.Instance.deckModel.Cards.Clear();
-        //GameManager.Instance.playerModel.Board.Cards.Clear();
-        //GameManager.Instance.CardsObjects.Clear();
         GameManager.Instance.continueButton.SetActive(false);
         GameManager.Instance.gameEnded = false;
         AnimationManager.Instance.DeActiveAnim();

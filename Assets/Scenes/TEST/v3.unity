@@ -315,12 +315,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCanvas: {fileID: 8852777156956314346}
   EndGameCanvas: {fileID: 1391102045}
-  skeletonAnimation: {fileID: 0}
   aiCardCount: {fileID: 338421369634717356}
   playerCardCount: {fileID: 670606731}
   aiScoreUgui: {fileID: 1687949667}
   playerScoreUgui: {fileID: 144929958}
-  passButton: {fileID: 8852777156921101707}
   chosenCard:
     _Layer: 0
     _Color: {r: 0, g: 0, b: 0, a: 0}
@@ -334,22 +332,23 @@ MonoBehaviour:
     _IsBamboozle: 0
     _CanPlayCard: 0
     _Sprite: {fileID: 0}
+  passButton: {fileID: 8852777156921101707}
+  continueButton: {fileID: 8852777156821672706}
+  spine: {fileID: 8852777156921101707}
   playerCanPlay: 0
   gameEnded: 0
   playerPlayed: 0
   tookToHand: 0
+  trigger: 0
   playerScore: 0
   aiScore: 0
   cardVersion: Version 2
-  continueButton: {fileID: 8852777156821672706}
-  spine: {fileID: 8852777156921101707}
   _index: 0
   draw: 0
   round: 1
   _targetToWin: 75
   clicked: 0
   cardsObjects: []
-  trigger: 0
 --- !u!4 &14892770
 Transform:
   m_ObjectHideFlags: 0
@@ -363,7 +362,7 @@ Transform:
   m_Children:
   - {fileID: 980547652}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &14892771
 MonoBehaviour:
@@ -395,8 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardView: {fileID: 0}
-  _cardMaker: {fileID: 0}
   PlayerColorChooser:
   - {fileID: 937529315}
   - {fileID: 334263095}
@@ -409,9 +406,9 @@ MonoBehaviour:
   - {fileID: 1060769910}
   BelongsTo: 
   _index: 0
-  isAI: 1
+  isAi: 0
   AIplayed: 0
-  PlayerPlayed: 0
+  playerPlayed: 0
 --- !u!1 &19215053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &300606691
 GameObject:
@@ -1598,7 +1595,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479812659
 GameObject:
@@ -1809,7 +1806,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!212 &624749005
 SpriteRenderer:
@@ -2014,7 +2011,7 @@ Transform:
   m_LocalScale: {x: 3.157906, y: 2.6219804, z: 2.5381484}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &670606729
 PrefabInstance:
@@ -2290,7 +2287,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &678276901
 MonoBehaviour:
@@ -2535,7 +2532,7 @@ Transform:
   m_Children:
   - {fileID: 1353049653}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &692616025
 GameObject:
@@ -2729,7 +2726,7 @@ Transform:
   m_Children:
   - {fileID: 1098415840}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &741051200
 GameObject:
@@ -3330,15 +3327,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardView: {fileID: 0}
-  _cardMaker: {fileID: 0}
   PlayerColorChooser: []
   EnemyColorChooser: []
   BelongsTo: 
   _index: 0
-  isAI: 0
+  isAi: 0
   AIplayed: 0
-  PlayerPlayed: 0
+  playerPlayed: 0
 --- !u!114 &980547654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3652,7 +3647,7 @@ GameObject:
   - component: {fileID: 1089644723}
   - component: {fileID: 1089644722}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Currency Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3687,7 +3682,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098415839
 GameObject:
@@ -4055,7 +4050,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1278725460
 PrefabInstance:
@@ -4561,7 +4556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1338120437
 GameObject:
@@ -4749,7 +4744,7 @@ Transform:
   - {fileID: 2046268780}
   - {fileID: 1391102049}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1368330908
 SpriteRenderer:
@@ -5345,7 +5340,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1482478592
 AudioSource:
@@ -6330,7 +6325,7 @@ PrefabInstance:
     - target: {fileID: 2357679555650594709, guid: 5d48e2f226ed5e8448cc84af39117825,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2357679555650594709, guid: 5d48e2f226ed5e8448cc84af39117825,
         type: 3}
@@ -8714,7 +8709,7 @@ Transform:
   - {fileID: 2061338953}
   - {fileID: 406350750}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7049498281488714651
 GameObject:
