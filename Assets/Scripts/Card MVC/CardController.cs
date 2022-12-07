@@ -95,8 +95,9 @@ public class CardController : ICardController
                 model.BelongsTo = "Enemy";
 
             }
-        }
 
+        }
+        SyncEnemyData();
         //if (model.BelongsTo == "Enemy")
         //{
         //    while (t < 1f)
@@ -106,7 +107,6 @@ public class CardController : ICardController
         //        yield return null;
         //    }
         //}
-        SyncData();
     }
 
     public IEnumerator Lerp()
@@ -196,6 +196,9 @@ public class CardController : ICardController
 
     void SyncData()
     {
+
+        view.BelongsTo = model.BelongsTo;
+
         //view.Position = model.Position;
 
         view.CanPlayCard = model.CanPlayCard;
@@ -206,7 +209,6 @@ public class CardController : ICardController
 
         view.Number = model.Number;
 
-        view.BelongsTo = model.BelongsTo;
 
         view.Layer = model.Layer;
 
@@ -226,8 +228,44 @@ public class CardController : ICardController
 
         view.Sprite = model.Sprite;
 
+
     }
 
+    void SyncEnemyData()
+    {
+        if (model.BelongsTo == "Enemy")
+        {
+            view.BelongsTo = model.BelongsTo;
+
+            view.CanPlayCard = model.CanPlayCard;
+
+            view.Rotation = model.Rotation;
+
+            view.Color = model.Color;
+
+            view.Number = model.Number;
+
+            view.Layer = model.Layer;
+
+            view.Name = model.Name;
+
+            view.IsSuper = model.IsSuper;
+
+            view.IsWild = model.IsWild;
+
+            view.IsBamboozle = model.IsBamboozle;
+
+            view.Player = model.Player;
+
+            view.Enemy = model.Enemy;
+
+            view.HandOrder = model.HandOrder;
+
+            view.Sprite = model.Sprite;
+        }
+        
+
+    }
     private void ChangeColor(object sender, CardColorChangedEventArgs e)
     {
         SyncData();

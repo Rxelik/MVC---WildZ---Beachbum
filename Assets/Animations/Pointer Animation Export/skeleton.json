@@ -1,0 +1,85 @@
+{
+"skeleton": {
+	"hash": "Tv9fC0DTLDskwtW8bxcVFWYjRtE",
+	"spine": "3.8.99",
+	"x": -568,
+	"y": -745.5,
+	"width": 1136,
+	"height": 1491,
+	"images": "./images/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "y": -760 }
+],
+"slots": [
+	{ "name": "Pointer", "bone": "bone", "attachment": "Pointer" },
+	{ "name": "Pointer2", "bone": "bone", "attachment": "Pointer", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Pointer": {
+				"Pointer": { "y": 760, "width": 1136, "height": 1491 }
+			},
+			"Pointer2": {
+				"Pointer": { "y": 760, "width": 1136, "height": 1491 }
+			}
+		}
+	}
+],
+"animations": {
+	"None": {
+		"slots": {
+			"Pointer": {
+				"color": [
+					{ "time": 1.8333, "color": "ffffff00" }
+				]
+			},
+			"Pointer2": {
+				"color": [
+					{ "time": 1.8333, "color": "ffffff00" }
+				]
+			}
+		}
+	},
+	"UpNDown": {
+		"slots": {
+			"Pointer2": {
+				"color": [
+					{ "color": "ffffff61", "curve": "stepped" },
+					{ "time": 0.2333, "color": "ffffff61" },
+					{ "time": 1.1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.3333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.5667, "color": "ffffff00" },
+					{ "time": 2.4333, "color": "ffffff61", "curve": "stepped" },
+					{ "time": 2.6667, "color": "ffffff61" }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 2.6667 }
+				],
+				"translate": [
+					{ "curve": 0.488, "c3": 0.499 },
+					{ "time": 1.3333, "y": 734.96, "curve": 0.488, "c3": 0.499 },
+					{ "time": 2.6667 }
+				],
+				"scale": [
+					{ "curve": "stepped" },
+					{ "time": 2.6667 }
+				],
+				"shear": [
+					{ "curve": "stepped" },
+					{ "time": 2.6667 }
+				]
+			}
+		}
+	}
+}
+}

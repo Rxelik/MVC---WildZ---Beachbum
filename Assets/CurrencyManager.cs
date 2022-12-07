@@ -40,9 +40,9 @@ public class CurrencyManager : MonoBehaviour
     }
     void Start()
     {
-#if UNITY_EDITOR
-        PlayerPrefs.SetInt("currencyPref", 1337);
-#endif
+//#if UNITY_EDITOR
+//        PlayerPrefs.SetInt("currencyPref", 1337);
+//#endif
         currentBalance = PlayerPrefs.GetInt("currencyPref", 1337);
         timePressed = PlayerPrefs.GetFloat("timeSinceClick", 0f);
     }
@@ -50,7 +50,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void OnGameLost()
     {
-        currentBalance -= currencyInRun * 3 + Random.Range(1, 99);
+        currentBalance -= currencyInRun;
         PlayerPrefs.SetInt("currencyPref", currentBalance);
     }
     public void OnGameWon()

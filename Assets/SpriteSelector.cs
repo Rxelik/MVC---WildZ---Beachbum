@@ -47,6 +47,7 @@ public class SpriteSelector : MonoBehaviour
     {
         playerSprite = GameObject.Find("PlayerSprite").GetComponent<Image>();
         input = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
+        CurrencyManager.Instance.currency = GameObject.Find("CurrencyText").GetComponent<TextMeshProUGUI>();
     }
     public bool isMale = true;
 
