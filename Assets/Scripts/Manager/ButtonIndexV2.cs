@@ -22,7 +22,10 @@ public class ButtonIndexV2 : MvcModels
     public bool isAi = false;
     public bool AIplayed = false;
     public bool playerPlayed = false;
-
+    [Space]
+    [Header("Timers")]
+    public TurnTimer playerTimer;
+    public TurnTimer enemyTimer;
     private void Update()
     {
         playerPlayed = manager.playerPlayed;
@@ -79,7 +82,7 @@ public class ButtonIndexV2 : MvcModels
                     }
                 }
                 //Active to see if it finds the card
-             //   print("Inside Player");
+                //   print("Inside Player");
             }
         }
     }
@@ -225,18 +228,20 @@ public class ButtonIndexV2 : MvcModels
     }
     void EnemyWild(string color)
     {
-        //Enemy will play random Card
-        if (color == "Red")
-            manager.chosenCard.Color = Color.red;
-        if (color == "Green")
-            manager.chosenCard.Color = Color.green;
-        if (color == "Yellow")
-            manager.chosenCard.Color = Color.yellow;
-        if (color == "Blue")
-            manager.chosenCard.Color = Color.blue;
+
+        foreach (var cardModel in enemyModel.Cards)
+        {
+            if (cardModel.Color != Color.white || cardModel.Color != Color.black)
+            {
+                manager.chosenCard.Color = cardModel.Color;
+                break;
+            }
+        }
+
+
 
         //88 is ChangeColor
-        else if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != 88)
+        if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != 88)
         {
             if (manager.chosenCard.IsSuper)
                 //Ai is class that dose nothing but to play Corutine in different thread
@@ -585,12 +590,12 @@ public class ButtonIndexV2 : MvcModels
 
 
 
-    IEnumerator IwaitBefore(int color)
+    IEnumerator IwaitBefore()
     {
         manager.chosenCard.BelongsTo = "ColorPick";
         manager.chosenCard.Layer += boardModel.TopCard().Layer + 2;
         yield return new WaitForSeconds(1);
-        EnemyWild(colors[color]);
+        EnemyWild(colors[1]);
     }
     IEnumerator AIplayCard()
     {
@@ -674,7 +679,7 @@ public class ButtonIndexV2 : MvcModels
                 colors.Add("Green");
                 colors.Add("Yellow");
                 colors.Add("Blue");
-                AI.Instance.StartCoroutine(IwaitBefore(rand));
+                AI.Instance.StartCoroutine(IwaitBefore());
             }
         }
 
@@ -705,7 +710,8 @@ public class ButtonIndexV2 : MvcModels
         manager.tookToHand = false;
         AIplayed = false;
         SwipeDetector.Instance.time = 0;
-        TurnTimer.Instance.time = 100;
+        enemyTimer.time = 100;
+        playerTimer.time = 100;
         if (!anotherTurn)
         {
             deckModel.ChangeTurn();
@@ -727,7 +733,8 @@ public class ButtonIndexV2 : MvcModels
             RemoveButtons();
             manager.tookToHand = false;
             AIplayed = false;
-            TurnTimer.Instance.time = 100;
+            enemyTimer.time = 100;
+            playerTimer.time = 100;
             if (!anotherTurn)
             {
                 deckModel.ChangeTurn();
@@ -741,7 +748,7 @@ public class ButtonIndexV2 : MvcModels
             }
             SoundManager.Instance.Play(SoundManager.Instance.passButton);
         }
-        
+
     }
     IEnumerator PlayAgain()
     {

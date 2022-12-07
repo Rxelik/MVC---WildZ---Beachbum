@@ -409,6 +409,8 @@ MonoBehaviour:
   isAi: 1
   AIplayed: 0
   playerPlayed: 0
+  playerTimer: {fileID: 1511556242}
+  enemyTimer: {fileID: 0}
 --- !u!1 &19215053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,14 +1060,14 @@ RectTransform:
   m_GameObject: {fileID: 213292907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.96, y: 0.96, z: 0.96}
+  m_LocalScale: {x: 0.9504, y: 0.9504, z: 0.9504}
   m_Children: []
   m_Father: {fileID: 1973529516}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 134.9, y: 35.3}
+  m_AnchoredPosition: {x: 134, y: 32}
   m_SizeDelta: {x: 203, y: 203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213292909
@@ -3424,6 +3426,8 @@ MonoBehaviour:
   isAi: 0
   AIplayed: 0
   playerPlayed: 0
+  playerTimer: {fileID: 0}
+  enemyTimer: {fileID: 0}
 --- !u!114 &980547654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7513,7 +7517,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2019387185}
   - component: {fileID: 2019387187}
-  - component: {fileID: 2019387186}
   - component: {fileID: 2019387188}
   m_Layer: 5
   m_Name: EnemyTurnTimer
@@ -7544,26 +7547,6 @@ RectTransform:
   m_AnchoredPosition: {x: 12, y: 306}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2019387186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019387184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b322c68a6b5fff34cb99e84f8c302f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sliderslider: {fileID: 2019387187}
-  time: 100
-  TotalTime: 0.1
-  dim: {fileID: 1790156627}
-  playerAvatar: {fileID: 1098415841}
-  enemyAvatar: {fileID: 624749005}
-  belongsTo: Enemy
-  _fill: {fileID: 0}
 --- !u!114 &2019387187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7633,7 +7616,7 @@ MonoBehaviour:
   playerAvatar: {fileID: 1098415841}
   enemyAvatar: {fileID: 624749005}
   belongsTo: Enemy
-  _fill: {fileID: 0}
+  _fill: {fileID: 691328439}
 --- !u!1 &2046268779
 GameObject:
   m_ObjectHideFlags: 0

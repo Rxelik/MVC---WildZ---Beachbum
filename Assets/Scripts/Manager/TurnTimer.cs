@@ -5,22 +5,6 @@ using UnityEngine.UI;
 
 public class TurnTimer : MvcModels
 {
-    #region Singelton
-    public static TurnTimer Instance { get; private set; }
-    private void Awake()
-    {
-        // If there is an Instance, and it's not me, delete myself.
-
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-    #endregion
     public Slider Sliderslider;
     public float time;
     public float TotalTime;
@@ -55,7 +39,7 @@ public class TurnTimer : MvcModels
     }
     private void Update()
     {
-        if (Sliderslider.value > 80)
+        if (Sliderslider.value > 50)
         {
             changedColor = false;
             _fill.color = new Color(0, 1, 1, 1);
