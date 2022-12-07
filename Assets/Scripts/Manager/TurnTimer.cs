@@ -28,6 +28,8 @@ public class TurnTimer : MvcModels
     public SpriteRenderer playerAvatar;
     public SpriteRenderer enemyAvatar;
     public string belongsTo;
+    public Image _fill;
+    bool changedColor = false;
     private void Start()
     {
         // TotalTime = TotalTime / 10000;
@@ -39,8 +41,30 @@ public class TurnTimer : MvcModels
         time = 100;
     }
 
+    private IEnumerator ChangeColor()
+    {
+        changedColor = true;
+        float t = 0;
+        float duration = 0.5f;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            _fill.color = Color.Lerp(new Color(0, 1, 1, 1), new Color(0.816f, 0.125f, 0, 1), t / duration);
+            yield return null;
+        }
+    }
     private void Update()
     {
+        if (Sliderslider.value > 80)
+        {
+            changedColor = false;
+            _fill.color = new Color(0, 1, 1, 1);
+        }
+        else
+        {
+                _fill.color = Color.Lerp(new Color(0, 1, 1, 1), new Color(0.816f, 0.125f, 0, 1), Mathf.PingPong(Time.time,1));
+
+        }
         if (belongsTo == "Player")
         {
             if (deckModel.CurrentTurn == "Player" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
@@ -63,6 +87,8 @@ public class TurnTimer : MvcModels
                 GameManager.Instance.GetComponent<ButtonIndexV2>().ChangeTurn(false);
                 time = 100;
             }
+
+
         }
         else if (belongsTo == "Enemy")
         {

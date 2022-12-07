@@ -1,0 +1,62 @@
+{
+"skeleton": {
+	"hash": "EYBt3SZYchl1i/tlLqGl26OOVuQ",
+	"spine": "3.8.99",
+	"x": -199.5,
+	"y": -209,
+	"width": 401,
+	"height": 418,
+	"images": "./images/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "FullTimer - Copy", "parent": "root", "y": 29 }
+],
+"slots": [
+	{ "name": "FullTimer - Copy", "bone": "FullTimer - Copy", "attachment": "FullTimer - Copy" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"FullTimer - Copy": {
+				"FullTimer - Copy": { "x": 1, "y": -29, "width": 401, "height": 418 }
+			}
+		}
+	}
+],
+"animations": {
+	"Despawn": {
+		"bones": {
+			"FullTimer - Copy": {
+				"scale": [
+					{},
+					{ "time": 0.1333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.3333, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"None": {
+		"slots": {
+			"FullTimer - Copy": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	},
+	"Spawn": {
+		"bones": {
+			"FullTimer - Copy": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2, "x": 1.2, "y": 1.2 },
+					{ "time": 0.3333 }
+				]
+			}
+		}
+	}
+}
+}

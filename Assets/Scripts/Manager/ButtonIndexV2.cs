@@ -202,7 +202,7 @@ public class ButtonIndexV2 : MvcModels
     }
     IEnumerator PlayBambo(CardModel card, PlayerModel model)
     {
-        yield return new WaitForSeconds(0.40f);
+        yield return new WaitForSeconds(0.15f);
         manager.draw = 0;
         boardModel.AddCard(card);
         model.RemoveCard(card);
@@ -722,23 +722,26 @@ public class ButtonIndexV2 : MvcModels
     //The Button uses this Method.
     public void PassTurn(bool anotherTurn)
     {
-
-        RemoveButtons();
-        manager.tookToHand = false;
-        AIplayed = false;
-        TurnTimer.Instance.time = 100;
-        if (!anotherTurn)
+        if (!PlayerColorChooser[0].gameObject.activeInHierarchy)
         {
-            deckModel.ChangeTurn();
-            manager.playerPlayed = false;
+            RemoveButtons();
+            manager.tookToHand = false;
+            AIplayed = false;
+            TurnTimer.Instance.time = 100;
+            if (!anotherTurn)
+            {
+                deckModel.ChangeTurn();
+                manager.playerPlayed = false;
+            }
+            if (anotherTurn && deckModel.CurrentTurn == "Player")
+                AI.Instance.StartCoroutine(PlayAgain());
+            else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
+            {
+                deckModel.PlayAgain();
+            }
+            SoundManager.Instance.Play(SoundManager.Instance.passButton);
         }
-        if (anotherTurn && deckModel.CurrentTurn == "Player")
-            AI.Instance.StartCoroutine(PlayAgain());
-        else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
-        {
-            deckModel.PlayAgain();
-        }
-        SoundManager.Instance.Play(SoundManager.Instance.passButton);
+        
     }
     IEnumerator PlayAgain()
     {

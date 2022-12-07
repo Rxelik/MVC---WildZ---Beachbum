@@ -45,7 +45,8 @@ public class DeckView : MvcModels, IDeckView
     [SerializeField] public List<CardModel> _InspectorCards;
     [SerializeField] string _CurrentTurn;
 
-    public ParticleSystem ParticleEffect;
+    public GameObject glowEffect;
+    public GameObject pointerVFX;
     public bool _Inisialize = true;
     bool Sent = false;
     private void Update()
@@ -61,11 +62,18 @@ public class DeckView : MvcModels, IDeckView
         }
         if (!GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
         {
-            ParticleEffect.gameObject.SetActive(true);
+            pointerVFX.SetActive(true);
+            glowEffect.gameObject.SetActive(true);
+        }
+        else if (GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
+        {
+            pointerVFX.SetActive(false);
+            glowEffect.gameObject.SetActive(true);
         }
         else
         {
-            ParticleEffect.gameObject.SetActive(false);
+            pointerVFX.SetActive(false);
+            glowEffect.gameObject.SetActive(false);
         }
     }
 
