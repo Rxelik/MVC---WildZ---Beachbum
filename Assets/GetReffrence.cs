@@ -34,4 +34,8 @@ public class GetReffrence : MonoBehaviour
     {
         SpriteSelector.Instance.NameChange();
     }
+    public void ToggleCanvas()
+    {
+        SpriteSelector.Instance.ToggleUi();
+    }
 }

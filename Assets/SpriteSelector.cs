@@ -45,33 +45,59 @@ public class SpriteSelector : MonoBehaviour
 
     public void Ref()
     {
-        playerSprite = GameObject.Find("PlayerSprite").GetComponent<Image>();
+        playerSprite = GameObject.Find("PlayerSprite_").GetComponent<Image>();
         input = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
-        CurrencyManager.Instance.currency = GameObject.Find("CurrencyText").GetComponent<TextMeshProUGUI>();
+        mainMenuName = GameObject.Find("CharacterText").GetComponent<TextMeshProUGUI>();
+        ChooseCharacterUI = GameObject.Find("CharacterChooserUI_").GetComponent<Canvas>();
+        buttonSprite = GameObject.Find("ChoosePlayerToggle").GetComponent<Image>();
+        CurrencyManager.Instance.currency = GameObject.Find("CurrencyTMP").GetComponent<TextMeshProUGUI>();
     }
     public bool isMale = true;
 
     public int mNumber = 0;
     public int fNumber = 0;
     public Image playerSprite;
+    public Image buttonSprite;
     public List<Sprite> maleSpritesList;
     public List<Sprite> femaleSpritesList;
     public TMP_InputField input;
 
     public string playerName;
     public TextMeshProUGUI namePlaceHolder;
+    public TextMeshProUGUI mainMenuName;
+
+    public Canvas MainMenuUI;
+    public Canvas ChooseCharacterUI;
 
     private void Update()
     {
         ChooseSprite();
+        mainMenuName.text = "Your Name is : " + playerName;
+    }
+
+    private bool inCharSel = false;
+    public void ToggleUi()
+    {
+        inCharSel = !inCharSel;
+        if (inCharSel)
+            ChooseCharacterUI.sortingOrder = 2;
+        else
+            ChooseCharacterUI.sortingOrder = 0;
+
     }
     public void ChooseSprite()
     {
         if (isMale)
+        {
             playerSprite.sprite = maleSpritesList[mNumber];
+            buttonSprite.sprite = maleSpritesList[mNumber];
+        }
 
         else
+        {
             playerSprite.sprite = femaleSpritesList[fNumber];
+            buttonSprite.sprite = femaleSpritesList[mNumber];
+        }
     }
 
     public void GoUp()

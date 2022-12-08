@@ -13,8 +13,8 @@ public class RandomShaffler : MonoBehaviour
     public List<Sprite> femaleSpritesList;
     public List<Sprite> randomBackground;
     [Space]
-    public SpriteRenderer aiSprite;
-    public SpriteRenderer playerSprite;  
+    public Image aiSprite;
+    public Image playerSprite;  
     
     public Image aiSpriteEnd;
     public Image playerSpriteEnd;

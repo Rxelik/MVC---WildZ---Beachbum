@@ -9,8 +9,8 @@ public class TurnTimer : MvcModels
     public float time;
     public float TotalTime;
     public GameObject dim;
-    public SpriteRenderer playerAvatar;
-    public SpriteRenderer enemyAvatar;
+    public Image playerAvatar;
+    public Image enemyAvatar;
     public string belongsTo;
     public Image _fill;
     bool changedColor = false;

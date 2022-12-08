@@ -228,7 +228,7 @@ public class ButtonIndexV2 : MvcModels
     }
     void EnemyWild(string color)
     {
-
+        //Check what color player has and change depends on it.
         foreach (var cardModel in enemyModel.Cards)
         {
             if (cardModel.Color != Color.white || cardModel.Color != Color.black)
@@ -237,9 +237,10 @@ public class ButtonIndexV2 : MvcModels
                 break;
             }
         }
-
-
-
+        //If Enemy has only supers force play color red(i love red <3)
+        if (manager.chosenCard.Color == Color.white || manager.chosenCard.Color == Color.black)
+            manager.chosenCard.Color = Color.red;
+        
         //88 is ChangeColor
         if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != 88)
         {

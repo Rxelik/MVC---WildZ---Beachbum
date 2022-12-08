@@ -885,6 +885,21 @@ public class Inisializer : MonoBehaviour
 
     }
 
+    public void ShuffleCards()
+    {
+        int rnd = UnityEngine.Random.Range(0, MvcModels.boardModel.Cards.Count);
+        int count = 0;
+        for (int i = 0; i < 20; i++)
+        {
+            MvcModels.deckModel.AddCard(MvcModels.boardModel.Cards[rnd]);
+            count++;
+            if (count > 15)
+            {
+                count = 0;
+                break;
+            }
+        }
+    }
     public void ResetGame()
     {
 
