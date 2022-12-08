@@ -63,17 +63,14 @@ public class DeckView : MvcModels, IDeckView
         if (!GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
         {
             pointerVFX.SetActive(true);
-            glowEffect.gameObject.SetActive(true);
         }
         else if (GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
         {
             pointerVFX.SetActive(false);
-            glowEffect.gameObject.SetActive(true);
         }
         else
         {
             pointerVFX.SetActive(false);
-            glowEffect.gameObject.SetActive(false);
         }
     }
 

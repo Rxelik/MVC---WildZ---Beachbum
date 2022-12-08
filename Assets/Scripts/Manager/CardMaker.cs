@@ -513,7 +513,7 @@ public class CardMaker : MvcModels
                         CardSprite.sprite = Red2[11];
                         break;
                     case 88:
-                        CardSprite.sprite = Red2[11];
+                        CardSprite.sprite = Red2[12];
                         break;
                     default:
                         break;
@@ -569,7 +569,7 @@ public class CardMaker : MvcModels
                         CardSprite.sprite = Green2[11];
                         break;
                     case 88:
-                        CardSprite.sprite = Green2[11];
+                        CardSprite.sprite = Green2[12];
                         break;
                     default:
                         break;
@@ -625,7 +625,7 @@ public class CardMaker : MvcModels
                         CardSprite.sprite = Blue2[11];
                         break;
                     case 88:
-                        CardSprite.sprite = Blue2[11];
+                        CardSprite.sprite = Blue2[12];
                         break;
                     default:
                         break;
@@ -681,7 +681,7 @@ public class CardMaker : MvcModels
                         CardSprite.sprite = Yellow2[11];
                         break;
                     case 88:
-                        CardSprite.sprite = Yellow2[11];
+                        CardSprite.sprite = Yellow2[12];
                         break;
                     default:
                         break;

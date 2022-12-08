@@ -249,7 +249,7 @@ MonoBehaviour:
   - {fileID: -1301885096981190224, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
   - {fileID: -4973506025691401698, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
   - {fileID: 3444268562668208636, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
-  - {fileID: 6308132535517830798, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: 21300000, guid: b22307ac28763464ebc0b62a14757fe7, type: 3}
   Green2:
   - {fileID: -5052163780209527080, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
   - {fileID: 7756468093283896255, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
@@ -263,7 +263,7 @@ MonoBehaviour:
   - {fileID: 5041073189491584052, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
   - {fileID: -2133735983580110557, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
   - {fileID: 3345094962450021636, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
-  - {fileID: 7981902420718068315, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: 21300000, guid: e22df09d44f18264fbd853988957b8bc, type: 3}
   Blue2:
   - {fileID: 613668719123987039, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
   - {fileID: -3811650566089094805, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
@@ -277,7 +277,7 @@ MonoBehaviour:
   - {fileID: -7135065513264622733, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
   - {fileID: 39966312146331041, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
   - {fileID: 289962476684572826, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
-  - {fileID: -8646794427231163231, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: 21300000, guid: 005cb5d117b0a854d9015201d0fb189b, type: 3}
   Yellow2:
   - {fileID: -5996768045262758566, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
   - {fileID: 5726388637754646337, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
@@ -291,12 +291,12 @@ MonoBehaviour:
   - {fileID: 2676885805725471967, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
   - {fileID: -8591063662332604015, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
   - {fileID: -5437840162619396025, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
-  - {fileID: 2960497297611472325, guid: e4cc0a1eff2d4074996695dc0b657ba5, type: 3}
+  - {fileID: 21300000, guid: e06944c0c52ce11499e183aded13e08e, type: 3}
   White2:
   - {fileID: 8772548143014677152, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 7570145973966283090, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 21300000, guid: 56a3b0b26eb1a2043a3e98efdadda58b, type: 3}
-  - {fileID: 21300000, guid: 80242f1634d1ca943ad85d7466e83ae0, type: 3}
+  - {fileID: 21300000, guid: b6d41b3160d78b246b451f303e896900, type: 3}
   Red3:
   - {fileID: 7829426244860202883, guid: dbb466c313516c74f96a6151a14f77f2, type: 3}
   - {fileID: -2652701373212946414, guid: dbb466c313516c74f96a6151a14f77f2, type: 3}

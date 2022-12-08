@@ -410,7 +410,7 @@ MonoBehaviour:
   AIplayed: 0
   playerPlayed: 0
   playerTimer: {fileID: 1511556242}
-  enemyTimer: {fileID: 0}
+  enemyTimer: {fileID: 2019387188}
 --- !u!1 &19215053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 134, y: 32}
+  m_AnchoredPosition: {x: 134, y: 34}
   m_SizeDelta: {x: 203, y: 203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213292909
@@ -3426,8 +3426,8 @@ MonoBehaviour:
   isAi: 0
   AIplayed: 0
   playerPlayed: 0
-  playerTimer: {fileID: 0}
-  enemyTimer: {fileID: 0}
+  playerTimer: {fileID: 1511556242}
+  enemyTimer: {fileID: 2019387188}
 --- !u!114 &980547654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4163,6 +4163,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1699786199730869351, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: enemyTimer
+      value: 
+      objectReference: {fileID: 2019387188}
+    - target: {fileID: 1699786199730869351, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: playerTimer
+      value: 
+      objectReference: {fileID: 1511556242}
     - target: {fileID: 6533368456122913100, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
         type: 3}
       propertyPath: m_IsActive
@@ -4183,6 +4193,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ChooseColor
       objectReference: {fileID: 0}
+    - target: {fileID: 6533368456122913138, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: enemyTimer
+      value: 
+      objectReference: {fileID: 2019387188}
+    - target: {fileID: 6533368456122913138, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: playerTimer
+      value: 
+      objectReference: {fileID: 1511556242}
     - target: {fileID: 8528309912204255500, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
         type: 3}
       propertyPath: m_Color.a
@@ -4203,6 +4223,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8528309912204255730, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: enemyTimer
+      value: 
+      objectReference: {fileID: 2019387188}
+    - target: {fileID: 8528309912204255730, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: playerTimer
+      value: 
+      objectReference: {fileID: 1511556242}
     - target: {fileID: 8774336645466930257, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
         type: 3}
       propertyPath: m_Color.a
@@ -4218,6 +4248,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ChooseColor
       objectReference: {fileID: 0}
+    - target: {fileID: 8774336645466930259, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: enemyTimer
+      value: 
+      objectReference: {fileID: 2019387188}
+    - target: {fileID: 8774336645466930259, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
+        type: 3}
+      propertyPath: playerTimer
+      value: 
+      objectReference: {fileID: 1511556242}
     - target: {fileID: 8774336645466930261, guid: 83e17a2e487d0c544aa30a3d6a4afc93,
         type: 3}
       propertyPath: m_IsActive
@@ -5639,6 +5679,7 @@ GameObject:
   - component: {fileID: 1511556240}
   - component: {fileID: 1511556241}
   - component: {fileID: 1511556242}
+  - component: {fileID: 1511556243}
   m_Layer: 5
   m_Name: PlayerTurnTimer
   m_TagString: Untagged
@@ -5739,6 +5780,22 @@ MonoBehaviour:
   enemyAvatar: {fileID: 624749005}
   belongsTo: Player
   _fill: {fileID: 213292909}
+--- !u!111 &1511556243
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511556239}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 49ada7db72d705d4cb8fb54076f974c2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 49ada7db72d705d4cb8fb54076f974c2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1516740695
 GameObject:
   m_ObjectHideFlags: 0
