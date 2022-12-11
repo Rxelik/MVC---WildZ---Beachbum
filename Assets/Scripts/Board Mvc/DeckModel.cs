@@ -82,7 +82,6 @@ public class DeckModel : IDeckModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new OnCardsInDeckChangeEventArgs();
                 CardInDeckChanged(this, eventArgs);
-                Debug.Log("CHANGED Deck CARDS");
 
             }
         }

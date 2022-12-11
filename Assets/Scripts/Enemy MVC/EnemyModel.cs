@@ -71,7 +71,6 @@ public class EnemyModel : IEnemyModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new EnemyCardChangeEventArgs();
                 OnCardsChanged(this, eventArgs);
-                Debug.Log("Changed Cards In Enemy");
             }
         }
     }

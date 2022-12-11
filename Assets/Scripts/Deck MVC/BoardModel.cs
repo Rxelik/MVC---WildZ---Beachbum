@@ -65,7 +65,6 @@ public class BoardModel : IBoardModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new OnCardsInBoardChangeEventArgs();
                 CardInBoardChanged(this, eventArgs);
-                Debug.Log("CHANGED Board CARDS");
 
             }
         }

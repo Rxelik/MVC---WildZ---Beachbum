@@ -85,7 +85,6 @@ public class PlayerModel : IPlayerModel
                 // Dispatch the 'position changed' event
                 var eventArgs = new PlayerCardChangeEventArgs();
                 OnCardsChanged(this, eventArgs);
-                Debug.Log("Changed Cards In Player");
             }
         }
     }

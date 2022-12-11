@@ -15,14 +15,28 @@ public class Restart : MonoBehaviour
     public void RestartGasme()
     {
         CurrencyManager.Instance.OnGameStart(CurrencyManager.Instance.currencyInRun);
-        SceneManager.LoadScene(1);
+        if (AspectRatioChecker.Instance.aspectRatio <= 0.6f)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+        SceneManager.LoadScene(2);
+        }
     }
     public void StartGame(int JoinMoney)
     {
         if (CurrencyManager.Instance.currentBalance >= JoinMoney)
         {
             CurrencyManager.Instance.OnGameStart(JoinMoney);
-            SceneManager.LoadScene(1);
+            if (AspectRatioChecker.Instance.aspectRatio <= 0.55f)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                SceneManager.LoadScene(2);
+            }
         }
         else
         {
