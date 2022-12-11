@@ -35,12 +35,63 @@ public class PlayerController : IPlayerController
         model.PlayerPlayedEve += PlayerPlayed;
         _manager = GameManager.Instance;
         GameManager.Instance.VersionChange += VersionChanged;
+        GameManager.Instance.OnChooseCardEve += Instance_OnChooseCardEve;
         // Listen to input from the view
         //view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
 
     }
+
+    private void Instance_OnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
+    {
+        PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
+        //R Y B G
+        if (!model.FirstTurn)
+        {
+            view.SortedHand = model.Cards.OrderBy(go => go.Color.g)
+                .ThenBy(go => go.Color == UnityEngine.Color.white)
+                .ThenBy(go => go.Color.b)
+                .ThenBy(go => go.Color == UnityEngine.Color.yellow)
+                .ThenBy(go => go.Color.r)
+                .ThenBy(go => go.Number)
+                .ToList();
+            model.Cards.Clear();
+        }
+
+        foreach (var item in view.SortedHand)
+        {
+            model.Cards.Add(item);
+        }
+
+        float moveRight = 0;
+        int CardLayer = model.Cards.Count;
+
+
+        for (int i = 0; i < model.Cards.Count; i++)
+        {
+
+            #region OGway
+            model.Cards[i].HandOrder = i;
+            model.Cards[i].Layer = CardLayer;
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.5f) / model.Cards.Count);
+            model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+            model.Cards[i].CanPlayCard = false;
+            moveRight += 2.8f;
+            CardLayer += 1;
+
+            float rotate = model.Cards[i].HandOrder - model.Cards.Count / 2;
+            model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -0.75f);
+
+            #endregion
+            if (model.Cards[i].BelongsTo == "Player")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "Player";
+            }
+        }
+    }
+
     private void VersionChanged(object sender, GameManager.OnCardVersionChange e)
     {
         FixPosition();
@@ -199,7 +250,7 @@ public class PlayerController : IPlayerController
                 }
             }
         }
-       // SyncData();
+        // SyncData();
     }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {

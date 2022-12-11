@@ -47,7 +47,13 @@ public class CurrencyManager : MonoBehaviour
         timePressed = PlayerPrefs.GetFloat("timeSinceClick", 0f);
     }
 
-
+    void OnApplicationQuit()
+    {
+        if (!GameManager.Instance.gameEnded)
+        {
+            OnGameLost();
+        }
+    }
     public void OnGameLost()
     {
         currentBalance -= currencyInRun;

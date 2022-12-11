@@ -11,7 +11,6 @@ public interface ICardController
 public class CardController : ICardController
 {
     private GameManager _manager;
-    private CurrencyManager _ai;
 
     // Keep references to the model and view
     private readonly ICardModel model;
@@ -24,7 +23,6 @@ public class CardController : ICardController
         this.model = model;
         this.view = view;
         _manager = GameManager.Instance;
-        _ai = CurrencyManager.Instance;
         // Listen to input from the view
         view.OnClicked += HandleClicked;
         view.OnEnableEvent += StartOfGameDraw;
@@ -38,6 +36,8 @@ public class CardController : ICardController
         // Set the view's initial state by synching with the model
         SyncData();
     }
+
+
 
     private void Board_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
     {
