@@ -150,12 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c779e1369e617e4091387be3e6ae02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerView: {fileID: 0}
-  _index: 0
-  Draw: 0
-  Turn: {fileID: 769783262}
-  timer: {fileID: 0}
-  ChosenCard:
+  uiCanvas: {fileID: 0}
+  EndGameCanvas: {fileID: 0}
+  aiCardCount: {fileID: 0}
+  playerCardCount: {fileID: 0}
+  aiScoreUgui: {fileID: 0}
+  playerScoreUgui: {fileID: 0}
+  chosenCard:
     _Layer: 0
     _Color: {r: 0, g: 0, b: 0, a: 0}
     _Position: {x: 0, y: 0, z: 0}
@@ -168,16 +169,23 @@ MonoBehaviour:
     _IsBamboozle: 0
     _CanPlayCard: 0
     _Sprite: {fileID: 0}
-  PlayerCanPlay: 0
-  GameEnded: 0
-  PassButton: {fileID: 0}
-  PlayerPlayed: 0
-  TooKToHand: 0
-  PlayerScore: 0
-  AIScore: 0
-  CardVersion: Version 1
-  Spine: {fileID: 0}
-  skeletonAnimation: {fileID: 0}
+  passButton: {fileID: 0}
+  continueButton: {fileID: 0}
+  spine: {fileID: 0}
+  playerCanPlay: 0
+  gameEnded: 0
+  playerPlayed: 0
+  tookToHand: 0
+  trigger: 0
+  playerScore: 0
+  aiScore: 0
+  cardVersion: Version 2
+  _index: 0
+  draw: 0
+  round: 0
+  _targetToWin: 0
+  clicked: 0
+  cardsObjects: []
 --- !u!4 &14892770
 Transform:
   m_ObjectHideFlags: 0
@@ -5760,6 +5768,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &336037251
@@ -6132,6 +6141,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &466181953
@@ -7344,6 +7354,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &825120138
@@ -7708,15 +7719,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardView: {fileID: 0}
-  _cardMaker: {fileID: 0}
   PlayerColorChooser: []
   EnemyColorChooser: []
   BelongsTo: 
   _index: 0
-  isAI: 1
+  isAi: 0
   AIplayed: 0
-  PlayerPlayed: 0
+  playerPlayed: 0
+  playerTimer: {fileID: 0}
+  enemyTimer: {fileID: 0}
 --- !u!1 &984338853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8058,6 +8069,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &1013424486
@@ -9360,6 +9372,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &1445785988
@@ -9483,6 +9496,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &1491923824
@@ -9907,6 +9921,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &1601267251
@@ -10109,6 +10124,7 @@ MonoBehaviour:
   CardSprite: {fileID: 336037251}
   CardBack: {fileID: 0}
   view: {fileID: 0}
+  dim: {fileID: 0}
   Button: 1
   SwappedFace: 0
 --- !u!212 &1777917246
@@ -10771,15 +10787,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd614e94f2867e40b6e3849e9b6c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardView: {fileID: 0}
-  _cardMaker: {fileID: 0}
   PlayerColorChooser: []
   EnemyColorChooser: []
   BelongsTo: 
   _index: 0
-  isAI: 0
+  isAi: 0
   AIplayed: 0
-  PlayerPlayed: 0
+  playerPlayed: 0
+  playerTimer: {fileID: 0}
+  enemyTimer: {fileID: 0}
 --- !u!1 &1941650205
 GameObject:
   m_ObjectHideFlags: 0
@@ -10967,69 +10983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837af74bd645b684f8c75439093c19a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InsializeDeckSize: 100
   HandSize: 10
-  Colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0.123636246, a: 1}
-  - {r: 1, g: 0.8461646, b: 0, a: 1}
-  - {r: 0, g: 0.038576603, b: 1, a: 1}
-  DeckButton: {fileID: 1927375791}
-  AI: {fileID: 980547653}
-  Playerbuttons:
-  - {fileID: 1013424479}
-  - {fileID: 1491923817}
-  - {fileID: 466181946}
-  - {fileID: 1445785981}
-  Enemybuttons:
-  - {fileID: 336037244}
-  - {fileID: 825120131}
-  - {fileID: 1777917239}
-  - {fileID: 1601267244}
-  buttons: []
-  PlayerTransforms:
-  - {fileID: 1816745240}
-  - {fileID: 1795147057}
-  - {fileID: 1007838700}
-  - {fileID: 1968515885}
-  - {fileID: 623709994}
-  - {fileID: 1066560065}
-  - {fileID: 590828702}
-  - {fileID: 737116439}
-  - {fileID: 2036584933}
-  - {fileID: 1941650208}
-  - {fileID: 404693192}
-  - {fileID: 369364221}
-  - {fileID: 552231820}
-  - {fileID: 1818517014}
-  - {fileID: 894675949}
-  - {fileID: 533453445}
-  - {fileID: 255150497}
-  - {fileID: 1292596871}
-  - {fileID: 2094964319}
-  - {fileID: 2137723204}
-  EnemyTransforms:
-  - {fileID: 48023124}
-  - {fileID: 1311650869}
-  - {fileID: 1496965088}
-  - {fileID: 955711220}
-  - {fileID: 301978266}
-  - {fileID: 1918391692}
-  - {fileID: 1294779349}
-  - {fileID: 1509227015}
-  - {fileID: 1061793078}
-  - {fileID: 502459359}
-  - {fileID: 1012332168}
-  - {fileID: 1321161593}
-  - {fileID: 1197196861}
-  - {fileID: 463217718}
-  - {fileID: 984338854}
-  - {fileID: 1609894830}
-  - {fileID: 83315892}
-  - {fileID: 63670649}
-  - {fileID: 1443720037}
-  - {fileID: 1147019480}
   _Server: {fileID: 0}
+  MvcModels: {fileID: 0}
+  FTUI: 0
 --- !u!4 &1986057253
 Transform:
   m_ObjectHideFlags: 0
@@ -12421,6 +12378,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e76d39b2868f5c479abe3d84f1f785d, type: 3}
+--- !u!1001 &5815612295477206607
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184679, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815612293827184682, guid: 5d54bb689858f2e4c9f19b50792f7ca9,
+        type: 3}
+      propertyPath: m_Name
+      value: Finding Opponent Shiny Particles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d54bb689858f2e4c9f19b50792f7ca9, type: 3}
 --- !u!1001 &6202289161531954379
 PrefabInstance:
   m_ObjectHideFlags: 0
