@@ -27,7 +27,6 @@ public class Inisializer : MonoBehaviour
         {
             Instance = this;
         }
-        StartCoroutine(Build());
     }
     #endregion
     public int HandSize = 10;
@@ -36,7 +35,7 @@ public class Inisializer : MonoBehaviour
     public bool FTUI = false;
 
 
-    IEnumerator Build()
+    public IEnumerator Build()
     {
         //_______________________________________________\\
         GameManager.Instance.gameEnded = false;

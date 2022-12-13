@@ -80,7 +80,7 @@ public class SpriteSelector : MonoBehaviour
     {
         inCharSel = !inCharSel;
         if (inCharSel)
-            ChooseCharacterUI.sortingOrder = 2;
+            ChooseCharacterUI.sortingOrder = 6;
         else
             ChooseCharacterUI.sortingOrder = 0;
 

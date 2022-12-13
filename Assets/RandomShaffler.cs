@@ -29,16 +29,14 @@ public class RandomShaffler : MonoBehaviour
     void Start()
     {
         manager = GameManager.Instance;
-        Randomize();
 
-        aiSpriteEnd.sprite = aiSprite.sprite;
-        playerSpriteEnd.sprite = playerSprite.sprite;
+
     }
 
     void Update()
     { 
     }
-    private void Randomize()
+    public void Randomize()
     {
        // backGroundImage.sprite = randomBackground[Random.Range(0,randomBackground.Count)];  
         int rnd = Random.Range(0, 10);
@@ -57,13 +55,15 @@ public class RandomShaffler : MonoBehaviour
         if (SpriteSelector.Instance.isMale)
         {
             playerSprite.sprite = maleSpritesList[SpriteSelector.Instance.mNumber];
-            aiName.text = maleNames[Random.Range(0, maleNames.Count)];
+            playerName.text = maleNames[Random.Range(0, maleNames.Count)];
         }
         else
         {
             playerSprite.sprite = femaleSpritesList[SpriteSelector.Instance.fNumber];
-            aiName.text = femaleNames[Random.Range(0, maleNames.Count)];
+            playerName.text = femaleNames[Random.Range(0, maleNames.Count)];
         }
         playerName.text = SpriteSelector.Instance.playerName;
+        aiSpriteEnd.sprite = aiSprite.sprite;
+        playerSpriteEnd.sprite = playerSprite.sprite;
     }
 }
