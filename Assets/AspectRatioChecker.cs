@@ -7,6 +7,7 @@ public class AspectRatioChecker : MonoBehaviour
     #region Singelton
 
     public static AspectRatioChecker Instance;
+    public bool isOn16by9;
 
     void Awake()
     {
@@ -26,13 +27,20 @@ public class AspectRatioChecker : MonoBehaviour
     public float aspectRatio;
     void Start()
     {
-        aspectRatio =(float) Screen.height / Screen.width;
-        print(aspectRatio);
+        FindScreenResolution();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FindScreenResolution()
     {
-        
+        aspectRatio = (float)Screen.height / Screen.width;
+
+        if (aspectRatio <= 0.58f)
+        {
+            isOn16by9 = true;
+        }
+        else
+        {
+            isOn16by9 = false;
+        }
     }
 }

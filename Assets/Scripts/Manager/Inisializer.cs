@@ -43,7 +43,14 @@ public class Inisializer : MonoBehaviour
         ///
         var DeckmodelFactory = new DeckModelFactory();
         var _deckmodel = DeckmodelFactory.Model;
+        if (AspectRatioChecker.Instance.isOn16by9)
+        {
         _deckmodel.Position = new Vector3(20, 0, 0);
+        }
+        else
+        {
+        _deckmodel.Position = new Vector3(13.5f, 0, 0);
+        }
         // Set some initial state
         //_deckmodel.Position = new Vector3(20, 0, 0);
         _deckmodel.Cards = new List<CardModel>();
@@ -149,7 +156,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.red;
             _Cardmodel.Number = 0;
             _Cardmodel.Layer = 1;
@@ -173,7 +187,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.red;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -196,7 +217,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.red;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -251,7 +279,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 0;
             _Cardmodel.Layer = 1;
@@ -275,7 +310,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -298,7 +340,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.blue;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -324,7 +373,14 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(20, 0, 0);
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    _Cardmodel.Position = new Vector3(20, 0, 0);
+                }
+                else
+                {
+                    _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+                }
                 _Cardmodel.Color = Color.blue;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -353,7 +409,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.yellow;
             _Cardmodel.Number = 0;
             _Cardmodel.Layer = 1;
@@ -377,7 +440,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.yellow;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -400,7 +470,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.yellow;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -426,7 +503,14 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(20, 0, 0);
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    _Cardmodel.Position = new Vector3(20, 0, 0);
+                }
+                else
+                {
+                    _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+                }
                 _Cardmodel.Color = Color.yellow;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -454,7 +538,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.green;
             _Cardmodel.Number = 0;
             _Cardmodel.Layer = 1;
@@ -478,7 +569,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.green;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -501,7 +599,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.green;
             _Cardmodel.Number = 44;
             _Cardmodel.Layer = 1;
@@ -528,7 +633,14 @@ public class Inisializer : MonoBehaviour
                 var CardmodelFactory = new CardModelFactory();
                 var _Cardmodel = CardmodelFactory.Model;
                 // Set some initial state
-                _Cardmodel.Position = new Vector3(20, 0, 0);
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    _Cardmodel.Position = new Vector3(20, 0, 0);
+                }
+                else
+                {
+                    _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+                }
                 _Cardmodel.Color = Color.green;
                 _Cardmodel.Number = CardIndex;
                 _Cardmodel.Layer = 1;
@@ -557,7 +669,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.white;
             _Cardmodel.Number = 99;
             _Cardmodel.Layer = 1;
@@ -582,7 +701,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.white;
             _Cardmodel.Number = 22;
             _Cardmodel.Layer = 1;
@@ -607,7 +733,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.white;
             _Cardmodel.Number = 88;
             _Cardmodel.Layer = 1;
@@ -635,7 +768,14 @@ public class Inisializer : MonoBehaviour
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
             // Set some initial state
-            _Cardmodel.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                _Cardmodel.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                _Cardmodel.Position = new Vector3(13.5f, 0, 0);
+            }
             _Cardmodel.Color = Color.white;
             _Cardmodel.Number = 55;
             _Cardmodel.Layer = 1;
@@ -674,7 +814,14 @@ public class Inisializer : MonoBehaviour
             item.Enemy = (EnemyModel)_Enemyermodel;
             item.Player = (PlayerModel)_playermodel;
             item.Board = (BoardModel)_Boardmodel;
-            item.Position = new Vector3(20, 0, 0);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                item.Position = new Vector3(20, 0, 0);
+            }
+            else
+            {
+                item.Position = new Vector3(13.5f, 0, 0);
+            }
             item.BelongsTo = "Deck";
             _deckmodel.AddCard(item);
         }

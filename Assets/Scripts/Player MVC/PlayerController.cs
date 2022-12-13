@@ -196,8 +196,14 @@ public class PlayerController : IPlayerController
 
                 if (model.Cards[i].CanPlayCardTest())
                 {
-                    //model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -11f, -CardLayer);
-                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 1.50f, -CardLayer);
+                    if (AspectRatioChecker.Instance.isOn16by9)
+                    {
+                        model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 1.50f, -CardLayer);
+                    }
+                    else
+                    {
+                        model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 1f, -CardLayer);
+                    }
                 }
                 else
                 {

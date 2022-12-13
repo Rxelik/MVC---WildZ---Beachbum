@@ -18,9 +18,9 @@ public class TurnTimer : MvcModels
     private void Start()
     {
         // TotalTime = TotalTime / 10000;
-        deckModel.OnTurnChangeEve += DeckModel_OnTurnChangeEve;
+        
     }
-
+    
     private void DeckModel_OnTurnChangeEve(object sender, TurnChangedEventArgs e)
     {
         time = 100;
@@ -77,8 +77,14 @@ public class TurnTimer : MvcModels
         }
     }
 
+    private bool inisialized = false;
     private void Update()
     {
+        if (deckModel.CurrentTurn == "Player" && !inisialized)
+        {
+            deckModel.OnTurnChangeEve += DeckModel_OnTurnChangeEve;
+            inisialized = true;
+        }
         if (Sliderslider.value > 50)
         {
             _fill.color = new Color(0, 1, 1, _fill.color.a);

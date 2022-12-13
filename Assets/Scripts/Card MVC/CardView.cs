@@ -145,7 +145,12 @@ public class CardView : MvcModels, ICardView
 
         else if (_inspectorBelongsTo == "Deck")
         {
-            gameObject.transform.localScale = new Vector3(1f, 1f);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                gameObject.transform.localScale = new Vector3(1f, 1f);
+            }
+            else
+                gameObject.transform.localScale = new Vector3(0.85f, 0.85f);
             Layer = 3;
         }
 
@@ -160,7 +165,11 @@ public class CardView : MvcModels, ICardView
             //  Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((_inspectOrderInHand + 0.5f) / playerModel.Cards.Count));
             gameObject.transform.localScale = new Vector3(1.2f, 1.2f);
 
-            //transform.position = pointInPath;
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+            }
+            else
+                gameObject.transform.localScale = new Vector3(0.85f, 0.85f);
 
         }
     }

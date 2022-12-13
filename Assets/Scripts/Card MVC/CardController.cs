@@ -89,8 +89,16 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(new Vector3(20, 0, 0),
-                    new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    view.Position = Vector3.Lerp(new Vector3(20, 0, 0),
+                        new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                }
+                else
+                {
+                    view.Position = Vector3.Lerp(new Vector3(13.5f, 0, 0),
+                        new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                }
                 yield return null;
                 model.BelongsTo = "Enemy";
 
@@ -174,7 +182,16 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(Vector3.zero, new Vector3(20, 0, 0), t / duration);
+
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    view.Position = Vector3.Lerp(Vector3.zero, new Vector3(20, 0, 0), t / duration);
+
+                }
+                else
+                {
+                    view.Position = Vector3.Lerp(Vector3.zero, new Vector3(13.5f, 0, 0), t / duration);
+                }
                 //    SyncData();
                 yield return null;
             }
