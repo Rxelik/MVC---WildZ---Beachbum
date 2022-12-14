@@ -1048,7 +1048,6 @@ public class Inisializer : MonoBehaviour
     }
     public void ResetGame()
     {
-
         GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {
@@ -1057,6 +1056,27 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.continueButton.SetActive(false);
         GameManager.Instance.gameEnded = false;
         AnimationManager.Instance.DeActiveAnim();
+        StartCoroutine(Build());
+        GameManager.Instance.trigger = false;
+        SoundManager.Instance.CallEvent();
+        GameManager.Instance.playerPlayed = false;
+        GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
+        GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
+    }
+    public void Rematch()
+    {
+        GameManager.Instance.clicked = true;
+        for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
+        {
+            Destroy(GameManager.Instance.cardsObjects[i]);
+        }
+        GameManager.Instance.continueButton.SetActive(false);
+        GameManager.Instance.gameEnded = false;
+        AnimationManager.Instance.DeActiveAnim();
+        GameManager.Instance.EndGameCanvas.SetActive(false);
+        GameManager.Instance.uiCanvas.SetActive(true);
+        GameManager.Instance.aiScore = 0;
+        GameManager.Instance.playerScore = 0;
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();

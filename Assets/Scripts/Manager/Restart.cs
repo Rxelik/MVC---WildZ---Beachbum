@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Restart : MonoBehaviour
 {
@@ -9,14 +10,18 @@ public class Restart : MonoBehaviour
     public Canvas CharacterChooserUI_;
     public GameObject findingOP;
     public RandomShaffler shuffle;
+    public GameObject NoMoneyCurency;
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        GameManager.Instance.aiScore = 0;
+        GameManager.Instance.playerScore = 0;
+        GameManager.Instance.round = 1;
+        GameManager.Instance.gameEnded = false;
     }
     public void RestartGasme()
     {
         CurrencyManager.Instance.OnGameStart(CurrencyManager.Instance.currencyInRun);
-            SceneManager.LoadScene(0);
+
         //if (AspectRatioChecker.Instance.aspectRatio <= 0.6f)
         //{
         //}
@@ -47,7 +52,12 @@ public class Restart : MonoBehaviour
         }
         else
         {
-            print("NOT ENOUGH MONEY");
+            NoMoneyCurency.SetActive(true);
         }
+    }
+
+    public void DisablePopUp()
+    {
+        NoMoneyCurency.SetActive(false);
     }
 }

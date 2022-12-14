@@ -13,19 +13,20 @@ public class GameManager : MvcModels
 {
     #region Singelton
     public static GameManager Instance { get; private set; }
-    private void Awake()
+    void Awake()
     {
-        // If there is an Instance, and it's not me, delete myself.
-
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
+        if (Instance == null)
         {
             Instance = this;
         }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
     }
+
     #endregion
     public class OnCardVersionChange : EventArgs { }
 
@@ -83,7 +84,12 @@ public class GameManager : MvcModels
 
     private void Start()
     {
-        switch (CurrencyManager.Instance.currencyInRun )
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        aiScore = 0;
+        playerScore = 0;
+        round = 1;
+        gameEnded = false;
+        switch (CurrencyManager.Instance.currencyInRun)
         {
             case 200:
                 _targetToWin = 25;
@@ -96,8 +102,21 @@ public class GameManager : MvcModels
                 break;
         }
     }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        aiScore = 0;
+        playerScore = 0;
+        round = 1;
+        gameEnded = false;
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ResetGame();
+        }
         aiCardCount.text = enemyModel.Cards.Count.ToString();
         playerCardCount.text = playerModel.Cards.Count.ToString();
         if (!deckView._Inisialize)
@@ -286,6 +305,15 @@ public class GameManager : MvcModels
         yield return new WaitForSeconds(3f);
         uiCanvas.SetActive(false);
         EndGameCanvas.SetActive(true);
+    }
+
+    public void ResetGame()
+    {
+        aiScore = 0;
+        playerScore = 0;
+        round = 1;
+        Inisializer.Instance.ResetGame();
+        SceneManager.LoadScene(0);
     }
 }
 
