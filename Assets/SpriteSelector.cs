@@ -57,8 +57,9 @@ public class SpriteSelector : MonoBehaviour
     public int mNumber = 0;
     public int fNumber = 0;
     public Image playerSprite;
+    public SpriteRenderer FindGameplayerSprite;
     public Image buttonSprite;
-    public List<Sprite> maleSpritesList;
+    public List<Sprite> maleSpritesList;    
     public List<Sprite> femaleSpritesList;
     public TMP_InputField input;
 
@@ -98,6 +99,7 @@ public class SpriteSelector : MonoBehaviour
             playerSprite.sprite = femaleSpritesList[fNumber];
             buttonSprite.sprite = femaleSpritesList[mNumber];
         }
+        FindGameplayerSprite.sprite = playerSprite.sprite;
     }
 
     public void GoUp()
