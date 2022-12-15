@@ -97,7 +97,7 @@ public class SpriteSelector : MonoBehaviour
         else
         {
             playerSprite.sprite = femaleSpritesList[fNumber];
-            buttonSprite.sprite = femaleSpritesList[mNumber];
+            buttonSprite.sprite = femaleSpritesList[fNumber];
         }
         FindGameplayerSprite.sprite = playerSprite.sprite;
     }

@@ -10,6 +10,7 @@ public class SpineAnim : MonoBehaviour
    // public GameObject Spine;
     public SkeletonGraphic skeletonAnimation;
     public AnimationStateData stateData;
+    public GameObject cardChooserParanet;
     public string Color;
     public int ptes;
     private void Start()
@@ -27,8 +28,8 @@ public class SpineAnim : MonoBehaviour
 
     IEnumerator DelayDeactive()
     {
-        yield return new WaitForSeconds(3f);
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        cardChooserParanet.SetActive(false);
     }
 
     public void ChooseColor(string _Color)
@@ -37,21 +38,25 @@ public class SpineAnim : MonoBehaviour
         {
             SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Red Picked", false);
+            StartCoroutine(DelayDeactive());
         }
         if (_Color == "Green")
         {
             SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Green Picked", false);
+            StartCoroutine(DelayDeactive());
         }
         if (_Color == "Blue")
         {
             SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Blue Picked", false);
+            StartCoroutine(DelayDeactive());
         }
         if (_Color == "Yellow")
         {
             SoundManager.Instance.Play(SoundManager.Instance.colorPicked);
             skeletonAnimation.AnimationState.SetAnimation(6, "Yellow Picked", false);
+            StartCoroutine(DelayDeactive());
         }
     }
 }

@@ -36,6 +36,7 @@ public class AnimationManager : MvcModels
     public GameObject RoundWinAnim;
     public GameObject RoundLooseAnim;
     public GameObject ChooseCardAnim;
+    public GameObject chooseCardsGameObject;
     private void Start()
     {
         GameManager.Instance.OnLooseEve += AnimationManager_OnLooseEve;
@@ -51,6 +52,7 @@ public class AnimationManager : MvcModels
         if (playerModel.Cards.Count >= 1)
         {
             ChooseCardAnim.SetActive(true);
+            chooseCardsGameObject.SetActive(true);
         }
     }
 
