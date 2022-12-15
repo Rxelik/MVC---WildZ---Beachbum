@@ -117,78 +117,83 @@ public class GameManager : MvcModels
         {
             ResetGame();
         }
-        aiCardCount.text = enemyModel.Cards.Count.ToString();
-        playerCardCount.text = playerModel.Cards.Count.ToString();
-        if (!deckView._Inisialize)
+
+        if (playerModel != null)
         {
-            aiScoreUgui.text = aiScore.ToString();
-            playerScoreUgui.text = playerScore.ToString();
-
-            if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
+            aiCardCount.text = enemyModel.Cards.Count.ToString();
+            playerCardCount.text = playerModel.Cards.Count.ToString();
+            if (!deckView._Inisialize)
             {
-                if (aiScore >= _targetToWin)
-                {
-                    CurrencyManager.Instance.OnGameLost();
-                }
-                else if (playerScore >= _targetToWin)
-                {
-                    CurrencyManager.Instance.OnGameWon();
-                }
-                StartCoroutine(WinLooseEnumerator());
-            }
+                aiScoreUgui.text = aiScore.ToString();
+                playerScoreUgui.text = playerScore.ToString();
 
-            else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
-            {
-                StartCoroutine(ContinueEnumerator());
-            }
-
-
-            if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
-            {
-                if (!gameEnded)
+                if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
                 {
-                    CountScorePlayerScore();
-                }
-                if (playerScore <= _targetToWin && !trigger)
-                {
-                    var eventRoundWin = new OnRoundWinAnimEventArgs();
-                    OnRoundWinEve(this, eventRoundWin);
-                    trigger = true;
-                    round++;
-
-                }
-                else if (playerScore >= _targetToWin && !trigger)
-                {
-                    var eventRoundWin = new OnWinAnimEventArgs();
-                    OnWinEve(this, eventRoundWin);
-                    trigger = true;
-                }
-            }
-
-            if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
-            {
-                if (!gameEnded)
-                {
-                    CountScoreAIScore();
-                }
-                if (gameEnded)
-                {
-                    if (aiScore <= _targetToWin && !trigger)
+                    if (aiScore >= _targetToWin)
                     {
-                        var eventLoose = new OnRoundLooseAnimEventArgs();
-                        OnRoundLooseEve(this, eventLoose);
+                        CurrencyManager.Instance.OnGameLost();
+                    }
+                    else if (playerScore >= _targetToWin)
+                    {
+                        CurrencyManager.Instance.OnGameWon();
+                    }
+                    StartCoroutine(WinLooseEnumerator());
+                }
+
+                else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
+                {
+                    StartCoroutine(ContinueEnumerator());
+                }
+
+
+                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
+                {
+                    if (!gameEnded)
+                    {
+                        CountScorePlayerScore();
+                    }
+                    if (playerScore <= _targetToWin && !trigger)
+                    {
+                        var eventRoundWin = new OnRoundWinAnimEventArgs();
+                        OnRoundWinEve(this, eventRoundWin);
                         trigger = true;
                         round++;
+
                     }
-                    else if (aiScore >= _targetToWin && !trigger)
+                    else if (playerScore >= _targetToWin && !trigger)
                     {
-                        var eventLoose = new OnLooseAnimEventArgs();
-                        OnLooseEve(this, eventLoose);
+                        var eventRoundWin = new OnWinAnimEventArgs();
+                        OnWinEve(this, eventRoundWin);
                         trigger = true;
+                    }
+                }
+
+                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
+                {
+                    if (!gameEnded)
+                    {
+                        CountScoreAIScore();
+                    }
+                    if (gameEnded)
+                    {
+                        if (aiScore <= _targetToWin && !trigger)
+                        {
+                            var eventLoose = new OnRoundLooseAnimEventArgs();
+                            OnRoundLooseEve(this, eventLoose);
+                            trigger = true;
+                            round++;
+                        }
+                        else if (aiScore >= _targetToWin && !trigger)
+                        {
+                            var eventLoose = new OnLooseAnimEventArgs();
+                            OnLooseEve(this, eventLoose);
+                            trigger = true;
+                        }
                     }
                 }
             }
         }
+
 
     }
 

@@ -767,6 +767,7 @@ MonoBehaviour:
   isOn16by9: 0
   slider: {fileID: 0}
   rand: 0
+  inMainMenu: 1
   aspectRatio: 0
 --- !u!1001 &1756959990
 PrefabInstance:

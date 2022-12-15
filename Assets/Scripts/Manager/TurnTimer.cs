@@ -80,69 +80,73 @@ public class TurnTimer : MvcModels
     private bool inisialized = false;
     private void Update()
     {
-        if (deckModel.CurrentTurn == "Player" && !inisialized)
+        if (deckModel != null)
         {
-            deckModel.OnTurnChangeEve += DeckModel_OnTurnChangeEve;
-            inisialized = true;
-        }
-        if (Sliderslider.value > 50)
-        {
-            _fill.color = new Color(0, 1, 1, _fill.color.a);
-        }
-        else
-        {
-            _fill.color = Color.Lerp(new Color(0, 1, 1, _fill.color.a), new Color(0.816f, 0.125f, 0, _fill.color.a), Mathf.PingPong(Time.time, 1));
-
-        }
-        if (belongsTo == "Player")
-        {
-            if (deckModel.CurrentTurn == "Player" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+            if (deckModel.CurrentTurn == "Player" && !inisialized)
             {
-                time -= TotalTime;
-                Sliderslider.value = time;
-                //dim.SetActive(false);
-                playerAvatar.color = Color.white;
-                enemyAvatar.color = Color.gray;
+                deckModel.OnTurnChangeEve += DeckModel_OnTurnChangeEve;
+                inisialized = true;
+            }
+            if (Sliderslider.value > 50)
+            {
+                _fill.color = new Color(0, 1, 1, _fill.color.a);
+            }
+            else
+            {
+                _fill.color = Color.Lerp(new Color(0, 1, 1, _fill.color.a), new Color(0.816f, 0.125f, 0, _fill.color.a), Mathf.PingPong(Time.time, 1));
 
             }
-            else if (deckModel.CurrentTurn == "Enemy" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+            if (belongsTo == "Player")
             {
-                // dim.SetActive(true);
-                playerAvatar.color = Color.gray;
-                enemyAvatar.color = Color.white;
+                if (deckModel.CurrentTurn == "Player" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+                {
+                    time -= TotalTime;
+                    Sliderslider.value = time;
+                    //dim.SetActive(false);
+                    playerAvatar.color = Color.white;
+                    enemyAvatar.color = Color.gray;
+
+                }
+                else if (deckModel.CurrentTurn == "Enemy" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+                {
+                    // dim.SetActive(true);
+                    playerAvatar.color = Color.gray;
+                    enemyAvatar.color = Color.white;
+
+                }
+                if (time < 0)
+                {
+                    StartCoroutine(playerModel.TakeCard(1));
+                    GameManager.Instance.GetComponent<ButtonIndexV2>().ChangeTurn(false);
+                    time = 100;
+                }
+
 
             }
-            if (time < 0)
+            else if (belongsTo == "Enemy")
             {
-                StartCoroutine(playerModel.TakeCard(1));
-                GameManager.Instance.GetComponent<ButtonIndexV2>().ChangeTurn(false);
-                time = 100;
+                if (deckModel.CurrentTurn == "Enemy" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+                {
+                    time -= TotalTime;
+                    Sliderslider.value = time;
+                    // dim.SetActive(false);
+                    playerAvatar.color = Color.white;
+                    enemyAvatar.color = Color.gray;
+                }
+                if (deckModel.CurrentTurn == "Player")
+                {
+                    // dim.SetActive(true);
+                    playerAvatar.color = Color.gray;
+                    enemyAvatar.color = Color.white;
+                }
+                if (time < 0)
+                {
+                    StartCoroutine(enemyModel.TakeCard(1));
+                    GameManager.Instance.GetComponent<ButtonIndexV2>().ChangeTurn(false);
+                    time = 100;
+                }
             }
-
-
         }
-        else if (belongsTo == "Enemy")
-        {
-            if (deckModel.CurrentTurn == "Enemy" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
-            {
-                time -= TotalTime;
-                Sliderslider.value = time;
-                // dim.SetActive(false);
-                playerAvatar.color = Color.white;
-                enemyAvatar.color = Color.gray;
-            }
-            if (deckModel.CurrentTurn == "Player")
-            {
-                // dim.SetActive(true);
-                playerAvatar.color = Color.gray;
-                enemyAvatar.color = Color.white;
-            }
-            if (time < 0)
-            {
-                StartCoroutine(enemyModel.TakeCard(1));
-                GameManager.Instance.GetComponent<ButtonIndexV2>().ChangeTurn(false);
-                time = 100;
-            }
-        }
+        
     }
 }

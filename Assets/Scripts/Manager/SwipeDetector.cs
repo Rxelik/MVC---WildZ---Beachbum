@@ -123,14 +123,18 @@ public class SwipeDetector : MvcModels
     public float time = 0;
     void Update()
     {
-        if (deckModel.CurrentTurn == "Player")
+        if (deckModel != null)
         {
-            time += Time.deltaTime;
+            if (deckModel.CurrentTurn == "Player")
+            {
+                time += Time.deltaTime;
+            }
+            if (deckModel.CurrentTurn != "Player")
+            {
+                time = 0;
+            }
         }
-        if (deckModel.CurrentTurn != "Player")
-        {
-            time = 0;
-        }
+
         if (time >=0.5f)
         {
             if (Input.touchCount > 0)
