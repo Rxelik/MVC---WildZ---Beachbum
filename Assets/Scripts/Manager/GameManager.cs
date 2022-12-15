@@ -150,7 +150,7 @@ public class GameManager : MvcModels
                 {
                     if (!gameEnded)
                     {
-                        CountScorePlayerScore();
+                        StartCoroutine(CountScorePlayerScore());
                     }
                     if (playerScore <= _targetToWin && !trigger)
                     {
@@ -172,7 +172,7 @@ public class GameManager : MvcModels
                 {
                     if (!gameEnded)
                     {
-                        CountScoreAIScore();
+                        StartCoroutine(CountScoreAIScore());
                     }
                     if (gameEnded)
                     {
@@ -197,9 +197,13 @@ public class GameManager : MvcModels
 
     }
 
-    void CountScorePlayerScore()
+    IEnumerator CountScorePlayerScore()
     {
         gameEnded = true;
+        if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
         foreach (var item in enemyModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
@@ -236,9 +240,13 @@ public class GameManager : MvcModels
             }
         }
     }
-    void CountScoreAIScore()
+    IEnumerator CountScoreAIScore()
     {
         gameEnded = true;
+        if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
         foreach (var item in playerModel.Cards)
         {
             if (item.Number > 0 && item.Number <= 9)
