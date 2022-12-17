@@ -42,6 +42,20 @@ public class Restart : MonoBehaviour
             CurrencyManager.Instance.OnGameStart(JoinMoney);
             findingOP.SetActive(true);
             yield return new WaitForSeconds(1f);
+
+            switch (CurrencyManager.Instance.currencyInRun)
+            {
+                case 200:
+                   GameManager.Instance._targetToWin = 25;
+                    break;
+                case 400:
+                    GameManager.Instance._targetToWin = 50;
+                    break;
+                case 600:
+                    GameManager.Instance._targetToWin = 75;
+                    break;
+            }
+
             GameManager.Instance.StartCoroutine(Inisializer.Instance.Build());
             yield return new WaitForSeconds(1.5f);
             mainMenuUI.gameObject.SetActive(false);

@@ -44,6 +44,7 @@ public class GameManager : MvcModels
     public event EventHandler<OnWinAnimEventArgs> OnWinEve;
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
+    public event EventHandler<OnPlusCardAnimEventArgs> OnPlusCardEve;
 
     [Header("TextMeshPro")]
     [Space]
@@ -89,18 +90,7 @@ public class GameManager : MvcModels
         playerScore = 0;
         round = 1;
         gameEnded = false;
-        switch (CurrencyManager.Instance.currencyInRun)
-        {
-            case 200:
-                _targetToWin = 25;
-                break;
-            case 400:
-                _targetToWin = 50;
-                break;
-            case 600:
-                _targetToWin = 75;
-                break;
-        }
+
     }
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -302,6 +292,11 @@ public class GameManager : MvcModels
         OnChooseCardEve(this, chooseCardAnimEvent);
     }
 
+    public void CallPlusAnimation()
+    {
+        var callAnim = new OnPlusCardAnimEventArgs();
+        OnPlusCardEve(this, callAnim);
+}
     IEnumerator ContinueEnumerator()
     {
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);

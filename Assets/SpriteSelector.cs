@@ -73,7 +73,7 @@ public class SpriteSelector : MonoBehaviour
     private void Update()
     {
         ChooseSprite();
-        mainMenuName.text = "Your Name is : " + playerName;
+        mainMenuName.text = playerName;
     }
 
     private bool inCharSel = false;
@@ -162,6 +162,6 @@ public class SpriteSelector : MonoBehaviour
     {
         playerName = input.text;
         PlayerPrefs.SetString("currentName", playerName);
-        namePlaceHolder.text = "Current Name is " + playerName;
+        namePlaceHolder.text = playerName;
     }
 }

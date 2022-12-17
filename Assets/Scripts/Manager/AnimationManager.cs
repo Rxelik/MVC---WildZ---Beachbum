@@ -9,6 +9,7 @@ public class OnRoundLooseAnimEventArgs { }
 public class OnWinAnimEventArgs { }
 public class OnRoundWinAnimEventArgs { }
 public class OnChooseCardAnimEventArgs { }
+public class OnPlusCardAnimEventArgs { }
 
 public class AnimationManager : MvcModels
 {
@@ -37,6 +38,7 @@ public class AnimationManager : MvcModels
     public GameObject RoundLooseAnim;
     public GameObject ChooseCardAnim;
     public GameObject chooseCardsGameObject;
+    public GameObject plusCardAnim;
     private void Start()
     {
         GameManager.Instance.OnLooseEve += AnimationManager_OnLooseEve;
@@ -44,7 +46,13 @@ public class AnimationManager : MvcModels
         GameManager.Instance.OnWinEve += AnimationManager_OnWinEve;
         GameManager.Instance.OnRoundWinEve += AnimationManager_OnRoundWinEve;
         GameManager.Instance.OnChooseCardEve += AnimationManagerOnChooseCardEve;
+        GameManager.Instance.OnPlusCardEve += Instance_OnPlusCardEve;
 
+    }
+
+    private void Instance_OnPlusCardEve(object sender, OnPlusCardAnimEventArgs e)
+    {
+        plusCardAnim.SetActive(true);
     }
 
     private void AnimationManagerOnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)

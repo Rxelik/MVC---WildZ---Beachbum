@@ -130,14 +130,14 @@ public class TurnTimer : MvcModels
                     time -= TotalTime;
                     Sliderslider.value = time;
                     // dim.SetActive(false);
-                    playerAvatar.color = Color.white;
-                    enemyAvatar.color = Color.gray;
+                   // playerAvatar.color = Color.white;
+                    //enemyAvatar.color = Color.gray;
                 }
                 if (deckModel.CurrentTurn == "Player")
                 {
                     // dim.SetActive(true);
-                    playerAvatar.color = Color.gray;
-                    enemyAvatar.color = Color.white;
+                   // playerAvatar.color = Color.gray;
+                   // enemyAvatar.color = Color.white;
                 }
                 if (time < 0)
                 {

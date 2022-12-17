@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _InspectorCards: []
   _CurrentTurn: 
-  glowEffect: {fileID: 8818356416460024836}
+  glowEffect: {fileID: 0}
   pointerVFX: {fileID: 3246958384139470153}
   _Inisialize: 1
 --- !u!1 &3246958384139470153
@@ -80,7 +80,7 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 894305470893115365}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8838953217661546831
 MeshFilter:
@@ -105,6 +105,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -129,7 +130,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8712991437389499543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,12 +333,6 @@ PrefabInstance:
 --- !u!4 &894305470893115365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7616742948102743844, guid: 0dd843e18be05fa4a98a39078dfd3f22,
-    type: 3}
-  m_PrefabInstance: {fileID: 7340072777734807745}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8818356416460024836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2286761247569808581, guid: 0dd843e18be05fa4a98a39078dfd3f22,
     type: 3}
   m_PrefabInstance: {fileID: 7340072777734807745}
   m_PrefabAsset: {fileID: 0}

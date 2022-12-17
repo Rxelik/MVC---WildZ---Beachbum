@@ -1,9 +1,11 @@
 ﻿using Spine;
 using Spine.Unity;
 using System.Collections;
+using System.Drawing;
 using UnityEngine;
+using Color = UnityEngine.Color;
 
-public class AnimChooser : MonoBehaviour
+public class AnimChooser : MvcModels
 {
 
     private GameManager manager;
@@ -23,7 +25,9 @@ public class AnimChooser : MonoBehaviour
 
     private void AnimationState_Start(TrackEntry trackEntry)
     {
-        if ( trackEntry.Animation.Name != animNamse)
+        print(trackEntry.Animation.Name);
+
+        if (trackEntry.Animation.Name != animNamse)
         {
             print(trackEntry.Animation.Name);
             StartCoroutine(DelayDeactive());
@@ -60,7 +64,10 @@ public class AnimChooser : MonoBehaviour
 
     IEnumerator DelayDeactive()
     {
-        yield return new WaitForSeconds(1.5f);
+        if (gameObject.name == "+2 Anim Spine")
+            yield return new WaitForSeconds(1.25f);
+        else
+            yield return new WaitForSeconds(1.5f);
         VFX.SetActive(false);
         gameObject.SetActive(false);
     }
@@ -73,7 +80,228 @@ public class AnimChooser : MonoBehaviour
     }
     public void PlayAnim()
     {
-        //Spine.SetActive(true);
-        skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, false);
+
+        if (gameObject.name != "+2 Anim Spine")
+        {
+            skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, false);
+        }
+        else if (gameObject.name == "+2 Anim Spine")
+        {
+            print("INSINE +2 FIND COUNT ANIMASION");
+            switch (GameManager.Instance.draw)
+            {
+                case 2:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +2", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +2", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +2", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +2", false);
+                    }
+                    break;
+
+                case 4:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +4", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +4", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +4", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +4", false);
+                    }
+                    break;
+
+
+                case 6:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +6", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +6", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +6", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +6", false);
+                    }
+                    break;
+
+                case 8:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +8", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +8", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +8", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +8", false);
+                    }
+                    break;
+
+                case 10:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +10", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +10", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +10", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +10", false);
+                    }
+                    break;
+
+                case 12:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +12", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +12", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +12", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +12", false);
+                    }
+                    break;
+
+                case 14:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +14", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +14", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +14", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +14", false);
+                    }
+                    break;
+
+                case 16:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +16", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +16", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +16", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +16", false);
+                    }
+                    break;
+
+                case 18:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +18", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +18", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +18", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +18", false);
+                    }
+                    break;
+
+
+                case 20:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +20", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +20", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +20", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +20", false);
+                    }
+                    break;
+
+                default:
+                    if (boardModel.TopCard().Color == Color.red)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red++2", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.green)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Green/Green +2", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.blue)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Blue/Blue +2", false);
+                    }
+                    else if (boardModel.TopCard().Color == Color.yellow)
+                    {
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Yellow/Yellow +2", false);
+                    }
+                    break;
+            }
+        }
     }
 }
