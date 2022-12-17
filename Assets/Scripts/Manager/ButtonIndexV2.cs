@@ -12,6 +12,7 @@ public class ButtonIndexV2 : MvcModels
 
     [Header("List")]
     public List<GameObject> PlayerColorChooser;
+    public GameObject playerCardChooser;
     public List<GameObject> EnemyColorChooser;
     private readonly List<string> colors = new List<string>();
 
@@ -78,9 +79,9 @@ public class ButtonIndexV2 : MvcModels
                             manager.CallChooseCard();
                         }
                         //Opens 4 Invisible Buttons on top ofColorPick Animation!
-                        foreach (var item in PlayerColorChooser) { item.SetActive(true); }
+                        playerCardChooser.SetActive(true);
                     }
-                }
+                }   
                 //Active to see if it finds the card
                 //   print("Inside Player");
             }
@@ -692,10 +693,7 @@ public class ButtonIndexV2 : MvcModels
 
     void RemoveButtons()
     {
-        foreach (var item in PlayerColorChooser)
-        {
-            item.SetActive(false);
-        }
+playerCardChooser.SetActive(false);
         foreach (var item in EnemyColorChooser)
         {
             item.SetActive(false);

@@ -1065,6 +1065,8 @@ public class Inisializer : MonoBehaviour
     }
     public void Rematch()
     {
+        GameManager.Instance.aiScore = 0;
+        GameManager.Instance.playerScore = 0;
         GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {
@@ -1075,8 +1077,6 @@ public class Inisializer : MonoBehaviour
         AnimationManager.Instance.DeActiveAnim();
         GameManager.Instance.EndGameCanvas.SetActive(false);
         GameManager.Instance.uiCanvas.SetActive(true);
-        GameManager.Instance.aiScore = 0;
-        GameManager.Instance.playerScore = 0;
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();

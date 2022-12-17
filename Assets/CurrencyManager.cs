@@ -41,10 +41,10 @@ public class CurrencyManager : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR
-        PlayerPrefs.SetInt("currencyPref", 1337);
+        PlayerPrefs.SetInt("currencyPref", 13337);
 #endif
        // PlayerPrefs.SetInt("currencyPref", 1337);
-       currentBalance = PlayerPrefs.GetInt("currencyPref", 1337);
+       currentBalance = PlayerPrefs.GetInt("currencyPref", 13337);
         timePressed = PlayerPrefs.GetFloat("timeSinceClick", 0f);
     }
 

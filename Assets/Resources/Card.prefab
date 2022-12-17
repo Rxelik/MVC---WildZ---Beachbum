@@ -81,6 +81,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -249,7 +250,7 @@ MonoBehaviour:
   - {fileID: -1301885096981190224, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
   - {fileID: -4973506025691401698, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
   - {fileID: 3444268562668208636, guid: 68cd4dfa9c96a654da97353466d2b56f, type: 3}
-  - {fileID: 6837052821474424584, guid: 78d936fe9a5996241826614b72c80a35, type: 3}
+  - {fileID: -7114332728917840925, guid: 6ff166d3e5a0aff4999037eae55b8a7c, type: 3}
   Green2:
   - {fileID: -5052163780209527080, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
   - {fileID: 7756468093283896255, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
@@ -263,7 +264,7 @@ MonoBehaviour:
   - {fileID: 5041073189491584052, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
   - {fileID: -2133735983580110557, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
   - {fileID: 3345094962450021636, guid: ac8058d8c77f5494a8969b84bfacfebc, type: 3}
-  - {fileID: 8224923349384810306, guid: 78d936fe9a5996241826614b72c80a35, type: 3}
+  - {fileID: 3458529006265368324, guid: 6ff166d3e5a0aff4999037eae55b8a7c, type: 3}
   Blue2:
   - {fileID: 613668719123987039, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
   - {fileID: -3811650566089094805, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
@@ -277,7 +278,7 @@ MonoBehaviour:
   - {fileID: -7135065513264622733, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
   - {fileID: 39966312146331041, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
   - {fileID: 289962476684572826, guid: 88b359642c0ba6149bc67adcf54f5612, type: 3}
-  - {fileID: 7758693294289174578, guid: 78d936fe9a5996241826614b72c80a35, type: 3}
+  - {fileID: 2765490489531649691, guid: 6ff166d3e5a0aff4999037eae55b8a7c, type: 3}
   Yellow2:
   - {fileID: -5996768045262758566, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
   - {fileID: 5726388637754646337, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
@@ -291,12 +292,12 @@ MonoBehaviour:
   - {fileID: 2676885805725471967, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
   - {fileID: -8591063662332604015, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
   - {fileID: -5437840162619396025, guid: ffa9ec09c6ce57140b8dbcfe047ccdfe, type: 3}
-  - {fileID: 5209032254265749981, guid: 78d936fe9a5996241826614b72c80a35, type: 3}
+  - {fileID: -7291516607801658312, guid: 6ff166d3e5a0aff4999037eae55b8a7c, type: 3}
   White2:
   - {fileID: 8772548143014677152, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 7570145973966283090, guid: b4ade8c49777e0142a01452098c8aef5, type: 3}
   - {fileID: 21300000, guid: 56a3b0b26eb1a2043a3e98efdadda58b, type: 3}
-  - {fileID: 7798678643072499973, guid: 78d936fe9a5996241826614b72c80a35, type: 3}
+  - {fileID: 21300000, guid: a98e697cfb508564986a0032ea7253dd, type: 3}
   Red3:
   - {fileID: 7829426244860202883, guid: dbb466c313516c74f96a6151a14f77f2, type: 3}
   - {fileID: -2652701373212946414, guid: dbb466c313516c74f96a6151a14f77f2, type: 3}
@@ -431,6 +432,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
