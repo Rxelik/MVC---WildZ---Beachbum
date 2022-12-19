@@ -35,7 +35,6 @@ public class CurrencyManager : MonoBehaviour
 
     private void Update()
     {
-        float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
         if (currency != null)
             currency.text = currentBalance.ToString();
     }
@@ -51,7 +50,6 @@ public class CurrencyManager : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        PlayerPrefs.SetString("Timer", DateTime.Now.ToString());
         if (!GameManager.Instance.gameEnded)
         {
             OnGameLost();
@@ -86,6 +84,4 @@ public class CurrencyManager : MonoBehaviour
             PlayerPrefs.SetFloat("timeSinceClick", timePressed);
         }
     }
-    
-
 }

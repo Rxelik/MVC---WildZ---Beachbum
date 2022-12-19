@@ -233,16 +233,12 @@ public class ButtonIndexV2 : MvcModels
             if (cardModel.Color != Color.white || cardModel.Color != Color.black)
             {
                 manager.chosenCard.Color = cardModel.Color;
-                manager.CallColorChanged();
                 break;
             }
         }
         //If Enemy has only supers force play color red(i love red <3)
         if (manager.chosenCard.Color == Color.white || manager.chosenCard.Color == Color.black)
-        {
             manager.chosenCard.Color = Color.red;
-            manager.CallColorChanged();
-        }
 
         //88 is ChangeColor
         if (deckModel.CurrentTurn == "Enemy" && manager.chosenCard.Number != 88)
@@ -278,8 +274,7 @@ public class ButtonIndexV2 : MvcModels
         {
             if (card.IsWild)
             {
-                boardModel.AddCard(card);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.50f);
             }
             for (int i = model.Cards.Count - 1; i >= 0; i--)
             {
@@ -316,11 +311,6 @@ public class ButtonIndexV2 : MvcModels
                || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
                || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
         {
-            if (card.IsWild)
-            {
-                boardModel.AddCard(card);
-                yield return new WaitForSeconds(0.5f);
-            }
             for (int i = model.Cards.Count - 1; i >= 0; i--)
             {
                 if (model.Cards[i].Color == card.Color)
@@ -363,11 +353,6 @@ public class ButtonIndexV2 : MvcModels
                || card.IsSuper && boardModel.TopCard().Number == 0 && !card.IsBamboozle
                || boardModel.TopCard().IsBamboozle && card.IsSuper && !card.IsBamboozle)
             {
-                if (card.IsWild)
-                {
-                    boardModel.AddCard(card);
-                    yield return new WaitForSeconds(0.5f);
-                }
                 for (int i = model.Cards.Count - 1; i >= 0; i--)
                 {
                     if (model.Cards[i].Color == card.Color)
@@ -414,7 +399,6 @@ public class ButtonIndexV2 : MvcModels
         if (color == "Blue")
             manager.chosenCard.Color = Color.blue;
 
-        manager.CallColorChanged();
         if (manager.chosenCard.Number == 22)
             PlusTwo(manager.chosenCard, playerModel);
         if (manager.chosenCard.Number == 44)
