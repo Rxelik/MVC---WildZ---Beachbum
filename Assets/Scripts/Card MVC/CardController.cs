@@ -151,7 +151,10 @@ public class CardController : ICardController
             if (model.Board.Cards.Count <= 1) { }
             else
             {
-                model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+                if (!model.IsWild)
+                {
+                    model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
+                }
                 SyncData();
             }
 
@@ -166,6 +169,8 @@ public class CardController : ICardController
 
         if (model.BelongsTo == "ColorPick")
         {
+
+            model.Rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(20, -21));
 
             while (t < 1.5f)
             {
@@ -280,7 +285,7 @@ public class CardController : ICardController
 
             view.Sprite = model.Sprite;
         }
-        
+
 
     }
     private void ChangeColor(object sender, CardColorChangedEventArgs e)

@@ -45,6 +45,7 @@ public class GameManager : MvcModels
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
     public event EventHandler<OnPlusCardAnimEventArgs> OnPlusCardEve;
+    public event EventHandler<OnColorChangedEventArgs> OnColorChanged;
 
     [Header("TextMeshPro")]
     [Space]
@@ -296,7 +297,13 @@ public class GameManager : MvcModels
     {
         var callAnim = new OnPlusCardAnimEventArgs();
         OnPlusCardEve(this, callAnim);
-}
+    }
+
+    public void CallColorChanged()
+    {
+        var callAnim = new OnColorChangedEventArgs();
+        OnColorChanged(this, callAnim);
+    }
     IEnumerator ContinueEnumerator()
     {
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
