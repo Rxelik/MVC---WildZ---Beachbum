@@ -76,3 +76,13 @@ service-account-credentials.json
 **/pubsub-debug.log
 **/tsconfig-compile.json
 yarn.lock
+
+firebase
+
+firebase/
+
+firebase/*
+
+/firebase/firebase_config.js
+
+/src/firebase/*
