@@ -55,7 +55,7 @@ public class AnimationManager : MvcModels
 
     private void Instance_OnColorChanged(object sender, OnColorChangedEventArgs e)
     {
-        //colorChanged.SetActive(true);
+        colorChanged.SetActive(true);
     }
 
     private void Instance_OnPlusCardEve(object sender, OnPlusCardAnimEventArgs e)

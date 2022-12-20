@@ -171,6 +171,7 @@ public class ButtonIndexV2 : MvcModels
                     model.RemoveCard(card);
                     ChangeTurn(true);
                     AIplayed = false;
+                    manager.CallColorChanged();
                 }
                 #endregion
 
@@ -205,6 +206,7 @@ public class ButtonIndexV2 : MvcModels
     IEnumerator PlayBambo(CardModel card, PlayerModel model)
     {
         yield return new WaitForSeconds(0.15f);
+        manager.CallColorChanged();
         manager.draw = 0;
         boardModel.AddCard(card);
         model.RemoveCard(card);
@@ -233,7 +235,6 @@ public class ButtonIndexV2 : MvcModels
             if (cardModel.Color != Color.white || cardModel.Color != Color.black)
             {
                 manager.chosenCard.Color = cardModel.Color;
-                manager.CallColorChanged();
                 break;
             }
         }
@@ -241,7 +242,6 @@ public class ButtonIndexV2 : MvcModels
         if (manager.chosenCard.Color == Color.white || manager.chosenCard.Color == Color.black)
         {
             manager.chosenCard.Color = Color.red;
-            manager.CallColorChanged();
         }
 
         //88 is ChangeColor
@@ -414,7 +414,6 @@ public class ButtonIndexV2 : MvcModels
         if (color == "Blue")
             manager.chosenCard.Color = Color.blue;
 
-        manager.CallColorChanged();
         if (manager.chosenCard.Number == 22)
             PlusTwo(manager.chosenCard, playerModel);
         if (manager.chosenCard.Number == 44)

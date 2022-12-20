@@ -1,0 +1,62 @@
+
+Bamboozle Animation.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Additive Jester Hat
+  rotate: true
+  xy: 363, 35
+  size: 301, 221
+  orig: 301, 221
+  offset: 0, 0
+  index: -1
+Base Jester Hat
+  rotate: true
+  xy: 363, 35
+  size: 301, 221
+  orig: 301, 221
+  offset: 0, 0
+  index: -1
+Break 01
+  rotate: false
+  xy: 2, 58
+  size: 359, 278
+  orig: 359, 278
+  offset: 0, 0
+  index: -1
+Break 02
+  rotate: false
+  xy: 586, 17
+  size: 448, 394
+  orig: 448, 394
+  offset: 0, 0
+  index: -1
+Break 03
+  rotate: true
+  xy: 1169, 471
+  size: 550, 469
+  orig: 550, 469
+  offset: 0, 0
+  index: -1
+Break 04
+  rotate: true
+  xy: 2, 338
+  size: 683, 556
+  orig: 683, 556
+  offset: 0, 0
+  index: -1
+Inner Glow
+  rotate: false
+  xy: 1036, 2
+  size: 409, 409
+  orig: 409, 409
+  offset: 0, 0
+  index: -1
+Outer Glow
+  rotate: true
+  xy: 560, 413
+  size: 608, 607
+  orig: 608, 607
+  offset: 0, 0
+  index: -1
