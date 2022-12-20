@@ -1,62 +1,90 @@
 
 Bamboozle Animation.png
-size: 2048,1024
+size: 4096,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Additive Jester Hat
   rotate: true
-  xy: 363, 35
+  xy: 2475, 388
   size: 301, 221
   orig: 301, 221
   offset: 0, 0
   index: -1
 Base Jester Hat
   rotate: true
-  xy: 363, 35
+  xy: 2475, 388
   size: 301, 221
   orig: 301, 221
   offset: 0, 0
   index: -1
 Break 01
-  rotate: false
-  xy: 2, 58
+  rotate: true
+  xy: 2195, 110
   size: 359, 278
   orig: 359, 278
   offset: 0, 0
   index: -1
 Break 02
   rotate: false
-  xy: 586, 17
+  xy: 1745, 17
   size: 448, 394
   orig: 448, 394
   offset: 0, 0
   index: -1
 Break 03
   rotate: true
-  xy: 1169, 471
+  xy: 1899, 471
   size: 550, 469
   orig: 550, 469
   offset: 0, 0
   index: -1
 Break 04
   rotate: true
-  xy: 2, 338
+  xy: 732, 338
   size: 683, 556
   orig: 683, 556
   offset: 0, 0
   index: -1
 Inner Glow
   rotate: false
-  xy: 1036, 2
+  xy: 1334, 2
   size: 409, 409
   orig: 409, 409
   offset: 0, 0
   index: -1
 Outer Glow
   rotate: true
-  xy: 560, 413
+  xy: 1290, 413
   size: 608, 607
   orig: 608, 607
+  offset: 0, 0
+  index: -1
+Rayz
+  rotate: true
+  xy: 2, 204
+  size: 817, 728
+  orig: 817, 728
+  offset: 0, 0
+  index: -1
+Twinkle 01
+  rotate: false
+  xy: 732, 6
+  size: 299, 330
+  orig: 299, 330
+  offset: 0, 0
+  index: -1
+Twinkle 02
+  rotate: false
+  xy: 1033, 6
+  size: 299, 330
+  orig: 299, 330
+  offset: 0, 0
+  index: -1
+Twinkle 03
+  rotate: false
+  xy: 2370, 691
+  size: 299, 330
+  orig: 299, 330
   offset: 0, 0
   index: -1

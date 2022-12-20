@@ -3,6 +3,7 @@ using Spine.Unity;
 using System.Collections;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Color = UnityEngine.Color;
 
 public class AnimChooser : MvcModels
@@ -84,6 +85,10 @@ public class AnimChooser : MvcModels
         if (gameObject.name != "+2 Anim Spine")
         {
             skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, false);
+        } 
+        if (gameObject.name == "Bamboozle Spine")
+        {
+            StartCoroutine(DelayDeactive());
         }
         else if (gameObject.name == "+2 Anim Spine")
         {
@@ -286,7 +291,7 @@ public class AnimChooser : MvcModels
                 default:
                     if (boardModel.TopCard().Color == Color.red)
                     {
-                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red++2", false);
+                        skeletonAnimation.AnimationState.SetAnimation(trackIndex, "Red/Red +2", false);
                     }
                     else if (boardModel.TopCard().Color == Color.green)
                     {

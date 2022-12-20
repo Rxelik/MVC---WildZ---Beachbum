@@ -50,7 +50,7 @@ public class ButtonIndexV2 : MvcModels
     public void PlayCard(int Index)
     {
         //Check if game is Active
-        if (!manager.gameEnded)
+        if (!manager.gameEnded && manager.isActiveAndEnabled)
         {
             if (deckModel.CurrentTurn == "Player" && !manager.playerPlayed)
             {
@@ -658,6 +658,7 @@ public class ButtonIndexV2 : MvcModels
             || c.IsBamboozle && boardModel.TopCard().Number == 22
             || c.IsBamboozle && boardModel.TopCard().Number == 44
             || boardModel.TopCard().IsBamboozle
+            || c.IsBamboozle
             ).ToList();
 
             if (SuperCards.Count() == 0 && NormalCards.Count == 0)
@@ -675,7 +676,19 @@ public class ButtonIndexV2 : MvcModels
             }
             else if (NormalCards.Count >= 1)
             {
-                AiChooseCard(NormalCards[0]);
+                if (NormalCards[0].IsBamboozle && enemyModel.Cards.Count <= 2)
+                {
+                    AiChooseCard(NormalCards[0]);
+                }
+                else if (!NormalCards[0].IsBamboozle)
+                {
+                    AiChooseCard(NormalCards[0]);
+                }
+                else
+                {
+                    StartCoroutine(enemyModel.TakeCard(1));
+                    ChangeTurn(false);
+                }
                 SuperCards.Clear();
                 _server.TestCanPlayCard(NormalCards[0], enemyModel);
 
