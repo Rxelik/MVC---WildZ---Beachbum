@@ -54,6 +54,7 @@ public class Restart : MonoBehaviour
         {
             CurrencyManager.Instance.OnGameStart(JoinMoney);
             findingOP.SetActive(true);
+            shuffle.Randomize();
             yield return new WaitForSeconds(1f);
 
             
@@ -63,7 +64,6 @@ public class Restart : MonoBehaviour
             mainMenuUI.gameObject.SetActive(false);
             CharacterChooserUI_.gameObject.SetActive(false);
             findingOP.SetActive(false);
-            shuffle.Randomize();
 
         }
         else

@@ -17,6 +17,7 @@ public class RandomShaffler : MonoBehaviour
     public Image playerSprite;  
     
     public Image aiSpriteEnd;
+    public SpriteRenderer aiSpriteFO;
     public Image playerSpriteEnd;
     public SpriteRenderer backGroundImage;
 
@@ -24,7 +25,11 @@ public class RandomShaffler : MonoBehaviour
 
 
     public TextMeshProUGUI aiName;
-    public TextMeshProUGUI playerName;
+    public TextMeshProUGUI playerName; 
+    public TextMeshProUGUI aiNameFO;
+    public TextMeshProUGUI playerNameFO;
+
+
     GameManager manager;
     void Start()
     {
@@ -34,7 +39,8 @@ public class RandomShaffler : MonoBehaviour
     }
 
     void Update()
-    { 
+    {
+        playerNameFO.text = SpriteSelector.Instance.playerName;
     }
     public void Randomize()
     {
@@ -45,11 +51,14 @@ public class RandomShaffler : MonoBehaviour
         {
             aiSprite.sprite = maleSpritesList[Random.Range(0, maleSpritesList.Count)];
             aiName.text = maleNames[Random.Range(0, maleNames.Count)];
+            aiNameFO.text = aiName.text;
+
         }
         else
         {
             aiSprite.sprite = femaleSpritesList[Random.Range(0, femaleSpritesList.Count)];
             aiName.text = femaleNames[Random.Range(0, femaleNames.Count)];
+            aiNameFO.text = aiName.text;
         }
 
         if (SpriteSelector.Instance.isMale)
@@ -64,6 +73,9 @@ public class RandomShaffler : MonoBehaviour
         }
         playerName.text = SpriteSelector.Instance.playerName;
         aiSpriteEnd.sprite = aiSprite.sprite;
+        aiSpriteFO.sprite = aiSprite.sprite;
         playerSpriteEnd.sprite = playerSprite.sprite;
+
+
     }
 }
