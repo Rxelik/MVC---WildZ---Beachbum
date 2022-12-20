@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "922066133542",
+    "project_id": "wildz-c4db9",
+    "storage_bucket": "wildz-c4db9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922066133542:android:53406da8dfc0921f873ce7",
+        "android_client_info": {
+          "package_name": "com.bbumgames.wildz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922066133542-j3gpi6cfqp75o2qd9ojrnbeu59knr43m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHRuuA2eH5-s-61gpIkrd6s0ivOHeyANw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922066133542-j3gpi6cfqp75o2qd9ojrnbeu59knr43m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "922066133542-qd4rtabs2bdtar0236br6jkdq1jjfbm8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bbumgames.wildz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

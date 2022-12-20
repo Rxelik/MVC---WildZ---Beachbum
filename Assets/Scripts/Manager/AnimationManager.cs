@@ -10,6 +10,7 @@ public class OnWinAnimEventArgs { }
 public class OnRoundWinAnimEventArgs { }
 public class OnChooseCardAnimEventArgs { }
 public class OnPlusCardAnimEventArgs { }
+public class OnColorChangedEventArgs { }
 
 public class AnimationManager : MvcModels
 {
@@ -39,6 +40,7 @@ public class AnimationManager : MvcModels
     public GameObject ChooseCardAnim;
     public GameObject chooseCardsGameObject;
     public GameObject plusCardAnim;
+    public GameObject colorChanged;
     private void Start()
     {
         GameManager.Instance.OnLooseEve += AnimationManager_OnLooseEve;
@@ -47,7 +49,13 @@ public class AnimationManager : MvcModels
         GameManager.Instance.OnRoundWinEve += AnimationManager_OnRoundWinEve;
         GameManager.Instance.OnChooseCardEve += AnimationManagerOnChooseCardEve;
         GameManager.Instance.OnPlusCardEve += Instance_OnPlusCardEve;
+        GameManager.Instance.OnColorChanged += Instance_OnColorChanged; 
 
+    }
+
+    private void Instance_OnColorChanged(object sender, OnColorChangedEventArgs e)
+    {
+        //colorChanged.SetActive(true);
     }
 
     private void Instance_OnPlusCardEve(object sender, OnPlusCardAnimEventArgs e)

@@ -44,7 +44,7 @@ public class AspectRatioChecker : MonoBehaviour
             }
             else
             {
-                slider.value += 1f;
+                slider.value += 0.77f;
 
             }
             if (slider.value >= 100)

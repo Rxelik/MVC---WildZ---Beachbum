@@ -45,6 +45,7 @@ public class GameManager : MvcModels
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
     public event EventHandler<OnPlusCardAnimEventArgs> OnPlusCardEve;
+    public event EventHandler<OnColorChangedEventArgs> OnColorChanged;
 
     [Header("TextMeshPro")]
     [Space]
@@ -52,6 +53,8 @@ public class GameManager : MvcModels
     //public TextMeshProUGUI playerCardCount;
     public TextMeshProUGUI aiScoreUgui;
     public TextMeshProUGUI playerScoreUgui;
+    public TextMeshProUGUI endPlayerScMeshProUgui;
+    public TextMeshProUGUI endEnemyScMeshProUgui;
     [Space]
 
     public CardModel chosenCard;
@@ -90,7 +93,6 @@ public class GameManager : MvcModels
         playerScore = 0;
         round = 1;
         gameEnded = false;
-
     }
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -103,10 +105,8 @@ public class GameManager : MvcModels
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            ResetGame();
-        }
+        endPlayerScMeshProUgui.text = playerScore.ToString();
+        endEnemyScMeshProUgui.text = aiScore.ToString();
 
         if (playerModel != null)
         {
@@ -296,13 +296,19 @@ public class GameManager : MvcModels
     {
         var callAnim = new OnPlusCardAnimEventArgs();
         OnPlusCardEve(this, callAnim);
-}
+    }
+
+    public void CallColorChanged()
+    {
+        var callAnim = new OnColorChangedEventArgs();
+        OnColorChanged(this, callAnim);
+    }
     IEnumerator ContinueEnumerator()
     {
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
         yield return new WaitForSeconds(1.75f);
-        Inisializer.Instance.ResetGame();
+        Inisializer.Instance.NewGame();
     }
 
     IEnumerator WinLooseEnumerator()
@@ -319,7 +325,7 @@ public class GameManager : MvcModels
         aiScore = 0;
         playerScore = 0;
         round = 1;
-        Inisializer.Instance.ResetGame();
+        Inisializer.Instance.NewGame();
         SceneManager.LoadScene(0);
     }
 }

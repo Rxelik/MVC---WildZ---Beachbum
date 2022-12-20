@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">922066133542</string>
+  <string name="google_storage_bucket" translatable="false">wildz-c4db9.appspot.com</string>
+  <string name="project_id" translatable="false">wildz-c4db9</string>
+  <string name="google_api_key" translatable="false">AIzaSyCHRuuA2eH5-s-61gpIkrd6s0ivOHeyANw</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCHRuuA2eH5-s-61gpIkrd6s0ivOHeyANw</string>
+  <string name="google_app_id" translatable="false">1:922066133542:android:53406da8dfc0921f873ce7</string>
+  <string name="default_web_client_id" translatable="false">922066133542-j3gpi6cfqp75o2qd9ojrnbeu59knr43m.apps.googleusercontent.com</string>
+</resources>

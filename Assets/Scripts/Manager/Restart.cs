@@ -30,9 +30,22 @@ public class Restart : MonoBehaviour
         //SceneManager.LoadScene(2);
         //}
     }
-    public void StartGame(int JoinMoney)
+    public void StartGameLowestAmount()
     {
-        StartCoroutine(PlayGame(JoinMoney));
+        int num = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestBuyIn").LongValue;
+
+        StartCoroutine(PlayGame(num));
+        GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestMatchTarget").LongValue;
+    }
+    public void StartGameMediumAmount()
+    {
+        StartCoroutine(PlayGame((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumBuyIn").LongValue));
+        GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumMatchTarget").LongValue;
+    }
+    public void StartGameHighestAmount()
+    {
+        StartCoroutine(PlayGame((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestBuyIn").LongValue));
+        GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestMatchTarget").LongValue;
     }
 
     public IEnumerator PlayGame(int JoinMoney)
@@ -43,18 +56,7 @@ public class Restart : MonoBehaviour
             findingOP.SetActive(true);
             yield return new WaitForSeconds(1f);
 
-            switch (CurrencyManager.Instance.currencyInRun)
-            {
-                case 200:
-                   GameManager.Instance._targetToWin = 25;
-                    break;
-                case 400:
-                    GameManager.Instance._targetToWin = 50;
-                    break;
-                case 600:
-                    GameManager.Instance._targetToWin = 75;
-                    break;
-            }
+            
 
             GameManager.Instance.StartCoroutine(Inisializer.Instance.Build());
             yield return new WaitForSeconds(1.5f);

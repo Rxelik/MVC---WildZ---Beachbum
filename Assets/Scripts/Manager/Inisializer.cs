@@ -1046,7 +1046,7 @@ public class Inisializer : MonoBehaviour
             }
         }
     }
-    public void ResetGame()
+    public void NewGame()
     {
         GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)

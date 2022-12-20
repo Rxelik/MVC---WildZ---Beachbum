@@ -1,0 +1,493 @@
+{
+"skeleton": {
+	"hash": "WShGKnIV/9kJM8lZBGUPfvo6HQE",
+	"spine": "3.8.99",
+	"x": -1281.5,
+	"y": -1477,
+	"width": 2563,
+	"height": 2954,
+	"images": "./images/",
+	"audio": "C:/Users/yarde/Desktop/Team PlayFool/VFX/Animations/Change Color Animation"
+},
+"bones": [
+	{ "name": "root", "y": -1516 },
+	{ "name": "Glows", "parent": "root", "y": 1516 },
+	{ "name": "Additives", "parent": "root", "y": 1516 },
+	{ "name": "Bases", "parent": "root", "y": 1516 }
+],
+"slots": [
+	{ "name": "Green Base", "bone": "Bases", "attachment": "Green Base" },
+	{ "name": "Blue Base", "bone": "Bases", "attachment": "Blue Base" },
+	{ "name": "Yellow Base", "bone": "Bases", "attachment": "Yellow Base" },
+	{ "name": "Red Base", "bone": "Bases", "attachment": "Red Base" },
+	{ "name": "Green Add", "bone": "Additives", "attachment": "Green Add", "blend": "additive" },
+	{ "name": "Blue Add", "bone": "Additives", "attachment": "Blue Add", "blend": "additive" },
+	{ "name": "Yellow Add", "bone": "Additives", "attachment": "Yellow Add", "blend": "additive" },
+	{ "name": "Red Add", "bone": "Additives", "attachment": "Red Add", "blend": "additive" },
+	{ "name": "Green Glow", "bone": "Glows", "attachment": "Green Glow" },
+	{ "name": "Blue Glow", "bone": "Glows", "attachment": "Blue Glow" },
+	{ "name": "Yellow Glow", "bone": "Glows", "attachment": "Yellow Glow" },
+	{ "name": "Red Glow", "bone": "Glows", "attachment": "Red Glow" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Blue Add": {
+				"Blue Add": { "width": 1759, "height": 2168 }
+			},
+			"Blue Base": {
+				"Blue Base": { "width": 1219, "height": 1628 }
+			},
+			"Blue Glow": {
+				"Blue Glow": { "width": 2563, "height": 2954 }
+			},
+			"Green Add": {
+				"Green Add": { "width": 1759, "height": 2168 }
+			},
+			"Green Base": {
+				"Green Base": { "width": 1219, "height": 1628 }
+			},
+			"Green Glow": {
+				"Green Glow": { "width": 2563, "height": 2954 }
+			},
+			"Red Add": {
+				"Red Add": { "width": 1759, "height": 2168 }
+			},
+			"Red Base": {
+				"Red Base": { "width": 1219, "height": 1628 }
+			},
+			"Red Glow": {
+				"Red Glow": { "width": 2563, "height": 2954 }
+			},
+			"Yellow Add": {
+				"Yellow Add": { "width": 1759, "height": 2168 }
+			},
+			"Yellow Base": {
+				"Yellow Base": { "width": 1219, "height": 1628 }
+			},
+			"Yellow Glow": {
+				"Yellow Glow": { "width": 2563, "height": 2954 }
+			}
+		}
+	}
+],
+"animations": {
+	"Change to Blue": {
+		"slots": {
+			"Blue Add": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Blue Base": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Green Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Additives": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5, "curve": "stepped" },
+					{ "time": 0.6667 },
+					{ "time": 1, "x": 0.5, "y": 0.5, "curve": "stepped" },
+					{ "time": 1.0333, "x": 0.5, "y": 0.5 }
+				]
+			}
+		}
+	},
+	"Change to Green": {
+		"slots": {
+			"Blue Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Add": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Green Base": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Red Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Additives": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5, "curve": "stepped" },
+					{ "time": 0.6667 },
+					{ "time": 1, "x": 0.5, "y": 0.5, "curve": "stepped" },
+					{ "time": 1.0333, "x": 0.5, "y": 0.5 }
+				]
+			}
+		}
+	},
+	"Change to Red": {
+		"slots": {
+			"Blue Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Add": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Red Base": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Yellow Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Additives": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5, "curve": "stepped" },
+					{ "time": 0.6667 },
+					{ "time": 1, "x": 0.5, "y": 0.5, "curve": "stepped" },
+					{ "time": 1.0333, "x": 0.5, "y": 0.5 }
+				]
+			}
+		}
+	},
+	"Change to Yellow": {
+		"slots": {
+			"Blue Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Add": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Yellow Base": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Additives": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2333, "x": 1.2, "y": 1.2 },
+					{ "time": 0.5, "curve": "stepped" },
+					{ "time": 0.6667 },
+					{ "time": 1, "x": 0.5, "y": 0.5, "curve": "stepped" },
+					{ "time": 1.0333, "x": 0.5, "y": 0.5 }
+				]
+			}
+		}
+	},
+	"None": {
+		"slots": {
+			"Blue Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blue Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Green Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Red Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Add": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Base": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Yellow Glow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

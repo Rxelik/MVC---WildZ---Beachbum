@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Random = UnityEngine.Random;
+using System.Threading;
 
 public class CurrencyManager : MonoBehaviour
 {
@@ -28,28 +29,37 @@ public class CurrencyManager : MonoBehaviour
     #endregion
 
     public int currentBalance;
+    private int money;
     public int currencyInRun = 0;
     public TextMeshProUGUI currency;
     public float timePressed;
     public float allowClick;
+    public bool takeMoneyFromFireBase = false;
 
     private void Update()
     {
-        if (currency != null)
-            currency.text = currentBalance.ToString();
+        currentBalance = money;
+        currency.text = money.ToString();
+        float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
     }
     void Start()
     {
-#if UNITY_EDITOR
-        PlayerPrefs.SetInt("currencyPref", 13337);
-#endif
-       // PlayerPrefs.SetInt("currencyPref", 1337);
-       currentBalance = PlayerPrefs.GetInt("currencyPref", 13337);
-        timePressed = PlayerPrefs.GetFloat("timeSinceClick", 0f);
+        money = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("Currency").LongValue;
+        // currentBalance = PlayerPrefs.GetInt("currency", currentBalance);
+        //if (PlayerPrefs.GetInt("takeMoneyFromFireBase") == 0 ? true : false)
+        //{
+        //    PlayerPrefs.SetInt("takeMoneyFromFireBase", takeMoneyFromFireBase ? 0 : 1);
+        //    PlayerPrefs.SetInt("currency", currentBalance);
+        //    print("TookCurrencyFrom FireBase");
+        //}
+        //else
+        //{
+        //}
     }
 
     void OnApplicationQuit()
     {
+        PlayerPrefs.SetString("Timer", DateTime.Now.ToString());
         if (!GameManager.Instance.gameEnded)
         {
             OnGameLost();
@@ -58,17 +68,17 @@ public class CurrencyManager : MonoBehaviour
     public void OnGameLost()
     {
         currentBalance -= currencyInRun;
-        PlayerPrefs.SetInt("currencyPref", currentBalance);
+        PlayerPrefs.SetInt("currency", currentBalance);
     }
     public void OnGameWon()
     {
         currentBalance += currencyInRun * 3 + Random.Range(1, 99);
-        PlayerPrefs.SetInt("currencyPref", currentBalance);
+        PlayerPrefs.SetInt("currency", currentBalance);
     }
     public void OnGameStart(int Money)
     {
         currencyInRun = Money;
-        PlayerPrefs.SetInt("currencyPref", currentBalance);
+        PlayerPrefs.SetInt("currency", currentBalance);
     }
 
     public void ClickWhenAvaiable()
@@ -80,8 +90,10 @@ public class CurrencyManager : MonoBehaviour
             allowClick += timePressed + 8;
             print("AllowClick");
             currentBalance += 15000;
-            PlayerPrefs.SetInt("currencyPref", currentBalance);
+            PlayerPrefs.SetInt("currency", currentBalance);
             PlayerPrefs.SetFloat("timeSinceClick", timePressed);
         }
     }
+
+
 }

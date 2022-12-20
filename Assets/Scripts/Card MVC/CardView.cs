@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Collections.Generic;
+using Spine.Unity;
 using UnityEngine.UIElements;
 using UnityEngine.Video;
 using static GameManager;
@@ -98,6 +99,8 @@ public class CardView : MvcModels, ICardView
     public ParticleSystem ParticleEffect;
     public Transform Arc;
     public bool EnableArc = true;
+
+    private bool colorChanged = false;
     //public TextMeshPro gs;
 
     // public List<GameObject> PlayerTransforms;
@@ -109,6 +112,7 @@ public class CardView : MvcModels, ICardView
     public AnimationCurve _curve;
     private ICardView _cardViewImplementation;
 
+    public SkeletonAnimation spineAnimation;
     private void Awake()
     {
         _InspectorSprite = GetComponent<SpriteRenderer>();
@@ -141,6 +145,40 @@ public class CardView : MvcModels, ICardView
         else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
             gameObject.transform.localScale = new Vector3(0.8f, 0.8f);
+
+            if (_IsWild)
+            {
+                if (!colorChanged)
+                {
+                    spineAnimation.GetComponent<MeshRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
+                    if (_InspectorColor == Color.blue)
+                    {
+                        spineAnimation.gameObject.SetActive(true);
+                        spineAnimation.AnimationState.SetAnimation(1, "Change to Blue", false);
+                        colorChanged = true;
+                    }
+                    if (_InspectorColor == Color.red)
+                    {
+                        spineAnimation.gameObject.SetActive(true);
+                        spineAnimation.AnimationState.SetAnimation(2, "Change to Red", false);
+                        colorChanged = true;
+                    }
+                    if (_InspectorColor == Color.yellow)
+                    {
+                        spineAnimation.gameObject.SetActive(true);
+                        spineAnimation.AnimationState.SetAnimation(3, "Change to Yellow", false);
+                        colorChanged = true;
+                    }
+                    if (_InspectorColor == Color.green)
+                    {
+                        spineAnimation.gameObject.SetActive(true);
+                        spineAnimation.AnimationState.SetAnimation(4, "Change to Green", false);
+                        colorChanged = true;
+                    }
+                   
+                }
+
+            }
         }
 
         else if (_inspectorBelongsTo == "Deck")
@@ -170,7 +208,6 @@ public class CardView : MvcModels, ICardView
             }
             else
                 gameObject.transform.localScale = new Vector3(0.85f, 0.85f);
-
         }
     }
 }
