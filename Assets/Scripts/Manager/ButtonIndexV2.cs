@@ -658,7 +658,6 @@ public class ButtonIndexV2 : MvcModels
             || c.IsBamboozle && boardModel.TopCard().Number == 22
             || c.IsBamboozle && boardModel.TopCard().Number == 44
             || boardModel.TopCard().IsBamboozle
-            || c.IsBamboozle
             ).ToList();
 
             if (SuperCards.Count() == 0 && NormalCards.Count == 0)
@@ -676,22 +675,9 @@ public class ButtonIndexV2 : MvcModels
             }
             else if (NormalCards.Count >= 1)
             {
-                if (NormalCards[0].IsBamboozle && enemyModel.Cards.Count <= 2)
-                {
-                    AiChooseCard(NormalCards[0]);
-                }
-                else if (!NormalCards[0].IsBamboozle)
-                {
-                    AiChooseCard(NormalCards[0]);
-                }
-                else
-                {
-                    StartCoroutine(enemyModel.TakeCard(1));
-                    ChangeTurn(false);
-                }
+                AiChooseCard(NormalCards[0]);
                 SuperCards.Clear();
                 _server.TestCanPlayCard(NormalCards[0], enemyModel);
-
             }
         }
 

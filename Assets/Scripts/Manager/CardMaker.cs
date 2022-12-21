@@ -166,7 +166,7 @@ public class CardMaker : MvcModels
             }
             else
             {
-                if (deckModel.CurrentTurn == "Player" || view._inspectorBelongsTo == "FlyingToPlayer")
+                if (deckModel.CurrentTurn == "Player" || view._inspectorBelongsTo == "FlyingToPlayer" || view._inspectorBelongsTo == "EnemyFinish")
                 {
                     SwappedFace = true;
                     BuildCards();

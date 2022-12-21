@@ -62,7 +62,7 @@ public class CardController : ICardController
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
     {
-        if (model.BelongsTo == "FlyingToEnemy" || model.BelongsTo == "Enemy")
+        if (model.BelongsTo == "FlyingToEnemy" || model.BelongsTo == "Enemy" || model.BelongsTo == "EnemyFinish")
         {
             _manager.StartCoroutine(eLerp());
         }
@@ -105,16 +105,17 @@ public class CardController : ICardController
             }
 
         }
+        if (model.BelongsTo == "EnemyFinish")
+        {
+            Debug.Log(model.Enemy.Cards[model.HandOrder].Position);
+            while (t < 1f)
+            {
+                t += Time.deltaTime / duration;
+                view.Position = Vector3.Lerp(view.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
+                yield return null;
+            }
+        }
         SyncEnemyData();
-        //if (model.BelongsTo == "Enemy")
-        //{
-        //    while (t < 1f)
-        //    {
-        //        t += Time.deltaTime / duration;
-        //        view.Position = Vector3.Lerp(model.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
-        //        yield return null;
-        //    }
-        //}
     }
 
     public IEnumerator Lerp()

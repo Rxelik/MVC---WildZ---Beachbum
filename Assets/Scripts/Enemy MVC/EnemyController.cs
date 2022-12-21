@@ -23,49 +23,93 @@ public class EnemyController : IEnemyController
         this.model = model;
         this.view = view;
         model.OnCardsChanged += FixViewPos;
+        model.Board.CardInBoardChanged += Board_CardInBoardChanged;
         // Listen to input from the view
         view.OnClicked += (sender, e) => HandleClicked(sender, e);
         // Set the view's initial state by synching with the model
         SyncData();
     }
 
-    private void FixViewPos(object sender, EnemyCardChangeEventArgs e)
+    private void Board_CardInBoardChanged(object sender, OnCardsInBoardChangeEventArgs e)
     {
-       // float moveRight = 0;
-       // int CardLayer = model.Cards.Count;
-
-        for (int i = 0; i < model.Cards.Count; i++)
-        {
-
-            //model.Cards[i].HandOrder = i;
-            //model.Cards[i].Layer = CardLayer;
-            model.Cards[i].Position = new Vector3(0, 12.5f, 0);
-            //moveRight += 2.3f;
-            //CardLayer -= 1;
-            //view.Position = Vector3.Lerp(new Vector3(20, 0, 0), new Vector3(0, 7.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
-
-            if (model.Cards[i].BelongsTo == "Enemy")
-            {
-                model.Cards[i].BelongsTo = "";
-                model.Cards[i].BelongsTo = "Enemy";
-            }
-            else if (model.Cards[i].BelongsTo == "FlyingToEnemy")
-            {
-                model.Cards[i].BelongsTo = "";
-                model.Cards[i].BelongsTo = "FlyingToEnemy";
-            }
-            SyncData();
-        }
-        SyncData();
-
+        FixPos();
     }
 
+    private void FixViewPos(object sender, EnemyCardChangeEventArgs e)
+    {
+        FixPos();
+    }
+
+    private void FixPos()
+    {
+
+        if (GameManager.Instance.gameEnded)
+        {
+            int CardLayer = model.Cards.Count;
+            for (int i = 0; i < model.Cards.Count; i++)
+            {
+                #region OGway
+                model.Cards[i].HandOrder = i;
+                model.Cards[i].Layer = CardLayer;
+                Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.5f) / model.Cards.Count);
+
+                // model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                float rotate = model.Cards[i].HandOrder - model.Cards.Count / 2;
+                model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -0.75f);
+
+                #endregion
+                if (model.Cards[i].BelongsTo == "EnemyFinish")
+                {
+                    model.Cards[i].BelongsTo = "";
+                    model.Cards[i].BelongsTo = "EnemyFinish";
+                }
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < model.Cards.Count; i++)
+            {
+                model.Cards[i].Position = new Vector3(0, 12.5f, 0);
+
+                if (model.Cards[i].BelongsTo == "Enemy")
+                {
+                    model.Cards[i].BelongsTo = "";
+                    model.Cards[i].BelongsTo = "Enemy";
+                }
+                else if (model.Cards[i].BelongsTo == "FlyingToEnemy")
+                {
+                    model.Cards[i].BelongsTo = "";
+                    model.Cards[i].BelongsTo = "FlyingToEnemy";
+                }
+                SyncData();
+            }
+        }
+        SyncData();
+    }
     private void HandleClicked(object sender, EnemyChangedEventArgs e)
     {
-        //if (model.Cards[index].Color == model.Board.Cards[model.Board.Cards.Count - 1].Color || model.Cards[index].Number == model.Board.Cards[model.Board.Cards.Count - 1].Number)
-        //{
-        //    Debug.Log("You Played " + model.Cards[index]);
-        //}
+        //PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 0.9f), 1, 1);
+        int CardLayer = model.Cards.Count;
+        for (int i = 0; i < model.Cards.Count; i++)
+        {
+            #region OGway
+            model.Cards[i].HandOrder = i;
+            model.Cards[i].Layer = CardLayer;
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.5f) / model.Cards.Count);
+
+            // model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
+            model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+
+            #endregion
+            if (model.Cards[i].BelongsTo == "EnemyFinish")
+            {
+                model.Cards[i].BelongsTo = "";
+                model.Cards[i].BelongsTo = "EnemyFinish";
+            }
+
+        }
     }
 
     // Called when the view is clicked

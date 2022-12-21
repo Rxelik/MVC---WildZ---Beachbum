@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<defaults>
+  <entry>
+    <key>Currency</key>
+    <value>5000</value>
+  </entry>
+  <entry>
+    <key>HighestBuyIn</key>
+    <value>600</value>
+  </entry>
+  <entry>
+    <key>LowestBuyIn</key>
+    <value>200</value>
+  </entry>
+  <entry>
+    <key>MediumBuyIn</key>
+    <value>400</value>
+  </entry>
+  <entry>
+    <key>HighestMatchTarget</key>
+    <value>50</value>
+  </entry>
+  <entry>
+    <key>LowestMatchTarget</key>
+    <value>25</value>
+  </entry>
+  <entry>
+    <key>MediumMatchTarget</key>
+    <value>40</value>
+  </entry>
+  <entry>
+    <key>BonusCoinsTimerAmount</key>
+    <value>1200</value>
+  </entry>
+  <entry>
+    <key>BonusCoinsTimerLength</key>
+    <value>120</value>
+  </entry>
+</defaults>

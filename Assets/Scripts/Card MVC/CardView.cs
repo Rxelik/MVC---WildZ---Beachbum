@@ -195,6 +195,10 @@ public class CardView : MvcModels, ICardView
         else if (_inspectorBelongsTo == "Enemy")
         {
             gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
+        }     
+        else if (_inspectorBelongsTo == "EnemyFinish")
+        {
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f);
         }
 
         else if (_inspectorBelongsTo == "Player")

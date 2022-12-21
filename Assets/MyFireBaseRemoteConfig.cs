@@ -1,8 +1,13 @@
 using System;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Firebase.Extensions;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Linq;
 
 public class MyFireBaseRemoteConfig : MonoBehaviour
 {
@@ -25,6 +30,10 @@ public class MyFireBaseRemoteConfig : MonoBehaviour
     //}
 
     //#endregion
+
+    [XmlAttribute("remote_config_defaults")]
+    public int deckId;
+
     Firebase.DependencyStatus dependencyStatus = Firebase.DependencyStatus.UnavailableOther;
     protected bool isFirebaseInitialized = false;
 
@@ -35,6 +44,10 @@ public class MyFireBaseRemoteConfig : MonoBehaviour
     protected virtual void Start()
     {
         FetchDataAsync();
+
+
+
+
 
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
@@ -105,60 +118,107 @@ public class MyFireBaseRemoteConfig : MonoBehaviour
     // By default the timespan is 12 hours, and for production apps, this is a good
     // number. For this example though, it's set to a timespan of zero, so that
     // changes in the console will always show up immediately.
-    public Task FetchDataAsync()
+
+
+
+
+[XmlRoot(ElementName = "entry")]
+public class Entry
+{
+
+    [XmlElement(ElementName = "key")]
+    public string Key { get; set; }
+
+    [XmlElement(ElementName = "value")]
+    public int Value { get; set; }
+}
+
+[XmlRoot(ElementName = "defaults")]
+public class Defaults
+{
+
+    [XmlElement(ElementName = "entry")]
+    public List<Entry> Entry { get; set; }
+}
+
+
+private void DefultConfig()
+{
+    Defaults defaults;
+
+    XmlSerializer serializer = new XmlSerializer(typeof(Defaults));
+    using (StringReader reader = new StringReader(Resources.Load<TextAsset>("remote_config_defaults").text))
     {
+        defaults = (Defaults)serializer.Deserialize(reader);
+    }
+
+    var dict = new Dictionary<string, object>();
+
+    foreach (var entry in defaults.Entry)
+    {
+        dict.Add(entry.Key, entry.Value);
+    }
+
+    Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(dict);
+    }
+public Task FetchDataAsync()
+{
+
+        //If internet not found
+        DefultConfig();
+
         Debug.Log("Fetching data...");
-        System.Threading.Tasks.Task fetchTask =
-            Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.FetchAsync(
-                TimeSpan.Zero);
-        return fetchTask.ContinueWithOnMainThread(FetchComplete);
-    }
-    //[END fetch_async]
-    void FetchComplete(Task fetchTask)
+    System.Threading.Tasks.Task fetchTask =
+        Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.FetchAsync(
+            TimeSpan.Zero);
+    return fetchTask.ContinueWithOnMainThread(FetchComplete);
+}
+//[END fetch_async]
+void FetchComplete(Task fetchTask)
+{
+    if (fetchTask.IsCanceled)
     {
-        if (fetchTask.IsCanceled)
-        {
-            Debug.Log("Fetch canceled.");
-        }
-        else if (fetchTask.IsFaulted)
-        {
-            Debug.Log("Fetch encountered an error.");
-
-        }
-        else if (fetchTask.IsCompleted)
-        {
-            Debug.Log("Fetch completed successfully!");
-        }
-
-        var info = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.Info;
-        switch (info.LastFetchStatus)
-        {
-            case Firebase.RemoteConfig.LastFetchStatus.Success:
-                Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.ActivateAsync()
-                .ContinueWithOnMainThread(task =>
-                {
-                    Debug.Log(String.Format("Remote data loaded and ready (last fetch time {0}).",
-                                   info.FetchTime));
-                });
-
-                break;
-            case Firebase.RemoteConfig.LastFetchStatus.Failure:
-                switch (info.LastFetchFailureReason)
-                {
-                    case Firebase.RemoteConfig.FetchFailureReason.Error:
-                        Debug.Log("Fetch failed for unknown reason");
-
-                        break;
-                    case Firebase.RemoteConfig.FetchFailureReason.Throttled:
-                        Debug.Log("Fetch throttled until " + info.ThrottledEndTime);
-
-                        break;
-                }
-                break;
-            case Firebase.RemoteConfig.LastFetchStatus.Pending:
-                Debug.Log("Latest Fetch call still pending.");
-                break;
-        }
+        Debug.Log("Fetch canceled.");
     }
+    else if (fetchTask.IsFaulted)
+    {
+        Debug.Log("Fetch encountered an error.");
+
+    }
+    else if (fetchTask.IsCompleted)
+    {
+        Debug.Log("Fetch completed successfully!");
+    }
+
+    var info = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.Info;
+    switch (info.LastFetchStatus)
+    {
+        case Firebase.RemoteConfig.LastFetchStatus.Success:
+            Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.ActivateAsync()
+            .ContinueWithOnMainThread(task =>
+            {
+                Debug.Log(String.Format("Remote data loaded and ready (last fetch time {0}).",
+                               info.FetchTime));
+            });
+
+            break;
+        case Firebase.RemoteConfig.LastFetchStatus.Failure:
+            switch (info.LastFetchFailureReason)
+            {
+                case Firebase.RemoteConfig.FetchFailureReason.Error:
+                    Debug.Log("Fetch failed for unknown reason");
+
+                    break;
+                case Firebase.RemoteConfig.FetchFailureReason.Throttled:
+                    Debug.Log("Fetch throttled until " + info.ThrottledEndTime);
+
+                    break;
+            }
+            break;
+        case Firebase.RemoteConfig.LastFetchStatus.Pending:
+            Debug.Log("Latest Fetch call still pending.");
+            break;
+    }
+}
 
 }

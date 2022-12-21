@@ -69,6 +69,7 @@ public class SpriteSelector : MonoBehaviour
 
     public Canvas MainMenuUI;
     public Canvas ChooseCharacterUI;
+    public Canvas howToPlayUI;
 
     private void Update()
     {
@@ -77,6 +78,7 @@ public class SpriteSelector : MonoBehaviour
     }
 
     private bool inCharSel = false;
+    private bool isToPlaySel = false;
     public void ToggleUi()
     {
         inCharSel = !inCharSel;
@@ -86,6 +88,16 @@ public class SpriteSelector : MonoBehaviour
             ChooseCharacterUI.sortingOrder = 0;
 
     }
+
+    public void ToggleHowToPlay()
+    {
+        isToPlaySel = !isToPlaySel;
+        if (isToPlaySel)
+            howToPlayUI.gameObject.SetActive(true);
+        else
+            howToPlayUI.gameObject.SetActive(false);
+    }
+
     public void ChooseSprite()
     {
         if (isMale)

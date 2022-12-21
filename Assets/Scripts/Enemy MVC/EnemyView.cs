@@ -47,4 +47,12 @@ public class EnemyView : MonoBehaviour, IEnemyView
 
     public string BelongsTo;
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            var eventArgs = new EnemyChangedEventArgs();
+            OnClicked(this, eventArgs);
+        }
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using Firebase.Analytics;
 using UnityEditor;
 using Spine.Unity;
 using Spine;
@@ -131,6 +132,7 @@ public class GameManager : MvcModels
 
                 else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
                 {
+
                     StartCoroutine(ContinueEnumerator());
                 }
 
@@ -143,6 +145,16 @@ public class GameManager : MvcModels
                     }
                     if (playerScore <= _targetToWin && !trigger)
                     {
+
+                        //if (playerModel.Cards.Count == 0)
+                        //{
+                        //    PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(enemyModel.Cards.Count / 10f, 0.01f, 1.00f), 1, 1);
+                        //    foreach (var VARIABLE in enemyModel.Cards)
+                        //    {
+                        //        VARIABLE.BelongsTo = "EnemyFinish";
+                        //    }
+                        //}
+
                         var eventRoundWin = new OnRoundWinAnimEventArgs();
                         OnRoundWinEve(this, eventRoundWin);
                         trigger = true;
@@ -305,9 +317,11 @@ public class GameManager : MvcModels
     }
     IEnumerator ContinueEnumerator()
     {
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed",new Parameter("Round Number",round));
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
-        yield return new WaitForSeconds(1.75f);
+
+        yield return new WaitForSeconds(1.5f);
         Inisializer.Instance.NewGame();
     }
 
@@ -315,7 +329,7 @@ public class GameManager : MvcModels
     {
         SoundManager.Instance.Play(SoundManager.Instance.winLoose);
         clicked = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         uiCanvas.SetActive(false);
         EndGameCanvas.SetActive(true);
     }

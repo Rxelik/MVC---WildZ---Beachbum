@@ -40,7 +40,7 @@ public class CurrencyManager : MonoBehaviour
     {
         currentBalance = money;
         currency.text = money.ToString();
-        float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
+       // float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
     }
     void Start()
     {

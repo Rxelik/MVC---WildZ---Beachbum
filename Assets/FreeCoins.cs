@@ -12,40 +12,58 @@ public class FreeCoins : MonoBehaviour
     public Text txtTime;
     public float updateFrequency = 0.1f;
 
+    private TimeSpan TimeSinceLastChecked => DateTime.UtcNow - lastChecked;
     // Use this for initialization
     void Start()
     {
-        string strVal = PlayerPrefs.GetString("TimeRun", "");
-        long ticks = 0;
+        //PlayerPrefs.DeleteAll();
+        //if (PlayerPrefs.HasKey("LastChecked"))
+        //{
+        //    lastChecked = new DateTime(PlayerPrefs.GetInt("LastChecked"));
+        //}
+        //else
+        //{
+        //}
 
-        long.TryParse(strVal, out ticks);
-
-        timeCounter = new TimeSpan(ticks);
-
-        lastChecked = DateTime.Now;
+        CheckTime();
 
         StartCoroutine(CalcAndDisplay());
     }
 
-    private void OnApplicationQuit()
-    {
-        PlayerPrefs.SetString("TimeRun", timeCounter.Ticks.ToString());
-        PlayerPrefs.Save();
-    }
 
+    private void CheckTime()
+    {
+
+        if (PlayerPrefs.HasKey("LastChecked"))
+        {
+            lastChecked = new DateTime(PlayerPrefs.GetInt("LastChecked"));
+        }
+        else
+        {
+            lastChecked = DateTime.UtcNow;
+            PlayerPrefs.SetString("LastChecked", lastChecked.Ticks.ToString());
+            PlayerPrefs.Save();
+        }
+    }
     IEnumerator CalcAndDisplay()
     {
         bool bRun = true;
 
         while (bRun)
         {
-            DateTime now = DateTime.Now.Add(TimeSpan.FromMinutes(45));
+            var timeToUnlock = TimeSpan.FromMinutes(45);
 
-            timeCounter -= now - lastChecked;
+            var timeLeft = TimeSpan.FromMinutes(45) - TimeSinceLastChecked;
 
-            lastChecked = now;
+            txtTime.text = $"{timeLeft.Hours:D2}:{timeLeft.Minutes:D2}:{timeLeft.Seconds:D2}";
+            //if (timeLeft.Ticks > 0)
+            //{
+            //}
+            //else
+            //{
+            //    txtTime.text = "Claim Your Free Reword";
 
-            txtTime.text = $"{timeCounter.Hours:D2}:{timeCounter.Minutes:D2}:{timeCounter.Seconds:D2}";
+            //}
 
             yield return new WaitForSeconds(updateFrequency);
         }
