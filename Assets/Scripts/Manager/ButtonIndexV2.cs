@@ -171,7 +171,7 @@ public class ButtonIndexV2 : MvcModels
                     model.RemoveCard(card);
                     ChangeTurn(true);
                     AIplayed = false;
-                    manager.CallColorChanged();
+                    manager.CallColorRise();
                 }
                 #endregion
 
@@ -206,8 +206,8 @@ public class ButtonIndexV2 : MvcModels
     IEnumerator PlayBambo(CardModel card, PlayerModel model)
     {
         yield return new WaitForSeconds(0.15f);
-        manager.CallColorChanged();
         manager.draw = 0;
+        manager.CallColorRise();
         boardModel.AddCard(card);
         model.RemoveCard(card);
         ChangeTurn(true);
@@ -462,24 +462,23 @@ public class ButtonIndexV2 : MvcModels
         if (playerModel.HasCounter())
         {
             manager.draw += 2;
-            manager.CallPlusAnimation();
             ChangeTurn(false);
+            manager.CallPlusAnimation();
         }
         else
         {
             if (manager.draw == 0)
             {
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(playerModel.TakeCard(2));
                 card.Number = 222;
                 ChangeTurn(true);
-
                 AIplayed = false;
             }
             else
             {
                 manager.draw += 2;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(playerModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 222;
@@ -507,7 +506,7 @@ public class ButtonIndexV2 : MvcModels
         {
             if (manager.draw == 0)
             {
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 AI.Instance.StartCoroutine(enemyModel.TakeCard(2));
                 card.Number = 222;
                 ChangeTurn(true);
@@ -515,7 +514,7 @@ public class ButtonIndexV2 : MvcModels
             else
             {
                 manager.draw += 2;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 AI.Instance.StartCoroutine(enemyModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 222;
@@ -544,7 +543,7 @@ public class ButtonIndexV2 : MvcModels
             if (manager.draw == 0)
             {
                 manager.draw = 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 manager.draw = 0;
                 StartCoroutine(playerModel.TakeCard(4));
                 card.Number = 444;
@@ -554,13 +553,12 @@ public class ButtonIndexV2 : MvcModels
             else
             {
                 manager.draw += 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(playerModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 444;
                 ChangeTurn(true);
                 AIplayed = false;
-
             }
         }
 
@@ -576,9 +574,8 @@ public class ButtonIndexV2 : MvcModels
         if (enemyModel.Has44())
         {
             manager.draw += 4;
-            manager.CallPlusAnimation();
-
             ChangeTurn(false);
+            manager.CallPlusAnimation();
 
         }
         else
@@ -586,23 +583,21 @@ public class ButtonIndexV2 : MvcModels
             if (manager.draw == 0)
             {
                 manager.draw = 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 manager.draw = 0;
                 StartCoroutine(enemyModel.TakeCard(4));
                 card.Number = 444;
                 ChangeTurn(true);
 
-
             }
             else
             {
                 manager.draw += 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(enemyModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 444;
                 ChangeTurn(true);
-
             }
         }
 

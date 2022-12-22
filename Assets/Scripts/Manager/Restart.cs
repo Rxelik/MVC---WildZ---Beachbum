@@ -56,15 +56,11 @@ public class Restart : MonoBehaviour
             findingOP.SetActive(true);
             shuffle.Randomize();
             yield return new WaitForSeconds(1f);
-
-            
-
-            GameManager.Instance.StartCoroutine(Inisializer.Instance.Build());
+            AI.Instance.StartCoroutine(Inisializer.Instance.Build());
             yield return new WaitForSeconds(1.5f);
             mainMenuUI.gameObject.SetActive(false);
             CharacterChooserUI_.gameObject.SetActive(false);
             findingOP.SetActive(false);
-
         }
         else
         {

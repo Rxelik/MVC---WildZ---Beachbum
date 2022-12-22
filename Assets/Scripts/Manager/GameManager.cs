@@ -46,7 +46,8 @@ public class GameManager : MvcModels
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
     public event EventHandler<OnPlusCardAnimEventArgs> OnPlusCardEve;
-    public event EventHandler<OnColorChangedEventArgs> OnColorChanged;
+    public event EventHandler<OnColorRisingEventArgs> OnColorRised;
+    public event EventHandler<OnColorRiseConfirmedEventArgs> OnColorRiseComplete;
 
     [Header("TextMeshPro")]
     [Space]
@@ -104,15 +105,30 @@ public class GameManager : MvcModels
         gameEnded = false;
     }
 
+    private void PlayerWon()
+    {
+        foreach (var VARIABLE in enemyModel.Cards)
+        {
+            VARIABLE.BelongsTo = "EnemyFinish";
+        }
+        enemyModel.CallCardsChanged(); 
+    }
+
+
+
+    public void CheckIfPlayerWon()
+    {
+        if (playerScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            StartCoroutine(WinLooseEnumerator());
+        }
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            foreach (var VARIABLE in enemyModel.Cards)
-            {
-                enemyModel.Cards.Remove(VARIABLE);
-                VARIABLE.BelongsTo = "EnemyFinish";
-            }
+            PlayerWon();
         }
         endPlayerScMeshProUgui.text = playerScore.ToString();
         endEnemyScMeshProUgui.text = aiScore.ToString();
@@ -143,6 +159,7 @@ public class GameManager : MvcModels
 
                     StartCoroutine(ContinueEnumerator());
                 }
+
 
 
                 if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
@@ -213,41 +230,41 @@ public class GameManager : MvcModels
         //{
         //    yield return new WaitForSeconds(1.5f);
         //}
-        foreach (var item in enemyModel.Cards)
-        {
-            if (item.Number > 0 && item.Number <= 9)
-            {
-                playerScore += 5;
-            }
-            if (item.Number == 22 && !item.IsWild)
-            {
-                playerScore += 10;
-            }
-            if (item.Number == 44)
-            {
-                playerScore += 10;
-            }
-            if (item.Number == 88)
-            {
-                playerScore += 15;
-            }
-            if (item.Number == 22 && item.IsWild)
-            {
-                playerScore += 20;
-            }
-            if (item.Number == 0)
-            {
-                playerScore += 25;
-            }
-            if (item.IsSuper && item.IsWild)
-            {
-                playerScore += 30;
-            }
-            if (item.IsBamboozle)
-            {
-                playerScore += 40;
-            }
-        }
+        //foreach (var item in enemyModel.Cards)
+        //{
+        //    if (item.Number > 0 && item.Number <= 9)
+        //    {
+        //        playerScore += 5;
+        //    }
+        //    if (item.Number == 22 && !item.IsWild)
+        //    {
+        //        playerScore += 10;
+        //    }
+        //    if (item.Number == 44)
+        //    {
+        //        playerScore += 10;
+        //    }
+        //    if (item.Number == 88)
+        //    {
+        //        playerScore += 15;
+        //    }
+        //    if (item.Number == 22 && item.IsWild)
+        //    {
+        //        playerScore += 20;
+        //    }
+        //    if (item.Number == 0)
+        //    {
+        //        playerScore += 25;
+        //    }
+        //    if (item.IsSuper && item.IsWild)
+        //    {
+        //        playerScore += 30;
+        //    }
+        //    if (item.IsBamboozle)
+        //    {
+        //        playerScore += 40;
+        //    }
+        //}
     }
     void CountScoreAIScore()
     {
@@ -288,7 +305,7 @@ public class GameManager : MvcModels
             }
             if (item.Number == 88)
             {
-                playerScore += 15;
+                aiScore += 15;
             }
         }
     }
@@ -318,18 +335,32 @@ public class GameManager : MvcModels
         OnPlusCardEve(this, callAnim);
     }
 
-    public void CallColorChanged()
+    public void CallColorRise()
     {
-        var callAnim = new OnColorChangedEventArgs();
-        OnColorChanged(this, callAnim);
+        var callAnim = new OnColorRisingEventArgs();
+        OnColorRised(this, callAnim);
+    }
+
+    public void CallColorRiseComplete()
+    {
+        var callAnim = new OnColorRiseConfirmedEventArgs();
+        OnColorRiseComplete(this, callAnim);
     }
     IEnumerator ContinueEnumerator()
     {
         Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed", new Parameter("Round Number", round));
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
+        if (playerModel.Cards.Count >= 0)
+        {
+            PlayerWon();
+            yield return new WaitForSeconds(7f);
+        }
+        else
+        {
 
-        yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.25f);
+        }
         Inisializer.Instance.NewGame();
     }
 

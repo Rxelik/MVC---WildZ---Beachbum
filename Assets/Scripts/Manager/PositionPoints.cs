@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PositionPoints : MvcModels
 {
+    public Vector3 defultPos;
     #region Singelton
     public static PositionPoints Instance { get; private set; }
     private void Awake()
@@ -23,6 +24,10 @@ public class PositionPoints : MvcModels
     public Transform[] positionPoints;
     public Transform _LookAt;
 
+    private void Start()
+    {
+        defultPos = transform.position;
+    }
     private void OnDrawGizmos()
     {
         iTween.DrawPath(positionPoints);

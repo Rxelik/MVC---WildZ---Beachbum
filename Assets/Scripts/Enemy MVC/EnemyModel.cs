@@ -23,6 +23,7 @@ public interface IEnemyModel
     [SerializeField] List<Transform> HandPos { get; set; }
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+    void CallCardsChanged();
 }
 
 public class EnemyModel : IEnemyModel
@@ -145,7 +146,11 @@ public class EnemyModel : IEnemyModel
         }
     }
 
-
+    public void CallCardsChanged()
+    {
+        var eventArgs = new EnemyCardChangeEventArgs();
+        OnCardsChanged(this, eventArgs);
+    }
     public void AddCard(CardModel card)
     {
         Cards.Add(card);

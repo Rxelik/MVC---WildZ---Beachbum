@@ -10,7 +10,8 @@ public class OnWinAnimEventArgs { }
 public class OnRoundWinAnimEventArgs { }
 public class OnChooseCardAnimEventArgs { }
 public class OnPlusCardAnimEventArgs { }
-public class OnColorChangedEventArgs { }
+public class OnColorRisingEventArgs { }
+public class OnColorRiseConfirmedEventArgs { }
 
 public class AnimationManager : MvcModels
 {
@@ -40,7 +41,8 @@ public class AnimationManager : MvcModels
     public GameObject ChooseCardAnim;
     public GameObject chooseCardsGameObject;
     public GameObject plusCardAnim;
-    public GameObject colorChanged;
+    public GameObject colorRisedAnim;
+    public GameObject colorRiseCompleted;
     private void Start()
     {
         GameManager.Instance.OnLooseEve += AnimationManager_OnLooseEve;
@@ -49,13 +51,19 @@ public class AnimationManager : MvcModels
         GameManager.Instance.OnRoundWinEve += AnimationManager_OnRoundWinEve;
         GameManager.Instance.OnChooseCardEve += AnimationManagerOnChooseCardEve;
         GameManager.Instance.OnPlusCardEve += Instance_OnPlusCardEve;
-        GameManager.Instance.OnColorChanged += Instance_OnColorChanged; 
+        GameManager.Instance.OnColorRised += InstanceOnColorRised;
+        GameManager.Instance.OnColorRiseComplete += Instance_OnColorRiseComplete;
 
     }
 
-    private void Instance_OnColorChanged(object sender, OnColorChangedEventArgs e)
+    private void Instance_OnColorRiseComplete(object sender, OnColorRiseConfirmedEventArgs e)
     {
-        colorChanged.SetActive(true);
+        colorRiseCompleted.SetActive(true);
+    }
+
+    private void InstanceOnColorRised(object sender, OnColorRisingEventArgs e)
+    {
+        colorRisedAnim.SetActive(true);
     }
 
     private void Instance_OnPlusCardEve(object sender, OnPlusCardAnimEventArgs e)

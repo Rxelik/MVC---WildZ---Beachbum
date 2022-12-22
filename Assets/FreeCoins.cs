@@ -33,7 +33,7 @@ public class FreeCoins : MonoBehaviour
 
     private void CheckTime()
     {
-
+        PlayerPrefs.DeleteAll();
         if (PlayerPrefs.HasKey("LastChecked"))
         {
             lastChecked = new DateTime(PlayerPrefs.GetInt("LastChecked"));

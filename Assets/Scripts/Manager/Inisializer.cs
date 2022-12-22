@@ -111,6 +111,7 @@ public class Inisializer : MonoBehaviour
 
         #endregion
         MvcModels.playerModel = (PlayerModel)_playermodel;
+        MvcModels.playerView = (PlayerView)_view;
         //_______________________________________________\\
 
         #region Enemy
@@ -135,6 +136,8 @@ public class Inisializer : MonoBehaviour
 
         #endregion
         MvcModels.enemyModel = (EnemyModel)_Enemyermodel;
+        MvcModels.enemyView = (EnemyView)Enemyview;
+
 
         //_______________________________________________\\
 
@@ -1048,6 +1051,11 @@ public class Inisializer : MonoBehaviour
     }
     public void NewGame()
     {
+        if (GameManager.Instance.playerScore >= GameManager.Instance._targetToWin || GameManager.Instance.aiScore >= GameManager.Instance._targetToWin)
+        {
+            return;
+        }
+        PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {

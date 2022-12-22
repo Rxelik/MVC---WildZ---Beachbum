@@ -20,11 +20,11 @@ MonoBehaviour:
   blendModeMaterials:
     requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
-    additiveMaterials:
-    - pageName: +Cards VFX.png
-      material: {fileID: 2100000, guid: b48102b834f97b546b3160cf0581cb24, type: 2}
+    additiveMaterials: []
     multiplyMaterials: []
-    screenMaterials: []
+    screenMaterials:
+    - pageName: +Cards VFX.png
+      material: {fileID: 2100000, guid: 853cc36a5e9f83c4d8b2e3bae8dd6ae4, type: 2}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []

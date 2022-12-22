@@ -49,6 +49,10 @@ public interface ICardView
 
     AnimationCurve Curve { get; }
 
+    GameObject NumCounter { get; }
+
+    int NumValue { get; }
+
 }
 
 // Implementation of the enemy view
@@ -84,6 +88,10 @@ public class CardView : MvcModels, ICardView
     public Sprite Sprite { set { GetComponent<SpriteRenderer>(); } }
     public AnimationCurve Curve { get => _curve; }
 
+    public GameObject NumCounter { get => cardCounter; }
+    public int NumValue { get => numValue; }
+
+
     public Vector3 _inspectPos;
     public Quaternion _inspectRot;
     public int _inspectNumber;
@@ -99,7 +107,7 @@ public class CardView : MvcModels, ICardView
     public ParticleSystem ParticleEffect;
     public Transform Arc;
     public bool EnableArc = true;
-
+    public int numValue;
     private bool colorChanged = false;
     //public TextMeshPro gs;
 
@@ -110,9 +118,12 @@ public class CardView : MvcModels, ICardView
     public EnemyModel _InspectorEnemy;
 
     public AnimationCurve _curve;
+    public GameObject cardCounter;
     private ICardView _cardViewImplementation;
 
     public SkeletonAnimation spineAnimation;
+
+    private TextMeshPro textValue;
     private void Awake()
     {
         _InspectorSprite = GetComponent<SpriteRenderer>();
@@ -122,6 +133,7 @@ public class CardView : MvcModels, ICardView
     private void Start()
     {
         GameManager.Instance.SpriteChangeEve += CardView_SpriteChangeEve;
+        textValue = cardCounter.GetComponent<TextMeshPro>();
     }
 
     private void CardView_SpriteChangeEve(object sender, OnCardSpriteEvent e)
@@ -136,11 +148,78 @@ public class CardView : MvcModels, ICardView
 
     void Update()
     {
-        // v2.BelongsTo = _inspectorBelongsTo;
+
+        switch (_inspectNumber)
+        {
+            case 0:
+                numValue = 5;
+                break;
+            case 1:
+                numValue = 5;
+                break;
+            case 2:
+                numValue = 5;
+                break;
+            case 3:
+                numValue = 5;
+                break;
+            case 4:
+                numValue = 5;
+                break;
+            case 5:
+                numValue = 5;
+                break;
+            case 6:
+                numValue = 5;
+                break;
+            case 7:
+                numValue = 5;
+                break;
+            case 8:
+                numValue = 5;
+                break;
+            case 9:
+                numValue = 5;
+                break;
+            case 22:
+                if (_IsWild)
+                {
+                    numValue = 20;
+                }
+                else
+                {
+                    numValue = 10;
+
+                }
+                break;
+            case 44:
+                if (_IsWild)
+                {
+                    numValue = 25;
+                }
+                else
+                {
+                    numValue = 10;
+
+                }
+                break;
+            case 55:
+                numValue = 40;
+                break;
+            case 88:
+                numValue = 15;
+                break;
+            case 99:
+                numValue = 30;
+                break;
+        }
+        textValue.text = numValue.ToString();
+
         if (_inspectorBelongsTo == "ViewPlayer")
         {
             Arc.rotation = Quaternion.Euler(0, 0, 0);
         }
+
 
         else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
@@ -175,7 +254,7 @@ public class CardView : MvcModels, ICardView
                         spineAnimation.AnimationState.SetAnimation(4, "Change to Green", false);
                         colorChanged = true;
                     }
-                   
+
                 }
 
             }
@@ -195,7 +274,7 @@ public class CardView : MvcModels, ICardView
         else if (_inspectorBelongsTo == "Enemy")
         {
             gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
-        }     
+        }
         else if (_inspectorBelongsTo == "EnemyFinish")
         {
             gameObject.transform.localScale = new Vector3(0.8f, 0.8f);

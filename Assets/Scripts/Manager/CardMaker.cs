@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using TMPro;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class CardMaker : MvcModels
 {
@@ -43,6 +46,7 @@ public class CardMaker : MvcModels
     [Space]
     #endregion
     public SpriteRenderer CardSprite;
+    public TextMeshPro cardcounter;
     [Space]
     public Sprite CardBack;
     [Space]
@@ -51,10 +55,64 @@ public class CardMaker : MvcModels
     public SpriteRenderer dim;
     public bool Button = false;
     public bool SwappedFace = false;
+    private bool didntEnter = false;
+    private IEnumerator ColorAlphaFull()
+    {
+        didntEnter = true;
+        float t = 0;
+        float duration = 2f;
+        bool downing = false;
+        GameManager.Instance.playerScore += view.numValue;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / (duration - 1));
+            if (cardcounter.color.a <= 0.88 && !downing)
+            {
+                print("RISE UPPPPPPPP");
+                cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 1), t / (duration + 0.55f));
+            }
+            else if (cardcounter.color.a <= 0.9)
+            {
+                downing = true;
+                print("BOOOOOOOOOL");
 
+            }
+            if (downing)
+            {
+                print("DOWNINGGGGGG");
+                cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 0), t / duration);
+            }
+            yield return null;
+        }
 
+    }
+
+    private IEnumerator ReturnNumberNull()
+    {
+        yield return new WaitForSeconds(1f);
+        StopCoroutine(ColorAlphaFull());
+        float t = 0;
+        float duration = 1f;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 0), t / duration);
+            yield return null;
+        }
+
+    }
     private void Update()
     {
+
+        if (view._inspectorBelongsTo == "EnemeyCardCounted")
+        {
+            if (!didntEnter)
+            {
+                StartCoroutine(ColorAlphaFull());
+            }
+
+        }
         if (view._InspectorColor == Color.clear && CardSprite)
         {
             CardSprite.gameObject.SetActive(false);
@@ -78,7 +136,6 @@ public class CardMaker : MvcModels
                 }
                 else if (!view._IsSuper && view._IsWild)
                 {
-
                     SwapCards();
 
                 }
@@ -143,7 +200,8 @@ public class CardMaker : MvcModels
         || view._inspectorBelongsTo == "Board"
         || view._inspectorBelongsTo == "FlyingToPlayer"
         || view._inspectorBelongsTo == "FlyingToEnemy"
-        || view._inspectorBelongsTo == "ColorPick" && deckModel.CurrentTurn == "Enemy")
+        || view._inspectorBelongsTo == "ColorPick" && deckModel.CurrentTurn == "Enemy"
+        || view._inspectorBelongsTo == "EnemyFinish")
         {
 
 
