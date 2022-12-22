@@ -106,6 +106,14 @@ public class GameManager : MvcModels
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            foreach (var VARIABLE in enemyModel.Cards)
+            {
+                enemyModel.Cards.Remove(VARIABLE);
+                VARIABLE.BelongsTo = "EnemyFinish";
+            }
+        }
         endPlayerScMeshProUgui.text = playerScore.ToString();
         endEnemyScMeshProUgui.text = aiScore.ToString();
 
@@ -317,7 +325,7 @@ public class GameManager : MvcModels
     }
     IEnumerator ContinueEnumerator()
     {
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed",new Parameter("Round Number",round));
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed", new Parameter("Round Number", round));
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
 

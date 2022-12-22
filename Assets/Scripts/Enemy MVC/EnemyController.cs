@@ -43,8 +43,6 @@ public class EnemyController : IEnemyController
     private void FixPos()
     {
 
-        if (GameManager.Instance.gameEnded)
-        {
             int CardLayer = model.Cards.Count;
             for (int i = 0; i < model.Cards.Count; i++)
             {
@@ -66,27 +64,29 @@ public class EnemyController : IEnemyController
                 }
 
             }
-        }
-        else
+        if (GameManager.Instance.gameEnded)
         {
-            for (int i = 0; i < model.Cards.Count; i++)
-            {
-                model.Cards[i].Position = new Vector3(0, 12.5f, 0);
-
-                if (model.Cards[i].BelongsTo == "Enemy")
-                {
-                    model.Cards[i].BelongsTo = "";
-                    model.Cards[i].BelongsTo = "Enemy";
-                }
-                else if (model.Cards[i].BelongsTo == "FlyingToEnemy")
-                {
-                    model.Cards[i].BelongsTo = "";
-                    model.Cards[i].BelongsTo = "FlyingToEnemy";
-                }
-                SyncData();
-            }
         }
-        SyncData();
+        //else
+        //{
+        //    for (int i = 0; i < model.Cards.Count; i++)
+        //    {
+        //        model.Cards[i].Position = new Vector3(0, 12.5f, 0);
+
+        //        if (model.Cards[i].BelongsTo == "Enemy")
+        //        {
+        //            model.Cards[i].BelongsTo = "";
+        //            model.Cards[i].BelongsTo = "Enemy";
+        //        }
+        //        else if (model.Cards[i].BelongsTo == "FlyingToEnemy")
+        //        {
+        //            model.Cards[i].BelongsTo = "";
+        //            model.Cards[i].BelongsTo = "FlyingToEnemy";
+        //        }
+        //        SyncData();
+        //    }
+        //}
+        //SyncData();
     }
     private void HandleClicked(object sender, EnemyChangedEventArgs e)
     {

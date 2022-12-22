@@ -110,8 +110,15 @@ public class CardController : ICardController
             Debug.Log(model.Enemy.Cards[model.HandOrder].Position);
             while (t < 1f)
             {
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    view.Position = Vector3.Lerp(new Vector3(20f, 0, 0), model.Enemy.Cards[model.HandOrder].Position, t / duration);
+                }
+                else
+                {
+                    view.Position = Vector3.Lerp(new Vector3(13.5f, 0, 0), model.Enemy.Cards[model.HandOrder].Position, t / duration);
+                }
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(view.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
             }
         }
