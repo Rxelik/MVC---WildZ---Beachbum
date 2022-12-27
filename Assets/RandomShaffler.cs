@@ -6,6 +6,23 @@ using UnityEngine.UI;
 
 public class RandomShaffler : MonoBehaviour
 {
+    #region Singelton
+    public static RandomShaffler Instance { get; private set; }
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+    #endregion
     public List<string> maleNames;
     public List<string> femaleNames;
 
