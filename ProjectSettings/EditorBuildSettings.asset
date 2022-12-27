@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Loading Screen.unity
     guid: ab978a356ef324f4596429699d3e0be4
   - enabled: 1
-    path: Assets/Scenes/Final Scenes/16_9 Game Scene With MainManu.unity
-    guid: 3f90faa97c1041b41ac0b62aa518ccc9
-  - enabled: 1
-    path: Assets/Scenes/Final Scenes/4_3 Game Scene With MainManu.unity
-    guid: 0c4e21e5dee7fc24d853994bb76d748f
+    path: Assets/Scenes/Final Scenes/AllSizeMainMenu.unity
+    guid: d8a6b709b2227b3489c30debb60b1bf1
   m_configObjects: {}
