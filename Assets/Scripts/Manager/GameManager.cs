@@ -249,6 +249,7 @@ public class GameManager : MvcModels
     void CountScorePlayerScore()
     {
         gameEnded = true;
+        PlayerWonRound = true;
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
