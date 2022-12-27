@@ -79,7 +79,7 @@ public class AspectRatioChecker : MonoBehaviour
         else
         {
             isOn16by9 = false;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 }

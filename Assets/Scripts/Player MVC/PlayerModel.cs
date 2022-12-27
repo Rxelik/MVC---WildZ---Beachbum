@@ -32,6 +32,8 @@ public interface IPlayerModel
     bool FirstTurn { get; set; }
     bool FirstTurnMethod();
     void ViewCards();
+    bool CountingCards();
+    void CallCardsChanged();
 }
 
 public class PlayerModel : IPlayerModel
@@ -175,7 +177,11 @@ public class PlayerModel : IPlayerModel
             }
         }
     }
-
+    public void CallCardsChanged()
+    {
+        var eventArgs = new OnViewCardsEventArgs();
+        ViewCardsEve(this, eventArgs);
+    }
     public void AddCard(CardModel card)
     {
         Cards.Add(card);
@@ -294,5 +300,30 @@ public class PlayerModel : IPlayerModel
     {
         var eventArgs = new OnViewCardsEventArgs();
         ViewCardsEve(this, eventArgs);
+    }
+
+    public bool CountingCards()
+    {
+        bool counting = true;
+
+        foreach (var item in Cards)
+        {
+            if (item.BelongsTo == "PlayerFinish")
+            {
+                counting = true;
+                break;
+            }
+            else
+                counting = false;
+        }
+
+        if (counting)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

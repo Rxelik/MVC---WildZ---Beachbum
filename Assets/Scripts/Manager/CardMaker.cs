@@ -69,18 +69,15 @@ public class CardMaker : MvcModels
             CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / (duration - 1));
             if (cardcounter.color.a <= 0.88 && !downing)
             {
-                print("RISE UPPPPPPPP");
                 cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 1), t / (duration + 0.55f));
             }
             else if (cardcounter.color.a <= 0.9)
             {
                 downing = true;
-                print("BOOOOOOOOOL");
 
             }
             if (downing)
             {
-                print("DOWNINGGGGGG");
                 cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 0), t / duration);
             }
             yield return null;
@@ -90,22 +87,46 @@ public class CardMaker : MvcModels
 
     private IEnumerator ReturnNumberNull()
     {
-        yield return new WaitForSeconds(1f);
-        StopCoroutine(ColorAlphaFull());
+        yield return new WaitForSeconds(1);
+        didntEnter = true;
         float t = 0;
         float duration = 1f;
         while (t < duration)
         {
             t += Time.deltaTime / duration;
-            cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 0), t / duration);
+            CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / duration);
             yield return null;
         }
-
+        faded = true;
     }
+
+    private bool faded = false;
     private void Update()
     {
+        if (view._inspectorBelongsTo == "Board" && GameManager.Instance.gameEnded)
+        {
+            if (!didntEnter)
+            {
+                StartCoroutine(ReturnNumberNull());
+            }
+            else
+            {
+                if (faded)
+                {
+                    CardSprite.gameObject.SetActive(false);
+                }
+            }
+        }
 
         if (view._inspectorBelongsTo == "EnemeyCardCounted")
+        {
+            if (!didntEnter)
+            {
+                StartCoroutine(ColorAlphaFull());
+            }
+
+        }
+        if (view._inspectorBelongsTo == "PlayerCardCounted")
         {
             if (!didntEnter)
             {

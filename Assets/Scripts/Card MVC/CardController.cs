@@ -71,9 +71,13 @@ public class CardController : ICardController
             _manager.StartCoroutine(Lerp());
         }
 
-        if (model.BelongsTo =="EnemyCardCount")
+        if (model.BelongsTo == "EnemyCardCount")
         {
             _manager.StartCoroutine(EnemyLostAnim());
+        }
+        if (model.BelongsTo == "PlayerCardCount")
+        {
+            _manager.StartCoroutine(PlayerLostAnim());
         }
     }
 
@@ -214,6 +218,23 @@ public class CardController : ICardController
                 yield return null;
             }
         }
+
+        if (model.BelongsTo == "PlayerFinish")
+        {
+            while (t < 1.5f)
+            {
+                t += Time.deltaTime / 1.5f;
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, view.Curve.Evaluate(t / 1.5f));
+                }
+                else
+                {
+                    view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, view.Curve.Evaluate(t / 1.5f));
+                }
+                yield return null;
+            }
+        }
         SyncData();
     }
 
@@ -224,10 +245,25 @@ public class CardController : ICardController
         while (t < duration)
         {
             t += Time.deltaTime / duration;
-            view.Position = Vector3.Lerp(model.Position, new Vector3(model.Position.x, model.Position.y + 2, model.Position.z), 
+            view.Position = Vector3.Lerp(model.Position, new Vector3(model.Position.x, model.Position.y + 2, model.Position.z),
                 view.Curve.Evaluate(t / duration));
             view.NumCounter.SetActive(true);
             model.BelongsTo = "EnemeyCardCounted";
+            yield return null;
+        }
+    }
+
+    private IEnumerator PlayerLostAnim()
+    {
+        float t = 0;
+        float duration = 0.45f;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            view.Position = Vector3.Lerp(model.Position, new Vector3(model.Position.x, model.Position.y + 2, model.Position.z),
+                view.Curve.Evaluate(t / duration));
+            view.NumCounter.SetActive(true);
+            model.BelongsTo = "PlayerCardCounted";
             yield return null;
         }
     }

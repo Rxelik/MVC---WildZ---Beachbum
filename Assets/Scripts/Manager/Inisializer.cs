@@ -1057,12 +1057,11 @@ public class Inisializer : MonoBehaviour
         }
         PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.clicked = true;
-        for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
-        {
-            Destroy(GameManager.Instance.cardsObjects[i]);
-        }
+        CleanBoard();
         GameManager.Instance.continueButton.SetActive(false);
         GameManager.Instance.gameEnded = false;
+        GameManager.Instance.AiWonRound = false;
+        GameManager.Instance.PlayerWonRound = false;
         AnimationManager.Instance.DeActiveAnim();
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
@@ -1091,5 +1090,13 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.playerPlayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
+    }
+
+    public void CleanBoard()
+    {
+        for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
+        {
+            Destroy(GameManager.Instance.cardsObjects[i]);
+        }
     }
 }

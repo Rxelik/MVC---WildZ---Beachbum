@@ -26,8 +26,8 @@ public class RandomShaffler : MonoBehaviour
 
     public TextMeshProUGUI aiName;
     public TextMeshProUGUI playerName; 
-    public TextMeshProUGUI aiNameFO;
-    public TextMeshProUGUI playerNameFO;
+    public TextMeshPro aiNameFO;
+    public TextMeshPro playerNameFO;
 
 
     GameManager manager;

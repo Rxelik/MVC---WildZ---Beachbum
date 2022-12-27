@@ -91,23 +91,14 @@ public class EnemyController : IEnemyController
     }
     private IEnumerator EnemyLostAnim()
     {
-        if (model.Board.TopCard().Number == 22 || model.Board.TopCard().Number == 222 ||
-            model.Board.TopCard().Number == 44 || model.Board.TopCard().Number == 444)
-        {
-            yield return new WaitForSeconds(1.5f);
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.5f);
-
-        }
+        yield return new WaitForSeconds(1f);
         foreach (var card in model.Cards)
         {
             yield return new WaitForSeconds(0.55f);
             card.BelongsTo = "EnemyCardCount";
             yield return null;
         }
-        GameManager.Instance.CheckIfPlayerWon();
+        GameManager.Instance.CheckIfAiWon();
     }
     private void HandleClicked(object sender, EnemyChangedEventArgs e)
     {
