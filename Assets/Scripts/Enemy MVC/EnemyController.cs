@@ -98,7 +98,7 @@ public class EnemyController : IEnemyController
             card.BelongsTo = "EnemyCardCount";
             yield return null;
         }
-        GameManager.Instance.CheckIfAiWon();
+        //GameManager.Instance.CheckIfAiWon();
     }
     private void HandleClicked(object sender, EnemyChangedEventArgs e)
     {

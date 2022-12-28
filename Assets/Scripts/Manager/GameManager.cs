@@ -164,24 +164,24 @@ public class GameManager : MvcModels
                 aiScoreUgui.text = aiScore.ToString();
                 playerScoreUgui.text = playerScore.ToString();
 
-                if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
-                {
-                    if (aiScore >= _targetToWin)
-                    {
-                        CurrencyManager.Instance.OnGameLost();
-                    }
-                    else if (playerScore >= _targetToWin)
-                    {
-                        CurrencyManager.Instance.OnGameWon();
-                    }
-                    StartCoroutine(WinLooseEnumerator());
-                }
+                //if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
+                //{
+                //    if (aiScore >= _targetToWin)
+                //    {
+                //        CurrencyManager.Instance.OnGameLost();
+                //    }
+                //    else if (playerScore >= _targetToWin)
+                //    {
+                //        CurrencyManager.Instance.OnGameWon();
+                //    }
+                //    StartCoroutine(WinLooseEnumerator());
+                //}
 
-                else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
-                {
+                //else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
+                //{
 
-                    StartCoroutine(ContinueEnumerator());
-                }
+                //    StartCoroutine(ContinueEnumerator());
+                //}
 
 
 
@@ -250,6 +250,7 @@ public class GameManager : MvcModels
     {
         gameEnded = true;
         PlayerWonRound = true;
+        StartCoroutine(ContinueEnumerator());
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
@@ -294,6 +295,7 @@ public class GameManager : MvcModels
     {
         gameEnded = true;
         AiWonRound = true;
+        StartCoroutine(ContinueEnumerator());
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
@@ -379,11 +381,11 @@ public class GameManager : MvcModels
         if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222
          || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
         }
         else
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
         }
 
         if (PlayerWonRound)
@@ -400,7 +402,20 @@ public class GameManager : MvcModels
             yield return new WaitUntil(() => !playerModel.CountingCards());
             yield return new WaitForSeconds(0.25f);
         }
-        Inisializer.Instance.NewGame();
+        if (aiScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameLost();
+            StartCoroutine(WinLooseEnumerator());
+        }
+        else if (playerScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            StartCoroutine(WinLooseEnumerator());
+        }
+        else
+        {
+            Inisializer.Instance.NewGame();
+        }
     }
     public void CleanBoard()
     {

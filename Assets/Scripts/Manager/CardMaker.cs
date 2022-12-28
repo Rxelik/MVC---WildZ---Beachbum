@@ -62,7 +62,6 @@ public class CardMaker : MvcModels
         float t = 0;
         float duration = 2f;
         bool downing = false;
-        GameManager.Instance.playerScore += view.numValue;
         while (t < duration)
         {
             t += Time.deltaTime / duration;
@@ -122,6 +121,7 @@ public class CardMaker : MvcModels
         {
             if (!didntEnter)
             {
+                GameManager.Instance.playerScore += view.numValue;
                 StartCoroutine(ColorAlphaFull());
             }
 
@@ -130,6 +130,7 @@ public class CardMaker : MvcModels
         {
             if (!didntEnter)
             {
+                GameManager.Instance.aiScore += view.numValue;
                 StartCoroutine(ColorAlphaFull());
             }
 

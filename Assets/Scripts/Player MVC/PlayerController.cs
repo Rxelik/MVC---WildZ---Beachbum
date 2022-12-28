@@ -296,7 +296,7 @@ public class PlayerController : IPlayerController
             card.BelongsTo = "PlayerCardCount";
             yield return null;
         }
-        GameManager.Instance.CheckIfPlayerWon();
+       // GameManager.Instance.CheckIfPlayerWon();
     }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
