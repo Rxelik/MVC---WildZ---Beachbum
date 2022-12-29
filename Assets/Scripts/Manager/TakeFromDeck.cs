@@ -81,7 +81,7 @@ public class TakeFromDeck : MvcModels
 
         StartCoroutine(playerModel.TakeCard(1));
         yield return new WaitForSeconds(0.30f);
-        if (card.CanPlayCard && playerModel.Cards.Count >=20)
+        if (card.CanPlayCard && playerModel.Cards.Count <= GameManager.Instance.maxHandSize)
         {
             foreach (var item in playerModel.Cards)
             {

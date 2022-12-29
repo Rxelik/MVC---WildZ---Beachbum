@@ -1074,6 +1074,8 @@ public class Inisializer : MonoBehaviour
     {
         GameManager.Instance.aiScore = 0;
         GameManager.Instance.playerScore = 0;
+        GameManager.Instance.aiScoreUgui.text = 0.ToString();
+        GameManager.Instance.playerScoreUgui.text = 0.ToString();
         GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {

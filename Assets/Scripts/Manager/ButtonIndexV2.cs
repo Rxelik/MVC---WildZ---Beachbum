@@ -161,7 +161,8 @@ public class ButtonIndexV2 : MvcModels
                 && boardModel.TopCard().Number != 44
                 || card.IsBamboozle && boardModel.TopCard().Number == 22
                 || card.IsBamboozle && boardModel.TopCard().Number == 44
-                || boardModel.TopCard().IsBamboozle)
+                || boardModel.TopCard().IsBamboozle
+                || card.IsBamboozle && enemyModel.Cards.Count <=3)
             {
                 #region Bamboozle
                 if (card.IsBamboozle)
@@ -174,7 +175,7 @@ public class ButtonIndexV2 : MvcModels
                     manager.CallColorRise();
                 }
                 #endregion
-
+                    
                 else
                 {
                     boardModel.AddCard(card);
@@ -650,6 +651,7 @@ public class ButtonIndexV2 : MvcModels
             var NormalCards = enemyModel.Cards.Where(c =>
             c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
             || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.IsBamboozle && enemyModel.Cards.Count <= 3
             || c.IsBamboozle && boardModel.TopCard().Number == 22
             || c.IsBamboozle && boardModel.TopCard().Number == 44
             || boardModel.TopCard().IsBamboozle

@@ -86,3 +86,23 @@ firebase/*
 /firebase/firebase_config.js
 
 /src/firebase/*
+
+.idea
+*.pyc
+*.sqlite
+*.egg-info
+*.log
+.venv*/
+.eggs/
+.spyderproject
+build/
+dist/
+docs/source/autoapi/
+pip-wheel-metadata/
+__pycache__/
+tool_specifications/Swedish_hydro/
+tool_specifications/executables/
+projects/
+work/
+.coverage
+htmlcov/

@@ -193,7 +193,11 @@ public class CardMaker : MvcModels
                 //    CardSprite.color = Color.gray;
                 //}
 
-                if (view._CanPlayCard)
+                if (deckView._Inisialize)
+                {
+                    CardSprite.color = Color.white;
+                }
+                else if (view._CanPlayCard)
                 {
                     CardSprite.color = Color.white;
                 }

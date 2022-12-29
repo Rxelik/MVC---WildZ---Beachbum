@@ -88,6 +88,7 @@ public class GameManager : MvcModels
     public int draw = 0;
     public int round = 0;
     public int _targetToWin;
+    public int maxHandSize = 25;
 
     [HideInInspector] public bool clicked = false;
     public List<GameObject> cardsObjects = new List<GameObject>();
@@ -185,7 +186,7 @@ public class GameManager : MvcModels
 
 
 
-                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
+                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > maxHandSize)
                 {
                     if (!gameEnded)
                     {
@@ -217,7 +218,7 @@ public class GameManager : MvcModels
                     }
                 }
 
-                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
+                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > maxHandSize)
                 {
                     if (!gameEnded)
                     {
@@ -275,7 +276,7 @@ public class GameManager : MvcModels
         //    }
         //    if (item.Number == 22 && item.IsWild)
         //    {
-        //        playerScore += 20;
+        //        playerScore += maxHandSize;
         //    }
         //    if (item.Number == 0)
         //    {
@@ -316,7 +317,7 @@ public class GameManager : MvcModels
         //    }
         //    if (item.Number == 22 && item.IsWild)
         //    {
-        //        aiScore += 20;
+        //        aiScore += maxHandSize;
         //    }
         //    if (item.Number == 0)
         //    {
