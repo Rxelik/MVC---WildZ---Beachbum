@@ -38,28 +38,31 @@ public class CurrencyManager : MonoBehaviour
 
     private void Update()
     {
-        currentBalance = money;
-        currency.text = money.ToString();
-       // float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
+        currency.text = currentBalance.ToString();
+        // float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
     }
     void Start()
     {
-        money = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("Currency").LongValue;
-        // currentBalance = PlayerPrefs.GetInt("currency", currentBalance);
-        //if (PlayerPrefs.GetInt("takeMoneyFromFireBase") == 0 ? true : false)
-        //{
-        //    PlayerPrefs.SetInt("takeMoneyFromFireBase", takeMoneyFromFireBase ? 0 : 1);
-        //    PlayerPrefs.SetInt("currency", currentBalance);
-        //    print("TookCurrencyFrom FireBase");
-        //}
-        //else
-        //{
-        //}
+        if (PlayerPrefs.GetInt("takeMoneyFromFireBase") == 0 ? true : false)
+        {
+            PlayerPrefs.SetInt("takeMoneyFromFireBase", takeMoneyFromFireBase ? 0 : 1);
+            money = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("Currency").LongValue;
+            PlayerPrefs.SetInt("currency", money);
+            currentBalance = money;
+            print("TookCurrencyFrom FireBase");
+        }
+        else
+        {
+            currentBalance = PlayerPrefs.GetInt("currency");
+        }
     }
 
+    public void SetCoins()
+    {
+        PlayerPrefs.SetInt("currency", currentBalance);
+    }
     void OnApplicationQuit()
     {
-        PlayerPrefs.SetString("Timer", DateTime.Now.ToString());
         if (!GameManager.Instance.gameEnded)
         {
             OnGameLost();
@@ -81,19 +84,6 @@ public class CurrencyManager : MonoBehaviour
         PlayerPrefs.SetInt("currency", currentBalance);
     }
 
-    public void ClickWhenAvaiable()
-    {
-        timePressed = DateTime.Now.Hour;
-        if (timePressed >= allowClick)
-        {
-            allowClick = 0;
-            allowClick += timePressed + 8;
-            print("AllowClick");
-            currentBalance += 15000;
-            PlayerPrefs.SetInt("currency", currentBalance);
-            PlayerPrefs.SetFloat("timeSinceClick", timePressed);
-        }
-    }
 
 
 }
