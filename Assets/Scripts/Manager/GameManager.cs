@@ -373,9 +373,20 @@ public class GameManager : MvcModels
         var callAnim = new OnColorRiseConfirmedEventArgs();
         OnColorRiseComplete(this, callAnim);
     }
+
+    public void test()
+    {
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(
+            Firebase.Analytics.FirebaseAnalytics.EventSignUp,
+            new Firebase.Analytics.Parameter[] {
+                new Firebase.Analytics.Parameter(
+                    Firebase.Analytics.FirebaseAnalytics.ParameterMethod, "Round Completed"),
+            }
+        );
+    }
     IEnumerator ContinueEnumerator()
     {
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed", new Parameter("Round Number", round));
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("RoundOver", "Current Round ", round);
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
         if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222
@@ -391,12 +402,15 @@ public class GameManager : MvcModels
         if (PlayerWonRound)
         {
             PlayerWon();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round");
+
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !enemyModel.CountingCards());
             yield return new WaitForSeconds(0.25f);
         }
         if (AiWonRound)
         {
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Round");
             AiWon();
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !playerModel.CountingCards());
@@ -405,11 +419,13 @@ public class GameManager : MvcModels
         if (aiScore >= _targetToWin)
         {
             CurrencyManager.Instance.OnGameLost();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game");
             StartCoroutine(WinLooseEnumerator());
         }
         else if (playerScore >= _targetToWin)
         {
             CurrencyManager.Instance.OnGameWon();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game");
             StartCoroutine(WinLooseEnumerator());
         }
         else
