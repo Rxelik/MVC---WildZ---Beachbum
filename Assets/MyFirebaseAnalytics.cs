@@ -43,7 +43,7 @@ public class MyFirebaseAnalytics : MonoBehaviour
         // Set the user ID.
         FirebaseAnalytics.SetUserId("uber_user_510");
         // Set default session duration values.
-        FirebaseAnalytics.SetSessionTimeoutDuration(new TimeSpan(0, 30, 0));
+        FirebaseAnalytics.SetSessionTimeoutDuration(new TimeSpan(2, 30, 0));
         firebaseInitialized = true;
     }
 

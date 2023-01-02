@@ -58,6 +58,7 @@ public class RandomShaffler : MonoBehaviour
     void Update()
     {
         playerNameFO.text = SpriteSelector.Instance.playerName;
+        playerSpriteEnd.sprite = SpriteSelector.Instance.playerSprite.sprite;
     }
     public void Randomize()
     {

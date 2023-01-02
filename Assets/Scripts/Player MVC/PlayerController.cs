@@ -47,7 +47,7 @@ public class PlayerController : IPlayerController
     {
         if (!_manager.gameEnded)
         {
-            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
+           // PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
             //R Y B G
             if (!model.FirstTurn)
             {
@@ -165,7 +165,7 @@ public class PlayerController : IPlayerController
         }
         else
         {
-            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 0.9f), 1, 1);
+            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.2f), 1, 1);
         }
         if (_manager.gameEnded)
         {
@@ -203,7 +203,7 @@ public class PlayerController : IPlayerController
             #region OGway
             model.Cards[i].HandOrder = i;
             model.Cards[i].Layer = CardLayer;
-            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.5f) / model.Cards.Count);
+            Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.0f) / model.Cards.Count);
 
             if (model.Deck.CurrentTurn != "Player")
             {
@@ -296,7 +296,7 @@ public class PlayerController : IPlayerController
             card.BelongsTo = "PlayerCardCount";
             yield return null;
         }
-        GameManager.Instance.CheckIfPlayerWon();
+       // GameManager.Instance.CheckIfPlayerWon();
     }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {

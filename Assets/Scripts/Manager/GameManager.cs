@@ -88,6 +88,7 @@ public class GameManager : MvcModels
     public int draw = 0;
     public int round = 0;
     public int _targetToWin;
+    public int maxHandSize = 25;
 
     [HideInInspector] public bool clicked = false;
     public List<GameObject> cardsObjects = new List<GameObject>();
@@ -164,28 +165,28 @@ public class GameManager : MvcModels
                 aiScoreUgui.text = aiScore.ToString();
                 playerScoreUgui.text = playerScore.ToString();
 
-                if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
-                {
-                    if (aiScore >= _targetToWin)
-                    {
-                        CurrencyManager.Instance.OnGameLost();
-                    }
-                    else if (playerScore >= _targetToWin)
-                    {
-                        CurrencyManager.Instance.OnGameWon();
-                    }
-                    StartCoroutine(WinLooseEnumerator());
-                }
+                //if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
+                //{
+                //    if (aiScore >= _targetToWin)
+                //    {
+                //        CurrencyManager.Instance.OnGameLost();
+                //    }
+                //    else if (playerScore >= _targetToWin)
+                //    {
+                //        CurrencyManager.Instance.OnGameWon();
+                //    }
+                //    StartCoroutine(WinLooseEnumerator());
+                //}
 
-                else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
-                {
+                //else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
+                //{
 
-                    StartCoroutine(ContinueEnumerator());
-                }
+                //    StartCoroutine(ContinueEnumerator());
+                //}
 
 
 
-                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
+                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > maxHandSize)
                 {
                     if (!gameEnded)
                     {
@@ -217,7 +218,7 @@ public class GameManager : MvcModels
                     }
                 }
 
-                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
+                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > maxHandSize)
                 {
                     if (!gameEnded)
                     {
@@ -250,6 +251,7 @@ public class GameManager : MvcModels
     {
         gameEnded = true;
         PlayerWonRound = true;
+        StartCoroutine(ContinueEnumerator());
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
@@ -274,7 +276,7 @@ public class GameManager : MvcModels
         //    }
         //    if (item.Number == 22 && item.IsWild)
         //    {
-        //        playerScore += 20;
+        //        playerScore += maxHandSize;
         //    }
         //    if (item.Number == 0)
         //    {
@@ -294,6 +296,7 @@ public class GameManager : MvcModels
     {
         gameEnded = true;
         AiWonRound = true;
+        StartCoroutine(ContinueEnumerator());
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
@@ -314,7 +317,7 @@ public class GameManager : MvcModels
         //    }
         //    if (item.Number == 22 && item.IsWild)
         //    {
-        //        aiScore += 20;
+        //        aiScore += maxHandSize;
         //    }
         //    if (item.Number == 0)
         //    {
@@ -371,36 +374,65 @@ public class GameManager : MvcModels
         var callAnim = new OnColorRiseConfirmedEventArgs();
         OnColorRiseComplete(this, callAnim);
     }
+
+    public void test()
+    {
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(
+            Firebase.Analytics.FirebaseAnalytics.EventSignUp,
+            new Firebase.Analytics.Parameter[] {
+                new Firebase.Analytics.Parameter(
+                    Firebase.Analytics.FirebaseAnalytics.ParameterMethod, "Round Completed"),
+            }
+        );
+    }
     IEnumerator ContinueEnumerator()
     {
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed", new Parameter("Round Number", round));
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("RoundOver", "Current Round ", round);
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
         if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222
          || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
         }
         else
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
         }
 
         if (PlayerWonRound)
         {
             PlayerWon();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round");
+
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !enemyModel.CountingCards());
             yield return new WaitForSeconds(0.25f);
         }
         if (AiWonRound)
         {
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Round");
             AiWon();
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !playerModel.CountingCards());
             yield return new WaitForSeconds(0.25f);
         }
-        Inisializer.Instance.NewGame();
+        if (aiScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameLost();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game");
+            StartCoroutine(WinLooseEnumerator());
+        }
+        else if (playerScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game");
+            StartCoroutine(WinLooseEnumerator());
+        }
+        else
+        {
+            Inisializer.Instance.NewGame();
+        }
     }
     public void CleanBoard()
     {
