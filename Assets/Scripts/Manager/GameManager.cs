@@ -51,6 +51,7 @@ public class GameManager : MvcModels
     public event EventHandler<OnColorRisingEventArgs> OnColorRised;
     public event EventHandler<OnColorRiseConfirmedEventArgs> OnColorRiseComplete;
 
+
     [Header("TextMeshPro")]
     [Space]
     public TextMeshProUGUI aiCardCount;

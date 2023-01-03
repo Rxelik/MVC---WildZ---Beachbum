@@ -12,6 +12,7 @@ using UnityEditor;
 public class Inisializer : MonoBehaviour
 {
 
+    private int HandSize;
 
     #region Singelton
     public static Inisializer Instance { get; private set; }
@@ -29,7 +30,7 @@ public class Inisializer : MonoBehaviour
         }
     }
     #endregion
-    public int HandSize = 10;
+
     public Server _Server;
     public MvcModels MvcModels;
     public bool FTUI = false;
@@ -37,6 +38,7 @@ public class Inisializer : MonoBehaviour
 
     public IEnumerator Build()
     {
+        HandSize = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HandSize").LongValue;
         //_______________________________________________\\
         GameManager.Instance.gameEnded = false;
         #region Deck
@@ -45,11 +47,11 @@ public class Inisializer : MonoBehaviour
         var _deckmodel = DeckmodelFactory.Model;
         if (AspectRatioChecker.Instance.isOn16by9)
         {
-        _deckmodel.Position = new Vector3(20, 0, 0);
+        _deckmodel.Position = new Vector3(5, 0.5f, 0);
         }
         else
         {
-        _deckmodel.Position = new Vector3(13.5f, 0, 0);
+        _deckmodel.Position = new Vector3(5f, 0.5f, 0);
         }
         // Set some initial state
         //_deckmodel.Position = new Vector3(20, 0, 0);
@@ -72,7 +74,7 @@ public class Inisializer : MonoBehaviour
         var _Boardmodel = BoardmodelFactory.Model;
 
         // Set some initial state
-        //_Boardmodel.Position = new Vector3(20, 0, 0);
+        _Boardmodel.Position = new Vector3(0, 1.5f, 0);
         _Boardmodel.Cards = new List<CardModel>();
         // Create the view
         var BoardviewFactory = new BoardViewFactory();
@@ -1058,7 +1060,6 @@ public class Inisializer : MonoBehaviour
         PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.clicked = true;
         CleanBoard();
-        GameManager.Instance.continueButton.SetActive(false);
         GameManager.Instance.gameEnded = false;
         GameManager.Instance.AiWonRound = false;
         GameManager.Instance.PlayerWonRound = false;
@@ -1081,7 +1082,6 @@ public class Inisializer : MonoBehaviour
         {
             Destroy(GameManager.Instance.cardsObjects[i]);
         }
-        GameManager.Instance.continueButton.SetActive(false);
         GameManager.Instance.gameEnded = false;
         AnimationManager.Instance.DeActiveAnim();
         GameManager.Instance.EndGameCanvas.SetActive(false);

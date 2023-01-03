@@ -7,6 +7,8 @@ using UnityEngine.XR;
 
 public class ButtonIndexV2 : MvcModels
 {
+    public DynamticSize leftSize;
+    public DynamticSize rightSize;
     GameManager manager;
     Server _server;
 
@@ -729,7 +731,8 @@ public class ButtonIndexV2 : MvcModels
 
     public void ChangeTurn(bool anotherTurn)
     {
-
+        leftSize.OnCardSwap(true);
+        rightSize.OnCardSwap(false);
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;

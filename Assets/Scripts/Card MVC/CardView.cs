@@ -223,7 +223,7 @@ public class CardView : MvcModels, ICardView
 
         else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
-            gameObject.transform.localScale = new Vector3(0.8f, 0.8f);
+            gameObject.transform.localScale = new Vector3(0.2f, 0.2f);
 
             if (_IsWild)
             {
@@ -262,35 +262,51 @@ public class CardView : MvcModels, ICardView
 
         else if (_inspectorBelongsTo == "Deck")
         {
-            if (AspectRatioChecker.Instance.isOn16by9)
-            {
-                gameObject.transform.localScale = new Vector3(1f, 1f);
-            }
-            else
-                gameObject.transform.localScale = new Vector3(0.85f, 0.85f);
             Layer = 3;
         }
 
+        else if (_inspectorBelongsTo == "FlyingToEnemy")
+        {
+          //  gameObject.transform.localScale = new Vector3(1f, 1f);
+        }
         else if (_inspectorBelongsTo == "Enemy")
         {
-            gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
-        }
-        else if (_inspectorBelongsTo == "EnemyFinish")
-        {
-            gameObject.transform.localScale = new Vector3(0.8f, 0.8f);
+            if (!wentIntoEnemy)
+            {
+                StartCoroutine(MinimizePlayerCards());
+            }
         }
 
-        else if (_inspectorBelongsTo == "Player")
+        else if (_inspectorBelongsTo == "Player" || _inspectorBelongsTo == "FlyingToPlayer" || _inspectorBelongsTo == "EnemyFinish")
         {
 
             //  Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, ((_inspectOrderInHand + 0.5f) / playerModel.Cards.Count));
-            gameObject.transform.localScale = new Vector3(1.2f, 1.2f);
 
             if (AspectRatioChecker.Instance.isOn16by9)
             {
+                gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
             }
             else
+            {
                 gameObject.transform.localScale = new Vector3(0.85f, 0.85f);
+            }
+        }
+    }
+
+    private bool wentIntoEnemy = false;
+    private IEnumerator MinimizePlayerCards()
+    {
+        wentIntoEnemy = true;
+        float t = 0;
+        float duration = 0.45f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            gameObject.transform.localScale =
+                Vector3.Lerp(
+                    new Vector3(0.1f, 0.1f, 0.1f), new Vector3(0.05f, 0.05f, 0.05f), t / duration);
+            yield return null;
         }
     }
 }

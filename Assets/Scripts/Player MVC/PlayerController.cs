@@ -165,11 +165,11 @@ public class PlayerController : IPlayerController
         }
         else
         {
-            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.2f), 1, 1);
+            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 20f, 0.005f, 0.65f), 1, 1);
         }
-        if (_manager.gameEnded)
+        if (_manager.gameEnded) 
         {
-            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, -7, -8);
+            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y +1f, PositionPoints.Instance.transform.position.z);
         }
         else
         {
@@ -207,7 +207,7 @@ public class PlayerController : IPlayerController
 
             if (model.Deck.CurrentTurn != "Player")
             {
-                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                model.Cards[i].Position = new Vector3(pointInPath.x +0.7f, pointInPath.y, -CardLayer);
 
                 if (model.Cards[i].BelongsTo == "PlayerFinish" || model.Cards[i].BelongsTo == "PlayerCardCount")
                     model.Cards[i].CanPlayCard = true;
@@ -221,17 +221,17 @@ public class PlayerController : IPlayerController
                 {
                     if (AspectRatioChecker.Instance.isOn16by9)
                     {
-                        model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 1.50f, -CardLayer);
+                        model.Cards[i].Position = new Vector3(pointInPath.x +0.7f, pointInPath.y + 0.4f, -CardLayer);
                     }
                     else
                     {
-                        model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y + 1f, -CardLayer);
+                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y + 1f, -CardLayer);
                     }
                 }
                 else
                 {
                     // model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
-                    model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
                 }
 
             }
@@ -252,7 +252,7 @@ public class PlayerController : IPlayerController
             //    model.Cards[i].Rotation = Quaternion.Euler(0, 0, model.Cards[i].HandOrder * 0.25f);
             //}
             float rotate = model.Cards[i].HandOrder - model.Cards.Count / 2;
-            model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -0.75f);
+            model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -0.9f);
 
             #endregion
             if (model.Cards[i].BelongsTo == "Player")

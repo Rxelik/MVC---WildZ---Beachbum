@@ -67,7 +67,7 @@ public class EnemyController : IEnemyController
             }
             else if (model.Cards[i].BelongsTo == "EnemyFinish")
             {
-                PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
+                PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 20f, 0.005f, 0.65f), 1, 1);
                 PositionPoints.Instance.transform.position = Vector3.zero;
                 model.Cards[i].HandOrder = i;
                 model.Cards[i].Layer = CardLayer;
