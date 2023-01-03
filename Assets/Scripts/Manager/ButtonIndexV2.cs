@@ -73,10 +73,16 @@ public class ButtonIndexV2 : MvcModels
                         {
                             //ColorPick makes the Card to be in Board without being refed to Player/Opponent 
                             playerModel.RemoveCard(manager.chosenCard);
-                            manager.chosenCard.BelongsTo = "ColorPick";
-                            manager.chosenCard.Layer = 1000;
-                            //Calls for event of ColorPicker Animation
-                            manager.CallChooseCard();
+                            if (playerModel.Cards.Count == 0)
+                            {
+                                boardModel.AddCard(manager.chosenCard);
+                            }
+                            else
+                            {
+                                manager.chosenCard.BelongsTo = "ColorPick";
+                                manager.chosenCard.Layer = 1000;
+                                manager.CallChooseCard();
+                            }
                         }
                         //Opens 4 Invisible Buttons on top ofColorPick Animation!
                         playerCardChooser.SetActive(true);
@@ -162,7 +168,7 @@ public class ButtonIndexV2 : MvcModels
                 || card.IsBamboozle && boardModel.TopCard().Number == 22
                 || card.IsBamboozle && boardModel.TopCard().Number == 44
                 || boardModel.TopCard().IsBamboozle
-                || card.IsBamboozle && enemyModel.Cards.Count <=3)
+                || card.IsBamboozle && enemyModel.Cards.Count <= 3)
             {
                 #region Bamboozle
                 if (card.IsBamboozle)
@@ -175,7 +181,7 @@ public class ButtonIndexV2 : MvcModels
                     manager.CallColorRise();
                 }
                 #endregion
-                    
+
                 else
                 {
                     boardModel.AddCard(card);

@@ -35,6 +35,7 @@ public class RandomShaffler : MonoBehaviour
     
     public Image aiSpriteEnd;
     public SpriteRenderer aiSpriteFO;
+    public SpriteRenderer playerSpriteFO;
     public Image playerSpriteEnd;
     public SpriteRenderer backGroundImage;
 
@@ -51,14 +52,13 @@ public class RandomShaffler : MonoBehaviour
     void Start()
     {
         manager = GameManager.Instance;
-
-
     }
 
     void Update()
     {
         playerNameFO.text = SpriteSelector.Instance.playerName;
-        playerSpriteEnd.sprite = SpriteSelector.Instance.playerSprite.sprite;
+        playerSpriteEnd.sprite = playerSprite.sprite;
+        aiSpriteEnd.sprite = aiSprite.sprite;
     }
     public void Randomize()
     {

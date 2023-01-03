@@ -11146,7 +11146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -9.236, y: 0, z: 0}
   m_AnchorMin: {x: 5.665, y: 3.56}
   m_AnchorMax: {x: 5.665, y: 3.56}
-  m_AnchoredPosition: {x: 1687.9995, y: 803.0001}
+  m_AnchoredPosition: {x: 1687.9995, y: 803.00024}
   m_SizeDelta: {x: 5770, y: 2280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470842729
@@ -12598,7 +12598,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 420:69:1337
+  m_Text: 0
 --- !u!222 &1654946028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16252,9 +16252,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9c7b51edebec700459a1db37eba48820, type: 3}
   aiSprite: {fileID: 2070951215}
   playerSprite: {fileID: 418297745}
-  aiSpriteEnd: {fileID: 2070951215}
+  aiSpriteEnd: {fileID: 4288678956934431441}
   aiSpriteFO: {fileID: 87931518}
-  playerSpriteEnd: {fileID: 418297745}
+  playerSpriteFO: {fileID: 0}
+  playerSpriteEnd: {fileID: 4288678955522562593}
   backGroundImage: {fileID: 659210077}
   aiName: {fileID: 979212488}
   playerName: {fileID: 284604050}
@@ -16582,7 +16583,7 @@ PrefabInstance:
     - target: {fileID: 460349926720236649, guid: 8c68f997ad8df4a49af46319f045bd2e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 428.00122
+      value: 428.00098
       objectReference: {fileID: 0}
     - target: {fileID: 460349926720236649, guid: 8c68f997ad8df4a49af46319f045bd2e,
         type: 3}
@@ -23206,7 +23207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30.936}
   m_AnchorMin: {x: 8.9687195, y: 0.640512}
   m_AnchorMax: {x: 10.851303, y: 1.2794886}
-  m_AnchoredPosition: {x: 1124.4794, y: 45.860012}
+  m_AnchoredPosition: {x: 1124.4794, y: 45.860016}
   m_SizeDelta: {x: 29.18, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8852777156821672706
