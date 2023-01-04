@@ -64,6 +64,7 @@ public class CardMaker : MvcModels
         bool downing = false;
         while (t < duration)
         {
+            CardSprite.color = Color.white;
             t += Time.deltaTime / duration;
             CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / (duration - 1));
             if (cardcounter.color.a <= 0.88 && !downing)
@@ -102,6 +103,12 @@ public class CardMaker : MvcModels
     private bool faded = false;
     private void Update()
     {
+
+        if (view._inspectorBelongsTo == "Board" && GameManager.Instance.gameEnded)
+        {
+
+        }
+
         if (view._inspectorBelongsTo == "Board" && GameManager.Instance.gameEnded)
         {
             if (!didntEnter)
@@ -186,6 +193,8 @@ public class CardMaker : MvcModels
                 CardSprite.sprite = CardBack;
                 CardSprite.color = new Color(0, 0, 0, 0);
             }
+
+
             if (view._inspectorBelongsTo == "Player")
             {
                 //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
