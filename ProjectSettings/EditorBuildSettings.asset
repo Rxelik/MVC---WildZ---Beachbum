@@ -9,11 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Loading Screen.unity
     guid: ab978a356ef324f4596429699d3e0be4
   - enabled: 1
-<<<<<<< HEAD
-    path: Assets/Scenes/TEST/AllSizeTest.unity
-    guid: 0bb84eb1931e04f09b942acd974aef58
-=======
     path: Assets/Scenes/Final Scenes/Scale.unity
     guid: 86dda58d579fa2c43b6554b4e7af23e8
->>>>>>> main
   m_configObjects: {}
