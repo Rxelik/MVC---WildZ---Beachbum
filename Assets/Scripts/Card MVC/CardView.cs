@@ -288,7 +288,7 @@ public class CardView : MvcModels, ICardView
             }
             else
             {
-                gameObject.transform.localScale = new Vector3(0.85f, 0.85f);
+                gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
             }
         }
     }

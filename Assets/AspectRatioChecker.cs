@@ -61,7 +61,7 @@ public class AspectRatioChecker : MonoBehaviour
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        if (arg0.buildIndex == 0)
+        if (arg0.name == "Loading Screen")
             inMainMenu = true;
         else
             inMainMenu = false;

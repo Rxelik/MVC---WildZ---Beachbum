@@ -4,6 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class AnchorGameObject : MonoBehaviour
 {
+    [SerializeField] float ResizeFor4_3 = 1;
     public enum AnchorType
     {
         BottomLeft,
@@ -27,8 +28,13 @@ public class AnchorGameObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (!AspectRatioChecker.Instance.isOn16by9)
+        {
+            transform.localScale *= ResizeFor4_3;
+        }
         updateAnchorRoutine = UpdateAnchorAsync();
         StartCoroutine(updateAnchorRoutine);
+
     }
 
     /// <summary>
