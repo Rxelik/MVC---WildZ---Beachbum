@@ -17,7 +17,7 @@ public class DynamticSize : MvcModels
         {
             if (left)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y - (playerModel.Cards.Count / 480f), transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y - (playerModel.Cards.Count / 490f), transform.position.z);
             }
             else
             {

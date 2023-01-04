@@ -161,7 +161,7 @@ public class PlayerController : IPlayerController
     {
         if (!AspectRatioChecker.Instance.isOn16by9)
         {
-            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 0.8f), 1, 1);
+            PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 20f, 0.001f, 0.55f), 1, 1);
         }
         else
         {
@@ -171,10 +171,10 @@ public class PlayerController : IPlayerController
         {
             PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y +1f, PositionPoints.Instance.transform.position.z);
         }
-        else
-        {
-            PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
-        }
+        //else
+        //{
+        //    PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
+        //}
         //R Y B G
         if (!model.FirstTurn)
         {
@@ -207,7 +207,14 @@ public class PlayerController : IPlayerController
 
             if (model.Deck.CurrentTurn != "Player")
             {
-                model.Cards[i].Position = new Vector3(pointInPath.x +0.7f, pointInPath.y, -CardLayer);
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
+                }
+                else
+                {
+                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y - 2, -CardLayer);
+                }
 
                 if (model.Cards[i].BelongsTo == "PlayerFinish" || model.Cards[i].BelongsTo == "PlayerCardCount")
                     model.Cards[i].CanPlayCard = true;
@@ -225,13 +232,19 @@ public class PlayerController : IPlayerController
                     }
                     else
                     {
-                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y + 1f, -CardLayer);
+                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y - 1.5f, -CardLayer);
                     }
                 }
                 else
                 {
-                    // model.Cards[i].Position = new Vector3(-model.Cards.Count - 5 + moveRight, -12f, -CardLayer);
-                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
+                    if (AspectRatioChecker.Instance.isOn16by9)
+                    {
+                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
+                    }
+                    else
+                    {
+                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y - 2, -CardLayer);
+                    }
                 }
 
             }

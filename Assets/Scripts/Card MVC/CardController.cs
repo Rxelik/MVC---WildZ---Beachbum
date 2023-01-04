@@ -100,7 +100,7 @@ public class CardController : ICardController
                 t += Time.deltaTime / duration;
                 if (AspectRatioChecker.Instance.isOn16by9)
                 {
-                    view.Position = Vector3.Lerp(view.Position,new Vector3(0, 2.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                    view.Position = Vector3.Lerp(MvcModels.deckView.transform.position, new Vector3(0, 2.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 }
                 else
                 {
@@ -144,7 +144,7 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
+                view.Position = Vector3.Lerp(MvcModels.deckView.transform.position, model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
             }
             model.BelongsTo = "Player";
