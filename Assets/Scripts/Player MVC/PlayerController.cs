@@ -47,7 +47,7 @@ public class PlayerController : IPlayerController
     {
         if (!_manager.gameEnded)
         {
-           // PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
+            // PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
             //R Y B G
             if (!model.FirstTurn)
             {
@@ -167,9 +167,9 @@ public class PlayerController : IPlayerController
         {
             PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 20f, 0.005f, 0.65f), 1, 1);
         }
-        if (_manager.gameEnded) 
+        if (_manager.gameEnded)
         {
-            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y +1f, PositionPoints.Instance.transform.position.z);
+            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y + 1f, PositionPoints.Instance.transform.position.z);
         }
         //else
         //{
@@ -207,15 +207,7 @@ public class PlayerController : IPlayerController
 
             if (model.Deck.CurrentTurn != "Player")
             {
-                if (AspectRatioChecker.Instance.isOn16by9)
-                {
-                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
-                }
-                else
-                {
-                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y - 2, -CardLayer);
-                }
-
+                model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
                 if (model.Cards[i].BelongsTo == "PlayerFinish" || model.Cards[i].BelongsTo == "PlayerCardCount")
                     model.Cards[i].CanPlayCard = true;
                 else
@@ -226,25 +218,11 @@ public class PlayerController : IPlayerController
 
                 if (model.Cards[i].CanPlayCardTest())
                 {
-                    if (AspectRatioChecker.Instance.isOn16by9)
-                    {
-                        model.Cards[i].Position = new Vector3(pointInPath.x +0.7f, pointInPath.y + 0.4f, -CardLayer);
-                    }
-                    else
-                    {
-                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y - 1.5f, -CardLayer);
-                    }
+                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y + 0.4f, -CardLayer);
                 }
                 else
                 {
-                    if (AspectRatioChecker.Instance.isOn16by9)
-                    {
-                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
-                    }
-                    else
-                    {
-                        model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y - 2, -CardLayer);
-                    }
+                    model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
                 }
 
             }
@@ -309,7 +287,7 @@ public class PlayerController : IPlayerController
             card.BelongsTo = "PlayerCardCount";
             yield return null;
         }
-       // GameManager.Instance.CheckIfPlayerWon();
+        // GameManager.Instance.CheckIfPlayerWon();
     }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {

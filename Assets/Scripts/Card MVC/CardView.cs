@@ -223,7 +223,14 @@ public class CardView : MvcModels, ICardView
 
         else if (_inspectorBelongsTo == "Board" || _inspectorBelongsTo == "ColorPick")
         {
-            gameObject.transform.localScale = new Vector3(0.2f, 0.2f);
+            if (AspectRatioChecker.Instance.isOn16by9)
+            {
+                gameObject.transform.localScale = new Vector3(0.2f, 0.2f);
+            }
+            else
+            {
+                gameObject.transform.localScale = new Vector3(0.25f, 0.25f);
+            }
 
             if (_IsWild)
             {
@@ -288,7 +295,7 @@ public class CardView : MvcModels, ICardView
             }
             else
             {
-                gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
+                gameObject.transform.localScale = new Vector3(0.35f, 0.35f);
             }
         }
     }
@@ -305,7 +312,7 @@ public class CardView : MvcModels, ICardView
             t += Time.deltaTime / duration;
             gameObject.transform.localScale =
                 Vector3.Lerp(
-                    new Vector3(0.1f, 0.1f, 0.1f), new Vector3(0.05f, 0.05f, 0.05f), t / duration);
+                    new Vector3(0.1f, 0.1f, 0.1f), new Vector3(0.01f, 0.01f, 0.01f), t / duration);
             yield return null;
         }
     }

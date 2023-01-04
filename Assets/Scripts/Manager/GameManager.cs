@@ -408,7 +408,7 @@ public class GameManager : MvcModels
 
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !enemyModel.CountingCards());
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(1);
         }
         if (AiWonRound)
         {
@@ -416,7 +416,7 @@ public class GameManager : MvcModels
             AiWon();
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !playerModel.CountingCards());
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(1f);
         }
         if (aiScore >= _targetToWin)
         {

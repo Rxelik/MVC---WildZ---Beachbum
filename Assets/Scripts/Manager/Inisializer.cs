@@ -1057,13 +1057,13 @@ public class Inisializer : MonoBehaviour
         {
             return;
         }
+        CleanBoard();
+        AnimationManager.Instance.DeActiveAnim();
         PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.clicked = true;
-        CleanBoard();
         GameManager.Instance.gameEnded = false;
         GameManager.Instance.AiWonRound = false;
         GameManager.Instance.PlayerWonRound = false;
-        AnimationManager.Instance.DeActiveAnim();
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();
@@ -1073,6 +1073,7 @@ public class Inisializer : MonoBehaviour
     }
     public void Rematch()
     {
+        PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.aiScore = 0;
         GameManager.Instance.playerScore = 0;
         GameManager.Instance.aiScoreUgui.text = 0.ToString();
