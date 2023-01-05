@@ -730,9 +730,7 @@ public class ButtonIndexV2 : MvcModels
     }
 
     public void ChangeTurn(bool anotherTurn)
-    {
-        leftSize.OnCardSwap(true);
-        rightSize.OnCardSwap(false);
+    {   
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;

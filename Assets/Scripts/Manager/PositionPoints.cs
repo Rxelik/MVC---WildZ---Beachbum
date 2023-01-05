@@ -24,6 +24,8 @@ public class PositionPoints : MvcModels
     public Transform[] positionPoints;
     public Transform _LookAt;
 
+    public DynamticSize LeftSize;
+    public DynamticSize RightSize;
     private void Start()
     {
         if (!AspectRatioChecker.Instance.isOn16by9)
@@ -37,4 +39,15 @@ public class PositionPoints : MvcModels
         iTween.DrawPath(positionPoints);
     }
 
+    public void FixSides()
+    {
+        LeftSize.OnCardSwap(true);
+        RightSize.OnCardSwap(false);
+    }
+    public void ResetPosition()
+    {
+        transform.position = defultPos;
+        LeftSize.ResetAnchors();
+        RightSize.ResetAnchors();
+    }
 }
