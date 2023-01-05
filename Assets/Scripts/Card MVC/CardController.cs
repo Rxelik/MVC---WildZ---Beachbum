@@ -70,6 +70,15 @@ public class CardController : ICardController
         {
             _manager.StartCoroutine(Lerp());
         }
+
+        if (model.BelongsTo == "EnemyCardCount")
+        {
+            _manager.StartCoroutine(EnemyLostAnim());
+        }
+        if (model.BelongsTo == "PlayerCardCount")
+        {
+            _manager.StartCoroutine(PlayerLostAnim());
+        }
     }
 
     // Called when the view is clicked
@@ -91,13 +100,11 @@ public class CardController : ICardController
                 t += Time.deltaTime / duration;
                 if (AspectRatioChecker.Instance.isOn16by9)
                 {
-                    view.Position = Vector3.Lerp(new Vector3(20, 0, 0),
-                        new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                    view.Position = Vector3.Lerp(MvcModels.deckView.transform.position, new Vector3(0, 2.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 }
                 else
                 {
-                    view.Position = Vector3.Lerp(new Vector3(13.5f, 0, 0),
-                        new Vector3(0, 8.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                    view.Position = Vector3.Lerp(view.Position, new Vector3(0, 2.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 }
                 yield return null;
                 model.BelongsTo = "Enemy";
@@ -107,11 +114,18 @@ public class CardController : ICardController
         }
         if (model.BelongsTo == "EnemyFinish")
         {
-            Debug.Log(model.Enemy.Cards[model.HandOrder].Position);
-            while (t < 1f)
+            while (t < 1.5f)
             {
-                t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(view.Position, model.Enemy.Cards[model.HandOrder].Position, t / duration);
+                t += Time.deltaTime / 1.5f;
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    view.Position = Vector3.Lerp(view.Position, model.Enemy.Cards[model.HandOrder].Position, view.Curve.Evaluate(t / 1.5f));
+                }
+                else
+                {
+                    view.Position = Vector3.Lerp(view.Position, model.Enemy.Cards[model.HandOrder].Position, view.Curve.Evaluate(t / 1.5f));
+                }
+                SyncData();
                 yield return null;
             }
         }
@@ -130,7 +144,7 @@ public class CardController : ICardController
             while (t < duration)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, t / duration);
+                view.Position = Vector3.Lerp(MvcModels.deckView.transform.position, model.Player.Cards[model.HandOrder].Position, t / duration);
                 yield return null;
             }
             model.BelongsTo = "Player";
@@ -162,7 +176,7 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, new Vector2(0, -0.5f), view.Curve.Evaluate(t / duration));
+                view.Position = Vector2.Lerp(model.Position, new Vector2(0, 0.3f), view.Curve.Evaluate(t / duration));
 
                 yield return null;
             }
@@ -191,7 +205,7 @@ public class CardController : ICardController
 
                 if (AspectRatioChecker.Instance.isOn16by9)
                 {
-                    view.Position = Vector3.Lerp(Vector3.zero, new Vector3(20, 0, 0), t / duration);
+                    view.Position = Vector3.Lerp(Vector3.zero, MvcModels.deckModel.Position, t / duration);
 
                 }
                 else
@@ -202,10 +216,56 @@ public class CardController : ICardController
                 yield return null;
             }
         }
+
+        if (model.BelongsTo == "PlayerFinish")
+        {
+            while (t < 1.5f)
+            {
+                t += Time.deltaTime / 1.5f;
+                if (AspectRatioChecker.Instance.isOn16by9)
+                {
+                    view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, view.Curve.Evaluate(t / 1.5f));
+                }
+                else
+                {
+                    view.Position = Vector3.Lerp(view.Position, model.Player.Cards[model.HandOrder].Position, view.Curve.Evaluate(t / 1.5f));
+                }
+                yield return null;
+            }
+        }
         SyncData();
     }
 
-    // Called when the model's position changes
+    private IEnumerator EnemyLostAnim()
+    {
+        float t = 0;
+        float duration = 0.45f;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            view.Position = Vector3.Lerp(view.Position, new Vector3(model.Position.x, model.Position.y + 0.5f, model.Position.z),
+                view.Curve.Evaluate(t / duration));
+            view.NumCounter.SetActive(true);
+            model.BelongsTo = "EnemeyCardCounted";
+            yield return null;
+        }
+    }
+
+    private IEnumerator PlayerLostAnim()
+    {
+        float t = 0;
+        float duration = 0.45f;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            view.Position = Vector3.Lerp(view.Position, new Vector3(model.Position.x, model.Position.y + 0.5f, model.Position.z),
+                view.Curve.Evaluate(t / duration));
+            view.NumCounter.SetActive(true);
+            model.BelongsTo = "PlayerCardCounted";  
+            yield return null;
+        }
+        view.BelongsTo = model.BelongsTo;
+    }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {
         // _manager.StartCoroutine(Lerp());
@@ -256,7 +316,7 @@ public class CardController : ICardController
 
     void SyncEnemyData()
     {
-        if (model.BelongsTo == "Enemy")
+        if (model.BelongsTo == "Enemy" || model.BelongsTo == "EnemyFinish")
         {
             view.BelongsTo = model.BelongsTo;
 

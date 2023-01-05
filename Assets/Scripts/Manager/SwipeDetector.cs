@@ -43,37 +43,40 @@ public class SwipeDetector : MvcModels
         duration = 0;
         is_touched = false;
     }
-    
+
     private void ProcessInput()
     {
-
-        if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
+        if (!GameManager.Instance.gameEnded)
         {
-            OnTap();
-
-        }
-        if (is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
-        {
-            is_touched = false;
-            // rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-            if (rayHit.collider.gameObject.GetComponent<CardView>()._inspectorBelongsTo == "Player")
+            if (!is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
             {
-                playerModel.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer -= 20;
-                rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-                if (rayHit.collider.gameObject.GetComponent<CardView>()._CanPlayCard)
+                OnTap();
+
+            }
+            if (is_touched && (Input.GetTouch(0).phase == TouchPhase.Ended))
+            {
+                is_touched = false;
+                // rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
+                if (rayHit.collider.gameObject.GetComponent<CardView>()._inspectorBelongsTo == "Player")
                 {
-                }
-                else
-                {
-                    rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector3(rayHit.collider.gameObject.GetComponent<CardView>().
-                    gameObject.transform.position.x,
-                    rayHit.collider.gameObject.GetComponent<CardView>().
-                    gameObject.transform.position.y - 5,
-                    rayHit.collider.gameObject.GetComponent<CardView>().
-                    gameObject.transform.position.z);
+                    playerModel.Cards[rayHit.collider.gameObject.GetComponent<CardView>()._inspectOrderInHand].Layer -= 20;
+                    rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                    if (rayHit.collider.gameObject.GetComponent<CardView>()._CanPlayCard)
+                    {
+                    }
+                    else
+                    {
+                        rayHit.collider.gameObject.GetComponent<CardView>().gameObject.transform.position = new Vector3(rayHit.collider.gameObject.GetComponent<CardView>().
+                                gameObject.transform.position.x,
+                            rayHit.collider.gameObject.GetComponent<CardView>().
+                                gameObject.transform.position.y - 5,
+                            rayHit.collider.gameObject.GetComponent<CardView>().
+                                gameObject.transform.position.z);
+                    }
                 }
             }
         }
+
     }
 
     //Callback function, when just a short tap occurs
@@ -135,7 +138,7 @@ public class SwipeDetector : MvcModels
             }
         }
 
-        if (time >=0.5f)
+        if (time >= 0.5f)
         {
             if (Input.touchCount > 0)
                 ProcessInput();

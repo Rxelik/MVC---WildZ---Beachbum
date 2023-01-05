@@ -60,11 +60,12 @@ public class DeckView : MvcModels, IDeckView
         {
             ShuffleCards();
         }
-        if (!GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
+
+        if (!GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed && !GameManager.Instance.gameEnded)
         {
             pointerVFX.SetActive(true);
         }
-        else if (GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed)
+        else if (GameManager.Instance.playerCanPlay && deckModel.CurrentTurn == "Player" && !GameManager.Instance.playerPlayed && !GameManager.Instance.gameEnded)
         {
             pointerVFX.SetActive(false);
         }

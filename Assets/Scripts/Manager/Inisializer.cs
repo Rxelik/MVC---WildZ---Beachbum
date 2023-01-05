@@ -12,6 +12,7 @@ using UnityEditor;
 public class Inisializer : MonoBehaviour
 {
 
+    private int HandSize;
 
     #region Singelton
     public static Inisializer Instance { get; private set; }
@@ -29,7 +30,7 @@ public class Inisializer : MonoBehaviour
         }
     }
     #endregion
-    public int HandSize = 10;
+
     public Server _Server;
     public MvcModels MvcModels;
     public bool FTUI = false;
@@ -37,6 +38,7 @@ public class Inisializer : MonoBehaviour
 
     public IEnumerator Build()
     {
+        HandSize = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HandSize").LongValue;
         //_______________________________________________\\
         GameManager.Instance.gameEnded = false;
         #region Deck
@@ -45,11 +47,11 @@ public class Inisializer : MonoBehaviour
         var _deckmodel = DeckmodelFactory.Model;
         if (AspectRatioChecker.Instance.isOn16by9)
         {
-        _deckmodel.Position = new Vector3(20, 0, 0);
+        _deckmodel.Position = new Vector3(5, 0.5f, 0);
         }
         else
         {
-        _deckmodel.Position = new Vector3(13.5f, 0, 0);
+        _deckmodel.Position = new Vector3(5f, 0.5f, 0);
         }
         // Set some initial state
         //_deckmodel.Position = new Vector3(20, 0, 0);
@@ -72,7 +74,7 @@ public class Inisializer : MonoBehaviour
         var _Boardmodel = BoardmodelFactory.Model;
 
         // Set some initial state
-        //_Boardmodel.Position = new Vector3(20, 0, 0);
+        _Boardmodel.Position = new Vector3(0, 1.5f, 0);
         _Boardmodel.Cards = new List<CardModel>();
         // Create the view
         var BoardviewFactory = new BoardViewFactory();
@@ -111,6 +113,7 @@ public class Inisializer : MonoBehaviour
 
         #endregion
         MvcModels.playerModel = (PlayerModel)_playermodel;
+        MvcModels.playerView = (PlayerView)_view;
         //_______________________________________________\\
 
         #region Enemy
@@ -135,6 +138,8 @@ public class Inisializer : MonoBehaviour
 
         #endregion
         MvcModels.enemyModel = (EnemyModel)_Enemyermodel;
+        MvcModels.enemyView = (EnemyView)Enemyview;
+
 
         //_______________________________________________\\
 
@@ -1048,40 +1053,58 @@ public class Inisializer : MonoBehaviour
     }
     public void NewGame()
     {
-        GameManager.Instance.clicked = true;
+        if (GameManager.Instance.playerScore >= GameManager.Instance._targetToWin || GameManager.Instance.aiScore >= GameManager.Instance._targetToWin)
+        {
+            return;
+        }
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {
             Destroy(GameManager.Instance.cardsObjects[i]);
         }
-        GameManager.Instance.continueButton.SetActive(false);
-        GameManager.Instance.gameEnded = false;
         AnimationManager.Instance.DeActiveAnim();
+        GameManager.Instance.clicked = true;
+        GameManager.Instance.gameEnded = false;
+        GameManager.Instance.AiWonRound = false;
+        GameManager.Instance.PlayerWonRound = false;
+        PositionPoints.Instance.ResetPosition();
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();
         GameManager.Instance.playerPlayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
+        GameManager.Instance.draw = 0;
     }
     public void Rematch()
     {
         GameManager.Instance.aiScore = 0;
         GameManager.Instance.playerScore = 0;
+        GameManager.Instance.aiScoreUgui.text = 0.ToString();
+        GameManager.Instance.playerScoreUgui.text = 0.ToString();
         GameManager.Instance.clicked = true;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {
             Destroy(GameManager.Instance.cardsObjects[i]);
         }
-        GameManager.Instance.continueButton.SetActive(false);
         GameManager.Instance.gameEnded = false;
         AnimationManager.Instance.DeActiveAnim();
         GameManager.Instance.EndGameCanvas.SetActive(false);
         GameManager.Instance.uiCanvas.SetActive(true);
+        PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();
         GameManager.Instance.playerPlayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
+        GameManager.Instance.draw = 0;
+    }
+
+    public void CleanBoard()
+    {
+        for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
+        {
+            Destroy(GameManager.Instance.cardsObjects[i]);
+        }
     }
 }

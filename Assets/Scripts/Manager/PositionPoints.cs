@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PositionPoints : MvcModels
 {
+    public Vector3 defultPos;
     #region Singelton
     public static PositionPoints Instance { get; private set; }
     private void Awake()
@@ -23,9 +24,30 @@ public class PositionPoints : MvcModels
     public Transform[] positionPoints;
     public Transform _LookAt;
 
+    public DynamticSize LeftSize;
+    public DynamticSize RightSize;
+    private void Start()
+    {
+        if (!AspectRatioChecker.Instance.isOn16by9)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 2.2f, transform.position.z);
+        }
+        defultPos = transform.position;
+    }
     private void OnDrawGizmos()
     {
         iTween.DrawPath(positionPoints);
     }
-    
+
+    public void FixSides()
+    {
+        LeftSize.OnCardSwap(true);
+        RightSize.OnCardSwap(false);
+    }
+    public void ResetPosition()
+    {
+        transform.position = defultPos;
+        LeftSize.ResetAnchors();
+        RightSize.ResetAnchors();
+    }
 }

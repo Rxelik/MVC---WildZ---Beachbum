@@ -7,6 +7,8 @@ using UnityEngine.XR;
 
 public class ButtonIndexV2 : MvcModels
 {
+    public DynamticSize leftSize;
+    public DynamticSize rightSize;
     GameManager manager;
     Server _server;
 
@@ -73,10 +75,16 @@ public class ButtonIndexV2 : MvcModels
                         {
                             //ColorPick makes the Card to be in Board without being refed to Player/Opponent 
                             playerModel.RemoveCard(manager.chosenCard);
-                            manager.chosenCard.BelongsTo = "ColorPick";
-                            manager.chosenCard.Layer = 1000;
-                            //Calls for event of ColorPicker Animation
-                            manager.CallChooseCard();
+                            if (playerModel.Cards.Count == 0)
+                            {
+                                boardModel.AddCard(manager.chosenCard);
+                            }
+                            else
+                            {
+                                manager.chosenCard.BelongsTo = "ColorPick";
+                                manager.chosenCard.Layer = 1000;
+                                manager.CallChooseCard();
+                            }
                         }
                         //Opens 4 Invisible Buttons on top ofColorPick Animation!
                         playerCardChooser.SetActive(true);
@@ -161,7 +169,8 @@ public class ButtonIndexV2 : MvcModels
                 && boardModel.TopCard().Number != 44
                 || card.IsBamboozle && boardModel.TopCard().Number == 22
                 || card.IsBamboozle && boardModel.TopCard().Number == 44
-                || boardModel.TopCard().IsBamboozle)
+                || boardModel.TopCard().IsBamboozle
+                || card.IsBamboozle && enemyModel.Cards.Count <= 3)
             {
                 #region Bamboozle
                 if (card.IsBamboozle)
@@ -171,7 +180,7 @@ public class ButtonIndexV2 : MvcModels
                     model.RemoveCard(card);
                     ChangeTurn(true);
                     AIplayed = false;
-                    manager.CallColorChanged();
+                    manager.CallColorRise();
                 }
                 #endregion
 
@@ -206,8 +215,8 @@ public class ButtonIndexV2 : MvcModels
     IEnumerator PlayBambo(CardModel card, PlayerModel model)
     {
         yield return new WaitForSeconds(0.15f);
-        manager.CallColorChanged();
         manager.draw = 0;
+        manager.CallColorRise();
         boardModel.AddCard(card);
         model.RemoveCard(card);
         ChangeTurn(true);
@@ -462,24 +471,23 @@ public class ButtonIndexV2 : MvcModels
         if (playerModel.HasCounter())
         {
             manager.draw += 2;
-            manager.CallPlusAnimation();
             ChangeTurn(false);
+            manager.CallPlusAnimation();
         }
         else
         {
             if (manager.draw == 0)
             {
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(playerModel.TakeCard(2));
                 card.Number = 222;
                 ChangeTurn(true);
-
                 AIplayed = false;
             }
             else
             {
                 manager.draw += 2;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(playerModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 222;
@@ -507,7 +515,7 @@ public class ButtonIndexV2 : MvcModels
         {
             if (manager.draw == 0)
             {
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 AI.Instance.StartCoroutine(enemyModel.TakeCard(2));
                 card.Number = 222;
                 ChangeTurn(true);
@@ -515,7 +523,7 @@ public class ButtonIndexV2 : MvcModels
             else
             {
                 manager.draw += 2;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 AI.Instance.StartCoroutine(enemyModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 222;
@@ -544,7 +552,7 @@ public class ButtonIndexV2 : MvcModels
             if (manager.draw == 0)
             {
                 manager.draw = 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 manager.draw = 0;
                 StartCoroutine(playerModel.TakeCard(4));
                 card.Number = 444;
@@ -554,13 +562,12 @@ public class ButtonIndexV2 : MvcModels
             else
             {
                 manager.draw += 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(playerModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 444;
                 ChangeTurn(true);
                 AIplayed = false;
-
             }
         }
 
@@ -576,9 +583,8 @@ public class ButtonIndexV2 : MvcModels
         if (enemyModel.Has44())
         {
             manager.draw += 4;
-            manager.CallPlusAnimation();
-
             ChangeTurn(false);
+            manager.CallPlusAnimation();
 
         }
         else
@@ -586,23 +592,21 @@ public class ButtonIndexV2 : MvcModels
             if (manager.draw == 0)
             {
                 manager.draw = 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 manager.draw = 0;
                 StartCoroutine(enemyModel.TakeCard(4));
                 card.Number = 444;
                 ChangeTurn(true);
 
-
             }
             else
             {
                 manager.draw += 4;
-                manager.CallPlusAnimation();
+                manager.CallColorRiseComplete();
                 StartCoroutine(enemyModel.TakeCard(manager.draw));
                 manager.draw = 0;
                 card.Number = 444;
                 ChangeTurn(true);
-
             }
         }
 
@@ -655,6 +659,7 @@ public class ButtonIndexV2 : MvcModels
             var NormalCards = enemyModel.Cards.Where(c =>
             c.Number == boardModel.TopCard().Number && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
             || c.Color == boardModel.TopCard().Color && boardModel.TopCard().Number != 22 && boardModel.TopCard().Number != 44
+            || c.IsBamboozle && enemyModel.Cards.Count <= 3
             || c.IsBamboozle && boardModel.TopCard().Number == 22
             || c.IsBamboozle && boardModel.TopCard().Number == 44
             || boardModel.TopCard().IsBamboozle
@@ -725,8 +730,7 @@ public class ButtonIndexV2 : MvcModels
     }
 
     public void ChangeTurn(bool anotherTurn)
-    {
-
+    {   
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;

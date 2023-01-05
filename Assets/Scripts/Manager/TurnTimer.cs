@@ -80,7 +80,7 @@ public class TurnTimer : MvcModels
     private bool inisialized = false;
     private void Update()
     {
-        if (deckModel != null)
+        if (deckModel != null && !GameManager.Instance.gameEnded)
         {
             if (deckModel.CurrentTurn == "Player" && !inisialized)
             {

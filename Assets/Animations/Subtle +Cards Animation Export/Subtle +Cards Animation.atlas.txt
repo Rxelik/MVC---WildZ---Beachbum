@@ -1,0 +1,76 @@
+
+Subtle +Cards Animation.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
++10
+  rotate: true
+  xy: 273, 364
+  size: 565, 267
+  orig: 565, 267
+  offset: 0, 0
+  index: -1
++12
+  rotate: true
+  xy: 542, 390
+  size: 539, 269
+  orig: 539, 269
+  offset: 0, 0
+  index: -1
++14
+  rotate: false
+  xy: 2, 3
+  size: 570, 274
+  orig: 570, 274
+  offset: 0, 0
+  index: -1
++16
+  rotate: true
+  xy: 813, 396
+  size: 533, 271
+  orig: 533, 271
+  offset: 0, 0
+  index: -1
++18
+  rotate: false
+  xy: 574, 114
+  size: 528, 274
+  orig: 528, 274
+  offset: 0, 0
+  index: -1
++2
+  rotate: true
+  xy: 1365, 479
+  size: 450, 273
+  orig: 450, 273
+  offset: 0, 0
+  index: -1
++20
+  rotate: true
+  xy: 2, 279
+  size: 650, 269
+  orig: 650, 269
+  offset: 0, 0
+  index: -1
++4
+  rotate: true
+  xy: 1104, 2
+  size: 467, 267
+  orig: 467, 267
+  offset: 0, 0
+  index: -1
++6
+  rotate: true
+  xy: 1373, 41
+  size: 436, 262
+  orig: 436, 262
+  offset: 0, 0
+  index: -1
++8
+  rotate: true
+  xy: 1086, 471
+  size: 458, 277
+  orig: 458, 277
+  offset: 0, 0
+  index: -1

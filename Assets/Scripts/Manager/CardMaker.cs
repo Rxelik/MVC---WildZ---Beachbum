@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using TMPro;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class CardMaker : MvcModels
 {
@@ -43,6 +46,7 @@ public class CardMaker : MvcModels
     [Space]
     #endregion
     public SpriteRenderer CardSprite;
+    public TextMeshPro cardcounter;
     [Space]
     public Sprite CardBack;
     [Space]
@@ -51,10 +55,93 @@ public class CardMaker : MvcModels
     public SpriteRenderer dim;
     public bool Button = false;
     public bool SwappedFace = false;
+    private bool didntEnter = false;
+    private IEnumerator ColorAlphaFull()
+    {
+        didntEnter = true;
+        float t = 0;
+        float duration = 2f;
+        bool downing = false;
+        while (t < duration)
+        {
+            CardSprite.color = Color.white;
+            t += Time.deltaTime / duration;
+            CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / (duration - 1));
+            if (cardcounter.color.a <= 0.88 && !downing)
+            {
+                cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 1), t / (duration + 0.55f));
+            }
+            else if (cardcounter.color.a <= 0.9)
+            {
+                downing = true;
 
+            }
+            if (downing)
+            {
+                cardcounter.color = Color.Lerp(new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, cardcounter.color.a), new Color(cardcounter.color.r, cardcounter.color.g, cardcounter.color.b, 0), t / duration);
+            }
+            yield return null;
+        }
 
+    }
+
+    private IEnumerator ReturnNumberNull()
+    {
+        yield return new WaitForSeconds(1);
+        didntEnter = true;
+        float t = 0;
+        float duration = 1f;
+        while (t < duration)
+        {
+            t += Time.deltaTime / duration;
+            CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / duration);
+            yield return null;
+        }
+        faded = true;
+    }
+
+    private bool faded = false;
     private void Update()
     {
+
+        if (view._inspectorBelongsTo == "Board" && GameManager.Instance.gameEnded)
+        {
+
+        }
+
+        if (view._inspectorBelongsTo == "Board" && GameManager.Instance.gameEnded)
+        {
+            if (!didntEnter)
+            {
+                StartCoroutine(ReturnNumberNull());
+            }
+            else
+            {
+                if (faded)
+                {
+                    CardSprite.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        if (view._inspectorBelongsTo == "EnemeyCardCounted")
+        {
+            if (!didntEnter)
+            {
+                GameManager.Instance.playerScore += view.numValue;
+                StartCoroutine(ColorAlphaFull());
+            }
+
+        }
+        if (view._inspectorBelongsTo == "PlayerCardCounted")
+        {
+            if (!didntEnter)
+            {
+                GameManager.Instance.aiScore += view.numValue;
+                StartCoroutine(ColorAlphaFull());
+            }
+
+        }
         if (view._InspectorColor == Color.clear && CardSprite)
         {
             CardSprite.gameObject.SetActive(false);
@@ -78,7 +165,6 @@ public class CardMaker : MvcModels
                 }
                 else if (!view._IsSuper && view._IsWild)
                 {
-
                     SwapCards();
 
                 }
@@ -107,6 +193,8 @@ public class CardMaker : MvcModels
                 CardSprite.sprite = CardBack;
                 CardSprite.color = new Color(0, 0, 0, 0);
             }
+
+
             if (view._inspectorBelongsTo == "Player")
             {
                 //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
@@ -114,7 +202,11 @@ public class CardMaker : MvcModels
                 //    CardSprite.color = Color.gray;
                 //}
 
-                if (view._CanPlayCard)
+                if (deckView._Inisialize)
+                {
+                    CardSprite.color = Color.white;
+                }
+                else if (view._CanPlayCard)
                 {
                     CardSprite.color = Color.white;
                 }
@@ -143,7 +235,8 @@ public class CardMaker : MvcModels
         || view._inspectorBelongsTo == "Board"
         || view._inspectorBelongsTo == "FlyingToPlayer"
         || view._inspectorBelongsTo == "FlyingToEnemy"
-        || view._inspectorBelongsTo == "ColorPick" && deckModel.CurrentTurn == "Enemy")
+        || view._inspectorBelongsTo == "ColorPick" && deckModel.CurrentTurn == "Enemy"
+        || view._inspectorBelongsTo == "EnemyFinish")
         {
 
 

@@ -65,7 +65,7 @@ public class AnimChooser : MvcModels
 
     IEnumerator DelayDeactive()
     {
-        if (gameObject.name == "+2 Anim Spine")
+        if (gameObject.name == "+2 Anim Spine" || gameObject.name == "+2 Anim SpineEND")
             yield return new WaitForSeconds(1.25f);
         else
             yield return new WaitForSeconds(1.5f);
@@ -85,14 +85,17 @@ public class AnimChooser : MvcModels
         if (gameObject.name != "+2 Anim Spine")
         {
             skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, false);
-        } 
+        }
+        // if (gameObject.name != "+4 END")
+        //{
+        //    skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, false);
+        //}
         if (gameObject.name == "Bamboozle Spine")
         {
             StartCoroutine(DelayDeactive());
         }
-        else if (gameObject.name == "+2 Anim Spine")
+        else if (gameObject.name == "+2 Anim Spine" || gameObject.name == "+4 END")
         {
-            print("INSINE +2 FIND COUNT ANIMASION");
             switch (GameManager.Instance.draw)
             {
                 case 2:

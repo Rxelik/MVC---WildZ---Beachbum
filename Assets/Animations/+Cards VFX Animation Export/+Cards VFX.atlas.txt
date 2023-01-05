@@ -1,132 +1,132 @@
 
 +Cards VFX.png
-size: 4096,4096
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 +10
   rotate: true
-  xy: 279, 383
-  size: 557, 274
-  orig: 557, 274
+  xy: 1288, 2
+  size: 345, 170
+  orig: 345, 170
   offset: 0, 0
   index: -1
 +12
   rotate: true
-  xy: 555, 392
-  size: 548, 274
-  orig: 548, 274
+  xy: 1460, 7
+  size: 340, 170
+  orig: 340, 170
   offset: 0, 0
   index: -1
 +14
-  rotate: false
-  xy: 2, 2
-  size: 567, 274
-  orig: 567, 274
+  rotate: true
+  xy: 1461, 407
+  size: 352, 170
+  orig: 352, 170
   offset: 0, 0
   index: -1
 +16
-  rotate: false
-  xy: 571, 117
-  size: 536, 273
-  orig: 536, 273
+  rotate: true
+  xy: 1632, 73
+  size: 332, 169
+  orig: 332, 169
   offset: 0, 0
   index: -1
 +18
   rotate: true
-  xy: 831, 415
-  size: 525, 273
-  orig: 525, 273
+  xy: 1633, 433
+  size: 326, 169
+  orig: 326, 169
   offset: 0, 0
   index: -1
 +2
   rotate: true
-  xy: 1038, 2079
-  size: 452, 275
-  orig: 452, 275
+  xy: 1931, 1765
+  size: 280, 171
+  orig: 280, 171
   offset: 0, 0
   index: -1
 +20
   rotate: true
-  xy: 2, 278
-  size: 662, 275
-  orig: 662, 275
+  xy: 1288, 349
+  size: 410, 171
+  orig: 410, 171
   offset: 0, 0
   index: -1
 +4
   rotate: true
-  xy: 1038, 2533
-  size: 479, 274
-  orig: 479, 274
+  xy: 1803, 134
+  size: 297, 170
+  orig: 297, 170
   offset: 0, 0
   index: -1
 +6
   rotate: true
-  xy: 1314, 2558
-  size: 454, 273
-  orig: 454, 273
+  xy: 1804, 478
+  size: 281, 169
+  orig: 281, 169
   offset: 0, 0
   index: -1
 +8
   rotate: true
-  xy: 1038, 1632
-  size: 445, 269
-  orig: 445, 269
+  xy: 1931, 1487
+  size: 276, 167
+  orig: 276, 167
   offset: 0, 0
   index: -1
 Blue Add
   rotate: false
-  xy: 2, 3014
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 2, 1404
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Blue Backglow
   rotate: false
-  xy: 2, 3014
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 2, 761
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Green Add
   rotate: false
-  xy: 2, 1978
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 2, 118
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Green Backglow
   rotate: false
-  xy: 2, 1978
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 645, 1404
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Red Add
   rotate: false
-  xy: 2, 942
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 645, 761
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Red Backglow
   rotate: false
-  xy: 2, 942
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 645, 118
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Yellow Add
   rotate: false
-  xy: 1038, 3014
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 1288, 1404
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1
 Yellow Backglow
   rotate: false
-  xy: 1038, 3014
-  size: 1034, 1034
-  orig: 1034, 1034
+  xy: 1288, 761
+  size: 641, 641
+  orig: 641, 641
   offset: 0, 0
   index: -1

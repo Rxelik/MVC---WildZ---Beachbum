@@ -1,0 +1,1827 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTypeDate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TypeDate>
+    <guid>413d4ab1740df04448c5fc5edc455c6c</guid>
+    <fileName>Assets/Plugins/Automatic UI Anchoring/Scripts/Editor/AutomaticUIAnchoringEditor.cs</fileName>
+    <timeStamp>2019-05-17T22:53:08+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>521257714fc9e437a9163df2d37f2ea2</guid>
+    <fileName>Assets/Plugins/Pixelplacement/iTween/iTween.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.1600378+02:00</timeStamp>
+    <typeFullName>
+      <string>iTween</string>
+      <string>iTween+EaseType</string>
+      <string>iTween+LoopType</string>
+      <string>iTween+NamedValueColor</string>
+      <string>iTween+Defaults</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>93cb45d44c16f45a4bbd5099fe096c20</guid>
+    <fileName>Assets/Plugins/Pixelplacement/iTween/Sample/MoveSample.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.1547753+02:00</timeStamp>
+    <typeFullName>
+      <string>MoveSample</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d6bc01eb564f142a1ada6ced5215636a</guid>
+    <fileName>Assets/Plugins/Pixelplacement/iTween/Sample/RotateSample.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.1555427+02:00</timeStamp>
+    <typeFullName>
+      <string>RotateSample</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5273cf41de20842a5917d8346dffe707</guid>
+    <fileName>Assets/Plugins/Pixelplacement/iTween/Sample/SampleInfo.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.1570571+02:00</timeStamp>
+    <typeFullName>
+      <string>SampleInfo</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>231f8247de6e74849ac93d1a19e9b281</guid>
+    <fileName>Assets/AspectRatioChecker.cs</fileName>
+    <timeStamp>2022-12-20T09:34:32.7319593+02:00</timeStamp>
+    <typeFullName>
+      <string>AspectRatioChecker</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>23496eb3f8bebc4489de451b9b5d2deb</guid>
+    <fileName>Assets/CurrencyManager.cs</fileName>
+    <timeStamp>2022-12-22T20:48:38.7336591+02:00</timeStamp>
+    <typeFullName>
+      <string>CurrencyManager</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7b50621985013a14eb11fd381f495a69</guid>
+    <fileName>Assets/FreeCoins.cs</fileName>
+    <timeStamp>2022-12-22T20:52:55.5851659+02:00</timeStamp>
+    <typeFullName>
+      <string>FreeCoins</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e9d0601c33a2cce4fbb5ad678edbb9ca</guid>
+    <fileName>Assets/GameBar.cs</fileName>
+    <timeStamp>2022-12-06T15:11:21.3026783+02:00</timeStamp>
+    <typeFullName>
+      <string>GameBar</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>68e8279f35b8b0e4389eefb9e15e1c30</guid>
+    <fileName>Assets/GetReffrence.cs</fileName>
+    <timeStamp>2022-12-08T13:01:57.3885903+02:00</timeStamp>
+    <typeFullName>
+      <string>GetReffrence</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>49d476280cad4fd43b387700b265d37d</guid>
+    <fileName>Assets/MyFirebaseAnalytics.cs</fileName>
+    <timeStamp>2022-12-20T14:49:38.5504004+02:00</timeStamp>
+    <typeFullName>
+      <string>MyFirebaseAnalytics</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d38fb8d7dbadef1438d880bd10678330</guid>
+    <fileName>Assets/MyFireBaseRemoteConfig.cs</fileName>
+    <timeStamp>2022-12-21T11:47:07.8244432+02:00</timeStamp>
+    <typeFullName>
+      <string>MyFireBaseRemoteConfig</string>
+      <string>MyFireBaseRemoteConfig+Entry</string>
+      <string>MyFireBaseRemoteConfig+Defaults</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6b3b8183322515041b09b40e7880921b</guid>
+    <fileName>Assets/RandomShaffler.cs</fileName>
+    <timeStamp>2022-12-20T15:47:47.0760754+02:00</timeStamp>
+    <typeFullName>
+      <string>RandomShaffler</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e417152aa8aa30a4ebb86c800540f9b2</guid>
+    <fileName>Assets/SpriteSelector.cs</fileName>
+    <timeStamp>2022-12-21T10:18:11.5272819+02:00</timeStamp>
+    <typeFullName>
+      <string>SpriteSelector</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cf4ea767b3e98174980747869414a3ea</guid>
+    <fileName>Assets/TPM.cs</fileName>
+    <timeStamp>2022-12-06T15:11:21.4553685+02:00</timeStamp>
+    <typeFullName>
+      <string>TPM</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ef8d7e3ca9fadcd4aa171fffde3d7598</guid>
+    <fileName>Assets/UI.cs</fileName>
+    <timeStamp>2022-12-06T15:11:21.4563626+02:00</timeStamp>
+    <typeFullName>
+      <string>UI</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>842f43ac94b4b4f72ac0898650ddcc44</guid>
+    <fileName>Assets/Cleaner/Editor/AssetCollector.cs</fileName>
+    <timeStamp>2015-12-09T20:51:26+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>805140a4856714e288ea84985d3023df</guid>
+    <fileName>Assets/Cleaner/Editor/AssetReferenceCollection.cs</fileName>
+    <timeStamp>2015-12-09T20:51:26+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>202c278a17939b24c8b79c0ee1f94d8f</guid>
+    <fileName>Assets/Cleaner/Editor/ClassReferenceCollection.cs</fileName>
+    <timeStamp>2015-12-09T20:51:26+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>0d05386265df34bac8d0b6df44aa494c</guid>
+    <fileName>Assets/Cleaner/Editor/CollectionData.cs</fileName>
+    <timeStamp>2015-12-09T20:51:26+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>74eec3bfba0594259ac2843353c082a3</guid>
+    <fileName>Assets/Cleaner/Editor/FindUnusedAssetsWindow.cs</fileName>
+    <timeStamp>2015-12-09T20:51:26+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2c4f01a79a77a45a9a84004cc2b78098</guid>
+    <fileName>Assets/Cleaner/Editor/ShaderReferenceCollection.cs</fileName>
+    <timeStamp>2015-12-09T20:51:26+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>52fea17a2d56d46afa0d6cb52e2a4335</guid>
+    <fileName>Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.4965508+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>876bfcaf53a664f29a628faa9fa332fc</guid>
+    <fileName>Assets/LeanTween/Examples/Archived/OldGUIExamplesCS.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.5002056+02:00</timeStamp>
+    <typeFullName>
+      <string>OldGUIExamplesCS</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b8abaf57a262a44a994d8e7bcbc035e0</guid>
+    <fileName>Assets/LeanTween/Examples/Archived/TestingPunch.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.5036832+02:00</timeStamp>
+    <typeFullName>
+      <string>TestingPunch</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1172f23ac87274d9f941c26abca49be5</guid>
+    <fileName>Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.5051845+02:00</timeStamp>
+    <typeFullName>
+      <string>TestingRigidbodyCS</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7e619db3c84234f098b8636588c25e4f</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/Following.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6132273+02:00</timeStamp>
+    <typeFullName>
+      <string>Following</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a4fce1b486cc240c4825b3bfd794e9e0</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6142209+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralAdvancedTechniques</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a2605544ab2e14c93a780ca20c108cfe</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralBasic.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6142209+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralBasic</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9b39dd70d168b4cbea9a7b8561d9accc</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralBasics2d.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6150928+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralBasics2d</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8a650682fa3d54a57a2521dbf9f6eac2</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralCameraShake.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6150928+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralCameraShake</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>94e9a883a33cd40b9be1a63f002c4db2</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralEasingTypes.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6166042+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralEasingTypes</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cd679d4fbbd8d475ba7187561370c3aa</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6171019+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralEventsListeners</string>
+      <string>GeneralEventsListeners+MyEvents</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5b54bce4a9ed14e28a4a423c794a2d70</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralSequencer.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6177508+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralSequencer</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>19c352f230e8b46f08abbbd7cc11edb8</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6188404+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralSimpleUI</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cc2ddccee016148b189d987f564ee08e</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/GeneralUISpace.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6193404+02:00</timeStamp>
+    <typeFullName>
+      <string>GeneralUISpace</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>674f3c10d8880408e875a9e6c3ee83bb</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/LogoCinematic.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6198368+02:00</timeStamp>
+    <typeFullName>
+      <string>LogoCinematic</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ac2038ba3961049ed889ae71039982cd</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathBezier.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.620333+02:00</timeStamp>
+    <typeFullName>
+      <string>DentedPixel.LTExamples.PathBezier</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>873cb511c724a48bd919ce8a18fa882c</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathBezier2d.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6213258+02:00</timeStamp>
+    <typeFullName>
+      <string>PathBezier2d</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ef4235237d8d8413c9d5807cf0a1f77b</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathSpline.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6218229+02:00</timeStamp>
+    <typeFullName>
+      <string>ExampleSpline</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>15c036b11e3ff486ea685da06fa305f6</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathSpline2d.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6228161+02:00</timeStamp>
+    <typeFullName>
+      <string>PathSpline2d</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>784f0e347ee4d4c3b83ca56d6f33f01a</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.623809+02:00</timeStamp>
+    <typeFullName>
+      <string>PathSplineEndless</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5de62495c8a5d49e6b3ca111f8c7e944</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathSplinePerformance.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6248026+02:00</timeStamp>
+    <typeFullName>
+      <string>PathSplinePerformance</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>de0396ae3eef541c190f0e6962090454</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathSplines.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6268627+02:00</timeStamp>
+    <typeFullName>
+      <string>PathSplines</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>31af73f8be2864eda9a3fbb6d0d2a9c7</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/PathSplineTrack.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6258054+02:00</timeStamp>
+    <typeFullName>
+      <string>PathSplineTrack</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>fef58bd01146344429d022b95c6af872</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6283162+02:00</timeStamp>
+    <typeFullName>
+      <string>DentedPixel.LTExamples.TestingUnitTests</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ed8575995d061498aa84acbaf0b377de</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6293088+02:00</timeStamp>
+    <typeFullName>
+      <string>TestingZLegacy</string>
+      <string>TestingZLegacy+NextFunc</string>
+      <string>TestingZLegacy+TimingType</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c5a76b5b44fc4416a82391d1ab9ec33d</guid>
+    <fileName>Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6307994+02:00</timeStamp>
+    <typeFullName>
+      <string>TestingZLegacyExt</string>
+      <string>TestingZLegacyExt+NextFunc</string>
+      <string>TestingZLegacyExt+TimingType</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>52e41e970d9353942b27458440bec9eb</guid>
+    <fileName>Assets/LeanTween/Framework/LeanAudio.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.639733+02:00</timeStamp>
+    <typeFullName>
+      <string>LeanAudioStream</string>
+      <string>LeanAudio</string>
+      <string>LeanAudioOptions</string>
+      <string>LeanAudioOptions+LeanAudioWaveStyle</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1ca0f285af8dd4270bd759978223faad</guid>
+    <fileName>Assets/LeanTween/Framework/LeanSmooth.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6402285+02:00</timeStamp>
+    <typeFullName>
+      <string>LeanSmooth</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>82464f26ca2ba284a8f92f51248c574a</guid>
+    <fileName>Assets/LeanTween/Framework/LeanTest.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6412219+02:00</timeStamp>
+    <typeFullName>
+      <string>LeanTester</string>
+      <string>LeanTest</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9c2f4b27196f84954b44753aaac214bb</guid>
+    <fileName>Assets/LeanTween/Framework/LeanTween.cs</fileName>
+    <timeStamp>2022-12-05T11:29:29.4864579+02:00</timeStamp>
+    <typeFullName>
+      <string>TweenAction</string>
+      <string>LeanTweenType</string>
+      <string>LeanProp</string>
+      <string>LeanTween</string>
+      <string>LTUtility</string>
+      <string>LTBezier</string>
+      <string>LTBezierPath</string>
+      <string>LTSpline</string>
+      <string>LTRect</string>
+      <string>LTEvent</string>
+      <string>LTGUI</string>
+      <string>LTGUI+Element_Type</string>
+      <string>DentedPixel.LeanDummy</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5dbe851e9c0814f1d8f514ecf70f675d</guid>
+    <fileName>Assets/LeanTween/Framework/LeanTweenExt.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6437051+02:00</timeStamp>
+    <typeFullName>
+      <string>LeanTweenExt</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>381c8d6fb1acdc348870a7147bc98723</guid>
+    <fileName>Assets/LeanTween/Framework/LTDescr.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6377448+02:00</timeStamp>
+    <typeFullName>
+      <string>LTDescr</string>
+      <string>LTDescr+EaseTypeDelegate</string>
+      <string>LTDescr+ActionMethodDelegate</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c1ba8f1ef97134cb39b52ae26678db63</guid>
+    <fileName>Assets/LeanTween/Framework/LTDescrOptional.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.638242+02:00</timeStamp>
+    <typeFullName>
+      <string>LTDescrOptional</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6c88dbe4cdd9944f198e9796ee394c86</guid>
+    <fileName>Assets/LeanTween/Framework/LTSeq.cs</fileName>
+    <timeStamp>2022-11-26T20:01:27.6392345+02:00</timeStamp>
+    <typeFullName>
+      <string>LTSeq</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d867152bf72de3a47b6e2655ae599c44</guid>
+    <fileName>Assets/Scripts/ButtonIndex.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.2853619+02:00</timeStamp>
+    <typeFullName>
+      <string>ButtonIndex</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4a2179adb1f7a2f44b7e97ea0a355c77</guid>
+    <fileName>Assets/Scripts/MvcModels.cs</fileName>
+    <timeStamp>2022-12-22T12:47:06.6256391+02:00</timeStamp>
+    <typeFullName>
+      <string>MvcModels</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>dbb16517554c496469afd54874a26d2d</guid>
+    <fileName>Assets/Scripts/Board Mvc/DeckController.cs</fileName>
+    <timeStamp>2022-12-08T11:28:28.7592272+02:00</timeStamp>
+    <typeFullName>
+      <string>IDeckController</string>
+      <string>DeckController</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>55904e777ba4a9d47b15bcb9136d0198</guid>
+    <fileName>Assets/Scripts/Board Mvc/DeckModel.cs</fileName>
+    <timeStamp>2022-12-11T14:15:11.865399+02:00</timeStamp>
+    <typeFullName>
+      <string>DeckChangedEventArgs</string>
+      <string>OnCardsInDeckChangeEventArgs</string>
+      <string>DeckCardChangeEventArgs</string>
+      <string>TurnChangedEventArgs</string>
+      <string>OnCardsInBoardChangeDeckEventArgs</string>
+      <string>IDeckModel</string>
+      <string>DeckModel</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5612d17523e01cd42b64373f0b11f919</guid>
+    <fileName>Assets/Scripts/Board Mvc/DeckModelFactory.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.2838709+02:00</timeStamp>
+    <typeFullName>
+      <string>IDeckModelFactory</string>
+      <string>DeckModelFactory</string>
+      <string>IDeckViewFactory</string>
+      <string>DeckViewFactory</string>
+      <string>IDeckControllerFactory</string>
+      <string>DeckControllerFactory</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>fa45e8b7ba4832e4395c5fd385c8318a</guid>
+    <fileName>Assets/Scripts/Board Mvc/DeckView.cs</fileName>
+    <timeStamp>2022-12-08T11:28:28.7607401+02:00</timeStamp>
+    <typeFullName>
+      <string>IDeckView</string>
+      <string>DeckView</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3e89c96ac216348409bde71b08ecc325</guid>
+    <fileName>Assets/Scripts/Camera Scaler/CameraAspectRatioScaler.cs</fileName>
+    <timeStamp>2018-02-24T22:36:43+02:00</timeStamp>
+    <typeFullName>
+      <string>CameraAspectRatioScaler</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cc1a9aac087789b4bafd07dc9ae19b3f</guid>
+    <fileName>Assets/Scripts/Camera Scaler/ResponsiveCamera.cs</fileName>
+    <timeStamp>2022-12-11T12:42:27.2844477+02:00</timeStamp>
+    <typeFullName>
+      <string>ResponsiveCamera</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e2e708bfe61768d4d8859030063e5299</guid>
+    <fileName>Assets/Scripts/Card MVC/CardController.cs</fileName>
+    <timeStamp>2022-12-22T15:44:15.9436687+02:00</timeStamp>
+    <typeFullName>
+      <string>ICardController</string>
+      <string>CardController</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3d0a532c4ba85884c9111de080c527b5</guid>
+    <fileName>Assets/Scripts/Card MVC/CardModel.cs</fileName>
+    <timeStamp>2022-12-11T14:15:11.8551621+02:00</timeStamp>
+    <typeFullName>
+      <string>CardPositionChangedEventArgs</string>
+      <string>CardRotationChangedEventArgs</string>
+      <string>CardColorChangedEventArgs</string>
+      <string>CardNumberChangedEventArgs</string>
+      <string>CardChangedBelongsEventArgs</string>
+      <string>CardLayerChangeEventArgs</string>
+      <string>CardNameChangeEventArgs</string>
+      <string>CardIsSuperEventArgs</string>
+      <string>CardIsWildEventArgs</string>
+      <string>CardIsBamboozleEventArgs</string>
+      <string>CardBelongsToPlayerEventArgs</string>
+      <string>CardBelongsToEnemyEventArgs</string>
+      <string>OrderInHandEventArgs</string>
+      <string>CardSpriteChangedEventArgs</string>
+      <string>CanPlayCardEventArgs</string>
+      <string>CardFoundBoardEventArgs</string>
+      <string>ICardModel</string>
+      <string>CardModel</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6dcb7e5a9e6edbb40afed43338660323</guid>
+    <fileName>Assets/Scripts/Card MVC/CardModelFactory.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.2886507+02:00</timeStamp>
+    <typeFullName>
+      <string>ICardModelFactory</string>
+      <string>CardModelFactory</string>
+      <string>ICardViewFactory</string>
+      <string>CardViewFactory</string>
+      <string>ICardControllerFactory</string>
+      <string>CardControllerFactory</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>62f72fd0fca0e3440ab23c3b53bb4be0</guid>
+    <fileName>Assets/Scripts/Card MVC/CardView.cs</fileName>
+    <timeStamp>2022-12-22T17:59:10.2316658+02:00</timeStamp>
+    <typeFullName>
+      <string>CardClickedEventArgs</string>
+      <string>CardOnEnableEventArgs</string>
+      <string>OnLayerChangeEventArgs</string>
+      <string>ICardView</string>
+      <string>CardView</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f6c70a747bad0424d8237602978be3da</guid>
+    <fileName>Assets/Scripts/Deck MVC/BoardController.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.2970569+02:00</timeStamp>
+    <typeFullName>
+      <string>IBoardController</string>
+      <string>BoardController</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>40bd2b9e918eff34b879ba65a66722cc</guid>
+    <fileName>Assets/Scripts/Deck MVC/BoardModel.cs</fileName>
+    <timeStamp>2022-12-11T14:15:11.8747131+02:00</timeStamp>
+    <typeFullName>
+      <string>BoardChangedEventArgs</string>
+      <string>OnCardsInBoardChangeEventArgs</string>
+      <string>BoardCardChangeEventArgs</string>
+      <string>IBoardModel</string>
+      <string>BoardModel</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5d6ff3a618b5c1946b30e7ad7517a852</guid>
+    <fileName>Assets/Scripts/Deck MVC/BoardModelFactory.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.2986507+02:00</timeStamp>
+    <typeFullName>
+      <string>IBoardModelFactory</string>
+      <string>BoardModelFactory</string>
+      <string>IBoardViewFactory</string>
+      <string>BoardViewFactory</string>
+      <string>IBoardControllerFactory</string>
+      <string>BoardControllerFactory</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a36359fb77062a943960ea1028905203</guid>
+    <fileName>Assets/Scripts/Deck MVC/BoardView.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.2996433+02:00</timeStamp>
+    <typeFullName>
+      <string>IBoardView</string>
+      <string>BoardView</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b7cdf56e8fd86dd49903a10ff7d8bc62</guid>
+    <fileName>Assets/Scripts/Enemy MVC/AI.cs</fileName>
+    <timeStamp>2022-12-05T11:29:29.4816743+02:00</timeStamp>
+    <typeFullName>
+      <string>AI</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>29e3dd18735f3b64bbc4de7b0c747b77</guid>
+    <fileName>Assets/Scripts/Enemy MVC/EnemyController.cs</fileName>
+    <timeStamp>2022-12-22T18:37:05.5074902+02:00</timeStamp>
+    <typeFullName>
+      <string>IEnemyController</string>
+      <string>EnemyController</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4b77b8544172d0047931a6cf8ec0d21b</guid>
+    <fileName>Assets/Scripts/Enemy MVC/EnemyModel.cs</fileName>
+    <timeStamp>2022-12-22T18:31:30.9363618+02:00</timeStamp>
+    <typeFullName>
+      <string>EnemyChangedEventArgs</string>
+      <string>OnDeckEnemyChangeEventArgs</string>
+      <string>EnemyCardChangeEventArgs</string>
+      <string>EnemyTookFromBoardEventArgs</string>
+      <string>IEnemyModel</string>
+      <string>EnemyModel</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7e503f064058f4845a0a1b0d68944bc8</guid>
+    <fileName>Assets/Scripts/Enemy MVC/EnemyModelFactory.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.3041136+02:00</timeStamp>
+    <typeFullName>
+      <string>IEnemyModelFactory</string>
+      <string>EnemyModelFactory</string>
+      <string>IEnemyViewFactory</string>
+      <string>EnemyViewFactory</string>
+      <string>IEnemyControllerFactory</string>
+      <string>EnemyControllerFactory</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8bd858823ca7667469b7e56ee49f392a</guid>
+    <fileName>Assets/Scripts/Enemy MVC/EnemyView.cs</fileName>
+    <timeStamp>2022-12-21T00:47:51.55819+02:00</timeStamp>
+    <typeFullName>
+      <string>IEnemyView</string>
+      <string>EnemyView</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ac8659306c2095b43aecdca8b3201819</guid>
+    <fileName>Assets/Scripts/Manager/AnimationManager.cs</fileName>
+    <timeStamp>2022-12-22T19:05:18.9861079+02:00</timeStamp>
+    <typeFullName>
+      <string>OnLooseAnimEventArgs</string>
+      <string>OnRoundLooseAnimEventArgs</string>
+      <string>OnWinAnimEventArgs</string>
+      <string>OnRoundWinAnimEventArgs</string>
+      <string>OnChooseCardAnimEventArgs</string>
+      <string>OnPlusCardAnimEventArgs</string>
+      <string>OnColorRisingEventArgs</string>
+      <string>OnColorRiseConfirmedEventArgs</string>
+      <string>AnimationManager</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d674cb4b5d52bfe4ba819b82edfffeb4</guid>
+    <fileName>Assets/Scripts/Manager/AnimChooser.cs</fileName>
+    <timeStamp>2022-12-22T19:00:36.1875311+02:00</timeStamp>
+    <typeFullName>
+      <string>AnimChooser</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2cd614e94f2867e40b6e3849e9b6c2a3</guid>
+    <fileName>Assets/Scripts/Manager/ButtonIndexV2.cs</fileName>
+    <timeStamp>2022-12-22T19:20:36.3440087+02:00</timeStamp>
+    <typeFullName>
+      <string>ButtonIndexV2</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>37a1095b95316a647aa221ba36dfb181</guid>
+    <fileName>Assets/Scripts/Manager/CardMaker.cs</fileName>
+    <timeStamp>2022-12-22T20:52:04.065809+02:00</timeStamp>
+    <typeFullName>
+      <string>CardMaker</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4c779e1369e617e4091387be3e6ae02b</guid>
+    <fileName>Assets/Scripts/Manager/GameManager.cs</fileName>
+    <timeStamp>2022-12-22T18:35:35.9987602+02:00</timeStamp>
+    <typeFullName>
+      <string>GameManager</string>
+      <string>GameManager+OnCardVersionChange</string>
+      <string>GameManager+OnCardSpriteEvent</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>837af74bd645b684f8c75439093c19a4</guid>
+    <fileName>Assets/Scripts/Manager/Inisializer.cs</fileName>
+    <timeStamp>2022-12-22T17:44:03.2872339+02:00</timeStamp>
+    <typeFullName>
+      <string>Inisializer</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>15fcdf9db31fbeb4e94b5439725e8588</guid>
+    <fileName>Assets/Scripts/Manager/InisializerFATUI.cs</fileName>
+    <timeStamp>2022-12-05T11:29:29.4836858+02:00</timeStamp>
+    <typeFullName>
+      <string>InisializerFATUI</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8597ed97d9e42e344bab3f591badaf07</guid>
+    <fileName>Assets/Scripts/Manager/OnPlayRemover.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.1483128+02:00</timeStamp>
+    <typeFullName>
+      <string>OnPlayRemover</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c68b7bbcee159284f98b9fd56bee621b</guid>
+    <fileName>Assets/Scripts/Manager/PositionPoints.cs</fileName>
+    <timeStamp>2022-12-22T17:07:36.5095644+02:00</timeStamp>
+    <typeFullName>
+      <string>PositionPoints</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8faa66fce8254ae4baab34909f35a033</guid>
+    <fileName>Assets/Scripts/Manager/Restart.cs</fileName>
+    <timeStamp>2022-12-22T20:53:21.3582605+02:00</timeStamp>
+    <typeFullName>
+      <string>Restart</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7653963d011919e4cbe02a425dbcdb21</guid>
+    <fileName>Assets/Scripts/Manager/Server.cs</fileName>
+    <timeStamp>2022-12-05T11:29:29.4806815+02:00</timeStamp>
+    <typeFullName>
+      <string>Server</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a1ac7a2b7d1fce642a4f3e18d5a6501d</guid>
+    <fileName>Assets/Scripts/Manager/ServerBehavior.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.3240681+02:00</timeStamp>
+    <typeFullName>
+      <string>ServerBehavior</string>
+      <string>ServerBehavior+PlayerPlayedCardEventArgs</string>
+      <string>ServerBehavior+PlayerDrawCardEventArgs</string>
+      <string>ServerBehavior+EnemyPlayedCardEventArgs</string>
+      <string>ServerBehavior+EnemyDrawedCardEventArgs</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5715a47abca139d4a8d5a3c39d9ff97b</guid>
+    <fileName>Assets/Scripts/Manager/SpineAnim.cs</fileName>
+    <timeStamp>2022-12-22T18:51:13.065233+02:00</timeStamp>
+    <typeFullName>
+      <string>SpineAnim</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bad0a7816768e8b47b44355fbb4ee26e</guid>
+    <fileName>Assets/Scripts/Manager/SwipeDetector.cs</fileName>
+    <timeStamp>2022-12-15T10:55:30.9741606+02:00</timeStamp>
+    <typeFullName>
+      <string>SwipeDetector</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3423d89f4abf22e46a3097829b97deb5</guid>
+    <fileName>Assets/Scripts/Manager/TakeFromDeck.cs</fileName>
+    <timeStamp>2022-11-28T15:17:48.2839691+02:00</timeStamp>
+    <typeFullName>
+      <string>TakeFromDeck</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b322c68a6b5fff34cb99e84f8c302f90</guid>
+    <fileName>Assets/Scripts/Manager/TurnTimer.cs</fileName>
+    <timeStamp>2022-12-22T17:52:05.6357943+02:00</timeStamp>
+    <typeFullName>
+      <string>TurnTimer</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>24afbfb4c88271c4ea7cef9f3dc08636</guid>
+    <fileName>Assets/Scripts/Player MVC/PlayerController.cs</fileName>
+    <timeStamp>2022-12-22T15:11:12.9570642+02:00</timeStamp>
+    <typeFullName>
+      <string>IPlayerController</string>
+      <string>PlayerController</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>96551bd822a5d0047be909d2f023aa28</guid>
+    <fileName>Assets/Scripts/Player MVC/PlayerModel.cs</fileName>
+    <timeStamp>2022-12-11T14:15:11.8445742+02:00</timeStamp>
+    <typeFullName>
+      <string>PlayerChangedEventArgs</string>
+      <string>OnDeckChangeEventArgs</string>
+      <string>PlayerCardChangeEventArgs</string>
+      <string>PlayerTookFromBoardEventArgs</string>
+      <string>OnViewCardsEventArgs</string>
+      <string>PlayerPlayedCard</string>
+      <string>IPlayerModel</string>
+      <string>PlayerModel</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e0628737dfa8a4f42b58d02008483543</guid>
+    <fileName>Assets/Scripts/Player MVC/PlayerModelFactory.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.3191015+02:00</timeStamp>
+    <typeFullName>
+      <string>IPlayerModelFactory</string>
+      <string>PlayerModelFactory</string>
+      <string>IPlayerViewFactory</string>
+      <string>PlayerViewFactory</string>
+      <string>IPlayerControllerFactory</string>
+      <string>PlayerControllerFactory</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3cca3aad799f3294a90ae4aa67ae8ebf</guid>
+    <fileName>Assets/Scripts/Player MVC/PlayerView.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.3205908+02:00</timeStamp>
+    <typeFullName>
+      <string>IPlayerView</string>
+      <string>PlayerView</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>57767dd9a29fb994383b3d88ebb0fd5f</guid>
+    <fileName>Assets/Scripts/Sound/SoundManager.cs</fileName>
+    <timeStamp>2022-12-14T09:44:54.8646574+02:00</timeStamp>
+    <typeFullName>
+      <string>SoundManager</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cf21125cbd8928844a85a3ad9002693b</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Menus.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7845585+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f2de282d583d4a641bf1c349f0a3eef9</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/SpineAttributeDrawers.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7911709+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>9511532e80feed24881a5863f5485446</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7232016+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>01cbef8f24d105f4bafa9668d669e040</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7241979+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ca9b3ce36d70a05408e3bdd5e92c7f64</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Asset Types/SpineAtlasAssetInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7252011+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f063dc5ff6881db4a9ee2e059812cba2</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Asset Types/SpineSpriteAtlasAssetInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7262727+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>da44a8561fd243c43a1f77bda36de0eb</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/BoneFollowerGraphicInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7277393+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>c71ca35fd6241cb49a0b0756a664fcf7</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/BoneFollowerInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7291087+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7c4f5b276299bc048ad00f3cd2d1ea09</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/BoundingBoxFollowerGraphicInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7307961+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>670a3cefa3853bd48b5da53a424fd542</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/BoundingBoxFollowerInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7317888+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7c7e838a8ec295a4e9c53602f690f42f</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/PointFollowerInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7327809+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>39fbfef61034ca045b5aa80088e1e8a4</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonAnimationInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7336857+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>349bf125947e3aa4bb78690fec69ea17</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonGraphicCustomMaterialsInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7351158+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>0d81cc76b52fcdf499b2db252a317726</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonGraphicInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7361192+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6a9ca5213a3a4614c9a9f2e60909bc33</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonMecanimInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7379354+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>4613924c50d66cf458f0db803776dd2f</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonMecanimRootMotionInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7385019+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>e70f7f2a241d6d34aafd6a4a52a368d0</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonRendererCustomMaterialsInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7399514+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d0fc5db9788bce4418ad3252d43faa8a</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonRendererInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7409459+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f2cba83baf6afdf44a996e40017c6325</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonRootMotionBaseInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7434892+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>e4836100aed984c4a9af11d39c63cb6b</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonRootMotionInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7439855+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b3ae20b4bcc31f645afd6f5b64f82473</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonUtilityBoneInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7449783+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a5b90df955eb8c2429ac67c8b2de6c5c</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Components/SkeletonUtilityInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7464906+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>efbbf90926e217c40831926fce374905</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Shaders/SpineShaderWithOutlineGUI.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7883776+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>aef90b4c481362e42891bb46de344c1c</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Shaders/SpineSpriteShaderGUI.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7898673+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>25086cd81e3158b439761b73d7366c47</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/AssetDatabaseAvailabilityDetector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7937587+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>49377c72c37e2c149b106c260a241f3c</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7950196+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>8094f8aedb33b7744b109c2c1294d37a</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/BlendModeMaterialsUtility.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7960226+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>80767dcb23931c645ad70c88670ddeb6</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/BuildSettings.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7969951+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d8a1a76014a68634a8ede50af6db1cae</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/DataReloadHandler.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7981673+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>8603301469b2a284db8eaa26dc60ada8</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/Icons.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.7986673+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>94ecc7f73dfc0484e848a0e6a1a11f2b</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/Instantiation.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8001563+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6d80c945a2e3436459a97b7a9a16ef46</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/Preferences.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8011492+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f834d5cd806ec4645915ac315edbdc60</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/SpineEditorUtilities.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8021426+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f4c97e41d3d90e24bbb40d634e6cc336</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/SpineHandles.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8031358+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>663715b5714e2db499192c8d91ef1f86</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/SpineInspectorUtility.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8040783+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7c1b3a9ddacb550458bb86affdf77bf5</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Utility/SpineMaskUtilities.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8052986+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>687d9be457ea4eb44bf09c35c95ee5cd</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Windows/SkeletonBaker.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8068238+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>868b0caae5b3e65408ece1ab400c4a99</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Windows/SkeletonBakingWindow.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.808197+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7093e73ff3cf6c543ac5865980070b49</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Windows/SkeletonDebugWindow.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8086981+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b29e98153ec2fbd44b8f7da1b41194e8</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8096713+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a5b99b091defeef439a0cb8c99fd8a51</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Editor/Windows/SpriteAtlasImportWindow.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8101742+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>30e43037bf4433645ad70266f34c1c8b</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Modules/SkeletonRenderSeparator/Editor/SkeletonPartsRendererInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8126614+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d2a5062cfe5dd4344831cda4723128af</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Modules/SkeletonRenderSeparator/Editor/SkeletonRenderSeparatorInspector.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8141516+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>cbec7dc66dca80a419477536c23b7a0d</guid>
+    <fileName>Assets/Spine/Editor/spine-unity/Modules/SlotBlendModes/Editor/SlotBlendModesEditor.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8161492+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>fb7099b9c6ce91740b7041dabb0752c2</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Animation.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8191484+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ec2f0e7143c8a174994595883f4b1e33</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/AnimationState.cs</fileName>
+    <timeStamp>2022-12-17T10:41:05.7494436+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>e03d60c517d9b974db35b9fd144a1d09</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/AnimationStateData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8211134+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>60626307629cc034bafd42c53a901fff</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Atlas.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8229993+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b08ef68b8e39f40498ef24ef12cca281</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/BlendMode.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8353264+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ed00e3a4b386a964fb0f1c7ffd5544e5</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Bone.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8363291+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2cf831005966832449a5de742752e578</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/BoneData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8376708+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>55d3827079aca3a4687535c3ede7ec5f</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/ConstraintData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8396234+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>dec0d9d780605944eb4514125ab6350b</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Event.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8416158+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>37bbfb9fb268a644ba75052961a42b81</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/EventData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.84261+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>89690af94a880744989712505f2957b1</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/ExposedList.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8431069+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>916f8e6534860cc40824adfc2916baa7</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/IkConstraint.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8450527+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>94ad1e9256073264785f806086a000ba</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/IkConstraintData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8460555+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>44a51df5672fe4249b6763960587a017</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/IUpdatable.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8439434+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>371f40ecc08b2eb4cbec49585d41e2c3</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Json.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8469907+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>03b653e54c5403b4191f5003d64c6e18</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/MathUtils.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8478314+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>731d05fbc2874c74984813ce4c5bb8df</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/PathConstraint.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.84833+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>9d836858269be96428428fb6764dfc3a</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/PathConstraintData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8493236+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>12ac3c1c7546be24fb9625d3c850619d</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Skeleton.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8503168+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>40d8a8f15082f3844a5c9c8c3ef2047f</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/SkeletonBinary.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8518077+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>087b328a58c93b149bb977eee3a17258</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/SkeletonBounds.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8523034+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7db809d277afd0e4a8e8c6b703002ee0</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/SkeletonClipping.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8537194+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2b813f63abbb6d94a80a5c050590a0be</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/SkeletonData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8549001+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6c4ab7992894bdb44a480981b1953f76</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/SkeletonJson.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8559031+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7df8caa3a771f464e803316a6b18c909</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Skin.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8564182+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6974c4b5c87687140a2417201ea43066</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Slot.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8574118+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f28cb47bc1e8b434c85e6f69b2c9e15e</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/SlotData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8579115+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2e30316a9733f8a4b8b6c362c06dfa11</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/TransformConstraint.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8593629+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b7edeecc9bd7dd44faabf24f29b119a0</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/TransformConstraintData.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8598621+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>90a8832a1f3c5f846b8773dc0e1c3238</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Triangulator.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8608845+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>3e6ff30e27c28344bad3e67d308c94cd</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/AtlasAttachmentLoader.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8247391+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>05b56321b2ddd8145a888746bc6ab917</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/Attachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8252502+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>95466a4f5a30dca4aa69e8ee7df8ae85</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/AttachmentLoader.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8270784+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d6b1941960a9f6f47be3e865554d8695</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/AttachmentType.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.828076+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>cd8ad8fc0f5bce448ba26d096ab32e85</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/BoundingBoxAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8290276+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>3380954b107f38b4c85a4cdfeceace42</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/ClippingAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8302363+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b7f7514a003143844b6d01ecc93ed4d5</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/MeshAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8307323+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>c77d9bf384a1e9f41966464e7e3b4870</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/PathAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8317256+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>4fdde4cc4df0952468946f4f913dcb36</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/PointAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8322228+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>89cefdd024734a941952a05d2b5dff71</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/RegionAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8332159+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>8b40cfb462a8b774891e1604e5360d32</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Attachments/VertexAttachment.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.834209+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ca4b738078ed756469d5d97bcca93e6f</guid>
+    <fileName>Assets/Spine/Runtime/spine-csharp/Collections/OrderedDictionary.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8386621+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a7b480b941568134891f411137bfbf55</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/ISkeletonAnimation.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.913564+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ce216f51ebc1d3f40929f4e58d1c65e5</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/SpineAttributes.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0001686+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6e3e95a05e4c9774397eeeb7bdee8ccb</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/AnimationReferenceAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8640182+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>787a36933c1c6e14db2104c01ed92dcb</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/AtlasAssetBase.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8647688+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d03ca55657e89b949a4c07bc9207beac</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/BlendModeMaterials.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8662645+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>8e60be42c1473144db0fd3337c25b500</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/EventDataReferenceAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8675307+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>15f0f78b87720c047a320c5e0e3f91b7</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/RegionlessAttachmentLoader.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8689327+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f1b3b4b945939a54ea0b23d3396115fb</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/SkeletonDataAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8697272+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>4224df6e20549f0449154531ae080201</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/SkeletonDataCompatibility.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8709658+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>79a44aba1f342f440965874280b4c318</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/SkeletonDataModifierAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8736021+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a6b194f808b1af6499c93410e504af42</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/SpineAtlasAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8749193+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ce59897dd7e6cbc4690a05ebaf975dff</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Asset Types/SpineSpriteAtlasAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8759226+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d247ba06193faa74d9335f5481b2b56c</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8876078+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d85b887af7e6c3f45a2e2d2920d641bc</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonGraphic.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8885691+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f9db98c60740638449864eb028fbe7ad</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonMecanim.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8899864+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>e075b9a3e08e2f74fbd651c858ab16ed</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8938303+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a1fd8daaed7b64148a34acb96ba14ce1</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/Following/BoneFollower.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8783116+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b42a195b47491d34b9bcbc40898bcb29</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/Following/BoneFollowerGraphic.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8798011+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>0317ee9ba6e1b1e49a030268e026d372</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/Following/BoundingBoxFollower.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8802978+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>1c0bf7b497af9f74280040d96cdf88da</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/Following/BoundingBoxFollowerGraphic.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8810614+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>daf461e4341180341a648c07e1899528</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/Following/PointFollower.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8826167+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>95813afe390494344a6ce2cbc8bfb7d1</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/RootMotion/SkeletonMecanimRootMotion.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.884282+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f21c9538588898a45a3da22bf4779ab3</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/RootMotion/SkeletonRootMotion.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8850584+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>fc23a4f220b20024ab0592719f92587d</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/RootMotion/SkeletonRootMotionBase.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8868114+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6c8717e10b272bf42b05d363ac2679a6</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonRendererCustomMaterials/SkeletonGraphicCustomMaterials.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8953162+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>26947ae098a8447408d80c0c86e35b48</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonRendererCustomMaterials/SkeletonRendererCustomMaterials.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8963732+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>1c0b968d1e7333b499e347acb644f1c1</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderSeparator/SkeletonPartsRenderer.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8919263+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>5c70a5b35f6ff2541aed8e8346b7e4d5</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderSeparator/SkeletonRenderSeparator.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8924843+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>70ae96e4f2feb654681a2f16e4effeec</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/ActivateBasedOnFlipDirection.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8982679+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>9fc20d5e917562341a5007777a9d0db2</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.8989955+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>02aae87c39b869548a9051fbdb1975e6</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody2D.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.900099+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>456a736ebb92ebf4b959fa9c4b704427</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/FollowSkeletonUtilityRootRotation.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9010619+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7f726fb798ad621458c431cb9966d91d</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtility.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9021229+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b238dfcde8209044b97d23f62bcaadf6</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtilityBone.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9039989+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>522dbfcc6c916df4396f14f35048d185</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtilityConstraint.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9076078+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f1f8243645ba2e74aa3564bd956eed89</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Deprecated/SlotBlendModes/SlotBlendModes.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9122342+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>08b76da7751523448a87e528c48a5399</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Mesh Generation/DoubleBuffered.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9203375+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>311447d6e56727c4dad7611d5fa5afbf</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Mesh Generation/MeshGenerator.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9226253+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b1ab80744ac17724dbc0d15fdb6f4727</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Mesh Generation/MeshRendererBuffers.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9236142+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d07866ade25bd0b44a7bb1d59bacf4cb</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Mesh Generation/SkeletonRendererInstruction.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9251197+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f834c8746034db645a52a9506ff1de89</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Mesh Generation/SpineMesh.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9251197+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>03238e4a73953c045a6cb289162532f3</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Modules/TK2D/SpriteCollectionAttachmentLoader.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9281462+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>12b0b98acbcda44468a7ae4e35000abe</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/BlendModeMaterialsAsset.cs</fileName>
+    <timeStamp>2022-11-26T20:01:28.9952086+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>25ceef568a3dad448bf8a14fcc326964</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/AtlasUtilities.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0010502+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>3431ed563b2c62f4c8c974a99365ba52</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/AttachmentCloneExtensions.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0028909+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7e7eac783deea004e9bc403eca68a7dc</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/AttachmentRegionExtensions.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0033897+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>e68fa8db689084946adce454b83e6d4a</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/MaterialChecks.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0048804+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ea85c8f6a91a6ab45881b0dbdaabb7d0</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/SkeletonExtensions.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0063932+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f4692b9527684d048862210ba3f9834e</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/SkinUtilities.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0076916+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>07807fefbff25484ba41b1d16911fb0e</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/TimelineExtensions.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0081935+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d9be5adcaf0003849a1d181173c19635</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimation.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0096856+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a807dd9fb79db3545b6c2859a2bbfc0b</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimationComplete.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0101822+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>3c5a5fe930d1ab24da154d76b24c2747</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimationEnd.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0111759+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>fc166d883db083e469872998172f2d38</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineEvent.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0121693+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>8036c6c2897d2764db92f632d2aef568</guid>
+    <fileName>Assets/Spine/Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineTrackEntryEnd.cs</fileName>
+    <timeStamp>2022-11-26T20:01:29.0134336+02:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+</ArrayOfTypeDate>

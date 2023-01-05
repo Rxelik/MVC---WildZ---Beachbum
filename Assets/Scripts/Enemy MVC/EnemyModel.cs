@@ -23,6 +23,8 @@ public interface IEnemyModel
     [SerializeField] List<Transform> HandPos { get; set; }
     void AddCard(CardModel card);
     void RemoveCard(CardModel card);
+    void CallCardsChanged();
+    bool CountingCards();
 }
 
 public class EnemyModel : IEnemyModel
@@ -92,6 +94,7 @@ public class EnemyModel : IEnemyModel
             }
         }
     }
+
     public BoardModel Board
     {
         get { return _Board; }
@@ -109,6 +112,7 @@ public class EnemyModel : IEnemyModel
             }
         }
     }
+
     public string BelongsTo
     {
         get { return _BelongsTo; }
@@ -145,6 +149,11 @@ public class EnemyModel : IEnemyModel
         }
     }
 
+    public void CallCardsChanged()
+    {
+        var eventArgs = new EnemyCardChangeEventArgs();
+        OnCardsChanged(this, eventArgs);
+    }
 
     public void AddCard(CardModel card)
     {
@@ -157,6 +166,7 @@ public class EnemyModel : IEnemyModel
         var eventArgs = new EnemyCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }
+
     public void RemoveCard(CardModel card)
     {
         Cards.Remove(card);
@@ -164,10 +174,12 @@ public class EnemyModel : IEnemyModel
         var eventArgs = new EnemyCardChangeEventArgs();
         OnCardsChanged(this, eventArgs);
     }
+
     public CardModel TopCard()
     {
         return Cards[Cards.Count - 1];
     }
+
     public IEnumerator TakeCard(int amout)
     {
         for (int i = 0; i < amout; i++)
@@ -177,6 +189,7 @@ public class EnemyModel : IEnemyModel
             Deck.RemoveCard(TopCard());
         }
     }
+
     public bool HasCounter()
     {
         bool hasBam = false;
@@ -188,11 +201,13 @@ public class EnemyModel : IEnemyModel
                 hasBam = true;
                 break;
             }
+
             if (item.Number == 22)
             {
                 hasNum = true;
                 break;
             }
+
             if (item.Number == 44)
             {
                 hasNum = true;
@@ -215,6 +230,7 @@ public class EnemyModel : IEnemyModel
         }
 
     }
+
     public bool Has44()
     {
         bool hasBam = false;
@@ -226,12 +242,14 @@ public class EnemyModel : IEnemyModel
                 hasBam = true;
                 break;
             }
+
             if (item.Number == 44)
             {
                 hasNum = true;
                 break;
             }
         }
+
         if (hasBam == true)
         {
             return true;
@@ -240,6 +258,31 @@ public class EnemyModel : IEnemyModel
         {
             return true;
 
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool CountingCards()
+    {
+        bool counting = true;
+
+        foreach (var item in Cards)
+        {
+            if (item.BelongsTo == "EnemyFinish")
+            {
+                counting = true;
+                break;
+            }
+            else
+                counting = false;
+        }
+
+        if (counting)
+        {
+            return true;
         }
         else
         {

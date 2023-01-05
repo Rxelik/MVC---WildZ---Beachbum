@@ -16,56 +16,69 @@ public class FreeCoins : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
-        //if (PlayerPrefs.HasKey("LastChecked"))
-        //{
-        //    lastChecked = new DateTime(PlayerPrefs.GetInt("LastChecked"));
-        //}
-        //else
-        //{
-        //}
-
-        CheckTime();
+        // PlayerPrefs.DeleteKey("LastChecked");
+        if (PlayerPrefs.HasKey("LastChecked"))
+        {
+            lastChecked = DateTime.Parse(PlayerPrefs.GetString("LastChecked"));
+        }
+        else
+        {
+            CheckTime();
+        }
 
         StartCoroutine(CalcAndDisplay());
     }
 
-
-    private void CheckTime()
+    void Update()
     {
-
-        if (PlayerPrefs.HasKey("LastChecked"))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            lastChecked = new DateTime(PlayerPrefs.GetInt("LastChecked"));
-        }
-        else
-        {
-            lastChecked = DateTime.UtcNow;
-            PlayerPrefs.SetString("LastChecked", lastChecked.Ticks.ToString());
-            PlayerPrefs.Save();
+            CheckTime();
         }
     }
+
+    public void CheckTime()
+    {
+        lastChecked = DateTime.UtcNow;
+        PlayerPrefs.SetString("LastChecked", lastChecked.ToString());
+        PlayerPrefs.Save();
+    }
+
+    void OnApplicationQuit()
+    {
+        //CheckTime();
+    }
+
+    private TimeSpan timeLeft;
     IEnumerator CalcAndDisplay()
     {
         bool bRun = true;
 
         while (bRun)
         {
-            var timeToUnlock = TimeSpan.FromMinutes(45);
+            var timeToUnlock = TimeSpan.FromMinutes((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("BonusCoinsTimerLength").LongValue);
+            timeLeft = timeToUnlock - TimeSinceLastChecked;
+            if (timeLeft.Ticks > 0)
+            {
+                txtTime.text = $"{timeLeft.Hours:D2}:{timeLeft.Minutes:D2}:{timeLeft.Seconds:D2}";
+            }
+            else
+            {
+                txtTime.text = "Claim Your Free Reword";
 
-            var timeLeft = TimeSpan.FromMinutes(45) - TimeSinceLastChecked;
-
-            txtTime.text = $"{timeLeft.Hours:D2}:{timeLeft.Minutes:D2}:{timeLeft.Seconds:D2}";
-            //if (timeLeft.Ticks > 0)
-            //{
-            //}
-            //else
-            //{
-            //    txtTime.text = "Claim Your Free Reword";
-
-            //}
+            }
 
             yield return new WaitForSeconds(updateFrequency);
+        }
+    }
+
+    public void GetCoins()
+    {
+        if (timeLeft.Ticks < 0)
+        {
+            CurrencyManager.Instance.currentBalance += (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("BonusCoinsTimerAmount").LongValue;
+            CheckTime();
+            CurrencyManager.Instance.SetCoins();
         }
     }
 }

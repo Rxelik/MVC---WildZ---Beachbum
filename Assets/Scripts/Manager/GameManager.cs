@@ -9,6 +9,8 @@ using Spine.Unity;
 using Spine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 
 public class GameManager : MvcModels
 {
@@ -46,7 +48,9 @@ public class GameManager : MvcModels
     public event EventHandler<OnRoundWinAnimEventArgs> OnRoundWinEve;
     public event EventHandler<OnChooseCardAnimEventArgs> OnChooseCardEve;
     public event EventHandler<OnPlusCardAnimEventArgs> OnPlusCardEve;
-    public event EventHandler<OnColorChangedEventArgs> OnColorChanged;
+    public event EventHandler<OnColorRisingEventArgs> OnColorRised;
+    public event EventHandler<OnColorRiseConfirmedEventArgs> OnColorRiseComplete;
+
 
     [Header("TextMeshPro")]
     [Space]
@@ -71,6 +75,8 @@ public class GameManager : MvcModels
     public bool gameEnded = false;
     public bool playerPlayed = false;
     public bool tookToHand = false;
+    public bool AiWonRound = false;
+    public bool PlayerWonRound = false;
     [HideInInspector] public bool trigger = false;
     [Space]
 
@@ -83,6 +89,7 @@ public class GameManager : MvcModels
     public int draw = 0;
     public int round = 0;
     public int _targetToWin;
+    public int maxHandSize = 25;
 
     [HideInInspector] public bool clicked = false;
     public List<GameObject> cardsObjects = new List<GameObject>();
@@ -104,8 +111,50 @@ public class GameManager : MvcModels
         gameEnded = false;
     }
 
+    private void PlayerWon()
+    {
+        PlayerWonRound = true;
+        foreach (var VARIABLE in enemyModel.Cards)
+        {
+            VARIABLE.BelongsTo = "EnemyFinish";
+        }
+        enemyModel.CallCardsChanged();
+    }
+    private void AiWon()
+    {
+        AiWonRound = true;
+        foreach (var VARIABLE in playerModel.Cards)
+        {
+            VARIABLE.BelongsTo = "PlayerFinish";
+        }
+        playerModel.CallCardsChanged();
+    }
+
+    public void CheckIfPlayerWon()
+    {
+        if (playerScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            StartCoroutine(WinLooseEnumerator());
+        }
+    }
+
+    public void CheckIfAiWon()
+    {
+        if (aiScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            StartCoroutine(WinLooseEnumerator());
+        }
+    }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AiWon();
+            //PlayerWon();
+            //CleanBoard();
+        }
         endPlayerScMeshProUgui.text = playerScore.ToString();
         endEnemyScMeshProUgui.text = aiScore.ToString();
 
@@ -117,27 +166,28 @@ public class GameManager : MvcModels
                 aiScoreUgui.text = aiScore.ToString();
                 playerScoreUgui.text = playerScore.ToString();
 
-                if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
-                {
-                    if (aiScore >= _targetToWin)
-                    {
-                        CurrencyManager.Instance.OnGameLost();
-                    }
-                    else if (playerScore >= _targetToWin)
-                    {
-                        CurrencyManager.Instance.OnGameWon();
-                    }
-                    StartCoroutine(WinLooseEnumerator());
-                }
+                //if (gameEnded && !clicked && aiScore >= _targetToWin || gameEnded && !clicked && playerScore >= _targetToWin)
+                //{
+                //    if (aiScore >= _targetToWin)
+                //    {
+                //        CurrencyManager.Instance.OnGameLost();
+                //    }
+                //    else if (playerScore >= _targetToWin)
+                //    {
+                //        CurrencyManager.Instance.OnGameWon();
+                //    }
+                //    StartCoroutine(WinLooseEnumerator());
+                //}
 
-                else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
-                {
+                //else if (gameEnded && !clicked && aiScore <= _targetToWin || gameEnded && !clicked && playerScore <= _targetToWin)
+                //{
 
-                    StartCoroutine(ContinueEnumerator());
-                }
+                //    StartCoroutine(ContinueEnumerator());
+                //}
 
 
-                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > 20)
+
+                if (playerModel.Cards.Count == 0 || enemyModel.Cards.Count > maxHandSize)
                 {
                     if (!gameEnded)
                     {
@@ -169,7 +219,7 @@ public class GameManager : MvcModels
                     }
                 }
 
-                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > 20)
+                if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > maxHandSize)
                 {
                     if (!gameEnded)
                     {
@@ -201,88 +251,92 @@ public class GameManager : MvcModels
     void CountScorePlayerScore()
     {
         gameEnded = true;
+        PlayerWonRound = true;
+        StartCoroutine(ContinueEnumerator());
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
         //}
-        foreach (var item in enemyModel.Cards)
-        {
-            if (item.Number > 0 && item.Number <= 9)
-            {
-                playerScore += 5;
-            }
-            if (item.Number == 22 && !item.IsWild)
-            {
-                playerScore += 10;
-            }
-            if (item.Number == 44)
-            {
-                playerScore += 10;
-            }
-            if (item.Number == 88)
-            {
-                playerScore += 15;
-            }
-            if (item.Number == 22 && item.IsWild)
-            {
-                playerScore += 20;
-            }
-            if (item.Number == 0)
-            {
-                playerScore += 25;
-            }
-            if (item.IsSuper && item.IsWild)
-            {
-                playerScore += 30;
-            }
-            if (item.IsBamboozle)
-            {
-                playerScore += 40;
-            }
-        }
+        //foreach (var item in enemyModel.Cards)
+        //{
+        //    if (item.Number > 0 && item.Number <= 9)
+        //    {
+        //        playerScore += 5;
+        //    }
+        //    if (item.Number == 22 && !item.IsWild)
+        //    {
+        //        playerScore += 10;
+        //    }
+        //    if (item.Number == 44)
+        //    {
+        //        playerScore += 10;
+        //    }
+        //    if (item.Number == 88)
+        //    {
+        //        playerScore += 15;
+        //    }
+        //    if (item.Number == 22 && item.IsWild)
+        //    {
+        //        playerScore += maxHandSize;
+        //    }
+        //    if (item.Number == 0)
+        //    {
+        //        playerScore += 25;
+        //    }
+        //    if (item.IsSuper && item.IsWild)
+        //    {
+        //        playerScore += 30;
+        //    }
+        //    if (item.IsBamboozle)
+        //    {
+        //        playerScore += 40;
+        //    }
+        //}
     }
     void CountScoreAIScore()
     {
         gameEnded = true;
+        AiWonRound = true;
+        StartCoroutine(ContinueEnumerator());
         //if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222 || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         //{
         //    yield return new WaitForSeconds(1.5f);
         //}
-        foreach (var item in playerModel.Cards)
-        {
-            if (item.Number > 0 && item.Number <= 9)
-            {
-                aiScore += 5;
-            }
-            if (item.Number == 22 && !item.IsWild)
-            {
-                aiScore += 10;
-            }
-            if (item.Number == 44)
-            {
-                aiScore += 10;
-            }
-            if (item.Number == 22 && item.IsWild)
-            {
-                aiScore += 20;
-            }
-            if (item.Number == 0)
-            {
-                aiScore += 25;
-            }
-            if (item.IsSuper && item.IsWild)
-            {
-                aiScore += 30;
-            }
-            if (item.IsBamboozle)
-            {
-                aiScore += 40;
-            }
-            if (item.Number == 88)
-            {
-                playerScore += 15;
-            }
-        }
+        //foreach (var item in playerModel.Cards)
+        //{
+        //    if (item.Number > 0 && item.Number <= 9)
+        //    {
+        //        aiScore += 5;
+        //    }
+        //    if (item.Number == 22 && !item.IsWild)
+        //    {
+        //        aiScore += 10;
+        //    }
+        //    if (item.Number == 44)
+        //    {
+        //        aiScore += 10;
+        //    }
+        //    if (item.Number == 22 && item.IsWild)
+        //    {
+        //        aiScore += maxHandSize;
+        //    }
+        //    if (item.Number == 0)
+        //    {
+        //        aiScore += 25;
+        //    }
+        //    if (item.IsSuper && item.IsWild)
+        //    {
+        //        aiScore += 30;
+        //    }
+        //    if (item.IsBamboozle)
+        //    {
+        //        aiScore += 40;
+        //    }
+        //    if (item.Number == 88)
+        //    {
+        //        aiScore += 15;
+        //    }
+        //}
     }
 
     //Used to activate by 3 buttons to change the sprite of the cards.
@@ -310,21 +364,90 @@ public class GameManager : MvcModels
         OnPlusCardEve(this, callAnim);
     }
 
-    public void CallColorChanged()
+    public void CallColorRise()
     {
-        var callAnim = new OnColorChangedEventArgs();
-        OnColorChanged(this, callAnim);
+        var callAnim = new OnColorRisingEventArgs();
+        OnColorRised(this, callAnim);
+    }
+
+    public void CallColorRiseComplete()
+    {
+        var callAnim = new OnColorRiseConfirmedEventArgs();
+        OnColorRiseComplete(this, callAnim);
+    }
+
+    public void test()
+    {
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(
+            Firebase.Analytics.FirebaseAnalytics.EventSignUp,
+            new Firebase.Analytics.Parameter[] {
+                new Firebase.Analytics.Parameter(
+                    Firebase.Analytics.FirebaseAnalytics.ParameterMethod, "Round Completed"),
+            }
+        );
     }
     IEnumerator ContinueEnumerator()
     {
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("Round Completed",new Parameter("Round Number",round));
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("RoundOver", "Current Round ", round);
         SoundManager.Instance.Play(SoundManager.Instance.roundOver);
         clicked = true;
+        if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222
+         || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
+        {
+            yield return new WaitForSeconds(3f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
 
-        yield return new WaitForSeconds(1.5f);
-        Inisializer.Instance.NewGame();
+        if (PlayerWonRound)
+        {
+            PlayerWon();
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round", "Current Round ", round);
+
+            yield return new WaitForSeconds(1f);
+            yield return new WaitUntil(() => !enemyModel.CountingCards());
+            yield return new WaitForSeconds(1);
+        }
+        if (AiWonRound)
+        {
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Round", "Current Round ", round);
+
+            AiWon();
+            yield return new WaitForSeconds(1f);
+            yield return new WaitUntil(() => !playerModel.CountingCards());
+            yield return new WaitForSeconds(1f);
+        }
+        if (aiScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameLost();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game", "Current Round ", round);
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
+            StartCoroutine(WinLooseEnumerator());
+        }
+        else if (playerScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game", "Current Round ", round);
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
+            StartCoroutine(WinLooseEnumerator());
+        }
+        else
+        {
+            Inisializer.Instance.NewGame();
+        }
     }
-
+    public void CleanBoard()
+    {
+        for (int i = 0; i < cardsObjects.Count; i++)
+        {
+            if (cardsObjects[i].GetComponent<CardView>()._inspectorBelongsTo == "Board")
+            {
+                Destroy(cardsObjects[i]);
+            }
+        }
+    }
     IEnumerator WinLooseEnumerator()
     {
         SoundManager.Instance.Play(SoundManager.Instance.winLoose);

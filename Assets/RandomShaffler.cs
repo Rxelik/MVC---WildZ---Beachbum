@@ -6,6 +6,23 @@ using UnityEngine.UI;
 
 public class RandomShaffler : MonoBehaviour
 {
+    #region Singelton
+    public static RandomShaffler Instance { get; private set; }
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+    #endregion
     public List<string> maleNames;
     public List<string> femaleNames;
 
@@ -18,6 +35,7 @@ public class RandomShaffler : MonoBehaviour
     
     public Image aiSpriteEnd;
     public SpriteRenderer aiSpriteFO;
+    public SpriteRenderer playerSpriteFO;
     public Image playerSpriteEnd;
     public SpriteRenderer backGroundImage;
 
@@ -26,21 +44,21 @@ public class RandomShaffler : MonoBehaviour
 
     public TextMeshProUGUI aiName;
     public TextMeshProUGUI playerName; 
-    public TextMeshProUGUI aiNameFO;
-    public TextMeshProUGUI playerNameFO;
+    public TextMeshPro aiNameFO;
+    public TextMeshPro playerNameFO;
 
 
     GameManager manager;
     void Start()
     {
         manager = GameManager.Instance;
-
-
     }
 
     void Update()
     {
         playerNameFO.text = SpriteSelector.Instance.playerName;
+        playerSpriteEnd.sprite = playerSprite.sprite;
+        aiSpriteEnd.sprite = aiSprite.sprite;
     }
     public void Randomize()
     {
