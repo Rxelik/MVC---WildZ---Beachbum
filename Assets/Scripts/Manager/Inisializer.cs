@@ -1057,23 +1057,26 @@ public class Inisializer : MonoBehaviour
         {
             return;
         }
-        CleanBoard();
+        for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
+        {
+            Destroy(GameManager.Instance.cardsObjects[i]);
+        }
         AnimationManager.Instance.DeActiveAnim();
-        PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.clicked = true;
         GameManager.Instance.gameEnded = false;
         GameManager.Instance.AiWonRound = false;
         GameManager.Instance.PlayerWonRound = false;
+        PositionPoints.Instance.ResetPosition();
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();
         GameManager.Instance.playerPlayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
+        GameManager.Instance.draw = 0;
     }
     public void Rematch()
     {
-        PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         GameManager.Instance.aiScore = 0;
         GameManager.Instance.playerScore = 0;
         GameManager.Instance.aiScoreUgui.text = 0.ToString();
@@ -1087,12 +1090,14 @@ public class Inisializer : MonoBehaviour
         AnimationManager.Instance.DeActiveAnim();
         GameManager.Instance.EndGameCanvas.SetActive(false);
         GameManager.Instance.uiCanvas.SetActive(true);
+        PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
         StartCoroutine(Build());
         GameManager.Instance.trigger = false;
         SoundManager.Instance.CallEvent();
         GameManager.Instance.playerPlayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
+        GameManager.Instance.draw = 0;
     }
 
     public void CleanBoard()

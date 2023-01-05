@@ -5,24 +5,27 @@ using UnityEngine;
 
 public class DynamticSize : MvcModels
 {
+    private Vector3 defultPos;
 
-    void Update()
+    private void Start()
     {
-
+        defultPos = transform.position;
     }
 
     public void OnCardSwap(bool left)
     {
-        if (playerModel.Cards.Count >= 10)
+        if (left)
         {
-            if (left)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y - (playerModel.Cards.Count / 490f), transform.position.z);
-            }
-            else
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y - (playerModel.Cards.Count / 500f), transform.position.z);
-            }
+            transform.position = new Vector3(transform.position.x, transform.position.y - (playerModel.Cards.Count / 495f), transform.position.z);
         }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - (playerModel.Cards.Count / 500f), transform.position.z);
+        }
+    }
+
+    public void ResetAnchors()
+    {
+        transform.position = defultPos;
     }
 }

@@ -404,7 +404,7 @@ public class GameManager : MvcModels
         if (PlayerWonRound)
         {
             PlayerWon();
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round");
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round", "Current Round ", round);
 
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !enemyModel.CountingCards());
@@ -412,7 +412,8 @@ public class GameManager : MvcModels
         }
         if (AiWonRound)
         {
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Round");
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Round", "Current Round ", round);
+
             AiWon();
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !playerModel.CountingCards());
@@ -421,13 +422,15 @@ public class GameManager : MvcModels
         if (aiScore >= _targetToWin)
         {
             CurrencyManager.Instance.OnGameLost();
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game");
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game", "Current Round ", round);
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
             StartCoroutine(WinLooseEnumerator());
         }
         else if (playerScore >= _targetToWin)
         {
             CurrencyManager.Instance.OnGameWon();
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game");
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game", "Current Round ", round);
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
             StartCoroutine(WinLooseEnumerator());
         }
         else

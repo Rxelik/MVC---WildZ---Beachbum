@@ -276,6 +276,7 @@ public class PlayerController : IPlayerController
                 _manager.StartCoroutine(PlayerLostAnim());
             }
         }
+       // PositionPoints.Instance.FixSides();
         SyncData();
     }
     private IEnumerator PlayerLostAnim()
