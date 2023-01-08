@@ -190,10 +190,10 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                if (model.BelongsTo == "Enemy")
-                    view.Position = Vector2.Lerp(model.Position, new Vector2(MvcModels.boardModel.Position.x, MvcModels.boardModel.Position.y + 0.1f), t / duration);
-                else
-                    view.Position = Vector2.Lerp(model.Position, new Vector2(MvcModels.boardModel.Position.x, MvcModels.boardModel.Position.y), t / duration);
+                //if (model.BelongsTo == "Enemy")
+                //    view.Position = Vector2.Lerp(model.Position, new Vector2(0, 0.6f), t / duration);
+                //else
+                    view.Position = Vector2.Lerp(model.Position, new Vector2(0, 0.3f), t / duration);
                 yield return null;
             }
             model.Position = Vector3.zero;

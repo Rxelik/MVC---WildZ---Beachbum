@@ -125,7 +125,7 @@ public class TurnTimer : MvcModels
             }
             else if (belongsTo == "Enemy")
             {
-                if (deckModel.CurrentTurn == "Enemy" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+                if (deckModel.CurrentTurn == "Enemy")
                 {
                     time -= TotalTime;
                     Sliderslider.value = time;
@@ -135,7 +135,7 @@ public class TurnTimer : MvcModels
                 }
                 if (deckModel.CurrentTurn == "Player")
                 {
-                    // dim.SetActive(true);
+                    //dim.SetActive(true);
                    // playerAvatar.color = Color.gray;
                    // enemyAvatar.color = Color.white;
                 }
