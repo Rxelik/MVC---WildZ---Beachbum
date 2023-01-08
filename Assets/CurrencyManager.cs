@@ -50,6 +50,7 @@ public class CurrencyManager : MonoBehaviour
     }
     void Start()
     {
+        PlayerPrefs.DeleteKey("takeMoneyFromFireBase");
         lowTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestMatchTarget").LongValue.ToString();
         midTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumMatchTarget").LongValue.ToString();
         highTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestMatchTarget").LongValue.ToString();

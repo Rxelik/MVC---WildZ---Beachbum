@@ -1074,7 +1074,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
         GameManager.Instance.draw = 0;
-        GameManager.Instance.round = 1;
+      //  GameManager.Instance.round = 1;
     }
     public void Rematch()
     {

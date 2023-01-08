@@ -25,7 +25,7 @@ public class TurnTimer : MvcModels
     private void DeckModel_OnTurnChangeEve(object sender, TurnChangedEventArgs e)
     {
         time = 100;
-        if (belongsTo == "Player")
+        if (PlayerTimer)
         {
             if (deckModel.CurrentTurn == "Player")
             {
@@ -36,16 +36,16 @@ public class TurnTimer : MvcModels
                 StartCoroutine(ColorAlphaZero());
             }
         }
-        if (belongsTo == "Enemy")
+        if (!PlayerTimer)
         {
-            if (deckModel.CurrentTurn == "Enemy")
-            {
-                StartCoroutine(ColorAlphaFull());
-            }
-            else if (deckModel.CurrentTurn == "Player")
-            {
-                StartCoroutine(ColorAlphaZero());
-            }
+            //if (deckModel.CurrentTurn == "Enemy")
+            //{
+            //    StartCoroutine(ColorAlphaFull());
+            //}
+            //else if (deckModel.CurrentTurn == "Player")
+            //{
+            //    StartCoroutine(ColorAlphaZero());
+            //}
         }
     }
 

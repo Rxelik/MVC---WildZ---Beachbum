@@ -285,6 +285,48 @@ public class GameManager : MvcModels
         if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222
          || boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
         {
+            if (deckModel.CurrentTurn == "Player")
+            {
+                if (playerModel.HasCounter())
+                {
+                    if (draw == 0)
+                    {
+                        if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222)
+                        {
+                            StartCoroutine(playerModel.TakeCard(2));
+                        }
+                        else if (boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 44)
+                        {
+                            StartCoroutine(playerModel.TakeCard(4));
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(playerModel.TakeCard(draw));
+                    }
+                }
+            }
+            else if (deckModel.CurrentTurn == "Enemy")
+            {
+                if (enemyModel.HasCounter())
+                {
+                    if (draw == 0)
+                    {
+                        if (boardModel.TopCard().Number == 22 || boardModel.TopCard().Number == 222)
+                        {
+                            StartCoroutine(enemyModel.TakeCard(2));
+                        }
+                        else if (boardModel.TopCard().Number == 44 || boardModel.TopCard().Number == 444)
+                        {
+                            StartCoroutine(enemyModel.TakeCard(4));
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(enemyModel.TakeCard(draw));
+                    }
+                }
+            }
             yield return new WaitForSeconds(3f);
         }
         else
@@ -295,7 +337,7 @@ public class GameManager : MvcModels
         if (PlayerWonRound)
         {
             PlayerWon();
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round", "Current Round ", round);
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Round", "Current Round ", round);
 
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !enemyModel.CountingCards());
@@ -314,14 +356,14 @@ public class GameManager : MvcModels
         {
             CurrencyManager.Instance.OnGameLost();
             Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game", "Current Round ", round);
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
             StartCoroutine(WinLooseEnumerator());
         }
         else if (playerScore >= _targetToWin)
         {
             CurrencyManager.Instance.OnGameWon();
             Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game", "Current Round ", round);
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
             StartCoroutine(WinLooseEnumerator());
         }
         else
