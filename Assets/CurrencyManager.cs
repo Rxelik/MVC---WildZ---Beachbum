@@ -36,6 +36,13 @@ public class CurrencyManager : MonoBehaviour
     public float allowClick;
     public bool takeMoneyFromFireBase = false;
 
+    public TextMeshProUGUI lowTarget;
+    public TextMeshProUGUI midTarget;
+    public TextMeshProUGUI highTarget;
+
+    public TextMeshProUGUI lowCoins;
+    public TextMeshProUGUI midCoins;
+    public TextMeshProUGUI highCoins;
     private void Update()
     {
         currency.text = currentBalance.ToString();
@@ -43,6 +50,14 @@ public class CurrencyManager : MonoBehaviour
     }
     void Start()
     {
+        lowTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestMatchTarget").LongValue.ToString();
+        midTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumMatchTarget").LongValue.ToString();
+        highTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestMatchTarget").LongValue.ToString();
+
+        lowCoins.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestBuyIn").LongValue.ToString();
+        midCoins.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumBuyIn").LongValue.ToString();
+        highCoins.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestBuyIn").LongValue.ToString();
+
         if (PlayerPrefs.GetInt("takeMoneyFromFireBase") == 0 ? true : false)
         {
             PlayerPrefs.SetInt("takeMoneyFromFireBase", takeMoneyFromFireBase ? 0 : 1);
