@@ -104,7 +104,7 @@ public class CardController : ICardController
                 }
                 else
                 {
-                    view.Position = Vector3.Lerp(view.Position, new Vector3(0, 2.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                    view.Position = Vector3.Lerp(view.Position, new Vector3(0, 4, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 }
                 yield return null;
                 model.BelongsTo = "Enemy";

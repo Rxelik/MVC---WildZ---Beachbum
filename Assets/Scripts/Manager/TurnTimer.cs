@@ -38,14 +38,14 @@ public class TurnTimer : MvcModels
         }
         if (!PlayerTimer)
         {
-            //if (deckModel.CurrentTurn == "Enemy")
-            //{
-            //    StartCoroutine(ColorAlphaFull());
-            //}
-            //else if (deckModel.CurrentTurn == "Player")
-            //{
-            //    StartCoroutine(ColorAlphaZero());
-            //}
+            if (deckModel.CurrentTurn == "Enemy")
+            {
+                StartCoroutine(ColorAlphaFull());
+            }
+            else if (deckModel.CurrentTurn == "Player")
+            {
+                StartCoroutine(ColorAlphaZero());
+            }
         }
     }
 
