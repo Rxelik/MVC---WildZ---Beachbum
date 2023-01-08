@@ -82,7 +82,7 @@ public class EnemyController : IEnemyController
                     model.Cards[i].BelongsTo = "EnemyFinish";
                 }
 
-                GameManager.Instance.StartCoroutine(EnemyLostAnim());
+                AI.Instance.StartCoroutine(EnemyLostAnim());
                 CardLayer += 1;
             }
 
@@ -94,7 +94,7 @@ public class EnemyController : IEnemyController
         yield return new WaitForSeconds(1f);
         foreach (var card in model.Cards)
         {
-            yield return new WaitForSeconds(0.55f);
+            yield return new WaitForSeconds(0.25f);
             card.BelongsTo = "EnemyCardCount";
             yield return null;
         }

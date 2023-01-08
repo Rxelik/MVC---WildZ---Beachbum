@@ -41,13 +41,13 @@ public class PositionPoints : MvcModels
 
     public void FixSides()
     {
-        LeftSize.OnCardSwap(true);
-        RightSize.OnCardSwap(false);
+        //LeftSize.OnCardSwap(true);
+        //RightSize.OnCardSwap(false);
     }
     public void ResetPosition()
     {
         transform.position = defultPos;
-        LeftSize.ResetAnchors();
-        RightSize.ResetAnchors();
+        //LeftSize.ResetAnchors();
+        //RightSize.ResetAnchors();
     }
 }
