@@ -190,7 +190,10 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                view.Position = Vector2.Lerp(model.Position, Vector2.zero, t / duration);
+                if (model.BelongsTo == "Enemy")
+                    view.Position = Vector2.Lerp(model.Position, new Vector2(MvcModels.boardModel.Position.x, MvcModels.boardModel.Position.y + 0.1f), t / duration);
+                else
+                    view.Position = Vector2.Lerp(model.Position, new Vector2(MvcModels.boardModel.Position.x, MvcModels.boardModel.Position.y), t / duration);
                 yield return null;
             }
             model.Position = Vector3.zero;
@@ -240,10 +243,11 @@ public class CardController : ICardController
     {
         float t = 0;
         float duration = 0.45f;
+        model.Position = new Vector3(model.Position.x, model.Position.y + 0.05f, model.Position.z);
         while (t < duration)
         {
             t += Time.deltaTime / duration;
-            view.Position = Vector3.Lerp(view.Position, new Vector3(model.Position.x, model.Position.y + 0.5f, model.Position.z),
+            view.Position = Vector3.Lerp(view.Position, new Vector3(model.Position.x, model.Position.y, model.Position.z),
                 view.Curve.Evaluate(t / duration));
             view.NumCounter.SetActive(true);
             model.BelongsTo = "EnemeyCardCounted";
@@ -255,16 +259,16 @@ public class CardController : ICardController
     {
         float t = 0;
         float duration = 0.45f;
+        model.Position = new Vector3(model.Position.x, model.Position.y + 0.05f, model.Position.z);
         while (t < duration)
         {
             t += Time.deltaTime / duration;
-            view.Position = Vector3.Lerp(view.Position, new Vector3(model.Position.x, model.Position.y + 0.5f, model.Position.z),
+            view.Position = Vector3.Lerp(view.Position, new Vector3(model.Position.x, model.Position.y, model.Position.z),
                 view.Curve.Evaluate(t / duration));
             view.NumCounter.SetActive(true);
-            model.BelongsTo = "PlayerCardCounted";  
+            model.BelongsTo = "PlayerCardCounted";
             yield return null;
         }
-        view.BelongsTo = model.BelongsTo;
     }
     private void ChangePosition(object sender, CardPositionChangedEventArgs e)
     {

@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FreeCoins : MonoBehaviour
 {
     public TimeSpan timeCounter;
     public DateTime lastChecked;
 
-    public Text txtTime;
+    public TextMeshProUGUI txtTime;
     public float updateFrequency = 0.1f;
 
     private TimeSpan TimeSinceLastChecked => DateTime.UtcNow - lastChecked;

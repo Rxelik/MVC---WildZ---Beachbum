@@ -9,6 +9,6 @@ public class TPM : MonoBehaviour
    public TextMeshProUGUI paranetText;
     void Update()
     {
-        childText.text = paranetText.text;
+     //   childText.text = paranetText.text;
     }
 }

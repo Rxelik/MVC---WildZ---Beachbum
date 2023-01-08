@@ -169,7 +169,8 @@ public class PlayerController : IPlayerController
         }
         if (_manager.gameEnded)
         {
-            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y + 1f, PositionPoints.Instance.transform.position.z);
+            PositionPoints.Instance.transform.position = Vector3.zero;
+            // PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y + 1f, PositionPoints.Instance.transform.position.z);
         }
         //else
         //{
@@ -269,14 +270,10 @@ public class PlayerController : IPlayerController
             {
                 model.Cards[i].BelongsTo = "";
                 model.Cards[i].BelongsTo = "PlayerFinish";
-                _manager.StartCoroutine(PlayerLostAnim());
-            }
-            if (model.Cards[i].BelongsTo == "PlayerFinish")
-            {
-                _manager.StartCoroutine(PlayerLostAnim());
+                SoundManager.Instance.StartCoroutine(PlayerLostAnim());
             }
         }
-       // PositionPoints.Instance.FixSides();
+        // PositionPoints.Instance.FixSides();
         SyncData();
     }
     private IEnumerator PlayerLostAnim()

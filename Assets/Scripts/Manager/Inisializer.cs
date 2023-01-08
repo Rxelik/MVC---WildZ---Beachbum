@@ -1074,6 +1074,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
         GameManager.Instance.draw = 0;
+        GameManager.Instance.round = 1;
     }
     public void Rematch()
     {
@@ -1082,6 +1083,8 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.aiScoreUgui.text = 0.ToString();
         GameManager.Instance.playerScoreUgui.text = 0.ToString();
         GameManager.Instance.clicked = true;
+        GameManager.Instance.AiWonRound = false;
+        GameManager.Instance.PlayerWonRound = false;
         for (int i = 0; i < GameManager.Instance.cardsObjects.Count; i++)
         {
             Destroy(GameManager.Instance.cardsObjects[i]);
@@ -1098,6 +1101,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
         GameManager.Instance.draw = 0;
+        GameManager.Instance.round = 1;
     }
 
     public void CleanBoard()
