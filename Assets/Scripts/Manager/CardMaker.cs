@@ -64,7 +64,7 @@ public class CardMaker : MvcModels
         bool downing = false;
         while (t < duration)
         {
-            CardSprite.color = Color.white;
+            //CardSprite.color = Color.white;
             t += Time.deltaTime / duration;
             CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / (duration - 1));
             if (cardcounter.color.a <= 0.88 && !downing)
@@ -126,6 +126,7 @@ public class CardMaker : MvcModels
 
         if (view._inspectorBelongsTo == "EnemeyCardCounted")
         {
+            CardSprite.color = Color.white;
             if (!didntEnter)
             {
                 GameManager.Instance.playerScore += view.numValue;
@@ -135,8 +136,10 @@ public class CardMaker : MvcModels
         }
         if (view._inspectorBelongsTo == "PlayerCardCounted")
         {
+            CardSprite.color = Color.white;
             if (!didntEnter)
             {
+                CardSprite.color = Color.white;
                 GameManager.Instance.aiScore += view.numValue;
                 StartCoroutine(ColorAlphaFull());
             }
@@ -195,7 +198,7 @@ public class CardMaker : MvcModels
             }
 
 
-            if (view._inspectorBelongsTo == "Player")
+            if (view._inspectorBelongsTo == "Player" || view._inspectorBelongsTo == "PlayerFinish" || view._inspectorBelongsTo == "" && !deckView._Inisialize)
             {
                 //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
                 //{

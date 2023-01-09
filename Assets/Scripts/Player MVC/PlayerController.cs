@@ -268,6 +268,8 @@ public class PlayerController : IPlayerController
 
             if (model.Cards[i].BelongsTo == "PlayerFinish")
             {
+                model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
+                model.Cards[i].CanPlayCard = true;
                 model.Cards[i].BelongsTo = "";
                 model.Cards[i].BelongsTo = "PlayerFinish";
                 SoundManager.Instance.StartCoroutine(PlayerLostAnim());
