@@ -77,8 +77,7 @@ public class TurnTimer : MvcModels
             yield return null;
         }
     }
-
-    private bool inisialized = false;
+    [HideInInspector]public bool inisialized = false;
     private void Update()
     {
         if (deckModel != null && !GameManager.Instance.gameEnded)
@@ -87,6 +86,7 @@ public class TurnTimer : MvcModels
             {
                 deckModel.OnTurnChangeEve += DeckModel_OnTurnChangeEve;
                 inisialized = true;
+                time = 100;
             }
             if (Sliderslider.value > 50)
             {

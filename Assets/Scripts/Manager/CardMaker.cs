@@ -82,7 +82,7 @@ public class CardMaker : MvcModels
             }
             yield return null;
         }
-
+        //CardSprite.color = Color.white;
     }
 
     private IEnumerator ReturnNumberNull()
@@ -126,7 +126,6 @@ public class CardMaker : MvcModels
 
         if (view._inspectorBelongsTo == "EnemeyCardCounted")
         {
-            CardSprite.color = Color.white;
             if (!didntEnter)
             {
                 GameManager.Instance.playerScore += view.numValue;
@@ -136,10 +135,8 @@ public class CardMaker : MvcModels
         }
         if (view._inspectorBelongsTo == "PlayerCardCounted")
         {
-            CardSprite.color = Color.white;
             if (!didntEnter)
             {
-                CardSprite.color = Color.white;
                 GameManager.Instance.aiScore += view.numValue;
                 StartCoroutine(ColorAlphaFull());
             }
@@ -198,7 +195,7 @@ public class CardMaker : MvcModels
             }
 
 
-            if (view._inspectorBelongsTo == "Player" || view._inspectorBelongsTo == "PlayerFinish" || view._inspectorBelongsTo == "" && !deckView._Inisialize)
+            if (view._inspectorBelongsTo == "Player" || view._inspectorBelongsTo == "PlayerFinish" || view._inspectorBelongsTo == "" && !deckView._Inisialize && deckModel.CurrentTurn == "Player")
             {
                 //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
                 //{

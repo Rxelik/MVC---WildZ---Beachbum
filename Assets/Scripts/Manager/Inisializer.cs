@@ -13,7 +13,8 @@ public class Inisializer : MonoBehaviour
 {
 
     private int HandSize;
-
+    public TurnTimer playTimer;
+    public TurnTimer enemyTimer;
     #region Singelton
     public static Inisializer Instance { get; private set; }
     private void Awake()
@@ -1064,6 +1065,7 @@ public class Inisializer : MonoBehaviour
         AnimationManager.Instance.DeActiveAnim();
         GameManager.Instance.clicked = true;
         GameManager.Instance.gameEnded = false;
+        GameManager.Instance.gameAnimEnded = false;
         GameManager.Instance.AiWonRound = false;
         GameManager.Instance.PlayerWonRound = false;
         PositionPoints.Instance.ResetPosition();
@@ -1074,6 +1076,8 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.GetComponent<ButtonIndexV2>().AIplayed = false;
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
         GameManager.Instance.draw = 0;
+        playTimer.inisialized = false;
+        enemyTimer.inisialized = false;
       //  GameManager.Instance.round = 1;
     }
     public void Rematch()
@@ -1090,6 +1094,7 @@ public class Inisializer : MonoBehaviour
             Destroy(GameManager.Instance.cardsObjects[i]);
         }
         GameManager.Instance.gameEnded = false;
+        GameManager.Instance.gameAnimEnded = false;
         AnimationManager.Instance.DeActiveAnim();
         GameManager.Instance.EndGameCanvas.SetActive(false);
         GameManager.Instance.uiCanvas.SetActive(true);
@@ -1102,6 +1107,8 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.GetComponent<ButtonIndexV2>().playerPlayed = false;
         GameManager.Instance.draw = 0;
         GameManager.Instance.round = 1;
+        playTimer.inisialized = false;
+        enemyTimer.inisialized = false; 
     }
 
     public void CleanBoard()

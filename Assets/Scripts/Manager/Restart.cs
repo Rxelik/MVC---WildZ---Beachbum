@@ -32,26 +32,36 @@ public class Restart : MonoBehaviour
     }
     public void StartGameLowestAmount()
     {
-        int num = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestBuyIn").LongValue;
+        if (!RandomShaffler.Instance.clicked)
+        {
 
-        StartCoroutine(PlayGame(num));
-        GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestMatchTarget").LongValue;
+            int num = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestBuyIn").LongValue;
+            StartCoroutine(PlayGame(num));
+            GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestMatchTarget").LongValue;
+        }
     }
     public void StartGameMediumAmount()
     {
-        StartCoroutine(PlayGame((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumBuyIn").LongValue));
-        GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumMatchTarget").LongValue;
+        if (!RandomShaffler.Instance.clicked)
+        {
+            StartCoroutine(PlayGame((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumBuyIn").LongValue));
+            GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumMatchTarget").LongValue;
+        }
     }
     public void StartGameHighestAmount()
     {
-        StartCoroutine(PlayGame((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestBuyIn").LongValue));
-        GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestMatchTarget").LongValue;
+        if (!RandomShaffler.Instance.clicked)
+        {
+            StartCoroutine(PlayGame((int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestBuyIn").LongValue));
+            GameManager.Instance._targetToWin = (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestMatchTarget").LongValue;
+        }
     }
 
     public IEnumerator PlayGame(int JoinMoney)
     {
         if (CurrencyManager.Instance.currentBalance >= JoinMoney)
         {
+            RandomShaffler.Instance.clicked = true;
             CurrencyManager.Instance.OnGameStart(JoinMoney);
             findingOP.SetActive(true);
             shuffle.Randomize();

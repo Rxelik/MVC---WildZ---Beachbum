@@ -73,6 +73,7 @@ public class GameManager : MvcModels
     [Header("Boolians")]
     public bool playerCanPlay;
     public bool gameEnded = false;
+    public bool gameAnimEnded = false;
     public bool playerPlayed = false;
     public bool tookToHand = false;
     public bool AiWonRound = false;
@@ -84,6 +85,8 @@ public class GameManager : MvcModels
 
     public int playerScore = 0;
     public int aiScore = 0;
+    public int playerRoundsWon = 0;
+    public int aiRoundsWon = 0;
     public string cardVersion = "Version 2";
     public int _index = 0;
     public int draw = 0;
@@ -114,6 +117,7 @@ public class GameManager : MvcModels
     private void PlayerWon()
     {
         PlayerWonRound = true;
+        playerRoundsWon++;
         //foreach (var VARIABLE in enemyModel.Cards)
         //{
         //    VARIABLE.BelongsTo = "EnemyFinish";
@@ -129,6 +133,7 @@ public class GameManager : MvcModels
     private void AiWon()
     {
         AiWonRound = true;
+        aiRoundsWon++;
         //foreach (var VARIABLE in playerModel.Cards)
         //{
         //    VARIABLE.BelongsTo = "PlayerFinish";
@@ -195,12 +200,7 @@ public class GameManager : MvcModels
                         trigger = true;
                         round++;
                     }
-                    else if (playerScore >= _targetToWin && !trigger)
-                    {
-                        var eventRoundWin = new OnWinAnimEventArgs();
-                        OnWinEve(this, eventRoundWin);
-                        trigger = true;
-                    }
+
                 }
 
                 if (enemyModel.Cards.Count == 0 || playerModel.Cards.Count > maxHandSize)
@@ -209,22 +209,16 @@ public class GameManager : MvcModels
                     {
                         CountScoreAIScore();
                     }
-                    if (gameEnded)
+
+                    if (aiScore < _targetToWin && !trigger)
                     {
-                        if (aiScore < _targetToWin && !trigger)
-                        {
-                            var eventLoose = new OnRoundLooseAnimEventArgs();
-                            OnRoundLooseEve(this, eventLoose);
-                            trigger = true;
-                            round++;
-                        }
-                        else if (aiScore >= _targetToWin && !trigger)
-                        {
-                            var eventLoose = new OnLooseAnimEventArgs();
-                            OnLooseEve(this, eventLoose);
-                            trigger = true;
-                        }
+                        var eventLoose = new OnRoundLooseAnimEventArgs();
+                        OnRoundLooseEve(this, eventLoose);
+                        trigger = true;
+                        round++;
                     }
+
+
                 }
             }
         }
@@ -328,12 +322,15 @@ public class GameManager : MvcModels
                 }
             }
             yield return new WaitForSeconds(3f);
+            gameAnimEnded = true;
         }
         else
         {
             yield return new WaitForSeconds(2f);
+            gameAnimEnded = true;
         }
 
+        yield return new WaitForSeconds(2f);
         if (PlayerWonRound)
         {
             PlayerWon();
@@ -342,6 +339,8 @@ public class GameManager : MvcModels
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !enemyModel.CountingCards());
             yield return new WaitForSeconds(1);
+
+
         }
         if (AiWonRound)
         {
@@ -351,18 +350,20 @@ public class GameManager : MvcModels
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !playerModel.CountingCards());
             yield return new WaitForSeconds(1f);
+
+
+        }
+        if (playerScore >= _targetToWin)
+        {
+            CurrencyManager.Instance.OnGameWon();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game", "Current Round ", round);
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
+            StartCoroutine(WinLooseEnumerator());
         }
         if (aiScore >= _targetToWin)
         {
             CurrencyManager.Instance.OnGameLost();
             Firebase.Analytics.FirebaseAnalytics.LogEvent("AI Won Game", "Current Round ", round);
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
-            StartCoroutine(WinLooseEnumerator());
-        }
-        else if (playerScore >= _targetToWin)
-        {
-            CurrencyManager.Instance.OnGameWon();
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("Player Won Game", "Current Round ", round);
             Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", "Current Round ", round);
             StartCoroutine(WinLooseEnumerator());
         }
@@ -385,7 +386,17 @@ public class GameManager : MvcModels
     {
         SoundManager.Instance.Play(SoundManager.Instance.winLoose);
         clicked = true;
-        yield return new WaitForSeconds(1.5f);
+        if (playerScore >= _targetToWin)
+        {
+            var eventRoundWin = new OnWinAnimEventArgs();
+            OnWinEve(this, eventRoundWin);
+        }
+        if (aiScore >= _targetToWin)
+        {
+            var eventLoose = new OnLooseAnimEventArgs();
+            OnLooseEve(this, eventLoose);
+        }
+        yield return new WaitForSeconds(2f);
         uiCanvas.SetActive(false);
         EndGameCanvas.SetActive(true);
     }
@@ -397,6 +408,7 @@ public class GameManager : MvcModels
         round = 1;
         Inisializer.Instance.NewGame();
         SceneManager.LoadScene(0);
+        CurrencyManager.Instance.OnGameLost();
     }
 }
 

@@ -23,6 +23,8 @@ public class RandomShaffler : MonoBehaviour
     }
 
     #endregion
+
+    public bool clicked = false;
     public List<string> maleNames;
     public List<string> femaleNames;
 

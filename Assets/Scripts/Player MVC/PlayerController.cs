@@ -45,7 +45,7 @@ public class PlayerController : IPlayerController
 
     private void Instance_OnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
-        if (!_manager.gameEnded)
+        if (!_manager.gameEnded && !_manager.gameAnimEnded)
         {
             // PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
             //R Y B G
@@ -167,15 +167,11 @@ public class PlayerController : IPlayerController
         {
             PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 20f, 0.005f, 0.65f), 1, 1);
         }
-        if (_manager.gameEnded)
+        if (_manager.gameEnded && _manager.gameAnimEnded)
         {
-            PositionPoints.Instance.transform.position = Vector3.zero;
-            // PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y + 1f, PositionPoints.Instance.transform.position.z);
+            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x,
+                PositionPoints.Instance.transform.position.y + 1.5f);
         }
-        //else
-        //{
-        //    PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
-        //}
         //R Y B G
         if (!model.FirstTurn)
         {
@@ -283,7 +279,7 @@ public class PlayerController : IPlayerController
         yield return new WaitForSeconds(1f);
         foreach (var card in model.Cards)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.35f);
             card.BelongsTo = "PlayerCardCount";
             yield return null;
         }

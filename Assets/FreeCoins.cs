@@ -12,7 +12,9 @@ public class FreeCoins : MonoBehaviour
 
     public TextMeshProUGUI txtTime;
     public float updateFrequency = 0.1f;
+    public GameObject coinsVFX;
 
+    public bool ForceClick = false;
     private TimeSpan TimeSinceLastChecked => DateTime.UtcNow - lastChecked;
     // Use this for initialization
     void Start()
@@ -65,7 +67,7 @@ public class FreeCoins : MonoBehaviour
             }
             else
             {
-                txtTime.text = "Claim Your Free Reword";
+                txtTime.text = "Claim";
 
             }
 
@@ -75,11 +77,19 @@ public class FreeCoins : MonoBehaviour
 
     public void GetCoins()
     {
-        if (timeLeft.Ticks < 0)
+        if (timeLeft.Ticks < 0 || ForceClick)
         {
             CurrencyManager.Instance.currentBalance += (int)Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("BonusCoinsTimerAmount").LongValue;
             CheckTime();
             CurrencyManager.Instance.SetCoins();
+            StartCoroutine(PlayCoinAnim());
         }
+    }
+
+    IEnumerator PlayCoinAnim()
+    {
+        coinsVFX.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        coinsVFX.SetActive(false);
     }
 }

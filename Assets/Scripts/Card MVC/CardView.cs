@@ -270,6 +270,7 @@ public class CardView : MvcModels, ICardView
         else if (_inspectorBelongsTo == "Deck")
         {
             Layer = 3;
+            gameObject.transform.localScale = new Vector3(0.1f, 0.1f);
         }
 
         else if (_inspectorBelongsTo == "FlyingToEnemy")

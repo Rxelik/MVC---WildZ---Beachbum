@@ -94,7 +94,7 @@ public class EnemyController : IEnemyController
         yield return new WaitForSeconds(1f);
         foreach (var card in model.Cards)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.35f);
             card.BelongsTo = "EnemyCardCount";
             yield return null;
         }

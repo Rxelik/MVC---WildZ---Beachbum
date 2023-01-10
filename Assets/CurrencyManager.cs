@@ -36,6 +36,8 @@ public class CurrencyManager : MonoBehaviour
     public float allowClick;
     public bool takeMoneyFromFireBase = false;
 
+    public TextMeshProUGUI currencyEOG;
+
     public TextMeshProUGUI lowTarget;
     public TextMeshProUGUI midTarget;
     public TextMeshProUGUI highTarget;
@@ -46,11 +48,11 @@ public class CurrencyManager : MonoBehaviour
     private void Update()
     {
         currency.text = currentBalance.ToString();
+        currencyEOG.text = currentBalance.ToString();
         // float timerLapsed = (float)(System.DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("Timer"))).TotalSeconds;
     }
     void Start()
     {
-        PlayerPrefs.DeleteKey("takeMoneyFromFireBase");
         lowTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("LowestMatchTarget").LongValue.ToString();
         midTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("MediumMatchTarget").LongValue.ToString();
         highTarget.text = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue("HighestMatchTarget").LongValue.ToString();
@@ -91,7 +93,7 @@ public class CurrencyManager : MonoBehaviour
     }
     public void OnGameWon()
     {
-        currentBalance += currencyInRun * 3 + Random.Range(1, 99);
+        currentBalance += currencyInRun * 2 + Random.Range(1, 99);
         PlayerPrefs.SetInt("currency", currentBalance);
     }
     public void OnGameStart(int Money)
