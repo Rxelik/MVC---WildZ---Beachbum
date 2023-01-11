@@ -550,7 +550,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1854173dea45d14488fd6a51b254204, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f51860fe394534e4d98f4e17cfcbf6bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -819,6 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38fb8d7dbadef1438d880bd10678330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckId: 0
 --- !u!114 &1488681429
 MonoBehaviour:
   m_ObjectHideFlags: 0

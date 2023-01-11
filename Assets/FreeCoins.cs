@@ -89,7 +89,7 @@ public class FreeCoins : MonoBehaviour
     IEnumerator PlayCoinAnim()
     {
         coinsVFX.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         coinsVFX.SetActive(false);
     }
 }
