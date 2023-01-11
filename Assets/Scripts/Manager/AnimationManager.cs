@@ -112,8 +112,8 @@ public class AnimationManager : MvcModels
     public IEnumerator DelayDeActive()
     {
         yield return new WaitForSeconds(2f);
-        LooseAnim.SetActive(false);
-        WinAnim.SetActive(false);
+        //LooseAnim.SetActive(false);
+        //WinAnim.SetActive(false);
         RoundWinAnim.SetActive(false);
         RoundLooseAnim.SetActive(false);
         ChooseCardAnim.SetActive(false);

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CleanOnFinish : MonoBehaviour
 {
-    public GameObject EndScreenRound;
+    private GameObject EndScreenRound;
     public GameObject sprite;
     void Start()
     {
-        EndScreenRound  = GameObject.FindWithTag("END");
+        EndScreenRound = GameManager.Instance.EndGameCanvas;
     }
 
     // Update is called once per frame
