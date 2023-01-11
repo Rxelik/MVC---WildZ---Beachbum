@@ -11,6 +11,8 @@ public class Restart : MonoBehaviour
     public GameObject findingOP;
     public RandomShaffler shuffle;
     public GameObject NoMoneyCurency;
+    public Sprite sprite;
+    public SpriteRenderer spriteBackground;
     public void RestartGame()
     {
         GameManager.Instance.aiScore = 0;
@@ -61,6 +63,7 @@ public class Restart : MonoBehaviour
     {
         if (CurrencyManager.Instance.currentBalance >= JoinMoney)
         {
+            spriteBackground.sprite = sprite;
             RandomShaffler.Instance.clicked = true;
             CurrencyManager.Instance.OnGameStart(JoinMoney);
             findingOP.SetActive(true);
