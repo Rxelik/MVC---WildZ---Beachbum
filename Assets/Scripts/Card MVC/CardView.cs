@@ -22,21 +22,29 @@ public class OnLayerChangeEventArgs : EventArgs { }
 public interface ICardView
 {
     // Dispatched when the card is clicked
+
+    #region Events
+
     event EventHandler<CardClickedEventArgs> OnClicked;
     event EventHandler<CardOnEnableEventArgs> OnEnableEvent;
     event EventHandler<CardColorChangedEventArgs> OnColorChange;
     event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve;
     event EventHandler<CardPositionChangedEventArgs> CardPos;
 
+    #endregion
+
     // Set the enemy's position
-    [SerializeField] PlayerModel Player { set; }
-    [SerializeField] EnemyModel Enemy { set; }
-    int Number { set; }
-    int HandOrder { set; }
     Vector3 Position { get; set; }
-    Quaternion Rotation { set; }
+    int Number { set; }
     Color Color { set; }
     string BelongsTo { set; }
+
+    #region Other
+
+    [SerializeField] PlayerModel Player { set; }
+    [SerializeField] EnemyModel Enemy { set; }
+    int HandOrder { set; }
+    Quaternion Rotation { set; }
     int Layer { set; }
     string Name { set; }
 
@@ -53,6 +61,7 @@ public interface ICardView
 
     int NumValue { get; }
 
+    #endregion
 }
 
 // Implementation of the enemy view
@@ -60,24 +69,33 @@ public interface ICardView
 public class CardView : MvcModels, ICardView
 {
     // Dispatched when the enemy is clicked
+    #region Events
+
     public event EventHandler<CardClickedEventArgs> OnClicked = (sender, e) => { };
     public event EventHandler<CardOnEnableEventArgs> OnEnableEvent = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChange = (sender, e) => { };
     public event EventHandler<OnLayerChangeEventArgs> OnLayerChangeEve = (sender, e) => { };
     public event EventHandler<CardPositionChangedEventArgs> CardPos = (sender, e) => { };
 
-
-
+    #endregion
+    // Interface Variables
+    public Vector3 Position { set { transform.position = value; _inspectPos = value; } get => transform.position; }
+    public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
+    public string BelongsTo { set { _inspectorBelongsTo = value; } }
     public int Number { set {; _inspectNumber = value; } }
+
+    // Inspector Variables = Interface Variables with "(_)"
+    public Vector3 _inspectPos;
+    public Color _InspectorColor;
+    public string _inspectorBelongsTo;
+    public int _inspectNumber;
+    #region Other
+
+    public Quaternion Rotation { set { transform.rotation = value; _inspectRot = value; } }
     public int HandOrder { set { _inspectOrderInHand = value; } }
     public PlayerModel Player { set { _InspectorPlayer = value; } }
     public EnemyModel Enemy { set { _InspectorEnemy = value; } }
-    public Vector3 Position { set { transform.position = value; _inspectPos = value; } get => transform.position; }
-    public Quaternion Rotation { set { transform.rotation = value; _inspectRot = value; } }
 
-    // Set the Card Color position
-    public Color Color { set { GetComponent<SpriteRenderer>().color = value; _InspectorColor = value; } }
-    public string BelongsTo { set { _inspectorBelongsTo = value; } }
     public string Name { set => gameObject.name = value; }
     public int Layer { set { _InspectorSprite.sortingOrder = value; } }
     public bool IsSuper { set { _IsSuper = value; } }
@@ -90,14 +108,11 @@ public class CardView : MvcModels, ICardView
 
     public GameObject NumCounter { get => cardCounter; }
     public int NumValue { get => numValue; }
+    #endregion
+    #region InspectorOthers
 
-
-    public Vector3 _inspectPos;
     public Quaternion _inspectRot;
-    public int _inspectNumber;
     public int _inspectOrderInHand;
-    public string _inspectorBelongsTo;
-    public Color _InspectorColor;
     public bool _IsSuper;
     public bool _IsWild;
     public bool _IsBamboozle;
@@ -109,10 +124,7 @@ public class CardView : MvcModels, ICardView
     public bool EnableArc = true;
     public int numValue;
     private bool colorChanged = false;
-    //public TextMeshPro gs;
 
-    // public List<GameObject> PlayerTransforms;
-    //public List<GameObject> EnemyTransforms;
     public ButtonIndexV2 v2;
     public PlayerModel _InspectorPlayer;
     public EnemyModel _InspectorEnemy;
@@ -124,6 +136,9 @@ public class CardView : MvcModels, ICardView
     public SkeletonAnimation spineAnimation;
 
     private TextMeshPro textValue;
+
+    #endregion
+
     private void Awake()
     {
         _InspectorSprite = GetComponent<SpriteRenderer>();
@@ -270,11 +285,12 @@ public class CardView : MvcModels, ICardView
         else if (_inspectorBelongsTo == "Deck")
         {
             Layer = 3;
+            gameObject.transform.localScale = new Vector3(0.1f, 0.1f);
         }
 
         else if (_inspectorBelongsTo == "FlyingToEnemy")
         {
-          //  gameObject.transform.localScale = new Vector3(1f, 1f);
+            //  gameObject.transform.localScale = new Vector3(1f, 1f);
         }
         else if (_inspectorBelongsTo == "Enemy")
         {

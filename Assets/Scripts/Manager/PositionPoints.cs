@@ -30,7 +30,7 @@ public class PositionPoints : MvcModels
     {
         if (!AspectRatioChecker.Instance.isOn16by9)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 2.2f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y /*- 2.2f*/, transform.position.z);
         }
         defultPos = transform.position;
     }

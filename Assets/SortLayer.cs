@@ -14,9 +14,9 @@ public class SortLayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!mainMenu.activeInHierarchy && !GameManager.Instance.gameEnded)
+        if (!mainMenu.activeInHierarchy)
         {
-            canvas.sortingOrder = 100;
+            canvas.sortingOrder = 5;
         }
         else
         {

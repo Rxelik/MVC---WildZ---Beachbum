@@ -18,15 +18,18 @@ public class GetReffrence : MonoBehaviour
     }
     public void ToggleGender()
     {
-        if (SpriteSelector.Instance.isMale)
+        if (!RandomShaffler.Instance.clicked)
         {
-            GetComponent<Image>().sprite = male;
+            if (SpriteSelector.Instance.isMale)
+            {
+                GetComponent<Image>().sprite = male;
+            }
+            else
+            {
+                GetComponent<Image>().sprite = female;
+            }
+            SpriteSelector.Instance.ToggleGender();
         }
-        else
-        {
-            GetComponent<Image>().sprite = female;
-        }
-        SpriteSelector.Instance.ToggleGender();
 
     }
 

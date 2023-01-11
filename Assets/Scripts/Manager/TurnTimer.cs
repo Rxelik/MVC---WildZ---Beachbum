@@ -15,6 +15,7 @@ public class TurnTimer : MvcModels
     public Image _fill;
     public Image _background;
     bool changedColor = false;
+    public bool PlayerTimer;
     private void Start()
     {
         // TotalTime = TotalTime / 10000;
@@ -24,7 +25,7 @@ public class TurnTimer : MvcModels
     private void DeckModel_OnTurnChangeEve(object sender, TurnChangedEventArgs e)
     {
         time = 100;
-        if (belongsTo == "Player")
+        if (PlayerTimer)
         {
             if (deckModel.CurrentTurn == "Player")
             {
@@ -35,7 +36,7 @@ public class TurnTimer : MvcModels
                 StartCoroutine(ColorAlphaZero());
             }
         }
-        if (belongsTo == "Enemy")
+        if (!PlayerTimer)
         {
             if (deckModel.CurrentTurn == "Enemy")
             {
@@ -76,8 +77,7 @@ public class TurnTimer : MvcModels
             yield return null;
         }
     }
-
-    private bool inisialized = false;
+    [HideInInspector]public bool inisialized = false;
     private void Update()
     {
         if (deckModel != null && !GameManager.Instance.gameEnded)
@@ -86,6 +86,7 @@ public class TurnTimer : MvcModels
             {
                 deckModel.OnTurnChangeEve += DeckModel_OnTurnChangeEve;
                 inisialized = true;
+                time = 100;
             }
             if (Sliderslider.value > 50)
             {
@@ -96,13 +97,12 @@ public class TurnTimer : MvcModels
                 _fill.color = Color.Lerp(new Color(0, 1, 1, _fill.color.a), new Color(0.816f, 0.125f, 0, _fill.color.a), Mathf.PingPong(Time.time, 1));
 
             }
-            if (belongsTo == "Player")
+            if (PlayerTimer)
             {
                 if (deckModel.CurrentTurn == "Player" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
                 {
                     time -= TotalTime;
                     Sliderslider.value = time;
-                    //dim.SetActive(false);
                     playerAvatar.color = Color.white;
                     enemyAvatar.color = Color.gray;
 
@@ -122,20 +122,20 @@ public class TurnTimer : MvcModels
                 }
 
 
-            }
-            else if (belongsTo == "Enemy")
+            } 
+            if (!PlayerTimer)
             {
-                if (deckModel.CurrentTurn == "Enemy" && !AnimationManager.Instance.ChooseCardAnim.activeSelf)
+                if (deckModel.CurrentTurn == "Enemy")
                 {
                     time -= TotalTime;
-                    Sliderslider.value = time;
-                    // dim.SetActive(false);
+                    Sliderslider.value = time; 
+                   // dim.SetActive(false);
                    // playerAvatar.color = Color.white;
                     //enemyAvatar.color = Color.gray;
                 }
                 if (deckModel.CurrentTurn == "Player")
                 {
-                    // dim.SetActive(true);
+                    //dim.SetActive(true);
                    // playerAvatar.color = Color.gray;
                    // enemyAvatar.color = Color.white;
                 }

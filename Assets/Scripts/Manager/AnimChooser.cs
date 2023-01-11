@@ -65,12 +65,20 @@ public class AnimChooser : MvcModels
 
     IEnumerator DelayDeactive()
     {
-        if (gameObject.name == "+2 Anim Spine" || gameObject.name == "+2 Anim SpineEND")
-            yield return new WaitForSeconds(1.25f);
+        if (gameObject.name == "Opponent Won Spine" || gameObject.name == "YOU WIN Spine")
+        {
+            
+        }
         else
-            yield return new WaitForSeconds(1.5f);
-        VFX.SetActive(false);
-        gameObject.SetActive(false);
+        {
+            if (gameObject.name == "+2 Anim Spine" || gameObject.name == "+2 Anim SpineEND")
+                yield return new WaitForSeconds(1.25f);
+            else
+                yield return new WaitForSeconds(1.5f);
+            VFX.SetActive(false);
+            gameObject.SetActive(false);
+        }
+        
     }
 
     private void OnEnable()

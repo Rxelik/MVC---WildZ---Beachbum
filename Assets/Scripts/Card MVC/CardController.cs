@@ -62,6 +62,7 @@ public class CardController : ICardController
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
     {
+
         if (model.BelongsTo == "FlyingToEnemy" || model.BelongsTo == "Enemy" || model.BelongsTo == "EnemyFinish")
         {
             _manager.StartCoroutine(eLerp());
@@ -104,7 +105,7 @@ public class CardController : ICardController
                 }
                 else
                 {
-                    view.Position = Vector3.Lerp(view.Position, new Vector3(0, 2.5f, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
+                    view.Position = Vector3.Lerp(MvcModels.deckView.transform.position, new Vector3(0, 4, 0) /*model.Enemy.Cards[model.HandOrder].Position*/, t / duration);
                 }
                 yield return null;
                 model.BelongsTo = "Enemy";
@@ -190,10 +191,10 @@ public class CardController : ICardController
             while (t < 1.5f)
             {
                 t += Time.deltaTime / duration;
-                if (model.BelongsTo == "Enemy")
-                    view.Position = Vector2.Lerp(model.Position, new Vector2(MvcModels.boardModel.Position.x, MvcModels.boardModel.Position.y + 0.1f), t / duration);
-                else
-                    view.Position = Vector2.Lerp(model.Position, new Vector2(MvcModels.boardModel.Position.x, MvcModels.boardModel.Position.y), t / duration);
+                //if (model.BelongsTo == "Enemy")
+                //    view.Position = Vector2.Lerp(model.Position, new Vector2(0, 0.6f), t / duration);
+                //else
+                    view.Position = Vector2.Lerp(model.Position, new Vector2(0, 0.3f), t / duration);
                 yield return null;
             }
             model.Position = Vector3.zero;
@@ -208,12 +209,12 @@ public class CardController : ICardController
 
                 if (AspectRatioChecker.Instance.isOn16by9)
                 {
-                    view.Position = Vector3.Lerp(Vector3.zero, MvcModels.deckModel.Position, t / duration);
+                    view.Position = Vector3.Lerp(Vector3.zero, MvcModels.deckView.transform.position, t / duration);
 
                 }
                 else
                 {
-                    view.Position = Vector3.Lerp(Vector3.zero, new Vector3(13.5f, 0, 0), t / duration);
+                    view.Position = Vector3.Lerp(Vector3.zero, MvcModels.deckView.transform.position, t / duration);
                 }
                 //    SyncData();
                 yield return null;

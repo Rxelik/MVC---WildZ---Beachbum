@@ -45,8 +45,9 @@ public class PlayerController : IPlayerController
 
     private void Instance_OnChooseCardEve(object sender, OnChooseCardAnimEventArgs e)
     {
-        if (!_manager.gameEnded)
+        if (!_manager.gameEnded && !_manager.gameAnimEnded)
         {
+            #region MyRegion
             // PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 10f, 0.01f, 1.25f), 1, 1);
             //R Y B G
             if (!model.FirstTurn)
@@ -67,33 +68,39 @@ public class PlayerController : IPlayerController
             }
 
             float moveRight = 0;
-            int CardLayer = model.Cards.Count;
 
 
+            #endregion
+
+            int cardLayer = model.Cards.Count;
             for (int i = 0; i < model.Cards.Count; i++)
             {
-
-                #region OGway
+                #region _
                 model.Cards[i].HandOrder = i;
-                model.Cards[i].Layer = CardLayer;
+                model.Cards[i].Layer = cardLayer;
+                #endregion
+
                 Vector3 pointInPath = iTween.PointOnPath(PositionPoints.Instance.positionPoints, (model.Cards[i].HandOrder + 0.5f) / model.Cards.Count);
-                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -CardLayer);
+                model.Cards[i].Position = new Vector3(pointInPath.x, pointInPath.y, -cardLayer);
+                cardLayer += 1;
+                #region _
                 model.Cards[i].CanPlayCard = false;
                 moveRight += 2.8f;
-                CardLayer += 1;
-
                 float rotate = model.Cards[i].HandOrder - model.Cards.Count / 2;
                 model.Cards[i].Rotation = Quaternion.Euler(model.Cards[i].Rotation.x, model.Cards[i].Rotation.y, rotate * -0.75f);
 
-                #endregion
                 if (model.Cards[i].BelongsTo == "Player")
                 {
                     model.Cards[i].BelongsTo = "";
                     model.Cards[i].BelongsTo = "Player";
                 }
+
+                #endregion
             }
         }
     }
+
+    #region MyRegion
 
     private void VersionChanged(object sender, GameManager.OnCardVersionChange e)
     {
@@ -103,25 +110,10 @@ public class PlayerController : IPlayerController
     {
         FixPosition();
     }
-
     private void ViewCards(object sender, OnViewCardsEventArgs e)
     {
-        //foreach (var item in model.Cards)
-        //{
-
-        //    if (item.BelongsTo == "ViewPlayer")
-        //    {
-        //        item.BelongsTo = "Player";
-        //    }
-        //    else if (item.BelongsTo == "Player")
-        //    {
-        //        item.BelongsTo = "ViewPlayer";
-        //    }
-        //}
-
         FixPosition();
     }
-
     private void EnemyPlayed(object sender, OnCardsInBoardChangeEventArgs e)
     {
         FixPosition();
@@ -137,26 +129,8 @@ public class PlayerController : IPlayerController
     }
     private void FixViewPos(object sender, PlayerCardChangeEventArgs e)
     {
-
-
-
         // SyncData();
-
-
     }
-
-    private void HandleClicked(object sender, OrderInHandEventArgs e)
-    {
-        for (int i = 0; i < model.Cards.Count - 1; i++)
-        {
-            model.Cards[i].HandOrder = i;
-            //SyncData();
-        }
-        // SyncData();
-        // FixPosition();
-
-    }
-
     private void FixPosition()
     {
         if (!AspectRatioChecker.Instance.isOn16by9)
@@ -167,15 +141,11 @@ public class PlayerController : IPlayerController
         {
             PositionPoints.Instance.transform.localScale = new Vector3(Mathf.Clamp(model.Cards.Count / 20f, 0.005f, 0.65f), 1, 1);
         }
-        if (_manager.gameEnded)
+        if (_manager.gameEnded && _manager.gameAnimEnded)
         {
-            PositionPoints.Instance.transform.position = Vector3.zero;
-            // PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x, PositionPoints.Instance.transform.position.y + 1f, PositionPoints.Instance.transform.position.z);
+            PositionPoints.Instance.transform.position = new Vector3(PositionPoints.Instance.transform.position.x,
+                PositionPoints.Instance.transform.position.y + 1.5f);
         }
-        //else
-        //{
-        //    PositionPoints.Instance.transform.position = PositionPoints.Instance.defultPos;
-        //}
         //R Y B G
         if (!model.FirstTurn)
         {
@@ -268,6 +238,8 @@ public class PlayerController : IPlayerController
 
             if (model.Cards[i].BelongsTo == "PlayerFinish")
             {
+                model.Cards[i].Position = new Vector3(pointInPath.x + 0.7f, pointInPath.y, -CardLayer);
+                model.Cards[i].CanPlayCard = true;
                 model.Cards[i].BelongsTo = "";
                 model.Cards[i].BelongsTo = "PlayerFinish";
                 SoundManager.Instance.StartCoroutine(PlayerLostAnim());
@@ -281,24 +253,19 @@ public class PlayerController : IPlayerController
         yield return new WaitForSeconds(1f);
         foreach (var card in model.Cards)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.35f);
             card.BelongsTo = "PlayerCardCount";
             yield return null;
         }
         // GameManager.Instance.CheckIfPlayerWon();
     }
-    private void ChangePosition(object sender, CardPositionChangedEventArgs e)
-    {
-        // Update the view with the new position
-        // SyncData();
-
-    }
-
-    // Sync the view's position with the model's position
     public void SyncData()
     {
         view.Cards = model.Cards;
         view.Position = model.Position;
         view.HandPos = model.HandPos;
     }
+
+    #endregion
+
 }

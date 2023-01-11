@@ -23,6 +23,8 @@ public class RandomShaffler : MonoBehaviour
     }
 
     #endregion
+
+    public bool clicked = false;
     public List<string> maleNames;
     public List<string> femaleNames;
 
@@ -46,7 +48,6 @@ public class RandomShaffler : MonoBehaviour
     public TextMeshProUGUI playerName; 
     public TextMeshPro aiNameFO;
     public TextMeshPro playerNameFO;
-
 
     GameManager manager;
     void Start()

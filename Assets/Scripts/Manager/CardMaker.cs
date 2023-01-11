@@ -64,7 +64,7 @@ public class CardMaker : MvcModels
         bool downing = false;
         while (t < duration)
         {
-            CardSprite.color = Color.white;
+            //CardSprite.color = Color.white;
             t += Time.deltaTime / duration;
             CardSprite.color = Color.Lerp(new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, CardSprite.color.a), new Color(CardSprite.color.r, CardSprite.color.g, CardSprite.color.b, 0), t / (duration - 1));
             if (cardcounter.color.a <= 0.88 && !downing)
@@ -82,7 +82,7 @@ public class CardMaker : MvcModels
             }
             yield return null;
         }
-
+        //CardSprite.color = Color.white;
     }
 
     private IEnumerator ReturnNumberNull()
@@ -195,7 +195,7 @@ public class CardMaker : MvcModels
             }
 
 
-            if (view._inspectorBelongsTo == "Player")
+            if (view._inspectorBelongsTo == "Player" || view._inspectorBelongsTo == "PlayerFinish" || view._inspectorBelongsTo == "" && !deckView._Inisialize && deckModel.CurrentTurn == "Player")
             {
                 //if (!view._CanPlayCard && deckModel.CurrentTurn == "Player")
                 //{
