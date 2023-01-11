@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 847150334145477221}
   - component: {fileID: 9021490772848947361}
+  - component: {fileID: 6060545076591345437}
   m_Layer: 0
   m_Name: Deck
   m_TagString: Untagged
@@ -49,6 +50,19 @@ MonoBehaviour:
   glowEffect: {fileID: 0}
   pointerVFX: {fileID: 3246958384139470153}
   _Inisialize: 1
+--- !u!114 &6060545076591345437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847150334145477223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c191a2ed11465c4da50749eba81db9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 894305470893115363}
 --- !u!1 &3246958384139470153
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +344,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dd843e18be05fa4a98a39078dfd3f22, type: 3}
+--- !u!1 &894305470893115363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7616742948102743842, guid: 0dd843e18be05fa4a98a39078dfd3f22,
+    type: 3}
+  m_PrefabInstance: {fileID: 7340072777734807745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &894305470893115365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7616742948102743844, guid: 0dd843e18be05fa4a98a39078dfd3f22,

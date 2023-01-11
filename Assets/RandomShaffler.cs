@@ -49,7 +49,6 @@ public class RandomShaffler : MonoBehaviour
     public TextMeshPro aiNameFO;
     public TextMeshPro playerNameFO;
 
-
     GameManager manager;
     void Start()
     {

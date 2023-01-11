@@ -46,16 +46,16 @@ public class Inisializer : MonoBehaviour
         ///
         var DeckmodelFactory = new DeckModelFactory();
         var _deckmodel = DeckmodelFactory.Model;
+
         if (AspectRatioChecker.Instance.isOn16by9)
         {
-        _deckmodel.Position = new Vector3(5, 0.5f, 0);
+            _deckmodel.Position = new Vector3(5, 0.5f, 0);
         }
         else
         {
-        _deckmodel.Position = new Vector3(5f, 0.5f, 0);
+            _deckmodel.Position = new Vector3(5f, 0.5f, 0);
         }
-        // Set some initial state
-        //_deckmodel.Position = new Vector3(20, 0, 0);
+
         _deckmodel.Cards = new List<CardModel>();
         DeckModel deck;
         deck = (DeckModel)_deckmodel;
@@ -1078,7 +1078,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.draw = 0;
         playTimer.inisialized = false;
         enemyTimer.inisialized = false;
-      //  GameManager.Instance.round = 1;
+        //  GameManager.Instance.round = 1;
     }
     public void Rematch()
     {
@@ -1108,7 +1108,7 @@ public class Inisializer : MonoBehaviour
         GameManager.Instance.draw = 0;
         GameManager.Instance.round = 1;
         playTimer.inisialized = false;
-        enemyTimer.inisialized = false; 
+        enemyTimer.inisialized = false;
     }
 
     public void CleanBoard()

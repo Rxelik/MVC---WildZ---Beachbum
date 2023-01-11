@@ -3,10 +3,12 @@ using UnityEngine;
 
 // Dispatched when the enemy's position changes
 public class CardPositionChangedEventArgs : EventArgs { }
-public class CardRotationChangedEventArgs : EventArgs { }
 public class CardColorChangedEventArgs : EventArgs { }
 public class CardNumberChangedEventArgs : EventArgs { }
 public class CardChangedBelongsEventArgs : EventArgs { }
+
+#region EventArgs
+public class CardRotationChangedEventArgs : EventArgs { }
 public class CardLayerChangeEventArgs : EventArgs { }
 public class CardNameChangeEventArgs : EventArgs { }
 public class CardIsSuperEventArgs : EventArgs { }
@@ -18,23 +20,22 @@ public class OrderInHandEventArgs : EventArgs { }
 public class CardSpriteChangedEventArgs : EventArgs { }
 public class CanPlayCardEventArgs : EventArgs { }
 public class CardFoundBoardEventArgs : EventArgs { }
-
-
-
+#endregion
 
 // Interface for the model
 public interface ICardModel
 {
     // Dispatched when the position changes
     event EventHandler<CardPositionChangedEventArgs> OnPositionChanged;
-    event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
     event EventHandler<CardColorChangedEventArgs> OnColorChanged;
-    event EventHandler<OrderInHandEventArgs> OrderInHandChanged;
     event EventHandler<CardNumberChangedEventArgs> OnNumberChanged;
     event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo;
+    #region Other Events
+    event EventHandler<CardRotationChangedEventArgs> OnRotationChanged;
+    event EventHandler<OrderInHandEventArgs> OrderInHandChanged;
     event EventHandler<CardNameChangeEventArgs> NameChanged;
     event EventHandler<CardLayerChangeEventArgs> OnLayerChanged;
-    event EventHandler<CardIsSuperEventArgs > OnSuper;
+    event EventHandler<CardIsSuperEventArgs> OnSuper;
     event EventHandler<CardIsWildEventArgs> OnWild;
     event EventHandler<CardIsBamboozleEventArgs> OnBamboozle;
     event EventHandler<CardBelongsToPlayerEventArgs> OnPlayerChange;
@@ -42,14 +43,16 @@ public interface ICardModel
     event EventHandler<CardFoundBoardEventArgs> OnBoardFind;
     event EventHandler<CardSpriteChangedEventArgs> ChangedSprite;
     event EventHandler<CanPlayCardEventArgs> CanPlayCardEve;
+    #endregion
 
-    // Position of the enemy
     Vector3 Position { get; set; }
-    Quaternion Rotation { get; set; }
     Color Color { get; set; }
     int Number { get; set; }
-    int HandOrder { get; set; }
     string BelongsTo { get; set; }
+
+    #region Other Variables
+    Quaternion Rotation { get; set; }
+    int HandOrder { get; set; }
     int Layer { get; set; }
     string Name { get; set; }
 
@@ -63,20 +66,25 @@ public interface ICardModel
     BoardModel Board { get; set; }
 
     Sprite Sprite { get; set; }
+
+
+    #endregion
+
 }
 
 // Implementation of the enemy model interface
 [System.Serializable]
 public class CardModel : ICardModel
 {
-    [SerializeField] int _Layer;
-    [SerializeField] Color _Color;
     [SerializeField] Vector3 _Position;
-    [SerializeField] Quaternion _Rotation;
+    [SerializeField] Color _Color;
     [SerializeField] int _Number;
-    [SerializeField] int _HandOrder;
     [SerializeField] string _BelongsTo;
-                     string _Name;
+    #region Other Varaibles
+    [SerializeField] int _Layer;
+    [SerializeField] Quaternion _Rotation;
+    [SerializeField] int _HandOrder;
+    string _Name;
     [SerializeField] bool _IsSuper;
     [SerializeField] bool _IsWild;
     [SerializeField] bool _IsBamboozle;
@@ -86,12 +94,17 @@ public class CardModel : ICardModel
     [SerializeField] BoardModel _Board;
     [SerializeField] Sprite _Sprite;
 
+
+    #endregion
+
     public event EventHandler<CardPositionChangedEventArgs> OnPositionChanged = (sender, e) => { };
-    public event EventHandler<CardRotationChangedEventArgs> OnRotationChanged = (sender, e) => { };
-    public event EventHandler<OrderInHandEventArgs> OrderInHandChanged = (sender, e) => { };
     public event EventHandler<CardColorChangedEventArgs> OnColorChanged = (sender, e) => { };
     public event EventHandler<CardNumberChangedEventArgs> OnNumberChanged = (sender, e) => { };
     public event EventHandler<CardChangedBelongsEventArgs> ChangedBelongTo = (sender, e) => { };
+
+    #region Other Events
+    public event EventHandler<CardRotationChangedEventArgs> OnRotationChanged = (sender, e) => { };
+    public event EventHandler<OrderInHandEventArgs> OrderInHandChanged = (sender, e) => { };
     public event EventHandler<CardLayerChangeEventArgs> OnLayerChanged = (sender, e) => { };
     public event EventHandler<CardNameChangeEventArgs> NameChanged = (sender, e) => { };
     public event EventHandler<CardIsSuperEventArgs> OnSuper = (sender, e) => { };
@@ -104,6 +117,78 @@ public class CardModel : ICardModel
     public event EventHandler<CardFoundBoardEventArgs> OnBoardFind = (sender, e) => { };
 
 
+    #endregion
+    public Vector3 Position
+    {
+        get { return _Position; }
+        set
+        {
+            // Only if the position changes
+            if (_Position != value)
+            {
+                // Set new position
+                _Position = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardPositionChangedEventArgs();
+                OnPositionChanged(this, eventArgs);
+            }
+        }
+    }
+    public Color Color
+    {
+        get { return _Color; }
+        set
+        {
+            // Only if the position changes
+            if (_Color != value)
+            {
+                // Set new position
+                _Color = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardColorChangedEventArgs();
+                OnColorChanged(this, eventArgs);
+            }
+
+        }
+    }
+    public int Number
+    {
+        get { return _Number; }
+        set
+        {
+            // Only if the position changes
+            if (_Number != value)
+            {
+                // Set new position
+                _Number = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardNumberChangedEventArgs();
+                OnNumberChanged(this, eventArgs);
+            }
+        }
+    }
+    public string BelongsTo
+    {
+        get { return _BelongsTo; }
+        set
+        {
+            // Only if the position changes
+            if (_BelongsTo != value)
+            {
+                // Set new position
+                _BelongsTo = value;
+
+                // Dispatch the 'position changed' event
+                var eventArgs = new CardChangedBelongsEventArgs();
+                ChangedBelongTo(this, eventArgs);
+            }
+        }
+    }
+
+    #region Other Constructors
     public PlayerModel Player
     {
         get { return _Player; }
@@ -155,23 +240,6 @@ public class CardModel : ICardModel
             }
         }
     }
-    public Vector3 Position
-    {
-        get { return _Position; }
-        set
-        {
-            // Only if the position changes
-            if (_Position != value)
-            {
-                // Set new position
-                _Position = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new CardPositionChangedEventArgs();
-                OnPositionChanged(this, eventArgs);
-            }
-        }
-    }
     public Quaternion Rotation
     {
         get { return _Rotation; }
@@ -189,43 +257,6 @@ public class CardModel : ICardModel
             }
         }
     }
-
-    public Color Color
-    {
-        get { return _Color; }
-        set
-        {
-            // Only if the position changes
-            if (_Color != value)
-            {
-                // Set new position
-                _Color = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new CardColorChangedEventArgs();
-                OnColorChanged(this, eventArgs);
-            }
-
-        }
-    }
-
-    public int Number
-    {
-        get { return _Number; }
-        set
-        {
-            // Only if the position changes
-            if (_Number != value)
-            {
-                // Set new position
-                _Number = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new CardNumberChangedEventArgs();
-                OnNumberChanged(this, eventArgs);
-            }
-        }
-    }  
     public int HandOrder
     {
         get { return _HandOrder; }
@@ -243,25 +274,6 @@ public class CardModel : ICardModel
             }
         }
     }
-
-    public string BelongsTo
-    {
-        get { return _BelongsTo; }
-        set
-        {
-            // Only if the position changes
-            if (_BelongsTo != value)
-            {
-                // Set new position
-                _BelongsTo = value;
-
-                // Dispatch the 'position changed' event
-                var eventArgs = new CardChangedBelongsEventArgs();
-                ChangedBelongTo(this, eventArgs);
-            }
-        }
-    }
-
     public string Name
     {
         get { return _Name; }
@@ -296,7 +308,6 @@ public class CardModel : ICardModel
             }
         }
     }
-
     public bool IsSuper
     {
         get { return _IsSuper; }
@@ -383,6 +394,8 @@ public class CardModel : ICardModel
             }
         }
     }
+    #endregion
+
 
     public bool CanPlayCardTest()
     {

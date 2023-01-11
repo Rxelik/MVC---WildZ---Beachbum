@@ -62,6 +62,7 @@ public class CardController : ICardController
 
     private void ChangedName(object sender, CardChangedBelongsEventArgs e)
     {
+
         if (model.BelongsTo == "FlyingToEnemy" || model.BelongsTo == "Enemy" || model.BelongsTo == "EnemyFinish")
         {
             _manager.StartCoroutine(eLerp());

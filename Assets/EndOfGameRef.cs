@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,12 @@ public class EndOfGameRef : MonoBehaviour
     public TextMeshProUGUI playerScore;
     public TextMeshProUGUI aiScore;
     public GameObject coinsVFX;
+
+    private void Start()
+    {
+        GetComponent<Canvas>().sortingOrder = 100;
+        gameObject.SetActive(false);
+    }
     void OnEnable()
     {
         playerName.text = RandomShaffler.Instance.playerName.text;
