@@ -59,7 +59,7 @@ public class ButtonIndexV2 : MvcModels
                 //Give Reference to Manager To Store in Local
                 manager.chosenCard = playerModel.Cards[Index];
                 //Fake Server Test
-                _server.TestCanPlayCard(manager.chosenCard, playerModel);
+                _server.TestCanPlayCard(manager.chosenCard, playerModel);   
                 if (playerModel.Cards[Index].CanPlayCard)
                 {
                     manager.playerPlayed = true;
@@ -119,7 +119,7 @@ public class ButtonIndexV2 : MvcModels
                 && boardModel.TopCard().Number != 22
                 && boardModel.TopCard().Number != 44
                 || card.IsBamboozle
-                || boardModel.TopCard().IsBamboozle)
+                /*|| boardModel.TopCard().IsBamboozle*/)
             {
                 if (card.IsBamboozle)
                 {
@@ -131,7 +131,6 @@ public class ButtonIndexV2 : MvcModels
                     ChangeTurn(false);
                     boardModel.AddCard(card);
                     model.RemoveCard(card);
-
                 }
             }
             //22 and 44 =  are +2 and +4 Cards in play
@@ -633,7 +632,6 @@ public class ButtonIndexV2 : MvcModels
             //Using Linq to choose card. With Priority of the ||(OR`S) and Super first then normal Cards after that.
             //I take AI list compare it the top card in board and make new list of card you can play.
             //You take first card in that list and play it, remove the rest.
-            print("AI Played");
             AIplayed = true;
 
             //Using fake delay to make it more believable its a real player.
@@ -730,7 +728,7 @@ public class ButtonIndexV2 : MvcModels
     }
 
     public void ChangeTurn(bool anotherTurn)
-    {   
+    {
         RemoveButtons();
         manager.tookToHand = false;
         AIplayed = false;
@@ -743,7 +741,7 @@ public class ButtonIndexV2 : MvcModels
             manager.playerPlayed = false;
         }
         if (anotherTurn && deckModel.CurrentTurn == "Player")
-            AI.Instance.StartCoroutine(PlayAgain());
+            StartCoroutine(PlayAgain());
         else if (anotherTurn && deckModel.CurrentTurn == "Enemy")
         {
             deckModel.PlayAgain();
@@ -777,10 +775,12 @@ public class ButtonIndexV2 : MvcModels
     }
     IEnumerator PlayAgain()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.55f);
         manager.playerPlayed = false;
         deckModel.PlayAgain();
+        print("PLAY AGAIN!!");
     }
     #endregion
 
 }
+    

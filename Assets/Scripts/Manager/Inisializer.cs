@@ -769,7 +769,7 @@ public class Inisializer : MonoBehaviour
         #endregion
 
         #region Bamoozle
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 50; i++)
         {
             var CardmodelFactory = new CardModelFactory();
             var _Cardmodel = CardmodelFactory.Model;
